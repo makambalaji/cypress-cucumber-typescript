@@ -1,0 +1,15 @@
+{
+  "baseUrl": "https://console-openshift-console.apps.rhamilto46.devcluster.openshift.com/",
+  "integrationFolder": "cypress/integration",
+  "testFiles": "**/*.{feature,features}",
+  "viewportWidth":1920,
+  "viewportHeight":1080,
+  "watchForFileChanges": true,
+  "chromeWebSecurity": false,
+  "waitForAnimation": true,
+  "animationDistanceThreshold": 20,
+  "execTimeout": 60000,
+  "pageLoadTimeout": 60000,
+  "requestTimeout": 15000,
+  "responseTimeout": 15000
+}
