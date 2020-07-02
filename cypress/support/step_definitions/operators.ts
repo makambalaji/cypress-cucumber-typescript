@@ -4,7 +4,7 @@ import {loginPage} from '../pages/login_page';
 import { perspective } from '../pages/app';
 
 Given('user logged into the openshift application', () => {
-  loginPage.loginWithValidCredentials('kubeadmin', 'pb9Yd-Dyc8v-DLfxT-8ommT');
+  loginPage.loginWithValidCredentials('kubeadmin', 'tV2Mv-KyXcL-9MWCW-TwK2U');
   loginPage.checkLoginSuccess();
 });
 
