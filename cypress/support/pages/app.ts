@@ -1,19 +1,27 @@
-import { devNavigationMenu } from '../constants/global';
+import { devNavigationMenu, switchPerspective } from '../constants/global';
 
 export const perspective = {
-  switchToAdmin: () => {
-    cy.byLegacyTestID('perspective-switcher-toggle').click();
-    cy.get('.pf-c-dropdown__menu-item')
-      .contains('Administrator')
-      .click();
+  verifyPerspective: (perspectiveName: switchPerspective) => {
+    cy.byLegacyTestID('perspective-switcher-toggle').find('h1').should('contain.text', perspectiveName);
   },
 
-  switchToDeveloper: () => {
+  switchTo : (perspectiveName: switchPerspective) => {
     cy.byLegacyTestID('perspective-switcher-toggle').click();
-    cy.get('.pf-c-dropdown__menu-item')
-      .contains('Developer')
-      .click();
-  },
+    switch (perspectiveName) {
+      case switchPerspective.Administrator: {
+        cy.get('li[role="menuitem"]')
+        .contains('Administrator')
+        .click();
+        break;
+      }
+      case switchPerspective.Developer: {
+        cy.get('li[role="menuitem"]')
+        .contains('Developer')
+        .click();
+        break;
+      }
+  }
+}
 };
 
 export const projectNameSpace = {

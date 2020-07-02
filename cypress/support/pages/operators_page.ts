@@ -1,19 +1,19 @@
+import { operators } from "../constants/global";
+
 export const operatorsPage = {
   navigateToOperaotorHubPage: () => {
     cy.get('[data-component="pf-nav-expandable"]')
       .contains('Operators')
       .click();
-    cy.get('.pf-c-nav__link')
-      .contains('OperatorHub')
+    cy.get('[href="/operatorhub"]')
       .should('be.visible');
-    cy.get('.pf-c-nav__link')
-      .contains('OperatorHub')
+    cy.get('[href="/operatorhub"]')
       .click();
   },
 
   searchOperator: (operatorName: string) => {
     cy.get('input[placeholder="Filter by keyword..."]').type(operatorName);
-    cy.get('.co-catalog-page__num-items').should('be.visible');
+    cy.get('div.co-catalog-page__num-items').should('be.visible');
   },
 
   installPipelineOperator: () => {
@@ -21,13 +21,10 @@ export const operatorsPage = {
       .find('h1')
       .should('have.text', 'Install Operator');
     cy.byButtonText('Install').click();
-    cy.byLegacyTestID('resource-title').should('have.text', 'Installed Operators');
+    cy.byLegacyTestID('resource-title').contains('Installed Operators');
   },
 
   verifyPipelineOperatorSubscriptionPage: () => {
-    cy.get('.co-m-nav-title')
-      .find('h1')
-      .should('have.text', 'Install Operator');
     cy.get('h1.co-clusterserviceversion-logo__name__clusterserviceversion').should(
       'have.text',
       'OpenShift Pipelines Operator',
@@ -35,14 +32,13 @@ export const operatorsPage = {
   },
 
   verifyInstalledOperator: (operatorName: string) => {
-    // cy.get('[role="dialog"]').find('[data-test-id="operator-uninstall-btn"]').should('be.exist');
     cy.get('h1.co-clusterserviceversion-logo__name__clusterserviceversion').should(
       'have.text',
       operatorName,
     );
   },
 
-  titleShouldBe: (title: string) => cy.byTestID('resource-title').contains(title),
+  titleShouldBe: (title: string) => cy.byLegacyTestID('resource-title').contains(title),
   headingDisplayed: (heading: string) => cy.get('h1').contains(heading),
 
   // installPipelineOperator: () => {
@@ -58,9 +54,25 @@ export const operatorsPage = {
   //   cy.byLegacyTestID('resource-title').should('have.text', 'Installed Operators');
   // },
 
-  verifyPipelineoperatorInstalled: () => {
-    cy.get('[role="dialog"]')
-      .find('[data-test-id="operator-uninstall-btn"]')
-      .should('be.exist');
+  selectOperator: (opt: operators) => {
+    switch (opt) {
+      case operators.pipelineOperator: {
+        cy.byTestID('openshift-pipelines-operator-rh-redhat-operators-openshift-marketplace').click();
+        cy.byLegacyTestID('resource-title').should('contain.text', 'Add');
+        break;
+      }
+      default: {
+        throw new Error('operator is not available');
+      }
+    }
   },
+
+  verifySiedPane:() => {
+    cy.get('[role="dialog"]').should('be.exist');
+  },
+
+  clickInstallOnSidePane: () => {
+    cy.byLegacyTestID('operator-install-btn').click();
+  }
+  
 };

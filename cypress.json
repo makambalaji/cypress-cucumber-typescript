@@ -1,5 +1,5 @@
 {
-  "baseUrl": "https://console-openshift-console.apps.jcaiani1.devcluster.openshift.com/",
+  "baseUrl": "https://console-openshift-console.apps.gamore46installer2ndjuly.devcluster.openshift.com/",
   "integrationFolder": "cypress/integration",
   "testFiles": "**/*.{feature,features}",
   "viewportWidth":1920,
@@ -11,5 +11,6 @@
   "execTimeout": 60000,
   "pageLoadTimeout": 60000,
   "requestTimeout": 15000,
-  "responseTimeout": 15000
+  "responseTimeout": 15000,
+  "defaultCommandTimeout": 22000
 }

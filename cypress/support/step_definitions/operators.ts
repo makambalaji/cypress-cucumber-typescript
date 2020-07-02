@@ -2,22 +2,20 @@ import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { operatorsPage } from '../pages/operators_page';
 import {loginPage} from '../pages/login_page';
 import { perspective } from '../pages/app';
+import  { switchPerspective, operators } from '../constants/global'
 
 Given('user logged into the openshift application', () => {
-  loginPage.loginWithValidCredentials('kubeadmin', 'tV2Mv-KyXcL-9MWCW-TwK2U');
+  loginPage.loginWithValidCredentials('kubeadmin', 'gTpFF-5xtpQ-DVnFR-KtDZz');
   loginPage.checkLoginSuccess();
 });
 
 Given('user is at admin perspecitve', () => {
-  // perspective.switchToAdmin();
-  cy.get('div[data-test-id="perspective-switcher-menu"]')
-    .find('h1')
-    .should('contain.text', 'Administrator');
+  perspective.verifyPerspective(switchPerspective.Administrator);
 });
 
 Given('user is at Operator Hub page with the header name {string}', (headerName) => {
   operatorsPage.navigateToOperaotorHubPage();
-  cy.get('[data-test-id="resource-title"]').should('contain.text', headerName);
+  operatorsPage.titleShouldBe(headerName);
 });
 
 When('user searches for {string}', (operatorName) => {
@@ -25,14 +23,12 @@ When('user searches for {string}', (operatorName) => {
 });
 
 When('clicks OpenShift Pipelines Operator card on Operator Hub page', () => {
-  cy.get(
-    '[data-test="openshift-pipelines-operator-rh-redhat-operators-openshift-marketplace"]',
-  ).click();
+  operatorsPage.selectOperator(operators.pipelineOperator);
 });
 
 When('click install button present on the right side pane', () => {
-  cy.get('[role="dialog"]').should('be.exist');
-  cy.get('[data-test-id="operator-install-btn"]').click();
+  operatorsPage.verifySiedPane();
+  operatorsPage.clickInstallOnSidePane();
 });
 
 Then('OpenShift Pipeline operator subscription page will be displayed', () => {
@@ -41,24 +37,20 @@ Then('OpenShift Pipeline operator subscription page will be displayed', () => {
 
 Given('user is at OpenShift Pipeline Operator subscription page', () => {
   operatorsPage.navigateToOperaotorHubPage();
-  cy.get('[data-test-id="resource-title"]').should('contain.text', 'OperatorHub');
+  operatorsPage.titleShouldBe('OperatorHub');
   operatorsPage.searchOperator('OpenShift Pipelines Operator');
-  cy.get(
-    '[data-test="openshift-pipelines-operator-rh-redhat-operators-openshift-marketplace"]',
-  ).click();
-  cy.get('[role="dialog"]').should('be.exist');
-  cy.get('[data-test-id="operator-install-btn"]').click();
+  operatorsPage.selectOperator(operators.pipelineOperator);
+  operatorsPage.verifySiedPane();
+  operatorsPage.clickInstallOnSidePane();
   operatorsPage.verifyPipelineOperatorSubscriptionPage();
 });
 
 When('user installs the pipeline operator with default values', () => {
-  cy.get('button.pf-c-button.pf-m-primary')
-    .contains('Install')
-    .click();
+  operatorsPage.installPipelineOperator();
 });
 
 Then('page redirects to Installed operators', () => {
-  cy.get('[data-test-id="resource-title"]').should('have.text', 'Installed Operators');
+  operatorsPage.titleShouldBe('Installed Operators');
 });
 
 Then('Installed operators page will contain {string}', (operatorName) => {

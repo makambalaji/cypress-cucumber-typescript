@@ -16,3 +16,8 @@ export enum switchPerspective {
   Developer = 'Developer Perspective',
   Administrator = ' Administrator Perspective',
 }
+
+export enum operators {
+  pipelineOperator = 'Pipeline Operator',
+  serverlessOperator = 'Serverless Operator',
+}

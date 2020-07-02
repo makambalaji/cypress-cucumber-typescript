@@ -34,4 +34,3 @@ Cypress.Commands.add('byButtonText', (selector: string) =>
   cy.get('button[type="button"]').contains(`${selector}`),
 );
 Cypress.Commands.add('byDataID', (selector: string) => cy.get(`[data-id="${selector}"]`));
-
