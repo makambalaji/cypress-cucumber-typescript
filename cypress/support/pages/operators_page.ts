@@ -2,16 +2,11 @@ import { operators } from "../constants/global";
 
 export const operatorsPage = {
   navigateToOperaotorHubPage: () => {
-    cy.get('[data-component="pf-nav-expandable"]')
-      .contains('Operators')
-      .click();
-    cy.get('[href="/operatorhub"]')
-      .should('be.visible');
-    cy.get('[href="/operatorhub"]')
-      .click();
+    cy.clickNavLink(['Operators', 'OperatorHub']);
   },
 
   searchOperator: (operatorName: string) => {
+    cy.get('input[placeholder="Filter by keyword..."]').should('be.visible');
     cy.get('input[placeholder="Filter by keyword..."]').type(operatorName);
     cy.get('div.co-catalog-page__num-items').should('be.visible');
   },
@@ -38,7 +33,7 @@ export const operatorsPage = {
     );
   },
 
-  titleShouldBe: (title: string) => cy.byLegacyTestID('resource-title').contains(title),
+  titleShouldBe: (title: string) => cy.get('[data-test-id="resource-title"]').contains(title),
   headingDisplayed: (heading: string) => cy.get('h1').contains(heading),
 
   // installPipelineOperator: () => {
@@ -58,7 +53,6 @@ export const operatorsPage = {
     switch (opt) {
       case operators.pipelineOperator: {
         cy.byTestID('openshift-pipelines-operator-rh-redhat-operators-openshift-marketplace').click();
-        cy.byLegacyTestID('resource-title').should('contain.text', 'Add');
         break;
       }
       default: {

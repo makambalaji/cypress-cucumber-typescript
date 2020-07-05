@@ -2,7 +2,7 @@ import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import {loginPage} from '../pages/login_page';
 import { gitPage, seelctCardFromOptions } from '../pages/add_page';
 import { perspective, projectNameSpace as project, naviagteTo } from '../pages/app';
-import { devNavigationMenu as menu } from '../constants/global';
+import { devNavigationMenu as menu, switchPerspective } from '../constants/global';
 import { addOptions } from '../constants/addPage';
 
 // before(() => {
@@ -17,7 +17,7 @@ Given('openshift cluster is installed with pipeline operator', () => {
 });
 
 Given('user is at the project namespace {string} in dev perspecitve', (projectName) => {
-  perspective.switchToDeveloper();
+  perspective.switchTo(switchPerspective.Developer);
   // project.createProject(projectName);
   project.selectProject(projectName);
 });

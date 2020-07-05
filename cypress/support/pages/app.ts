@@ -1,8 +1,8 @@
 import { devNavigationMenu, switchPerspective } from '../constants/global';
 
 export const perspective = {
-  verifyPerspective: (perspectiveName: switchPerspective) => {
-    cy.byLegacyTestID('perspective-switcher-toggle').find('h1').should('contain.text', perspectiveName);
+  verifyPerspective: (perspectiveName: string) => {
+    cy.get('[data-test-id="perspective-switcher-toggle"] h1').should('contain.text', perspectiveName);
   },
 
   switchTo : (perspectiveName: switchPerspective) => {

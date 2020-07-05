@@ -1,16 +1,20 @@
 {
-  "baseUrl": "https://console-openshift-console.apps.gamore46installer2ndjuly.devcluster.openshift.com/",
+  "baseUrl": "https://console-openshift-console.apps.ci-ln-snv7vmb-f76d1.origin-ci-int-gce.dev.openshift.com/",
   "integrationFolder": "cypress/integration",
   "testFiles": "**/*.{feature,features}",
+  "defaultCommandTimeout": 10000,
   "viewportWidth":1920,
   "viewportHeight":1080,
   "watchForFileChanges": true,
   "chromeWebSecurity": false,
   "waitForAnimation": true,
   "animationDistanceThreshold": 20,
-  "execTimeout": 60000,
+  "execTimeout": 90000,
   "pageLoadTimeout": 60000,
   "requestTimeout": 15000,
   "responseTimeout": 15000,
-  "defaultCommandTimeout": 22000
+  "env": {
+    "username": "kubeadmin",
+    "password": "9IGur-DdMmK-EdLWo-rZ79m"
+  }
 }

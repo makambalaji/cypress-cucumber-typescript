@@ -5,12 +5,12 @@ import { perspective } from '../pages/app';
 import  { switchPerspective, operators } from '../constants/global'
 
 Given('user logged into the openshift application', () => {
-  loginPage.loginWithValidCredentials('kubeadmin', 'gTpFF-5xtpQ-DVnFR-KtDZz');
+  loginPage.loginWithValidCredentials(Cypress.env('username'), Cypress.env('password'));
   loginPage.checkLoginSuccess();
 });
 
 Given('user is at admin perspecitve', () => {
-  perspective.verifyPerspective(switchPerspective.Administrator);
+  perspective.verifyPerspective('Administrator');
 });
 
 Given('user is at Operator Hub page with the header name {string}', (headerName) => {
