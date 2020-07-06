@@ -1,24 +1,13 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { operatorsPage } from '../pages/operators_page';
-import {loginPage} from '../pages/login_page';
-import { perspective } from '../pages/app';
-import  { switchPerspective, operators } from '../constants/global'
-
-Given('user logged into the openshift application', () => {
-  loginPage.loginWithValidCredentials(Cypress.env('username'), Cypress.env('password'));
-  loginPage.checkLoginSuccess();
-});
-
-Given('user is at admin perspecitve', () => {
-  perspective.verifyPerspective('Administrator');
-});
+import  { operators } from '../constants/global'
 
 Given('user is at Operator Hub page with the header name {string}', (headerName) => {
   operatorsPage.navigateToOperaotorHubPage();
   operatorsPage.titleShouldBe(headerName);
 });
 
-When('user searches for {string}', (operatorName) => {
+When('user searches for {string}', (operatorName: operators) => {
   operatorsPage.searchOperator(operatorName);
 });
 

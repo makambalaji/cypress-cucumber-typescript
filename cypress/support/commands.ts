@@ -8,6 +8,7 @@ declare global {
       byTestActionID(selector: string): Chainable<Element>;
       byLegacyTestID(selector: string): Chainable<Element>;
       byButtonText(selector: string): Chainable<Element>;
+      selectByDropDownText(selector: string, dropdownText: string): Chainable<Element>;
     }
   }
 }
@@ -34,3 +35,12 @@ Cypress.Commands.add('byButtonText', (selector: string) =>
   cy.get('button[type="button"]').contains(`${selector}`),
 );
 Cypress.Commands.add('byDataID', (selector: string) => cy.get(`[data-id="${selector}"]`));
+
+Cypress.Commands.add('selectByDropDownText', (selector: string, dropdownText: string) => {
+  cy.get('div.pf-c-dropdown button').contains(`${selector}`).click();
+  cy.get('ul.pf-c-dropdown__menu li button').each(($el, index, list) => {
+    if($el.text().includes(dropdownText)) {
+      $el.click();
+    }
+  })
+});

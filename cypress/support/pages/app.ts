@@ -30,7 +30,7 @@ export const projectNameSpace = {
       .find('button')
       .eq(0)
       .click();
-    cy.byLegacyTestID('[data-test-dropdown-menu="#CREATE_RESOURCE_ACTION#"]').click();
+    cy.get('[data-test-dropdown-menu="#CREATE_RESOURCE_ACTION#"]').click();
   },
 
   enterProjectName: (projectName: string) => {
@@ -49,10 +49,19 @@ export const projectNameSpace = {
       .eq(0)
       .click();
     cy.byLegacyTestID('dropdown-text-filter').type(projectName);
-    cy.get('[role="listbox"]')
-      .find('li[role="option"]')
-      .contains(projectName)
-      .click();
+    cy.get('[role="listbox"]').then(($el) => {
+      if ($el.find('li[role="option"]').length === 0) {
+        cy.get('[data-test-dropdown-menu="#CREATE_RESOURCE_ACTION#"]').click();
+        projectNameSpace.enterProjectName(projectName);
+        projectNameSpace.clickCreateButton();
+      }
+      else {
+        cy.get('[role="listbox"]')
+        .find('li[role="option"]')
+        .contains(projectName)
+        .click();
+      }
+    });
   },
 
   verifyPopupClosed: () => {

@@ -1,28 +1,10 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import {loginPage} from '../pages/login_page';
 import { gitPage, seelctCardFromOptions } from '../pages/add_page';
-import { perspective, projectNameSpace as project, naviagteTo } from '../pages/app';
+import { naviagteTo } from '../pages/app';
 import { devNavigationMenu as menu, switchPerspective } from '../constants/global';
-import { addOptions } from '../constants/addPage';
+import { addOptions, resourceTypes } from '../constants/addPage';
 
-// before(() => {
-//   loginPage.loginWithValidCredentials('kubeadmin', 'YcxoK-QLkqH-rh3Tr-qQdsJ');
-//   loginPage.checkLoginSuccess();
-//   app.createProject('AUT_MB_Demo');
-// });
-
-Given('openshift cluster is installed with pipeline operator', () => {
-  loginPage.loginWithValidCredentials('kubeadmin', 'YcxoK-QLkqH-rh3Tr-qQdsJ');
-  loginPage.checkLoginSuccess();
-});
-
-Given('user is at the project namespace {string} in dev perspecitve', (projectName) => {
-  perspective.switchTo(switchPerspective.Developer);
-  // project.createProject(projectName);
-  project.selectProject(projectName);
-});
-
-Given('user is at {string} page', () => {
+Given('user is at Add page', () => {
   naviagteTo(menu.Add);
 });
 
@@ -34,15 +16,16 @@ Then('user navigates to page with header name Import from git', () => {
   gitPage.verifyTitle('Import from git');
 });
 
-Then('pipeline section is displayed with message {string}', (message) => {
+Then('pipeline section is displayed with message {string}', (message: string) => {
   gitPage.verifyPipelinesSection(message);
 });
 
-Given('user is at {string} form', (title) => {
+Given('user is at {string} form', (title: string) => {
+  seelctCardFromOptions(addOptions.Git);
   gitPage.verifyTitle(title);
 });
 
-When('user type Git Repo url as {string}', (gitUrl) => {
+When('user type Git Repo url as {string}', (gitUrl: string) => {
   gitPage.enterGitUrl(gitUrl);
 });
 
@@ -50,7 +33,7 @@ Then('Add pipeline checkbox is displayed', () => {
   gitPage.verifyPipelineCheckBox();
 });
 
-When('type Name as {string} in General section', (name) => {
+When('type Name as {string} in General section', (name: string) => {
   gitPage.enterAppName(name);
 });
 
@@ -67,9 +50,37 @@ When('click Create button on Add page', () => {
 });
 
 Then('user redirects to topology page', () => {
-  gitPage.verifyTopologyPage();
+  gitPage.verifyTitle('Topology');
 });
 
 Then('created workload {string} is present in topology page', (name) => {
   gitPage.verifyWorkloadInTopologyPage(name);
+});
+
+Given('user is at Topology page', () => {
+  naviagteTo(menu.Topology);
+});
+
+Given('{string} component is added to namespace', (a: string) => {
+  // TODO: implement step
+});
+
+When('the user enters {string} into the search bar', (a: string) => {
+  // TODO: implement step
+});
+
+When('clicks node {string} from results', (a: string) => {
+  // TODO: implement step
+});
+
+Then('side pane is displayed with pipeline name same as component name {string}', (a: string) => {
+  // TODO: implement step
+});
+
+Given('user is at Pipelines page', () => {
+  naviagteTo(menu.Pipelines);
+});
+
+Then('pipeline name is displayed with the component name {string}', (a: string) => {
+  // TODO: implement step
 });

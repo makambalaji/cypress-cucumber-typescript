@@ -78,7 +78,7 @@ export const gitPage = {
     cy.byLegacyTestID('application-form-app-input').type(name);
   },
 
-  selectResource: (resource: resourceTypes) => {
+  selectResource: (resource: string) => {
     switch (resource) {
       case resourceTypes.Deployment:
         cy.get('#form-radiobutton-resources-kubernetes-field').check();
@@ -131,11 +131,7 @@ export const gitPage = {
   createWorkload: () => {
     cy.byLegacyTestID('submit-button').click();
   },
-
-  verifyTopologyPage: () => {
-    cy.url().contains('graph');
-  },
-
+  
   verifyWorkloadInTopologyPage: (appName: string) => {
     cy.get('[data-test-id="namespace-bar-dropdown"] a').click();
     cy.byLegacyTestID('item-filter').type(appName);

@@ -12,6 +12,11 @@ export const loginPage = {
 
   loginWithValidCredentials: (username: string, password: string) => {
     cy.visit('/');
+    cy.get('body').then(($body) => {
+      if ($body.find('a[title="Log in with kube:admin"]').length) {
+        cy.get('a[title="Log in with kube:admin"]').click();
+      }
+    })
     cy.url().should('include', 'login');
     cy.get('#inputUsername').type(username);
     cy.get('#inputPassword').type(password);

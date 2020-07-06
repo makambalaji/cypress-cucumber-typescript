@@ -66,7 +66,17 @@ export const operatorsPage = {
   },
 
   clickInstallOnSidePane: () => {
-    cy.byLegacyTestID('operator-install-btn').click();
+    cy.get('[role="dialog"]').then(($sidePane) => {
+      if ($sidePane.find('[data-test-id="operator-install-btn"]').length) {
+        cy.get('[data-test-id="operator-install-btn"]').click();
+      }
+      else {
+        cy.log('Pipeline operator is already installed');
+      }
+    })   
+  },
+
+  verifyServerlessOperator: () => {
+    cy.get('#page-sidebar').should('contain.text', 'Serverless');
   }
-  
 };
