@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@types/node": "^10.12.11"
+    "@types/node": "^10.12.11",
+    "through": "^2.3.8"
   },
   "scripts": {
     "open": "cypress open",

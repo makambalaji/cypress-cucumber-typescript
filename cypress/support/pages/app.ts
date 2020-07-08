@@ -2,7 +2,7 @@ import { devNavigationMenu, switchPerspective } from '../constants/global';
 
 export const perspective = {
   verifyPerspective: (perspectiveName: string) => {
-    cy.get('[data-test-id="perspective-switcher-toggle"] h1').should('contain.text', perspectiveName);
+    cy.get('[data-test-id="perspective-switcher-toggle"]').should('contain.text', perspectiveName);
   },
 
   switchTo : (perspectiveName: switchPerspective) => {
@@ -82,7 +82,7 @@ export const naviagteTo = (opt: devNavigationMenu) => {
     }
     case devNavigationMenu.Topology: {
       cy.byLegacyTestID('topology-header').click();
-      cy.byLegacyTestID('resource-title').should('contain.text', 'Topology');
+      cy.get('div.odc-topology').should('exist');
       break;
     }
     case devNavigationMenu.Monitoring: {

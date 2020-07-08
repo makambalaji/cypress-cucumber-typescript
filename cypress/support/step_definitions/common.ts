@@ -1,4 +1,4 @@
-import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
+import { Before, Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import {loginPage} from '../pages/login_page';
 import { perspective, projectNameSpace as project } from '../pages/app';
 import { operatorsPage } from '../pages/operators_page';
@@ -6,6 +6,12 @@ import {operators, switchPerspective} from '../constants/global';
 
 Given('user logged into the openshift application', () => {
     loginPage.loginWithValidCredentials(Cypress.env('username'), Cypress.env('password'));
+    loginPage.checkLoginSuccess();
+});
+
+// { tags:"@smoke" },
+Before({ tags:"@smoke" },() => {
+  loginPage.loginWithValidCredentials(Cypress.env('username'), Cypress.env('password'));
     loginPage.checkLoginSuccess();
 });
   

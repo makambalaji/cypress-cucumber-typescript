@@ -3,6 +3,7 @@ import { gitPage, seelctCardFromOptions } from '../pages/add_page';
 import { naviagteTo } from '../pages/app';
 import { devNavigationMenu as menu, switchPerspective } from '../constants/global';
 import { addOptions, resourceTypes } from '../constants/addPage';
+import { topologyPage } from '../pages/topology_page';
 
 Given('user is at Add page', () => {
   naviagteTo(menu.Add);
@@ -21,6 +22,7 @@ Then('pipeline section is displayed with message {string}', (message: string) =>
 });
 
 Given('user is at {string} form', (title: string) => {
+  naviagteTo(menu.Add);
   seelctCardFromOptions(addOptions.Git);
   gitPage.verifyTitle(title);
 });
@@ -37,7 +39,7 @@ When('type Name as {string} in General section', (name: string) => {
   gitPage.enterAppName(name);
 });
 
-When('select {string} radio button in Resources section', (resoruce) => {
+When('select {string} radio button in Resources section', (resoruce: string) => {
   gitPage.selectResource(resoruce);
 });
 
@@ -50,31 +52,32 @@ When('click Create button on Add page', () => {
 });
 
 Then('user redirects to topology page', () => {
-  gitPage.verifyTitle('Topology');
+  topologyPage.verifyTopologyPage();
 });
 
-Then('created workload {string} is present in topology page', (name) => {
-  gitPage.verifyWorkloadInTopologyPage(name);
+Then('created workload {string} is present in topology page', (name: string) => {
+  topologyPage.verifyWorkloadInTopologyPage(name);
 });
 
 Given('user is at Topology page', () => {
   naviagteTo(menu.Topology);
+  topologyPage.verifyTopologyPage();
 });
 
-Given('{string} component is added to namespace', (a: string) => {
-  // TODO: implement step
+Given('{string} component is added to namespace', (componentName: string) => {
+  topologyPage.verifyWorkloadInTopologyPage(name)
 });
 
-When('the user enters {string} into the search bar', (a: string) => {
-  // TODO: implement step
+When('the user enters {string} into the search bar', (name: string) => {
+  topologyPage.search(name);
 });
 
-When('clicks node {string} from results', (a: string) => {
-  // TODO: implement step
+When('clicks node {string} from results', (name: string) => {
+  cy.byNodeName(name).click();
 });
 
 Then('side pane is displayed with pipeline name same as component name {string}', (a: string) => {
-  // TODO: implement step
+  topologyPage.verifySidePane();
 });
 
 Given('user is at Pipelines page', () => {

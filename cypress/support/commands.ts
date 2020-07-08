@@ -9,6 +9,8 @@ declare global {
       byLegacyTestID(selector: string): Chainable<Element>;
       byButtonText(selector: string): Chainable<Element>;
       selectByDropDownText(selector: string, dropdownText: string): Chainable<Element>;
+      byAppGroupName(appName: string): Chainable<Element>;
+      byNodeName(nodeName: string): Chainable<Element>;
     }
   }
 }
@@ -43,4 +45,12 @@ Cypress.Commands.add('selectByDropDownText', (selector: string, dropdownText: st
       $el.click();
     }
   })
+});
+
+Cypress.Commands.add('byAppGroupName', (appName: string) => {
+    cy.get(`[data-id="group:${appName}"] g.odc-application-group__label text`)
+});
+
+Cypress.Commands.add('byNodeName', (nodeName: string) => {
+  cy.get('g[data-type="workload"] rect').contains(nodeName);
 });

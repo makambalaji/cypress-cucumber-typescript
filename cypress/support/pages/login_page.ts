@@ -14,10 +14,11 @@ export const loginPage = {
     cy.visit('/');
     cy.get('body').then(($body) => {
       if ($body.find('a[title="Log in with kube:admin"]').length) {
-        cy.get('a[title="Log in with kube:admin"]').click();
+        cy.get('a[title="Log in with kube:admin"]').click().then(() => {
+          cy.url().should('include', 'login');
+        })
       }
     })
-    cy.url().should('include', 'login');
     cy.get('#inputUsername').type(username);
     cy.get('#inputPassword').type(password);
     cy.get('[type="submit"]').click();

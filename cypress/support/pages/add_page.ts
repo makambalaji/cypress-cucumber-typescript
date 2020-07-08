@@ -67,7 +67,7 @@ export const gitPage = {
   },
 
   enterGitUrl: (gitUrl: string) => {
-    cy.get('[data-test-id="git-form-input-url"]').type(gitUrl);
+    cy.byLegacyTestID("git-form-input-url").type(gitUrl);
   },
 
   verifyPipelineCheckBox: () => {
@@ -75,7 +75,20 @@ export const gitPage = {
   },
 
   enterAppName: (name: string) => {
-    cy.byLegacyTestID('application-form-app-input').type(name);
+    // cy.get('[id$=application-name-field]').then(($el) => {
+    //   if($el.prop("tagName").includes('button')) {
+    //     cy.get('[id$=application-name-field]').click();
+    //     cy.get('ul.pf-c-dropdown__menu li button').each(($el, index, list) => {
+    //       if($el.text().includes(name)) {
+    //         $el.click();
+    //       }
+    //     })
+    //   } else {
+        cy.byLegacyTestID('application-form-app-name').as('appName');
+        cy.get('@appName').clear();
+        cy.get('@appName').type(name).should('have.value', name);
+    //   }
+    // })
   },
 
   selectResource: (resource: string) => {
@@ -130,12 +143,6 @@ export const gitPage = {
 
   createWorkload: () => {
     cy.byLegacyTestID('submit-button').click();
-  },
-  
-  verifyWorkloadInTopologyPage: (appName: string) => {
-    cy.get('[data-test-id="namespace-bar-dropdown"] a').click();
-    cy.byLegacyTestID('item-filter').type(appName);
-    cy.get('h2.project-overview__group-heading').should('contain.text', appName);
-  },
+  }
 };
 

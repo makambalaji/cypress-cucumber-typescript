@@ -2,8 +2,8 @@ Feature: Create Pipeline from Add Options
     As a user I want to view pipeline, create, edit and delete the pipeline
 
 Background:
-    Given user logged into the openshift application
-    And openshift cluster is installed with pipeline operator
+   #  Given user logged into the openshift application
+    Given openshift cluster is installed with pipeline operator
     And user is at the project namespace "aut-mb-demo" in dev perspecitve
 
 
@@ -47,7 +47,7 @@ Examples:
 Scenario Outline: Create a pipeline from git workload with resource type "<resource>" : P-02-TC01, P-02-TC06
    Given user is at "Import from git" form
    When user type Git Repo url as "<git_url>"
-   And type Name as "<name>" in General section
+   And type Name as "<pipeline_name>" in General section
    And select "<resource>" radio button in Resources section
    And select Add Pipeline checkbox in Pipelines section
    And click Create button on Add page
@@ -56,8 +56,8 @@ Scenario Outline: Create a pipeline from git workload with resource type "<resou
 
 Examples:
 | git_url                                 | pipeline_name    | resource          | workload_name    |
-| https://github.com/sclorg/nodejs-ex.git | nodejs-ex.git-D  | Deployment        | nodejs-ex.git-D  |
-| https://github.com/sclorg/nodejs-ex.git | nodejs-ex.git-DC | Deployment Config | nodejs-ex.git-DC |
+| https://github.com/sclorg/nodejs-ex.git | nodejs-ex.git-d  | Deployment        | nodejs-ex.git-d  |
+| https://github.com/sclorg/nodejs-ex.git | nodejs-ex.git-dc | Deployment Config | nodejs-ex.git-dc |
 
 
 @regression
@@ -87,7 +87,7 @@ Scenario Outline: Pipeline in topology page : P-02-TC02
 
 Examples:
 | name            |
-| nodejs-ex.git-D |
+| nodejs-ex.git-d |
 
 @regression, @smoke
 Scenario Outline: Search the created pipeline from Add options in pipelines page : P-02-TC03
@@ -98,7 +98,7 @@ Scenario Outline: Search the created pipeline from Add options in pipelines page
 
 Examples:
 | name            |
-| nodejs-ex.git-D |
+| nodejs-ex.git-d |
 
 
 @regression

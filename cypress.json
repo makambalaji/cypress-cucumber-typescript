@@ -1,5 +1,5 @@
 {
-  "baseUrl": "https://console-openshift-console.apps.gamore46installer6thjuly.devcluster.openshift.com/",
+  "baseUrl": "https://console-openshift-console.apps.gamore46installer7thjuly001.devcluster.openshift.com/",
   "integrationFolder": "cypress/integration",
   "testFiles": "**/*.{feature,features}",
   "defaultCommandTimeout": 10000,
@@ -15,7 +15,7 @@
   "responseTimeout": 15000,
   "env": {
     "username": "kubeadmin",
-    "password": "U7XCz-PmnIB-9B2c9-kgUrS",
+    "password": "C3eYx-ViCJu-YiPwR-cJJhd",
     "TAGS": "@smoke"
   }
 }
