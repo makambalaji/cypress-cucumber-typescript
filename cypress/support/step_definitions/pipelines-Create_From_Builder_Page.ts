@@ -1,11 +1,7 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { pipelinesPage, pipelineBuilderPage, pipelineDetailspage } from '../pages/pipelines_page';
+import { pipelinesPage, pipelineBuilderPage, pipelineDetailsPage } from '../pages/pipelines_page';
 import { naviagteTo } from '../pages/app';
 import { devNavigationMenu } from '../constants/global'
-
-Given('user is at pipelines page', () => {
-  naviagteTo(devNavigationMenu.Pipelines);
-});
 
 When('user clicks Create Pipeline button on Pipelines page', () => {
   pipelinesPage.createPipeline();
@@ -50,12 +46,12 @@ When('clicks Create button on Pipeline Builder page', () => {
 });
 
 Then('user redirects to Pipeline Details page with header name {string}', (pipelineName: string) => {
-  pipelineDetailspage.verifyTitle(pipelineName);
+  pipelineDetailsPage.verifyTitle(pipelineName);
 });
 
 When('user adds another task {string} in parallel', (taskName: string) => {
   // add mouser hover on task to select + button
-  pipelineBuilderPage.selectTask(taskName);
+  pipelineBuilderPage.seelctParallelTask(taskName);
 });
 
 Then('tasks displayed parallel in pipelines section', () => {

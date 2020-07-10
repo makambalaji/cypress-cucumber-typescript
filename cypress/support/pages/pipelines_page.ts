@@ -1,9 +1,103 @@
+import { pipelineActions } from "../constants/pipelines";
+
 export const pipelinesPage = {
   createPipeline: () => {
     cy.get('#yaml-create').click();
   },
-};
 
+  selectKebabMenu:(pipelineName: string) => {
+    cy.get('div[role="grid"]').should('exist');
+    cy.get(`tr td:nth-child(1)`).each(($el, index, $list) => {
+      const text = $el.text()
+      if(text.includes(pipelineName)) {
+        cy.get(`tr td:nth-child(1)`).eq(index).next('[data-test-id="kebab-button"]').click();
+      }
+    });
+  },
+
+  selectAction:(action: pipelineActions)=> {
+    switch (action) {
+      case pipelineActions.Start: {
+        cy.byTestActionID('Start').click();
+        cy.get('[data-test-section-heading="Pipeline Run Details"]').should('be.visible');
+        break;
+      }
+      case pipelineActions.AddTrigger: {
+        cy.byTestActionID('Add Trigger').click();
+        cy.get('form').should('be.visible');
+        cy.byLegacyTestID('[data-test-id="modal-title"]').should('contain.text','Add Trigger');
+        break;
+      }
+      case pipelineActions.EditLabels: {
+        cy.byTestActionID('Edit Labels').click();
+        cy.get('form').should('be.visible');
+        cy.byLegacyTestID('[data-test-id="modal-title"]').should('contain.text','Labels');
+        break;
+      }
+      case pipelineActions.EditAnnotations: {
+        cy.byTestActionID('Edit Annotations').click();
+        cy.get('form').should('be.visible');
+        cy.byLegacyTestID('[data-test-id="modal-title"]').should('contain.text','Edit Annotations');
+        break;
+      }
+      case pipelineActions.EditPipeline: {
+        cy.byTestActionID('Edit Pipeline').click();
+        cy.get('h1.odc-pipeline-builder-header__title').should('contain.text','Pipeline Builder');
+        break;
+      }
+      case pipelineActions.DeletePipeline: {
+        cy.byTestActionID('Delete Pipeline').click();
+        cy.get('form').should('be.visible');
+        cy.byLegacyTestID('[data-test-id="modal-title"]').should('contain.text','Delete Pipeline?');
+        break;
+      }
+      default: {
+        throw new Error('operator is not available');
+      }
+    }
+  },
+
+  search:(pipelineName: string) => {
+    cy.byLegacyTestID('item-filter').type(pipelineName).should('have.value', pipelineName);
+    cy.get('[role="grid"]').should('be.visible');
+  },
+
+  selectPipeline:(pipelineName: string) => {
+    cy.byLegacyTestID(pipelineName).click();
+  },
+
+  seelctPipelineRun:(pipelineName: string) => {
+    cy.get('div[role="grid"]').should('exist');
+    cy.get(`tr td:nth-child(1)`).each(($el, index, $list) => {
+      const text = $el.text()
+      if(text.includes(pipelineName)) {
+        cy.get(`tr td:nth-child(3)`).eq(index).click();
+      }
+    });
+  },
+
+  verifyPipelinesTableDisplay:() => {
+    cy.get('[role="grid"]').should('be.visible');
+  },
+
+  verifyPipelineTableColumns:() => {
+    cy.get('div[aria-label="Pipelines"] thead tr th').each(($el) => {
+      expect(['Name', 'Namespace', 'Last Run', 'Task Status', 'Last Run Status', 'Last Run Time']).include($el.text())
+    });
+  },
+
+  verifyNameInPipelinesTable:(pipelineName: string) => {
+    cy.get('[title="Pipeline"]').next().then(($el) => {
+      expect($el.text()).contains(pipelineName);
+    });
+  },
+
+  verifyNameSpaceInPipelinesTable:(namespace: string) => {
+    cy.get('[title="Namespace"]').next().then(($el) => {
+      expect($el.text()).contains(namespace);
+    });
+  }
+};
 
 export const pipelineBuilderPage = {
   verifyTitle:() => {
@@ -25,8 +119,9 @@ export const pipelineBuilderPage = {
   },
 
   seelctParallelTask:(taskName: string) => {
-    cy.get('.odc-pipeline-vis-task__content').invoke('show')
-    cy.contains('+').click()
+    // cy.get('.odc-pipeline-vis-task__content').invoke('show')
+    // cy.contains('+').click()
+    cy.mouseHoverAndClick('.odc-pipeline-vis-task__content', '.odc-plus-node-decorator:nth-child(3) > circle');
     cy.byTestActionID(taskName).click();
   },
 
@@ -57,13 +152,46 @@ export const pipelineBuilderPage = {
 
   create:() => {
     cy.byLegacyTestID('submit-button').click();
+  },
+}
+
+export const pipelineDetailsPage = {
+  verifyTitle:(pipelineName: string) => {
+    cy.byLegacyTestID('resource-title').should('have.text', pipelineName);
+  },
+
+  clickActionMenu: () => {
+    cy.byLegacyTestID('actions-menu-button').click();
+  },
+  
+  selectActionFromActionsDropdown:(action: string) => {
+    cy.byTestActionID(action).click();
   }
 }
 
-export const pipelineDetailspage = {
-  verifyTitle:(pipelineName: string) => {
-    cy.byLegacyTestID('resource-title').should('have.text', pipelineName);
-  }
+export const pipelineRunDetailsPage = {
+  verifyTitle:() => {
+    cy.get('span[title="PipelineRun"]').should('be.visible');
+  },
+
+  selectActionFromActionsDropdown:(action: string) => {
+    switch (action) {
+      case 'Rerun': {
+        cy.byTestActionID('Rerun').click();
+        cy.get('[data-test-section-heading="Pipeline Run Details"]').should('be.visible');
+        break;
+      }
+      case 'Delete Pipeline Run': {
+        cy.byTestActionID('Delete Pipeline Run').click();
+        cy.get('form').should('be.visible');
+        cy.byLegacyTestID('[data-test-id="modal-title"]').should('contain.text','Delete Pipeline?');
+        break;
+      }
+      default: {
+        throw new Error('operator is not available');
+      }
+    }
+  },
 }
 
 export const createPipelineFromBuilderPage = (pipelineName: string, taskName: string) => {

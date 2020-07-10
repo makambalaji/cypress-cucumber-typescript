@@ -2,7 +2,7 @@ import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { gitPage, seelctCardFromOptions } from '../pages/add_page';
 import { naviagteTo } from '../pages/app';
 import { devNavigationMenu as menu, switchPerspective } from '../constants/global';
-import { addOptions, resourceTypes } from '../constants/addPage';
+import { addOptions, resourceTypes } from '../constants/add';
 import { topologyPage } from '../pages/topology_page';
 
 Given('user is at Add page', () => {

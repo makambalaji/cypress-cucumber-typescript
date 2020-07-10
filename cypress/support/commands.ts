@@ -11,6 +11,8 @@ declare global {
       selectByDropDownText(selector: string, dropdownText: string): Chainable<Element>;
       byAppGroupName(appName: string): Chainable<Element>;
       byNodeName(nodeName: string): Chainable<Element>;
+      selectRowByColumnName(columnNumber: number, referenceRowValue: string, selector: string): Chainable<Element>;
+      mouseHoverAndClick(selector: string, element: string): Chainable<Element>;
     }
   }
 }
@@ -53,4 +55,34 @@ Cypress.Commands.add('byAppGroupName', (appName: string) => {
 
 Cypress.Commands.add('byNodeName', (nodeName: string) => {
   cy.get('g[data-type="workload"] rect').contains(nodeName);
+});
+
+Cypress.Commands.add('selectRowByColumnName', (columnNumber: number, referenceRowValue: string, selector: string) => {
+  cy.get('div[role="grid"]').should('exist');
+  cy.get(`tr td:nth-child(${columnNumber})`).each(($el, index, $list) => {
+    const text = $el.text()
+    if(text.includes(referenceRowValue)) {
+      cy.get(`tr td:nth-child(${columnNumber})`).eq(index).next(selector);
+    }
+  });
+})
+
+Cypress.Commands.add('mouseHoverAndClick', (selector: string, element: string) => {
+  cy.get(selector).invoke('show').should('be.visible').trigger('mouseover');
+  cy.get(element).click();
+});
+
+before(() => {
+  cy.visit('/');
+  cy.get('body').then(($body) => {
+    if ($body.find('a[title="Log in with kube:admin"]').length) {
+      cy.get('a[title="Log in with kube:admin"]').click().then(() => {
+        cy.url().should('include', 'login');
+      })
+    }
+  })
+  cy.get('#inputUsername').type(Cypress.env('username'));
+  cy.get('#inputPassword').type(Cypress.env('password'));
+  cy.get('[type="submit"]').click();
+  cy.get('[aria-label="Help menu"]').should('be.visible');
 });

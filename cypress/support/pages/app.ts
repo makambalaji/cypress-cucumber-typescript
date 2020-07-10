@@ -49,6 +49,7 @@ export const projectNameSpace = {
       .eq(0)
       .click();
     cy.byLegacyTestID('dropdown-text-filter').type(projectName);
+    cy.wait(500);
     cy.get('[role="listbox"]').then(($el) => {
       if ($el.find('li[role="option"]').length === 0) {
         cy.get('[data-test-dropdown-menu="#CREATE_RESOURCE_ACTION#"]').click();

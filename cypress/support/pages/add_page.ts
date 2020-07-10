@@ -1,4 +1,4 @@
-import { addOptions, resourceTypes, gitAdvancedOptions } from '../constants/addPage';
+import { addOptions, resourceTypes, gitAdvancedOptions } from '../constants/add';
 
 export const seelctCardFromOptions = (card: addOptions) => {
   switch (card) {

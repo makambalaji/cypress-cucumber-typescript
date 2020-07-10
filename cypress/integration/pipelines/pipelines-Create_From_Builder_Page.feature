@@ -8,6 +8,21 @@ Background:
 
 
 @regression, @smoke
+Scenario Outline: Create a pipeline with parallel tasks : P-03-TC03, P-07- TC02
+    Given user is at Pipeline Builder page 
+    When user types pipeline name as "<pipeline_name>"
+    And select "<task_name>" from Task drop down
+    And user adds another task "<task_name_1>" in parallel
+    And clicks Create button on Pipeline Builder page
+    Then user redirects to Pipeline Details page with header name "<pipeline_name>"
+    And tasks displayed parallel in pipelines section
+
+Examples:
+| pipeline_name | task_name | task_name_1 |
+| pipelines-one | kn        | Sn          |
+
+
+@regression, @smoke
 Scenario Outline: Create a basic pipeline from pipeline builder page : P-03-TC08
     Given user is at Pipeline Builder page 
     When user types pipeline name as "<pipeline_name>"
@@ -56,20 +71,6 @@ Scenario: Add Paramters to the pipeline in pipeline builder page : P-03-TC04
     Then user redirects to Pipeline Details page with header name "<pipeline_name>"
     And parameter details displayed in parameters section
 
-
-@regression, @smoke
-Scenario Outline: Create a pipeline with parallel tasks : P-03-TC03, P-07- TC02
-    Given user is at Pipeline Builder page 
-    When user types pipeline name as "<pipeline_name>"
-    And select "<task_name>" from Task drop down
-    And user adds another task "<task_name_1>" in parallel
-    And clicks Create button on Pipeline Builder page
-    Then user redirects to Pipeline Details page with header name "<pipeline_name>"
-    And tasks displayed parallel in pipelines section
-
-Examples:
-| pipeline_name | task_name | task_name_1 |
-| pipelines-one | kn        | Sn          |
 
 @regression, @smoke
 Scenario Outline: Create a pipeline with series tasks : P-03-TC03, P-07- TC03
