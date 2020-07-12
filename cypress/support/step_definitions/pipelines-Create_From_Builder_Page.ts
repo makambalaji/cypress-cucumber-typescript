@@ -1,5 +1,7 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { pipelinesPage, pipelineBuilderPage, pipelineDetailsPage } from '../pages/pipelines_page';
+import { pipelinesPage } from '../pages/pipelines_page';
+import { pipelineBuilderPage } from '../pages/pipelineBuilder_page';
+import { pipelineDetailsPage } from '../pages/pipelineDetails_page';
 import { naviagteTo } from '../pages/app';
 import { devNavigationMenu } from '../constants/global'
 
@@ -20,7 +22,7 @@ Then('Tasks, Paramters and Resources sections are displayed', () => {
 });
 
 Then('Edit Yaml link is enabled', () => {
-  cy.byButtonText('Edit YAML').should('be.enabled');
+  pipelineBuilderPage.editYaml();
 });
 
 Then('Create button is in disabled state', () => {

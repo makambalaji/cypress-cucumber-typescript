@@ -1,5 +1,5 @@
 {
-  "baseUrl": "https://console-openshift-console.apps.viraj1233934.devcluster.openshift.com/",
+  "baseUrl": "https://console-openshift-console.apps.ci-ln-tmn7mnb-f76d1.origin-ci-int-gce.dev.openshift.com/",
   "integrationFolder": "cypress/integration",
   "testFiles": "**/*.{feature,features}",
   "defaultCommandTimeout": 10000,
@@ -15,7 +15,7 @@
   "responseTimeout": 15000,
   "env": {
     "username": "kubeadmin",
-    "password": "m9gRA-ZsY7C-xYnov-4w3Fs",
+    "password": "sEY5U-GFpMj-XZZC7-WgRw8",
     "TAGS": "@smoke"
   }
 }

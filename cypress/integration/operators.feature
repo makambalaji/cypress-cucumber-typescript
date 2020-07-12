@@ -2,8 +2,7 @@ Feature: Operators
     As a user I want to install or uninstall the operators
 
 Background:
-    Given user logged into the openshift application
-    And user is at admin perspecitve
+   Given user is at admin perspecitve
 
 @regression, @smoke
 Scenario: OpenShift Pipeline operator subscription page : P-01-TC01

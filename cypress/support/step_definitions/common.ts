@@ -1,9 +1,9 @@
-import { Before, Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import {loginPage} from '../pages/login_page';
+import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { perspective, projectNameSpace as project, naviagteTo } from '../pages/app';
 import { operatorsPage } from '../pages/operators_page';
-import {operators, switchPerspective, devNavigationMenu} from '../constants/global';
-import { pipelineBuilderPage } from '../pages/pipelines_page';
+import {switchPerspective, devNavigationMenu} from '../constants/global';
+import { pipelineBuilderPage} from '../pages/pipelineBuilder_page';
+import  {pipelineRunDetailsPage} from '../pages/pipelineRunDetails_page';
 
 // Given('user logged into the openshift application', () => {
 //     loginPage.loginWithValidCredentials(Cypress.env('username'), Cypress.env('password'));
@@ -59,4 +59,12 @@ Given('user is at pipelines page', () => {
 
 Then('user is at the Pipeline Builder page', () => {
   pipelineBuilderPage.verifyTitle();
+});
+
+Given('user is at pipeline Runs page', () => {
+  pipelineRunDetailsPage.verifyTitle();
+});
+
+When('user selects {string} option from kebab menu', (option: string) => {
+  cy.byTestActionID(option).click();
 });

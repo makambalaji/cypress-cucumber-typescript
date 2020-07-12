@@ -1,5 +1,9 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { pipelinesPage, pipelineDetailsPage, pipelineBuilderPage, pipelineRunDetailsPage } from '../pages/pipelines_page';
+import { pipelinesPage } from '../pages/pipelines_page';
+import { pipelineBuilderPage } from '../pages/pipelineBuilder_page';
+import { pipelineDetailsPage } from '../pages/pipelineDetails_page';
+import { pipelineRunDetailsPage} from '../pages/pipelineRunDetails_page';
+ 
 
 // beforeEach(function () {
 //   cy.fixture('pipelines/pipelines').then((pipelineName) => {

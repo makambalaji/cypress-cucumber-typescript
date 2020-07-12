@@ -2,9 +2,8 @@ Feature: Secrets
     As a user I want to add or remove secrets details to pipeline
 
 Background:
-    Given user logged into the openshift application
-    And openshift cluster is installed with pipeline operator
-    And user is at the project namespace "AUT_MB_Demo" in dev perspecitve
+    Given openshift cluster is installed with pipeline operator
+    And user is at the project namespace "aut-mb-secrets-demo" in dev perspecitve
 
 
 @regression, @smoke
