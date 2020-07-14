@@ -4,14 +4,6 @@ Feature: Operators
 Background:
    Given user is at admin perspecitve
 
-@regression, @smoke
-Scenario: OpenShift Pipeline operator subscription page : P-01-TC01
-   Given user is at Operator Hub page with the header name "OperatorHub"
-   When user searches for "OpenShift Pipelines Operator"
-   And clicks OpenShift Pipelines Operator card on Operator Hub page
-   And click install button present on the right side pane
-   Then OpenShift Pipeline operator subscription page will be displayed
-
 
 @regression, @smoke
 Scenario: Install the Pipeline Operator from Operator Hub page : P-01-TC02
@@ -19,6 +11,15 @@ Scenario: Install the Pipeline Operator from Operator Hub page : P-01-TC02
    When user installs the pipeline operator with default values
    Then page redirects to Installed operators
    And Installed operators page will contain "OpenShift Pipelines Operator"
+
+
+@regression, @smoke
+Scenario: OpenShift Pipeline operator subscription page : P-01-TC01
+   Given user is at Operator Hub page with the header name "OperatorHub"
+   When user searches for "OpenShift Pipelines Operator"
+   And clicks OpenShift Pipelines Operator card on Operator Hub page
+   And click install button present on the right side pane
+   Then OpenShift Pipeline operator subscription page will be displayed
 
 
 @regression, @smoke

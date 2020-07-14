@@ -56,8 +56,8 @@ Scenario Outline: Create a pipeline from git workload with resource type "<resou
 
 Examples:
 | git_url                                 | pipeline_name    | resource          | workload_name    |
-| https://github.com/sclorg/nodejs-ex.git | nodejs-ex.git-d  | Deployment        | nodejs-ex.git-d  |
-| https://github.com/sclorg/nodejs-ex.git | nodejs-ex.git-dc | Deployment Config | nodejs-ex.git-dc |
+| https://github.com/sclorg/nodejs-ex.git | nodejs-ex-git-d  | Deployment        | nodejs-ex-git-d  |
+| https://github.com/sclorg/nodejs-ex.git | nodejs-ex-git-dc | Deployment Config | nodejs-ex-git-dc |
 
 
 @regression

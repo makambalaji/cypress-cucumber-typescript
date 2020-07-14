@@ -11,6 +11,11 @@ import { pipelineRunDetailsPage} from '../pages/pipelineRunDetails_page';
 //   })
 // })
 
+Given('pipeline {string} is available', (pipelineName: string) => {
+  pipelinesPage.createPipeline();
+  pipelineBuilderPage.createPipelineFromBuilderPage(pipelineName);
+});
+
 When('the user enters {string} into the pipelines search bar', (pipelineName: string) => {
   pipelinesPage.search(pipelineName);
 });
@@ -28,20 +33,15 @@ Then('column Namespace display with value {string}', (projectNamespace: string) 
 });
 
 Then('columns Last Run, Task Run Status, Last Run Status, Last Run Time with values display {string}', (a: string) => {
-  cy.get('[aria-label="Pipelines"] tbody tr td').each(($el, index, list) => {
-    expect($el.eq(2).text()).equals('-');
-    expect($el.eq(3).text()).equals('-');
-    expect($el.eq(4).text()).equals('-');
-    expect($el.eq(5).text()).equals('-');
-  });
+  pipelinesPage.verifyDefaultPipelineColumnValues();
 });
 
 Then('Create Pipeline button is enabled', () => {
-  cy.get('#yaml-create').should('be.enabled');
+  pipelinesPage.verifyCreateButtonIsEnabled();
 });
 
 Then('kebab menu is displayed', () => {
-  cy.get('[data-test-id="kebab-button"]').should('be.visible')
+  pipelinesPage.verifyKebabMenu();
 });
 
 When('click kebab menu for the pipeline {string}', (pipelineName: string) => {
@@ -49,10 +49,7 @@ When('click kebab menu for the pipeline {string}', (pipelineName: string) => {
 });
 
 Then('kebab menu contains option as {string}', (option: string) => {
-  cy.get('div.pf-c-dropdown button').contains('[data-test-id="actions-menu-button"]').click();
-  cy.get('ul.pf-c-dropdown__menu li button').each(($el, index, list) => {
-    expect(list).contains(option);
-  })
+  pipelinesPage.verifyOptionInKebabMenu(option);
 });
 
 Given('user is at pipeline details page with newly created pipeline', () => {

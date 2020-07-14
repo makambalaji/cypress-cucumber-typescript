@@ -2,9 +2,13 @@ import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { operatorsPage } from '../pages/operators_page';
 import  { operators } from '../constants/global'
 
+beforeEach(() => {
+  Cypress.Cookies.preserveOnce('session_id', 'remember_token')
+});
+
 Given('user is at Operator Hub page with the header name {string}', (headerName) => {
   operatorsPage.navigateToOperaotorHubPage();
-  operatorsPage.titleShouldBe(headerName);
+  cy.titleShouldBe(headerName);
 });
 
 When('user searches for {string}', (operatorName: operators) => {
@@ -26,7 +30,7 @@ Then('OpenShift Pipeline operator subscription page will be displayed', () => {
 
 Given('user is at OpenShift Pipeline Operator subscription page', () => {
   operatorsPage.navigateToOperaotorHubPage();
-  operatorsPage.titleShouldBe('OperatorHub');
+  cy.titleShouldBe('OperatorHub');
   operatorsPage.searchOperator('OpenShift Pipelines Operator');
   operatorsPage.selectOperator(operators.pipelineOperator);
   operatorsPage.verifySiedPane();
@@ -39,7 +43,7 @@ When('user installs the pipeline operator with default values', () => {
 });
 
 Then('page redirects to Installed operators', () => {
-  operatorsPage.titleShouldBe('Installed Operators');
+  cy.titleShouldBe('Installed Operators');
 });
 
 Then('Installed operators page will contain {string}', (operatorName) => {

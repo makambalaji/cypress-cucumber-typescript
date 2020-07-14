@@ -1,8 +1,8 @@
 {
-  "baseUrl": "https://console-openshift-console.apps.ci-ln-tmn7mnb-f76d1.origin-ci-int-gce.dev.openshift.com/",
+  "baseUrl": "http://localhost:9000",
   "integrationFolder": "cypress/integration",
   "testFiles": "**/*.{feature,features}",
-  "defaultCommandTimeout": 10000,
+  "defaultCommandTimeout": 12000,
   "viewportWidth":1920,
   "viewportHeight":1080,
   "watchForFileChanges": true,
@@ -10,12 +10,12 @@
   "waitForAnimation": true,
   "animationDistanceThreshold": 20,
   "execTimeout": 90000,
-  "pageLoadTimeout": 60000,
+  "pageLoadTimeout": 90000,
   "requestTimeout": 15000,
   "responseTimeout": 15000,
   "env": {
     "username": "kubeadmin",
-    "password": "sEY5U-GFpMj-XZZC7-WgRw8",
+    "password": "mkgNY-Vuo73-dgVoo-LAooB",
     "TAGS": "@smoke"
   }
 }

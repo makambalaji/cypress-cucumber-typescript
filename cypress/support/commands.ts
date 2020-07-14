@@ -13,6 +13,8 @@ declare global {
       byNodeName(nodeName: string): Chainable<Element>;
       selectRowByColumnName(columnNumber: number, referenceRowValue: string, selector: string): Chainable<Element>;
       mouseHoverAndClick(selector: string, element: string): Chainable<Element>;
+      titleShouldBe(title:string): Chainable<Element>;
+      alertTitleShouldBe(title:string): Chainable<Element>;
     }
   }
 }
@@ -72,17 +74,29 @@ Cypress.Commands.add('mouseHoverAndClick', (selector: string, element: string) =
   cy.get(element).click();
 });
 
+Cypress.Commands.add('titleShouldBe', (title: string) => {
+  cy.get('resource-title').should('contain.text', title);
+});
+
+Cypress.Commands.add('alertTitleShouldBe', (alertTitle: string) => {
+  cy.byLegacyTestID('modal-title').should('contain.text', alertTitle);
+});
+
+Cypress.Commands.add('selectKebabMenuOption', (kebabMenuOption: string) => {
+  cy.byTestActionID(kebabMenuOption).click();
+});
+
 before(() => {
   cy.visit('/');
-  cy.get('body').then(($body) => {
-    if ($body.find('a[title="Log in with kube:admin"]').length) {
-      cy.get('a[title="Log in with kube:admin"]').click().then(() => {
-        cy.url().should('include', 'login');
-      })
-    }
-  })
-  cy.get('#inputUsername').type(Cypress.env('username'));
-  cy.get('#inputPassword').type(Cypress.env('password'));
-  cy.get('[type="submit"]').click();
-  cy.get('[aria-label="Help menu"]').should('be.visible');
+  // cy.get('body').then(($body) => {
+  //   if ($body.find('a[title="Log in with kube:admin"]').length) {
+  //     cy.get('a[title="Log in with kube:admin"]').click().then(() => {
+  //       cy.url().should('include', 'login');
+  //     })
+  //   }
+  // })
+  // cy.get('#inputUsername').type(Cypress.env('username'));
+  // cy.get('#inputPassword').type(Cypress.env('password'));
+  // cy.get('[type="submit"]').click();
+  // cy.get('[aria-label="Help menu"]').should('be.visible');
 });

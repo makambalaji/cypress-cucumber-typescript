@@ -9,6 +9,7 @@ Background:
 @regression, @smoke
 Scenario Outline: Newly created pipeline details in Pipelines page : P-03-TC01  
    Given user is at pipelines page
+   And pipeline "<pipeline_name>" is available
    When the user enters "<pipeline_name>" into the pipelines search bar
    Then pipelines table displayed with column names Name, Namespace, Last Run, Task Status, Last Run Status and Last Run Time
    And column Name display with value "<pipeline_name>"

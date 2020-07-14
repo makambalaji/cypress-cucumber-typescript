@@ -44,13 +44,13 @@ export const projectNameSpace = {
   },
 
   selectProject: (projectName: string) => {
-    cy.byLegacyTestID('namespace-bar-dropdown')
+    cy.get('[data-test-id="namespace-bar-dropdown"]', { timeout: 80000 })
       .find('button')
       .eq(0)
       .click();
     cy.byLegacyTestID('dropdown-text-filter').type(projectName);
-    cy.wait(500);
-    cy.get('[role="listbox"]').then(($el) => {
+    cy.wait(2000);
+    cy.get('[role="listbox"]', { timeout: 20000 }).then(($el) => {
       if ($el.find('li[role="option"]').length === 0) {
         cy.get('[data-test-dropdown-menu="#CREATE_RESOURCE_ACTION#"]').click();
         projectNameSpace.enterProjectName(projectName);

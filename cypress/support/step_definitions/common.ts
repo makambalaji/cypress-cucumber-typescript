@@ -27,18 +27,6 @@ Given('openshift cluster is installed with pipeline operator', () => {
       if ($navMenu.find('[data-test-id="pipeline-header"]').length) {
         cy.log('pipeline operator is installed');
       }
-      // else {
-      //   perspective.verifyPerspective('Administrator');
-      //   operatorsPage.navigateToOperaotorHubPage();
-      //   operatorsPage.titleShouldBe('OperatorHub');
-      //   operatorsPage.searchOperator('OpenShift Pipelines Operator');
-      //   operatorsPage.selectOperator(operators.pipelineOperator);
-      //   operatorsPage.verifySiedPane();
-      //   operatorsPage.clickInstallOnSidePane();
-      //   operatorsPage.verifyPipelineOperatorSubscriptionPage();
-      //   operatorsPage.installPipelineOperator();
-      //   operatorsPage.titleShouldBe('Installed Operators');
-      // }
     })
 });
 

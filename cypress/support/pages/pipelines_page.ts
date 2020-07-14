@@ -1,22 +1,48 @@
 import { pipelineActions } from "../constants/pipelines";
 
-export const pipelinesPage = {
-  createPipeline: () => {
-    cy.get('#yaml-create').click();
+export const pipelinesObj = {
+  createPipeline: '#yaml-create',
+  search: '[data-test-id="item-filter"]',
+  pipelinesTable: {
+    table: 'div[role="grid"]',
+    pipelineName: 'tr td:nth-child(1)',
+    pipelineRunName: 'tr td:nth-child(3)',
+    kebabMenu: '[data-test-id="kebab-button"]',
+    columnValues: '[aria-label="Pipelines"] tbody tr td',
+    columnNames: 'div[aria-label="Pipelines"] thead tr th',
   },
+  addTrigger: {
+    add: '#confirm-action',
+    cancel: '[data-test-id="modal-cancel-action"]',
+  },
+  editPipeline: {
+    title: 'h1.odc-pipeline-builder-header__title'
+  },
+}
+
+export const pipelinesPage = {
+  createPipeline: () => cy.get(pipelinesObj.createPipeline).click(),
 
   selectKebabMenu:(pipelineName: string) => {
-    cy.get('div[role="grid"]').should('exist');
-    cy.get(`tr td:nth-child(1)`).each(($el, index, $list) => {
+    cy.get(pipelinesObj.pipelinesTable.table).should('exist');
+    cy.get(pipelinesObj.pipelinesTable.pipelineName).each(($el, index, $list) => {
       const text = $el.text()
       if(text.includes(pipelineName)) {
-        cy.get(`tr td:nth-child(1)`).eq(index).next('[data-test-id="kebab-button"]').click();
+        cy.get(pipelinesObj.pipelinesTable.pipelineName).eq(index).next(pipelinesObj.pipelinesTable.kebabMenu).click();
       }
     });
   },
 
+  verifyDefaultPipelineColumnValues: () => {
+    cy.get(pipelinesObj.pipelinesTable.columnValues).each(($el, index, list) => {
+      expect($el.eq(2).text()).equals('-');
+      expect($el.eq(3).text()).equals('-');
+      expect($el.eq(4).text()).equals('-');
+      expect($el.eq(5).text()).equals('-');
+    });
+  },
+  
   selectAction:(action: pipelineActions)=> {
-    cy.byLegacyTestID('modal-title').as('alert')
     switch (action) {
       case pipelineActions.Start: {
         cy.byTestActionID('Start').click();
@@ -26,19 +52,19 @@ export const pipelinesPage = {
       case pipelineActions.AddTrigger: {
         cy.byTestActionID('Add Trigger').click();
         cy.get('form').should('be.visible');
-        cy.get('@alert').should('contain.text','Add Trigger');
+        cy.alertTitleShouldBe('Add Trigger');
         break;
       }
       case pipelineActions.EditLabels: {
         cy.byTestActionID('Edit Labels').click();
         cy.get('form').should('be.visible');
-        cy.get('@alert').should('contain.text','Labels');
+        cy.alertTitleShouldBe('Labels');
         break;
       }
       case pipelineActions.EditAnnotations: {
         cy.byTestActionID('Edit Annotations').click();
         cy.get('form').should('be.visible');
-        cy.get('@alert').should('contain.text','Edit Annotations');
+        cy.alertTitleShouldBe('Edit Annotations');
         break;
       }
       case pipelineActions.EditPipeline: {
@@ -49,7 +75,7 @@ export const pipelinesPage = {
       case pipelineActions.DeletePipeline: {
         cy.byTestActionID('Delete Pipeline').click();
         cy.get('form').should('be.visible');
-        cy.get('@alert').should('contain.text','Delete Pipeline?');
+        cy.alertTitleShouldBe('Delete Pipeline?');
         break;
       }
       default: {
@@ -59,33 +85,33 @@ export const pipelinesPage = {
   },
 
   search:(pipelineName: string) => {
-    cy.byLegacyTestID('item-filter').type(pipelineName).should('have.value', pipelineName);
-    cy.get('[role="grid"]').should('be.visible');
+    cy.get(pipelinesObj.search).type(pipelineName).should('have.value', pipelineName);
+    cy.get(pipelinesObj.pipelinesTable.table).should('be.visible');
   },
 
-  selectPipeline:(pipelineName: string) => {
-    cy.byLegacyTestID(pipelineName).click();
-  },
+  selectPipeline:(pipelineName: string) => cy.byLegacyTestID(pipelineName).click(),
 
   seelctPipelineRun:(pipelineName: string) => {
-    cy.get('div[role="grid"]').should('exist');
-    cy.get(`tr td:nth-child(1)`).each(($el, index, $list) => {
+    cy.get(pipelinesObj.pipelinesTable.table).should('exist');
+    cy.get(pipelinesObj.pipelinesTable.pipelineName).each(($el, index, $list) => {
       const text = $el.text()
       if(text.includes(pipelineName)) {
-        cy.get(`tr td:nth-child(3)`).eq(index).click();
+        cy.get(pipelinesObj.pipelinesTable.pipelineRunName).eq(index).click();
       }
     });
   },
 
-  verifyPipelinesTableDisplay:() => {
-    cy.get('[role="grid"]').should('be.visible');
-  },
+  verifyPipelinesTableDisplay:() => cy.get(pipelinesObj.pipelinesTable.table).should('be.visible'),
 
   verifyPipelineTableColumns:() => {
-    cy.get('div[aria-label="Pipelines"] thead tr th').each(($el) => {
+    cy.get(pipelinesObj.pipelinesTable.columnNames).each(($el) => {
       expect(['Name', 'Namespace', 'Last Run', 'Task Status', 'Last Run Status', 'Last Run Time']).include($el.text())
     });
   },
+
+  verifyCreateButtonIsEnabled:() => cy.get(pipelinesObj.createPipeline).should('be.enabled'),
+
+  verifyKebabMenu:() => cy.get(pipelinesObj.pipelinesTable.kebabMenu).should('be.visible'),
 
   verifyNameInPipelinesTable:(pipelineName: string) => {
     cy.get('[title="Pipeline"]').next().then(($el) => {
@@ -99,9 +125,16 @@ export const pipelinesPage = {
     });
   },
 
+  verifyOptionInKebabMenu:(option:string) => {
+    cy.get('div.pf-c-dropdown button').contains('[data-test-id="actions-menu-button"]').click();
+    cy.get('ul.pf-c-dropdown__menu li button').each(($el, index, list) => {
+      expect(list).contains(option);
+    })
+  },
+
   addTrigger:(gitProviderType: string = 'github-pullreq') => {
-    cy.byLegacyTestID('modal-title').should('contain.text','Add Trigger');
-    cy.selectByDropDownText('#form-dropdown-triggerBinding-name-field', gitProviderType);
+    cy.alertTitleShouldBe('Add Trigger');
+    cy.selectByDropDownText('Select Git Provider Type', gitProviderType);
     cy.get('#confirm-action').click();
   },
 

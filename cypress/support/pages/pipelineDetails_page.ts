@@ -1,13 +1,17 @@
-export const pipelineDetailsPage = {
-    verifyTitle:(pipelineName: string) => {
-      cy.byLegacyTestID('resource-title').should('have.text', pipelineName);
-    },
+export const pipelineDetailsObj = {
   
-    clickActionMenu: () => {
-      cy.byLegacyTestID('actions-menu-button').click();
-    },
-    
-    selectActionFromActionsDropdown:(action: string) => {
-      cy.byTestActionID(action).click();
-    }
+}
+
+export const pipelineDetailsPage = {
+  verifyTitle:(pipelineName: string) => {
+    cy.titleShouldBe(pipelineName);
+  },
+
+  clickActionMenu: () => {
+    cy.byLegacyTestID('actions-menu-button').click();
+  },
+  
+  selectActionFromActionsDropdown:(action: string) => {
+    cy.byTestActionID(action).click();
   }
+}
