@@ -6,20 +6,20 @@ Background:
 
 
 @regression, @smoke
-Scenario: Install the Pipeline Operator from Operator Hub page : P-01-TC02
-   Given user is at OpenShift Pipeline Operator subscription page
-   When user installs the pipeline operator with default values
-   Then page redirects to Installed operators
-   And Installed operators page will contain "OpenShift Pipelines Operator"
-
-
-@regression, @smoke
 Scenario: OpenShift Pipeline operator subscription page : P-01-TC01
    Given user is at Operator Hub page with the header name "OperatorHub"
    When user searches for "OpenShift Pipelines Operator"
    And clicks OpenShift Pipelines Operator card on Operator Hub page
    And click install button present on the right side pane
    Then OpenShift Pipeline operator subscription page will be displayed
+
+
+@regression, @smoke
+Scenario: Install the Pipeline Operator from Operator Hub page : P-01-TC02
+   Given user is at OpenShift Pipeline Operator subscription page
+   When user installs the pipeline operator with default values
+   Then page redirects to Installed operators
+   And Installed operators page will contain "OpenShift Pipelines Operator"
 
 
 @regression, @smoke
@@ -74,3 +74,11 @@ Scenario: Install the dynamic event operator : Kn-09-TC01, Kn-09-TC02
 
 Scenario: Uninstall the Knative serverless operator from Operator Hub page 
    Given user is at OpenShift Serverless Operator subscription page
+
+
+@regression, @smoke
+Scenario: Install the Che Operator from Operator Hub page : CRW-01-TC01
+   Given user is at Eclipse che Operator subscription page
+   When user installs the Eclipse che operator with default values
+   Then page redirects to Installed operators
+   And Installed operators page will contain "Eclipse che Operator"

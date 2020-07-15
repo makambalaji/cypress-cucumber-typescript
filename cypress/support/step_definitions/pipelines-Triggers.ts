@@ -1,193 +1,205 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
+import { pipelinesPage, pipelinesObj } from '../pages/pipelines_page';
+import { pipelineBuilderPage } from '../pages/pipelineBuilder_page';
+import { pipelineDetailsPage, pipelineDetailsObj, triggerTemplateDetailsPage, triggerTemplateDetailsObj, eventListenerDetailsPage, clusterTriggerBindingDetailsObj, clusterTriggerBindingDetailsPage } from '../pages/pipelineDetails_page';
+import { naviagteTo } from '../pages/app';
+import { devNavigationMenu } from '../constants/global';
 
-Given('user logged into the openshift application', () => {
-  // TODO: implement step
+const store: Record<string, string> = {};
+
+Given('pipeline {string} is available with git resource', (pipelineName: string) => {
+  pipelinesPage.createPipeline();
+  pipelineBuilderPage.createPipelineWithGitresources(pipelineName);
+  store.pipelineName = pipelineName;
+  cy.get('[data-test-id="breadcrumb-link-0"]').click();
 });
 
-Given('openshift cluster is installed with pipeline operator', () => {
-  // TODO: implement step
+When('user selects {string} from the kebab menu for {string}', (option: string, pipelineName: string) => {
+  pipelinesPage.selectKebabMenu(pipelineName);
+  cy.byTestActionID(option).click();
 });
 
-Given('user is at the project namespace {string} in dev perspecitve', (a: string) => {
-  // TODO: implement step
+Then('Git provider type field is enabled', () => {
+  cy.get(pipelinesObj.addTrigger.gitProviderType).should('be.enabled');
 });
 
-Given('user is at pipelines page', () => {
-  // TODO: implement step
-});
-
-Given('pipeline is available with git resource', () => {
-  // TODO: implement step
+Then('Add button is disabled', () => {
+  cy.get(pipelinesObj.addTrigger.add).should('be.disabled');
+  cy.get(pipelinesObj.addTrigger.cancel).click();
 });
 
 Given('user is at Add Trigger popup', () => {
-  // TODO: implement step
+  pipelinesPage.selectKebabMenu(store.pipelineName);
+  cy.byTestActionID('Add Trigger').click();
 });
 
-Given('{string} is displayed', (a: string) => {
-  // TODO: implement step
+When('user clicks on {string} link', (linkName: string) => {
+  cy.get(pipelinesObj.addTrigger.variablesLink).contains(linkName).click();
 });
 
-Given('pipeline {string} with trigger in pipelines page', (a: string) => {
-  // TODO: implement step
+Then('user should able to see {string} link with varaibles section', (linkName: string) => {
+  cy.get(pipelinesObj.addTrigger.variablesLink).contains(linkName).click();
 });
 
-Given('user is at pipeline Details page', () => {
-  // TODO: implement step
+Then('variables section displayed with message {string}', (text: string) => {
+  cy.get(pipelinesObj.addTrigger.variablesMessage).should('contain.text', text )
 });
 
-Given('Trigger is added to the pipeline present in pipeline details page', () => {
-  // TODO: implement step
+Then('Add button is enabled', () => {
+  cy.get(pipelinesObj.addTrigger.add).should('be.enabled');
+  cy.get(pipelinesObj.addTrigger.cancel).click();
 });
 
-Given('user is at Trigger Template Details page', () => {
-  // TODO: implement step
+Given('{string} is displayed on pipelines page', (pipelineName: string) => {
+  pipelinesPage.createPipeline();
+  pipelineBuilderPage.createPipelineFromBuilderPage(pipelineName);
+  cy.get('[data-test-id="breadcrumb-link-0"]').click();
+  pipelinesPage.verifyNameInPipelinesTable(pipelineName);
 });
 
-Given('user is at Event Listener Details page', () => {
-  // TODO: implement step
+When('selects the {string} from Git Provider Type field', (gitProviderType: string) => {
+  cy.get(pipelinesObj.addTrigger.gitProviderType).click();
+  cy.get(`[data-test-dropdown-menu="${gitProviderType}"]`).click();
 });
 
-Given('pipeline is provided with trigger', () => {
-  // TODO: implement step
-});
-
-Given('trigger is added to the pipeline', () => {
-  // TODO: implement step
-});
-
-Given('webhook secret is created and added to workload', () => {
-  // TODO: implement step
-});
-
-When('user selects {string} from the kebab menu', (a: string) => {
-  // TODO: implement step
-});
-
-When('user selects an option from Git provider type dropdown', () => {
-  // TODO: implement step
-});
-
-When(' user clicks on {string} link', (a: string) => {
-  // TODO: implement step
-});
-
-When('user selects {string} from the kebab menu for {string}', (a: string, b: string) => {
-  // TODO: implement step
-});
-
-When('selects the {string} from Git Provide Type field', (a: string) => {
-  // TODO: implement step
-});
-
-When('clicks on {string} button present in Add Trigger popup', (a: string) => {
-  // TODO: implement step
-});
-
-When('user click on {string}', (a: string) => {
-  // TODO: implement step
-});
-
-When('user click on any trigger template', () => {
-  // TODO: implement step
-});
-
-When('user click on Event listener', () => {
-  // TODO: implement step
-});
-
-When('user click on Trigger Binding', () => {
-  // TODO: implement step
-});
-
-When('selet the first option from the Treigger Template drop down field', () => {
-  // TODO: implement step
-});
-
-When('user clicks on Remove button', () => {
-  // TODO: implement step
-});
-
-Then('popup displays with heading as {string}', (a: string) => {
-  // TODO: implement step
-});
-
-Then('Git provider type field displayed with {string} option', (a: string) => {
-  // TODO: implement step
-});
-
-Then('Add button will be disabled', () => {
-  // TODO: implement step
-});
-
-Then('user should able to see {string} link with varaibles section', (a: string) => {
-  // TODO: implement step
-});
-
-Then('variables section displayed with message {string}', (a: string) => {
-  // TODO: implement step
-});
-
-Then('Add button will be enabled', () => {
-  // TODO: implement step
+When('clicks on Add button present in Add Trigger popup', () => {
+  cy.get(pipelinesObj.addTrigger.add).click();
 });
 
 Then('pipelines page is displayed', () => {
-  // TODO: implement step
+  cy.titleShouldBe('Pipelines');
 });
 
-Then('{string} is displayed in kebab menu for {string}', (a: string, b: string) => {
-  // TODO: implement step
+Then('{string} is displayed in kebab menu for {string}', (option: string, pipelineName: string) => {
+  pipelinesPage.selectKebabMenu(pipelineName);
+  pipelinesPage.verifyOptionInKebabMenu(option);
 });
 
-Then('pipeline Details page is displayed with Trigger Templates section', () => {
-  // TODO: implement step
+Given('pipeline {string} with trigger in pipelines page', (pipelineName: string) => {
+  pipelinesPage.createPipeline();
+  pipelineBuilderPage.createPipelineFromBuilderPage(pipelineName);
+  cy.get('[data-test-id="breadcrumb-link-0"]').click();
+  pipelinesPage.verifyNameInPipelinesTable(pipelineName);
+  pipelinesPage.selectKebabMenu(pipelineName);
+  cy.byTestActionID('Add Trigger').click();
+  pipelinesPage.addTrigger();
+});
+
+When('user click on {string}', (pipelineName: string) => {
+  pipelinesPage.selectPipeline(pipelineName);
+});
+
+Then('pipeline Details page is displayed with header name {string}', (pipelineName: string) => {
+  pipelineDetailsPage.verifyTitle(pipelineName);
+});
+
+Then('Trigger Templates section is displayed', () => {
+  pipelineDetailsPage.verifyTriggerTemplateSection();
+});
+
+Given('Trigger is added to the pipeline {string} present in pipeline details page', (pipelineName: string) => {
+  pipelinesPage.createPipeline();
+  pipelineBuilderPage.createPipelineFromBuilderPage(pipelineName);
+  cy.get('[data-test-id="breadcrumb-link-0"]').click();
+  pipelinesPage.verifyNameInPipelinesTable(pipelineName);
+  pipelinesPage.selectKebabMenu(pipelineName);
+  cy.byTestActionID('Add Trigger').click();
+  pipelinesPage.addTrigger();
+  store.pipeline1 = pipelineName;
+});
+
+Given('user is at pipeline Details page', () => {
+  pipelinesPage.selectPipeline(store.pipeline1)
+  pipelineDetailsPage.verifyPage();
+});
+
+When('user click on trigger template', () => {
+  pipelineDetailsPage.selectTriggerTemplateLink();
 });
 
 Then('user redirects to Trigger Template Details page', () => {
-  // TODO: implement step
+  triggerTemplateDetailsPage.verifyPage();
 });
 
 Then('user is able to see Details, YAML tabs', () => {
-  // TODO: implement step
+  triggerTemplateDetailsPage.verifyTabs();
 });
 
-Then('Details tab is displayed with field names {string}, {string}, {string}, {string}, {string}, {string}, {string} and {string}', (a: string, b: string, c: string, d: string, e: string, f: string, g: string, h: string) => {
-  // TODO: implement step
+Then('Details tab is displayed with field names Name, Namespace, Labels, Annotations, Created At, Owner, Pipelines and Event Listeners', ()=> {
+  triggerTemplateDetailsPage.verifyFields();
 });
 
 Then('Actions dropdown display on the top right corner of the page', () => {
-  // TODO: implement step
+  triggerTemplateDetailsPage.verifyActionsDropdown();
+});
+
+Given('user is at Trigger Template Details page', () => {
+  pipelinesPage.selectPipeline(store.pipeline1)
+  pipelineDetailsPage.verifyPage();
+  pipelineDetailsPage.selectTriggerTemplateLink();
+  triggerTemplateDetailsPage.verifyPage();
+});
+
+When('user click on Event listener', () => {
+  triggerTemplateDetailsPage.selectEventListener();
 });
 
 Then('user redirects to Event Listener Details page', () => {
-  // TODO: implement step
+  eventListenerDetailsPage.verifyPage();
+});
+
+Then('Details tab is displayed with field names Name, Namespace, Labels, Annotations, Created At, Owner, Trigger Templates and Trigger Bindings', () => {
+  eventListenerDetailsPage.verifyFields();
+});
+
+Given('user is at Event Listener Details page', () => {
+  pipelinesPage.selectPipeline(store.pipeline1)
+  pipelineDetailsPage.verifyPage();
+  pipelineDetailsPage.selectTriggerTemplateLink();
+  triggerTemplateDetailsPage.verifyPage();
+  triggerTemplateDetailsPage.selectEventListener();
+  eventListenerDetailsPage.verifyPage();
+});
+
+When('user click on Trigger Binding', () => {
+  eventListenerDetailsPage.selectTriggerBindingLink();
 });
 
 Then('user redirects to Cluster Trigger Binding Details page', () => {
-  // TODO: implement step
+ clusterTriggerBindingDetailsPage.verifyPage();
 });
 
-Then('Details tab is displayed with field names {string}, {string}, {string}, {string}, {string}', (a: string, b: string, c: string, d: string, e: string) => {
-  // TODO: implement step
+Then('Details tab is displayed with field names Name, Labels, Annotations, Created At, Owner', () => {
+  clusterTriggerBindingDetailsPage.verifyFields();
 });
 
-Then('popup is displayed with header message {string}', (a: string) => {
-  // TODO: implement step
+Then('Actions dropdown display on Cluster Trigger Binding page', () => {
+  clusterTriggerBindingDetailsPage.verifyActionsDropdown();
+  naviagteTo(devNavigationMenu.Pipelines);
 });
 
-Then('trigger template dropdown displayed with default selected option {string}', (a: string) => {
-  // TODO: implement step
+When('selet the first option from the Trigger Template drop down field', () => {
+  cy.get(pipelinesObj.removeTrigger.triggerTemplate).click();
+  cy.get('[data-test-id="dropdown-menu"]').click();
 });
 
-Then('{string} button will be disabled', (a: string) => {
-  // TODO: implement step
+When('user clicks on Remove button', () => {
+  cy.get(pipelinesObj.removeTrigger.remove).click();
 });
 
-Then('popup get closed', () => {
-  // TODO: implement step
+Then('popup is displayed with header message {string}', (headerName: string) => {
+  cy.alertTitleShouldBe(headerName);
 });
 
-Then('option {string} is not availale in kebab menu', (a: string) => {
-  // TODO: implement step
+Then('trigger template dropdown displayed with help text Select Trigger Template', () => {
+  cy.get(pipelinesObj.removeTrigger.triggerTemplate).should('have.text', 'Select Trigger Template')
+});
+
+Then('Remove button will be disabled', () => {
+  cy.get(pipelinesObj.removeTrigger.remove).should('be.disabled');
+});
+
+Then('option {string} is not availale in kebab menu for {string}', (option: string, pipelineName: string) => {
+  pipelinesPage.selectKebabMenu(pipelineName);
+  cy.byTestActionID(option).should('not.be.visible');
 });

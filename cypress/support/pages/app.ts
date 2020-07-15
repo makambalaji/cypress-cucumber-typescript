@@ -78,7 +78,7 @@ export const naviagteTo = (opt: devNavigationMenu) => {
   switch (opt) {
     case devNavigationMenu.Add: {
       cy.byLegacyTestID('+Add-header').click();
-      cy.byLegacyTestID('resource-title').should('contain.text', 'Add');
+      cy.titleShouldBe('Add');
       break;
     }
     case devNavigationMenu.Topology: {
@@ -88,27 +88,27 @@ export const naviagteTo = (opt: devNavigationMenu) => {
     }
     case devNavigationMenu.Monitoring: {
       cy.byLegacyTestID('monitoring-header').click();
-      cy.byLegacyTestID('resource-title').should('contain.text', 'Monitoring');
+      cy.titleShouldBe('Monitoring');
       break;
     }
     case devNavigationMenu.Builds: {
       cy.byLegacyTestID('build-header').click();
-      cy.byLegacyTestID('resource-title').should('contain.text', 'Build Configs');
+      cy.titleShouldBe('Build Configs');
       break;
     }
     case devNavigationMenu.Pipelines: {
       cy.byLegacyTestID('pipeline-header').click();
-      cy.byLegacyTestID('resource-title').should('contain.text', 'Pipelines');
+      cy.titleShouldBe('Pipelines');
       break;
     }
     case devNavigationMenu.Search: {
       cy.byLegacyTestID('search-header').click();
-      cy.byLegacyTestID('resource-title').should('contain.text', 'Search');
+      cy.titleShouldBe('Search');
       break;
     }
     case devNavigationMenu.Helm: {
       cy.byLegacyTestID('helm-releases-header').click();
-      cy.byLegacyTestID('resource-title').should('contain.text', 'Helm Releases');
+      cy.titleShouldBe('Helm Releases');
       break;
     }
     case devNavigationMenu.ProjectDetails: {

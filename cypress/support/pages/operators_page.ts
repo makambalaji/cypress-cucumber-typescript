@@ -3,7 +3,7 @@ import { operators } from "../constants/global";
 export const operatorsObj = {
   nav: {
     operatorHub: 'a[href="/operatorhub"]',
-    link: '[data-component="pf-nav-expandable"]',
+    link: 'li.pf-c-nav__item.pf-m-expandable',
     menu: '#page-sidebar',
   },
   operatorHub: {

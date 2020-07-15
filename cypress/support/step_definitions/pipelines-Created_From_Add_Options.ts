@@ -4,6 +4,7 @@ import { naviagteTo } from '../pages/app';
 import { devNavigationMenu as menu, switchPerspective } from '../constants/global';
 import { addOptions, resourceTypes } from '../constants/add';
 import { topologyPage } from '../pages/topology_page';
+import { pipelinesPage } from '../pages/pipelines_page';
 
 Given('user is at Add page', () => {
   naviagteTo(menu.Add);
@@ -65,25 +66,35 @@ Given('user is at Topology page', () => {
 });
 
 Given('{string} component is added to namespace', (componentName: string) => {
-  topologyPage.verifyWorkloadInTopologyPage(name)
+  topologyPage.verifyWorkloadInTopologyPage(componentName)
 });
 
 When('the user enters {string} into the search bar', (name: string) => {
   topologyPage.search(name);
 });
 
+When('the user enters {string} into the search bar in pipelines page', (name: string) => {
+  pipelinesPage.search(name);
+});
+
 When('clicks node {string} from results', (name: string) => {
   cy.byNodeName(name).click();
 });
 
-Then('side pane is displayed with pipeline name same as component name {string}', (a: string) => {
+Then('side pane is displayed with pipeline name same as component name {string}', (appName: string) => {
   topologyPage.verifySidePane();
+  topologyPage.verifyNodeInsSidePane(appName);
 });
 
-Given('user is at Pipelines page', () => {
-  naviagteTo(menu.Pipelines);
+Then('pipeline name is displayed with the component name {string}', (pipelineName: string) => {
+  pipelinesPage.verifyNameInPipelinesTable(pipelineName)
 });
 
-Then('pipeline name is displayed with the component name {string}', (a: string) => {
-  // TODO: implement step
+Given('workload {string} is created from add page with pipeline', (pipelineName: string) => {
+  naviagteTo(menu.Add);
+  seelctCardFromOptions(addOptions.Git);
+  gitPage.enterGitUrl("https://github.com/sclorg/nodejs-ex.git");
+  gitPage.enterAppName(pipelineName);
+  gitPage.selectAddPipeline();
+  gitPage.createWorkload();
 });

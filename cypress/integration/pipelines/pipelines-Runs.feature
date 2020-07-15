@@ -8,9 +8,9 @@ Background:
 
 @regression
 Scenario Outline: Start pipeline popup details for pipeline with one resource : P-04-TC02
-    Given user is at the Pipelines page
+    Given user is at Pipelines page
     And pipeline "<pipeline_name>" consists of task "<task_name>" with one git resource
-    When user selects "start" from the kebab menu
+    When user selects "start" option from kebab menu
     Then "Start Pipeline" popup displays with Git Resources, Advanced Options sections
     And start button is disabled 
 
@@ -21,7 +21,7 @@ Examples:
 
 @regression, @smoke
 Scenario Outline: Start the pipeline with one resource : P-04-TC03, P-05- TC01, P-05- TC02
-    Given user is at the Pipelines page
+    Given user is at Pipelines page
     And pipeline "<pipeline_name>" consists of task "<task_name>" with one git resource
     When user selects "start" from the kebab menu
     And fills the necessary details in "Start Pipeline" popup
@@ -37,7 +37,7 @@ Examples:
 
 @regression, @smoke
 Scenario: Pipeline Run Details page for pipeline without resource : P-06-TC03
-    Given user is at the Pipelines page
+    Given user is at Pipelines page
     And pipeline run is displayed
     When user clicks Last Run value of pipeline
     Then user redirects to Pipeline Run Details page
@@ -69,7 +69,7 @@ Scenario: Rerun the Pipeline Run from pipeline runs page : P-06-TC02
 
 @regression, @smoke
 Scenario: Pipeline Run Details page for a pipeline with resource : P-06-TC04
-    Given user is at the Pipelines page
+    Given user is at Pipelines page
     And pipeline run is displayed
     When user clicks Last Run value of the pipeline "pipe-task-with-resoruce"
     Then user redirects to Pipeline Run Details page
@@ -93,7 +93,7 @@ Scenario Outline: Download the logs from Pipeline Details page : P-04-TC05
 
 @regression
 Scenario: kebab menu options in pipelines page : P-04-TC07
-    Given user is at the Pipelines page
+    Given user is at Pipelines page
 
 
 @regression

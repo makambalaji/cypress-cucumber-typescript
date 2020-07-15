@@ -1,15 +1,14 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
+import { pipelinesPage } from '../pages/pipelines_page';
+import { pipelineBuilderPage } from '../pages/pipelineBuilder_page';
 
-Given('user is at the Pipelines page', () => {
-  // TODO: implement step
-});
-
-Given('pipeline {string} consists of task {string} with one git resource', (a: string, b: string) => {
-  // TODO: implement step
+Given('pipeline {string} consists of task {string} with one git resource', (pipelineName: string, taskName: string) => {
+  pipelinesPage.createPipeline();
+  pipelineBuilderPage.createPipelineWithGitresources(pipelineName, taskName);
 });
 
 Given('pipeline run is displayed', () => {
-  // TODO: implement step
+  
 });
 
 Given('user is at the Pipeline Run Details page', () => {
@@ -21,10 +20,6 @@ Given('user is at the Pipeline Runs page', () => {
 });
 
 Given('user is at the Pipeline Details page', () => {
-  // TODO: implement step
-});
-
-Given('user is at the topolgy page', () => {
   // TODO: implement step
 });
 
@@ -41,10 +36,6 @@ Given('pi[peline run is available with cancelled tasks', () => {
 });
 
 Given('pi[peline run is available with failed tasks', () => {
-  // TODO: implement step
-});
-
-When('user selects {string} from the kebab menu', (a: string) => {
   // TODO: implement step
 });
 

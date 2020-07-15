@@ -42,8 +42,8 @@ Cypress.Commands.add('byButtonText', (selector: string) =>
 );
 Cypress.Commands.add('byDataID', (selector: string) => cy.get(`[data-id="${selector}"]`));
 
-Cypress.Commands.add('selectByDropDownText', (selector: string, dropdownText: string) => {
-  cy.get('div.pf-c-dropdown button').contains(`${selector}`).click();
+Cypress.Commands.add('selectByDropDownText', (dropdownName: string, dropdownText: string) => {
+  cy.get('div.pf-c-dropdown button').contains(`${dropdownName}`).click();
   cy.get('ul.pf-c-dropdown__menu li button').each(($el, index, list) => {
     if($el.text().includes(dropdownText)) {
       $el.click();
@@ -56,7 +56,7 @@ Cypress.Commands.add('byAppGroupName', (appName: string) => {
 });
 
 Cypress.Commands.add('byNodeName', (nodeName: string) => {
-  cy.get('g[data-type="workload"] rect').contains(nodeName);
+  cy.get('g[data-type="workload"] g.odc-resource-icon').next().contains(nodeName);
 });
 
 Cypress.Commands.add('selectRowByColumnName', (columnNumber: number, referenceRowValue: string, selector: string) => {
@@ -75,7 +75,7 @@ Cypress.Commands.add('mouseHoverAndClick', (selector: string, element: string) =
 });
 
 Cypress.Commands.add('titleShouldBe', (title: string) => {
-  cy.get('resource-title').should('contain.text', title);
+  cy.get('[data-test-id ="resource-title"]', {timeout: 3000}).should('contain.text', title);
 });
 
 Cypress.Commands.add('alertTitleShouldBe', (alertTitle: string) => {

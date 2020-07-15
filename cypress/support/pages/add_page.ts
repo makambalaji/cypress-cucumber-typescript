@@ -139,8 +139,11 @@ export const gitPage = {
     //     })
     //   } else {
         cy.get(gitPageObj.nodeName).as('nodeName');
+        // cy.pause();
+        cy.wait(2000);
         cy.get('@nodeName').clear();
-        cy.get('@nodeName').type(name).should('have.value', name);
+        cy.get('@nodeName').type(name);
+        cy.get('@nodeName').should('have.value', name);
     //   }
     // })
   },

@@ -4,7 +4,7 @@ Feature: Create Pipeline from Add Options
 Background:
    #  Given user logged into the openshift application
     Given openshift cluster is installed with pipeline operator
-    And user is at the project namespace "aut-mb-demo" in dev perspecitve
+    And user is at the project namespace "aut-mb-demo-8" in dev perspecitve
 
 
 @regression
@@ -52,12 +52,12 @@ Scenario Outline: Create a pipeline from git workload with resource type "<resou
    And select Add Pipeline checkbox in Pipelines section
    And click Create button on Add page
    Then user redirects to topology page
-   And created workload "<workload_name>" is present in topology page
+   And created workload "<pipeline_name>" is present in topology page
 
 Examples:
-| git_url                                 | pipeline_name    | resource          | workload_name    |
-| https://github.com/sclorg/nodejs-ex.git | nodejs-ex-git-d  | Deployment        | nodejs-ex-git-d  |
-| https://github.com/sclorg/nodejs-ex.git | nodejs-ex-git-dc | Deployment Config | nodejs-ex-git-dc |
+| git_url                                 | pipeline_name    | resource          |
+| https://github.com/sclorg/nodejs-ex.git | nodejs-ex-git-f  | Deployment        |
+| https://github.com/sclorg/nodejs-ex.git | nodejs-ex-git-fc | Deployment Config |
 
 
 @regression
@@ -87,18 +87,18 @@ Scenario Outline: Pipeline in topology page : P-02-TC02
 
 Examples:
 | name            |
-| nodejs-ex.git-d |
+| nodejs-ex-git-f |
 
 @regression, @smoke
 Scenario Outline: Search the created pipeline from Add options in pipelines page : P-02-TC03
-   Given user is at Pipelines page
-   And "<name>" component is added to namespace
-   When the user enters "<name>" into the search bar
+   Given workload "<name>" is created from add page with pipeline
+   And user is at Pipelines page
+   When the user enters "<name>" into the search bar in pipelines page
    Then pipeline name is displayed with the component name "<name>"
 
 Examples:
 | name            |
-| nodejs-ex.git-d |
+| nodejs-ex-git-g |
 
 
 @regression

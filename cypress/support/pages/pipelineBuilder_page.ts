@@ -1,7 +1,8 @@
 export const pipelineBuilderObj = {
   title: '.odc-pipeline-builder-header h1',
   name: '#form-input-name-field',
-  task: 'foreignObject button',
+  taskDropdown: 'foreignObject button',
+  task: 'foreignObject div.odc-pipeline-vis-task__title',
   sectionTitle: '.odc-pipeline-builder-page h2',
   create: '[data-test-id="submit-button"]',
   cancel: '[data-test-id="reset-button"]',
@@ -25,6 +26,11 @@ export const pipelineBuilderObj = {
     create: '#save-changes',
     cancel: '#cancel',
   },
+  sidePane: {
+    dialog: 'div.odc-sidebar',
+    displayName: '#task-name',
+    inputResource: 'div.pf-c-form [data-test-id="dropdown-button"]',
+  }
 }
 
 export const pipelineBuilderPage = {
@@ -40,17 +46,20 @@ export const pipelineBuilderPage = {
     },
   
     selectTask: (taskName: string = 'kn') => {
-      cy.get(pipelineBuilderObj.task).click();
+      cy.get(pipelineBuilderObj.taskDropdown).click();
       cy.byTestActionID(taskName).click();
     },
   
+    clickOnTask: (taskName: string) => 
+      cy.get(pipelineBuilderObj.task).contains(taskName).click(),
+
     seelctParallelTask:(taskName: string) => {
       // cy.get('.odc-pipeline-vis-task__content').invoke('show')
       // cy.contains('+').click()
-      cy.mouseHoverAndClick('.odc-pipeline-vis-task__content', '.odc-plus-node-decorator:nth-child(3) > circle');
+      cy.mouseHoverAndClick('.odc-pipeline-vis-task__content', 'g.odc-plus-node-decorator ');
       cy.byTestActionID(taskName).click();
-    },
-  
+    },      
+
     addParameters: (
       paramName: string,
       description: string = 'description',
@@ -62,11 +71,11 @@ export const pipelineBuilderPage = {
       cy.get(pipelineBuilderObj.addParams.defaultValue).type(defaultValue);
     },
   
-    addResource: (resourceName: string) => {
+    addResource: (resourceName: string, resourceType: string = 'Git') => {
       cy.byButtonText('Add Resources').click();
       cy.get(pipelineBuilderObj.addResources.name).type(resourceName);
-      cy.selectByDropDownText('Select resource type', 'Git');
-      // cy.get('[data-test-dropdown-menu="git"]').click();
+      cy.get(pipelineBuilderObj.addResources.resourceType).click();
+      cy.get('[data-test-dropdown-menu="git"]').click();
     },
   
     verifySection: () => {
@@ -92,7 +101,14 @@ export const pipelineBuilderPage = {
     cy.get(pipelineBuilderObj.yamlCreatePipeline.helpText).should('contain.text', 'YAML or JSON');
     cy.get(pipelineBuilderObj.yamlCreatePipeline.create).click();
   },
+
+  createPipelineWithGitresources: (pipelineName: string = 'git-pipeline', taskName: string = 'openshift-client', resourceName: string = 'git resource') => {
+    pipelineBuilderPage.enterPipelineName(pipelineName);
+    pipelineBuilderPage.selectTask(taskName);
+    pipelineBuilderPage.addResource(resourceName);
+    pipelineBuilderPage.clickOnTask(taskName);
+    cy.get(pipelineBuilderObj.sidePane.inputResource).click();
+    cy.get(`[data-test-dropdown-menu="${resourceName}"]`).click();
+    pipelineBuilderPage.create();
+  },
 }
-export const createPipelineWithGitresources = () => {
-  
-};

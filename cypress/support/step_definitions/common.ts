@@ -1,9 +1,10 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { perspective, projectNameSpace as project, naviagteTo } from '../pages/app';
 import { operatorsPage } from '../pages/operators_page';
-import {switchPerspective, devNavigationMenu} from '../constants/global';
+import {switchPerspective, devNavigationMenu as menu} from '../constants/global';
 import { pipelineBuilderPage} from '../pages/pipelineBuilder_page';
 import  {pipelineRunDetailsPage} from '../pages/pipelineRunDetails_page';
+import { pipelinesPage } from '../pages/pipelines_page';
 
 // Given('user logged into the openshift application', () => {
 //     loginPage.loginWithValidCredentials(Cypress.env('username'), Cypress.env('password'));
@@ -42,7 +43,7 @@ Given('openshift cluster is installed with knative operator', () => {
 });
 
 Given('user is at pipelines page', () => {
-  naviagteTo(devNavigationMenu.Pipelines);
+  naviagteTo(menu.Pipelines);
 });
 
 Then('user is at the Pipeline Builder page', () => {
@@ -55,4 +56,8 @@ Given('user is at pipeline Runs page', () => {
 
 When('user selects {string} option from kebab menu', (option: string) => {
   cy.byTestActionID(option).click();
+});
+
+Then('popup displays with header name {string}', (header: string) => {
+  cy.alertTitleShouldBe(header);
 });

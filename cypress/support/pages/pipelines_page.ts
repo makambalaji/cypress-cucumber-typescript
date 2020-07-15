@@ -2,7 +2,7 @@ import { pipelineActions } from "../constants/pipelines";
 
 export const pipelinesObj = {
   createPipeline: '#yaml-create',
-  search: '[data-test-id="item-filter"]',
+  search: 'input[data-test-id="item-filter"]',
   pipelinesTable: {
     table: 'div[role="grid"]',
     pipelineName: 'tr td:nth-child(1)',
@@ -14,10 +14,20 @@ export const pipelinesObj = {
   addTrigger: {
     add: '#confirm-action',
     cancel: '[data-test-id="modal-cancel-action"]',
+    gitProviderType: '#form-dropdown-triggerBinding-name-field',
+    gitUrl: '#form-input-resources-0-data-params-url-field',
+    revision: '#form-input-resources-0-data-params-revision-field',
+    variablesMessage: 'p.odc-trigger-binding-section__variable-descriptor',
+    variablesLink: '.pf-c-form button',
   },
   editPipeline: {
     title: 'h1.odc-pipeline-builder-header__title'
   },
+  removeTrigger: {
+    triggerTemplate: '#form-dropdown-selectedTrigger-field',
+    remove: '#confirm-action',
+    cancel: '[data-test-id="modal-cancel-action"]',
+  }
 }
 
 export const pipelinesPage = {
@@ -28,7 +38,7 @@ export const pipelinesPage = {
     cy.get(pipelinesObj.pipelinesTable.pipelineName).each(($el, index, $list) => {
       const text = $el.text()
       if(text.includes(pipelineName)) {
-        cy.get(pipelinesObj.pipelinesTable.pipelineName).eq(index).next(pipelinesObj.pipelinesTable.kebabMenu).click();
+        cy.get('tbody tr').eq(index).find('td:nth-child(7) button').click();
       }
     });
   },
@@ -85,8 +95,9 @@ export const pipelinesPage = {
   },
 
   search:(pipelineName: string) => {
-    cy.get(pipelinesObj.search).type(pipelineName).should('have.value', pipelineName);
-    cy.get(pipelinesObj.pipelinesTable.table).should('be.visible');
+    cy.get(pipelinesObj.search).type(pipelineName)
+    // cy.get(pipelinesObj.search).should('have.value', pipelineName);
+    cy.get(pipelinesObj.pipelinesTable.table, {timeout: 2000}).should('be.visible');
   },
 
   selectPipeline:(pipelineName: string) => cy.byLegacyTestID(pipelineName).click(),
@@ -126,16 +137,19 @@ export const pipelinesPage = {
   },
 
   verifyOptionInKebabMenu:(option:string) => {
-    cy.get('div.pf-c-dropdown button').contains('[data-test-id="actions-menu-button"]').click();
+    // cy.get('div.pf-c-dropdown button').contains('[data-test-id="actions-menu-button"]').click();
     cy.get('ul.pf-c-dropdown__menu li button').each(($el, index, list) => {
-      expect(list).contains(option);
+      if($el.text().includes(option)) {
+        expect($el.text()).contains(option);
+      }
     })
   },
 
   addTrigger:(gitProviderType: string = 'github-pullreq') => {
     cy.alertTitleShouldBe('Add Trigger');
-    cy.selectByDropDownText('Select Git Provider Type', gitProviderType);
-    cy.get('#confirm-action').click();
+    cy.get(pipelinesObj.addTrigger.gitProviderType).click();
+    cy.get(`[data-test-dropdown-menu="${gitProviderType}"]`).click();
+    cy.get(pipelinesObj.addTrigger.add).click();
   },
 
   editPipeline:() => {

@@ -1,7 +1,10 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
+import { pipelinesPage } from '../pages/pipelines_page';
+import { pipelineBuilderPage } from '../pages/pipelineBuilder_page';
 
 Given('user able to see pipeline with git resources in pipeiles page', () => {
-  
+  pipelinesPage.createPipeline();
+  pipelineBuilderPage.createPipelineWithGitresources();
 });
 
 Given('pipeline with git resources', () => {

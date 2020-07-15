@@ -4,7 +4,20 @@ Feature: Create the pipeline from builder page
 Background:
     # Given user logged into the openshift application
     And openshift cluster is installed with pipeline operator
-    And user is at the project namespace "aut-mb-pipelines-demo-1" in dev perspecitve
+    And user is at the project namespace "aut-mb-pipelines-demo-2" in dev perspecitve
+
+
+@regression, @smoke
+Scenario Outline: Create a basic pipeline from pipeline builder page : P-03-TC08
+    Given user is at Pipeline Builder page 
+    When user types pipeline name as "<pipeline_name>"
+    And select "<task_name>" from Task drop down
+    And clicks Create button on Pipeline Builder page
+    Then user redirects to Pipeline Details page with header name "<pipeline_name>"
+
+Examples:
+| pipeline_name | task_name |
+| pipelines-one | kn        | 
 
 
 @regression, @smoke
@@ -20,19 +33,6 @@ Scenario Outline: Create a pipeline with parallel tasks : P-03-TC03, P-07- TC02
 Examples:
 | pipeline_name | task_name | task_name_1 |
 | pipelines-one | kn        | Sn          |
-
-
-@regression, @smoke
-Scenario Outline: Create a basic pipeline from pipeline builder page : P-03-TC08
-    Given user is at Pipeline Builder page 
-    When user types pipeline name as "<pipeline_name>"
-    And select "<task_name>" from Task drop down
-    And clicks Create button on Pipeline Builder page
-    Then user redirects to Pipeline Details page with header name "<pipeline_name>"
-
-Examples:
-| pipeline_name | task_name |
-| pipelines-one | kn        | 
 
 
 @regression, @smoke
