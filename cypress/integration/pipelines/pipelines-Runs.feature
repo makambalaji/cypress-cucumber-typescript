@@ -3,14 +3,14 @@ Feature: Pipeline Runs
 
 Background:
     Given openshift cluster is installed with pipeline operator
-    And user is at the project namespace "aut-mb-pipelines-runs-demo" in dev perspecitve
-    And user is at Pipelines page
+    And user is at the project namespace "aut-mb-pipelines-runs-demo-3" in dev perspecitve
+    And user is at pipelines page
 
 
 @regression
 Scenario Outline: Start pipeline popup details for pipeline with one resource : P-04-TC02    
     Given pipeline "<pipeline_name>" consists of task "<task_name>" with one git resource
-    When user selects "start" option from kebab menu
+    When user selects "Start" option from kebab menu for pipeline "<pipeline_name>"
     Then Start Pipeline popup displays with Git Resources, Advanced Options sections
     And start button is disabled 
 
@@ -22,15 +22,15 @@ Examples:
 @regression, @smoke
 Scenario Outline: Start the pipeline with one resource : P-04-TC03, P-05- TC01, P-05- TC02
     Given pipeline "<pipeline_name>" consists of task "<task_name>" with one git resource
-    When user selects "start" option from kebab menu
+    When user selects "Start" option from kebab menu for pipeline "<pipeline_name>"
     And fills the details in Start Pipeline popup
     Then page redirects to Pipeline Run Details page
     And Pipeline run status displays as "Running"
     And pipeline run details for "<pipeline_name>" display in Pipelines page
 
 Examples:
-| pipeline_name           | task_name        |
-| pipe-task-with-resoruce | openshift-client |
+| pipeline_name             | task_name        |
+| pipe-task-with-resoruce-1 | openshift-client |
 
 
 @regression, @smoke
@@ -43,8 +43,8 @@ Scenario Outline: Pipeline Run Details page for pipeline without resource : P-06
     And Actions dropdown display on the top right corner of the page
 
 Examples:
-| pipeline_name           |
-| pipe-task-with-resoruce |
+| pipeline_name             |
+| pipe-task-with-resoruce-2 |
 
 
 @regression
@@ -69,11 +69,15 @@ Scenario: Rerun the Pipeline Run from pipeline runs page : P-06-TC02
 
 
 @regression, @smoke
-Scenario: Pipeline Run Details page for a pipeline with resource : P-06-TC04
-    Given pipeline run is displayed
-    When user clicks Last Run value of the pipeline "pipe-task-with-resoruce"
+Scenario Outline: Pipeline Run Details page for a pipeline with resource : P-06-TC04
+    Given pipeline run is displayed for "<pipeline_name>"
+    When user clicks Last Run value of the pipeline "<pipeline_name>"
     Then user redirects to Pipeline Run Details page
     And Pipeline Resources field will be displayed
+
+Examples:
+| pipeline_name             |
+| pipe-task-with-resoruce-2 |
 
 
 @regression, @smoke

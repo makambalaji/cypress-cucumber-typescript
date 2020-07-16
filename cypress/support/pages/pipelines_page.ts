@@ -126,8 +126,7 @@ export const pipelinesPage = {
   seelctPipelineRun:(pipelineName: string) => {
     cy.get(pipelinesObj.pipelinesTable.table).should('exist');
     cy.get(pipelinesObj.pipelinesTable.pipelineName).each(($el, index, $list) => {
-      const text = $el.text()
-      if(text.includes(pipelineName)) {
+      if($el.text().includes(pipelineName)) {
         cy.get(pipelinesObj.pipelinesTable.pipelineRunName).eq(index).click();
       }
     });

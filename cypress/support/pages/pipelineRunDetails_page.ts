@@ -19,7 +19,7 @@ export const pipelineRunDetailsPage = {
   
     fieldDetails:(fieldName: string, expectedFieldValue: string) => {
       cy.get(pipelineRunDetailsObj.pipelineRunDetails).each(($el, index, list) => {
-        if($el.find('dl').text().includes(fieldName)) {
+        if($el.text().includes(fieldName)) {
           expect($el.next('dd').text()).equals(expectedFieldValue);
         }
       });

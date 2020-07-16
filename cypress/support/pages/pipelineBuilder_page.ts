@@ -1,3 +1,5 @@
+import { pipelineDetailsPage } from "./pipelineDetails_page";
+
 export const pipelineBuilderObj = {
   title: '.odc-pipeline-builder-header h1',
   name: '#form-input-name-field',
@@ -110,5 +112,6 @@ export const pipelineBuilderPage = {
     cy.get(pipelineBuilderObj.sidePane.inputResource).click();
     cy.get(`[data-test-dropdown-menu="${resourceName}"]`).click();
     pipelineBuilderPage.create();
+    pipelineDetailsPage.verifyTitle(pipelineName);
   },
 }
