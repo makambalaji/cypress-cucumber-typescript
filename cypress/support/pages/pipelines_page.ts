@@ -35,10 +35,11 @@ export const pipelinesObj = {
     start: '#confirm-action',
     cancel: '[data-test-id="modal-cancel-action"]',
     advancedOptions: {
+      secretFormTitle: 'h1.odc-secret-form__title',
       secretName: '#form-input-secretName-field',
       accessTo: '#form-dropdown-annotations-key-field',
       serverUrl: '#form-input-annotations-value-field',
-      authenticationType: '##form-dropdown-type-field',
+      authenticationType: '#form-dropdown-type-field',
       registryServerAddress: 'input[name="address"]',
       userName: 'input[name="username"]',
       password: 'input[name="password"]',
@@ -176,7 +177,7 @@ export const pipelinesPage = {
 
   },
 };
-export const startPipeline = {
+export const startPipelineInPipelinsPage = {
   verifySections:() => {
     cy.get(pipelinesObj.startPipeline.sectionTitle).as('sectionTitle');
     cy.get('@sectionTitle').eq(0).should('have.text', 'Git Resources');
@@ -185,7 +186,6 @@ export const startPipeline = {
   addGitResource:(gitUrl: string, revision:string = 'master') => {
     cy.get(pipelinesObj.startPipeline.gitUrl).type(gitUrl);
     cy.get(pipelinesObj.startPipeline.revision).type(revision);
-    cy.get(pipelinesObj.startPipeline.start).click();
   },
   clickShowCredentialOptions:() => cy.byButtonText('Show Credential Options').click(),
   clickHideCredentialOptions:() => cy.byButtonText('Hide Credential Options').click(),
@@ -198,5 +198,13 @@ export const startPipeline = {
     cy.get(pipelinesObj.startPipeline.advancedOptions.password).type(password);
     cy.get(pipelinesObj.startPipeline.advancedOptions.tickIcon).click();
     cy.get(pipelinesObj.startPipeline.start).click();
+  },
+  verifyCreateSourceSecretSection:() => cy.get(pipelinesObj.startPipeline.advancedOptions.secretFormTitle).should('be.visible'),
+  verifyFields:() => {
+    cy.get('div.odc-secret-form .pf-c-form__group-label').as('labels');
+    cy.get('@labels').eq(0).should('contain.text', 'Secret Name');
+    cy.get('@labels').eq(1).should('contain.text', 'Access to');
+    cy.get('@labels').eq(2).should('contain.text', 'Server URL');
+    cy.get('@labels').eq(3).should('contain.text', 'Authentication Type');
   }
 }

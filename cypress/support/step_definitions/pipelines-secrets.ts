@@ -1,72 +1,83 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { pipelinesPage } from '../pages/pipelines_page';
+import { pipelinesPage, startPipelineInPipelinsPage, pipelinesObj } from '../pages/pipelines_page';
 import { pipelineBuilderPage } from '../pages/pipelineBuilder_page';
+import { naviagteTo } from '../pages/app';
+import { devNavigationMenu } from '../constants/global';
 
-Given('user able to see pipeline with git resources in pipeiles page', () => {
+const store: Record<string, string> = {};
+
+Given('user able to see pipeline {string} with git resources in pipeiles page', (pipelineName: string) => {
   pipelinesPage.createPipeline();
-  pipelineBuilderPage.createPipelineWithGitresources();
+  pipelineBuilderPage.createPipelineWithGitresources(pipelineName);
+  store.pipelineName = pipelineName;
 });
 
-Given('pipeline with git resources', () => {
-  // TODO: implement step
+When('clicks on Show Credentials link present in Start Pipeline popup', () => {
+  cy.alertTitleShouldBe('Start Pipeline');
+  startPipelineInPipelinsPage.clickShowCredentialOptions();
 });
 
-Given('user is at Start Pipeline popup', () => {
-  // TODO: implement step
-});
-
-When('clicks on Show Credentials link present in {string} popup', (a: string) => {
-  // TODO: implement step
-});
-
-When('clicks on {string} link', (a: string) => {
-  // TODO: implement step
-});
-
-When('the user enters URL, Revision as {string} and {string}', (a: string, b: string) => {
-  // TODO: implement step
-});
-
-When('enters Secret Name as {string}', (a: string) => {
-  // TODO: implement step
-});
-
-When('selects the {string} option from Access to drop down', (a: string) => {
-  // TODO: implement step
-});
-
-When('enters the server url as {string}', (a: string) => {
-  // TODO: implement step
-});
-
-When('selects the Authentication type as {string}', (a: string) => {
-  // TODO: implement step
-});
-
-When('enters the Username, Password as {string}, {string}', (a: string, b: string) => {
-  // TODO: implement step
-});
-
-When('clicks on tick mark', () => {
-  // TODO: implement step
-});
-
-When('enters the SSH KEY as {string}', (a: string) => {
-  // TODO: implement step
-});
-
-When('enters the Username, Password, email as {string}, {string}, {string}', (a: string, b: string, c: string) => {
-  // TODO: implement step
+When('clicks on {string} link', (buttonName: string) => {
+  cy.byButtonText(buttonName).click();
 });
 
 Then('user able to see Create Source Secret section', () => {
-  // TODO: implement step
+  startPipelineInPipelinsPage.verifyCreateSourceSecretSection();
 });
 
-Then('able to see {string}, {string}, {string} fields and authernication type sections', (a: string, b: string, c: string) => {
-  // TODO: implement step
+Then('able to see Secret Name, Access to, Server UrL fields and authernication type fields', () => {
+  startPipelineInPipelinsPage.verifyFields();
+  cy.get(pipelinesObj.startPipeline.cancel).click();
 });
 
-Then('{string} is added under secrets section', (a: string) => {
-  // TODO: implement step
+Given('user is at Start Pipeline popup', () => {
+  naviagteTo(devNavigationMenu.Pipelines);
+  pipelinesPage.selectKebabMenu(store.pipelineName);
+  cy.byTestActionID('Start').click();
+  cy.alertTitleShouldBe('Start Pipeline');
+});
+
+When('the user enters URL, Revision as {string} and {string}', (gitUrl: string, revision: string) => {
+  startPipelineInPipelinsPage.addGitResource(gitUrl,revision);
+});
+
+When('enters Secret Name as {string}', (secretName: string) => {
+  startPipelineInPipelinsPage.clickShowCredentialOptions();
+  cy.byButtonText('Add Secret').click();
+  cy.get(pipelinesObj.startPipeline.advancedOptions.secretName).type(secretName);
+});
+
+When('selects the {string} option from Access to drop down', (option: string) => {
+  cy.selectByDropDownText(pipelinesObj.startPipeline.advancedOptions.accessTo, option);
+});
+
+When('enters the server url as {string}', (serverUrl: string) => {
+  cy.get(pipelinesObj.startPipeline.advancedOptions.serverUrl).type(serverUrl);
+});
+
+When('selects the Authentication type as {string}', (authenticationType: string) => {
+  cy.selectByDropDownText(pipelinesObj.startPipeline.advancedOptions.authenticationType, authenticationType);
+});
+
+When('enters the Username, Password as {string}, {string}', (userName: string, password: string) => {
+  cy.get(pipelinesObj.startPipeline.advancedOptions.userName).type(userName);
+  cy.get(pipelinesObj.startPipeline.advancedOptions.password).type(password);
+});
+
+When('clicks on tick mark', () => {
+  cy.get(pipelinesObj.startPipeline.advancedOptions.tickIcon).click();
+});
+
+Then('{string} is added under secrets section', (secretName: string) => {
+  cy.byLegacyTestID(secretName).should('be.visible');
+});
+
+When('enters the SSH KEY as {string}', (sshkey: string) => {
+  cy.get(pipelinesObj.startPipeline.advancedOptions.sshPrivateKey).type(sshkey);
+});
+
+When('enters the Username, Password, email as {string}, {string}, {string}', (userName: string, password: string, email: string) => {
+  cy.get(pipelinesObj.startPipeline.advancedOptions.userName).type(userName);
+  cy.get(pipelinesObj.startPipeline.advancedOptions.password).type(password);
+  cy.get(pipelinesObj.startPipeline.advancedOptions.email).type(email);
 });
