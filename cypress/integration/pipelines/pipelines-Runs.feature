@@ -4,14 +4,14 @@ Feature: Pipeline Runs
 Background:
     Given openshift cluster is installed with pipeline operator
     And user is at the project namespace "aut-mb-pipelines-runs-demo" in dev perspecitve
+    And user is at Pipelines page
 
 
 @regression
-Scenario Outline: Start pipeline popup details for pipeline with one resource : P-04-TC02
-    Given user is at Pipelines page
-    And pipeline "<pipeline_name>" consists of task "<task_name>" with one git resource
+Scenario Outline: Start pipeline popup details for pipeline with one resource : P-04-TC02    
+    Given pipeline "<pipeline_name>" consists of task "<task_name>" with one git resource
     When user selects "start" option from kebab menu
-    Then "Start Pipeline" popup displays with Git Resources, Advanced Options sections
+    Then Start Pipeline popup displays with Git Resources, Advanced Options sections
     And start button is disabled 
 
 Examples:
@@ -21,14 +21,12 @@ Examples:
 
 @regression, @smoke
 Scenario Outline: Start the pipeline with one resource : P-04-TC03, P-05- TC01, P-05- TC02
-    Given user is at Pipelines page
-    And pipeline "<pipeline_name>" consists of task "<task_name>" with one git resource
-    When user selects "start" from the kebab menu
-    And fills the necessary details in "Start Pipeline" popup
-    Then page redirects to "Pipeline Run Details" page
+    Given pipeline "<pipeline_name>" consists of task "<task_name>" with one git resource
+    When user selects "start" option from kebab menu
+    And fills the details in Start Pipeline popup
+    Then page redirects to Pipeline Run Details page
     And Pipeline run status displays as "Running"
-    And pipeline run details display in Pipelines page
-    And pipeline run details display in Topology page
+    And pipeline run details for "<pipeline_name>" display in Pipelines page
 
 Examples:
 | pipeline_name           | task_name        |
@@ -36,14 +34,17 @@ Examples:
 
 
 @regression, @smoke
-Scenario: Pipeline Run Details page for pipeline without resource : P-06-TC03
-    Given user is at Pipelines page
-    And pipeline run is displayed
-    When user clicks Last Run value of pipeline
+Scenario Outline: Pipeline Run Details page for pipeline without resource : P-06-TC03
+    Given pipeline run is displayed for "<pipeline_name>"
+    When user clicks Last Run value of "<pipeline_name>"
     Then user redirects to Pipeline Run Details page
     And user is able to see Details, YAML and Logs tabs
-    And Details tab is displayed with field names "Name", "Namespace", "Labels", "Annotations", "Created At", "Owner", "Pipeline" and "Triggered by"
+    And Details tab is displayed with field names Name, Namespace, Labels, Annotations, Created At, Owner, Status, Pipeline and Triggered by
     And Actions dropdown display on the top right corner of the page
+
+Examples:
+| pipeline_name           |
+| pipe-task-with-resoruce |
 
 
 @regression
@@ -56,21 +57,20 @@ Scenario: Actions on Pipeline Run Details page : P-06-TC06
 @regression
 Scenario: Rerun the Pipeline Run from pipeline run details page: P-06-TC01
     Given user is at the Pipeline Run Details page
-    When user selects "Rerun" from the Actions menu 
-    Then pipeline run details page heading name will change
+    When user selects "Rerun" option from the Actions menu 
+    Then status displays as "Running" in pipeline run details page
 
 
 @regression, @smoke
 Scenario: Rerun the Pipeline Run from pipeline runs page : P-06-TC02
     Given user is at the Pipeline Runs page
-    When user selects "Rerun" from the kebab menu 
+    When user selects "Rerun" option from kebab menu 
     Then page redirects to pipeline run details page
 
 
 @regression, @smoke
 Scenario: Pipeline Run Details page for a pipeline with resource : P-06-TC04
-    Given user is at Pipelines page
-    And pipeline run is displayed
+    Given pipeline run is displayed
     When user clicks Last Run value of the pipeline "pipe-task-with-resoruce"
     Then user redirects to Pipeline Run Details page
     And Pipeline Resources field will be displayed

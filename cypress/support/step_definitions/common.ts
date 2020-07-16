@@ -46,10 +46,6 @@ Given('user is at pipelines page', () => {
   naviagteTo(menu.Pipelines);
 });
 
-Then('user is at the Pipeline Builder page', () => {
-  pipelineBuilderPage.verifyTitle();
-});
-
 Given('user is at pipeline Runs page', () => {
   pipelineRunDetailsPage.verifyTitle();
 });
@@ -58,6 +54,18 @@ When('user selects {string} option from kebab menu', (option: string) => {
   cy.byTestActionID(option).click();
 });
 
+When('user selects {string} option from Actions menu', (option: string) => {
+  cy.byTestActionID(option).click();
+})
+
 Then('popup displays with header name {string}', (header: string) => {
   cy.alertTitleShouldBe(header);
+});
+
+Then('user is at the Pipeline Builder page', () => {
+  pipelineBuilderPage.verifyTitle();
+});
+
+Then('user redirects to Pipeline Run Details page', () => {
+  pipelineRunDetailsPage.verifyTitle();
 });

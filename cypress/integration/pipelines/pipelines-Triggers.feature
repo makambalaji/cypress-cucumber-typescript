@@ -3,7 +3,7 @@ Feature: Triggers
 
 Background:
     Given openshift cluster is installed with pipeline operator
-    And user is at the project namespace "aut-triggers-demo-02" in dev perspecitve
+    And user is at the project namespace "aut-triggers-demo-04" in dev perspecitve
     And user is at pipelines page
 
 
@@ -56,7 +56,7 @@ Examples:
 | pipelines-one |
 
 
-@regression, @smoke
+@regression, @smoke, @focus
 Scenario: Trigger template details page : P-09-TC05
     Given Trigger is added to the pipeline "git-pipeline" present in pipeline details page
     And user is at pipeline Details page 

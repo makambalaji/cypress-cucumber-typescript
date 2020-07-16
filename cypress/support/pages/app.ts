@@ -86,6 +86,11 @@ export const naviagteTo = (opt: devNavigationMenu) => {
       cy.get('div.odc-topology').should('exist');
       break;
     }
+    case devNavigationMenu.GitOps: {
+      cy.byLegacyTestID('gitops-header').click();
+      cy.titleShouldBe('GitOps');
+      break;
+    }
     case devNavigationMenu.Monitoring: {
       cy.byLegacyTestID('monitoring-header').click();
       cy.titleShouldBe('Monitoring');
@@ -130,3 +135,4 @@ export const naviagteTo = (opt: devNavigationMenu) => {
     }
   }
 };
+

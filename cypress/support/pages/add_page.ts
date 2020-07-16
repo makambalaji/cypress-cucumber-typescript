@@ -118,36 +118,19 @@ export const seelctCardFromOptions = (card: addOptions) => {
 
 export const gitPage = {
   verifyTitle: (title: string) => cy.titleShouldBe(title),
-
   verifyPipelinesSection: (message: string) => {
     cy.get(gitPageObj.sectionTitle).eq(5).should('have.text', 'Pipelines');
     cy.get(gitPageObj.pipeline.infoMessage).should('have.text', message);
   },
-
   enterGitUrl: (gitUrl: string) => cy.get(gitPageObj.gitRepoUrl).type(gitUrl),
-
   verifyPipelineCheckBox: () => cy.get(gitPageObj.pipeline.addPipeline).should('be.visible'),
-
   enterAppName: (name: string) => {
-    // cy.get('[id$=application-name-field]').then(($el) => {
-    //   if($el.prop("tagName").includes('button')) {
-    //     cy.get('[id$=application-name-field]').click();
-    //     cy.get('ul.pf-c-dropdown__menu li button').each(($el, index, list) => {
-    //       if($el.text().includes(name)) {
-    //         $el.click();
-    //       }
-    //     })
-    //   } else {
-        cy.get(gitPageObj.nodeName).as('nodeName');
-        // cy.pause();
-        cy.wait(2000);
-        cy.get('@nodeName').clear();
-        cy.get('@nodeName').type(name);
-        cy.get('@nodeName').should('have.value', name);
-    //   }
-    // })
+    cy.get(gitPageObj.nodeName).as('nodeName');
+    cy.wait(2000);
+    cy.get('@nodeName').clear();
+    cy.get('@nodeName').type(name);
+    cy.get('@nodeName').should('have.value', name);
   },
-
   selectResource: (resource: string) => {
     switch (resource) {
       case resourceTypes.Deployment:
@@ -164,7 +147,6 @@ export const gitPage = {
         break;
     }
   },
-
   selectAdvancedOptions: (opt: gitAdvancedOptions) => {
     switch (opt) {
       case gitAdvancedOptions.Routing:
@@ -193,9 +175,7 @@ export const gitPage = {
         break;
     }
   },
-
   selectAddPipeline: () => cy.get(gitPageObj.pipeline.addPipeline).check(),
-
   createWorkload: () => cy.get(gitPageObj.create).click()
 };
 

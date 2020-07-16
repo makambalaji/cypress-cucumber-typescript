@@ -15,6 +15,7 @@ declare global {
       mouseHoverAndClick(selector: string, element: string): Chainable<Element>;
       titleShouldBe(title:string): Chainable<Element>;
       alertTitleShouldBe(title:string): Chainable<Element>;
+      selectLinkInBreadCrumb(linkName: string): Chainable<Element>;
     }
   }
 }
@@ -42,8 +43,8 @@ Cypress.Commands.add('byButtonText', (selector: string) =>
 );
 Cypress.Commands.add('byDataID', (selector: string) => cy.get(`[data-id="${selector}"]`));
 
-Cypress.Commands.add('selectByDropDownText', (dropdownName: string, dropdownText: string) => {
-  cy.get('div.pf-c-dropdown button').contains(`${dropdownName}`).click();
+Cypress.Commands.add('selectByDropDownText', (selector: string, dropdownText: string) => {
+  cy.get(selector).click();
   cy.get('ul.pf-c-dropdown__menu li button').each(($el, index, list) => {
     if($el.text().includes(dropdownText)) {
       $el.click();
@@ -85,6 +86,14 @@ Cypress.Commands.add('alertTitleShouldBe', (alertTitle: string) => {
 Cypress.Commands.add('selectKebabMenuOption', (kebabMenuOption: string) => {
   cy.byTestActionID(kebabMenuOption).click();
 });
+
+Cypress.Commands.add('selectLinkInBreadCrumb', (linkName: string) => {
+  cy.get('nav[aria-label="Breadcrumb"] ol li').each(($el, index, list) => {
+    if($el.text().includes(linkName)) {
+      $el.find('a').click();
+    }
+  });
+})
 
 before(() => {
   cy.visit('/');

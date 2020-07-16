@@ -1,10 +1,31 @@
+export const pipelineRunDetailsObj = {
+  pipelineRunDetails: 'div.odc-pipeline-run-details__customDetails dl',
+  actions: '[data-test-id="actions-menu-button"]',
+  details: {
+    pipelineLink: '[data-test-id="git-pipeline-events"]'
+  }
+}
+
+export const pipelineRunsObj = {
+  pipelineRunsTable: {
+    table: 'div[role="grid"]',
+    pipelineRunName: 'tr td:nth-child(1)',
+  }
+}
 
 export const pipelineRunDetailsPage = {
-    verifyTitle:() => {
-      cy.get('span[title="PipelineRun"]').should('be.visible');
-    },
+    verifyTitle:() => 
+      cy.get('span[title="PipelineRun"]').should('be.visible'),
   
-    selectActionFromActionsDropdown:(action: string) => {
+    fieldDetails:(fieldName: string, expectedFieldValue: string) => {
+      cy.get(pipelineRunDetailsObj.pipelineRunDetails).each(($el, index, list) => {
+        if($el.find('dl').text().includes(fieldName)) {
+          expect($el.next('dd').text()).equals(expectedFieldValue);
+        }
+      });
+    },
+    selectFromActionsDropdown:(action: string) => {
+      cy.get(pipelineRunDetailsObj.actions).click();
       switch (action) {
         case 'Rerun': {
           cy.byTestActionID('Rerun').click();
@@ -22,4 +43,41 @@ export const pipelineRunDetailsPage = {
         }
       }
     },
+
+    verifyTabs:() => {
+      cy.get('ul.co-m-horizontal-nav__menu li a').as('tabName');
+      cy.get('@tabName').eq(0).should('have.text', 'Details');
+      cy.get('@tabName').eq(1).should('have.text', 'YAML');
+      cy.get('@tabName').eq(2).should('have.text', 'Logs');
+    },
+    verifyFields:() => {
+      cy.get('[data-test-id="resource-summary"] dt').as('fieldNames');
+      cy.get('@fieldNames').eq(0).should('have.text', 'Name');
+      cy.get('@fieldNames').eq(1).should('have.text', 'Namespace');
+      cy.get('@fieldNames').eq(2).should('have.text', 'Labels');
+      cy.get('@fieldNames').eq(3).should('have.text', 'Annotations');
+      cy.get('@fieldNames').eq(4).should('have.text', 'Created At');
+      cy.get('@fieldNames').eq(5).should('have.text', 'Owner');
+      cy.get('div.odc-pipeline-run-details__customDetails dl dt').as('dynamicLinks')
+      cy.get('@dynamicLinks').eq(0).should('have.text', 'Status');
+      cy.get('@dynamicLinks').eq(1).should('have.text', 'Pipeline');
+      cy.get('@dynamicLinks').eq(1).should('have.text', 'Triggered by:');
+    },
+    verifyActionsDropdown:() => cy.get(pipelineRunDetailsObj.actions).should('be.visible'),
+    selectPipeline:() => cy.get(pipelineRunDetailsObj.details.pipelineLink, {timeout:3000}).click(),
+  }
+
+  export const pipelienRunsPage = {
+    verifyTitle:() => cy.titleShouldBe('Pipeline Runs'),
+    search:(pipelineRunName: string) => cy.byLegacyTestID('item-filter').type(pipelineRunName),
+    selectKebabMenu:(pipelineRunName: string) => {
+      cy.get(pipelineRunsObj.pipelineRunsTable.table).should('exist');
+      cy.get(pipelineRunsObj.pipelineRunsTable.pipelineRunName).each(($el, index, $list) => {
+        const text = $el.text()
+        if(text.includes(pipelineRunName)) {
+          cy.get('tbody tr').eq(index).find('td:nth-child(7) button').click();
+        }
+      });
+    },
+    verifyPipelineRunsTableDisplay:() => cy.get(pipelineRunsObj.pipelineRunsTable.table).should('be.visible'),
   }

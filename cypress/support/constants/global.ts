@@ -10,6 +10,7 @@ export enum devNavigationMenu {
   Pipelines = 'Pipelines',
   ConfigMaps = 'Config Maps',
   Secrets = 'Secrets',
+  GitOps = 'GitOps',
 }
 
 export enum switchPerspective {

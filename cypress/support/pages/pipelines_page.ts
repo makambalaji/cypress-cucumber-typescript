@@ -27,6 +27,27 @@ export const pipelinesObj = {
     triggerTemplate: '#form-dropdown-selectedTrigger-field',
     remove: '#confirm-action',
     cancel: '[data-test-id="modal-cancel-action"]',
+  },
+  startPipeline: {
+    sectionTitle: 'h2.odc-form-section__heading',
+    gitUrl: '#form-input-resources-0-data-params-url-field',
+    revision: '#form-input-resources-0-data-params-revision-field',
+    start: '#confirm-action',
+    cancel: '[data-test-id="modal-cancel-action"]',
+    advancedOptions: {
+      secretName: '#form-input-secretName-field',
+      accessTo: '#form-dropdown-annotations-key-field',
+      serverUrl: '#form-input-annotations-value-field',
+      authenticationType: '##form-dropdown-type-field',
+      registryServerAddress: 'input[name="address"]',
+      userName: 'input[name="username"]',
+      password: 'input[name="password"]',
+      email: 'input[name="email"]',
+      sshPrivateKey: '[data-test-id="file-input-textarea"]',
+      tickIcon: '[data-test-id="check-icon"]',
+      crossIcon: '[data-test-id="close-icon"]',
+
+    },
   }
 }
 
@@ -156,3 +177,27 @@ export const pipelinesPage = {
 
   },
 };
+export const startPipeline = {
+  verifySections:() => {
+    cy.get(pipelinesObj.startPipeline.sectionTitle).as('sectionTitle');
+    cy.get('@sectionTitle').eq(0).should('have.text', 'Git Resources');
+    cy.get('@sectionTitle').eq(1).should('have.text', 'Advanced Options');
+  },
+  addGitResource:(gitUrl: string, revision:string = 'master') => {
+    cy.get(pipelinesObj.startPipeline.gitUrl).type(gitUrl);
+    cy.get(pipelinesObj.startPipeline.revision).type(revision);
+    cy.get(pipelinesObj.startPipeline.start).click();
+  },
+  clickShowCredentialOptions:() => cy.byButtonText('Show Credential Options').click(),
+  clickHideCredentialOptions:() => cy.byButtonText('Hide Credential Options').click(),
+  addSecret:(secretName: string, serverUrl: string, userName:string, password: string, provider: string = 'Git Server', authenticationType: string = 'Basic Authentication') => {
+    cy.get(pipelinesObj.startPipeline.advancedOptions.secretName).type(secretName);
+    cy.selectByDropDownText(pipelinesObj.startPipeline.advancedOptions.accessTo, provider);
+    cy.get(pipelinesObj.startPipeline.advancedOptions.serverUrl).type(serverUrl);
+    cy.selectByDropDownText(pipelinesObj.startPipeline.advancedOptions.authenticationType, authenticationType);
+    cy.get(pipelinesObj.startPipeline.advancedOptions.userName).type(userName);
+    cy.get(pipelinesObj.startPipeline.advancedOptions.password).type(password);
+    cy.get(pipelinesObj.startPipeline.advancedOptions.tickIcon).click();
+    cy.get(pipelinesObj.startPipeline.start).click();
+  }
+}

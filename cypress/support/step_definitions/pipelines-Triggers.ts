@@ -179,12 +179,12 @@ Then('Actions dropdown display on Cluster Trigger Binding page', () => {
 });
 
 When('selet the first option from the Trigger Template drop down field', () => {
-  cy.get(pipelinesObj.removeTrigger.triggerTemplate).click();
+  cy.get(pipelinesObj.removeTrigger.triggerTemplate).should('be.enabled').click();
   cy.get('[data-test-id="dropdown-menu"]').click();
 });
 
 When('user clicks on Remove button', () => {
-  cy.get(pipelinesObj.removeTrigger.remove).click();
+  cy.get(pipelinesObj.removeTrigger.remove).should('be.enabled').click();
 });
 
 Then('popup is displayed with header message {string}', (headerName: string) => {
@@ -197,6 +197,7 @@ Then('trigger template dropdown displayed with help text Select Trigger Template
 
 Then('Remove button will be disabled', () => {
   cy.get(pipelinesObj.removeTrigger.remove).should('be.disabled');
+  cy.get(pipelinesObj.removeTrigger.cancel).click();
 });
 
 Then('option {string} is not availale in kebab menu for {string}', (option: string, pipelineName: string) => {
