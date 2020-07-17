@@ -76,7 +76,7 @@ Cypress.Commands.add('mouseHoverAndClick', (selector: string, element: string) =
 });
 
 Cypress.Commands.add('titleShouldBe', (title: string) => {
-  cy.get('[data-test-id ="resource-title"]', {timeout: 3000}).should('contain.text', title);
+  cy.get('[data-test-id ="resource-title"]', {timeout: 8000}).should('contain.text', title);
 });
 
 Cypress.Commands.add('alertTitleShouldBe', (alertTitle: string) => {

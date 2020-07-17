@@ -19,7 +19,12 @@ import { topologyPage } from '../pages/topology_page';
 // });
   
 Given('user is at admin perspecitve', () => {
-    perspective.verifyPerspective('Administrator');
+  perspective.verifyPerspective('Administrator');
+});
+
+Given('user is at dev perspecitve', () => {
+  perspective.switchTo(switchPerspective.Developer);
+  perspective.verifyPerspective('Developer');
 });
 
 Given('openshift cluster is installed with pipeline operator', () => {
@@ -41,6 +46,18 @@ Given('openshift cluster is installed with knative operator', () => {
   perspective.switchTo(switchPerspective.Administrator);
   perspective.verifyPerspective('Administrator');
   operatorsPage.verifyServerlessOperator();
+});
+
+Given('open project namespace {string}', (namespace: string) => {
+  project.selectProject(namespace);
+});
+
+Given('user is at Add page', () => {
+  naviagteTo(devNavigationMenu.Add);
+});
+
+Given('user is at Developer Catlog page', () => {
+  // TODO: implement step
 });
 
 Given('user is at pipelines page', () => {
@@ -80,4 +97,12 @@ Then('user is at the Pipeline Builder page', () => {
 
 Then('user redirects to Pipeline Run Details page', () => {
   pipelineRunDetailsPage.verifyTitle();
+});
+
+Then('user redirects to topology page', () => {
+  topologyPage.verifyTopologyPage();
+});
+
+Then('user redirects to Add page', () => {
+  cy.titleShouldBe('Add');
 });

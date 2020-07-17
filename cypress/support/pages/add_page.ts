@@ -1,4 +1,5 @@
 import { addOptions, resourceTypes, gitAdvancedOptions } from '../constants/add';
+import { projectNameSpace } from './app';
 
 export const gitPageObj = {
   sectionTitle: '.odc-form-section__heading',
@@ -7,6 +8,13 @@ export const gitPageObj = {
   appName: '#form-input-application-name-field',
   create: '[data-test-id="submit-button"]',
   cancel: '[data-test-id="reset-button"]',
+  gitSection: {
+    validatedMessage: '#form-input-git-url-field-helper',
+  },
+  builderSection: {
+    builderImageDetected: '[aria-label="Success Alert"]',
+    builderImageVersion: '#form-dropdown-image-tag-field',
+  },
   pipeline: {
     infoMessage: '[aria-label="Info Alert"]',
     addPipeline: '#form-checkbox-pipeline-enabled-field',
@@ -63,6 +71,25 @@ export const gitPageObj = {
     },
     labels: 'input#tags-input',
   },
+}
+
+export const dockerPageObj = {
+}
+
+export const containerImageObj = {
+  imageSection: {
+    externalRegistryImageCheckBox: '#form-radiobutton-registry-external-field',
+    internalRegistryImageCheckBox: '#form-radiobutton-registry-internal-field',
+    externalRegistry: {
+      allowImageFromInsecureRegistry: '#form-checkbox-allowInsecureRegistry-field',
+      imageName: '#form-input-searchTerm-field',
+    },
+    internalRegistry: {
+      selectProject: '#form-ns-dropdown-imageStream-namespace-field',
+      imageStream: '#form-ns-dropdown-imageStream-image-field',
+      tag: '#form-dropdown-imageStream-tag-field',
+    },
+  }
 }
 
 export const seelctCardFromOptions = (card: addOptions) => {
@@ -133,13 +160,13 @@ export const gitPage = {
   },
   selectResource: (resource: string) => {
     switch (resource) {
-      case resourceTypes.Deployment:
+      case 'deployment':
         cy.get(gitPageObj.resources.deployment).check();
         break;
-      case resourceTypes.DeploymentConfig:
+      case 'deployment config':
         cy.get(gitPageObj.resources.deploymentConfig).check();
         break;
-      case resourceTypes.KnativeService:
+      case 'kantive':
         cy.get(gitPageObj.resources.knative).check();
         break;
       default:
@@ -176,6 +203,24 @@ export const gitPage = {
     }
   },
   selectAddPipeline: () => cy.get(gitPageObj.pipeline.addPipeline).check(),
-  createWorkload: () => cy.get(gitPageObj.create).click()
+  createWorkload: () => cy.get(gitPageObj.create).click(),
+  verifyValidatedMessage:() => cy.get(gitPageObj.gitSection.validatedMessage).should('have.text', 'Validated'),
+  verifyBuilderImageDetectedMessage:() => cy.get(gitPageObj.builderSection.builderImageDetected).should('be.visible'),
+  verifyBuilderImageVersion:() => cy.get(gitPageObj.builderSection.builderImageVersion).should('be.visible'),
 };
 
+export const dockerPage = {
+  
+}
+
+export const containerImage = {
+  enterExternalRegistryImageName: (imageName: string) => cy.get(containerImageObj.imageSection.externalRegistry.imageName).type(imageName),
+  selectProject: (projectName: string) => 
+    cy.selectByDropDownText(containerImageObj.imageSection.internalRegistry.selectProject, projectName),
+  selectImageStream: (imageStreamName: string) => 
+    cy.selectByDropDownText(containerImageObj.imageSection.internalRegistry.imageStream, imageStreamName),
+  selectTag: (tag:string) => 
+    cy.selectByDropDownText(containerImageObj.imageSection.internalRegistry.tag, tag),
+  selectInternalImageRegistry:() => 
+  cy.get(containerImageObj.imageSection.internalRegistryImageCheckBox).check(),
+}

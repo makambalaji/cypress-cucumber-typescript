@@ -2,9 +2,9 @@ import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { operatorsPage } from '../pages/operators_page';
 import  { operators } from '../constants/global'
 
-beforeEach(() => {
-  Cypress.Cookies.preserveOnce('session_id', 'remember_token')
-});
+// beforeEach(() => {
+//   Cypress.Cookies.preserveOnce('session_id', 'remember_token')
+// });
 
 Given('user is at Operator Hub page with the header name {string}', (headerName) => {
   operatorsPage.navigateToOperaotorHubPage();
