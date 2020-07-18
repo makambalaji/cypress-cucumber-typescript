@@ -6,6 +6,8 @@ import { pipelineBuilderPage} from '../pages/pipelineBuilder_page';
 import  {pipelineRunDetailsPage} from '../pages/pipelineRunDetails_page';
 import { pipelinesPage } from '../pages/pipelines_page';
 import { topologyPage } from '../pages/topology_page';
+import { seelctCardFromOptions } from '../pages/add_page';
+import { addOptions } from '../constants/add';
 
 // Given('user logged into the openshift application', () => {
 //     loginPage.loginWithValidCredentials(Cypress.env('username'), Cypress.env('password'));

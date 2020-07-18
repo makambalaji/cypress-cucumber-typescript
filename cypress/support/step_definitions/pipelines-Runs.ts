@@ -83,8 +83,12 @@ Then('status displays as {string} in pipeline run details page', (PipelineStatus
   pipelineRunDetailsPage.fieldDetails('Status', PipelineStatus);
 });
 
+Then('page redirects to pipeline run details page', () => {
+  pipelineRunDetailsPage.verifyTitle();
+});
+
 Given('user is at the Pipeline Details page', () => {
-  // TODO: implement step
+  
 });
 
 Given('one pipeline run is completed with the workload', () => {
@@ -117,10 +121,6 @@ Then('Start Pipeline popup displays with Git Resources, Advanced Options section
 
 Then('start button is disabled', () => {
   // TODO: implement step
-});
-
-Then('page redirects to pipeline run details page', () => {
-  pipelineRunDetailsPage.verifyTitle();
 });
 
 Then('Actions menu display with the options {string}, {string}', (a: string, b: string) => {

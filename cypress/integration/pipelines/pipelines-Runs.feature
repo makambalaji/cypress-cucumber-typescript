@@ -3,7 +3,7 @@ Feature: Pipeline Runs
 
 Background:
     Given openshift cluster is installed with pipeline operator
-    And user is at the project namespace "aut-mb-pipelines-runs-demo-3" in dev perspecitve
+    And user is at the project namespace "aut-mb-pipelines-runs-demo-4" in dev perspecitve
     And user is at pipelines page
 
 

@@ -74,10 +74,12 @@ export const pipelineBuilderPage = {
     },
   
     addResource: (resourceName: string, resourceType: string = 'Git') => {
-      cy.byButtonText('Add Resources').click();
+      // cy.byButtonText('Add Resources').click();
+      cy.get('button[type="button"]').contains('Add').eq(1).click();
       cy.get(pipelineBuilderObj.addResources.name).type(resourceName);
-      cy.get(pipelineBuilderObj.addResources.resourceType).click();
-      cy.get('[data-test-dropdown-menu="git"]').click();
+      cy.selectByDropDownText(pipelineBuilderObj.addResources.resourceType, resourceType);
+      // cy.get(pipelineBuilderObj.addResources.resourceType).click();
+      // cy.get('[data-test-dropdown-menu="git"]').click();
     },
   
     verifySection: () => {

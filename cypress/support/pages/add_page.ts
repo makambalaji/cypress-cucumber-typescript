@@ -113,7 +113,6 @@ export const seelctCardFromOptions = (card: addOptions) => {
     case addOptions.Database:
       cy.byLegacyTestID('dev-catalog-databases').click();
       cy.titleShouldBe('Developer Catalog');
-      cy.get('div..co-catalog-page__heading.text-capitalize').should('contain.text', 'Databases');
       break;
     case addOptions.EventSource:
       cy.byLegacyTestID('knative-event-source').click();
@@ -223,4 +222,37 @@ export const containerImage = {
     cy.selectByDropDownText(containerImageObj.imageSection.internalRegistry.tag, tag),
   selectInternalImageRegistry:() => 
   cy.get(containerImageObj.imageSection.internalRegistryImageCheckBox).check(),
+}
+
+export const catalogPageObj = {
+  search: 'input[placeholder="Filter by keyword..."]',
+  sidePane: {
+    dialog: '#pf-modal-part-0',
+    instantiateTemplate: 'a[title="Instantiate Template"]',
+  },
+  mariaDBTemplate: {
+    namespace: '#namespace',
+    title: 'h1.co-m-pane__heading',
+    memoryLimit: '#MEMORY_LIMIT',
+    imageSrreamNameSpace: '#NAMESPACE',
+    databaseServiceName: '#DATABASE_SERVICE_NAME',
+    mariaDBConnectionUserName: '#MYSQL_USER',
+    create: 'button[type="submit"]',
+    cancel: '#cancel',
+  }
+}
+
+export const catalogPage = {
+  search: (keyword: string) => cy.get(catalogPageObj.search).type(keyword),
+  clickInstantiateButtonOnSidePane:() => {
+    cy.get(catalogPageObj.sidePane.dialog).should('be.visible');
+    cy.get(catalogPageObj.sidePane.instantiateTemplate).click();
+  },
+  clickOnCreateButton:() => cy.get(catalogPageObj.mariaDBTemplate.create).click(),
+  clickOnCancelButton:() => cy.get(catalogPageObj.mariaDBTemplate.cancel).click(),
+}
+
+export const yamlPage = {
+  clickOnCreateButton:() => cy.get(catalogPageObj.mariaDBTemplate.create).click(),
+  clickOnCancelButton:() => cy.get(catalogPageObj.mariaDBTemplate.cancel).click(),
 }
