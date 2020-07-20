@@ -7,7 +7,7 @@ Background:
     And one workload with knative resource is available
 
 
-@regression, @smoke
+@regression, @knative-smoke
 Scenario: Knative service menu options: Kn-04-TC01
    Given knative service name "nodejs-ex-git-1" is higlighted on topology page
    When user right click on the knative service
@@ -22,7 +22,7 @@ Scenario: Edit labels popup details : Kn-04-TC02
    And save button is disabled
 
 
-@regression, @smoke
+@regression, @knative-smoke
 Scenario: Add label to the exisitng labels list : Kn-04-TC03
    Given knative service name "nodejs-ex-git-1" is higlighted on topology page
    When user selects "Edit Labels" option from knative service context menu
@@ -59,7 +59,7 @@ Scenario: Edit Annotation popup details : Kn-04-TC11
    And save button is disabled
 
 
-@regression, @smoke
+@regression, @knative-smoke
 Scenario: Add annotation to the exisitng annonations list : Kn-04-TC12
    Given knative service name "nodejs-ex-git-1" is higlighted on topology page
    And number of annotations are "5" present in side pane details tab
@@ -170,7 +170,7 @@ Scenario: Set traffic distribution less than 100% for the Revisions of the Knati
    Then error should display with message as 'admission webhook "validation.webhook.serving.knative.dev" denied the request: validation failed: Traffic targets sum to 75, want 100: spec.traffic'
 
 
-@regression, @smoke
+@regression, @knative-smoke
 Scenario: Set traffic distribution equal to 100% for the Revisions of the Knative Service : Kn-04-TC19
    Given knative service name "nodejs-ex-git-1" is higlighted on topology page
    And service should have at least 1 revision 
@@ -214,7 +214,7 @@ Scenario: Edit NameOfWorkload for a service [TBD] : Kn-04-TC20
    Then 
 
 
-@regression, @smoke
+@regression, @knative-smoke
 Scenario: Delete service : Kn-04-TC16
    Given knative service name "nodejs-ex-git-1" is higlighted on topology page
    When user selects "Delete Service" option from knative service context menu

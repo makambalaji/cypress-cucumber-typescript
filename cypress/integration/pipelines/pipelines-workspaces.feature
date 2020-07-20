@@ -7,7 +7,7 @@ Background:
     And user is at the project namespace "AUT_MB_Demo" in dev perspecitve
 
 
-@regression, @smoke
+@regression, @pipeline-smoke
 Scenario: Create the pipeline with workspace : P-012-TC01
 
 

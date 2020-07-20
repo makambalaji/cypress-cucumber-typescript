@@ -6,7 +6,7 @@ Background:
     And user is at developer perspecitve
 
 
-@regression, @smoke
+@regression, @helm-smoke
 Scenario: Open the Helm tab on the navigation bar when helm charts are absent: HR-11-TC02
     Given user is at the developer perspecitve
     When user clicks on the Helm tab
@@ -15,7 +15,7 @@ Scenario: Open the Helm tab on the navigation bar when helm charts are absent: H
     And user will get the link to install helm charts from developer catalog
 
 
-@regression, @smoke
+@regression, @helm-smoke
 Scenario: Install Helm Chart: HR-02-TC01
     Given user is at +Add page
     When user clicks on the Helm Chart card on the +Add page
@@ -27,7 +27,7 @@ Scenario: Install Helm Chart: HR-02-TC01
     And Topology page have the helm chart workload
 
 
-@regression, @smoke
+@regression, @helm-smoke
 Scenario: Open the Helm tab on the navigation bar when helm charts are present: HR-11-TC01
     Given user is at the developer perspecitve
     When user clicks on the Helm tab

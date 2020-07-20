@@ -12,7 +12,7 @@ Scenario: Dockerfile details after entering git repo url: A-06-TC01
     Given user is on Import from Docker file page
 
 
-@regression, @smoke
+@regression, @addFlow-smoke
 Scenario Outline: Create a workload from Docker file card on Add page : A-06-TC03
    Given user is on Import from Docker file page
    When user type docker git url as "<docker_git_url>"

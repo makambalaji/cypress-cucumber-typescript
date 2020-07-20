@@ -6,13 +6,13 @@ Background:
     And user is at developer perspecitve
 
 
-@regression, @smoke
+@regression, @helm-smoke
 Scenario: The Helm Chart option on the +Add Page: HR-01-TC01
     Given user is at +Add page
     Then user can see Helm Chart card on the +Add page
 
 
-@regression, @smoke
+@regression, @helm-smoke
 Scenario: Install Helm Chart from +Add Page: HR-02-TC01
     Given user is at +Add page
     When user clicks on the Helm Chart card on the +Add page
@@ -37,7 +37,7 @@ Scenario: Install Helm Chart from Developer Catalog Page: HR-03-TC01
     And Topology page have the helm chart workload
 
 
-@regression, @smoke
+@regression, @helm-smoke
 Scenario: Open context menu and check the actions available: HR-07-TC01
     Given user is on the Topology page
     When user right clicks on the workload

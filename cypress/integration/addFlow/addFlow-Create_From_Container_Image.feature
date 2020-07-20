@@ -16,7 +16,7 @@ Scenario: Deploy image page details on entering external registry image name : A
    And advanced option Create a route to the application is selected
 
  
-@regression, @smoke
+@regression, @addFlow-smoke
 Scenario: Create the container image with extrenal registry : A-05-TC02
    Given user is at Deploy Image page
    When user types Image name from external registry as "openshift/hello-openshift"

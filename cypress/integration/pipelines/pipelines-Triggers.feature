@@ -7,7 +7,7 @@ Background:
     And user is at pipelines page
 
 
-@regression, @smoke
+@regression, @pipeline-smoke
 Scenario Outline: Add Trigger popup details : P-09-TC01
     Given pipeline "<pipeline_name>" is available with git resource
     When user selects "Add Trigger" from the kebab menu for "<pipeline_name>"
@@ -30,7 +30,7 @@ Scenario: Variables section in Add Trigger popup details : P-09-TC02
     And Add button is enabled
 
 
-@regression, @smoke
+@regression, @pipeline-smoke
 Scenario Outline: Add the trigger to the pipeline from pipelines page : P-09-TC03
     Given "<pipeline_name>" is displayed on pipelines page
     When user selects "Add Trigger" from the kebab menu for "<pipeline_name>"
@@ -44,7 +44,7 @@ Examples:
 | git-one       |
 
 
-@regression, @smoke
+@regression, @pipeline-smoke
 Scenario Outline: Pipeline Trigger template display in pipeline details page: P-09-TC04
     Given pipeline "<pipeline_name>" with trigger in pipelines page
     When user click on "<pipeline_name>"
@@ -56,7 +56,7 @@ Examples:
 | pipelines-one |
 
 
-@regression, @smoke, @focus
+@regression, @pipeline-smoke
 Scenario: Trigger template details page : P-09-TC05
     Given Trigger is added to the pipeline "git-pipeline" present in pipeline details page
     And user is at pipeline Details page 
@@ -67,7 +67,7 @@ Scenario: Trigger template details page : P-09-TC05
     And Actions dropdown display on the top right corner of the page
 
 
-@regression, @smoke
+@regression, @pipeline-smoke
 Scenario: Event Listener Details page : P-09-TC06, P-09-TC07
     Given Trigger is added to the pipeline "git-pipeline-events" present in pipeline details page 
     And user is at Trigger Template Details page
@@ -78,7 +78,7 @@ Scenario: Event Listener Details page : P-09-TC06, P-09-TC07
     And Actions dropdown display on the top right corner of the page
 
 
-@regression, @smoke
+@regression, @pipeline-smoke
 Scenario: Cluster Trigger Binding Details page : P-09-TC08, P-09-TC09
     Given Trigger is added to the pipeline "git-pipeline-triggerbinding" present in pipeline details page 
     And user is at Event Listener Details page
@@ -89,7 +89,7 @@ Scenario: Cluster Trigger Binding Details page : P-09-TC08, P-09-TC09
     And Actions dropdown display on Cluster Trigger Binding page
 
 
-@regression, @smoke
+@regression, @pipeline-smoke
 Scenario Outline: Remove Trigger popup details : P-09-TC10
     Given Trigger is added to the pipeline "<pipeline_name>" present in pipeline details page
     And user is at pipelines page
@@ -103,7 +103,7 @@ Examples:
 | git-pipeline-removetrigger |
 
 
-@regression, @smoke
+@regression, @pipeline-smoke
 Scenario Outline: Remove the trigger from pipelines page : P-09-TC11
     Given Trigger is added to the pipeline "<pipeline_name>" present in pipeline details page
     And user is at pipelines page

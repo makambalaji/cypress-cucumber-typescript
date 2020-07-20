@@ -7,7 +7,7 @@ Background:
    And user is on dev perspective
 
 
-@regression, @smoke
+@regression, @knative-smoke
 Scenario: Different event source types display in event sources add page - Kn-07-TC03
    Given user is on Add page 
    When user clicks on "Event Sources" card
@@ -95,7 +95,7 @@ Scenario: Event source details for CamelSource event source type - Kn-10-TC07
    And Create button is enabled
 
 
-@regression, @smoke
+@regression, @knative-smoke
 Scenario: Create ApiServerSource event source - Kn-10-TC08
    Given user is on Event Sources page
    And knative service is available for selected namespace

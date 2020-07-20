@@ -8,7 +8,7 @@ Background:
     And user is at Add page
 
 
-@regression, @smoke
+@regression, @addFlow-smoke
 Scenario: Create the workload from Operator Backed : A-08-TC01
     Given user is at Developer Catlog page
     And "Opeator Backed" is selected on Developer Catalog page
@@ -20,7 +20,7 @@ Scenario: Create the workload from Operator Backed : A-08-TC01
     And created workload "<name>" is present in topology page
 
 
-@regression, @smoke
+@regression, @addFlow-smoke
 Scenario: Perform cancel operation : A-08-TC02
     Given user is at Developer Catlog page
     And "Opeator Backed" is selected on Developer Catalog page

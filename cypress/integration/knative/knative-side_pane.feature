@@ -9,14 +9,14 @@ Background:
     And one revision "nodejs-ex-git-1-q5rb8" should be available
 
 
-@regression, @smoke
+@regression, @knative-smoke
 Scenario: Side pane display for knative Revision : Kn-05-TC01
     Given knative revision name "nodejs-ex-git-1-q5rb8" is higlighted on topology page
     When user clciks on the knative revision name "nodejs-ex-git-1-q5rb8"
     Then side pane is displayed with heading name as "nodejs-ex-git-1-q5rb8"
 
 
-@regression, @smoke
+@regression, @knative-smoke
 Scenario: Side pane details of knative Revision : Kn-05-TC02
     Given side pane is displayed for knative revision name "nodejs-ex-git-1-q5rb8" in topology page
     Then user able to see pods status as "AutoScaled to 0" by default
@@ -45,14 +45,14 @@ Scenario: Actions menu of Kantive revision in side pane: Kn-05-TC05
    Then user able to see the options "Edit Labels", "Edit Annotations", "Edit Revision", "Delete Revision"
 
 
-@regression, @smoke
+@regression, @knative-smoke
 Scenario: Side pane display for knative service : Kn-06-TC01
     Given knative serivce name "nodejs-ex-git-1" is higlighted on topology page
     When user clciks on the knative serivce "nodejs-ex-git-1"
     Then side pane is displayed with heading name same as kantive service name
 
 
-@regression, @smoke
+@regression, @knative-smoke
 Scenario: Side pane details of knative Service : Kn-06-TC02
     Given knative service name "nodejs-ex-git-1" is higlighted on topology page
     When user clcik on the knative revision name "nodejs-ex-git-1"

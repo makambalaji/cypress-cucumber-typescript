@@ -8,7 +8,10 @@
   },
   "scripts": {
     "open": "cypress open",
-    "test": "cypress run --browser chrome --spec \"**/*.feature\"",
+    "test:pipeline": "cypress run --env TAGS='@pipeline-smoke' --browser chrome --spec \"cypress/integration/pipelines/*.feature\"",
+    "test:helm": "cypress run --env TAGS='@helm-smoke' --browser chrome --spec \"cypress/integration/helm/*.feature\"",
+    "test:addFlow": "cypress run --env TAGS='@addFlow-smoke' --browser chrome --spec \"cypress/integration/addFlow/*.feature\"",
+    "test:knative": "cypress run --env TAGS='@knative-smoke' --browser chrome --spec \"cypress/integration/knative/*.feature\"",
     "test:all": "cypress run --spec \"**/*.features\"",
     "cy:update-snapshots": "cypress run --env updateSnapshots=true",
     "cy:run--snapshot-tests-with-reporter": "cypress run --reporter cypress-image-snapshot/reporter",

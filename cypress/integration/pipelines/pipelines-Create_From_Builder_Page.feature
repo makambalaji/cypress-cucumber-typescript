@@ -2,12 +2,11 @@ Feature: Create the pipeline from builder page
     As a user I want to create the pipeline with different set of series & parallel tasks 
 
 Background:
-    # Given user logged into the openshift application
-    And openshift cluster is installed with pipeline operator
+    Given openshift cluster is installed with pipeline operator
     And user is at the project namespace "aut-mb-pipelines-demo-2" in dev perspecitve
 
 
-@regression, @smoke
+@regression, @pipeline-smoke
 Scenario Outline: Create a basic pipeline from pipeline builder page : P-03-TC08
     Given user is at Pipeline Builder page 
     When user types pipeline name as "<pipeline_name>"
@@ -20,7 +19,7 @@ Examples:
 | pipelines-one | kn        | 
 
 
-@regression, @smoke
+@regression, @pipeline-smoke
 Scenario Outline: Create a pipeline with parallel tasks : P-03-TC03, P-07- TC02
     Given user is at Pipeline Builder page 
     When user types pipeline name as "<pipeline_name>"
@@ -35,7 +34,7 @@ Examples:
 | pipelines-one | kn        | Sn          |
 
 
-@regression, @smoke
+@regression, @pipeline-smoke
 Scenario: Pipeline Builder page : P-03-TC02
     Given user is at pipelines page 
     When user clicks Create Pipeline button on Pipelines page
@@ -72,7 +71,7 @@ Scenario: Add Paramters to the pipeline in pipeline builder page : P-03-TC04
     And parameter details displayed in parameters section
 
 
-@regression, @smoke
+@regression, @pipeline-smoke
 Scenario Outline: Create a pipeline with series tasks : P-03-TC03, P-07- TC03
     Given user is at Pipeline Builder page 
     When user types pipeline name as "<pipeline_name>"

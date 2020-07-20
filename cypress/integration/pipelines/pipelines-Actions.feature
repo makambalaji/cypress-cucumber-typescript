@@ -6,7 +6,7 @@ Background:
     And user is at the project namespace "aut-pipeline-actions-demo" in dev perspecitve
 
 
-@regression, @smoke
+@regression, @pipeline-smoke
 Scenario Outline: Newly created pipeline details in Pipelines page : P-03-TC01  
    Given user is at pipelines page
    And pipeline "<pipeline_name>" is available
@@ -31,7 +31,7 @@ Scenario: Kebab menu options of newly created pipeline in Pipelines page : P-04-
    Then kebab menu display with  options Start, Add Trigger, Remove Trigger, Edit Pipeline, Delete Pipeline
 
 
-@regression, @smoke
+@regression, @pipeline-smoke
 Scenario Outline: Pipelines Details page : P-03-TC01
    Given user is at pipelines page
    When user clicks pipeline name "<pipeline_name>" on Pipelines page
@@ -65,7 +65,7 @@ Examples:
 | nodejs-ex-git | Succeeded       |
 
 
-@regression, @smoke
+@regression, @pipeline-smoke
 Scenario Outline: Edit the Pipeline from pipelines Details page : P-08-TC01
    Given user is at pipelines page
    And pipeline with name "<pipeline_name>" is present on Pipelines page
@@ -105,7 +105,7 @@ Scenario Outline: Delete the Pipeline from pipelines page
 Scenario Outline: Edit the Pipeline from pipelines page
 
 
-@regression, @smoke
+@regression, @pipeline-smoke
 Scenario Outline: Start the basic pipeline from pipelines page: P-04-TC01
     Given user is at pipelines page
     And pipeline "<pipeline_name>" consists of task "<task_name>" without parameters and resources

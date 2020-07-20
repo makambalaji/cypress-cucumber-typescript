@@ -139,7 +139,7 @@ Then('Event sources card display in +Add page in dev perspecitve', () => {
 });
 
 Then('user redirects to Installed operators page', () => {
-  // TODO: implement step
+  cy.titleShouldBe('Installed Operators');
 });
 
 Then('page will contain knative apache camel operator', () => {

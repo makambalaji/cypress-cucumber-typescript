@@ -30,7 +30,7 @@ Examples:
 | https://github.com/sclorg/nodejs-ex.git                   | nodejs-ex-git-app         | nodejs-ex-git         |
 
 
-@regression, @smoke
+@regression, @addFlow-smoke
 Scenario Outline: Add new git workload with new application for resoruce type "<resource_type>" : A-04-TC02
    Given user is at Import from git page
    When user types Git Repo url as "<git_url>"

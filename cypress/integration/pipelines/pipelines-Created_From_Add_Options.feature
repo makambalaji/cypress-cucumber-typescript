@@ -42,7 +42,7 @@ Examples:
 | https://github.com/sclorg/nodejs-ex.git                   |
 
 
-@regression, @smoke
+@regression, @pipeline-smoke
 Scenario Outline: Create a pipeline from git workload with resource type "<resource>" : P-02-TC01, P-02-TC06
    Given user is at "Import from git" form
    When user type Git Repo url as "<git_url>"
@@ -76,7 +76,7 @@ Examples:
 | https://github.com/sclorg/nodejs-ex.git | nodejs-ex.git-Kn | nodejs-ex.git-Kn |
 
 
-@regression, @smoke
+@regression, @pipeline-smoke
 Scenario Outline: Pipeline in topology page : P-02-TC02
    Given user is at Topology page
    And "<name>" component is added to namespace
@@ -88,7 +88,7 @@ Examples:
 | name            |
 | nodejs-ex-git-f |
 
-@regression, @smoke
+@regression, @pipeline-smoke
 Scenario Outline: Search the created pipeline from Add options in pipelines page : P-02-TC03
    Given workload "<name>" is created from add page with pipeline
    And user is at Pipelines page

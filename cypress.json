@@ -25,6 +25,6 @@
   "env": {
     "username": "kubeadmin",
     "password": "mkgNY-Vuo73-dgVoo-LAooB",
-    "TAGS": "@smoke"
+    "TAGS": "@pipeline-smoke"
   }
 }

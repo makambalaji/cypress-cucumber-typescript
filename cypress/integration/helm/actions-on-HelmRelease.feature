@@ -6,7 +6,7 @@ Background:
     And user is at developer perspecitve
 
 
-@regression, @smoke
+@regression, @helm-smoke
 Scenario: Perform Upgrade action on Helm Release through Context Menu: HR-08-TC02
     Given user is at Topology page
     When user right clicks on the Helm Release to open the context menu
@@ -17,7 +17,7 @@ Scenario: Perform Upgrade action on Helm Release through Context Menu: HR-08-TC0
     And user gets redirected to topology page
 
 
-@regression, @smoke
+@regression, @helm-smoke
 Scenario: Perform Rollback action on Helm Release through Context Menu: HR-08-TC03
     Given user is at Topology page
     When user right clicks on the Helm Release to open the context menu
@@ -28,7 +28,7 @@ Scenario: Perform Rollback action on Helm Release through Context Menu: HR-08-TC
     And user gets redircted to topology page
 
 
-@regression, @smoke
+@regression, @helm-smoke
 Scenario: Uninstall Helm Release through Context Menu: HR-08-TC04
     Given user is at Topology page
     When user right clicks on the Helm Release to open the context menu
