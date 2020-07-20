@@ -1,7 +1,6 @@
 import { addOptions, resourceTypes, gitAdvancedOptions } from '../constants/add';
-import { projectNameSpace } from './app';
 
-export const gitPageObj = {
+export const addPageObj = {
   sectionTitle: '.odc-form-section__heading',
   gitRepoUrl: '#form-input-git-url-field',
   nodeName: '#form-input-name-field',
@@ -145,13 +144,13 @@ export const seelctCardFromOptions = (card: addOptions) => {
 export const gitPage = {
   verifyTitle: (title: string) => cy.titleShouldBe(title),
   verifyPipelinesSection: (message: string) => {
-    cy.get(gitPageObj.sectionTitle).eq(5).should('have.text', 'Pipelines');
-    cy.get(gitPageObj.pipeline.infoMessage).should('have.text', message);
+    cy.get(addPageObj.sectionTitle).eq(5).should('have.text', 'Pipelines');
+    cy.get(addPageObj.pipeline.infoMessage).should('have.text', message);
   },
-  enterGitUrl: (gitUrl: string) => cy.get(gitPageObj.gitRepoUrl).type(gitUrl),
-  verifyPipelineCheckBox: () => cy.get(gitPageObj.pipeline.addPipeline).should('be.visible'),
+  enterGitUrl: (gitUrl: string) => cy.get(addPageObj.gitRepoUrl).type(gitUrl),
+  verifyPipelineCheckBox: () => cy.get(addPageObj.pipeline.addPipeline).should('be.visible'),
   enterAppName: (name: string) => {
-    cy.get(gitPageObj.nodeName).as('nodeName');
+    cy.get(addPageObj.nodeName).as('nodeName');
     cy.wait(2000);
     cy.get('@nodeName').clear();
     cy.get('@nodeName').type(name);
@@ -159,14 +158,14 @@ export const gitPage = {
   },
   selectResource: (resource: string) => {
     switch (resource) {
-      case 'deployment':
-        cy.get(gitPageObj.resources.deployment).check();
+      case 'Deployment':
+        cy.get(addPageObj.resources.deployment).check();
         break;
-      case 'deployment config':
-        cy.get(gitPageObj.resources.deploymentConfig).check();
+      case 'Deployment Config':
+        cy.get(addPageObj.resources.deploymentConfig).check();
         break;
-      case 'kantive':
-        cy.get(gitPageObj.resources.knative).check();
+      case 'Kantive':
+        cy.get(addPageObj.resources.knative).check();
         break;
       default:
         throw new Error('Option is not available');
@@ -201,15 +200,14 @@ export const gitPage = {
         break;
     }
   },
-  selectAddPipeline: () => cy.get(gitPageObj.pipeline.addPipeline).check(),
-  createWorkload: () => cy.get(gitPageObj.create).click(),
-  verifyValidatedMessage:() => cy.get(gitPageObj.gitSection.validatedMessage).should('have.text', 'Validated'),
-  verifyBuilderImageDetectedMessage:() => cy.get(gitPageObj.builderSection.builderImageDetected).should('be.visible'),
-  verifyBuilderImageVersion:() => cy.get(gitPageObj.builderSection.builderImageVersion).should('be.visible'),
+  selectAddPipeline: () => cy.get(addPageObj.pipeline.addPipeline).check(),
+  createWorkload: () => cy.get(addPageObj.create).click(),
+  verifyValidatedMessage:() => cy.get(addPageObj.gitSection.validatedMessage).should('have.text', 'Validated'),
+  verifyBuilderImageDetectedMessage:() => cy.get(addPageObj.builderSection.builderImageDetected).should('be.visible'),
+  verifyBuilderImageVersion:() => cy.get(addPageObj.builderSection.builderImageVersion).should('be.visible'),
 };
 
 export const dockerPage = {
-  
 }
 
 export const containerImage = {

@@ -13,6 +13,15 @@
   "pageLoadTimeout": 90000,
   "requestTimeout": 15000,
   "responseTimeout": 15000,
+  "video": true,
+  "reporter": "./node_modules/mochawesome/src/mochawesome.js",
+  "reporterOptions": {
+    "reportDir": "cypress/reports/separate-reports",
+    "overwrite": false,
+    "html": false,
+    "json": true,
+    "charts": true
+  },
   "env": {
     "username": "kubeadmin",
     "password": "mkgNY-Vuo73-dgVoo-LAooB",

@@ -20,7 +20,7 @@ export const topologyObj = {
 }
 
 export const topologyPage = {
-    verifyTopologyPage: () => cy.get(topologyObj.graph.reset).should('exist'),
+    verifyTopologyPage: () => cy.get(topologyObj.graph.reset, {timeout:6000}).should('exist'),
     verifyWorkloadInTopologyPage: (appName: string) => {
         cy.get(topologyObj.graph.switchView).as('switcher');
         cy.get('@switcher').click();

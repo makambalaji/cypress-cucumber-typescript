@@ -2,9 +2,8 @@ Feature: Create Pipeline from Add Options
     As a user I want to view pipeline, create, edit and delete the pipeline
 
 Background:
-   #  Given user logged into the openshift application
     Given openshift cluster is installed with pipeline operator
-    And user is at the project namespace "aut-mb-demo-8" in dev perspecitve
+    And user is at the project namespace "aut-mb-add-options-demo-2" in dev perspecitve
 
 
 @regression

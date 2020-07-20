@@ -1,7 +1,7 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { projectNameSpace, naviagteTo } from '../pages/app';
 import { devNavigationMenu } from '../constants/global';
-import { seelctCardFromOptions, gitPage, gitPageObj } from '../pages/add_page';
+import { seelctCardFromOptions, gitPage, addPageObj } from '../pages/add_page';
 import { addOptions } from '../constants/add';
 import { topologyPage } from '../pages/topology_page';
 
@@ -26,11 +26,11 @@ Then('builder image version drop down is displayed', () => {
 });
 
 Then('Application name displays as {string}', (appName: string) => {
-  cy.get(gitPageObj.appName, {timeout:3000}).should('have.value', appName);
+  cy.get(addPageObj.appName, {timeout:3000}).should('have.value', appName);
 });
 
 Then('Name displays as {string}', (nodeName: string) => {
-  cy.get(gitPageObj.nodeName).should('have.value', nodeName);
+  cy.get(addPageObj.nodeName).should('have.value', nodeName);
 });
 
 When('clicks Create button on Add page', () => {

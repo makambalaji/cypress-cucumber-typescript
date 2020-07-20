@@ -43,6 +43,21 @@ export const projectNameSpace = {
     // cy.byLegacyTestID("namespace-bar-dropdown").find('button').eq(0).contains('Project').should('contain.text', projectName);
   },
 
+  createNewProject: (projectName: string) => {
+    cy.get('[data-test-id="namespace-bar-dropdown"]', { timeout: 80000 })
+    .find('button')
+    .eq(0)
+    .click();
+  cy.byLegacyTestID('dropdown-text-filter').type(projectName);
+  cy.wait(2000);
+  cy.get('[role="listbox"]', { timeout: 20000 }).then(($el) => {
+    if ($el.find('li[role="option"]').length === 0) {
+      cy.get('[data-test-dropdown-menu="#CREATE_RESOURCE_ACTION#"]').click();
+      projectNameSpace.enterProjectName(projectName);
+      projectNameSpace.clickCreateButton();
+    }
+  });
+  },
   selectProject: (projectName: string) => {
     cy.get('[data-test-id="namespace-bar-dropdown"]', { timeout: 80000 })
       .find('button')

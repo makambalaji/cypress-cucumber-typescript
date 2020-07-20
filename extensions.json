@@ -1,0 +1,16 @@
+{
+    "recommendations": [
+    "mgmcdermott.vscode-language-babel",
+    "hookyqr.beautify",
+    "alexkrechik.cucumberautocomplete",
+    "msjsdiag.debugger-for-chrome",
+    "dbaeumer.vscode-eslint",
+    "davidanson.vscode-markdownlint",
+    "dylanmoerland.cypress-cucumber-steps"
+    ],
+    "ignore": [
+        "getgauge.gauge",
+        "deerawan.vscode-protractor-snippets",
+        "luciannaie.protractor-test-runner"
+    ]
+}

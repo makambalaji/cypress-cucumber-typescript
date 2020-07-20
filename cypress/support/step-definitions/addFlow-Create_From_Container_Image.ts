@@ -1,5 +1,5 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { seelctCardFromOptions, containerImage, gitPage, gitPageObj } from '../pages/add_page';
+import { seelctCardFromOptions, containerImage, gitPage, addPageObj } from '../pages/add_page';
 import { addOptions } from '../constants/add';
 import { topologyPage } from '../pages/topology_page';
 
@@ -16,15 +16,15 @@ Then('git url gets Validated', () => {
 });
 
 Then('Application name displays as {string}', (appName: string) => {
-  cy.get(gitPageObj.appName, {timeout:3000}).should('have.value', appName);
+  cy.get(addPageObj.appName, {timeout:3000}).should('have.value', appName);
 });
 
 Then('Name displays as {string}', (nodeName: string) => {
-  cy.get(gitPageObj.nodeName, {timeout:3000}).should('have.value', nodeName);
+  cy.get(addPageObj.nodeName, {timeout:3000}).should('have.value', nodeName);
 });
 
 Then('advanced option Create a route to the application is selected', () => {
-  cy.get(gitPageObj.advancedOptions.createRoute).should('be.checked');
+  cy.get(addPageObj.advancedOptions.createRoute).should('be.checked');
 });
 
 When('user clicks Create button on Deploy Image page', () => {
@@ -52,5 +52,5 @@ When('selects tag as {string} from internal registry', (tag: string) => {
 });
 
 When('user clicks Cancel button on Deploy Image page', () => {
-    cy.get(gitPageObj.cancel).click();
+    cy.get(addPageObj.cancel).click();
 });
