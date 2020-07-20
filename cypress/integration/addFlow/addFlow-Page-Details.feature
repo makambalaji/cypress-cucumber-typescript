@@ -16,7 +16,8 @@ Scenario: On no workload, add page displays with message "No workloads found" : 
 @regression, @smoke
 Scenario: Display of workloads when no operator is installed : A-01-TC02
    Given cluster is not installed with any operators
-   When user selects Add option from left side navigation men
+   And user is at the new project namespace "aut-new-project-namespace"
+   When user selects Add option from left side navigation menu
    Then user redirects to Add page
    And page contains From Git, Container Image, From Dockerfile, YAML, From Catalog, Database, Helm Chart cards 
 

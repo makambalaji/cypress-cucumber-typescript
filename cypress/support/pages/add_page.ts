@@ -1,6 +1,7 @@
 import { addOptions, resourceTypes, gitAdvancedOptions } from '../constants/add';
 
 export const addPageObj = {
+  cardTitle: 'div.catalog-tile-pf-title',
   sectionTitle: '.odc-form-section__heading',
   gitRepoUrl: '#form-input-git-url-field',
   nodeName: '#form-input-name-field',
@@ -141,7 +142,7 @@ export const seelctCardFromOptions = (card: addOptions) => {
   }
 };
 
-export const gitPage = {
+export const addPage = {
   verifyTitle: (title: string) => cy.titleShouldBe(title),
   verifyPipelinesSection: (message: string) => {
     cy.get(addPageObj.sectionTitle).eq(5).should('have.text', 'Pipelines');
@@ -205,6 +206,7 @@ export const gitPage = {
   verifyValidatedMessage:() => cy.get(addPageObj.gitSection.validatedMessage).should('have.text', 'Validated'),
   verifyBuilderImageDetectedMessage:() => cy.get(addPageObj.builderSection.builderImageDetected).should('be.visible'),
   verifyBuilderImageVersion:() => cy.get(addPageObj.builderSection.builderImageVersion).should('be.visible'),
+  verifyCard:(cardName: string) => cy.get(addPageObj.cardTitle).should('contain.text', cardName),
 };
 
 export const dockerPage = {
@@ -254,3 +256,4 @@ export const yamlPage = {
   clickOnCreateButton:() => cy.get(catalogPageObj.mariaDBTemplate.create).click(),
   clickOnCancelButton:() => cy.get(catalogPageObj.mariaDBTemplate.cancel).click(),
 }
+

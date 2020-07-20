@@ -1,7 +1,7 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { projectNameSpace, naviagteTo } from '../pages/app';
 import { devNavigationMenu } from '../constants/global';
-import { seelctCardFromOptions, gitPage, addPageObj } from '../pages/add_page';
+import { seelctCardFromOptions, addPage, addPageObj } from '../pages/add_page';
 import { addOptions } from '../constants/add';
 import { topologyPage } from '../pages/topology_page';
 
@@ -10,19 +10,19 @@ Given('user is at Import from git page', () => {
 });
 
 When('user types Git Repo url as {string}', (gitUrl: string) => {
-  gitPage.enterGitUrl(gitUrl);
+  addPage.enterGitUrl(gitUrl);
 });
 
 Then('git url gets Validated', () => {
-  gitPage.verifyValidatedMessage();
+  addPage.verifyValidatedMessage();
 });
 
 Then('builder image is detetced', () => {
-  gitPage.verifyBuilderImageDetectedMessage();
+  addPage.verifyBuilderImageDetectedMessage();
 });
 
 Then('builder image version drop down is displayed', () => {
-  gitPage.verifyBuilderImageVersion();
+  addPage.verifyBuilderImageVersion();
 });
 
 Then('Application name displays as {string}', (appName: string) => {
@@ -34,15 +34,15 @@ Then('Name displays as {string}', (nodeName: string) => {
 });
 
 When('clicks Create button on Add page', () => {
-  gitPage.createWorkload();
+  addPage.createWorkload();
 });
 
 When('selects {string} resource type', (resourceType: string) => {
-  gitPage.selectResource(resourceType);
+  addPage.selectResource(resourceType);
 });
 
 When('click Create button on Add page', () => {
-  gitPage.createWorkload();
+  addPage.createWorkload();
 });
 
 Then('created workload {string} is present in topology page', (workloadName: string) => {

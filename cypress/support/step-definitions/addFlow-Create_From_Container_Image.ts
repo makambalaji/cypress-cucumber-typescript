@@ -1,5 +1,5 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { seelctCardFromOptions, containerImage, gitPage, addPageObj } from '../pages/add_page';
+import { seelctCardFromOptions, containerImage, addPage, addPageObj } from '../pages/add_page';
 import { addOptions } from '../constants/add';
 import { topologyPage } from '../pages/topology_page';
 
@@ -12,7 +12,7 @@ When('user types Image name from external registry as {string}', (imageName: str
 });
 
 Then('git url gets Validated', () => {
-  gitPage.verifyValidatedMessage();
+  addPage.verifyValidatedMessage();
 });
 
 Then('Application name displays as {string}', (appName: string) => {
@@ -28,7 +28,7 @@ Then('advanced option Create a route to the application is selected', () => {
 });
 
 When('user clicks Create button on Deploy Image page', () => {
-  gitPage.createWorkload();
+  addPage.createWorkload();
 });
 
 Then('node is displayed with name {string}', (nodeName: string) => {

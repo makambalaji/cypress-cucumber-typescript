@@ -3,6 +3,7 @@ import { operators } from "../constants/global";
 export const operatorsObj = {
   nav: {
     operatorHub: 'a[href="/operatorhub"]',
+    installOperators: 'a[href$="/operators.coreos.com~v1alpha1~ClusterServiceVersion"]',
     link: 'li.pf-c-nav__item.pf-m-expandable',
     menu: '#page-sidebar',
   },
@@ -31,6 +32,11 @@ export const operatorsObj = {
 
 export const operatorsPage = {
   navigateToOperaotorHubPage: () => {
+    cy.get(operatorsObj.nav.link).contains('Operators').click();
+    cy.get(operatorsObj.nav.operatorHub,).click();
+  },
+
+  navigateToInstalloperatorsPage: () => {
     cy.get(operatorsObj.nav.link).contains('Operators').click();
     cy.get(operatorsObj.nav.operatorHub,).click();
   },

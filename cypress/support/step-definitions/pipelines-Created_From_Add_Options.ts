@@ -1,5 +1,5 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { gitPage, seelctCardFromOptions } from '../pages/add_page';
+import { addPage, seelctCardFromOptions } from '../pages/add_page';
 import { naviagteTo } from '../pages/app';
 import { devNavigationMenu as menu, switchPerspective } from '../constants/global';
 import { addOptions, resourceTypes } from '../constants/add';
@@ -15,41 +15,41 @@ When('user clicks From Git card on the +Add page', () => {
 });
 
 Then('user navigates to page with header name Import from git', () => {
-  gitPage.verifyTitle('Import from git');
+  addPage.verifyTitle('Import from git');
 });
 
 Then('pipeline section is displayed with message {string}', (message: string) => {
-  gitPage.verifyPipelinesSection(message);
+  addPage.verifyPipelinesSection(message);
 });
 
 Given('user is at {string} form', (title: string) => {
   naviagteTo(menu.Add);
   seelctCardFromOptions(addOptions.Git);
-  gitPage.verifyTitle(title);
+  addPage.verifyTitle(title);
 });
 
 When('user type Git Repo url as {string}', (gitUrl: string) => {
-  gitPage.enterGitUrl(gitUrl);
+  addPage.enterGitUrl(gitUrl);
 });
 
 Then('Add pipeline checkbox is displayed', () => {
-  gitPage.verifyPipelineCheckBox();
+  addPage.verifyPipelineCheckBox();
 });
 
 When('type Name as {string} in General section', (name: string) => {
-  gitPage.enterAppName(name);
+  addPage.enterAppName(name);
 });
 
 When('select {string} radio button in Resources section', (resoruce: string) => {
-  gitPage.selectResource(resoruce);
+  addPage.selectResource(resoruce);
 });
 
 When('select Add Pipeline checkbox in Pipelines section', () => {
-  gitPage.selectAddPipeline();
+  addPage.selectAddPipeline();
 });
 
 When('click Create button on Add page', () => {
-  gitPage.createWorkload();
+  addPage.createWorkload();
 });
 
 Then('user redirects to topology page', () => {
@@ -93,8 +93,8 @@ Then('pipeline name is displayed with the component name {string}', (pipelineNam
 Given('workload {string} is created from add page with pipeline', (pipelineName: string) => {
   naviagteTo(menu.Add);
   seelctCardFromOptions(addOptions.Git);
-  gitPage.enterGitUrl("https://github.com/sclorg/nodejs-ex.git");
-  gitPage.enterAppName(pipelineName);
-  gitPage.selectAddPipeline();
-  gitPage.createWorkload();
+  addPage.enterGitUrl("https://github.com/sclorg/nodejs-ex.git");
+  addPage.enterAppName(pipelineName);
+  addPage.selectAddPipeline();
+  addPage.createWorkload();
 });
