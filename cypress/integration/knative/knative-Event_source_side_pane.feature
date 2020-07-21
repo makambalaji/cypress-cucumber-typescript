@@ -7,14 +7,14 @@ Background:
    And open the project "AUT-create-knative-event-source"
 
 
-@regression, @knative-smoke
+@regression, @smoke
 Scenario: Side pane display of event source : Kn-12-TC02
    Given knative service, event source and sink connector are present in topology page
    When user clicks on event source
    Then side pane is dsiplays with header name as "{event source name}"
 
 
-@regression, @knative-smoke
+@regression, @smoke
 Scenario: Move the sink via Action menu to link knative Service : Kn-12-TC02
    Given knative service, event source and sink connector are present in topology page
    When user clicks on event source

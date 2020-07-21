@@ -57,7 +57,7 @@ Given('user is at OpenShift Serverless Operator subscription page', () => {
 });
 
 Given('cluster is installed with kantive serverless operator', () => {
-  // TODO: implement step
+  operatorsPage.verifyOperatorInNavigationMenu('Serverless');
 });
 
 Given('user is on the knative-eventing namespace', () => {
@@ -69,10 +69,6 @@ Given('cluster is installed with knative serverless and eventing operators', () 
 });
 
 Given('cluster is installed with knative serverless operator', () => {
-  // TODO: implement step
-});
-
-Given('user logged into the cluster via cli', () => {
   // TODO: implement step
 });
 
@@ -114,18 +110,6 @@ When('user search and installs the kantive Camel operator with default values', 
   // TODO: implement step
 });
 
-When('user executes {string}', (a: string) => {
-  // TODO: implement step
-});
-
-When('user navigates to Add page', () => {
-  // TODO: implement step
-});
-
-When('user clicks on Event sources page', () => {
-  // TODO: implement step
-});
-
 When('user installs the Eclipse che operator with default values', () => {
   // TODO: implement step
 });
@@ -143,14 +127,6 @@ Then('user redirects to Installed operators page', () => {
 });
 
 Then('page will contain knative apache camel operator', () => {
-  // TODO: implement step
-});
-
-Then('user redirects to Event Sources page', (a: string) => {
-  // TODO: implement step
-});
-
-Then('GitHub Source is displayed in Types section', () => {
   // TODO: implement step
 });
 

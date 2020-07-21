@@ -7,7 +7,7 @@ Background:
    And one workload with knative resource is available
 
 
-@regression, @knative-smoke
+@regression, @smoke
 Scenario: Knative revision menu options : Kn-03-TC01
    Given knative revision name "nodejs-ex-git-1-q5rb8" is higlighted on topology page
    When user right click on the knative revision
@@ -22,7 +22,7 @@ Scenario: Edit labels popup details : Kn-03-TC02
    And save button is disabled
 
 
-@regression, @knative-smoke
+@regression, @smoke
 Scenario: Add label to the exisitng labels list : Kn-03-TC03
    Given knative revision name "nodejs-ex-git-1-q5rb8" is higlighted on topology page
    When user selects "Edit Labels" option from knative revision context menu

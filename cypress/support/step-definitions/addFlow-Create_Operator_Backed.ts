@@ -1,41 +1,33 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
+import { addPage, catalogPage, catalogPageObj } from '../pages/add_page';
+import { topologyPage } from '../pages/topology_page';
 
-Given('cluster is installed with serverless Operator', () => {
-  // TODO: implement step
-});
-
-Given('{string} is selected on Developer Catalog page', (a: string) => {
-  // TODO: implement step
+Given('Opeator Backed is selected on Developer Catalog page', () => {
+  catalogPage.selectOperatorBackedCheckBox();
 });
 
 When('user selects knative Serving card', () => {
-  // TODO: implement step
+  catalogPage.selectKnativeServingCard();
 });
 
 When('click on Create button in side pane', () => {
-  // TODO: implement step
+  catalogPage.clickCreateButtonOnSidePane();
 });
 
-When('type name as {string} in Create Knative Serving page', (a: string) => {
-  // TODO: implement step
+When('type name as {string} in Create Knative Serving page', (name: string) => {
+  cy.get(catalogPageObj.createKnativeServing.logo).should('be.visible');
+  cy.get(catalogPageObj.createKnativeServing.name).type(name);
 });
 
 When('user clicks create button in Create Knative Serving page', () => {
-  // TODO: implement step
+  cy.get(catalogPageObj.create).should('be.enabled').click();
 });
 
 When('user clicks cancel button in Create Knative Serving page', () => {
-  // TODO: implement step
+  cy.contains('Cancel').click();
 });
 
-Then('page redirects to topology page', () => {
-  // TODO: implement step
+Then('created workload {string} is present in topology page', (name: string) => {
+  topologyPage.verifyWorkloadInTopologyPage(name);
 });
 
-Then('created workload {string} is present in topology page', (a: string) => {
-  // TODO: implement step
-});
-
-Then('page redirects to Add page', () => {
-  // TODO: implement step
-});

@@ -6,7 +6,7 @@ Background:
     And open project namespace "aut-addflow-database-demo-1"
 
 
-@regression, @addFlow-smoke
+@regression, @smoke
 Scenario: Create the Database from Add page : A-10-TC01
     Given user is at Add page
     When user clicks Database card

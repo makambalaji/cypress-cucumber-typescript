@@ -6,7 +6,7 @@ Background:
     And user is at the project namespace "aut-workspaces-demo" in dev perspecitve
 
 
-@regression, @pipeline-smoke, @manual
+@regression, @smoke, @manual
 Scenario: Create the pipeline with workspace : P-012-TC01
 
 

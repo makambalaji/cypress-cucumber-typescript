@@ -159,12 +159,15 @@ export const addPage = {
   },
   selectResource: (resource: string) => {
     switch (resource) {
+      case 'deployment':
       case 'Deployment':
         cy.get(addPageObj.resources.deployment).check();
         break;
+      case 'deployment config':
       case 'Deployment Config':
         cy.get(addPageObj.resources.deploymentConfig).check();
         break;
+      case 'knative':
       case 'Kantive':
         cy.get(addPageObj.resources.knative).check();
         break;
@@ -206,7 +209,7 @@ export const addPage = {
   verifyValidatedMessage:() => cy.get(addPageObj.gitSection.validatedMessage).should('have.text', 'Validated'),
   verifyBuilderImageDetectedMessage:() => cy.get(addPageObj.builderSection.builderImageDetected).should('be.visible'),
   verifyBuilderImageVersion:() => cy.get(addPageObj.builderSection.builderImageVersion).should('be.visible'),
-  verifyCard:(cardName: string) => cy.get(addPageObj.cardTitle).should('contain.text', cardName),
+  verifyCard:(cardName: string) => cy.get(addPageObj.cardTitle).should('be.visible').and('contain.text', cardName),
 };
 
 export const dockerPage = {
@@ -226,9 +229,11 @@ export const containerImage = {
 
 export const catalogPageObj = {
   search: 'input[placeholder="Filter by keyword..."]',
+  create: 'button[type="submit"]',
   sidePane: {
     dialog: '#pf-modal-part-0',
     instantiateTemplate: 'a[title="Instantiate Template"]',
+    create: 'a[title="Create"]',
   },
   mariaDBTemplate: {
     namespace: '#namespace',
@@ -237,9 +242,13 @@ export const catalogPageObj = {
     imageSrreamNameSpace: '#NAMESPACE',
     databaseServiceName: '#DATABASE_SERVICE_NAME',
     mariaDBConnectionUserName: '#MYSQL_USER',
-    create: 'button[type="submit"]',
     cancel: '#cancel',
-  }
+  },
+  createKnativeServing: {
+    logo: 'h1.co-clusterserviceversion-logo__name__clusterserviceversion',
+    name: '#root_metadata_name',
+    labels: 'input[placeholder="app=frontend"]',
+  },
 }
 
 export const catalogPage = {
@@ -248,12 +257,18 @@ export const catalogPage = {
     cy.get(catalogPageObj.sidePane.dialog).should('be.visible');
     cy.get(catalogPageObj.sidePane.instantiateTemplate).click();
   },
-  clickOnCreateButton:() => cy.get(catalogPageObj.mariaDBTemplate.create).click(),
+  clickCreateButtonOnSidePane:() => {
+    cy.get(catalogPageObj.sidePane.dialog).should('be.visible');
+    cy.get(catalogPageObj.sidePane.create).click();
+  },
+  clickOnCreateButton:() => cy.get(catalogPageObj.create).click(),
   clickOnCancelButton:() => cy.get(catalogPageObj.mariaDBTemplate.cancel).click(),
+  selectOperatorBackedCheckBox:() => cy.byTestID('kind-cluster-service-version').check(),
+  selectKnativeServingCard:() => cy.get('div.catalog-tile-pf-title').contains('Knative Serving').click(),
 }
 
 export const yamlPage = {
-  clickOnCreateButton:() => cy.get(catalogPageObj.mariaDBTemplate.create).click(),
+  clickOnCreateButton:() => cy.get(catalogPageObj.create).click(),
   clickOnCancelButton:() => cy.get(catalogPageObj.mariaDBTemplate.cancel).click(),
 }
 

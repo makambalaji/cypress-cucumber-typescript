@@ -19,7 +19,7 @@ Examples:
 | pipe-task-with-resoruce | openshift-client |
 
 
-@regression, @pipeline-smoke
+@regression, @smoke
 Scenario Outline: Start the pipeline with one resource : P-04-TC03, P-05- TC01, P-05- TC02
     Given pipeline "<pipeline_name>" consists of task "<task_name>" with one git resource
     When user selects "Start" option from kebab menu for pipeline "<pipeline_name>"
@@ -33,7 +33,7 @@ Examples:
 | pipe-task-with-resoruce-1 | openshift-client |
 
 
-@regression, @pipeline-smoke
+@regression, @smoke
 Scenario Outline: Pipeline Run Details page for pipeline without resource : P-06-TC03
     Given pipeline run is displayed for "<pipeline_name>"
     When user clicks Last Run value of "<pipeline_name>"
@@ -61,14 +61,14 @@ Scenario: Rerun the Pipeline Run from pipeline run details page: P-06-TC01
     Then status displays as "Running" in pipeline run details page
 
 
-@regression, @pipeline-smoke
+@regression, @smoke
 Scenario: Rerun the Pipeline Run from pipeline runs page : P-06-TC02
     Given user is at the Pipeline Runs page
     When user selects "Rerun" option from kebab menu 
     Then page redirects to pipeline run details page
 
 
-@regression, @pipeline-smoke
+@regression, @smoke
 Scenario Outline: Pipeline Run Details page for a pipeline with resource : P-06-TC04
     Given pipeline run is displayed for "<pipeline_name>"
     When user clicks Last Run value of the pipeline "<pipeline_name>"
@@ -80,12 +80,12 @@ Examples:
 | pipe-task-with-resoruce-2 |
 
 
-@regression, @pipeline-smoke
+@regression, @smoke
 Scenario: Filter the pipeline runs based on status : P-06-TC07
     Given user is at the Pipeline Runs page
 
 
-@regression, @pipeline-smoke
+@regression, @smoke
 Scenario: Start the pipeline from Pipeline Details page : P-04-TC04
     Given user is at the Pipeline Runs page
 
@@ -112,7 +112,7 @@ Scenario: Start LastRun from topolgy page : P-05- TC04
     And one pipeline run is completed with the workload
 
 
-@regression, @pipeline-smoke
+@regression, @smoke
 Scenario: Maximum pipeline runs display in topology page: P-05-TC05
     Given user is at the topolgy page
     And 5 pipeline runs are completed with the workload

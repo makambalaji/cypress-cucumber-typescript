@@ -47,7 +47,7 @@ Given('user is at the project namespace {string} in dev perspecitve', (projectNa
 Given('openshift cluster is installed with knative operator', () => {
   perspective.switchTo(switchPerspective.Administrator);
   perspective.verifyPerspective('Administrator');
-  operatorsPage.verifyServerlessOperator();
+  operatorsPage.verifyOperatorInNavigationMenu('Serverless');
 });
 
 Given('open project namespace {string}', (namespace: string) => {
@@ -59,7 +59,7 @@ Given('user is at Add page', () => {
 });
 
 Given('user is at Developer Catlog page', () => {
-  // TODO: implement step
+  seelctCardFromOptions(addOptions.Catalog);
 });
 
 Given('user is at pipelines page', () => {

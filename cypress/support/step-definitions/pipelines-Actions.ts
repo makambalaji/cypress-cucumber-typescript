@@ -3,6 +3,8 @@ import { pipelinesPage } from '../pages/pipelines_page';
 import { pipelineBuilderPage } from '../pages/pipelineBuilder_page';
 import { pipelineDetailsPage } from '../pages/pipelineDetails_page';
 import { pipelineRunDetailsPage} from '../pages/pipelineRunDetails_page';
+import { naviagteTo } from '../pages/app';
+import { devNavigationMenu } from '../constants/global';
  
 
 // beforeEach(function () {
@@ -10,11 +12,6 @@ import { pipelineRunDetailsPage} from '../pages/pipelineRunDetails_page';
 //     this.pipelineName = pipelineName
 //   })
 // })
-
-Given('pipeline {string} is available', (pipelineName: string) => {
-  pipelinesPage.createPipeline();
-  pipelineBuilderPage.createPipelineFromBuilderPage(pipelineName);
-});
 
 When('the user enters {string} into the pipelines search bar', (pipelineName: string) => {
   pipelinesPage.search(pipelineName);
@@ -57,11 +54,14 @@ Given('user is at pipeline details page with newly created pipeline', () => {
 });
 
 Given('pipeline with name {string} is present on Pipelines page', (pipelineName: string) => {
-  
+  pipelinesPage.createPipeline();
+  pipelineBuilderPage.createPipelineFromBuilderPage(pipelineName);
+  naviagteTo(devNavigationMenu.Pipelines);
 });
 
-Given('pipeline {string} consists of task {string} without parameters and resources', (a: string, b: string) => {
-  
+Given('pipeline {string} consists of task {string} without parameters and resources', (pipelineName: string, b: string) => {
+  pipelinesPage.createPipeline();
+  pipelineBuilderPage.createPipelineFromBuilderPage(pipelineName);
 });
 
 When('user clicks pipeline name {string} on Pipelines page', (pipelineName: string) => {
@@ -89,7 +89,7 @@ When('click {string} button on {string} popup', (a: string, b: string) => {
 });
 
 When('user selects {string} from the kebab menu', (a: string) => {
-  // TODO: implement step
+  
 });
 
 When('the user clicks kebab menu for the pipeline {string}', (a: string) => {

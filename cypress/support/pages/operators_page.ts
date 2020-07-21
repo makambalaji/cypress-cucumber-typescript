@@ -5,7 +5,7 @@ export const operatorsObj = {
     operatorHub: 'a[href="/operatorhub"]',
     installOperators: 'a[href$="/operators.coreos.com~v1alpha1~ClusterServiceVersion"]',
     link: 'li.pf-c-nav__item.pf-m-expandable',
-    menu: '#page-sidebar',
+    menuItems: '#page-sidebar li.pf-c-nav__item.pf-m-expandable',
   },
   operatorHub: {
     search: 'input[placeholder="Filter by keyword..."]',
@@ -37,7 +37,7 @@ export const operatorsPage = {
   },
 
   navigateToInstalloperatorsPage: () => {
-    cy.get(operatorsObj.nav.link).contains('Operators').click();
+    cy.get(operatorsObj.nav.link).contains('Installed Operators').click();
     cy.get(operatorsObj.nav.operatorHub,).click();
   },
 
@@ -68,12 +68,14 @@ export const operatorsPage = {
   
   headingDisplayed: (heading: string) => cy.get('h1').contains(heading),
 
-  selectOperator: (opt: operators) => {
+  selectOperator: (opt: operators | string) => {
     switch (opt) {
+      case 'OpenShift Pipelines Operator':
       case operators.pipelineOperator: {
         cy.byTestID('openshift-pipelines-operator-rh-redhat-operators-openshift-marketplace').click();
         break;
       }
+      case 'OpenShift Serverless Operator':
       case operators.serverlessOperator: {
         cy.byTestID('serverless-operator-redhat-operators-openshift-marketplace').click();
         break;
@@ -108,7 +110,9 @@ export const operatorsPage = {
     })   
   },
 
-  verifyServerlessOperator: () => {
-    cy.get(operatorsObj.nav.menu).should('contain.text', 'Serverless');
+  verifyOperatorInNavigationMenu: (menuItem: string) => {
+    cy.get(operatorsObj.nav.menuItems).should(($text) => {
+      expect($text.get(0).innerText).to.eq(menuItem);
+    });
   }
 };

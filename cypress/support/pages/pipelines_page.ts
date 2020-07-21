@@ -117,7 +117,8 @@ export const pipelinesPage = {
   },
 
   search:(pipelineName: string) => {
-    cy.get(pipelinesObj.search).type(pipelineName)
+    pipelinesPage.verifyPipelinesTableDisplay();
+    cy.get(pipelinesObj.search, {timeout: 5000}).should('be.visible').type(pipelineName)
     // cy.get(pipelinesObj.search).should('have.value', pipelineName);
     cy.get(pipelinesObj.pipelinesTable.table, {timeout: 2000}).should('be.visible');
   },
@@ -137,7 +138,7 @@ export const pipelinesPage = {
 
   verifyPipelineTableColumns:() => {
     cy.get(pipelinesObj.pipelinesTable.columnNames).each(($el) => {
-      expect(['Name', 'Namespace', 'Last Run', 'Task Status', 'Last Run Status', 'Last Run Time']).include($el.text())
+      expect(['Name', 'Namespace', 'Last Run', 'Task Status', 'Last Run Status', 'Last Run Time', '']).include($el.text())
     });
   },
 

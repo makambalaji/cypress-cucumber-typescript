@@ -3,24 +3,24 @@ Feature: Perform the actions on Pipelines page
 
 Background:
     Given openshift cluster is installed with pipeline operator
-    And user is at the project namespace "aut-pipeline-actions-demo" in dev perspecitve
+    And user is at the project namespace "aut-pipeline-actions-demo-3" in dev perspecitve
 
 
-@regression, @pipeline-smoke
+@regression, @smoke
 Scenario Outline: Newly created pipeline details in Pipelines page : P-03-TC01  
    Given user is at pipelines page
-   And pipeline "<pipeline_name>" is available
+   And pipeline with name "<pipeline_name>" is present on Pipelines page
    When the user enters "<pipeline_name>" into the pipelines search bar
    Then pipelines table displayed with column names Name, Namespace, Last Run, Task Status, Last Run Status and Last Run Time
    And column Name display with value "<pipeline_name>"
-   And column Namespace display with value "aut-pipeline-actions-demo"
+   And column Namespace display with value "aut-pipeline-actions-demo-2"
    And columns Last Run, Task Run Status, Last Run Status, Last Run Time with values display "-"
    And Create Pipeline button is enabled
    And kebab menu is displayed
 
 Examples:
 | pipeline_name |
-| pipelines-one |
+| pipelines-abc |
 
 
 @regression
@@ -31,7 +31,7 @@ Scenario: Kebab menu options of newly created pipeline in Pipelines page : P-04-
    Then kebab menu display with  options Start, Add Trigger, Remove Trigger, Edit Pipeline, Delete Pipeline
 
 
-@regression, @pipeline-smoke
+@regression, @smoke
 Scenario Outline: Pipelines Details page : P-03-TC01
    Given user is at pipelines page
    When user clicks pipeline name "<pipeline_name>" on Pipelines page
@@ -41,8 +41,8 @@ Scenario Outline: Pipelines Details page : P-03-TC01
    And Actions dropdown display in the top right corner of the page
 
 Examples:
-| pipeline_name |
-| pipelines-one |
+| pipeline_name   |
+| pipelines-three |
 
 
 @regression
@@ -65,7 +65,7 @@ Examples:
 | nodejs-ex-git | Succeeded       |
 
 
-@regression, @pipeline-smoke
+@regression, @smoke
 Scenario Outline: Edit the Pipeline from pipelines Details page : P-08-TC01
    Given user is at pipelines page
    And pipeline with name "<pipeline_name>" is present on Pipelines page
@@ -78,7 +78,7 @@ Scenario Outline: Edit the Pipeline from pipelines Details page : P-08-TC01
 
 Examples:
 | pipeline_name |
-| pipelines-one |
+| pipelines-three |
 
 
 @regression
@@ -93,8 +93,8 @@ Scenario Outline: Delete the Pipeline from pipelines Details page
    But "<pipeline_name>" should not be displayed on Pipelines page
 
 Examples:
-| pipeline_name |
-| pipelines-one |
+| pipeline_name  |
+| pipelines-four |
 
 
 @regression
@@ -105,7 +105,7 @@ Scenario Outline: Delete the Pipeline from pipelines page
 Scenario Outline: Edit the Pipeline from pipelines page
 
 
-@regression, @pipeline-smoke
+@regression, @smoke
 Scenario Outline: Start the basic pipeline from pipelines page: P-04-TC01
     Given user is at pipelines page
     And pipeline "<pipeline_name>" consists of task "<task_name>" without parameters and resources

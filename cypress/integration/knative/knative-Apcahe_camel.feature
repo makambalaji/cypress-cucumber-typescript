@@ -7,7 +7,7 @@ Background:
    And create the project "AUT-create-knative-camel-event-source"
 
 
-@regression, @knative-smoke
+@regression, @smoke
 Scenario: CamelSource display in event sources add page - Kn-07-TC03
    Given user is on Add page 
    When user clicks on "Event Sources" card

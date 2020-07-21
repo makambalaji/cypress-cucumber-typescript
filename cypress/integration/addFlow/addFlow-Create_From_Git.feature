@@ -30,7 +30,7 @@ Examples:
 | https://github.com/sclorg/nodejs-ex.git                   | nodejs-ex-git-app         | nodejs-ex-git         |
 
 
-@regression, @addFlow-smoke
+@regression, @smoke
 Scenario Outline: Add new git workload with new application for resoruce type "<resource_type>" : A-04-TC02
    Given user is at Import from git page
    When user types Git Repo url as "<git_url>"
@@ -41,8 +41,8 @@ Scenario Outline: Add new git workload with new application for resoruce type "<
 
 Examples:
 | git_url                                  | app_name           | name           | resource_type     |
-| https://github.com/sclorg/dancer-ex.git  | dancer-ex-git-app  | dancer-ex-git  | deployment        |
-| https://github.com/sclorg/cakephp-ex.git | cakephp-ex-git-app | cakephp-ex-git | deployment config |
+| https://github.com/sclorg/dancer-ex.git  | dancer-ex-git-app  | dancer-ex-git  | Deployment        |
+| https://github.com/sclorg/cakephp-ex.git | cakephp-ex-git-app | cakephp-ex-git | Deployment Config |
 
 
 @regression

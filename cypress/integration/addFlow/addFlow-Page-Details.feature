@@ -13,7 +13,7 @@ Scenario: On no workload, add page displays with message "No workloads found" : 
    And message displays as "No workloads found"
 
 
-@regression, @addFlow-smoke
+@regression, @smoke
 Scenario: Display of workloads when no operator is installed : A-01-TC02
    Given cluster is not installed with any operators
    And user is at the new project namespace "aut-new-project-namespace"

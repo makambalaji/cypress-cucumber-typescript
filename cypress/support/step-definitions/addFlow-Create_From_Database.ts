@@ -17,7 +17,7 @@ When('clicks Instantiate Template button on side pane', () => {
 });
 
 When('user clicks create button on Instantiate Template page with default values', () => {
-  cy.get(catalogPageObj.mariaDBTemplate.create).click();
+  cy.get(catalogPageObj.create).click();
 });
 
 Then('created workload {string} is present in topology page', (workloadName: string) => {

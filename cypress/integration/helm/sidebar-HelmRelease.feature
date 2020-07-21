@@ -6,7 +6,7 @@ Background:
     And user is at developer perspecitve
 
 
-@regression, @helm-smoke
+@regression, @smoke
 Scenario: Install Helm Chart: HR-02-TC01
     Given user is at +Add page
     When user clicks on the Helm Chart card on the +Add page
@@ -18,21 +18,21 @@ Scenario: Install Helm Chart: HR-02-TC01
     And Topology page have the helm chart workload
 
 
-@regression, @helm-smoke
+@regression, @smoke
 Scenario: Open Context Menu and check the actions available for Helm Release: HR-08-TC01
     Given user is on the Topology page
     When user right clicks on the helm release
     Then user sees the context menu with actions
 
 
-@regression, @helm-smoke
+@regression, @smoke
 Scenario: Open Side Bar for the Helm release: HR-10-TC01
     Given user is on the Topology page
     When user clicks on the helm release
     Then user sees the sidebar for the helm release
 
 
-@regression, @helm-smoke
+@regression, @smoke
 Scenario: Tabs on the sidebar: HR-10-TC02
     Given user is on the sidebar for the helm release
     Then user sees the Details tab
@@ -80,7 +80,7 @@ Scenario: Routes link on the sidebar for the Helm Release: HR-10-TC03
     Then user is redirected to the Route Details page for the helm release
 
 
-@regression, @helm-smoke
+@regression, @smoke
 Scenario: Open Actions drop down menu on the side bar: HR-10-TC04
     Given user is on the side bar for helm release
     When user clicks on the Actions drop down menu

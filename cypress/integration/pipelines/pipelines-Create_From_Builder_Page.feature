@@ -6,7 +6,7 @@ Background:
     And user is at the project namespace "aut-mb-pipelines-demo-2" in dev perspecitve
 
 
-@regression, @pipeline-smoke
+@regression, @smoke
 Scenario Outline: Create a basic pipeline from pipeline builder page : P-03-TC08
     Given user is at Pipeline Builder page 
     When user types pipeline name as "<pipeline_name>"
@@ -19,7 +19,7 @@ Examples:
 | pipelines-one | kn        | 
 
 
-@regression, @pipeline-smoke
+@regression, @smoke
 Scenario Outline: Create a pipeline with parallel tasks : P-03-TC03, P-07- TC02
     Given user is at Pipeline Builder page 
     When user types pipeline name as "<pipeline_name>"
@@ -34,7 +34,7 @@ Examples:
 | pipelines-one | kn        | Sn          |
 
 
-@regression, @pipeline-smoke
+@regression, @smoke
 Scenario: Pipeline Builder page : P-03-TC02
     Given user is at pipelines page 
     When user clicks Create Pipeline button on Pipelines page
@@ -71,7 +71,7 @@ Scenario: Add Paramters to the pipeline in pipeline builder page : P-03-TC04
     And parameter details displayed in parameters section
 
 
-@regression, @pipeline-smoke
+@regression, @smoke
 Scenario Outline: Create a pipeline with series tasks : P-03-TC03, P-07- TC03
     Given user is at Pipeline Builder page 
     When user types pipeline name as "<pipeline_name>"

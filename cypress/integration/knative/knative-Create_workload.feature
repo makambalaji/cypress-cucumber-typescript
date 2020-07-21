@@ -7,7 +7,7 @@ Background:
    And create the project "AUT-create-knative-worload"
 
 
-@regression, @knative-smoke
+@regression, @smoke
 Scenario: Knative resource type in git import add flow : Kn-01-TC03
    Given user is on Add flow page
    When user clicks on "From git" card
@@ -40,7 +40,7 @@ Scenario: Knative resource type in catalog add flow : Kn-01-TC06
    And Knaive Service option is displayed in Resources section
 
 
-@regression, @knative-smoke
+@regression, @smoke
 Scenario Outline: Create a work load from From Git card on Add page : Kn-02-TC01
    Given user is on "<form_name>" form with header name "<header_name>"
    When user type "<git_url>" into the "Git Repo url" text box

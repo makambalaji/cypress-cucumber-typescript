@@ -7,7 +7,7 @@ Background:
     And user is at pipelines page
 
 
-@regression, @pipeline-smoke
+@regression, @smoke
 Scenario Outline: Add Secret details : P-011-TC01
    Given user able to see pipeline "<pipeline_name>" with git resources in pipeiles page
    When user selects "Start" option from kebab menu for pipeline "<pipeline_name>"
@@ -21,7 +21,7 @@ Examples:
 | pipe-task-with-resoruce |
 
 
-@regression, @pipeline-smoke
+@regression, @smoke
 Scenario Outline: Add secret to pipeline with authentication type as Basic Authernication : P-011-TC02
    Given user able to see pipeline "pipe-task-with-resoruce-1" with git resources in pipeiles page
    And user is at Start Pipeline popup

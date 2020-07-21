@@ -36,7 +36,7 @@ Cypress.Commands.add('byTestActionID', (selector: string) =>
   cy.get(`[data-test-action="${selector}"]:not(.pf-m-disabled)`),
 );
 Cypress.Commands.add('byLegacyTestID', (selector: string) =>
-  cy.get(`[data-test-id="${selector}"]`),
+  cy.get(`[data-test-id="${selector}"]`, {timeout:5000}),
 );
 Cypress.Commands.add('byButtonText', (selector: string) =>
   cy.get('button[type="button"]').contains(`${selector}`),
@@ -76,7 +76,7 @@ Cypress.Commands.add('mouseHoverAndClick', (selector: string, element: string) =
 });
 
 Cypress.Commands.add('titleShouldBe', (title: string) => {
-  cy.get('[data-test-id ="resource-title"]', {timeout: 8000}).should('contain.text', title);
+  cy.get('[data-test-id ="resource-title"]', {timeout: 8000}).should('be.visible').and('contain.text', title);
 });
 
 Cypress.Commands.add('alertTitleShouldBe', (alertTitle: string) => {

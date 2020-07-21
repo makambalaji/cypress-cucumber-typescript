@@ -12,7 +12,7 @@ Scenario: Dockerfile details after entering git repo url: A-06-TC01
     Given user is on Import from Docker file page
 
 
-@regression, @addFlow-smoke
+@regression, @smoke
 Scenario Outline: Create a workload from Docker file card on Add page : A-06-TC03
    Given user is on Import from Docker file page
    When user type docker git url as "<docker_git_url>"
@@ -23,8 +23,8 @@ Scenario Outline: Create a workload from Docker file card on Add page : A-06-TC0
 
 Examples:
 | docker_git_url                          | resource_type     | name          |
-| https://github.com/sclorg/nodejs-ex.git | deployment        | nodejs-ex-git |
-| https://github.com/sclorg/nginx-ex.git  | deployment config | nginx-ex-git  |
+| https://github.com/sclorg/nodejs-ex.git | Deployment        | nodejs-ex-git |
+| https://github.com/sclorg/nginx-ex.git  | Deployment Config | nginx-ex-git  |
 
 
 @regression

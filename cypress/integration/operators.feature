@@ -5,7 +5,7 @@ Background:
    Given user is at admin perspecitve
 
 
-@regression, @pipeline-smoke
+@regression
 Scenario: OpenShift Pipeline operator subscription page : P-01-TC01
    Given user is at Operator Hub page with the header name "OperatorHub"
    When user searches for "OpenShift Pipelines Operator"
@@ -14,7 +14,7 @@ Scenario: OpenShift Pipeline operator subscription page : P-01-TC01
    Then OpenShift Pipeline operator subscription page will be displayed
 
 
-@regression, @pipeline-smoke
+@regression, @smoke
 Scenario: Install the Pipeline Operator from Operator Hub page : P-01-TC02
    Given user is at OpenShift Pipeline Operator subscription page
    When user installs the pipeline operator with default values
@@ -22,7 +22,7 @@ Scenario: Install the Pipeline Operator from Operator Hub page : P-01-TC02
    And Installed operators page will contain "OpenShift Pipelines Operator"
 
 
-@regression, @pipeline-smoke
+@regression
 Scenario: Uninstall the Pipeline Operator from Operator Hub page : P-013-TC01, P-013-TC02
    Given user is at Operator Hub page with the header name "OperatorHub"
    When user uninstalls the pipeline operator from right side pane
@@ -31,7 +31,7 @@ Scenario: Uninstall the Pipeline Operator from Operator Hub page : P-013-TC01, P
    And Installed operators page will not contain "OpenShift Pipelines Operator"
 
 
-@regression, @knative-smoke
+@regression, @smoke
 Scenario: Install the Serverless Operator from Operator Hub page : Kn-01-TC01, Kn-01-TC02
    Given user is at OpenShift Serverless Operator subscription page
    When user installs the Serverless operator with default values
@@ -39,7 +39,7 @@ Scenario: Install the Serverless Operator from Operator Hub page : Kn-01-TC01, K
    And Installed operators page will contain "OpenShift Serverless Operator"
 
 
-@regression, @knative-smoke
+@regression, @smoke
 Scenario: Install the knative eventing operator : Kn-07-TC01, Kn-07-TC02
    Given cluster is installed with kantive serverless operator
    And user is on the knative-eventing namespace
@@ -50,7 +50,7 @@ Scenario: Install the knative eventing operator : Kn-07-TC01, Kn-07-TC02
    Then Event sources card display in +Add page in dev perspecitve
 
 
-@regression, @knative-smoke
+@regression, @smoke
 Scenario: Install the knative apache camel operator : Kn-08-TC01
    Given cluster is installed with knative serverless and eventing operators
    And user is at Operator Hub page with the header name "OperatorHub"
@@ -59,7 +59,7 @@ Scenario: Install the knative apache camel operator : Kn-08-TC01
    And page will contain knative apache camel operator
 
 
-@regression, @knative-smoke, @manual
+@regression, @smoke, @manual
 Scenario: Install the dynamic event operator : Kn-09-TC01, Kn-09-TC02
    Given cluster is installed with knative serverless operator
    And user logged into the cluster via cli
@@ -74,7 +74,7 @@ Scenario: Uninstall the Knative serverless operator from Operator Hub page
    Given user is at OpenShift Serverless Operator subscription page
 
 
-@regression, @knative-smoke
+@regression, @smoke
 Scenario: Install the Che Operator from Operator Hub page : CRW-01-TC01
    Given user is at Eclipse che Operator subscription page
    When user installs the Eclipse che operator with default values
