@@ -47,6 +47,7 @@ Given('user is at the project namespace {string} in dev perspecitve', (projectNa
 Given('openshift cluster is installed with knative operator', () => {
   perspective.switchTo(switchPerspective.Administrator);
   perspective.verifyPerspective('Administrator');
+  cy.wait(5000);
   operatorsPage.verifyOperatorInNavigationMenu('Serverless');
 });
 

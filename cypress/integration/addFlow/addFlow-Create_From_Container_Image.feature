@@ -4,6 +4,7 @@ Feature: Create Application from Container image file
 Background:
     Given user is at dev perspecitve
     And open project namespace "aut-addflow-containerImage-demo"
+    And user is at Add page
 
 
 @regression
