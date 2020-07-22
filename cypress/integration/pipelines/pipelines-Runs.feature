@@ -3,7 +3,7 @@ Feature: Pipeline Runs
 
 Background:
     Given openshift cluster is installed with pipeline operator
-    And user is at the project namespace "aut-mb-pipelines-runs-demo-4" in dev perspecitve
+    And user is at the project namespace "aut-mb-pipelines-runs-demo-1" in dev perspecitve
     And user is at pipelines page
 
 
@@ -30,7 +30,7 @@ Scenario Outline: Start the pipeline with one resource : P-04-TC03, P-05- TC01, 
 
 Examples:
 | pipeline_name             | task_name        |
-| pipe-task-with-resoruce-1 | openshift-client |
+| pipe-task-with-resoruce-2 | openshift-client |
 
 
 @regression, @smoke

@@ -2,8 +2,7 @@ Feature: Helm Chart
     User will be able to navigate to Helm tab
 
 Background:
-    Given user logged into the openshift application
-    And user is at developer perspecitve
+    Given user is at developer perspecitve
 
 
 @regression, @smoke
@@ -17,10 +16,10 @@ Scenario: Open the Helm tab on the navigation bar when helm charts are absent: H
 
 @regression, @smoke
 Scenario: Install Helm Chart: HR-02-TC01
-    Given user is at +Add page
+    Given user is at Add page
     When user clicks on the Helm Chart card on the +Add page
-    And user searches for the 'Node-ex-k' helm chart
-    And user clicks on the 'Node-ex-k' helm chart card
+    And user searches for the "Node-ex-k" helm chart
+    And user clicks on the "Node-ex-k" helm chart card
     And user clicks on the Install Helm Chart button
     And user clicks on the Install button
     Then user is redirected to Topology page
@@ -36,7 +35,7 @@ Scenario: Open the Helm tab on the navigation bar when helm charts are present: 
 
 
 @regression
-Scenario: Enable the deployed helm charts' filter: HR-11-TC02
+Scenario: Enable the deployed helm charts" filter: HR-11-TC02
     Given user is at the Helm page
     When user clicks on the filter drop down menu
     And user selects checkbox for the Deployed Helm charts
@@ -45,7 +44,7 @@ Scenario: Enable the deployed helm charts' filter: HR-11-TC02
 
 
 @regression
-Scenario: Enable the failed helm charts' filter: HR-11-TC03
+Scenario: Enable the failed helm charts" filter: HR-11-TC03
     Given user is at the Helm page
     When user clicks on the filter drop down menu
     And user selects checkbox for the Failed Helm charts
@@ -54,7 +53,7 @@ Scenario: Enable the failed helm charts' filter: HR-11-TC03
 
 
 @regression
-Scenario: Enable the other helm charts' filter: HR-11-TC04
+Scenario: Enable the other helm charts" filter: HR-11-TC04
     Given user is at the Helm page
     When user clicks on the filter drop down menu
     And user selects checkbox for the Other Helm charts
@@ -64,7 +63,7 @@ Scenario: Enable the other helm charts' filter: HR-11-TC04
 
 @regression
 Scenario: Select all filters: HR-11-TC05
-    Given user is at Helm page
+    Given user is at the Helm page
     When user clicks on the filter drop down menu 
     And user selects checkbox for the Deployed Helm charts
     And user selects checkbox for the Failed Helm charts
@@ -83,14 +82,14 @@ Scenario: Clear all filters: HR-11-TC06
 
 @regression
 Scenario: Search for the Helm Chart: HR-11-TC07
-    Given user is at Helm page
+    Given user is at the Helm page
     When user searches for a helm chart
     Then the helm charts with that search name will be shown
 
 
 @regression, @smoke
 Scenario: Click on the helm chart name to open the helm release details page: HR-11-TC08
-    Given user is at Helm page
+    Given user is at the Helm page
     When user clicks on the helm release name
     Then user will see the Details page opened
     And user will see the Resources tab

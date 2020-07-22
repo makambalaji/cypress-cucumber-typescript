@@ -92,6 +92,30 @@ export const containerImageObj = {
   }
 }
 
+export const catalogPageObj = {
+  search: 'input[placeholder="Filter by keyword..."]',
+  create: 'button[type="submit"]',
+  sidePane: {
+    dialog: '#pf-modal-part-0',
+    instantiateTemplate: 'a[title="Instantiate Template"]',
+    create: 'a[title="Create"]',
+  },
+  mariaDBTemplate: {
+    namespace: '#namespace',
+    title: 'h1.co-m-pane__heading',
+    memoryLimit: '#MEMORY_LIMIT',
+    imageSrreamNameSpace: '#NAMESPACE',
+    databaseServiceName: '#DATABASE_SERVICE_NAME',
+    mariaDBConnectionUserName: '#MYSQL_USER',
+    cancel: '#cancel',
+  },
+  createKnativeServing: {
+    logo: 'h1.co-clusterserviceversion-logo__name__clusterserviceversion',
+    name: '#root_metadata_name',
+    labels: 'input[placeholder="app=frontend"]',
+  },
+}
+
 export const seelctCardFromOptions = (card: addOptions) => {
   switch (card) {
     case addOptions.Git:
@@ -227,30 +251,6 @@ export const containerImage = {
   cy.get(containerImageObj.imageSection.internalRegistryImageCheckBox).check(),
 }
 
-export const catalogPageObj = {
-  search: 'input[placeholder="Filter by keyword..."]',
-  create: 'button[type="submit"]',
-  sidePane: {
-    dialog: '#pf-modal-part-0',
-    instantiateTemplate: 'a[title="Instantiate Template"]',
-    create: 'a[title="Create"]',
-  },
-  mariaDBTemplate: {
-    namespace: '#namespace',
-    title: 'h1.co-m-pane__heading',
-    memoryLimit: '#MEMORY_LIMIT',
-    imageSrreamNameSpace: '#NAMESPACE',
-    databaseServiceName: '#DATABASE_SERVICE_NAME',
-    mariaDBConnectionUserName: '#MYSQL_USER',
-    cancel: '#cancel',
-  },
-  createKnativeServing: {
-    logo: 'h1.co-clusterserviceversion-logo__name__clusterserviceversion',
-    name: '#root_metadata_name',
-    labels: 'input[placeholder="app=frontend"]',
-  },
-}
-
 export const catalogPage = {
   search: (keyword: string) => cy.get(catalogPageObj.search).type(keyword),
   clickInstantiateButtonOnSidePane:() => {
@@ -271,4 +271,3 @@ export const yamlPage = {
   clickOnCreateButton:() => cy.get(catalogPageObj.create).click(),
   clickOnCancelButton:() => cy.get(catalogPageObj.mariaDBTemplate.cancel).click(),
 }
-

@@ -3,7 +3,7 @@ Feature: Perform the actions on Pipelines page
 
 Background:
     Given openshift cluster is installed with pipeline operator
-    And user is at the project namespace "aut-pipeline-actions-demo-3" in dev perspecitve
+    And user is at the project namespace "aut-pipeline-actions-demo-4" in dev perspecitve
 
 
 @regression, @smoke
@@ -13,14 +13,14 @@ Scenario Outline: Newly created pipeline details in Pipelines page : P-03-TC01
    When the user enters "<pipeline_name>" into the pipelines search bar
    Then pipelines table displayed with column names Name, Namespace, Last Run, Task Status, Last Run Status and Last Run Time
    And column Name display with value "<pipeline_name>"
-   And column Namespace display with value "aut-pipeline-actions-demo-2"
+   And column Namespace display with value "aut-pipeline-actions-demo-4"
    And columns Last Run, Task Run Status, Last Run Status, Last Run Time with values display "-"
    And Create Pipeline button is enabled
    And kebab menu is displayed
 
 Examples:
 | pipeline_name |
-| pipelines-abc |
+| pipelines-aaa |
 
 
 @regression
@@ -34,6 +34,7 @@ Scenario: Kebab menu options of newly created pipeline in Pipelines page : P-04-
 @regression, @smoke
 Scenario Outline: Pipelines Details page : P-03-TC01
    Given user is at pipelines page
+   And pipeline with name "<pipeline_name>" is present on Pipelines page
    When user clicks pipeline name "<pipeline_name>" on Pipelines page
    Then user redirects to Pipeline Details page with header name "<pipeline_name>"
    And user is able to see Details, YAML, Pipeline Runs, Parameters and Resources tabs
@@ -41,8 +42,8 @@ Scenario Outline: Pipelines Details page : P-03-TC01
    And Actions dropdown display in the top right corner of the page
 
 Examples:
-| pipeline_name   |
-| pipelines-three |
+| pipeline_name |
+| pipelines-bbb |
 
 
 @regression
@@ -74,11 +75,11 @@ Scenario Outline: Edit the Pipeline from pipelines Details page : P-08-TC01
    And user selects the option "Edit Pipeline" from Actions menu drop down
    Then user is at the Pipeline Builder page
    And Name field should be disabled
-   And Add Parameters link, Add Resources link, Task should be enabled
+   And Add Parameters, Add Resources, Task should be displayed
 
 Examples:
 | pipeline_name |
-| pipelines-three |
+| pipelines-ccc |
 
 
 @regression
@@ -93,8 +94,8 @@ Scenario Outline: Delete the Pipeline from pipelines Details page
    But "<pipeline_name>" should not be displayed on Pipelines page
 
 Examples:
-| pipeline_name  |
-| pipelines-four |
+| pipeline_name |
+| pipelines-ddd |
 
 
 @regression

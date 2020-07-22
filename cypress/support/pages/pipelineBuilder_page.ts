@@ -75,7 +75,8 @@ export const pipelineBuilderPage = {
   
     addResource: (resourceName: string, resourceType: string = 'Git') => {
       // cy.byButtonText('Add Resources').click();
-      cy.get('button[type="button"]').contains('Add').eq(1).click();
+      // cy.get('button[type="button"]').contains('Add').click();
+      cy.get('div.pf-c-form__group button[type="button"]').eq(1).click();
       cy.get(pipelineBuilderObj.addResources.name).type(resourceName);
       cy.selectByDropDownText(pipelineBuilderObj.addResources.resourceType, resourceType);
       // cy.get(pipelineBuilderObj.addResources.resourceType).click();

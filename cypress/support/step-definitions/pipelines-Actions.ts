@@ -5,13 +5,6 @@ import { pipelineDetailsPage } from '../pages/pipelineDetails_page';
 import { pipelineRunDetailsPage} from '../pages/pipelineRunDetails_page';
 import { naviagteTo } from '../pages/app';
 import { devNavigationMenu } from '../constants/global';
- 
-
-// beforeEach(function () {
-//   cy.fixture('pipelines/pipelines').then((pipelineName) => {
-//     this.pipelineName = pipelineName
-//   })
-// })
 
 When('the user enters {string} into the pipelines search bar', (pipelineName: string) => {
   pipelinesPage.search(pipelineName);
@@ -26,7 +19,7 @@ Then('column Name display with value {string}', (pipelineName: string) => {
 });
 
 Then('column Namespace display with value {string}', (projectNamespace: string) => {
-  pipelinesPage.verifyNameInPipelinesTable(projectNamespace);
+  pipelinesPage.verifyNameSpaceInPipelinesTable(projectNamespace);
 });
 
 Then('columns Last Run, Task Run Status, Last Run Status, Last Run Time with values display {string}', (a: string) => {
@@ -136,9 +129,9 @@ Then('Name field should be disabled', () => {
   cy.get('#form-input-name-field').should('be.disabled');
 });
 
-Then('Add Parameters link, Add Resources link, Task should be enabled', () => {
-  cy.byButtonText('Add Parameters').should('be.enabled');
-  cy.byButtonText('Add Resources').should('be.enabled');
+Then('Add Parameters, Add Resources, Task should be displayed', () => {
+  cy.byButtonText('Add').should('be.enabled');
+  cy.byButtonText('Add').eq(1).should('be.enabled');
   cy.get('div.odc-pipeline-vis-task').should('be.enabled');
 });
 

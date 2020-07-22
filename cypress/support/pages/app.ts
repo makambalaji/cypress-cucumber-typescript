@@ -92,23 +92,27 @@ export const projectNameSpace = {
 export const naviagteTo = (opt: devNavigationMenu) => {
   switch (opt) {
     case devNavigationMenu.Add: {
-      cy.byLegacyTestID('+Add-header').click();
+      cy.byLegacyTestID('+Add-header').click().then(() => {
       cy.titleShouldBe('Add');
+      });
       break;
     }
     case devNavigationMenu.Topology: {
-      cy.byLegacyTestID('topology-header').click();
+      cy.byLegacyTestID('topology-header').click().then(() => {
       cy.get('div.odc-topology').should('exist');
+      });
       break;
     }
     case devNavigationMenu.GitOps: {
-      cy.byLegacyTestID('gitops-header').click();
+      cy.byLegacyTestID('gitops-header').click().then(() => {
       cy.titleShouldBe('GitOps');
+      });
       break;
     }
     case devNavigationMenu.Monitoring: {
-      cy.byLegacyTestID('monitoring-header').click();
+      cy.byLegacyTestID('monitoring-header').click().then(() => {
       cy.titleShouldBe('Monitoring');
+      });
       break;
     }
     case devNavigationMenu.Builds: {
@@ -117,8 +121,9 @@ export const naviagteTo = (opt: devNavigationMenu) => {
       break;
     }
     case devNavigationMenu.Pipelines: {
-      cy.byLegacyTestID('pipeline-header').click();
-      cy.titleShouldBe('Pipelines');
+      cy.byLegacyTestID('pipeline-header').click()
+        cy.wait(5000);
+        cy.titleShouldBe('Pipelines');
       break;
     }
     case devNavigationMenu.Search: {
@@ -137,12 +142,12 @@ export const naviagteTo = (opt: devNavigationMenu) => {
     }
     case devNavigationMenu.ConfigMaps: {
       cy.get('#ConfigMap').click();
-      cy.byLegacyTestID('resource-title').should('contain.text', 'Config Maps');
+      cy.titleShouldBe('Config Maps');
       break;
     }
     case devNavigationMenu.Secrets: {
       cy.get('#Secret').click();
-      cy.byLegacyTestID('resource-title').should('contain.text', 'Secrets');
+      cy.titleShouldBe('Secrets');
       break;
     }
     default: {

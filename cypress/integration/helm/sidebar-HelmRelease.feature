@@ -2,16 +2,15 @@ Feature: Helm Chart
     User will be able to open the context menu and side bar for the helm releases
 
 Background:
-    Given user logged into the openshift application
-    And user is at developer perspecitve
+    Given user is at developer perspecitve
 
 
 @regression, @smoke
 Scenario: Install Helm Chart: HR-02-TC01
-    Given user is at +Add page
+    Given user is at Add page
     When user clicks on the Helm Chart card on the +Add page
-    And user searches for the 'Node-ex-k' helm chart
-    And user clicks on the 'Node-ex-k' helm chart card
+    And user searches for the "Node-ex-k" helm chart
+    And user clicks on the "Node-ex-k" helm chart card
     And user clicks on the Install Helm Chart button
     And user clicks on the Install button
     Then user is redirected to Topology page
@@ -20,14 +19,14 @@ Scenario: Install Helm Chart: HR-02-TC01
 
 @regression, @smoke
 Scenario: Open Context Menu and check the actions available for Helm Release: HR-08-TC01
-    Given user is on the Topology page
+    Given user is at the topology page
     When user right clicks on the helm release
     Then user sees the context menu with actions
 
 
 @regression, @smoke
 Scenario: Open Side Bar for the Helm release: HR-10-TC01
-    Given user is on the Topology page
+    Given user is at the topology page
     When user clicks on the helm release
     Then user sees the sidebar for the helm release
 

@@ -1,5 +1,6 @@
 export const pipelineDetailsObj = {
   title: '[data-test-section-heading="Pipeline Details"]',
+  actionsMenu: '[data-test-id="actions-menu-button"]',
   details: {
     triggerTemplateSection: 'div.odc-trigger-template-list',
     triggerTemplateLink: 'a[data-test-id^="trigger-template-"]',
@@ -33,8 +34,10 @@ export const pipelineDetailsPage = {
   clickActionMenu: () => 
     cy.byLegacyTestID('actions-menu-button').click(),
   
-  selectActionFromActionsDropdown:(action: string) => 
-    cy.byTestActionID(action).click(),
+  selectActionFromActionsDropdown:(action: string) => {
+    cy.get(pipelineDetailsObj.actionsMenu).click();
+    cy.byTestActionID(action).click();
+  },
 
   verifyTriggerTemplateSection:() => 
     cy.get(pipelineDetailsObj.details.triggerTemplateSection).should('be.visible'),

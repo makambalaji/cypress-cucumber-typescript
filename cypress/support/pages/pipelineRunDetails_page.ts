@@ -17,6 +17,7 @@ export const pipelineRunDetailsPage = {
     verifyTitle:() => 
       cy.get('span[title="PipelineRun"]').should('be.visible'),
   
+    verifyPipelineRunStatus:(status: string) => cy.get('span.co-resource-item__resource-status').should('have.text', status),
     fieldDetails:(fieldName: string, expectedFieldValue: string) => {
       cy.get(pipelineRunDetailsObj.pipelineRunDetails).each(($el, index, list) => {
         if($el.text().includes(fieldName)) {

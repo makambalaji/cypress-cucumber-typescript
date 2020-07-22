@@ -66,12 +66,11 @@ export const pipelinesPage = {
   },
 
   verifyDefaultPipelineColumnValues: () => {
-    cy.get(pipelinesObj.pipelinesTable.columnValues).each(($el, index, list) => {
-      expect($el.eq(2).text()).equals('-');
-      expect($el.eq(3).text()).equals('-');
-      expect($el.eq(4).text()).equals('-');
-      expect($el.eq(5).text()).equals('-');
-    });
+    cy.get(pipelinesObj.pipelinesTable.columnValues).as('colValues');
+    cy.get('@colValues').eq(2).should('have.text', '-');
+    cy.get('@colValues').eq(3).should('have.text', '-');
+    cy.get('@colValues').eq(4).should('have.text', '-');
+    cy.get('@colValues').eq(5).should('have.text', '-');
   },
   
   selectAction:(action: pipelineActions)=> {
@@ -117,9 +116,7 @@ export const pipelinesPage = {
   },
 
   search:(pipelineName: string) => {
-    pipelinesPage.verifyPipelinesTableDisplay();
     cy.get(pipelinesObj.search, {timeout: 5000}).should('be.visible').type(pipelineName)
-    // cy.get(pipelinesObj.search).should('have.value', pipelineName);
     cy.get(pipelinesObj.pipelinesTable.table, {timeout: 2000}).should('be.visible');
   },
 
@@ -147,13 +144,13 @@ export const pipelinesPage = {
   verifyKebabMenu:() => cy.get(pipelinesObj.pipelinesTable.kebabMenu).should('be.visible'),
 
   verifyNameInPipelinesTable:(pipelineName: string) => {
-    cy.get('[title="Pipeline"]').next().then(($el) => {
+    cy.get('[title="Pipeline"]').next('a').then(($el) => {
       expect($el.text()).contains(pipelineName);
     });
   },
 
   verifyNameSpaceInPipelinesTable:(namespace: string) => {
-    cy.get('[title="Namespace"]').next().then(($el) => {
+    cy.get('[title="Namespace"]').next('a').then(($el) => {
       expect($el.text()).contains(namespace);
     });
   },
@@ -178,6 +175,7 @@ export const pipelinesPage = {
 
   },
 };
+
 export const startPipelineInPipelinsPage = {
   verifySections:() => {
     cy.get(pipelinesObj.startPipeline.sectionTitle).as('sectionTitle');
@@ -188,6 +186,7 @@ export const startPipelineInPipelinsPage = {
     cy.get(pipelinesObj.startPipeline.gitUrl).type(gitUrl);
     cy.get(pipelinesObj.startPipeline.revision).type(revision);
   },
+  start:() => cy.get(pipelinesObj.startPipeline.start).click(),
   clickShowCredentialOptions:() => cy.byButtonText('Show Credential Options').click(),
   clickHideCredentialOptions:() => cy.byButtonText('Hide Credential Options').click(),
   addSecret:(secretName: string, serverUrl: string, userName:string, password: string, provider: string = 'Git Server', authenticationType: string = 'Basic Authentication') => {
