@@ -86,12 +86,12 @@ Examples:
 Scenario Outline: Delete the Pipeline from pipelines Details page: P-03-TC13
    Given user is at pipelines page
    And pipeline with name "<pipeline_name>" is present on Pipelines page
-   When user searches with pipeline name "<pipeline_name>" on Pipelines page
+   When the user enters "<pipeline_name>" into the pipelines search bar
    And click pipeline name "<pipeline_name>" from searched results on Pipelines page
    And user selects the option "Delete Pipeline" from Actions menu drop down
-   And click "Delete" button on "Delete Pipeline?" popup
-   Then user is at pipelines page
-   But "<pipeline_name>" should not be displayed on Pipelines page
+   And click Delete button on Delete Pipeline? popup
+   Then user redirects to Pipelines page
+   But "<pipeline_name>" is not displayed on Pipelines page
 
 Examples:
 | pipeline_name |

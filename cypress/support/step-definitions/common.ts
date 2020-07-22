@@ -109,3 +109,7 @@ Then('user redirects to topology page', () => {
 Then('user redirects to Add page', () => {
   cy.titleShouldBe('Add');
 });
+
+Then('user redirects to Pipelines page', () => {
+  cy.titleShouldBe('Pipelines');
+});

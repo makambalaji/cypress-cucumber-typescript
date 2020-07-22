@@ -49,6 +49,10 @@ export const pipelinesObj = {
       crossIcon: '[data-test-id="close-icon"]',
 
     },
+  },
+  deletePipeline: {
+    delete: '#confirm-action',
+    cancel: '[data-test-id="modal-cancel-action"]',
   }
 }
 

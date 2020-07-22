@@ -1,5 +1,5 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { pipelinesPage } from '../pages/pipelines_page';
+import { pipelinesPage, pipelinesObj } from '../pages/pipelines_page';
 import { pipelineBuilderPage, pipelineBuilderObj } from '../pages/pipelineBuilder_page';
 import { pipelineDetailsPage } from '../pages/pipelineDetails_page';
 import { pipelineRunDetailsPage} from '../pages/pipelineRunDetails_page';
@@ -78,8 +78,9 @@ When('user selects the option {string} from Actions menu drop down', (action: st
   pipelineDetailsPage.selectActionFromActionsDropdown(action);
 });
 
-When('click {string} button on {string} popup', (a: string, b: string) => {
-  // TODO: implement step
+When('click Delete button on Delete Pipeline? popup', () => {
+  cy.alertTitleShouldBe('Delete Pipeline?');
+  cy.get(pipelinesObj.deletePipeline.delete).click();
 });
 
 When('user selects {string} from the kebab menu for {string}', (option: string, pipelineName:string) => {
@@ -137,7 +138,7 @@ Then('Add Parameters, Add Resources, Task should be displayed', () => {
   cy.get(pipelineBuilderObj.task).should('be.visible');
 });
 
-Then('{string} should not be displayed on Pipelines page', (pipelineName: string) => {
+Then('{string} is not displayed on Pipelines page', (pipelineName: string) => {
   cy.byLegacyTestID(pipelineName).should('not.be.visible');
 });
 
