@@ -88,6 +88,7 @@ Examples:
 | name            |
 | nodejs-ex-git-f |
 
+
 @regression, @smoke
 Scenario Outline: Search the created pipeline from Add options in pipelines page : P-02-TC03
    Given workload "<name>" is created from add page with pipeline

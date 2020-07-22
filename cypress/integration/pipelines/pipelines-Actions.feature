@@ -7,7 +7,7 @@ Background:
 
 
 @regression, @smoke
-Scenario Outline: Newly created pipeline details in Pipelines page : P-03-TC01  
+Scenario Outline: Newly created pipeline details in Pipelines page : P-03-TC12 
    Given user is at pipelines page
    And pipeline with name "<pipeline_name>" is present on Pipelines page
    When the user enters "<pipeline_name>" into the pipelines search bar
@@ -82,8 +82,8 @@ Examples:
 | pipelines-ccc |
 
 
-@regression
-Scenario Outline: Delete the Pipeline from pipelines Details page
+@regression, @smoke
+Scenario Outline: Delete the Pipeline from pipelines Details page: P-03-TC13
    Given user is at pipelines page
    And pipeline with name "<pipeline_name>" is present on Pipelines page
    When user searches with pipeline name "<pipeline_name>" on Pipelines page

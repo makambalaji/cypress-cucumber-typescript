@@ -20,7 +20,7 @@ Examples:
 
 
 @regression, @smoke
-Scenario Outline: Start the pipeline with one resource : P-04-TC03, P-05- TC01, P-05- TC02
+Scenario Outline: Start the pipeline with one resource : P-04-TC03
     Given pipeline "<pipeline_name>" consists of task "<task_name>" with one git resource
     When user selects "Start" option from kebab menu for pipeline "<pipeline_name>"
     And fills the details in Start Pipeline popup
@@ -31,6 +31,28 @@ Scenario Outline: Start the pipeline with one resource : P-04-TC03, P-05- TC01, 
 Examples:
 | pipeline_name             | task_name        |
 | pipe-task-with-resoruce-2 | openshift-client |
+
+
+@regression, @smoke
+Scenario Outline: Verify the pipeline status in "Last Run Status" column of Pipelines page after pipeline Run : P-05- TC01
+    Given pipeline run is displayed for "<pipeline_name>" with resource
+    When user navigates to Pipelines page
+    Then Last Run status of the "<pipeline_name>" displays as "succeded"
+
+Examples:
+| pipeline_name             |
+| pipe-task-with-resoruce-3 |
+
+
+@regression, @smoke
+Scenario Outline: Verify the pipeline status in side pane of topology page : P-05- TC02
+    Given pipeline run is displayed for "<pipeline_name>" with resource
+    When user navigates to Pipelines page
+    Then Last Run status of the "<pipeline_name>" displays as "succeded"
+
+Examples:
+| pipeline_name             |
+| pipe-task-with-resoruce-3 |
 
 
 @regression, @smoke
@@ -133,7 +155,7 @@ Scenario: Start LastRun from topolgy page : P-05- TC04
     And one pipeline run is completed with the workload
 
 
-@regression, @smoke
+@regression
 Scenario: Maximum pipeline runs display in topology page: P-05-TC05
     Given 5 pipeline runs are completed with the git workload
     And user is at the topolgy page

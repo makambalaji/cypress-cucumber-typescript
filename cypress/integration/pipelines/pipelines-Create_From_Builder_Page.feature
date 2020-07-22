@@ -45,6 +45,7 @@ Scenario: Pipeline Builder page : P-03-TC02
     And Create button is in disabled state
 
 
+@regression
 Scenario Outline: Create pipeline with git as resource type from pipeline builder page : "<tc_no>"
     Given user is at Pipeline Builder page 
     When user types pipeline name as "<pipeline_name>"
@@ -71,8 +72,8 @@ Scenario: Add Paramters to the pipeline in pipeline builder page : P-03-TC04
     And parameter details displayed in parameters section
 
 
-@regression, @smoke
-Scenario Outline: Create a pipeline with series tasks : P-03-TC03, P-07- TC03
+@regression
+Scenario Outline: Create a pipeline with series tasks : P-07-TC03
     Given user is at Pipeline Builder page 
     When user types pipeline name as "<pipeline_name>"
     And select "<task_name>" from Task drop down

@@ -6,7 +6,7 @@ Background:
     And open project namespace "aut-addflow-yaml-demo"
 
 
-@regression, @smoke
+@regression
 Scenario: Create a workload from Yaml file : A-07-TC01
     Given user is at Import YAML page
     When user clicks on create button wtih default yaml
