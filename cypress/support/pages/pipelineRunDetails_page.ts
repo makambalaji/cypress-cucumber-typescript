@@ -15,7 +15,7 @@ export const pipelineRunsObj = {
 
 export const pipelineRunDetailsPage = {
     verifyTitle:() => 
-      cy.get('span[title="PipelineRun"]').should('be.visible'),
+      cy.get('h2.co-section-heading span').should('have.text', 'Pipeline Run Details'),
   
     verifyPipelineRunStatus:(status: string) => cy.get('span.co-resource-item__resource-status').should('have.text', status),
     fieldDetails:(fieldName: string, expectedFieldValue: string) => {
@@ -52,7 +52,7 @@ export const pipelineRunDetailsPage = {
       cy.get('@tabName').eq(2).should('have.text', 'Logs');
     },
     verifyFields:() => {
-      cy.get('[data-test-id="resource-summary"] dt').as('fieldNames');
+      cy.get('[data-test-id="resource-summary"] dt .details-item__label').as('fieldNames');
       cy.get('@fieldNames').eq(0).should('have.text', 'Name');
       cy.get('@fieldNames').eq(1).should('have.text', 'Namespace');
       cy.get('@fieldNames').eq(2).should('have.text', 'Labels');
@@ -62,7 +62,7 @@ export const pipelineRunDetailsPage = {
       cy.get('div.odc-pipeline-run-details__customDetails dl dt').as('dynamicLinks')
       cy.get('@dynamicLinks').eq(0).should('have.text', 'Status');
       cy.get('@dynamicLinks').eq(1).should('have.text', 'Pipeline');
-      cy.get('@dynamicLinks').eq(1).should('have.text', 'Triggered by:');
+      cy.get('@dynamicLinks').eq(2).should('have.text', 'Triggered by:');
     },
     verifyActionsDropdown:() => cy.get(pipelineRunDetailsObj.actions).should('be.visible'),
     selectPipeline:() => cy.get(pipelineRunDetailsObj.details.pipelineLink, {timeout:3000}).click(),

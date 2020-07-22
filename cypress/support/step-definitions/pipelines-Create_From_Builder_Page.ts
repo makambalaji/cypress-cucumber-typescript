@@ -43,17 +43,17 @@ When('select {string} from Task drop down', (taskName: string) => {
   pipelineBuilderPage.selectTask(taskName);
 });
 
+When('user adds another task {string} in parallel', (taskName: string) => {
+  // add mouser hover on task to select + button
+  pipelineBuilderPage.seelctParallelTask(taskName);
+});
+
 When('clicks Create button on Pipeline Builder page', () => {
   pipelineBuilderPage.create();
 });
 
 Then('user redirects to Pipeline Details page with header name {string}', (pipelineName: string) => {
   pipelineDetailsPage.verifyTitle(pipelineName);
-});
-
-When('user adds another task {string} in parallel', (taskName: string) => {
-  // add mouser hover on task to select + button
-  pipelineBuilderPage.seelctParallelTask(taskName);
 });
 
 Then('tasks displayed parallel in pipelines section', () => {

@@ -35,7 +35,7 @@ export const pipelineDetailsPage = {
     cy.byLegacyTestID('actions-menu-button').click(),
   
   selectActionFromActionsDropdown:(action: string) => {
-    cy.get(pipelineDetailsObj.actionsMenu).click();
+    cy.get(pipelineDetailsObj.actionsMenu).should('be.enabled').click();
     cy.byTestActionID(action).click();
   },
 
@@ -64,9 +64,10 @@ export const triggerTemplateDetailsPage = {
     cy.get('@fieldNames').eq(3).should('have.text', 'Annotations');
     cy.get('@fieldNames').eq(4).should('have.text', 'Created At');
     cy.get('@fieldNames').eq(5).should('have.text', 'Owner');
-    cy.get('div.odc-dynamic-resource-link-list dl dt').as('dynamicLinks')
+    cy.get('div.odc-dynamic-resource-link-list dl dt').as('dynamicLinks');
+    cy.get('@dynamicLinks').should('have.length', 2);
     cy.get('@dynamicLinks').eq(0).should('have.text', 'Pipelines');
-    cy.get('@dynamicLinks').eq(1).should('have.text', 'Event Listeners');
+    cy.get('@dynamicLinks').eq(1).should('be.visible').and('have.text', 'Event Listeners');
   },
   verifyActionsDropdown:() => cy.get(triggerTemplateDetailsObj.actions).should('be.visible'),
   selectEventListener:() => cy.get(triggerTemplateDetailsObj.details.eventListenerLink, {timeout:3000}).click(),
@@ -88,8 +89,8 @@ export const eventListenerDetailsPage = {
     cy.get('@fieldNames').eq(4).should('have.text', 'Created At');
     cy.get('@fieldNames').eq(5).should('have.text', 'Owner');
     cy.get('div.odc-dynamic-resource-link-list dl dt').as('dynamicLinks')
-    cy.get('@dynamicLinks').eq(0).should('have.text', 'Trigger Templates');
-    cy.get('@dynamicLinks').eq(1).should('have.text', 'Trigger Bindings');
+    cy.get('@dynamicLinks').eq(0, {timeout:5000}).should('have.text', 'Trigger Templates');
+    cy.get('@dynamicLinks').eq(1, {timeout:5000}).should('have.text', 'Trigger Bindings');
   },
   verifyActionsDropdown:() => cy.get(eventListenerDetailsObj.actions).should('be.visible'),
   selectTriggerBindingLink:() => cy.get(eventListenerDetailsObj.details.triggerBindingLink).click(),
@@ -103,13 +104,12 @@ export const clusterTriggerBindingDetailsPage = {
     cy.get('@tabName').eq(1).should('have.text', 'YAML');
   },
   verifyFields:() => {
-    cy.get('[data-test-id="resource-summary"] dt').as('fieldNames');
+    cy.get('[data-test-id="resource-summary"] dt .details-item__label').as('fieldNames');
     cy.get('@fieldNames').eq(0).should('have.text', 'Name');
-    cy.get('@fieldNames').eq(1).should('have.text', 'Namespace');
-    cy.get('@fieldNames').eq(2).should('have.text', 'Labels');
-    cy.get('@fieldNames').eq(3).should('have.text', 'Annotations');
-    cy.get('@fieldNames').eq(4).should('have.text', 'Created At');
-    cy.get('@fieldNames').eq(5).should('have.text', 'Owner');
+    cy.get('@fieldNames').eq(1).should('have.text', 'Labels');
+    cy.get('@fieldNames').eq(2).should('have.text', 'Annotations');
+    cy.get('@fieldNames').eq(3).should('have.text', 'Created At');
+    cy.get('@fieldNames').eq(4).should('have.text', 'Owner');
   },
   verifyActionsDropdown:() => cy.get(clusterTriggerBindingDetailsObj.actions).should('be.visible'),
 }

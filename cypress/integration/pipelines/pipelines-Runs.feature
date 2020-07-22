@@ -35,7 +35,7 @@ Examples:
 
 @regression, @smoke
 Scenario Outline: Pipeline Run Details page for pipeline without resource : P-06-TC03
-    Given pipeline run is displayed for "<pipeline_name>"
+    Given pipeline run is displayed for "<pipeline_name>" without resource
     When user clicks Last Run value of "<pipeline_name>"
     Then user redirects to Pipeline Run Details page
     And user is able to see Details, YAML and Logs tabs
@@ -44,7 +44,7 @@ Scenario Outline: Pipeline Run Details page for pipeline without resource : P-06
 
 Examples:
 | pipeline_name             |
-| pipe-task-with-resoruce-2 |
+| pipe-task-with-resoruce-3 |
 
 
 @regression
@@ -55,39 +55,60 @@ Scenario: Actions on Pipeline Run Details page : P-06-TC06
 
 
 @regression
-Scenario: Rerun the Pipeline Run from pipeline run details page: P-06-TC01
+Scenario Outline: Rerun the Pipeline Run from pipeline run details page: P-06-TC01
     Given user is at the Pipeline Run Details page
-    When user selects "Rerun" option from the Actions menu 
+    When user selects Rerun option from the Actions menu 
     Then status displays as "Running" in pipeline run details page
+
+Examples:
+| pipeline_name             |
+| pipe-task-with-resoruce-5 |
 
 
 @regression, @smoke
-Scenario: Rerun the Pipeline Run from pipeline runs page : P-06-TC02
-    Given user is at the Pipeline Runs page
-    When user selects "Rerun" option from kebab menu 
-    Then page redirects to pipeline run details page
+Scenario Outline: Rerun the Pipeline Run from pipeline runs page : P-06-TC02
+    Given pipeline run is displayed for "<pipeline_name>" without resource
+    When user selects the Pipeline Run for "<pipeline_name>"
+    And user selects Rerun option from kebab menu of "<pipeline_name>"
+    Then page redirects to pipeline runs page
+
+Examples:
+| pipeline_name             |
+| pipe-task-with-resoruce-6 |
 
 
 @regression, @smoke
 Scenario Outline: Pipeline Run Details page for a pipeline with resource : P-06-TC04
-    Given pipeline run is displayed for "<pipeline_name>"
+    Given pipeline run is displayed for "<pipeline_name>" with resource
     When user clicks Last Run value of the pipeline "<pipeline_name>"
     Then user redirects to Pipeline Run Details page
     And Pipeline Resources field will be displayed
 
 Examples:
 | pipeline_name             |
-| pipe-task-with-resoruce-2 |
+| pipe-task-with-resoruce-4 |
 
 
 @regression, @smoke
-Scenario: Filter the pipeline runs based on status : P-06-TC07
+Scenario Outline: Filter the pipeline runs based on status : P-06-TC07
     Given user is at the Pipeline Runs page
+    When user filters the pipeline runs based on the "<status>"
+    Then user able to see the pipelineruns with "<status>"
+
+Examples:
+| status    |
+| Succeeded |
 
 
 @regression, @smoke
-Scenario: Start the pipeline from Pipeline Details page : P-04-TC04
-    Given user is at the Pipeline Runs page
+Scenario Outline: Start the pipeline from Pipeline Details page : P-04-TC04
+    Given pipeline "<pipeline_name>" is available in pipelines page
+    When user selects "Start" option from pipeline Details Actions menu
+    Then user redirects to Pipeline Run Details page
+
+Examples:
+| pipeline_name             |
+| pipe-task-with-resoruce-8 |
 
 
 @regression, @manual
@@ -114,9 +135,12 @@ Scenario: Start LastRun from topolgy page : P-05- TC04
 
 @regression, @smoke
 Scenario: Maximum pipeline runs display in topology page: P-05-TC05
-    Given user is at the topolgy page
-    And 5 pipeline runs are completed with the workload
-
+    Given 5 pipeline runs are completed with the git workload
+    And user is at the topolgy page
+    When user clicks on the node name
+    Then side pane is displayed with the pipelines section
+    And 3 pipeline runs are displayed under pipelines section of topolgy page
+ 
 
 @regression, @manual
 Scenario: Download the logs from Pipeline Details page after pipleine run: P-05-TC06

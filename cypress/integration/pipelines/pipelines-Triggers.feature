@@ -3,7 +3,7 @@ Feature: Triggers
 
 Background:
     Given openshift cluster is installed with pipeline operator
-    And user is at the project namespace "aut-triggers-demo-04" in dev perspecitve
+    And user is at the project namespace "aut-triggers-demo-3" in dev perspecitve
     And user is at pipelines page
 
 

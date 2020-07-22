@@ -1,6 +1,6 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { pipelinesPage } from '../pages/pipelines_page';
-import { pipelineBuilderPage } from '../pages/pipelineBuilder_page';
+import { pipelineBuilderPage, pipelineBuilderObj } from '../pages/pipelineBuilder_page';
 import { pipelineDetailsPage } from '../pages/pipelineDetails_page';
 import { pipelineRunDetailsPage} from '../pages/pipelineRunDetails_page';
 import { naviagteTo } from '../pages/app';
@@ -55,6 +55,7 @@ Given('pipeline with name {string} is present on Pipelines page', (pipelineName:
 Given('pipeline {string} consists of task {string} without parameters and resources', (pipelineName: string, b: string) => {
   pipelinesPage.createPipeline();
   pipelineBuilderPage.createPipelineFromBuilderPage(pipelineName);
+  naviagteTo(devNavigationMenu.Pipelines);
 });
 
 When('user clicks pipeline name {string} on Pipelines page', (pipelineName: string) => {
@@ -81,8 +82,9 @@ When('click {string} button on {string} popup', (a: string, b: string) => {
   // TODO: implement step
 });
 
-When('user selects {string} from the kebab menu', (a: string) => {
-  
+When('user selects {string} from the kebab menu for {string}', (option: string, pipelineName:string) => {
+  pipelinesPage.selectKebabMenu(pipelineName);
+  cy.byTestActionID(option).click();
 });
 
 When('the user clicks kebab menu for the pipeline {string}', (a: string) => {
@@ -130,9 +132,9 @@ Then('Name field should be disabled', () => {
 });
 
 Then('Add Parameters, Add Resources, Task should be displayed', () => {
-  cy.byButtonText('Add').should('be.enabled');
-  cy.byButtonText('Add').eq(1).should('be.enabled');
-  cy.get('div.odc-pipeline-vis-task').should('be.enabled');
+  cy.get(pipelineBuilderObj.add).eq(0).should('be.enabled');
+  cy.get(pipelineBuilderObj.add).eq(1).should('be.enabled');
+  cy.get(pipelineBuilderObj.task).should('be.visible');
 });
 
 Then('{string} should not be displayed on Pipelines page', (pipelineName: string) => {

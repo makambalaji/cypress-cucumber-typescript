@@ -172,7 +172,9 @@ export const addPage = {
     cy.get(addPageObj.sectionTitle).eq(5).should('have.text', 'Pipelines');
     cy.get(addPageObj.pipeline.infoMessage).should('have.text', message);
   },
-  enterGitUrl: (gitUrl: string) => cy.get(addPageObj.gitRepoUrl).type(gitUrl),
+  enterGitUrl: (gitUrl: string) => {
+    cy.get(addPageObj.gitRepoUrl).type(gitUrl)
+  },
   verifyPipelineCheckBox: () => cy.get(addPageObj.pipeline.addPipeline).should('be.visible'),
   enterAppName: (name: string) => {
     cy.get(addPageObj.nodeName).as('nodeName');

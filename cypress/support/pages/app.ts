@@ -122,7 +122,7 @@ export const naviagteTo = (opt: devNavigationMenu) => {
     }
     case devNavigationMenu.Pipelines: {
       cy.byLegacyTestID('pipeline-header').click()
-        cy.wait(5000);
+        // cy.wait(5000);
         cy.titleShouldBe('Pipelines');
       break;
     }

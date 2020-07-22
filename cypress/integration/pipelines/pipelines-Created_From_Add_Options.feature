@@ -3,7 +3,7 @@ Feature: Create Pipeline from Add Options
 
 Background:
     Given openshift cluster is installed with pipeline operator
-    And user is at the project namespace "aut-mb-add-options-demo-2" in dev perspecitve
+    And user is at the project namespace "aut-mb-add-options-demo-3" in dev perspecitve
 
 
 @regression
@@ -91,7 +91,7 @@ Examples:
 @regression, @smoke
 Scenario Outline: Search the created pipeline from Add options in pipelines page : P-02-TC03
    Given workload "<name>" is created from add page with pipeline
-   And user is at Pipelines page
+   And user is at pipelines page
    When the user enters "<name>" into the search bar in pipelines page
    Then pipeline name is displayed with the component name "<name>"
 

@@ -57,7 +57,7 @@ Cypress.Commands.add('byAppGroupName', (appName: string) => {
 });
 
 Cypress.Commands.add('byNodeName', (nodeName: string) => {
-  cy.get('g[data-type="workload"] g.odc-resource-icon').next().contains(nodeName);
+  cy.get('g[data-type="workload"] g.odc-resource-icon').next('text').contains(nodeName);
 });
 
 Cypress.Commands.add('selectRowByColumnName', (columnNumber: number, referenceRowValue: string, selector: string) => {
@@ -88,11 +88,7 @@ Cypress.Commands.add('selectKebabMenuOption', (kebabMenuOption: string) => {
 });
 
 Cypress.Commands.add('selectLinkInBreadCrumb', (linkName: string) => {
-  cy.get('nav[aria-label="Breadcrumb"] ol li').each(($el, index, list) => {
-    if($el.text().includes(linkName)) {
-      $el.find('a').click();
-    }
-  });
+  cy.get('nav[aria-label="Breadcrumb"] ol li a').contains(linkName).click();
 })
 
 before(() => {

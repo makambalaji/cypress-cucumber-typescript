@@ -1,4 +1,4 @@
-import { pipelineDetailsPage } from "./pipelineDetails_page";
+import { pipelineDetailsPage, pipelineDetailsObj } from "./pipelineDetails_page";
 
 export const pipelineBuilderObj = {
   title: '.odc-pipeline-builder-header h1',
@@ -8,6 +8,7 @@ export const pipelineBuilderObj = {
   sectionTitle: '.odc-pipeline-builder-page h2',
   create: '[data-test-id="submit-button"]',
   cancel: '[data-test-id="reset-button"]',
+  add: 'button.pf-c-button.pf-m-link.pf-m-inline',
   addParams: {
     name: '#form-input-params-0-name-field',
     description: '#form-input-params-0-description-field',
@@ -96,6 +97,7 @@ export const pipelineBuilderPage = {
       pipelineBuilderPage.enterPipelineName(pipelineName);
       pipelineBuilderPage.selectTask(taskName);
       pipelineBuilderPage.create();
+      cy.get(pipelineDetailsObj.title).should('be.visible')
   },
 
   createPipelineFromYamlPage: () => {
