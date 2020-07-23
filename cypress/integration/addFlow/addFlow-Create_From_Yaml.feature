@@ -3,7 +3,7 @@ Feature: Create Application from Yaml file
 
 Background:
     Given user is at dev perspecitve
-    And open project namespace "aut-addflow-yaml-demo"
+    And open project namespace "aut-addflow-yaml"
 
 
 @regression

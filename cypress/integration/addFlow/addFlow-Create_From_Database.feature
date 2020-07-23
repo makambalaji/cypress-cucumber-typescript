@@ -3,7 +3,7 @@ Feature: Create Application from Database
 
 Background:
     Given user is at dev perspecitve
-    And open project namespace "aut-addflow-database-demo-1"
+    And open project namespace "aut-addflow-database"
 
 
 @regression, @smoke

@@ -3,7 +3,7 @@ Feature: Create Pipeline from Add Options
 
 Background:
     Given openshift cluster is installed with pipeline operator
-    And user is at the project namespace "aut-mb-add-options-demo-3" in dev perspecitve
+    And user is at the project namespace "aut-pipelines-add-options" in dev perspecitve
 
 
 @regression

@@ -15,7 +15,7 @@ export const pipelineRunsObj = {
 
 export const pipelineRunDetailsPage = {
     verifyTitle:() => 
-      cy.get('h2.co-section-heading span').should('have.text', 'Pipeline Run Details'),
+      cy.get('h2.co-section-heading span', {timeout:9000}).should('have.text', 'Pipeline Run Details'),
   
     verifyPipelineRunStatus:(status: string) => cy.get('span.co-resource-item__resource-status').should('have.text', status),
     fieldDetails:(fieldName: string, expectedFieldValue: string) => {

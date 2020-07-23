@@ -3,7 +3,7 @@ Feature: Create Application from Container image file
 
 Background:
     Given user is at dev perspecitve
-    And open project namespace "aut-addflow-containerImage-demo"
+    And open project namespace "aut-addflow-containerImage"
     And user is at Add page
 
 
@@ -36,6 +36,7 @@ Scenario: Create the container image with internal registry : A-05-TC03
    And user clicks Create button on Deploy Image page
    Then page redirects to topology page
    And node is displayed with name "golang-app"
+
 
 @regression
 Scenario: Perform cancel operation on Container image form should redirects the user to Add page : A-05-TC04 

@@ -3,5 +3,5 @@ Feature: Create Application from Catalog file
 
 Background:
     Given user is at dev perspecitve
-    And open project namespace "AUT_AddFlow_Catalog_Demo"
+    And open project namespace "aut-addflow-catalog"
     And user is on Add page

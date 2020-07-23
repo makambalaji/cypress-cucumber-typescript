@@ -3,17 +3,26 @@ Feature: Create Application from Docker file
 
 Background:
     Given user is at dev perspecitve
-    And open project namespace "aut-addflow-docker-demo"
+    And open project namespace "aut-addflow-docker"
     And user is at Add page
 
 
 @regression
 Scenario: Dockerfile details after entering git repo url: A-06-TC01
-    Given user is on Import from Docker file page
+   Given user is on Import from Docker file page
+   When user types Git Repo url as "<git_url>"
+   Then git url gets Validated
+   And Application name displays as "<app_name>"
+   And Name displays as "<name>"
+
+Examples:
+| docker_git_url                           | app_name           | name           |
+| https://github.com/sclorg/dancer-ex.git  | dancer-ex-git-app  | dancer-ex-git  |
+| https://github.com/sclorg/cakephp-ex.git | cakephp-ex-git-app | cakephp-ex-git |
 
 
 @regression, @smoke
-Scenario Outline: Create a workload from Docker file card on Add page : A-06-TC03
+Scenario Outline: Create a workload from Docker file with "<resource_type>" as resource type : A-06-TC03, A-06-TC04
    Given user is on Import from Docker file page
    When user type docker git url as "<docker_git_url>"
    And select "<resource_type>" radio button in Resoruce type section
@@ -28,6 +37,9 @@ Examples:
 
 
 @regression
-Scenario: Perform cancel operation on Dockerfile form should redirects the user to Add page : A-05-TC02
-    Given user is on Import from Docker file page
-
+Scenario: Perform cancel operation on Dockerfile form should redirects the user to Add page : A-06-TC02
+   Given user is on Import from Docker file page
+   When user type docker git url as "https://github.com/sclorg/nodejs-ex.git"
+   And select "Deployment" radio button in Resoruce type section
+   And click Cancel button on Add page   
+   Then user redirects to Add page

@@ -3,7 +3,7 @@ Feature: Perform the actions on Pipelines page
 
 Background:
     Given openshift cluster is installed with pipeline operator
-    And user is at the project namespace "aut-pipeline-actions-demo-2" in dev perspecitve
+    And user is at the project namespace "aut-pipeline-actions" in dev perspecitve
 
 
 @regression, @smoke
@@ -13,7 +13,7 @@ Scenario Outline: Newly created pipeline details in Pipelines page : P-03-TC12
    When the user enters "<pipeline_name>" into the pipelines search bar
    Then pipelines table displayed with column names Name, Namespace, Last Run, Task Status, Last Run Status and Last Run Time
    And column Name display with value "<pipeline_name>"
-   And column Namespace display with value "aut-pipeline-actions-demo-2"
+   And column Namespace display with value "aut-pipeline-actions"
    And columns Last Run, Task Run Status, Last Run Status, Last Run Time with values display "-"
    And Create Pipeline button is enabled
    And kebab menu is displayed

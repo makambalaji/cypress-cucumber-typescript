@@ -99,7 +99,7 @@ export const naviagteTo = (opt: devNavigationMenu) => {
     }
     case devNavigationMenu.Topology: {
       cy.byLegacyTestID('topology-header').click().then(() => {
-      cy.get('div.odc-topology').should('exist');
+      cy.get('div.odc-topology', {timeout:9000}).should('exist');
       });
       break;
     }

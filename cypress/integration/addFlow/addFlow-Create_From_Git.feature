@@ -4,7 +4,7 @@ Feature: Create Application from git form
 Background:
     Given user is at dev perspecitve
     And user is at Add page
-    And open project namespace "aut-addflow-git-demo-5"
+    And open project namespace "aut-addflow-git"
 
 @regression
 Scenario Outline: Builder iamge display for git url "<git_url>" : A-04-TC01
@@ -31,7 +31,7 @@ Examples:
 
 
 @regression, @smoke
-Scenario Outline: Add new git workload with new application for resoruce type "<resource_type>" : A-04-TC02
+Scenario Outline: Add new git workload with new application for resoruce type "<resource_type>" : A-04-TC02, A-04-TC13
    Given user is at Import from git page
    When user types Git Repo url as "<git_url>"
    And selects "<resource_type>" resource type
@@ -145,7 +145,7 @@ Scenario Outline: Create a git workload with advanced option "Resource Limits" :
 
 Examples:
 | git_url                                 | cpu_request | cpu_limit | memory_request | memory_limit | name            |
-| https://github.com/sclorg/nodejs-ex.git | 10          | 12        | 200            | 300          | nodejs-ex.git-3 |
+| https://github.com/sclorg/nodejs-ex.git | 10          | 12        | 200            | 300          | nodejs-ex.git-4 |
 
 
 @regression
@@ -160,7 +160,7 @@ Scenario Outline: Create a git workload with advanced option "Scaling" : A-04-TC
 
 Examples:
 | git_url                                 | replica_set_value | name            |
-| https://github.com/sclorg/nodejs-ex.git | 5                 | nodejs-ex.git-4 |
+| https://github.com/sclorg/nodejs-ex.git | 5                 | nodejs-ex.git-5 |
 
 
 @regression
@@ -176,12 +176,21 @@ Scenario Outline: Create a git workload with advanced option "Labels" : A-04-TC1
 
 Examples:
 | git_url                                 | label_name   | name            |
-| https://github.com/sclorg/nodejs-ex.git | app=frontend | nodejs-ex.git-5 |
+| https://github.com/sclorg/nodejs-ex.git | app=frontend | nodejs-ex.git-6 |
 
 
 @regression
 Scenario: Create a git workload with advanced option "Health Checks" : A-04-TC12
+   Given user is at Import from git page
+   When user types Git Repo url as "<git_url>"
+   And type name as "<name>" in General section
+   And click "Health Checks" link in Advanced Options section
+   And fill the Readiness Probe details
+   And fill the Liveness Probe details
+   And fill the Startup Probe details
+   And click Create button on Add page
+   Then user redirects to topology page
 
-
-@regression
-Scenario: Create a git workload with resource type "Deployment config": A-04-TC13
+Examples:
+| git_url                                 | label_name   | name            |
+| https://github.com/sclorg/nodejs-ex.git | app=frontend | nodejs-ex.git-7 |   

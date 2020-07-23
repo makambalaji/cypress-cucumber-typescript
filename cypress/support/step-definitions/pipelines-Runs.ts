@@ -127,7 +127,7 @@ Given('user is at the Pipeline Details page', () => {
   
 });
 
-Given('pipeline string is executed for 3 times', (pipelineName: string) => {
+Given('pipeline {string} is executed for 3 times', (pipelineName: string) => {
   pipelinesPage.createPipeline();
   pipelineBuilderPage.createPipelineFromBuilderPage(pipelineName);
   pipelineDetailsPage.clickActionMenu();

@@ -3,7 +3,7 @@ Feature: Workspaces
 
 Background:
     Given openshift cluster is installed with pipeline operator
-    And user is at the project namespace "aut-workspaces-demo" in dev perspecitve
+    And user is at the project namespace "aut-pipeline-workspaces" in dev perspecitve
 
 
 @regression, @smoke, @manual
