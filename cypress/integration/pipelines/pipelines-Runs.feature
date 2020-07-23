@@ -37,7 +37,7 @@ Examples:
 Scenario Outline: Verify the pipeline status in "Last Run Status" column of Pipelines page after pipeline Run : P-05- TC01
     Given pipeline run is displayed for "<pipeline_name>" with resource
     When user navigates to Pipelines page
-    Then Last Run status of the "<pipeline_name>" displays as "succeded"
+    Then Last Run status of the "<pipeline_name>" displays as "Succeeded"
 
 Examples:
 | pipeline_name             |
@@ -47,12 +47,12 @@ Examples:
 @regression, @smoke
 Scenario Outline: Verify the pipeline status in side pane of topology page : P-05- TC02
     Given pipeline run is displayed for "<pipeline_name>" with resource
-    When user navigates to Pipelines page
-    Then Last Run status of the "<pipeline_name>" displays as "succeded"
+    When user navigates to Topology page
+    Then Last Run status of the "<pipeline_name>" displays as "Succeeded"
 
 Examples:
 | pipeline_name             |
-| pipe-task-with-resoruce-3 |
+| pipe-task-with-resoruce-9 |
 
 
 @regression, @smoke
@@ -65,8 +65,8 @@ Scenario Outline: Pipeline Run Details page for pipeline without resource : P-06
     And Actions dropdown display on the top right corner of the page
 
 Examples:
-| pipeline_name             |
-| pipe-task-with-resoruce-3 |
+| pipeline_name              |
+| pipe-task-with-resoruce-03 |
 
 
 @regression
@@ -113,13 +113,14 @@ Examples:
 
 @regression, @smoke
 Scenario Outline: Filter the pipeline runs based on status : P-06-TC07
-    Given user is at the Pipeline Runs page
+    Given pipeline "<pipeline>" is executed for 3 times
+    And user is at the Pipeline Runs page
     When user filters the pipeline runs based on the "<status>"
     Then user able to see the pipelineruns with "<status>"
 
 Examples:
-| status    |
-| Succeeded |
+| pipeline_name              | status    |
+| pipe-task-without-resoruce | Succeeded |
 
 
 @regression, @smoke

@@ -81,4 +81,30 @@ export const pipelineRunDetailsPage = {
       });
     },
     verifyPipelineRunsTableDisplay:() => cy.get(pipelineRunsObj.pipelineRunsTable.table).should('be.visible'),
+    filterByStatus:(status: string = 'Succeeded') => {
+      cy.byLegacyTestID('filter-dropdown-toggle').click();
+      switch (status) {
+        case 'Succeeded': {
+          cy.get('#Succeeded').click();
+          break;
+        }
+        case 'Running': {
+          cy.get('#Running').click();
+          break;
+        }
+        case 'Failed': {
+          cy.get('#Failed').click();
+          break;
+        }
+        case 'Cancelled': {
+          cy.get('#Cancelled').click();
+          break;
+        }
+        default: {
+          throw new Error('operator is not available');
+        }
+      }
+      cy.byButtonText('Clear all filters').should('be.visible');      
+    }
+    
   }

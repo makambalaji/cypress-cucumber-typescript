@@ -120,7 +120,7 @@ export const pipelinesPage = {
   },
 
   search:(pipelineName: string) => {
-    cy.get(pipelinesObj.search, {timeout: 5000}).should('be.visible').type(pipelineName)
+    cy.get(pipelinesObj.search, {timeout: 5000}).should('be.visible').clear().type(pipelineName)
     cy.get(pipelinesObj.pipelinesTable.table, {timeout: 2000}).should('be.visible');
   },
 
@@ -159,6 +159,10 @@ export const pipelinesPage = {
     });
   },
 
+  verifyLastRunStatusInPipelinesTable:(lastRunStatus: string) => {
+    cy.get('tbody td:nth-child(5) span span').should('have.text', lastRunStatus);
+  },
+
   verifyOptionInKebabMenu:(option:string) => {
     // cy.get('div.pf-c-dropdown button').contains('[data-test-id="actions-menu-button"]').click();
     cy.get('ul.pf-c-dropdown__menu li button').each(($el, index, list) => {
@@ -187,8 +191,18 @@ export const startPipelineInPipelinsPage = {
     cy.get('@sectionTitle').eq(1).should('have.text', 'Advanced Options');
   },
   addGitResource:(gitUrl: string, revision:string = 'master') => {
-    cy.get(pipelinesObj.startPipeline.gitUrl).type(gitUrl);
-    cy.get(pipelinesObj.startPipeline.revision).type(revision);
+    cy.get('form div.odc-pipeline-resource-dropdown').then(($el) => {
+      if($el.attr('disabled') == "disabled"){
+        cy.get(pipelinesObj.startPipeline.gitUrl).type(gitUrl);
+        cy.get(pipelinesObj.startPipeline.revision).type(revision);
+      }
+      else {
+        $el.find('button').click();
+        cy.get('button[role="option"]').eq(0).click();
+        cy.get(pipelinesObj.startPipeline.gitUrl).type(gitUrl);
+        cy.get(pipelinesObj.startPipeline.revision).type(revision);
+      }
+    });
   },
   start:() => cy.get(pipelinesObj.startPipeline.start).click(),
   clickShowCredentialOptions:() => cy.byButtonText('Show Credential Options').click(),

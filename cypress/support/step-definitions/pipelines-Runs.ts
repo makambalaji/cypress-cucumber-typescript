@@ -26,7 +26,6 @@ Then('page redirects to pipeline run details page', () => {
 
 Then('Pipeline run status displays as {string}', (PipelineStatus: string) => {
   // pipelineRunDetailsPage.fieldDetails('Status', PipelineStatus);
-  
 });
 
 Then('pipeline run details for {string} display in Pipelines page', (pipelineName: string) => {
@@ -126,6 +125,44 @@ Then('page redirects to pipeline runs page', () => {
 
 Given('user is at the Pipeline Details page', () => {
   
+});
+
+Given('pipeline string is executed for 3 times', (pipelineName: string) => {
+  pipelinesPage.createPipeline();
+  pipelineBuilderPage.createPipelineFromBuilderPage(pipelineName);
+  pipelineDetailsPage.clickActionMenu();
+  cy.byTestActionID('Start').click();
+  pipelineRunDetailsPage.verifyTitle();
+  cy.byLegacyTestID('actions-menu-button').click();
+  cy.byTestActionID('Rerun').click();
+  cy.byLegacyTestID('actions-menu-button').click();
+  cy.byTestActionID('Rerun').click();
+  cy.selectLinkInBreadCrumb('Pipeline Runs');
+});
+
+Given('user is at the Pipeline Runs page', () => {
+  pipelienRunsPage.verifyTitle();
+});
+
+When('user filters the pipeline runs based on the {string}', (status: string) => {
+  pipelienRunsPage.filterByStatus(status);
+});
+
+Then('user able to see the pipelineruns with {string}', (status: string) => {
+  
+});
+
+Then ('Last Run status of the {string} displays as {string}', (pipelineName: string, lastRunStatus: string) => {
+  pipelinesPage.search(pipelineName);
+  pipelinesPage.verifyLastRunStatusInPipelinesTable(lastRunStatus);
+});
+
+When('user navigates to Pipelines page', () => {
+  naviagteTo(devNavigationMenu.Pipelines);
+});
+
+When('user navigates to Topology page', () => {
+  naviagteTo(devNavigationMenu.Topology);
 });
 
 Given('one pipeline run is completed with the workload', () => {

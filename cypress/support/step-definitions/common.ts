@@ -59,6 +59,11 @@ Given('user is at Add page', () => {
   naviagteTo(devNavigationMenu.Add);
 });
 
+Given('user is at Topology page', () => {
+  naviagteTo(menu.Topology);
+  topologyPage.verifyTopologyPage();
+});
+
 Given('user is at Developer Catlog page', () => {
   seelctCardFromOptions(addOptions.Catalog);
 });

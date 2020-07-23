@@ -59,9 +59,18 @@ export const pipelineBuilderPage = {
     seelctParallelTask:(taskName: string) => {
       // cy.get('.odc-pipeline-vis-task__content').invoke('show')
       // cy.contains('+').click()
-      cy.mouseHoverAndClick('.odc-pipeline-vis-task__content', 'g.odc-plus-node-decorator ');
-      cy.byTestActionID(taskName).click();
+      cy.mouseHover('.odc-pipeline-vis-task__content');
+      cy.get('g.odc-plus-node-decorator').eq(2).click();
+      pipelineBuilderPage.selectTask(taskName);
     },      
+
+    seelctSeriesTask:(taskName: string) => {
+      // cy.get('.odc-pipeline-vis-task__content').invoke('show')
+      // cy.contains('+').click()
+      cy.mouseHover('.odc-pipeline-vis-task__content');
+      cy.get('g.odc-plus-node-decorator').eq(0).click();
+      pipelineBuilderPage.selectTask(taskName);
+    },
 
     addParameters: (
       paramName: string,

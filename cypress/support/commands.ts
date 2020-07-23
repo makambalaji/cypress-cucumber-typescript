@@ -12,7 +12,7 @@ declare global {
       byAppGroupName(appName: string): Chainable<Element>;
       byNodeName(nodeName: string): Chainable<Element>;
       selectRowByColumnName(columnNumber: number, referenceRowValue: string, selector: string): Chainable<Element>;
-      mouseHoverAndClick(selector: string, element: string): Chainable<Element>;
+      mouseHover(selector: string): Chainable<Element>;
       titleShouldBe(title:string): Chainable<Element>;
       alertTitleShouldBe(title:string): Chainable<Element>;
       selectLinkInBreadCrumb(linkName: string): Chainable<Element>;
@@ -70,9 +70,8 @@ Cypress.Commands.add('selectRowByColumnName', (columnNumber: number, referenceRo
   });
 })
 
-Cypress.Commands.add('mouseHoverAndClick', (selector: string, element: string) => {
+Cypress.Commands.add('mouseHover', (selector: string) => {
   cy.get(selector).invoke('show').should('be.visible').trigger('mouseover');
-  cy.get(element).click();
 });
 
 Cypress.Commands.add('titleShouldBe', (title: string) => {

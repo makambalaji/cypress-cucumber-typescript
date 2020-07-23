@@ -60,16 +60,11 @@ Then('created workload {string} is present in topology page', (name: string) => 
   topologyPage.verifyWorkloadInTopologyPage(name);
 });
 
-Given('user is at Topology page', () => {
-  naviagteTo(menu.Topology);
-  topologyPage.verifyTopologyPage();
-});
-
 Given('{string} component is added to namespace', (componentName: string) => {
   topologyPage.verifyWorkloadInTopologyPage(componentName)
 });
 
-When('the user enters {string} into the search bar', (name: string) => {
+When('the user enters {string} into the search bar in topology page', (name: string) => {
   topologyPage.search(name);
 });
 
