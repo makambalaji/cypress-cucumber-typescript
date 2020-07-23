@@ -87,6 +87,28 @@ export const projectNameSpace = {
   verifyMessage: (message: string) => {
     cy.get('h2').should('contain.text', message);
   },
+
+  deleteProjectNameSpace:(requester: string = 'kube:admin') => {
+    naviagteTo(devNavigationMenu.Project);
+    projectNameSpace.selectProject('all projects');
+    cy.get('data-test-id="item-filter"').type('aut-');
+    cy.get('tbody').should('exist');
+    cy.get('tr td:nth-child(4)').each(($el, index, $list) => {
+      const text = $el.text()
+      if(text.includes(requester)) {
+        cy.get('tbody tr').eq(index).find('td:nth-child(1) button').click();
+      }
+    });
+    // cy.get(`button[title="${projectName}"]`).click();
+    cy.get('[title="Project"]', {timeout:8000} ).should('be.visible');
+    cy.selectByDropDownText('[data-test-id="actions-menu-button"]', 'Delete Project');
+    cy.get('form [data-test-id="modal-title"]').should('contain.text', 'Delete Project?');
+    cy.get('p strong').eq(1).then(($el) => {
+      const text = $el.text()
+      cy.get('input[placeholder="Enter name"]').type(text);
+      cy.get('#confirm-action').should('be.enabled').click();
+    })
+  },
 };
 
 export const naviagteTo = (opt: devNavigationMenu) => {
@@ -99,7 +121,8 @@ export const naviagteTo = (opt: devNavigationMenu) => {
     }
     case devNavigationMenu.Topology: {
       cy.byLegacyTestID('topology-header').click().then(() => {
-      cy.get('div.odc-topology', {timeout:9000}).should('exist');
+      // cy.get('div.odc-topology', {timeout:18000}).should('be.visible');
+      cy.url().should('include', 'topology');
       });
       break;
     }
@@ -136,7 +159,7 @@ export const naviagteTo = (opt: devNavigationMenu) => {
       cy.titleShouldBe('Helm Releases');
       break;
     }
-    case devNavigationMenu.ProjectDetails: {
+    case devNavigationMenu.Project: {
       cy.byLegacyTestID('project-details-header').click();
       break;
     }

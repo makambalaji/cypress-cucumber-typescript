@@ -34,25 +34,14 @@ Examples:
 
 
 @regression, @smoke
-Scenario Outline: Verify the pipeline status in "Last Run Status" column of Pipelines page after pipeline Run : P-05- TC01
+Scenario Outline: Verify the pipeline status in "Last Run Status" column of Pipelines page after starting pipeline Run : P-05- TC01
     Given pipeline run is displayed for "<pipeline_name>" with resource
     When user navigates to Pipelines page
-    Then Last Run status of the "<pipeline_name>" displays as "Succeeded"
+    Then Last Run status of the "<pipeline_name>" displays as "Running"
 
 Examples:
 | pipeline_name             |
 | pipe-task-with-resoruce-3 |
-
-
-@regression, @smoke
-Scenario Outline: Verify the pipeline status in side pane of topology page : P-05- TC02
-    Given pipeline run is displayed for "<pipeline_name>" with resource
-    When user navigates to Topology page
-    Then Last Run status of the "<pipeline_name>" displays as "Succeeded"
-
-Examples:
-| pipeline_name             |
-| pipe-task-with-resoruce-9 |
 
 
 @regression, @smoke
@@ -113,7 +102,7 @@ Examples:
 
 @regression, @smoke
 Scenario Outline: Filter the pipeline runs based on status : P-06-TC07
-    Given pipeline "<pipeline>" is executed for 3 times
+    Given pipeline "<pipeline_name>" is executed for 3 times
     And user is at the Pipeline Runs page
     When user filters the pipeline runs based on the "<status>"
     Then user able to see the pipelineruns with "<status>"
@@ -183,3 +172,15 @@ Scenario: Start the pipeline wtih failed tasks: P-07- TC05
 Scenario: Start the pipeline wtih successful tasks: P-07- TC06
     Given user is at the Pipeline Details page
     And pi[peline run is available with failed tasks
+
+
+@regression, @smoke
+Scenario Outline: Verify the pipeline status in side pane of topology page : P-05- TC02
+    Given pipeline "<pipeline_name>" is created from git page
+    And pipeline run is displayed for "<pipeline_name>" in pipelines page
+    When user navigates to Topology page
+    Then Last Run status of the "<pipeline_name>" displays as "Succeeded" in topology page
+
+Examples:
+| pipeline_name             |
+| pipe-task-with-resoruce-9 |

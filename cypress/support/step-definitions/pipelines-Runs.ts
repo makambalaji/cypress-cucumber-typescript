@@ -5,6 +5,9 @@ import { pipelineRunDetailsPage, pipelienRunsPage } from '../pages/pipelineRunDe
 import { naviagteTo } from '../pages/app';
 import { devNavigationMenu } from '../constants/global';
 import { pipelineDetailsPage } from '../pages/pipelineDetails_page';
+import { seelctCardFromOptions, addPage } from '../pages/add_page';
+import { addOptions } from '../constants/add';
+import { topologyPage } from '../pages/topology_page';
 
 const store: Record<string, string> = {};
 
@@ -169,6 +172,36 @@ Given('one pipeline run is completed with the workload', () => {
   // TODO: implement step
 });
 
+Given('pipeline {string} is created from git page', (name: string) => {
+  naviagteTo(devNavigationMenu.Add);
+  seelctCardFromOptions(addOptions.Git);
+  addPage.verifyTitle('Import from git');
+  addPage.enterGitUrl('https://github.com/sclorg/nodejs-ex.git');
+  addPage.enterAppName(name);
+  addPage.selectAddPipeline();
+  addPage.createWorkload();
+  topologyPage.verifyTopologyPage();
+})
+
+Given('pipeline run is displayed for {string} in pipelines page', (name: string) => {
+  pipelinesPage.search(name);
+  pipelinesPage.selectKebabMenu(name);
+  cy.byTestActionID('Start').click();
+  cy.alertTitleShouldBe('Start Pipeline');
+  startPipeline.start();
+  pipelineRunDetailsPage.verifyTitle();
+  naviagteTo(devNavigationMenu.Pipelines);
+  pipelinesPage.search(name);
+  cy.get('[title="PipelineRun"]').should('be.visible');
+});
+
+Then('Last Run status of the {string} displays as {string} in topology page', (name: string, status: string) => {
+  topologyPage.search(name);
+  cy.byNodeName(name).click();
+  topologyPage.verifySidePane();
+  topologyPage.verifyPipelineRunStatus(status);
+});
+
 Given('5 pipeline runs are completed with the workload', () => {
   // TODO: implement step
 });
@@ -185,8 +218,8 @@ When('user clicks Actions menu on the top right corner of the page', () => {
   // TODO: implement step
 });
 
-When('user clicks Last Run value of the pipeline {string}', (a: string) => {
-  // TODO: implement step
+When('user clicks Last Run value of the pipeline {string}', (pipelineName: string) => {
+  pipelinesPage.seelctPipelineRun(pipelineName);
 });
 
 Then('Start Pipeline popup displays with Git Resources, Advanced Options sections', () => {

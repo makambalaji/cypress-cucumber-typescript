@@ -230,7 +230,7 @@ export const addPage = {
         break;
     }
   },
-  selectAddPipeline: () => cy.get(addPageObj.pipeline.addPipeline).check(),
+  selectAddPipeline: () => cy.get(addPageObj.pipeline.addPipeline).scrollIntoView().check(),
   createWorkload: () => cy.get(addPageObj.create).click(),
   verifyValidatedMessage:() => cy.get(addPageObj.gitSection.validatedMessage).should('have.text', 'Validated'),
   verifyBuilderImageDetectedMessage:() => cy.get(addPageObj.builderSection.builderImageDetected).should('be.visible'),

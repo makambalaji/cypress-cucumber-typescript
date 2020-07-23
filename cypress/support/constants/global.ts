@@ -5,7 +5,7 @@ export enum devNavigationMenu {
   Builds = 'Builds',
   Search = 'Search',
   Helm = 'Helm',
-  ProjectDetails = 'Project Details',
+  Project = 'Project',
   ProjectAccess = 'Project Access',
   Pipelines = 'Pipelines',
   ConfigMaps = 'Config Maps',

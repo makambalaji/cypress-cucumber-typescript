@@ -50,7 +50,9 @@ export const topologyPage = {
     getContextMenuForNode: (nodeName: string) => {
        
     },
-    verifySidePane: () => cy.get(topologyObj.sidePane.dialog).should('exist'),
+    verifySidePane: () => cy.get(topologyObj.sidePane.dialog).should('be.visible'),
 
-    verifyNodeInsSidePane:(nodeName: string) => cy.get(topologyObj.sidePane.title).should(nodeName)
+    verifyNodeInsSidePane:(nodeName: string) => cy.get(topologyObj.sidePane.title).should(nodeName),
+
+    verifyPipelineRunStatus:(status:string) => cy.get('li.list-group-item.pipeline-overview').next('li').find('span.co-icon-and-text span').should('have.text', status)
 }
