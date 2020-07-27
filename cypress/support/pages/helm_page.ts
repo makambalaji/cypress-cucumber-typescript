@@ -7,7 +7,21 @@ export const helmPageObj = {
     releaseNotesTab: '[data-test-id="horizontal-link-Release Notes"]',
     details: {
         title: '[data-test-section-heading="Helm Release Details"]',
-    }
+    },
+    upgradeHelmRelease: {
+        replicaCount: '#root_replicaCount',
+        chartVersion: '#form-dropdown-chartVersion-field',
+        upgrade: '#submit-button',
+        cancel: '#reset-button',
+    },
+    rollBackHelmRelease: {
+        revision1: '#form-radiobutton-revision-1-field',
+        rollBack: '[data-test-id="submit-button"]',
+        cancel: '[data-test-id="reset-button"]',
+    },
+    uninstallHelmRelease: {
+        releaseName: '#form-input-resourceName-field'
+    },
 }
 
 export const helmPage = {
@@ -21,7 +35,7 @@ export const helmPage = {
     clickHelmReleaseName:(name:string) => cy.get(`a[title="${name}"]`).click(),
 }
 
-export const helmDetailsPage= {
+export const helmDetailsPage = {
     verifyTitle:() => cy.get(helmPageObj.details.title).should('contain.text', 'Helm Release Details'),
     verifyResourcesTab:() => cy.get(helmPageObj.resourcesTab).should('be.visible'),
     verifyReleaseNotesTab:() => cy.byLegacyTestID('horizontal-link-Release Notes').should('be.visible'),
@@ -35,4 +49,34 @@ export const helmDetailsPage= {
             expect($el.text()).eq('Uninstall Helm Release');
         });
     },
+    verifyFieldValue:(fieldName: string, fieldValue: string) => {
+        cy.get('dl.co-m-pane__details dt').contains(fieldName).next('dd').should('contain.text', fieldValue);
+    },
+    uninstallHelmRelease:() => {
+        cy.byLegacyTestID('modal-title').should('contain.text', 'Uninstall Helm Release?');
+        cy.get('#confirm-action').click();
+    },
+    enterReleaseNameInUninstallPopup:(releaseName: string = 'nodejs-ex-k') => {
+        cy.byLegacyTestID('modal-title').should('contain.text', 'Uninstall Helm Release?');
+        cy.get(helmPageObj.uninstallHelmRelease.releaseName).type(releaseName);
+    }
+}
+
+export const upgradeHelmRelease = {
+    verifyTitle:() => cy.get('h1').contains('Upgrade Helm Release').should('be.visible'),
+    updateReplicaCount:() => cy.get(helmPageObj.upgradeHelmRelease.replicaCount).clear().type('2'),
+    upgradeChartVersion:() => {
+        cy.get(helmPageObj.upgradeHelmRelease.chartVersion).click();
+        cy.get('[data-test-dropdown-menu="0.1.1"]').click();
+        cy.byLegacyTestID('modal-title').should('contain.text', 'Change Chart Version?');
+        cy.get('#confirm-action').click();
+    },
+    clickOnUpgrade:() => {
+        cy.get(helmPageObj.upgradeHelmRelease.upgrade).click();
+    },
+}
+
+export const rollBackHelmRelease = {
+    selectRevision: () => cy.get(helmPageObj.rollBackHelmRelease.revision1).check(),
+    clickOnRollBack:() => cy.get(helmPageObj.rollBackHelmRelease.rollBack).click(),
 }

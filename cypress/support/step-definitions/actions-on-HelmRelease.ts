@@ -1,61 +1,52 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
+import { upgradeHelmRelease, helmDetailsPage, rollBackHelmRelease, helmPage } from '../pages/helm_page';
+import { topologyPage } from '../pages/topology_page';
 
-When('user right clicks on the Helm Release to open the context menu', () => {
-  // cy.byNodeName('nodejs-ex-k').rightclick();
+When('user right clicks on the Helm Release {string} to open the context menu', (nodeName: string) => {
+  cy.byNodeName(nodeName).trigger('contextmenu');
 });
 
-When('user clicks on the Upgrade action', () => {
-  // TODO: implement step
+When('user clicks on the {string} action', (actionName: string) => {
+  cy.byTestActionID(actionName).click();
 });
 
-When('user updates the chart Version', () => {
-  // TODO: implement step
+When('user upgrades the chart Version', () => {
+  upgradeHelmRelease.upgradeChartVersion();
 });
 
 When('user clicks on the upgrade button', () => {
-  // TODO: implement step
-});
-
-When('user clicks on the Rollback action', () => {
-  // TODO: implement step
-});
-
-When('user selects the version to Rollback', () => {
-  // TODO: implement step
-});
-
-When('user clicks on the rollback button', () => {
-  // TODO: implement step
-});
-
-When('user clicks on the Uninstall action', () => {
-  // TODO: implement step
-});
-
-When('user enters the release name', () => {
-  // TODO: implement step
-});
-
-When('user clicks on the Delete button', () => {
-  // TODO: implement step
+  upgradeHelmRelease.clickOnUpgrade();
 });
 
 Then('the helm release should get upgradaed', () => {
-  // TODO: implement step
+  helmDetailsPage.verifyTitle();
+  helmDetailsPage.verifyFieldValue('Chart Version', '0.1.1');
 });
 
 Then('user gets redirected to topology page', () => {
-  // TODO: implement step
+  topologyPage.verifyTopologyPage();
+});
+
+When('user selects the version to Rollback', () => {
+  rollBackHelmRelease.selectRevision();
+});
+
+When('user clicks on the rollback button', () => {
+  rollBackHelmRelease.clickOnRollBack();
 });
 
 Then('the helm release rollbacks to the version', () => {
-  // TODO: implement step
+  helmDetailsPage.verifyFieldValue('Revision', '2');
 });
 
-Then('user gets redircted to topology page', () => {
-  // TODO: implement step
+When('user enters the release name', () => {
+  helmDetailsPage.enterReleaseNameInUninstallPopup();
 });
 
-Then('Helm release gets deleted', () => {
-  // TODO: implement step
+When('user clicks on the Uninstall button', () => {
+  helmDetailsPage.uninstallHelmRelease();
+});
+
+Then('Helm release gets uninstalled', () => {
+  helmPage.verifyMessage();
 });
