@@ -15,12 +15,15 @@ export const topologyObj = {
     },
     sidePane: {
         dialog: '[role="dialog"]',
-        title: 'h1.co-m-pane__heading a'
+        title: 'h1.co-m-pane__heading a',
+        tabs: 'li.co-m-horizontal-nav__menu-item',
+        sectionTitle:'div.overview__sidebar-pane-bod h2',
+        fieldName: '[data-test-id="resource-summary"] dt',
     }
 }
 
 export const topologyPage = {
-    verifyTopologyPage: () => cy.get(topologyObj.graph.reset, {timeout:6000}).should('exist'),
+    verifyTopologyPage: () => cy.get(topologyObj.graph.reset, {timeout:9000}).should('exist'),
     verifyWorkloadInTopologyPage: (appName: string) => {
         cy.get(topologyObj.graph.switchView).as('switcher');
         cy.get('@switcher').click();
@@ -45,14 +48,11 @@ export const topologyPage = {
         }
     },
     search: (name: string)=> cy.get(topologyObj.search).type(name),
-
-    // cy.get('g.is-filtered').should('exist');
     getContextMenuForNode: (nodeName: string) => {
-       
     },
     verifySidePane: () => cy.get(topologyObj.sidePane.dialog).should('be.visible'),
-
     verifyNodeInsSidePane:(nodeName: string) => cy.get(topologyObj.sidePane.title).should(nodeName),
-
-    verifyPipelineRunStatus:(status:string) => cy.get('li.list-group-item.pipeline-overview').next('li').find('span.co-icon-and-text span').should('have.text', status)
+    verifyPipelineRunStatus:(status:string) => cy.get('li.list-group-item.pipeline-overview').next('li').find('span.co-icon-and-text span').should('have.text', status),
+    selectTabInSidePane:(tabName: string) => cy.get(topologyObj.sidePane.tabs).contains(tabName),
+    verifySectionInSidePane:(sectionTitle: string) => cy.get(topologyObj.sidePane.sectionTitle).contains(sectionTitle).should('be.visible'),
 }

@@ -3,6 +3,7 @@ Feature: Helm Chart
 
 Background:
     Given user is at developer perspecitve
+    And user is at the project namespace "aut-helm-navigation" in dev perspecitve
 
 
 @regression, @smoke

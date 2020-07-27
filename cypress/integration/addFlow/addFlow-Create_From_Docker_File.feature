@@ -27,7 +27,7 @@ Scenario Outline: Create a workload from Docker file with "<resource_type>" as r
    When user type docker git url as "<docker_git_url>"
    And select "<resource_type>" radio button in Resoruce type section
    And click Create button on Add page   
-   Then user redirects to topology page
+   Then user redirects to Topology page
    And created workload "<name>" is present in topology page
 
 Examples:

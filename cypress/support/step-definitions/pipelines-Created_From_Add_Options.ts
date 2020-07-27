@@ -50,7 +50,7 @@ When('click Create button on Add page', () => {
   addPage.createWorkload();
 });
 
-Then('user redirects to topology page', () => {
+Then('user redirects to Topology page', () => {
   topologyPage.verifyTopologyPage();
 });
 

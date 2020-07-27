@@ -99,6 +99,7 @@ export const catalogPageObj = {
     dialog: '#pf-modal-part-0',
     instantiateTemplate: 'a[title="Instantiate Template"]',
     create: 'a[title="Create"]',
+    installHelmChart:'a[title="Install Helm Chart"]',
     createHelmChart: 'a[title="Install Helm Chart"]',
   },
   mariaDBTemplate: {
@@ -270,13 +271,19 @@ export const catalogPage = {
     catalogPage.verifyDialog();
     cy.get(catalogPageObj.sidePane.create).click();
   },
+  clickInstallHelmChartOnSidePane:() => {
+    catalogPage.verifyDialog();
+    cy.get(catalogPageObj.sidePane.installHelmChart).click();
+  },
   clickOnCreateButton:() => cy.get(catalogPageObj.create).click(),
   clickOnCancelButton:() => cy.get(catalogPageObj.mariaDBTemplate.cancel).click(),
   selectOperatorBackedCheckBox:() => cy.byTestID('kind-cluster-service-version').check(),
   selectKnativeServingCard:() => cy.get('div.catalog-tile-pf-title').contains('Knative Serving').click(),
   selectHelmChartCard:(cardName: string) => cy.get('a div.catalog-tile-pf-title').contains(cardName).click(),
   clickOnInstallButton:() => {
-    cy.get(catalogPageObj.installHelmChart.install).click();
+    cy.get(catalogPageObj.installHelmChart.install).click().then(() => {
+      cy.get('div.co-m-loader', {timeout:15000}).should('not.be.visible')
+    });
   },
 }
 

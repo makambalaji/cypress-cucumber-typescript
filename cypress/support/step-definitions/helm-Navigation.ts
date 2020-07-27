@@ -1,19 +1,17 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-
-Given('user is at developer perspecitve', () => {
-  // TODO: implement step
-});
-
-Given('user is at the developer perspecitve', () => {
-  // TODO: implement step
-});
-
-Given('user is at Add page', () => {
-  // TODO: implement step
-});
+import { naviagteTo } from '../pages/app';
+import { devNavigationMenu } from '../constants/global';
+import { helmPage, helmPageObj, helmDetailsPage } from '../pages/helm_page';
+import { seelctCardFromOptions, catalogPage } from '../pages/add_page';
+import { addOptions } from '../constants/add';
+import { topologyPage } from '../pages/topology_page';
 
 Given('user is at the Helm page', () => {
-  // TODO: implement step
+  naviagteTo(devNavigationMenu.Helm);
+});
+
+Given('user is at the Helm page with one helm release', () => {
+  naviagteTo(devNavigationMenu.Helm);
 });
 
 Given('user has selected all filters', () => {
@@ -21,26 +19,30 @@ Given('user has selected all filters', () => {
 });
 
 When('user clicks on the Helm tab', () => {
-  // TODO: implement step
+  naviagteTo(devNavigationMenu.Helm);
 });
 
 When('user clicks on the Helm Chart card on the +Add page', () => {
-  // TODO: implement step
+  seelctCardFromOptions(addOptions.HelmChart);
 });
 
-When('user searches for the {string} helm chart', (a: string) => {
-  // TODO: implement step
+When('user searches for the {string} helm chart', (helmChartName: string) => {
+  catalogPage.search(helmChartName);
 });
 
-When('user clicks on the {string} helm chart card', (a: string) => {
-  // TODO: implement step
+When('user clicks on the {string} helm chart card', (helmChartName: string) => {
+  catalogPage.selectHelmChartCard(helmChartName);
 });
 
 When('user clicks on the Install Helm Chart button', () => {
-  // TODO: implement step
+  catalogPage.clickInstallHelmChartOnSidePane();
 });
 
 When('user clicks on the Install button', () => {
+  catalogPage.clickOnInstallButton();
+});
+
+Then('Topology page have the helm chart workload {string}', () => {
   // TODO: implement step
 });
 
@@ -48,8 +50,8 @@ When('user clicks on the filter drop down menu', () => {
   // TODO: implement step
 });
 
-When('user selects checkbox for the Deployed Helm charts', () => {
-  // TODO: implement step
+When('user selects checkbox for the Deployed Helm charts', (workloadname: string) => { 
+  topologyPage.verifyWorkloadInTopologyPage(workloadname);
 });
 
 When('user selects checkbox for the Failed Helm charts', () => {
@@ -68,32 +70,25 @@ When('user searches for a helm chart', () => {
   // TODO: implement step
 });
 
-When('user clicks on the helm release name', () => {
-  // TODO: implement step
+When('user clicks on the helm release name {string}', (helmChartName:string) => {
+  helmPage.search(helmChartName);
+  helmPage.clickHelmReleaseName(helmChartName);
 });
 
 Then('helm releases page will get opened', () => {
-  // TODO: implement step
+  cy.titleShouldBe('Helm Releases');
 });
 
 Then('user will see the message of no helm charts present', () => {
-  // TODO: implement step
+  helmPage.verifyMessage();
 });
 
 Then('user will get the link to install helm charts from developer catalog', () => {
-  // TODO: implement step
-});
-
-Then('user is redirected to Topology page', () => {
-  // TODO: implement step
-});
-
-Then('Topology page have the helm chart workload', () => {
-  // TODO: implement step
-});
+  helmPage.verifyInstallHelmLink();
+}); 
 
 Then('user will see the helm charts listed', () => {
-  // TODO: implement step
+  helmPage.verifyHelmReleasesDisplayed();
 });
 
 Then('the checkbox for the Deployed Helm chart is checked', () => {
@@ -129,33 +124,29 @@ Then('the helm charts with that search name will be shown', () => {
 });
 
 Then('user will see the Details page opened', () => {
-  // TODO: implement step
+  helmDetailsPage.verifyTitle();
 });
 
 Then('user will see the Resources tab', () => {
-  // TODO: implement step
+  helmDetailsPage.verifyResourcesTab();
 });
 
 Then('user will see the Revision History tab', () => {
-  // TODO: implement step
+  helmDetailsPage.verifyRevisionHistoryTab();
 });
 
 Then('user will see the Release Notes tab', () => {
-  // TODO: implement step
+  helmDetailsPage.verifyReleaseNotesTab();
 });
 
 Then('user will see the Actions drop down menu', () => {
-  // TODO: implement step
+  helmDetailsPage.verifyActionsDropdown();
 });
 
-Then('user sees the Upgrade action item', () => {
-  // TODO: implement step
+When('user clicks Actions menu in Helm Details page', () => {
+  helmDetailsPage.clickActionMenu();
 });
 
-Then('user sees the Rollback action item', () => {
-  // TODO: implement step
-});
-
-Then('user sees the Uninstall Helm Release action item', () => {
-  // TODO: implement step
+Then('Actions menu display with options Upgrade, Rollback, and Uninstall Helm Release', () => {
+  helmDetailsPage.verifyActionsInActionMenu();
 });

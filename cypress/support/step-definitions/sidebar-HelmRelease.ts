@@ -1,17 +1,5 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 
-Given('user is at developer perspecitve', () => {
-  // TODO: implement step
-});
-
-Given('user is at Add page', () => {
-  // TODO: implement step
-});
-
-Given('user is at the topology page', () => {
-  // TODO: implement step
-});
-
 Given('user is on the sidebar for the helm release', () => {
   // TODO: implement step
 });

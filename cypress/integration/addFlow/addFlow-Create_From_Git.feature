@@ -36,7 +36,7 @@ Scenario Outline: Add new git workload with new application for resoruce type "<
    When user types Git Repo url as "<git_url>"
    And selects "<resource_type>" resource type
    And clicks Create button on Add page 
-   Then user redirects to topology page
+   Then user redirects to Topology page
    And created workload "<name>" is present in topology page
 
 Examples:
@@ -51,7 +51,7 @@ Scenario: Add new git workload to the existing application : A-04-TC03
    When user types Git Repo url as "https://github.com/sclorg/nodejs-ex.git"
    And selects "deployment config" resource type
    And clicks Create button on Add page
-   Then user redirects to topology page
+   Then user redirects to Topology page
    And created workload is linked to existing application
 
 
@@ -71,7 +71,7 @@ Scenario: Create workload without application route : A-04-TC05
    And types Name as "node-with-no-app-route"
    And unselect the advanced option "Create a route to the application"
    And clicks Create button on Add page 
-   Then user redirects to topology page
+   Then user redirects to Topology page
    And public url is not created for node "node-with-no-app-route"
 
 
@@ -85,7 +85,7 @@ Scenario Outline: Create a git workload with advanced option "Routing" : A-04-TC
    And type Path as "<path>"
    And select Target Port as "8080 -> 8080 (TCP)"
    And click Create button on Add page
-   Then user redirects to topology page
+   Then user redirects to Topology page
    And the route of application contains "<hostname>"
 
 Examples:
@@ -105,7 +105,7 @@ Scenario Outline: Creaete the workload by unselecting options in "Build Configur
    And type Name as "<name>" in Environment Variables (Build and Runtime) section
    And type Value as "<value>" in Environment Variables (Build and Runtime) section
    And click Create button on Add page
-   Then user redirects to topology page
+   Then user redirects to Topology page
    And build does not get started
 
 Examples:
@@ -123,7 +123,7 @@ Scenario Outline: Create a git workload with advanced option "Deployment" : A-04
    And type Name as "<name>" in Environment Variables (Runtime only) section
    And type Value as "<value>" in Environment Variables (Runtime only) section
    And click Create button on Add page
-   Then user redirects to topology page
+   Then user redirects to Topology page
 
 Examples:
 | git_url                                 | name | value | name            |
@@ -141,7 +141,7 @@ Scenario Outline: Create a git workload with advanced option "Resource Limits" :
    And type Memory Request as "<memory_request>" in Memory section
    And type Memory Limit as "<memory_limit>" in Memory section
    And click Create button on Add page
-   Then user redirects to topology page
+   Then user redirects to Topology page
 
 Examples:
 | git_url                                 | cpu_request | cpu_limit | memory_request | memory_limit | name            |
@@ -156,7 +156,7 @@ Scenario Outline: Create a git workload with advanced option "Scaling" : A-04-TC
    And click "Scaling" link in Advanced Options section
    And type number of replicas as "<replica_set_value>" in Replicas section
    And click Create button on Add page
-   Then user redirects to topology page
+   Then user redirects to Topology page
 
 Examples:
 | git_url                                 | replica_set_value | name            |
@@ -171,7 +171,7 @@ Scenario Outline: Create a git workload with advanced option "Labels" : A-04-TC1
    And click "Labels" link in Advanced Options section
    And type label as "<label_name>"
    And click Create button on Add page
-   Then user redirects to topology page
+   Then user redirects to Topology page
    And verify the label in application node side pane
 
 Examples:
@@ -189,7 +189,7 @@ Scenario: Create a git workload with advanced option "Health Checks" : A-04-TC12
    And fill the Liveness Probe details
    And fill the Startup Probe details
    And click Create button on Add page
-   Then user redirects to topology page
+   Then user redirects to Topology page
 
 Examples:
 | git_url                                 | label_name   | name            |

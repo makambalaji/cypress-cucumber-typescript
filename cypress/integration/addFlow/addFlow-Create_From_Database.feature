@@ -13,5 +13,5 @@ Scenario: Create the Database from Add page : A-10-TC01
     And user selects "MariaDB" databse on Developer Catalog
     And clicks Instantiate Template button on side pane
     And user clicks create button on Instantiate Template page with default values
-    Then user redirects to topology page
+    Then user redirects to Topology page
     And created workload "mariadb" is present in topology page

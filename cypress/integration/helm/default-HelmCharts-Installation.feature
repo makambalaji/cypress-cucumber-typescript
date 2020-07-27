@@ -20,7 +20,7 @@ Scenario: Install Helm Chart from +Add Page: HR-02-TC01
     And user clicks on the "Nodejs Ex K v0.2.0" helm chart card
     And user clicks on the Install Helm Chart button
     And user clicks on the Install button in Install Helm chart page
-    Then user redirects to topology page
+    Then user redirects to Topology page
     And Topology page have the helm chart workload "nodejs-ex-k"
 
 

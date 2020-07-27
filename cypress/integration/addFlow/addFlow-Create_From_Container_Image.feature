@@ -22,7 +22,7 @@ Scenario: Create the container image with extrenal registry : A-05-TC02
    Given user is at Deploy Image page
    When user types Image name from external registry as "openshift/hello-openshift"
    And user clicks Create button on Deploy Image page
-   Then user redirects to topology page
+   Then user redirects to Topology page
    And node is displayed with name "hello-openshift"
 
 

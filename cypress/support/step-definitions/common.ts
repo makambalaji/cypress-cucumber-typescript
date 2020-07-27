@@ -29,6 +29,11 @@ Given('user is at dev perspecitve', () => {
   perspective.verifyPerspective('Developer');
 });
 
+Given('user is at developer perspecitve', () => {
+  perspective.switchTo(switchPerspective.Developer);
+  perspective.verifyPerspective('Developer');
+});
+
 Given('openshift cluster is installed with pipeline operator', () => {
     perspective.switchTo(switchPerspective.Developer);
     perspective.verifyPerspective('Developer');
@@ -60,6 +65,11 @@ Given('user is at Add page', () => {
 });
 
 Given('user is at Topology page', () => {
+  naviagteTo(menu.Topology);
+  topologyPage.verifyTopologyPage();
+});
+
+Given('user is at the topolgy page', () => {
   naviagteTo(menu.Topology);
   topologyPage.verifyTopologyPage();
 });
@@ -107,7 +117,7 @@ Then('user redirects to Pipeline Run Details page', () => {
   pipelineRunDetailsPage.verifyTitle();
 });
 
-Then('user redirects to topology page', () => {
+Then('user redirects to Topology page', () => {
   topologyPage.verifyTopologyPage();
 });
 

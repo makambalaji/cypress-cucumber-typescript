@@ -16,7 +16,7 @@ Scenario: Create the workload from Operator Backed : A-08-TC01
     And click on Create button in side pane
     And type name as "knative-serving-1" in Create Knative Serving page
     And user clicks create button in Create Knative Serving page
-    Then user redirects to topology page
+    Then user redirects to Topology page
     And created workload "knative-serving-1" is present in topology page
 
 

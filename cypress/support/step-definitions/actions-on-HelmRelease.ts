@@ -1,15 +1,7 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 
-Given('user is at developer perspecitve', () => {
-  // TODO: implement step
-});
-
-Given('user is at the topolgy page', () => {
-  // TODO: implement step
-});
-
 When('user right clicks on the Helm Release to open the context menu', () => {
-  // TODO: implement step
+  // cy.byNodeName('nodejs-ex-k').rightclick();
 });
 
 When('user clicks on the Upgrade action', () => {

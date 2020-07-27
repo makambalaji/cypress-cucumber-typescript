@@ -51,7 +51,7 @@ Scenario Outline: Create a pipeline from git workload with resource type "<resou
    And select "<resource>" radio button in Resources section
    And select Add Pipeline checkbox in Pipelines section
    And click Create button on Add page
-   Then user redirects to topology page
+   Then user redirects to Topology page
    And created workload "<pipeline_name>" is present in topology page
 
 Examples:
@@ -69,7 +69,7 @@ Scenario Outline: Create a pipeline from git workload with knative resource type
    And select "knative" radio button in Resources section
    And select Add Pipeline checkbox in Pipelines section
    And click Create button on Add page
-   Then user redirects to topology page
+   Then user redirects to Topology page
    And created workload "<workload_name>" is present in topology page
 
 Examples:

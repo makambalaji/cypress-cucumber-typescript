@@ -3,11 +3,12 @@ Feature: Helm Chart
 
 Background:
     Given user is at developer perspecitve
+    And user is at the project namespace "aut-helm-navigation" in dev perspecitve
 
 
 @regression, @smoke
 Scenario: Open the Helm tab on the navigation bar when helm charts are absent: HR-11-TC02
-    Given user is at the developer perspecitve
+    Given user is at developer perspecitve
     When user clicks on the Helm tab
     Then helm releases page will get opened
     And user will see the message of no helm charts present
@@ -18,17 +19,17 @@ Scenario: Open the Helm tab on the navigation bar when helm charts are absent: H
 Scenario: Install Helm Chart: HR-02-TC01
     Given user is at Add page
     When user clicks on the Helm Chart card on the +Add page
-    And user searches for the "Node-ex-k" helm chart
-    And user clicks on the "Node-ex-k" helm chart card
+    And user searches for the "Nodejs Ex K v0.2.0" helm chart
+    And user clicks on the "Nodejs Ex K v0.2.0" helm chart card
     And user clicks on the Install Helm Chart button
     And user clicks on the Install button
-    Then user is redirected to Topology page
-    And Topology page have the helm chart workload
+    Then user redirects to Topology page
+    And Topology page have the helm chart workload "nodejs-example"
 
 
 @regression, @smoke
 Scenario: Open the Helm tab on the navigation bar when helm charts are present: HR-11-TC01
-    Given user is at the developer perspecitve
+    Given helm release is available
     When user clicks on the Helm tab
     Then helm releases page will get opened
     And user will see the helm charts listed
@@ -88,14 +89,17 @@ Scenario: Search for the Helm Chart: HR-11-TC07
 
 
 @regression, @smoke
-Scenario: Click on the helm chart name to open the helm release details page: HR-11-TC08
-    Given user is at the Helm page
-    When user clicks on the helm release name
+Scenario: Helm release details page display: HR-11-TC08
+    Given user is at the Helm page with one helm release
+    When user clicks on the helm release name "nodejs-ex-k"
     Then user will see the Details page opened
     And user will see the Resources tab
     And user will see the Revision History tab
     And user will see the Release Notes tab
     And user will see the Actions drop down menu
-    And user sees the Upgrade action item
-    And user sees the Rollback action item
-    And user sees the Uninstall Helm Release action item
+
+
+Scenario: Actions menu of Helm Details page : P-03-TC10
+   Given user is at the Helm page
+   When user clicks Actions menu in Helm Details page
+   Then Actions menu display with options Upgrade, Rollback, and Uninstall Helm Release
