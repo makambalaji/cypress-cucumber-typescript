@@ -4,6 +4,7 @@ Feature: Create Pipeline from Add Options
 Background:
     Given openshift cluster is installed with pipeline operator
     And user is at the project namespace "aut-pipelines-add-options" in dev perspecitve
+    And user is at Add page
 
 
 @regression
@@ -24,7 +25,7 @@ Scenario: From Dockerfile Page Pipelines section : P-01-TC04
 
 @regression
 Scenario Outline: Add Pipeline display in git workload for builder image : P-02-TC08
-   Given user is at "Import from git" form
+   Given user is at Import from git form
    When user type Git Repo url as "<git_url>"
    Then Add pipeline checkbox is displayed
 
@@ -44,7 +45,7 @@ Examples:
 
 @regression, @smoke
 Scenario Outline: Create a pipeline from git workload with resource type "<resource>" : P-02-TC01, P-02-TC06
-   Given user is at "Import from git" form
+   Given user is at Import from git form
    When user type Git Repo url as "<git_url>"
    And type Name as "<pipeline_name>" in General section
    And select "<resource>" radio button in Resources section
@@ -62,7 +63,7 @@ Examples:
 @regression
 Scenario Outline: Create a pipeline from git workload with knative resource type  : P-02-TC07
    Given openshift cluster is installed with knative operator
-   And user is at "Import from git" form
+   And user is at Import from git form
    When user type Git Repo url as "<git_url>"
    And type Name as "<name>" in General section
    And select "knative" radio button in Resources section

@@ -106,7 +106,7 @@ export const pipelineBuilderPage = {
       pipelineBuilderPage.enterPipelineName(pipelineName);
       pipelineBuilderPage.selectTask(taskName);
       pipelineBuilderPage.create();
-      cy.get(pipelineDetailsObj.title).should('be.visible')
+      cy.get(pipelineDetailsObj.title, {timeout:8000}).should('be.visible')
   },
 
   createPipelineFromYamlPage: () => {

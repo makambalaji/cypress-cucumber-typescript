@@ -77,7 +77,7 @@ Cypress.Commands.add('mouseHover', (selector: string) => {
 });
 
 Cypress.Commands.add('titleShouldBe', (title: string) => {
-  cy.get('[data-test-id ="resource-title"]', {timeout: 8000}).should('be.visible').and('contain.text', title);
+  cy.get('[data-test-id ="resource-title"]', {timeout: 10000}).should('be.visible').and('contain.text', title);
 });
 
 Cypress.Commands.add('alertTitleShouldBe', (alertTitle: string) => {
@@ -107,6 +107,6 @@ before(() => {
   // cy.get('[aria-label="Help menu"]').should('be.visible');
 });
 
-after(() => {
-  projectNameSpace.deleteProjectNameSpace();
-})
+// after(() => {
+//   projectNameSpace.deleteProjectNameSpace();
+// })

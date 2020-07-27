@@ -99,6 +99,7 @@ export const catalogPageObj = {
     dialog: '#pf-modal-part-0',
     instantiateTemplate: 'a[title="Instantiate Template"]',
     create: 'a[title="Create"]',
+    createHelmChart: 'a[title="Install Helm Chart"]',
   },
   mariaDBTemplate: {
     namespace: '#namespace',
@@ -114,6 +115,10 @@ export const catalogPageObj = {
     name: '#root_metadata_name',
     labels: 'input[placeholder="app=frontend"]',
   },
+  installHelmChart: {
+    logo: 'h1.co-clusterserviceversion-logo__name__clusterserviceversion',
+    install: '[data-test-id="submit-button"]',
+  }
 }
 
 export const seelctCardFromOptions = (card: addOptions) => {
@@ -235,7 +240,7 @@ export const addPage = {
   verifyValidatedMessage:() => cy.get(addPageObj.gitSection.validatedMessage).should('have.text', 'Validated'),
   verifyBuilderImageDetectedMessage:() => cy.get(addPageObj.builderSection.builderImageDetected).should('be.visible'),
   verifyBuilderImageVersion:() => cy.get(addPageObj.builderSection.builderImageVersion).should('be.visible'),
-  verifyCard:(cardName: string) => cy.get(addPageObj.cardTitle).should('be.visible').and('contain.text', cardName),
+  verifyCard:(cardName: string) => cy.get(addPageObj.cardTitle).contains(cardName).should('be.visible'),
 };
 
 export const dockerPage = {
@@ -255,18 +260,24 @@ export const containerImage = {
 
 export const catalogPage = {
   search: (keyword: string) => cy.get(catalogPageObj.search).type(keyword),
+  verifyDialog:() => cy.get(catalogPageObj.sidePane.dialog).should('be.visible'),
+  verifyInstallHelmChartPage:() => cy.get('form h1').eq(0).should('have.text', 'Install Helm Chart'),
   clickInstantiateButtonOnSidePane:() => {
-    cy.get(catalogPageObj.sidePane.dialog).should('be.visible');
+    catalogPage.verifyDialog();
     cy.get(catalogPageObj.sidePane.instantiateTemplate).click();
   },
   clickCreateButtonOnSidePane:() => {
-    cy.get(catalogPageObj.sidePane.dialog).should('be.visible');
+    catalogPage.verifyDialog();
     cy.get(catalogPageObj.sidePane.create).click();
   },
   clickOnCreateButton:() => cy.get(catalogPageObj.create).click(),
   clickOnCancelButton:() => cy.get(catalogPageObj.mariaDBTemplate.cancel).click(),
   selectOperatorBackedCheckBox:() => cy.byTestID('kind-cluster-service-version').check(),
   selectKnativeServingCard:() => cy.get('div.catalog-tile-pf-title').contains('Knative Serving').click(),
+  selectHelmChartCard:(cardName: string) => cy.get('a div.catalog-tile-pf-title').contains(cardName).click(),
+  clickOnInstallButton:() => {
+    cy.get(catalogPageObj.installHelmChart.install).click();
+  },
 }
 
 export const yamlPage = {

@@ -3,6 +3,7 @@ Feature: Helm Chart
 
 Background:
     Given user is at developer perspecitve
+    And user is at the project namespace "aut-helmChart-installation" in dev perspecitve 
 
 
 @regression, @smoke
@@ -15,12 +16,12 @@ Scenario: The Helm Chart option on the +Add Page: HR-01-TC01
 Scenario: Install Helm Chart from +Add Page: HR-02-TC01
     Given user is at Add page
     When user clicks on the Helm Chart card on the +Add page
-    And user searches for the "Node-ex-k" helm chart
-    And user clicks on the "Node-ex-k" helm chart card
+    And user searches for the "Nodejs Ex K v0.2.0" helm chart
+    And user clicks on the "Nodejs Ex K v0.2.0" helm chart card
     And user clicks on the Install Helm Chart button
-    And user clicks on the Install button
-    Then user is redirected to Topology page
-    And Topology page have the helm chart workload
+    And user clicks on the Install button in Install Helm chart page
+    Then user redirects to topology page
+    And Topology page have the helm chart workload "nodejs-ex-k"
 
 
 @regression
@@ -28,8 +29,8 @@ Scenario: Install Helm Chart from Developer Catalog Page: HR-03-TC01
     Given user is at Add page
     When user clicks on the Developer Catalog card on the +Add page
     And user checks the Helm Charts checkbox
-    And user searches for the "Node-ex-k" helm chart
-    And user clicks on the "Node-ex-k" helm chart card
+    And user searches for the "Nodejs Ex K v0.2.0" helm chart
+    And user clicks on the "Nodejs Ex K v0.2.0" helm chart card
     And user clicks on the Install Helm Chart button
     And user clicks on the Install button
     Then user is redirected to Topology page
@@ -38,7 +39,7 @@ Scenario: Install Helm Chart from Developer Catalog Page: HR-03-TC01
 
 @regression, @smoke
 Scenario: Open context menu and check the actions available: HR-07-TC01
-    Given user is at the topolgy page
+    Given user is at Topology page
     When user right clicks on the workload
     Then user sees the context menu with actions
     And user sees the Upgrade action item

@@ -22,10 +22,8 @@ Then('pipeline section is displayed with message {string}', (message: string) =>
   addPage.verifyPipelinesSection(message);
 });
 
-Given('user is at {string} form', (title: string) => {
-  naviagteTo(menu.Add);
+Given('user is at Import from git form', () => {
   seelctCardFromOptions(addOptions.Git);
-  addPage.verifyTitle(title);
 });
 
 When('user type Git Repo url as {string}', (gitUrl: string) => {

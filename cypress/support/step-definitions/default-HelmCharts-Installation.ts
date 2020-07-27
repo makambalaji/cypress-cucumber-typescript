@@ -1,35 +1,44 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
+import { perspective } from '../pages/app';
+import { switchPerspective } from '../constants/global';
+import { addPage, addPageObj, seelctCardFromOptions, catalogPage, catalogPageObj } from '../pages/add_page';
+import { addOptions } from '../constants/add';
+import { topologyPage } from '../pages/topology_page';
 
 Given('user is at developer perspecitve', () => {
-  // TODO: implement step
+  perspective.switchTo(switchPerspective.Developer);
+  perspective.verifyPerspective('Developer');
 });
 
-Given('user is at Add page', () => {
-  // TODO: implement step
-});
-
-Given('user is at the topolgy page', () => {
-  // TODO: implement step
+Then('user can see Helm Chart card on the +Add page', () => {
+  addPage.verifyCard('Helm Chart');
 });
 
 When('user clicks on the Helm Chart card on the +Add page', () => {
-  // TODO: implement step
+  addPage.verifyCard('Helm Chart');
+  seelctCardFromOptions(addOptions.HelmChart);
 });
 
-When('user searches for the {string} helm chart', (a: string) => {
-  // TODO: implement step
+When('user searches for the {string} helm chart', (helmChartName: string) => {
+  catalogPage.search(helmChartName);
 });
 
-When('user clicks on the {string} helm chart card', (a: string) => {
-  // TODO: implement step
+When('user clicks on the {string} helm chart card', (helmChartName: string) => {
+  catalogPage.selectHelmChartCard(helmChartName);
 });
 
 When('user clicks on the Install Helm Chart button', () => {
-  // TODO: implement step
+  catalogPage.verifyDialog();
+  cy.get(catalogPageObj.sidePane.createHelmChart).click();
 });
 
-When('user clicks on the Install button', () => {
-  // TODO: implement step
+When('user clicks on the Install button in Install Helm chart page', () => {
+  catalogPage.verifyInstallHelmChartPage();
+  catalogPage.clickOnInstallButton();
+});
+
+Then('Topology page have the helm chart workload {string}', (nodeName: string) => {
+  topologyPage.verifyWorkloadInTopologyPage(nodeName);
 });
 
 When('user clicks on the Developer Catalog card on the +Add page', () => {
@@ -41,18 +50,6 @@ When('user checks the Helm Charts checkbox', () => {
 });
 
 When('user right clicks on the workload', () => {
-  // TODO: implement step
-});
-
-Then('user can see Helm Chart card on the +Add page', () => {
-  // TODO: implement step
-});
-
-Then('user is redirected to Topology page', () => {
-  // TODO: implement step
-});
-
-Then('Topology page have the helm chart workload', () => {
   // TODO: implement step
 });
 

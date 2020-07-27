@@ -115,7 +115,8 @@ export const naviagteTo = (opt: devNavigationMenu) => {
   switch (opt) {
     case devNavigationMenu.Add: {
       cy.byLegacyTestID('+Add-header').click().then(() => {
-      cy.titleShouldBe('Add');
+        cy.url().should('include', 'add');
+      // cy.titleShouldBe('Add');
       });
       break;
     }
