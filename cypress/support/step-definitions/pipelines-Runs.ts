@@ -136,11 +136,10 @@ Given('pipeline {string} is executed for 3 times', (pipelineName: string) => {
   pipelineDetailsPage.clickActionMenu();
   cy.byTestActionID('Start').click();
   pipelineRunDetailsPage.verifyTitle();
-  cy.byLegacyTestID('actions-menu-button').click();
-  cy.byTestActionID('Rerun').click();
-  cy.byLegacyTestID('actions-menu-button').click();
-  cy.byTestActionID('Rerun').click();
+  cy.selectActionsMenuOption('Rerun');
+  cy.selectActionsMenuOption('Rerun');
   cy.selectLinkInBreadCrumb('Pipeline Runs');
+  pipelienRunsPage.verifyTitle();
 });
 
 Given('user is at the Pipeline Runs page', () => {
@@ -177,6 +176,7 @@ Given('pipeline {string} is created from git page', (name: string) => {
   seelctCardFromOptions(addOptions.Git);
   addPage.verifyTitle('Import from git');
   addPage.enterGitUrl('https://github.com/sclorg/nodejs-ex.git');
+
   addPage.enterAppName(name);
   addPage.selectAddPipeline();
   addPage.createWorkload();

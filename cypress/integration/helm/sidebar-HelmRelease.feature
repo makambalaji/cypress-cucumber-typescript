@@ -3,19 +3,8 @@ Feature: Helm Chart
 
 Background:
     Given user is at developer perspecitve
-    And user is at the project namespace "aut-helm-navigation" in dev perspecitve
-
-
-@regression, @smoke
-Scenario: Install Helm Chart: HR-02-TC01
-    Given user is at Add page
-    When user clicks on the Helm Chart card on the +Add page
-    And user searches for the "Node-ex-k" helm chart
-    And user clicks on the "Node-ex-k" helm chart card
-    And user clicks on the Install Helm Chart button
-    And user clicks on the Install button
-    Then user is redirected to Topology page
-    And Topology page have the helm chart workload
+    And user is at the project namespace "aut-helm-sidebar" in dev perspecitve
+    And helm release "nodejs-ex-k" is present in topology page
 
 
 @regression, @smoke
@@ -26,18 +15,11 @@ Scenario: Open Context Menu and check the actions available for Helm Release: HR
 
 
 @regression, @smoke
-Scenario: Open Side Bar for the Helm release: HR-10-TC01
+Scenario: Open Side Bar for the Helm release: HR-10-TC01, HR-10-TC02
     Given user is at the topology page
     When user clicks on the helm release
     Then user sees the sidebar for the helm release
-
-
-@regression, @smoke
-Scenario: Tabs on the sidebar: HR-10-TC02
-    Given user is on the sidebar for the helm release
-    Then user sees the Details tab
-    And user sees the Resources tab
-    And user sees the Release Notes tab
+    And user sees the Details, Resources, Release Notes tabs
 
 
 @regression
@@ -82,8 +64,8 @@ Scenario: Routes link on the sidebar for the Helm Release: HR-10-TC03
 
 @regression, @smoke
 Scenario: Open Actions drop down menu on the side bar: HR-10-TC04
-    Given user is on the side bar for helm release
+    Given user is on the sidebar for the helm release
     When user clicks on the Actions drop down menu
-    Then user sees the Upgrade action item
-    And user sees the Rollback action item
-    And user sees the Uninstall Helm Release action item
+    Then user sees the "Upgrade" action item
+    And user sees the "Rollback" action item
+    And user sees the "Uninstall Helm Release" action item

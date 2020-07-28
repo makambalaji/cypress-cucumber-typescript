@@ -1,4 +1,3 @@
-import './commands';
 import './commands/topology';
 import './commands/elementInteractions';
 import './commands/app';

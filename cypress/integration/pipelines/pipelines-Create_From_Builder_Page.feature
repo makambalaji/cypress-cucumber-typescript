@@ -30,8 +30,8 @@ Scenario Outline: Create a pipeline with parallel tasks : P-03-TC03, P-07- TC02
     And tasks displayed parallel in pipelines section
 
 Examples:
-| pipeline_name | task_name | task_name_1 |
-| pipelines-one | kn        | Sn          |
+| pipeline_name | task_name | task_name_1      |
+| pipelines-one | kn        | openshift-client |
 
 
 @regression, @smoke
@@ -49,7 +49,7 @@ Scenario: Pipeline Builder page : P-03-TC02
 Scenario Outline: Create pipeline with git as resource type from pipeline builder page : "<tc_no>"
     Given user is at Pipeline Builder page 
     When user types pipeline name as "<pipeline_name>"
-    And select "<task_name>" from "Task" drop down
+    And select "<task_name>" from Task drop down
     And add "resource_type" resource with name "<resource_name>" to the "<task_name>"
     And user clicks "Create" button on Pipeline Builder page
     Then user redirects to Pipeline Details page with header name "<pipeline_name>"

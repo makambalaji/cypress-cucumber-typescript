@@ -1,6 +1,6 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { pipelinesPage } from '../pages/pipelines_page';
-import { pipelineBuilderPage } from '../pages/pipelineBuilder_page';
+import { pipelineBuilderPage, pipelineBuilderObj } from '../pages/pipelineBuilder_page';
 import { pipelineDetailsPage } from '../pages/pipelineDetails_page';
 import { naviagteTo } from '../pages/app';
 import { devNavigationMenu } from '../constants/global'
@@ -46,6 +46,11 @@ When('select {string} from Task drop down', (taskName: string) => {
 When('user adds another task {string} in parallel', (taskName: string) => {
   // add mouser hover on task to select + button
   pipelineBuilderPage.seelctParallelTask(taskName);
+  pipelineBuilderPage.addResource('git resource');
+  pipelineBuilderPage.clickOnTask(taskName);
+  cy.get(pipelineBuilderObj.sidePane.inputResource).click();
+  cy.get(`[data-test-dropdown-menu="git resource"]`).click();
+  pipelineBuilderPage.create();
 });
 
 When('clicks Create button on Pipeline Builder page', () => {

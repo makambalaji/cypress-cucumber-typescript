@@ -1,3 +1,8 @@
+import { naviagteTo } from "./app";
+import { devNavigationMenu } from "../constants/global";
+import { seelctCardFromOptions, catalogPage } from "./add_page";
+import { addOptions } from "../constants/add";
+
 export const helmPageObj = {
     noHelmReleasesMessage: 'p.odc-helm-release__empty-list__title',
     search: '[data-test-id="item-filter"]',
@@ -33,6 +38,13 @@ export const helmPage = {
     },
     verifyHelmReleasesDisplayed:() => cy.get(helmPageObj.table).should('be.visible'),
     clickHelmReleaseName:(name:string) => cy.get(`a[title="${name}"]`).click(),
+    createHelmRelease:(helmCardName: string, ) => {
+        naviagteTo(devNavigationMenu.Add);
+        seelctCardFromOptions(addOptions.HelmChart);
+        catalogPage.search(helmCardName);
+        catalogPage.clickInstallHelmChartOnSidePane();
+        catalogPage.clickOnInstallButton();
+    },
 }
 
 export const helmDetailsPage = {

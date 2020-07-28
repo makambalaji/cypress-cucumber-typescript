@@ -3,7 +3,7 @@ Feature: Helm Chart
 
 Background:
     Given user is at developer perspecitve
-    And user is at the project namespace "aut-helm-navigation" in dev perspecitve
+    And user is at the project namespace "aut-helm" in dev perspecitve
 
 
 @regression, @smoke
@@ -35,4 +35,4 @@ Scenario: Uninstall Helm Release through Context Menu: HR-08-TC04
     And user clicks on the "Uninstall Helm Release" action
     And user enters the release name
     And user clicks on the Uninstall button
-    Then Helm release gets deleted
+    Then Helm release gets uninstalled
