@@ -2,7 +2,7 @@ import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { naviagteTo } from '../pages/app';
 import { devNavigationMenu } from '../constants/global';
 import { helmPage, helmPageObj, helmDetailsPage } from '../pages/helm_page';
-import { seelctCardFromOptions, catalogPage } from '../pages/add_page';
+import { seelctCardFromOptions, catalogPage, catalogPageObj } from '../pages/add_page';
 import { addOptions } from '../constants/add';
 import { topologyPage } from '../pages/topology_page';
 
@@ -34,7 +34,7 @@ When('user clicks on the {string} helm chart card', (helmChartName: string) => {
   catalogPage.selectHelmChartCard(helmChartName);
 });
 
-When('user clicks on the Install Helm Chart button', () => {
+When('user clicks on the Install Helm Chart button on side pane', () => {
   catalogPage.clickInstallHelmChartOnSidePane();
 });
 
@@ -42,12 +42,36 @@ When('user clicks on the Install button', () => {
   catalogPage.clickOnInstallButton();
 });
 
+Then('Install Helm Chart page is displayed', () => {
+  cy.get('h1.pf-c-title').should('have.text', 'Install Helm Chart');
+});
+
+Then('release name displays as {string}', (name: string) => {
+  cy.get(catalogPageObj.installHelmChart.releaseName).should('have.value', name);
+});
+
+Given('user is at Install Helm Chart page', () => {
+  naviagteTo(devNavigationMenu.Add);
+  seelctCardFromOptions(addOptions.HelmChart);
+  catalogPage.search('Nodejs Ex K v0.2.0');
+  catalogPage.selectHelmChartCard('Nodejs Ex K v0.2.0');
+  catalogPage.clickInstallHelmChartOnSidePane();
+});
+
+When('user selects Yaml view', () => {
+  cy.get(catalogPageObj.installHelmChart.yamlView).check();
+});
+
+Then('user able to see Yaml editor', () => {
+  cy.get('div.view-lines', {timeout: 5000}).should('be.visible');
+});
+
 Then('Topology page have the helm chart workload {string}', () => {
   // TODO: implement step
 });
 
 When('user clicks on the filter drop down menu', () => {
-  // TODO: implement step
+  // TODO: implement step,
 });
 
 When('user selects checkbox for the Deployed Helm charts', (workloadname: string) => { 

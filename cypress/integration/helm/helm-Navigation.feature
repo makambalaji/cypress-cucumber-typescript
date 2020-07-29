@@ -16,12 +16,30 @@ Scenario: Open the Helm tab on the navigation bar when helm charts are absent: H
 
 
 @regression, @smoke
-Scenario: Install Helm Chart: HR-02-TC01
+Scenario: Install Helm Chart details page: HR-02-TC04
     Given user is at Add page
     When user clicks on the Helm Chart card on the +Add page
     And user searches for the "Nodejs Ex K v0.2.0" helm chart
     And user clicks on the "Nodejs Ex K v0.2.0" helm chart card
-    And user clicks on the Install Helm Chart button
+    And user clicks on the Install Helm Chart button on side pane
+    Then Install Helm Chart page is displayed
+    And release name displays as "nodejs-ex-k"
+
+
+@regression, @smoke
+Scenario: Yaml view editor for Install Helm Chart page: HR-02-TC05
+    Given user is at Install Helm Chart page
+    When user selects Yaml view
+    Then user able to see Yaml editor
+
+
+@regression, @smoke
+Scenario: Install Helm Chart: HR-02-TC01, HR-02-TC03, HR-02-TC06
+    Given user is at Add page
+    When user clicks on the Helm Chart card on the +Add page
+    And user searches for the "Nodejs Ex K v0.2.0" helm chart
+    And user clicks on the "Nodejs Ex K v0.2.0" helm chart card
+    And user clicks on the Install Helm Chart button on side pane
     And user clicks on the Install button
     Then user redirects to Topology page
     And Topology page have the helm chart workload "nodejs-example"

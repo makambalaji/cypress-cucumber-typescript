@@ -19,6 +19,18 @@ When('user clicks on the Helm Chart card on the +Add page', () => {
   seelctCardFromOptions(addOptions.HelmChart);
 });
 
+Then('user redirects to Developer Catalog page', () => {
+  catalogPage.verifyTitle();
+});
+
+Then('user able to see Helm Chart option is selected in Developer Catalog page', () => {
+  catalogPage.isCheckBoxSelected('Helm Charts');
+});
+
+Then('user able to see Helm Charts cards', () => {
+  catalogPage.isCardsDisplayed();
+});
+
 When('user searches for the {string} helm chart', (helmChartName: string) => {
   catalogPage.search(helmChartName);
 });
@@ -27,7 +39,7 @@ When('user clicks on the {string} helm chart card', (helmChartName: string) => {
   catalogPage.selectHelmChartCard(helmChartName);
 });
 
-When('user clicks on the Install Helm Chart button', () => {
+When('user clicks on the Install Helm Chart button on side pane', () => {
   catalogPage.verifyDialog();
   cy.get(catalogPageObj.sidePane.createHelmChart).click();
 });
@@ -42,11 +54,11 @@ Then('Topology page have the helm chart workload {string}', (nodeName: string) =
 });
 
 When('user clicks on the Developer Catalog card on the +Add page', () => {
-  // TODO: implement step
+  seelctCardFromOptions(addOptions.Catalog);
 });
 
 When('user checks the Helm Charts checkbox', () => {
-  // TODO: implement step
+  cy.get('input[title="Helm Charts"]').check();
 });
 
 When('user right clicks on the workload', () => {

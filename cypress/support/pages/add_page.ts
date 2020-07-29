@@ -95,6 +95,7 @@ export const containerImageObj = {
 export const catalogPageObj = {
   search: 'input[placeholder="Filter by keyword..."]',
   create: 'button[type="submit"]',
+  card: 'a.pf-c-card',
   sidePane: {
     dialog: '#pf-modal-part-0',
     instantiateTemplate: 'a[title="Instantiate Template"]',
@@ -119,6 +120,9 @@ export const catalogPageObj = {
   installHelmChart: {
     logo: 'h1.co-clusterserviceversion-logo__name__clusterserviceversion',
     install: '[data-test-id="submit-button"]',
+    releaseName: '#form-input-releaseName-field',
+    yamlView: '#form-radiobutton-editorType-yaml-field',
+    formView: '#form-radiobutton-editorType-form-field',
   }
 }
 
@@ -260,6 +264,9 @@ export const containerImage = {
 }
 
 export const catalogPage = {
+  verifyTitle:() => cy.titleShouldBe('Developer Catalog'),
+  isCheckBoxSelected: (type: string) => cy.get(`input[title="${type}"]`).should('be.selected'),
+  isCardsDisplayed:() => cy.get(catalogPageObj.card).should('be.visible'),
   search: (keyword: string) => cy.get(catalogPageObj.search).type(keyword),
   verifyDialog:() => cy.get(catalogPageObj.sidePane.dialog).should('be.visible'),
   verifyInstallHelmChartPage:() => cy.get('form h1').eq(0).should('have.text', 'Install Helm Chart'),

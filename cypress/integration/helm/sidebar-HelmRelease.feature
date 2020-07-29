@@ -31,7 +31,7 @@ Scenario: Deployment Configs link on the sidebar for the Helm Release: HR-10-TC0
 
 
 @regression
-Scenario: Build Configs link on the sidebar for the Helm Release: HR-10-TC03
+Scenario: Build Configs link on the sidebar for the Helm Release: HR-10-TC04
     Given user is on the sidebar for the helm release
     When user switches to the Resources tab
     And user clicks on the link for the build config of helm release
@@ -39,7 +39,7 @@ Scenario: Build Configs link on the sidebar for the Helm Release: HR-10-TC03
 
 
 @regression
-Scenario: Services link on the sidebar for the Helm Release: HR-10-TC03
+Scenario: Services link on the sidebar for the Helm Release: HR-10-TC05
     Given user is on the sidebar for the helm release
     When user switches to the Resources tab
     And user clicks on the link for the services of helm release
@@ -47,7 +47,7 @@ Scenario: Services link on the sidebar for the Helm Release: HR-10-TC03
 
 
 @regression
-Scenario: Image Streams link on the sidebar for the Helm Release: HR-10-TC03
+Scenario: Image Streams link on the sidebar for the Helm Release: HR-10-TC06
     Given user is on the sidebar for the helm release
     When user switches to the Resources tab
     And user clicks on the link for the image stream of helm release
@@ -55,7 +55,7 @@ Scenario: Image Streams link on the sidebar for the Helm Release: HR-10-TC03
 
 
 @regression
-Scenario: Routes link on the sidebar for the Helm Release: HR-10-TC03
+Scenario: Routes link on the sidebar for the Helm Release: HR-10-TC07
     Given user is on the sidebar for the helm release
     When user switches to the Resources tab
     And user clicks on the link for the routes of helm release
@@ -63,7 +63,7 @@ Scenario: Routes link on the sidebar for the Helm Release: HR-10-TC03
 
 
 @regression, @smoke
-Scenario: Open Actions drop down menu on the side bar: HR-10-TC04
+Scenario: Open Actions drop down menu on the side bar: HR-10-TC08
     Given user is on the sidebar for the helm release
     When user clicks on the Actions drop down menu
     Then user sees the "Upgrade" action item

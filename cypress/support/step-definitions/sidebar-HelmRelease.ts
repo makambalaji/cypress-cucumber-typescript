@@ -1,8 +1,4 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { seelctCardFromOptions, catalogPage } from '../pages/add_page';
-import { addOptions } from '../constants/add';
-import { naviagteTo } from '../pages/app';
-import { devNavigationMenu } from '../constants/global';
 import { topologyPage } from '../pages/topology_page';
 
 Given('helm release {string} is present in topology page', (workloadName: string) => {
