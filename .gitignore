@@ -1,19 +1,19 @@
 # dependencies
 node_modules/
-cypress/screenshots/
+integration-tests/screenshots/
 
 # testing
 /coverage
 
 # production
 /build
-cypress/videos/
-cypress/videos
+integration-tests/videos/
+integration-tests/videos
 node_modules/
 npm-debug.log
 test-results/
-cypress/e2e
-cypress/testData
-cypress/reports
+integration-tests/e2e
+integration-tests/testData
+integration-tests/reports
 allure-report
 allure-results
