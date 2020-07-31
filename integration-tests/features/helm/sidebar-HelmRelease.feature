@@ -1,4 +1,4 @@
-Feature: Helm Chart
+Feature: Helm release actions in topology page
     User will be able to open the context menu and side bar for the helm releases
 
 Background:

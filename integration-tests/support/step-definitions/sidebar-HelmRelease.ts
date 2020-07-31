@@ -1,7 +1,16 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { topologyPage } from '../pages/topology_page';
+import { catalogPage } from '../pages/add_page';
 
 Given('helm release {string} is present in topology page', (workloadName: string) => {
+  cy.get('body div').then(($el) => {
+    if($el.find('h2.co-hint-block__title h4').length === 0) {
+      catalogPage.createHelmChartFromAddPage(workloadName);
+    }
+    else {
+      cy.log('helm release is available');
+    }
+  });
   topologyPage.searchHelmRelease(workloadName);
 });
 

@@ -1,4 +1,5 @@
 import { addOptions, gitAdvancedOptions } from '../constants/add';
+import { topologyPage } from './topology_page';
 
 export const addPageObj = {
   cardTitle: 'div.catalog-tile-pf-title',
@@ -97,7 +98,7 @@ export const catalogPageObj = {
   create: 'button[type="submit"]',
   card: 'a.pf-c-card',
   sidePane: {
-    dialog: '#pf-modal-part-0',
+    dialog: '[role="dialog"]',
     instantiateTemplate: 'a[title="Instantiate Template"]',
     create: 'a[title="Create"]',
     installHelmChart:'a[title="Install Helm Chart"]',
@@ -123,6 +124,7 @@ export const catalogPageObj = {
     releaseName: '#form-input-releaseName-field',
     yamlView: '#form-radiobutton-editorType-yaml-field',
     formView: '#form-radiobutton-editorType-form-field',
+    cancel: '[data-test-id="reset-button"]',
   }
 }
 
@@ -268,7 +270,7 @@ export const catalogPage = {
   isCheckBoxSelected: (type: string) => cy.get(`input[title="${type}"]`).should('be.selected'),
   isCardsDisplayed:() => cy.get(catalogPageObj.card).should('be.visible'),
   search: (keyword: string) => cy.get(catalogPageObj.search).type(keyword),
-  verifyDialog:() => cy.get(catalogPageObj.sidePane.dialog).should('be.visible'),
+  verifyDialog:() => cy.get(catalogPageObj.sidePane.dialog, {timeout: 5000}).should('be.visible'),
   verifyInstallHelmChartPage:() => cy.get('form h1').eq(0).should('have.text', 'Install Helm Chart'),
   clickInstantiateButtonOnSidePane:() => {
     catalogPage.verifyDialog();
@@ -292,6 +294,19 @@ export const catalogPage = {
       cy.get('div.co-m-loader', {timeout:15000}).should('not.be.visible')
     });
   },
+  createHelmChartFromAddPage:(workloadName: string = 'nodejs-example', helmChartName: string = 'Nodejs Ex K v0.2.0') => {
+    addPage.verifyCard('Helm Chart');
+    seelctCardFromOptions(addOptions.HelmChart);
+    catalogPage.verifyTitle();
+    catalogPage.isCardsDisplayed();
+    catalogPage.search(helmChartName);
+    catalogPage.selectHelmChartCard(helmChartName);
+    catalogPage.verifyDialog();
+    cy.get(catalogPageObj.sidePane.createHelmChart).click();
+    catalogPage.verifyInstallHelmChartPage();
+    catalogPage.clickOnInstallButton();
+    topologyPage.verifyWorkloadInTopologyPage(workloadName);
+  }
 }
 
 export const yamlPage = {

@@ -2,7 +2,7 @@ import { devNavigationMenu, switchPerspective } from '../constants/global';
 
 export const perspective = {
   verifyPerspective: (perspectiveName: string) => {
-    cy.get('[data-test-id="perspective-switcher-toggle"]').should('contain.text', perspectiveName);
+    cy.byLegacyTestID('perspective-switcher-toggle').should('contain.text', perspectiveName);
   },
 
   switchTo : (perspectiveName: switchPerspective) => {
@@ -12,12 +12,24 @@ export const perspective = {
         cy.get('li[role="menuitem"]')
         .contains('Administrator')
         .click();
+        cy.get('body div').then(($el) => {
+          if($el.find('#guided-tour-modal').length !== 0) {
+            cy.get('#tour-step-footer-secondary').click();
+            cy.get('#tour-step-footer-primary').should('be.visible').click();
+          }
+        });
         break;
       }
       case switchPerspective.Developer: {
         cy.get('li[role="menuitem"]')
         .contains('Developer')
         .click();
+        cy.get('body div').then(($el) => {
+          if($el.find('#guided-tour-modal').length !== 0) {
+            cy.get('#tour-step-footer-secondary').click();
+            cy.get('#tour-step-footer-primary').should('be.visible').click();
+          }
+        });
         break;
       }
       default: {

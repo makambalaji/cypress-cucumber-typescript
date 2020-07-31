@@ -1,5 +1,5 @@
-Feature: Helm Chart
-    User will be able to install the helm charts
+Feature: Install the Helm Chart
+    As a user, I want to install the helm charts
 
 Background:
     Given user is at developer perspecitve

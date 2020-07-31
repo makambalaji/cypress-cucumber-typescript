@@ -1,9 +1,9 @@
-Feature: Helm Chart
-    User will be able to navigate to Helm tab
+Feature: Navigations on Helm Chart
+    As a user I want to navigate to different pages related to Helm Charts
 
 Background:
     Given user is at developer perspecitve
-    And user is at the project namespace "aut-helm" in dev perspecitve
+    And user is at the project namespace "aut-helm-navigation" in dev perspecitve
 
 
 @regression, @smoke

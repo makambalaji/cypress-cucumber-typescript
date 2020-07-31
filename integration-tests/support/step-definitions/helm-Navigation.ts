@@ -48,6 +48,7 @@ Then('Install Helm Chart page is displayed', () => {
 
 Then('release name displays as {string}', (name: string) => {
   cy.get(catalogPageObj.installHelmChart.releaseName).should('have.value', name);
+  cy.get(catalogPageObj.installHelmChart.cancel).click();
 });
 
 Given('user is at Install Helm Chart page', () => {
@@ -64,6 +65,7 @@ When('user selects Yaml view', () => {
 
 Then('user able to see Yaml editor', () => {
   cy.get('div.view-lines', {timeout: 5000}).should('be.visible');
+  cy.get(catalogPageObj.installHelmChart.cancel).click();
 });
 
 Then('Topology page have the helm chart workload {string}', () => {

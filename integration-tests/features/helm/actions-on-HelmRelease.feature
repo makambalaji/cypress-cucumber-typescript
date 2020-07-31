@@ -1,9 +1,10 @@
-Feature: Helm Chart
-    User will be able to perform the actions on the helm releases
+Feature: Perform Actions on Helm Chart
+    As a user I want to perform the actions on the helm chart releases in topology page
 
 Background:
     Given user is at developer perspecitve
     And user is at the project namespace "aut-helm" in dev perspecitve
+    And helm release "nodejs-ex-k" is present in topology page
 
 
 @regression, @smoke
