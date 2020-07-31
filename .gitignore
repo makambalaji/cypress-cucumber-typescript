@@ -1,18 +1,8 @@
-# dependencies
-node_modules/
 integration-tests/screenshots/
-
-# testing
-/coverage
-
-# production
-/build
 integration-tests/videos/
 integration-tests/videos
-node_modules/
+integration-tests/node_modules/
 npm-debug.log
-test-results/
-integration-tests/e2e
 integration-tests/testData
 integration-tests/reports
 allure-report
