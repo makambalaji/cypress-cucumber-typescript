@@ -7,10 +7,5 @@
     "dbaeumer.vscode-eslint",
     "davidanson.vscode-markdownlint",
     "dylanmoerland.cypress-cucumber-steps"
-    ],
-    "ignore": [
-        "getgauge.gauge",
-        "deerawan.vscode-protractor-snippets",
-        "luciannaie.protractor-test-runner"
     ]
 }

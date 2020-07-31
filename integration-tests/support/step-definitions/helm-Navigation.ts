@@ -69,7 +69,7 @@ Then('user able to see Yaml editor', () => {
 });
 
 Then('Topology page have the helm chart workload {string}', () => {
-  // TODO: implement step
+  
 });
 
 When('user clicks on the filter drop down menu', () => {
