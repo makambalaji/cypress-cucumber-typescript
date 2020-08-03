@@ -150,9 +150,12 @@ export const projectNameSpace = {
     cy.wait(2000);
     cy.get('[role="listbox"]', { timeout: 20000 }).then(($el) => {
       if ($el.find('li[role="option"]').length === 0) {
-        cy.get('[data-test-dropdown-menu="#CREATE_RESOURCE_ACTION#"]').click();
-        projectNameSpace.enterProjectName(projectName);
-        projectNameSpace.clickCreateButton();
+        // let str = $el.find('li[role="option"]').text();
+        // if(str.localeCompare(projectName) === 0) {
+          cy.get('[data-test-dropdown-menu="#CREATE_RESOURCE_ACTION#"]').click();
+          projectNameSpace.enterProjectName(projectName);
+          projectNameSpace.clickCreateButton();
+        // }
       }
       else {
         cy.get('[role="listbox"]')

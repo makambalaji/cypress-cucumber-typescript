@@ -11,7 +11,7 @@ Given('helm release {string} is present in topology page', (workloadName: string
       cy.log('helm release is available');
     }
   });
-  topologyPage.searchHelmRelease(workloadName);
+  // topologyPage.searchHelmRelease(workloadName);
 });
 
 Given('user is on the sidebar for the helm release', () => {

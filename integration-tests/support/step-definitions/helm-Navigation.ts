@@ -68,8 +68,8 @@ Then('user able to see Yaml editor', () => {
   cy.get(catalogPageObj.installHelmChart.cancel).click();
 });
 
-Then('Topology page have the helm chart workload {string}', () => {
-  
+Then('Topology page have the helm chart workload {string}', (nodeName: string) => {
+  topologyPage.verifyWorkloadInTopologyPage(nodeName);
 });
 
 When('user clicks on the filter drop down menu', () => {
@@ -99,6 +99,11 @@ When('user searches for a helm chart', () => {
 When('user clicks on the helm release name {string}', (helmChartName:string) => {
   helmPage.search(helmChartName);
   helmPage.clickHelmReleaseName(helmChartName);
+});
+
+Given('helm chart is installed', () => {
+  naviagteTo(devNavigationMenu.Topology);
+  topologyPage.verifyWorkloadInTopologyPage('nodejs-example');
 });
 
 Then('helm releases page will get opened', () => {

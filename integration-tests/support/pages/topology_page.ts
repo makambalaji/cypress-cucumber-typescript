@@ -11,8 +11,8 @@ export const topologyObj = {
         switchView: '[data-test-id="namespace-bar-dropdown"] a',
     }, 
     list: {
-        appName: 'h2.project-overview__group-heading',
-        nodeName: 'h3.project-overview__item-heading',
+        appName: '#HelmRelease ul li div',
+        nodeName: '#HelmRelease ul li div',
     },
     sidePane: {
         dialog: '[role="dialog"]',

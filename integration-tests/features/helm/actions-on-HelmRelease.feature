@@ -3,7 +3,7 @@ Feature: Perform Actions on Helm Chart
 
 Background:
     Given user is at developer perspecitve
-    And user is at the project namespace "aut-helm" in dev perspecitve
+    And user is at the project namespace "aut-actions-helm" in dev perspecitve
     And helm release "nodejs-ex-k" is present in topology page
 
 

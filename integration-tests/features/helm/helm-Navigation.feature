@@ -47,7 +47,7 @@ Scenario: Install Helm Chart: HR-02-TC01, HR-02-TC03, HR-02-TC06
 
 @regression, @smoke
 Scenario: Open the Helm tab on the navigation bar when helm charts are present: HR-11-TC01
-    Given helm release is available
+    Given helm chart is installed
     When user clicks on the Helm tab
     Then helm releases page will get opened
     And user will see the helm charts listed
