@@ -39,7 +39,7 @@ When('user selects Projects as {string} from internal registry', (projectName: s
   containerImage.selectProject(projectName)
 });
 
-When('user selects Image stream tag from internal registry ', () => {
+When('user selects Image stream tag from internal registry', () => {
   containerImage.selectInternalImageRegistry();
 });
 

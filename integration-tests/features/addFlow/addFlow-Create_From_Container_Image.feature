@@ -34,7 +34,7 @@ Scenario: Create the container image with internal registry : A-05-TC03
    And selects Image Stream as "golang" from internal registry
    And selects tag as "latest" from internal registry
    And user clicks Create button on Deploy Image page
-   Then page redirects to topology page
+   Then user redirects to Topology page
    And node is displayed with name "golang-app"
 
 
