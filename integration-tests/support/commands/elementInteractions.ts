@@ -8,6 +8,7 @@ declare global {
       selectRowByColumnName(columnNumber: number, referenceRowValue: string, selector: string): Chainable<Element>;
       mouseHover(selector: string): Chainable<Element>;
       rightclick(selector: string): Chainable<Element>;
+      selectValueFromAutoCompleteDropDown(selector: string, dropdownText: string): Chainable<Element>;
     }
   }
 }
@@ -27,7 +28,7 @@ Cypress.Commands.add('selectByDropDownText', (selector: string, dropdownText: st
       if($el.text().includes(dropdownText)) {
         $el.click();
       }
-    })
+    });
 });
 
 Cypress.Commands.add('selectRowByColumnName', (columnNumber: number, referenceRowValue: string, selector: string) => {
@@ -46,4 +47,10 @@ Cypress.Commands.add('mouseHover', (selector: string) => {
 
 Cypress.Commands.add('rightclick', (selector: string) => {
   cy.get(selector).trigger('contextmenu');
+});
+
+Cypress.Commands.add('selectValueFromAutoCompleteDropDown', (selector: string, dropdownText: string) => {
+  cy.get(selector).click();
+  cy.byLegacyTestID('dropdown-text-filter').type(dropdownText);
+  cy.get('li[role="option"]').contains(dropdownText).click();
 });

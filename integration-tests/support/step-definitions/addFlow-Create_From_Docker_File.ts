@@ -1,5 +1,5 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { seelctCardFromOptions, addPage } from '../pages/add_page';
+import { seelctCardFromOptions, addPage, addPageObj } from '../pages/add_page';
 import { addOptions } from '../constants/add';
 import { topologyPage } from '../pages/topology_page';
 
@@ -21,4 +21,8 @@ When('click Create button on Add page', () => {
 
 Then('created workload {string} is present in topology page', (workloadName: string) => {
   topologyPage.verifyWorkloadInTopologyPage(workloadName);
+});
+
+When('click Cancel button on Add page', () => {
+  addPage.clickCancel();
 });

@@ -25,6 +25,7 @@ Then('Name displays as {string}', (nodeName: string) => {
 
 Then('advanced option Create a route to the application is selected', () => {
   cy.get(addPageObj.advancedOptions.createRoute).should('be.checked');
+  cy.get(addPageObj.cancel).click();
 });
 
 When('user clicks Create button on Deploy Image page', () => {

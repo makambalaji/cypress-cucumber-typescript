@@ -147,7 +147,7 @@ export const projectNameSpace = {
       .eq(0)
       .click();
     cy.byLegacyTestID('dropdown-text-filter').type(projectName);
-    cy.wait(2000);
+    cy.wait(3000);
     cy.get('[role="listbox"]', { timeout: 20000 }).then(($el) => {
       if ($el.find('li[role="option"]').length === 0) {
         // let str = $el.find('li[role="option"]').text();

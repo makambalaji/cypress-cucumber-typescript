@@ -108,14 +108,18 @@ When('unselects {string} checkbox in build configuration section', (a: string) =
   // TODO: implement step
 });
 
-When('type Name as {string} in Environment Variables (Build and Runtime) section', (a: string) => {
+When('type Name as {string} in Environment Variables section', (a: string) => {
   cy.log(a)
   // TODO: implement step
 });
 
-When('type Value as {string} in Environment Variables (Build and Runtime) section', (a: string) => {
+When('type Value as {string} in Environment Variables section', (a: string) => {
   cy.log(a)
   // TODO: implement step
+});
+
+Then('build does not get started', () => {
+
 });
 
 When('verify {string} checkbox is seleceted', (a: string) => {
@@ -124,12 +128,12 @@ When('verify {string} checkbox is seleceted', (a: string) => {
 });
 
 When('type Name as {string} in Environment Variables (Runtime only) section', (a: string) => {
-  cy.log(a)
+  cy.log(a);
   // TODO: implement step
 });
 
 When('type Value as {string} in Environment Variables (Runtime only) section', (a: string) => {
-  cy.log(a)
+  cy.log(a);
   // TODO: implement step
 });
 
@@ -158,12 +162,20 @@ When('type number of replicas as {string} in Replicas section', (a: string) => {
   // TODO: implement step
 });
 
-When('type label as {string}', (a: string) => {
-  cy.log(a)
-  // TODO: implement step
+When('fill the Readiness Probe details', () => {
+
 });
 
-Then('user redirects to Add page', () => {
+When('fill the Liveness Probe details', () => {
+
+});
+
+When('fill the Startup Probe details', () => {
+
+});
+
+When('type label as {string}', (a: string) => {
+  cy.log(a)
   // TODO: implement step
 });
 

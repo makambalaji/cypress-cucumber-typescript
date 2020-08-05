@@ -29,14 +29,10 @@ Then('page contains From Git, Container Image, From Dockerfile, YAML, From Catal
 });
 
 Given('cluster is installed with pipeline operator', () => {
-  // TODO: implement step
+  
 });
 
 Given('cluster is installed with serverless operator', () => {
-  // TODO: implement step
-});
-
-When('user selects Add option from left side navigation men', () => {
   // TODO: implement step
 });
 
@@ -46,9 +42,13 @@ Then('message displays as {string}', (a: string) => {
 });
 
 Then('page contains Pipeline card', () => {
-  // TODO: implement step
+  addPage.verifyCard('Pipeline');
 });
 
 Then('page contains Operator Backed card', () => {
-  // TODO: implement step
+  addPage.verifyCard('Operator Backed');
+});
+
+Then('page contains Event Soruces card', () => {
+  addPage.verifyCard('Event Sources');
 });

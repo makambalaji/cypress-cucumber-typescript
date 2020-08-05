@@ -10,7 +10,7 @@ export const addPageObj = {
   create: '[data-test-id="submit-button"]',
   cancel: '[data-test-id="reset-button"]',
   gitSection: {
-    validatedMessage: '#form-input-git-url-field-helper',
+    validatedMessage: '#form-input-searchTerm-field-helper',
   },
   builderSection: {
     builderImageDetected: '[aria-label="Success Alert"]',
@@ -184,9 +184,7 @@ export const addPage = {
     cy.get(addPageObj.sectionTitle).eq(5).should('have.text', 'Pipelines');
     cy.get(addPageObj.pipeline.infoMessage).should('have.text', message);
   },
-  enterGitUrl: (gitUrl: string) => {
-    cy.get(addPageObj.gitRepoUrl).type(gitUrl)
-  },
+  enterGitUrl: (gitUrl: string) => cy.get(addPageObj.gitRepoUrl).type(gitUrl),
   verifyPipelineCheckBox: () => cy.get(addPageObj.pipeline.addPipeline).should('be.visible'),
   enterAppName: (name: string) => {
     cy.get(addPageObj.nodeName).as('nodeName');
@@ -195,7 +193,7 @@ export const addPage = {
     cy.get('@nodeName').type(name);
     cy.get('@nodeName').should('have.value', name);
   },
-  selectResource: (resource: string) => {
+  selectResource: (resource: string = 'deployment') => {
     switch (resource) {
       case 'deployment':
       case 'Deployment':
@@ -244,10 +242,18 @@ export const addPage = {
   },
   selectAddPipeline: () => cy.get(addPageObj.pipeline.addPipeline).scrollIntoView().check(),
   createWorkload: () => cy.get(addPageObj.create).click(),
+  clickCancel:() => cy.get(addPageObj.cancel).click(),
   verifyValidatedMessage:() => cy.get(addPageObj.gitSection.validatedMessage).should('have.text', 'Validated'),
   verifyBuilderImageDetectedMessage:() => cy.get(addPageObj.builderSection.builderImageDetected).should('be.visible'),
   verifyBuilderImageVersion:() => cy.get(addPageObj.builderSection.builderImageVersion).should('be.visible'),
   verifyCard:(cardName: string) => cy.get(addPageObj.cardTitle).contains(cardName).should('be.visible'),
+  createGitWorkload:(gitUrl: string = 'https://github.com/sclorg/nodejs-ex.git', appName: string = 'nodejs-ex-git-app') => {
+    seelctCardFromOptions(addOptions.Git);
+    addPage.enterGitUrl(gitUrl);
+    addPage.enterAppName(appName)
+    addPage.selectResource();
+    addPage.createWorkload();
+  },
 };
 
 export const dockerPage = {
@@ -256,11 +262,11 @@ export const dockerPage = {
 export const containerImage = {
   enterExternalRegistryImageName: (imageName: string) => cy.get(containerImageObj.imageSection.externalRegistry.imageName).type(imageName),
   selectProject: (projectName: string) => 
-    cy.selectByDropDownText(containerImageObj.imageSection.internalRegistry.selectProject, projectName),
+    cy.selectValueFromAutoCompleteDropDown(containerImageObj.imageSection.internalRegistry.selectProject, projectName),
   selectImageStream: (imageStreamName: string) => 
-    cy.selectByDropDownText(containerImageObj.imageSection.internalRegistry.imageStream, imageStreamName),
+    cy.selectValueFromAutoCompleteDropDown(containerImageObj.imageSection.internalRegistry.imageStream, imageStreamName),
   selectTag: (tag:string) => 
-    cy.selectByDropDownText(containerImageObj.imageSection.internalRegistry.tag, tag),
+    cy.selectValueFromAutoCompleteDropDown(containerImageObj.imageSection.internalRegistry.tag, tag),
   selectInternalImageRegistry:() => 
   cy.get(containerImageObj.imageSection.internalRegistryImageCheckBox).check(),
 }
