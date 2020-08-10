@@ -196,3 +196,7 @@ export const projectNameSpace = {
     })
   },
 };
+
+export const appFunctions = {
+  
+};

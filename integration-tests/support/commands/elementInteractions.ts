@@ -5,9 +5,9 @@ declare global {
     interface Chainable<Subject> {
       clickNavLink(path: [string, string]): Chainable<Element>;
       selectByDropDownText(selector: string, dropdownText: string): Chainable<Element>;
-      selectRowByColumnName(columnNumber: number, referenceRowValue: string, selector: string): Chainable<Element>;
+      selectRowByColumnName(columnName: string, referenceRowValue: string): Chainable<Element>;
       mouseHover(selector: string): Chainable<Element>;
-      rightclick(selector: string): Chainable<Element>;
+      // rightclick(selector: string): Chainable<Element>;
       selectValueFromAutoCompleteDropDown(selector: string, dropdownText: string): Chainable<Element>;
     }
   }
@@ -31,12 +31,18 @@ Cypress.Commands.add('selectByDropDownText', (selector: string, dropdownText: st
     });
 });
 
-Cypress.Commands.add('selectRowByColumnName', (columnNumber: number, referenceRowValue: string, selector: string) => {
+Cypress.Commands.add('selectRowByColumnName', (columnName: string, referenceRowValue: string) => {
     cy.get('div[role="grid"]').should('exist');
-    cy.get(`tr td:nth-child(${columnNumber})`).each(($el, index) => {
+    cy.get('thead th').each(($el, columnNumber) => {
       const text = $el.text()
-      if(text.includes(referenceRowValue)) {
-        cy.get(`tr td:nth-child(${columnNumber})`).eq(index).next(selector);
+      if(text.includes(columnName)) {
+        cy.get(`tr td:nth-child(${columnNumber})`).each(($el, index) => {
+          const text = $el.text()
+          if(text.includes(referenceRowValue)) {
+            return cy.get(`tr td:nth-child(${columnNumber})`).eq(index)
+            // .next(selector);
+          }
+        });
       }
     });
 });
@@ -45,9 +51,9 @@ Cypress.Commands.add('mouseHover', (selector: string) => {
     cy.get(selector).invoke('show').should('be.visible').trigger('mouseover');
 });
 
-Cypress.Commands.add('rightclick', (selector: string) => {
-  cy.get(selector).trigger('contextmenu');
-});
+// Cypress.Commands.add('rightclick', (selector: string) => {
+//   cy.get(selector).trigger('contextmenu');
+// });
 
 Cypress.Commands.add('selectValueFromAutoCompleteDropDown', (selector: string, dropdownText: string) => {
   cy.get(selector).click();

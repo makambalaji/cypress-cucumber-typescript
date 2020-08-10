@@ -22,7 +22,7 @@ Then('Tasks, Paramters and Resources sections are displayed', () => {
 });
 
 Then('Edit Yaml link is enabled', () => {
-  pipelineBuilderPage.editYaml();
+  cy.byButtonText('Edit YAML').should('be.enabled');
 });
 
 Then('Create button is in disabled state', () => {
@@ -72,4 +72,24 @@ When('user adds another task {string} in series', (a: string) => {
 
 Then('tasks displayed serially in pipelines section', () => {
   // TODO: implement step
+});
+
+When('add {string} resource with name {string} to the {string}', (resource_type: string, resource_name: string, task_name: string) => {
+  
+});
+
+When('user clicks {string} button on Pipeline Builder page', (buttonName: string) => {
+
+});
+
+When('add the parameter details like Name, Description and Default Value', () => {
+
+});
+
+Then('task details present in pipeline details section', () => {
+
+});
+
+Then('parameter details displayed in parameters section', () => {
+
 });

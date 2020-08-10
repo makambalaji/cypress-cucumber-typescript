@@ -2,11 +2,12 @@ Feature: Editing an application
 	As a user, I want to edit an application   
 
 Background:
-    Given user is in topology
+    Given user is at Topology page
+
 
 @regression, @smoke
 Scenario: Editing a workload : T-06-TC14, T-06-TC15
-   Given user is in the topology with deployment  workload
+   Given user is in the topology with deployment workload
    When user right clicks on the node 
    And user sees context menu
    And user clicks on "Edit App name"(like Edit golang)
@@ -16,6 +17,7 @@ Scenario: Editing a workload : T-06-TC14, T-06-TC15
    And user edits Application name
    And user clicks on save
    Then user can see the change of node to the new Application defined above
+
 
 @regression
 Scenario: Editing a knative service : T-06-TC14, T-06-TC15

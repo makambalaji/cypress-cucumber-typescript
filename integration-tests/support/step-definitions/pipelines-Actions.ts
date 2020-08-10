@@ -6,6 +6,11 @@ import { pipelineRunDetailsPage} from '../pages/pipelineRunDetails_page';
 import { naviagteTo } from '../pages/app';
 import { devNavigationMenu } from '../constants/global';
 
+
+Given('pipeline run is available for {string}', (pipelineName: string) => {
+  // To Do
+});
+
 When('the user enters {string} into the pipelines search bar', (pipelineName: string) => {
   pipelinesPage.search(pipelineName);
 });
@@ -18,9 +23,9 @@ Then('column Name display with value {string}', (pipelineName: string) => {
   pipelinesPage.verifyNameInPipelinesTable(pipelineName);
 });
 
-Then('column Namespace display with value {string}', (projectNamespace: string) => {
-  pipelinesPage.verifyNameSpaceInPipelinesTable(projectNamespace);
-});
+// Then('column Namespace display with value {string}', (projectNamespace: string) => {
+//   pipelinesPage.verifyNameSpaceInPipelinesTable(projectNamespace);
+// });
 
 Then('columns Last Run, Task Run Status, Last Run Status, Last Run Time with values display {string}', (a: string) => {
   pipelinesPage.verifyDefaultPipelineColumnValues();
@@ -78,7 +83,7 @@ When('user selects the option {string} from Actions menu drop down', (action: st
   pipelineDetailsPage.selectActionFromActionsDropdown(action);
 });
 
-When('click Delete button on Delete Pipeline? popup', () => {
+When('click Delete on Delete Pipeline popup', () => {
   cy.alertTitleShouldBe('Delete Pipeline?');
   cy.get(pipelinesObj.deletePipeline.delete).click();
 });

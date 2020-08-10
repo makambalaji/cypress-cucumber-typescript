@@ -6,7 +6,7 @@ export const addPageObj = {
   sectionTitle: '.odc-form-section__heading',
   gitRepoUrl: '#form-input-git-url-field',
   nodeName: '#form-input-name-field',
-  appName: '#form-input-application-name-field',
+  appName: '[id$=application-name-field]',
   create: '[data-test-id="submit-button"]',
   cancel: '[data-test-id="reset-button"]',
   gitSection: {
@@ -179,6 +179,7 @@ export const seelctCardFromOptions = (card: addOptions) => {
 };
 
 export const addPage = {
+  verifyNoWorkLoadsText:(text: string) => cy.get('h2.co-hint-block__title').should('contain.text', text),
   verifyTitle: (title: string) => cy.titleShouldBe(title),
   verifyPipelinesSection: (message: string) => {
     cy.get(addPageObj.sectionTitle).eq(5).should('have.text', 'Pipelines');
@@ -186,7 +187,20 @@ export const addPage = {
   },
   enterGitUrl: (gitUrl: string) => cy.get(addPageObj.gitRepoUrl).type(gitUrl),
   verifyPipelineCheckBox: () => cy.get(addPageObj.pipeline.addPipeline).should('be.visible'),
-  enterAppName: (name: string) => {
+  enterAppName:(appName: string) => {
+    cy.get(addPageObj.appName).then(($el) => {
+      const tag: string = $el.prop("tagName");
+      if(tag.includes('button')) {
+        cy.get(addPageObj.appName).click();
+        cy.get(`li #${appName}-link`).click();
+      }
+      else {
+        cy.get(addPageObj.appName).clear().type(appName)
+      }
+    });
+
+  },
+  enterComponentName: (name: string) => {
     cy.get(addPageObj.nodeName).as('nodeName');
     cy.wait(2000);
     cy.get('@nodeName').clear();
@@ -247,11 +261,12 @@ export const addPage = {
   verifyBuilderImageDetectedMessage:() => cy.get(addPageObj.builderSection.builderImageDetected).should('be.visible'),
   verifyBuilderImageVersion:() => cy.get(addPageObj.builderSection.builderImageVersion).should('be.visible'),
   verifyCard:(cardName: string) => cy.get(addPageObj.cardTitle).contains(cardName).should('be.visible'),
-  createGitWorkload:(gitUrl: string = 'https://github.com/sclorg/nodejs-ex.git', appName: string = 'nodejs-ex-git-app') => {
+  createGitWorkload:(gitUrl: string = 'https://github.com/sclorg/nodejs-ex.git', appName: string = 'nodejs-ex-git-app', componentName: string = 'nodejs-ex-git', resourceType: string = 'Deployment') => {
     seelctCardFromOptions(addOptions.Git);
     addPage.enterGitUrl(gitUrl);
-    addPage.enterAppName(appName)
-    addPage.selectResource();
+    addPage.enterAppName(appName);
+    addPage.enterComponentName(componentName);
+    addPage.selectResource(resourceType);
     addPage.createWorkload();
   },
 };

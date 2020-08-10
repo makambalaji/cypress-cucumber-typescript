@@ -18,7 +18,7 @@ Cypress.Commands.add('byTestActionID', (selector: string) =>
   cy.get(`[data-test-action="${selector}"]:not(.pf-m-disabled)`),
 );
 Cypress.Commands.add('byLegacyTestID', (selector: string) =>
-  cy.get(`[data-test-id="${selector}"]`, {timeout:5000}),
+  cy.get(`[data-test-id="${selector}"]`, {timeout:8000}),
 );
 Cypress.Commands.add('byButtonText', (selector: string) =>
   cy.get('button[type="button"]').contains(`${selector}`),

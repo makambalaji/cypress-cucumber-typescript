@@ -64,10 +64,10 @@ export const triggerTemplateDetailsPage = {
     cy.get('@fieldNames').eq(3).should('have.text', 'Annotations');
     cy.get('@fieldNames').eq(4).should('have.text', 'Created At');
     cy.get('@fieldNames').eq(5).should('have.text', 'Owner');
-    cy.get('div.odc-dynamic-resource-link-list dl dt').as('dynamicLinks');
+    cy.get('div.odc-dynamic-resource-link-list').as('dynamicLinks');
     cy.get('@dynamicLinks').should('have.length', 2);
-    cy.get('@dynamicLinks').eq(0).should('have.text', 'Pipelines');
-    cy.get('@dynamicLinks').eq(1, {timeout: 8000}).should('have.text', 'Event Listeners');
+    cy.get('@dynamicLinks').eq(0).find('dl dt').should('have.text', 'Pipelines');
+    cy.get('@dynamicLinks').eq(1, {timeout: 8000}).find('dl dt').should('have.text', 'Event Listeners');
   },
   verifyActionsDropdown:() => cy.get(triggerTemplateDetailsObj.actions).should('be.visible'),
   selectEventListener:() => cy.get(triggerTemplateDetailsObj.details.eventListenerLink, {timeout:3000}).click(),

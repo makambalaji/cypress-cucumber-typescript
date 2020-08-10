@@ -24,6 +24,10 @@ Given('user is at admin perspecitve', () => {
   perspective.verifyPerspective('Administrator');
 });
 
+Given('user is in administratr perspective', () => {
+  perspective.verifyPerspective('Administrator');
+});
+
 Given('user is at dev perspecitve', () => {
   perspective.switchTo(switchPerspective.Developer);
   perspective.verifyPerspective('Developer');
@@ -86,9 +90,12 @@ Given('user is at pipeline Runs page', () => {
   pipelineRunDetailsPage.verifyTitle();
 });
 
-Given('user is at the topolgy page', () => {
+When('user switches to developer perspective', () => {
+  perspective.switchTo(switchPerspective.Developer);
+});
+
+When('user navigates to Topology page', () => {
   naviagteTo(devNavigationMenu.Topology);
-  topologyPage.verifyTopologyPage();
 });
 
 When('user selects {string} option from kebab menu', (option: string) => {

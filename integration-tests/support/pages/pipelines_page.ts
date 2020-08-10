@@ -64,17 +64,17 @@ export const pipelinesPage = {
     cy.get(pipelinesObj.pipelinesTable.pipelineName).each(($el, index) => {
       const text = $el.text()
       if(text.includes(pipelineName)) {
-        cy.get('tbody tr').eq(index).find('td:nth-child(7) button').click();
+        cy.get('tbody tr').eq(index).find('td:nth-child(6) button').click();
       }
     });
   },
 
   verifyDefaultPipelineColumnValues: () => {
     cy.get(pipelinesObj.pipelinesTable.columnValues).as('colValues');
+    cy.get('@colValues').eq(1).should('have.text', '-');
     cy.get('@colValues').eq(2).should('have.text', '-');
     cy.get('@colValues').eq(3).should('have.text', '-');
     cy.get('@colValues').eq(4).should('have.text', '-');
-    cy.get('@colValues').eq(5).should('have.text', '-');
   },
   
   selectAction:(action: pipelineActions)=> {
@@ -164,7 +164,6 @@ export const pipelinesPage = {
   },
 
   verifyOptionInKebabMenu:(option:string) => {
-    // cy.get('div.pf-c-dropdown button').contains('[data-test-id="actions-menu-button"]').click();
     cy.get('ul.pf-c-dropdown__menu li button').each(($el) => {
       if($el.text().includes(option)) {
         expect($el.text()).contains(option);
@@ -185,6 +184,7 @@ export const pipelinesPage = {
 };
 
 export const startPipelineInPipelinsPage = {
+  clicKCancel:() => cy.byLegacyTestID('modal-cancel-action').click(),
   verifySections:() => {
     cy.get(pipelinesObj.startPipeline.sectionTitle).as('sectionTitle');
     cy.get('@sectionTitle').eq(0).should('have.text', 'Git Resources');

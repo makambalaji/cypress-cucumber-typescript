@@ -7,7 +7,7 @@ import { devNavigationMenu } from '../constants/global';
 import { pipelineDetailsPage } from '../pages/pipelineDetails_page';
 import { seelctCardFromOptions, addPage } from '../pages/add_page';
 import { addOptions } from '../constants/add';
-import { topologyPage } from '../pages/topology_page';
+import { topologyPage, topologySidePane } from '../pages/topology_page';
 
 const store: Record<string, string> = {};
 
@@ -106,13 +106,21 @@ Given('user is at the Pipeline Run Details page', () => {
   pipelineRunDetailsPage.verifyTitle();
 });
 
+Given('5 pipeline runs are completed with the git workload', () => {
+  // TODO: implement step
+});
+
 When('user selects {string} option from Actions menu', (option: string) => {
   pipelineRunDetailsPage.selectFromActionsDropdown(option);
 })
 
 When('user selects {string} option from pipeline Details Actions menu', (option: string) => {
   pipelineDetailsPage.selectActionFromActionsDropdown(option);
-})
+});
+
+When ('user selects Rerun option from the Actions menu', () => {
+
+});
 
 Then('status displays as {string} in pipeline run details page', (PipelineStatus: string) => {
   pipelineRunDetailsPage.fieldDetails('Status', PipelineStatus);
@@ -124,6 +132,26 @@ Then('page redirects to pipeline run details page', () => {
 
 Then('page redirects to pipeline runs page', () => {
   pipelienRunsPage.verifyTitle();
+});
+
+Then ('side pane is displayed with the pipelines section', () => {
+
+});
+
+Then('3 pipeline runs are displayed under pipelines section of topolgy page', () => {
+  // TODO: implement step
+});
+
+Given('pipeline run is available with cancelled tasks', () => {
+  // TODO: implement step
+});
+
+Given('pipeline run is available with failed tasks', () => {
+  // TODO: implement step
+});
+
+When('user clicks on the node name', () => {
+  // TODO: implement step
 });
 
 Given('user is at the Pipeline Details page', () => {
@@ -163,10 +191,6 @@ When('user navigates to Pipelines page', () => {
   naviagteTo(devNavigationMenu.Pipelines);
 });
 
-When('user navigates to Topology page', () => {
-  naviagteTo(devNavigationMenu.Topology);
-});
-
 Given('one pipeline run is completed with the workload', () => {
   // TODO: implement step
 });
@@ -177,7 +201,7 @@ Given('pipeline {string} is created from git page', (name: string) => {
   addPage.verifyTitle('Import from git');
   addPage.enterGitUrl('https://github.com/sclorg/nodejs-ex.git');
 
-  addPage.enterAppName(name);
+  addPage.enterComponentName(name);
   addPage.selectAddPipeline();
   addPage.createWorkload();
   topologyPage.verifyTopologyPage();
@@ -198,7 +222,7 @@ Given('pipeline run is displayed for {string} in pipelines page', (name: string)
 Then('Last Run status of the {string} displays as {string} in topology page', (name: string, status: string) => {
   topologyPage.search(name);
   cy.byNodeName(name).click();
-  topologyPage.verifySidePane();
+  topologySidePane.verify();
   topologyPage.verifyPipelineRunStatus(status);
 });
 

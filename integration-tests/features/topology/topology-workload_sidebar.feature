@@ -2,7 +2,8 @@ Feature: Sidebar in topology
 	As a user, I want to check sidebar of workloads
 
 Background:
-    Given user is in topology
+    Given user is at Topology page
+
 
 @regression, @smoke
 Scenario: Sidebar of worload : T-05-TC01

@@ -3,7 +3,7 @@ import { addPage, seelctCardFromOptions } from '../pages/add_page';
 import { naviagteTo } from '../pages/app';
 import { devNavigationMenu as menu } from '../constants/global';
 import { addOptions } from '../constants/add';
-import { topologyPage } from '../pages/topology_page';
+import { topologyPage, topologySidePane } from '../pages/topology_page';
 import { pipelinesPage } from '../pages/pipelines_page';
 
 Given('user is at Add page', () => {
@@ -35,7 +35,7 @@ Then('Add pipeline checkbox is displayed', () => {
 });
 
 When('type Name as {string} in General section', (name: string) => {
-  addPage.enterAppName(name);
+  addPage.enterComponentName(name);
 });
 
 When('select {string} radio button in Resources section', (resoruce: string) => {
@@ -71,12 +71,13 @@ When('the user enters {string} into the search bar in pipelines page', (name: st
 });
 
 When('clicks node {string} from results', (name: string) => {
-  cy.byNodeName(name).click();
+  topologyPage.componentNode(name).click({force: true});
+  // cy.byNodeName(name).click({force:true});
 });
 
 Then('side pane is displayed with pipeline name same as component name {string}', (appName: string) => {
-  topologyPage.verifySidePane();
-  topologyPage.verifyNodeInsSidePane(appName);
+  topologySidePane.verify();
+  topologySidePane.verifyTitle(appName);
 });
 
 Then('pipeline name is displayed with the component name {string}', (pipelineName: string) => {
@@ -87,7 +88,7 @@ Given('workload {string} is created from add page with pipeline', (pipelineName:
   naviagteTo(menu.Add);
   seelctCardFromOptions(addOptions.Git);
   addPage.enterGitUrl("https://github.com/sclorg/nodejs-ex.git");
-  addPage.enterAppName(pipelineName);
+  addPage.enterComponentName(pipelineName);
   addPage.selectAddPipeline();
   addPage.createWorkload();
 });

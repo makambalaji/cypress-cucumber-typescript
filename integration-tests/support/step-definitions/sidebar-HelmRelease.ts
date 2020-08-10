@@ -1,5 +1,5 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { topologyPage } from '../pages/topology_page';
+import { topologyPage, topologySidePane } from '../pages/topology_page';
 import { catalogPage } from '../pages/add_page';
 
 Given('helm release {string} is present in topology page', (workloadName: string) => {
@@ -16,7 +16,7 @@ Given('helm release {string} is present in topology page', (workloadName: string
 
 Given('user is on the sidebar for the helm release', () => {
   cy.get('[data-type="helm-release"] [data-kind="node"]').click();
-  topologyPage.verifySidePane();
+  topologySidePane.verify();
 });
 
 When('user right clicks on the helm release', () => {
@@ -34,7 +34,7 @@ When('user clicks on the helm release', () => {
 });
 
 Then('user sees the sidebar for the helm release', () => {
-  topologyPage.verifySidePane();
+  topologySidePane.verify();
 });
 
 Then('user sees the Details, Resources, Release Notes tabs', () => {

@@ -70,6 +70,7 @@ When('clicks on tick mark', () => {
 
 Then('{string} is added under secrets section', (secretName: string) => {
   cy.byLegacyTestID(secretName).should('be.visible');
+  startPipelineInPipelinsPage.clicKCancel();
 });
 
 When('enters the SSH KEY as {string}', (sshkey: string) => {
