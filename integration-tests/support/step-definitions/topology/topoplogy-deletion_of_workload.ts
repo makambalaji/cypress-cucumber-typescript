@@ -1,14 +1,7 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-
-Given('user is in topology', () => {
-  // TODO: implement step
-});
+import { topologyPage, topologyObj } from '../../pages/topology_page';
 
 Given('topology has workloads', () => {
-  // TODO: implement step
-});
-
-Given('topology has different workloads', () => {
   // TODO: implement step
 });
 
@@ -24,26 +17,28 @@ When('user clicks delete workload', () => {
   // TODO: implement step
 });
 
-When('user sees {string} modal box to open', (a: string) => {
-  // TODO: implement step
+When('user sees {string} modal box to open', (alertTitle: string) => {
+  cy.alertTitleShouldBe(alertTitle)
 });
 
-When('user checks {string} to be checked', (a: string) => {
-  // TODO: implement step
+When('user checks Delete dependent objects of this resource to be checked', () => {
+  cy.get('form input[type="checkbox"]').should('be.checked');
 });
 
-When('user clicks on {string}', (a: string) => {
-  // TODO: implement step
+When('user clicks on {string}', (buttonName: string) => {
+  cy.byTestID('confirm-action').contains(buttonName).click();
 });
 
-When('user right clicks on the node', () => {
-  // TODO: implement step
+When('user right clicks on the node {string}', (nodeName: string) => {
+  topologyPage.componentNode(nodeName).trigger('contextmenu', {force: true});
 });
 
-When('user checks delete option in the menu', () => {
-  // TODO: implement step
+When('user selects {string} from the context menu', (option: string) => {
+  topologyPage.clickContextMenuOption(option);
 });
 
-Then('user sees the workload disappeared from topology', () => {
-  // TODO: implement step
+Then('workload {string} disappeared from topology', (workloadName: string) => {
+  cy.get(topologyObj.switcher).click();
+  topologyPage.search(workloadName);
+  cy.get('div.is-filtered').should('not.be.visible');
 });

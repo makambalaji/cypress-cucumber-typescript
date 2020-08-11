@@ -2,6 +2,7 @@ import {displayOptions, nodeActions} from '../constants/topology';
 import { helmPage } from './helm_page';
 
 export const topologyObj = {
+    switcher: '[data-test-id="namespace-bar-dropdown"] a',
     graph: {
         reset: '#reset-view',
         zoomIn: '#zoom-in',
@@ -17,6 +18,7 @@ export const topologyObj = {
         title: '[role="dialog"] h1',
         tabs: '[role="dialog"] li button',
         sectionTitle:'[role="dialog"] h2',
+        close: 'button[aria-label="Close"]',
     }
 }
 
@@ -25,11 +27,14 @@ export const topologyPage = {
         cy.get('.co-m-loader').should('not.be.visible');
         cy.get(topologyObj.graph.reset, {timeout:9000}).should('be.visible');
     },
+    verifyContextMenu:() => {
+        cy.get('#popper-container ul').should('be.visible');
+    },
     verifyNoWorkLoadsText:(text: string) => cy.get('h2.co-hint-block__title').should('contain.text', text),
     verifyWorkLoads:() => cy.get('g[data-surface="true"]').should('be.visible'),
     search: (name: string)=> cy.byLegacyTestID('item-filter').clear().type(name),
     verifyWorkloadInTopologyPage: (appName: string) => {
-        cy.get('[data-test-id="namespace-bar-dropdown"] a').as('switcher');
+        cy.get(topologyObj.switcher).as('switcher');
         cy.get('@switcher').click();
         topologyPage.search(appName);
         // cy.get(topologyObj.list.nodeName).should('contain.text', appName);
@@ -95,6 +100,9 @@ export const topologyPage = {
             expect(options).contains($el.text());
         });
     },
+    clickContextMenuOption:(menuOption: string) => {
+        cy.get('#popper-container li[role="menuitem"]').contains(menuOption).click();
+    },
     verifyDecorators:(nodeName: string, numOfDecorators: number) => {
         topologyPage.componentNode(nodeName).siblings('a').should('have.length', numOfDecorators);
     },
@@ -103,6 +111,8 @@ export const topologyPage = {
 export const topologySidePane = {
     verify: () => cy.get(topologyObj.sidePane.dialog).should('be.visible'),
     verifyTitle:(nodeName: string) => cy.get(topologyObj.sidePane.title).should('contain', nodeName),
+    verifySelectedTab:(tabName: string) => cy.get(topologyObj.sidePane.tabs).contains(tabName).parent('li').should('have.class', 'co-m-horizontal-nav-item--active'),
+    verifyTab:(tabName: string) => cy.get(topologyObj.sidePane.tabs).contains(tabName).should('be.visible'),
     selectTab:(tabName: string) => cy.get(topologyObj.sidePane.tabs).contains(tabName).click(),
     verifySection:(sectionTitle: string) => cy.get(topologyObj.sidePane.sectionTitle).contains(sectionTitle).should('be.visible'),
     verifyActions:(...actions: string[]) => {
@@ -155,7 +165,6 @@ export const topologySidePane = {
           }
         }
     },
-
 }
 
 export const addHealthChecksObj = {

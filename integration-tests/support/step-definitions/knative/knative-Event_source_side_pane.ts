@@ -12,23 +12,19 @@ Given('open the project {string}', (a: string) => {
   // TODO: implement step
 });
 
-Given('event source {string} is higlighted on topology page', (a: string) => {
-  // TODO: implement step
-});
-
 Given('knative service, event source and sink connector are present in topology page', () => {
   // TODO: implement step
 });
 
-When('user right clicks on the event source', () => {
+When('user clicks on event source', () => {
   // TODO: implement step
 });
 
-When('selects {string} from context menu', (a: string) => {
+When('select the {string} from Action menu present in right side pane', (a: string) => {
   // TODO: implement step
 });
 
-Then('user able to see context menu with options {string}, {string} {string}, {string}, {string}, {string}', (a: string, b: string, c: string, d: string, e: string, f: string) => {
+Then('side pane is dsiplays with header name as {string}', (a: string) => {
   // TODO: implement step
 });
 
