@@ -1,9 +1,9 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { pipelinesPage, pipelinesObj } from '../pages/pipelines_page';
-import { pipelineBuilderPage } from '../pages/pipelineBuilder_page';
-import { pipelineDetailsPage, triggerTemplateDetailsPage, eventListenerDetailsPage, clusterTriggerBindingDetailsPage } from '../pages/pipelineDetails_page';
-import { naviagteTo } from '../pages/app';
-import { devNavigationMenu } from '../constants/global';
+import { pipelinesPage, pipelinesObj } from '../../pages/pipelines_page';
+import { pipelineBuilderPage } from '../../pages/pipelineBuilder_page';
+import { pipelineDetailsPage, triggerTemplateDetailsPage, eventListenerDetailsPage, clusterTriggerBindingDetailsPage } from '../../pages/pipelineDetails_page';
+import { naviagteTo } from '../../pages/app';
+import { devNavigationMenu } from '../../constants/global';
 
 const store: Record<string, string> = {};
 

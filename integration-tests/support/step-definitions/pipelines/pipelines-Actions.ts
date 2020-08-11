@@ -1,10 +1,10 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { pipelinesPage, pipelinesObj } from '../pages/pipelines_page';
-import { pipelineBuilderPage, pipelineBuilderObj } from '../pages/pipelineBuilder_page';
-import { pipelineDetailsPage } from '../pages/pipelineDetails_page';
-import { pipelineRunDetailsPage} from '../pages/pipelineRunDetails_page';
-import { naviagteTo } from '../pages/app';
-import { devNavigationMenu } from '../constants/global';
+import { pipelinesPage, pipelinesObj } from '../../pages/pipelines_page';
+import { pipelineBuilderPage, pipelineBuilderObj } from '../../pages/pipelineBuilder_page';
+import { pipelineDetailsPage } from '../../pages/pipelineDetails_page';
+import { pipelineRunDetailsPage} from '../../pages/pipelineRunDetails_page';
+import { naviagteTo } from '../../pages/app';
+import { devNavigationMenu } from '../../constants/global';
 
 
 Given('pipeline run is available for {string}', (pipelineName: string) => {

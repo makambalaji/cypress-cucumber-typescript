@@ -1,7 +1,7 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { seelctCardFromOptions, containerImage, addPage, addPageObj } from '../pages/add_page';
-import { addOptions } from '../constants/add';
-import { topologyPage } from '../pages/topology_page';
+import { seelctCardFromOptions, containerImage, addPage, addPageObj } from '../../pages/add_page';
+import { addOptions } from '../../constants/add';
+import { topologyPage } from '../../pages/topology_page';
 
 Given('user is at Deploy Image page', () => {
   seelctCardFromOptions(addOptions.ContainerImage);

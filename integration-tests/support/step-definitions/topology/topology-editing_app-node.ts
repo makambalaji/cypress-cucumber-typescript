@@ -1,6 +1,6 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { addPage } from '../pages/add_page';
-import { topologyPage } from '../pages/topology_page';
+import { addPage } from '../../pages/add_page';
+import { topologyPage } from '../../pages/topology_page';
 
 Given('user is in the topology with deployment workload', () => {
   addPage.createGitWorkload();

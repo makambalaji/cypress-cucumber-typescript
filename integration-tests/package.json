@@ -43,6 +43,6 @@
     "webpack": "^4.28.2"
   },
   "cypress-cucumber-preprocessor": {
-    "step_definitions": "support/step-definitions/"
+    "step_definitions": "support/step-definitions/*/"
   }
 }

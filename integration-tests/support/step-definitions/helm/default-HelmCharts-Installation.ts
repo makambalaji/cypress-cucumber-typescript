@@ -1,9 +1,9 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { perspective } from '../pages/app';
-import { switchPerspective } from '../constants/global';
-import { addPage, seelctCardFromOptions, catalogPage, catalogPageObj } from '../pages/add_page';
-import { addOptions } from '../constants/add';
-import { topologyPage } from '../pages/topology_page';
+import { perspective } from '../../pages/app';
+import { switchPerspective } from '../../constants/global';
+import { addPage, seelctCardFromOptions, catalogPage, catalogPageObj } from '../../pages/add_page';
+import { addOptions } from '../../constants/add';
+import { topologyPage } from '../../pages/topology_page';
 
 Given('user is at developer perspecitve', () => {
   perspective.switchTo(switchPerspective.Developer);

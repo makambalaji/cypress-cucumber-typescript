@@ -1,13 +1,13 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { pipelinesPage, startPipelineInPipelinsPage as startPipeline } from '../pages/pipelines_page';
-import { pipelineBuilderPage } from '../pages/pipelineBuilder_page';
-import { pipelineRunDetailsPage, pipelienRunsPage } from '../pages/pipelineRunDetails_page';
-import { naviagteTo } from '../pages/app';
-import { devNavigationMenu } from '../constants/global';
-import { pipelineDetailsPage } from '../pages/pipelineDetails_page';
-import { seelctCardFromOptions, addPage } from '../pages/add_page';
-import { addOptions } from '../constants/add';
-import { topologyPage, topologySidePane } from '../pages/topology_page';
+import { pipelinesPage, startPipelineInPipelinsPage as startPipeline } from '../../pages/pipelines_page';
+import { pipelineBuilderPage } from '../../pages/pipelineBuilder_page';
+import { pipelineRunDetailsPage, pipelienRunsPage } from '../../pages/pipelineRunDetails_page';
+import { naviagteTo } from '../../pages/app';
+import { devNavigationMenu } from '../../constants/global';
+import { pipelineDetailsPage } from '../../pages/pipelineDetails_page';
+import { seelctCardFromOptions, addPage } from '../../pages/add_page';
+import { addOptions } from '../../constants/add';
+import { topologyPage, topologySidePane } from '../../pages/topology_page';
 
 const store: Record<string, string> = {};
 

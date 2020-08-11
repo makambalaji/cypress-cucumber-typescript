@@ -1,6 +1,6 @@
 import { When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { upgradeHelmRelease, helmDetailsPage, rollBackHelmRelease, helmPage } from '../pages/helm_page';
-import { topologyPage } from '../pages/topology_page';
+import { upgradeHelmRelease, helmDetailsPage, rollBackHelmRelease, helmPage } from '../../pages/helm_page';
+import { topologyPage } from '../../pages/topology_page';
 
 When('user right clicks on the Helm Release {string} to open the context menu', (nodeName: string) => {
   // cy.byNodeName(nodeName).trigger('contextmenu');

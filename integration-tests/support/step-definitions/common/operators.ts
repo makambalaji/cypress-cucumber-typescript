@@ -1,6 +1,6 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { operatorsPage, operatorsObj } from '../pages/operators_page';
-import  { operators } from '../constants/global'
+import { operatorsPage, operatorsObj } from '../../pages/operators_page';
+import  { operators } from '../../constants/global'
 
 Given('user is at Operator Hub page with the header name {string}', (headerName) => {
   operatorsPage.navigateToOperaotorHubPage();

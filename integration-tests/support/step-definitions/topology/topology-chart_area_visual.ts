@@ -1,8 +1,8 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { projectNameSpace, naviagteTo } from '../pages/app';
-import { addPage } from '../pages/add_page';
-import { topologyPage } from '../pages/topology_page';
-import { devNavigationMenu } from '../constants/global';
+import { projectNameSpace, naviagteTo } from '../../pages/app';
+import { addPage } from '../../pages/add_page';
+import { topologyPage } from '../../pages/topology_page';
+import { devNavigationMenu } from '../../constants/global';
 
 Given('deployment workload is present in topology', () => {
   projectNameSpace.createNewProject('aut-topology-deployment-project');

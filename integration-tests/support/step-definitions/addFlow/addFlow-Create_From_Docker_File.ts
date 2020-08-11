@@ -1,7 +1,7 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { seelctCardFromOptions, addPage, addPageObj } from '../pages/add_page';
-import { addOptions } from '../constants/add';
-import { topologyPage } from '../pages/topology_page';
+import { seelctCardFromOptions, addPage, addPageObj } from '../../pages/add_page';
+import { addOptions } from '../../constants/add';
+import { topologyPage } from '../../pages/topology_page';
 
 Given('user is on Import from Docker file page', () => {
   seelctCardFromOptions(addOptions.DockerFile);

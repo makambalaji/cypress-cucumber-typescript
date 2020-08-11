@@ -1,6 +1,6 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { addPage } from '../pages/add_page';
-import { topologyPage } from '../pages/topology_page';
+import { addPage } from '../../pages/add_page';
+import { topologyPage } from '../../pages/topology_page';
 
 let firstComponent = 'nodejs-ex-git';
 let secondComponent = 'dancer-ex-git';

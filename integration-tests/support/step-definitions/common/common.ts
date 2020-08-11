@@ -1,13 +1,13 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { perspective, projectNameSpace as project, naviagteTo } from '../pages/app';
-import { operatorsPage } from '../pages/operators_page';
-import {switchPerspective, devNavigationMenu as menu, devNavigationMenu} from '../constants/global';
-import { pipelineBuilderPage} from '../pages/pipelineBuilder_page';
-import  {pipelineRunDetailsPage} from '../pages/pipelineRunDetails_page';
-import { pipelinesPage } from '../pages/pipelines_page';
-import { topologyPage } from '../pages/topology_page';
-import { seelctCardFromOptions } from '../pages/add_page';
-import { addOptions } from '../constants/add';
+import { perspective, projectNameSpace as project, naviagteTo } from '../../pages/app';
+import { operatorsPage } from '../../pages/operators_page';
+import {switchPerspective, devNavigationMenu as menu, devNavigationMenu} from '../../constants/global';
+import { pipelineBuilderPage} from '../../pages/pipelineBuilder_page';
+import  {pipelineRunDetailsPage} from '../../pages/pipelineRunDetails_page';
+import { pipelinesPage } from '../../pages/pipelines_page';
+import { topologyPage } from '../../pages/topology_page';
+import { seelctCardFromOptions } from '../../pages/add_page';
+import { addOptions } from '../../constants/add';
 
 // Given('user logged into the openshift application', () => {
 //     loginPage.loginWithValidCredentials(Cypress.env('username'), Cypress.env('password'));
