@@ -5,7 +5,7 @@ Given('open shift cluster is installed with Serverless and eventing operator', (
 });
 
 Given('open the project namespace {string}', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 Given('user is on dev perspective', () => {
@@ -29,23 +29,23 @@ Given('knative service is available for selected namespace', () => {
 });
 
 When('user clicks on {string} card', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 When('user selects {string} type', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 When('type Resoruce APIVERSION as {string}', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 When('type Resource KIND as {string}', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 When('selects {string} option from Service Account Name field', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 When('selects an option from Kantive service field', () => {
@@ -57,23 +57,23 @@ When('user clicks on Create button', () => {
 });
 
 When('type Container Image as {string}', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 When('type schedule as {string}', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 When('type Subject apiVersion as {string}', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 When('type Subject Kind as {string}', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 Then('user redirects to page with header name {string}', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 Then('able to see event source types like ApiServerSource, ContainerSource, CronJobSource, PingSource, SinkBinding', () => {
@@ -85,11 +85,11 @@ Then('able to see Knative Eventing card', () => {
 });
 
 Then('able to see notifier with header {string}', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 Then('message as {string}', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 Then('page contains Resource, Mode, Service Account Name, Sink, General sections', () => {
@@ -101,11 +101,11 @@ Then('Resoruce contains App Version, Kind fields', () => {
 });
 
 Then('sink has Kantive service dropdown with defautl text {string}', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 Then('Application Name, Name fields have defautl text as {string}, {string}', (a: string, b: string) => {
-  // TODO: implement step
+ cy.log(a, b,)
 });
 
 Then('Create button is disabled', () => {
@@ -125,7 +125,7 @@ Then('Environmental variables has Name, Value fields and Add More link', () => {
 });
 
 Then('Application Name, Name fields will have defautl text as {string}, {string}', (a: string, b: string) => {
-  // TODO: implement step
+ cy.log(a, b,)
 });
 
 Then('page contains CronJobSource, Sink, General sections', () => {

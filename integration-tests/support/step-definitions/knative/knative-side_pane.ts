@@ -9,35 +9,35 @@ Given('user is on dev perspective - Topology page', () => {
 });
 
 Given('user should be on the project {string}', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 Given('one service {string} should be available', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 Given('one revision {string} should be available', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 Given('knative revision name {string} is higlighted on topology page', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 Given('side pane is displayed for knative revision name {string} in topology page', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 Given('knative serivce name {string} is higlighted on topology page', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 Given('knative service name {string} is higlighted on topology page', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 When('user clciks on the knative revision name {string}', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 When('user clicks on Resoruces section', () => {
@@ -53,27 +53,27 @@ When('user clicks on Actions dropdown in top right corner of side pane', () => {
 });
 
 When('user clciks on the knative serivce {string}', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 When('user clcik on the knative revision name {string}', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 Then('side pane is displayed with heading name as {string}', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 Then('user able to see pods status as {string} by default', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 Then('name displays as {string}', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 Then('namespace displays as {string}', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 Then('Labels section contain n number of Labels', () => {
@@ -81,11 +81,11 @@ Then('Labels section contain n number of Labels', () => {
 });
 
 Then('Annotations section contain {string}', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 Then('{string} field the date in format {string}', (a: string, b: string) => {
-  // TODO: implement step
+ cy.log(a, b)
 });
 
 Then('', () => {
@@ -93,7 +93,7 @@ Then('', () => {
 });
 
 Then('user able to see the options {string}, {string}, {string}, {string}', (a: string, b: string, c: string, d: string) => {
-  // TODO: implement step
+  cy.log(a, b, c, d)
 });
 
 Then('side pane is displayed with heading name same as kantive service name', () => {
@@ -101,11 +101,11 @@ Then('side pane is displayed with heading name same as kantive service name', ()
 });
 
 Then('Name should display as {string}', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 Then('Namespace should display as {string}', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 Then('Labels section should contain n number of Labels', () => {
@@ -113,11 +113,11 @@ Then('Labels section should contain n number of Labels', () => {
 });
 
 Then('Annotations section should contain {string}', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 Then('{string} field display the date in format {string}', (a: string, b: string) => {
-  // TODO: implement step
+ cy.log(a, b,)
 });
 
 Then('owner field should be displayed', () => {
@@ -125,5 +125,5 @@ Then('owner field should be displayed', () => {
 });
 
 Then('user able to see the options like {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}', (a: string, b: string, c: string, d: string, e: string, f: string, g: string, h: string) => {
-  // TODO: implement step
+  cy.log(a, b, c, d, e, f, g, h)
 });

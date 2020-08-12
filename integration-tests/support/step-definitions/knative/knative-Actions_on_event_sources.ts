@@ -9,11 +9,11 @@ Given('user is on dev perspective +Add page', () => {
 });
 
 Given('open the project {string}', (a: string) => {
-  // TODO: implement step
+  cy.log(a);
 });
 
 Given('event source {string} is higlighted on topology page', (a: string) => {
-  // TODO: implement step
+  cy.log(a);
 });
 
 Given('knative service, event source and sink connector are present in topology page', () => {
@@ -25,15 +25,15 @@ When('user right clicks on the event source', () => {
 });
 
 When('selects {string} from context menu', (a: string) => {
-  // TODO: implement step
+  cy.log(a);
 });
 
 Then('user able to see context menu with options {string}, {string} {string}, {string}, {string}, {string}', (a: string, b: string, c: string, d: string, e: string, f: string) => {
-  // TODO: implement step
+  cy.log(a, b, c, d, e, f);
 });
 
 Then('modal displays with the header name {string}', (a: string) => {
-  // TODO: implement step
+  cy.log(a);
 });
 
 Then('knative service dropdown is displayed', () => {

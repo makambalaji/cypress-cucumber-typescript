@@ -9,7 +9,7 @@ Given('user is on dev perspective', () => {
 });
 
 Given('create the project {string}', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 Given('user is on Add page', () => {
@@ -17,11 +17,11 @@ Given('user is on Add page', () => {
 });
 
 When('user clicks on {string} card', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 Then('user redirects to page with header name {string}', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 Then('able to see CamelSource event type', () => {

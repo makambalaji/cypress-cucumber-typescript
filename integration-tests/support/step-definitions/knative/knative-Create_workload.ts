@@ -9,7 +9,7 @@ Given('user is on dev perspective +Add page', () => {
 });
 
 Given('create the project {string}', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 Given('user is on Add flow page', () => {
@@ -17,7 +17,7 @@ Given('user is on Add flow page', () => {
 });
 
 Given('user is on {string} form with header name {string}', (a: string, b: string) => {
-  // TODO: implement step
+ cy.log(a, b,)
 });
 
 Given('builder images are displayed', () => {
@@ -25,7 +25,7 @@ Given('builder images are displayed', () => {
 });
 
 When('user clicks on {string} card', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 When('create the application with s2i builder image', () => {
@@ -33,19 +33,19 @@ When('create the application with s2i builder image', () => {
 });
 
 When('user type {string} into the {string} text box', (a: string, b: string) => {
-  // TODO: implement step
+ cy.log(a, b,)
 });
 
 When('select {string} radio button on Add page', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 When('click {string} button on Add page', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 When('user search and select the {string} card', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 When('create the application with the selected builder image', () => {
@@ -53,11 +53,11 @@ When('create the application with the selected builder image', () => {
 });
 
 When('select the {string} radio button on Add page', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 Then('user redirects to page with header name {string}', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 Then('Knaive Service option is displayed in Resources section', () => {

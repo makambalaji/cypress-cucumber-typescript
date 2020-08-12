@@ -9,7 +9,7 @@ Given('user is on dev perspective +Add page', () => {
 });
 
 Given('open the project {string}', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 Given('knative service, event source and sink connector are present in topology page', () => {
@@ -21,15 +21,15 @@ When('user clicks on event source', () => {
 });
 
 When('select the {string} from Action menu present in right side pane', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 Then('side pane is dsiplays with header name as {string}', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 Then('modal displays with the header name {string}', (a: string) => {
-  // TODO: implement step
+ cy.log(a)
 });
 
 Then('knative service dropdown is displayed', () => {
