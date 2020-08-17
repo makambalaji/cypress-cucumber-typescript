@@ -1,4 +1,5 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
+import { addPage } from '../../pages/add_page';
 
 Given('open shift cluster is installed with apache camel source operator', () => {
   // TODO: implement step
@@ -17,11 +18,11 @@ Given('user is on Add page', () => {
 });
 
 When('user clicks on {string} card', (a: string) => {
- cy.log(a)
+  cy.log(a)
 });
 
-Then('user redirects to page with header name {string}', (a: string) => {
- cy.log(a)
+Then('user redirects to page with header name {string}', (headerName: string) => {
+  cy.titleShouldBe(headerName);
 });
 
 Then('able to see CamelSource event type', () => {
