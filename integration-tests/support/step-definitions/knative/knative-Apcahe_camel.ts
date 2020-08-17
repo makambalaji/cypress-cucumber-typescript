@@ -1,5 +1,4 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { addPage } from '../../pages/add_page';
 
 Given('open shift cluster is installed with apache camel source operator', () => {
   // TODO: implement step

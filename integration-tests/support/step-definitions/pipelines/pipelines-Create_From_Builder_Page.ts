@@ -74,12 +74,12 @@ Then('tasks displayed serially in pipelines section', () => {
   // TODO: implement step
 });
 
-When('add {string} resource with name {string} to the {string}', (resource_type: string, resource_name: string, task_name: string) => {
+When('add {string} resource with name {string} to the {string}', (resourceType: string, resourceName: string, taskName: string) => {
   
 });
 
 When('user clicks {string} button on Pipeline Builder page', (buttonName: string) => {
-
+  cy.log(buttonName);
 });
 
 When('add the parameter details like Name, Description and Default Value', () => {

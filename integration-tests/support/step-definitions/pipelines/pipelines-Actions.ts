@@ -9,6 +9,7 @@ import { devNavigationMenu } from '../../constants/global';
 
 Given('pipeline run is available for {string}', (pipelineName: string) => {
   // To Do
+  cy.log(pipelineName);
 });
 
 When('the user enters {string} into the pipelines search bar', (pipelineName: string) => {
@@ -27,8 +28,8 @@ Then('column Name display with value {string}', (pipelineName: string) => {
 //   pipelinesPage.verifyNameSpaceInPipelinesTable(projectNamespace);
 // });
 
-Then('columns Last Run, Task Run Status, Last Run Status, Last Run Time with values display {string}', (a: string) => {
-  pipelinesPage.verifyDefaultPipelineColumnValues();
+Then('columns Last Run, Task Run Status, Last Run Status, Last Run Time with values display {string}', (defaultValue: string) => {
+  pipelinesPage.verifyDefaultPipelineColumnValues(defaultValue);
 });
 
 Then('Create Pipeline button is enabled', () => {

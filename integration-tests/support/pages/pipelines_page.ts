@@ -69,12 +69,12 @@ export const pipelinesPage = {
     });
   },
 
-  verifyDefaultPipelineColumnValues: () => {
+  verifyDefaultPipelineColumnValues: (defaultValue: string = '-') => {
     cy.get(pipelinesObj.pipelinesTable.columnValues).as('colValues');
-    cy.get('@colValues').eq(1).should('have.text', '-');
-    cy.get('@colValues').eq(2).should('have.text', '-');
-    cy.get('@colValues').eq(3).should('have.text', '-');
-    cy.get('@colValues').eq(4).should('have.text', '-');
+    cy.get('@colValues').eq(1).should('have.text', defaultValue);
+    cy.get('@colValues').eq(2).should('have.text', defaultValue);
+    cy.get('@colValues').eq(3).should('have.text', defaultValue);
+    cy.get('@colValues').eq(4).should('have.text', defaultValue);
   },
   
   selectAction:(action: pipelineActions)=> {

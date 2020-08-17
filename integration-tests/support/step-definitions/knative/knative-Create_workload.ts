@@ -1,6 +1,6 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { addPage, seelctCardFromOptions, addPageObj, containerImage, catalogPage } from '../../pages/add_page';
-import { addOptions, resourceTypes } from '../../constants/add';
+import { addOptions } from '../../constants/add';
 import { naviagteTo } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
 import { topologyPage } from '../../pages/topology_page';
