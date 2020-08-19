@@ -1,5 +1,5 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { seelctCardFromOptions, eventSourcesPage, addPage, eventSourceObj } from '../../pages/add_page';
+import { addPage.selectCardFromOptions, eventSourcesPage, addPage, eventSourceObj } from '../../pages/add_page';
 import { naviagteTo } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
 import { addOptions } from '../../constants/add';
@@ -11,7 +11,7 @@ Given('knative service is not available for selected namespace', () => {
 
 Given('user is on Event Sources page', () => {
   naviagteTo(devNavigationMenu.Add);
-  seelctCardFromOptions(addOptions.EventSource);
+  addPage.selectCardFromOptions(addOptions.EventSource);
   eventSourcesPage.verifyTitle();
 });
 
@@ -20,7 +20,7 @@ Given('knative service is available for selected namespace', () => {
 });
 
 When('user clicks on {string} card', (cardName: string) => {
-  seelctCardFromOptions(cardName);
+  addPage.selectCardFromOptions(cardName);
 });
 
 When('user selects event source type {string}', (eventSourceType: string) => {

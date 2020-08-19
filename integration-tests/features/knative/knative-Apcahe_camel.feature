@@ -9,7 +9,7 @@ Background:
 
 @regression, @smoke
 Scenario: CamelSource display in event sources add page - Kn-07-TC03
-   Given user is on Add page 
+   Given user is at Add page 
    When user clicks on "Event Sources" card
    Then user redirects to page with header name "Event Sources"
    And able to see CamelSource event type

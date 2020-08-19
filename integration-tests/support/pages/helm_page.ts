@@ -1,6 +1,6 @@
 import { naviagteTo } from "./app";
 import { devNavigationMenu } from "../constants/global";
-import { seelctCardFromOptions, catalogPage } from "./add_page";
+import { addPage.selectCardFromOptions, catalogPage } from "./add_page";
 import { addOptions } from "../constants/add";
 
 export const helmPageObj = {
@@ -40,7 +40,7 @@ export const helmPage = {
     clickHelmReleaseName:(name:string) => cy.get(`a[title="${name}"]`).click(),
     createHelmRelease:(helmCardName: string, ) => {
         naviagteTo(devNavigationMenu.Add);
-        seelctCardFromOptions(addOptions.HelmChart);
+        addPage.selectCardFromOptions(addOptions.HelmChart);
         catalogPage.search(helmCardName);
         catalogPage.clickInstallHelmChartOnSidePane();
         catalogPage.clickOnInstallButton();

@@ -1,7 +1,7 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { perspective } from '../../pages/app';
 import { switchPerspective } from '../../constants/global';
-import { addPage, seelctCardFromOptions, catalogPage, catalogPageObj } from '../../pages/add_page';
+import { addPage, addPage.selectCardFromOptions, catalogPage, catalogPageObj } from '../../pages/add_page';
 import { addOptions } from '../../constants/add';
 import { topologyPage } from '../../pages/topology_page';
 
@@ -16,7 +16,7 @@ Then('user can see Helm Chart card on the +Add page', () => {
 
 When('user clicks on the Helm Chart card on the +Add page', () => {
   addPage.verifyCard('Helm Chart');
-  seelctCardFromOptions(addOptions.HelmChart);
+  addPage.selectCardFromOptions(addOptions.HelmChart);
 });
 
 Then('user redirects to Developer Catalog page', () => {
@@ -54,7 +54,7 @@ Then('Topology page have the helm chart workload {string}', (nodeName: string) =
 });
 
 When('user clicks on the Developer Catalog card on the +Add page', () => {
-  seelctCardFromOptions(addOptions.Catalog);
+  addPage.selectCardFromOptions(addOptions.Catalog);
 });
 
 When('user checks the Helm Charts checkbox', () => {

@@ -6,7 +6,7 @@ import { pipelineBuilderPage} from '../../pages/pipelineBuilder_page';
 import  {pipelineRunDetailsPage} from '../../pages/pipelineRunDetails_page';
 import { pipelinesPage } from '../../pages/pipelines_page';
 import { topologyPage } from '../../pages/topology_page';
-import { seelctCardFromOptions } from '../../pages/add_page';
+import { addPage.selectCardFromOptions } from '../../pages/add_page';
 import { addOptions } from '../../constants/add';
 
 // Given('user logged into the openshift application', () => {
@@ -41,6 +41,10 @@ Given('user is at developer perspecitve', () => {
 Given('open shift cluster is installed with Serverless operator', () => {
   perspective.switchTo(switchPerspective.Administrator);
   operatorsPage.verifyOperatorInNavigationMenu('Serverless');
+});
+
+Given('open shift cluster is installed with apache camel source operator', () => {
+  perspective.switchTo(switchPerspective.Administrator);
 });
 
 Given('open shift cluster is installed with Serverless and eventing operator', () => {
@@ -94,7 +98,7 @@ Given('user is at the topolgy page', () => {
 });
 
 Given('user is at Developer Catlog page', () => {
-  seelctCardFromOptions(addOptions.Catalog);
+  addPage.selectCardFromOptions(addOptions.Catalog);
 });
 
 Given('user is at pipelines page', () => {

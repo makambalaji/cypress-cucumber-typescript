@@ -1,5 +1,5 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { seelctCardFromOptions, yamlPage } from '../../pages/add_page';
+import { addPage.selectCardFromOptions, yamlPage } from '../../pages/add_page';
 import { addOptions } from '../../constants/add';
 import { naviagteTo } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
@@ -7,7 +7,7 @@ import { topologyPage } from '../../pages/topology_page';
 
 Given('user is at Import YAML page', () => {
   naviagteTo(devNavigationMenu.Add);
-  seelctCardFromOptions(addOptions.YAML);
+  addPage.selectCardFromOptions(addOptions.YAML);
 });
 
 When('user clicks on create button wtih default yaml', () => {

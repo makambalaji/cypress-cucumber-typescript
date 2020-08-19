@@ -2,7 +2,7 @@ import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { naviagteTo } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
 import { helmPage, helmDetailsPage } from '../../pages/helm_page';
-import { seelctCardFromOptions, catalogPage, catalogPageObj } from '../../pages/add_page';
+import { addPage.selectCardFromOptions, catalogPage, catalogPageObj } from '../../pages/add_page';
 import { addOptions } from '../../constants/add';
 import { topologyPage } from '../../pages/topology_page';
 
@@ -23,7 +23,7 @@ When('user clicks on the Helm tab', () => {
 });
 
 When('user clicks on the Helm Chart card on the +Add page', () => {
-  seelctCardFromOptions(addOptions.HelmChart);
+  addPage.selectCardFromOptions(addOptions.HelmChart);
 });
 
 When('user searches for the {string} helm chart', (helmChartName: string) => {
@@ -53,7 +53,7 @@ Then('release name displays as {string}', (name: string) => {
 
 Given('user is at Install Helm Chart page', () => {
   naviagteTo(devNavigationMenu.Add);
-  seelctCardFromOptions(addOptions.HelmChart);
+  addPage.selectCardFromOptions(addOptions.HelmChart);
   catalogPage.search('Nodejs Ex K v0.2.0');
   catalogPage.selectHelmChartCard('Nodejs Ex K v0.2.0');
   catalogPage.clickInstallHelmChartOnSidePane();

@@ -1,5 +1,5 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { addPage, seelctCardFromOptions, addPageObj, containerImage, catalogPage } from '../../pages/add_page';
+import { addPage, addPage.selectCardFromOptions, addPageObj, containerImage, catalogPage } from '../../pages/add_page';
 import { addOptions } from '../../constants/add';
 import { naviagteTo } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
@@ -7,7 +7,7 @@ import { topologyPage } from '../../pages/topology_page';
 
 Given('user is on {string} form', (formName: string) => {
   naviagteTo(devNavigationMenu.Add);
-  seelctCardFromOptions(formName);
+  addPage.selectCardFromOptions(formName);
 });
 
 Given('builder images are displayed', () => {
@@ -15,19 +15,19 @@ Given('builder images are displayed', () => {
 });
 
 When('user clicks on From git card', () => {
-  seelctCardFromOptions(addOptions.Git);
+  addPage.selectCardFromOptions(addOptions.Git);
 });
 
 When('user clicks on Container Image card', () => {
-  seelctCardFromOptions(addOptions.ContainerImage);
+  addPage.selectCardFromOptions(addOptions.ContainerImage);
 });
 
 When('user clicks on From Dockerfile card', () => {
-  seelctCardFromOptions(addOptions.DockerFile);
+  addPage.selectCardFromOptions(addOptions.DockerFile);
 });
 
 When('user clicks on From Catalog card', () => {
-  seelctCardFromOptions(addOptions.Catalog);
+  addPage.selectCardFromOptions(addOptions.Catalog);
 });
 
 When('create the application with s2i builder image', () => {

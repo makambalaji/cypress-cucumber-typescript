@@ -74,132 +74,6 @@ export const addPageObj = {
   },
 }
 
-export const dockerPageObj = {
-}
-
-export const containerImageObj = {
-  imageSection: {
-    externalRegistryImageCheckBox: '#form-radiobutton-registry-external-field',
-    internalRegistryImageCheckBox: '#form-radiobutton-registry-internal-field',
-    externalRegistry: {
-      allowImageFromInsecureRegistry: '#form-checkbox-allowInsecureRegistry-field',
-      imageName: '#form-input-searchTerm-field',
-    },
-    internalRegistry: {
-      selectProject: '#form-ns-dropdown-imageStream-namespace-field',
-      imageStream: '#form-ns-dropdown-imageStream-image-field',
-      tag: '#form-dropdown-imageStream-tag-field',
-    },
-  }
-}
-
-export const catalogPageObj = {
-  search: 'input[placeholder="Filter by keyword..."]',
-  create: 'button[type="submit"]',
-  card: 'a.pf-c-card',
-  sidePane: {
-    dialog: '[role="dialog"]',
-    instantiateTemplate: 'a[title="Instantiate Template"]',
-    create: 'a[title="Create"]',
-    installHelmChart:'a[title="Install Helm Chart"]',
-    createHelmChart: 'a[title="Install Helm Chart"]',
-  },
-  mariaDBTemplate: {
-    namespace: '#namespace',
-    title: 'h1.co-m-pane__heading',
-    memoryLimit: '#MEMORY_LIMIT',
-    imageSrreamNameSpace: '#NAMESPACE',
-    databaseServiceName: '#DATABASE_SERVICE_NAME',
-    mariaDBConnectionUserName: '#MYSQL_USER',
-    cancel: '#cancel',
-  },
-  createKnativeServing: {
-    logo: 'h1.co-clusterserviceversion-logo__name__clusterserviceversion',
-    name: '#root_metadata_name',
-    labels: 'input[placeholder="app=frontend"]',
-  },
-  installHelmChart: {
-    logo: 'h1.co-clusterserviceversion-logo__name__clusterserviceversion',
-    install: '[data-test-id="submit-button"]',
-    releaseName: '#form-input-releaseName-field',
-    yamlView: '#form-radiobutton-editorType-yaml-field',
-    formView: '#form-radiobutton-editorType-form-field',
-    cancel: '[data-test-id="reset-button"]',
-  }
-}
-
-export const seelctCardFromOptions = (card: addOptions | string) => {
-  switch (card) {
-    case 'Git':
-    case addOptions.Git:
-      cy.byLegacyTestID('import-from-git').click();
-      cy.titleShouldBe('Import from git');
-      break;
-    case 'Deploy Image':
-    case addOptions.ContainerImage:
-      cy.byLegacyTestID('deploy-image').click();
-      cy.titleShouldBe('Deploy Image');
-      break;
-    case 'Import from Dockerfile':
-    case addOptions.DockerFile:
-      cy.byLegacyTestID('import-from-dockerfile').click();
-      cy.titleShouldBe('Import from Dockerfile');
-      break;
-    case 'Catalog file':
-    case addOptions.Catalog:
-      cy.byLegacyTestID('dev-catalog').click();
-      cy.titleShouldBe('Developer Catalog');
-      break;
-    case 'Database':
-    case addOptions.Database:
-      cy.byLegacyTestID('dev-catalog-databases').click();
-      cy.titleShouldBe('Developer Catalog');
-      break;
-    case 'Event Sources':
-    case addOptions.EventSource:
-      cy.byLegacyTestID('knative-event-source').click();
-      cy.titleShouldBe('Event Sources');
-      break;
-    case 'Helm Chart':
-    case addOptions.HelmChart:
-      cy.byLegacyTestID('helm').click();
-      cy.titleShouldBe('Developer Catalog');
-      cy.byTestID('kind-helm-chart').should('be.checked');
-      break;
-    case 'Operator Backed':
-    case addOptions.OperatorBacked:
-      cy.byLegacyTestID('operator-backed').click();
-      cy.titleShouldBe('Developer Catalog');
-      cy.byTestID('kind-cluster-service-version').should('be.checked');
-      break;
-    case 'Pipelines':
-    case addOptions.Pipeline:
-      cy.byLegacyTestID('pipeline').click();
-      cy.get('h1.odc-pipeline-builder-header__title').should('have.text', 'Pipeline Builder');
-      break;
-    case 'Yaml':
-    case addOptions.YAML:
-      cy.byLegacyTestID('import-yaml').click();
-      cy.titleShouldBe('Import YAML');
-      break;
-    default:
-      throw new Error('Option is not available');
-      break;
-  }
-};
-
-export const eventSourceObj = {
-  search: '[placeholder="Filter by type..."]',
-  create: '[data-test-id="submit-button"]',
-  cancel: '[data-test-id="reset-button"]',
-  apiServerSource: {
-    apiVersion: 'input[placeholder="apiversion"]',
-    kind: 'input[placeholder="kind"]',
-    serviceAccountName: '#form-ns-dropdown-data-apiserversource-serviceAccountName-field',
-    sinkResource: '#form-ns-dropdown-sink-name-field',
-  },
-}
-
 export const addPage = {
   verifyNoWorkLoadsText:(text: string) => cy.get('h2.co-hint-block__title').should('contain.text', text),
   verifyTitle: (title: string) => cy.titleShouldBe(title),
@@ -275,6 +149,65 @@ export const addPage = {
         break;
     }
   },
+  selectCardFromOptions: (card: addOptions | string) => {
+    switch (card) {
+      case 'Git':
+      case addOptions.Git:
+        cy.byLegacyTestID('import-from-git').click();
+        cy.titleShouldBe('Import from git');
+        break;
+      case 'Deploy Image':
+      case addOptions.ContainerImage:
+        cy.byLegacyTestID('deploy-image').click();
+        cy.titleShouldBe('Deploy Image');
+        break;
+      case 'Import from Dockerfile':
+      case addOptions.DockerFile:
+        cy.byLegacyTestID('import-from-dockerfile').click();
+        cy.titleShouldBe('Import from Dockerfile');
+        break;
+      case 'Catalog file':
+      case addOptions.Catalog:
+        cy.byLegacyTestID('dev-catalog').click();
+        cy.titleShouldBe('Developer Catalog');
+        break;
+      case 'Database':
+      case addOptions.Database:
+        cy.byLegacyTestID('dev-catalog-databases').click();
+        cy.titleShouldBe('Developer Catalog');
+        break;
+      case 'Event Sources':
+      case addOptions.EventSource:
+        cy.byLegacyTestID('knative-event-source').click();
+        cy.titleShouldBe('Event Sources');
+        break;
+      case 'Helm Chart':
+      case addOptions.HelmChart:
+        cy.byLegacyTestID('helm').click();
+        cy.titleShouldBe('Developer Catalog');
+        cy.byTestID('kind-helm-chart').should('be.checked');
+        break;
+      case 'Operator Backed':
+      case addOptions.OperatorBacked:
+        cy.byLegacyTestID('operator-backed').click();
+        cy.titleShouldBe('Developer Catalog');
+        cy.byTestID('kind-cluster-service-version').should('be.checked');
+        break;
+      case 'Pipelines':
+      case addOptions.Pipeline:
+        cy.byLegacyTestID('pipeline').click();
+        cy.get('h1.odc-pipeline-builder-header__title').should('have.text', 'Pipeline Builder');
+        break;
+      case 'Yaml':
+      case addOptions.YAML:
+        cy.byLegacyTestID('import-yaml').click();
+        cy.titleShouldBe('Import YAML');
+        break;
+      default:
+        throw new Error('Option is not available');
+        break;
+    }
+  },
   selectAddPipeline: () => cy.get(addPageObj.pipeline.addPipeline).scrollIntoView().check(),
   clicKCreate: () => cy.get(addPageObj.create).click(),
   clickCancel:() => cy.get(addPageObj.cancel).click(),
@@ -283,7 +216,7 @@ export const addPage = {
   verifyBuilderImageVersion:() => cy.get(addPageObj.builderSection.builderImageVersion).should('be.visible'),
   verifyCard:(cardName: string) => cy.get(addPageObj.cardTitle).contains(cardName).should('be.visible'),
   createGitWorkload:(gitUrl: string = 'https://github.com/sclorg/nodejs-ex.git', appName: string = 'nodejs-ex-git-app', componentName: string = 'nodejs-ex-git', resourceType: string = 'Deployment') => {
-    seelctCardFromOptions(addOptions.Git);
+    addPage.selectCardFromOptions(addOptions.Git);
     addPage.enterGitUrl(gitUrl);
     addPage.enterAppName(appName);
     addPage.enterComponentName(componentName);
@@ -291,78 +224,6 @@ export const addPage = {
     addPage.clicKCreate();
   },
 };
-
-export const eventSourcesPage = {
-  verifyTitle: (title: string = 'Event Sources') => cy.titleShouldBe(title),
-  search: (type: string) => cy.get(eventSourceObj.search).type(type),
-  verifyEventSourceType: (eventSourceName: string) => cy.get(`button[aria-label="${eventSourceName}"]`).should('be.visible'),
-  clickEventSourceType: (eventSourceName: string) => cy.get(`button[aria-label="${eventSourceName}"]`).click(),
-  clickCreate:() => cy.get(eventSourceObj.create).click(),
-  selectServiceType:(serviceAccountName: string = 'default') => {
-    cy.get(eventSourceObj.apiServerSource.serviceAccountName).click();
-    cy.get('li').contains(serviceAccountName).click();
-  },
-  selectKnativeService:(knativeService: string) => {
-    cy.get(eventSourceObj.apiServerSource.sinkResource).click();
-    cy.get(`[id^=${knativeService}-link]`).click();
-  }
-}
-
-export const containerImage = {
-  enterExternalRegistryImageName: (imageName: string) => cy.get(containerImageObj.imageSection.externalRegistry.imageName).type(imageName),
-  selectProject: (projectName: string) => 
-    cy.selectValueFromAutoCompleteDropDown(containerImageObj.imageSection.internalRegistry.selectProject, projectName),
-  selectImageStream: (imageStreamName: string) => 
-    cy.selectValueFromAutoCompleteDropDown(containerImageObj.imageSection.internalRegistry.imageStream, imageStreamName),
-  selectTag: (tag:string) => 
-    cy.selectValueFromAutoCompleteDropDown(containerImageObj.imageSection.internalRegistry.tag, tag),
-  selectInternalImageRegistry:() => 
-  cy.get(containerImageObj.imageSection.internalRegistryImageCheckBox).check(),
-}
-
-export const catalogPage = {
-  verifyTitle:() => cy.titleShouldBe('Developer Catalog'),
-  isCheckBoxSelected: (type: string) => cy.get(`input[title="${type}"]`).should('be.checked'),
-  isCardsDisplayed:() => cy.get(catalogPageObj.card).should('be.visible'),
-  search: (keyword: string) => cy.get(catalogPageObj.search).type(keyword),
-  verifyDialog:() => cy.get(catalogPageObj.sidePane.dialog, {timeout: 5000}).should('be.visible'),
-  verifyInstallHelmChartPage:() => cy.get('form h1').eq(0).should('have.text', 'Install Helm Chart'),
-  clickInstantiateButtonOnSidePane:() => {
-    catalogPage.verifyDialog();
-    cy.get(catalogPageObj.sidePane.instantiateTemplate).click();
-  },
-  clickCreateButtonOnSidePane:() => {
-    catalogPage.verifyDialog();
-    cy.get(catalogPageObj.sidePane.create).click();
-  },
-  clickInstallHelmChartOnSidePane:() => {
-    catalogPage.verifyDialog();
-    cy.get(catalogPageObj.sidePane.installHelmChart).click();
-  },
-  clickOnCreateButton:() => cy.get(catalogPageObj.create).click(),
-  clickOnCancelButton:() => cy.get(catalogPageObj.mariaDBTemplate.cancel).click(),
-  selectOperatorBackedCheckBox:() => cy.byTestID('kind-cluster-service-version').check(),
-  selectKnativeServingCard:() => cy.get('div.catalog-tile-pf-title').contains('Knative Serving').click(),
-  selectHelmChartCard:(cardName: string) => cy.get('a div.catalog-tile-pf-title').contains(cardName).click(),
-  clickOnInstallButton:() => {
-    cy.get(catalogPageObj.installHelmChart.install).click().then(() => {
-      cy.get('div.co-m-loader', {timeout:20000}).should('not.be.visible')
-    });
-  },
-  createHelmChartFromAddPage:(workloadName: string = 'nodejs-example', helmChartName: string = 'Nodejs Ex K v0.2.0') => {
-    addPage.verifyCard('Helm Chart');
-    seelctCardFromOptions(addOptions.HelmChart);
-    catalogPage.verifyTitle();
-    catalogPage.isCardsDisplayed();
-    catalogPage.search(helmChartName);
-    catalogPage.selectHelmChartCard(helmChartName);
-    catalogPage.verifyDialog();
-    cy.get(catalogPageObj.sidePane.createHelmChart).click();
-    catalogPage.verifyInstallHelmChartPage();
-    catalogPage.clickOnInstallButton();
-    topologyPage.verifyWorkloadInTopologyPage(workloadName);
-  }
-}
 
 export const yamlPage = {
   clickOnCreateButton:() => cy.get(catalogPageObj.create).click(),

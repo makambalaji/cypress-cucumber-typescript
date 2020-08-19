@@ -1,10 +1,10 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { seelctCardFromOptions, containerImage, addPage, addPageObj } from '../../pages/add_page';
+import { addPage.selectCardFromOptions, containerImage, addPage, addPageObj } from '../../pages/add_page';
 import { addOptions } from '../../constants/add';
 import { topologyPage } from '../../pages/topology_page';
 
 Given('user is at Deploy Image page', () => {
-  seelctCardFromOptions(addOptions.ContainerImage);
+  addPage.selectCardFromOptions(addOptions.ContainerImage);
 });
 
 When('user types Image name from external registry as {string}', (imageName: string) => {

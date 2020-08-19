@@ -1,10 +1,10 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { seelctCardFromOptions, addPage, addPageObj } from '../../pages/add_page';
+import { addPage.selectCardFromOptions, addPage, addPageObj } from '../../pages/add_page';
 import { addOptions } from '../../constants/add';
 import { topologyPage } from '../../pages/topology_page';
 
 Given('user is at Import from git page', () => {
-  seelctCardFromOptions(addOptions.Git);
+  addPage.selectCardFromOptions(addOptions.Git);
 });
 
 When('user types Git Repo url as {string}', (gitUrl: string) => {

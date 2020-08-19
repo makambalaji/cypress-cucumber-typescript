@@ -5,7 +5,7 @@ import { pipelineRunDetailsPage, pipelienRunsPage } from '../../pages/pipelineRu
 import { naviagteTo } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
 import { pipelineDetailsPage } from '../../pages/pipelineDetails_page';
-import { seelctCardFromOptions, addPage } from '../../pages/add_page';
+import { addPage.selectCardFromOptions, addPage } from '../../pages/add_page';
 import { addOptions } from '../../constants/add';
 import { topologyPage, topologySidePane } from '../../pages/topology_page';
 
@@ -197,7 +197,7 @@ Given('one pipeline run is completed with the workload', () => {
 
 Given('pipeline {string} is created from git page', (name: string) => {
   naviagteTo(devNavigationMenu.Add);
-  seelctCardFromOptions(addOptions.Git);
+  addPage.selectCardFromOptions(addOptions.Git);
   addPage.verifyTitle('Import from git');
   addPage.enterGitUrl('https://github.com/sclorg/nodejs-ex.git');
 

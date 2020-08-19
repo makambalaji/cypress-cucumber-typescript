@@ -1,5 +1,5 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { addPage, seelctCardFromOptions } from '../../pages/add_page';
+import { addPage, addPage.selectCardFromOptions } from '../../pages/add_page';
 import { naviagteTo } from '../../pages/app';
 import { devNavigationMenu as menu } from '../../constants/global';
 import { addOptions } from '../../constants/add';
@@ -11,7 +11,7 @@ Given('user is at Add page', () => {
 });
 
 When('user clicks From Git card on the +Add page', () => {
-  seelctCardFromOptions(addOptions.Git);
+  addPage.selectCardFromOptions(addOptions.Git);
 });
 
 Then('user navigates to page with header name Import from git', () => {
@@ -23,7 +23,7 @@ Then('pipeline section is displayed with message {string}', (message: string) =>
 });
 
 Given('user is at Import from git form', () => {
-  seelctCardFromOptions(addOptions.Git);
+  addPage.selectCardFromOptions(addOptions.Git);
 });
 
 When('user type Git Repo url as {string}', (gitUrl: string) => {
@@ -86,7 +86,7 @@ Then('pipeline name is displayed with the component name {string}', (pipelineNam
 
 Given('workload {string} is created from add page with pipeline', (pipelineName: string) => {
   naviagteTo(menu.Add);
-  seelctCardFromOptions(addOptions.Git);
+  addPage.selectCardFromOptions(addOptions.Git);
   addPage.enterGitUrl("https://github.com/sclorg/nodejs-ex.git");
   addPage.enterComponentName(pipelineName);
   addPage.selectAddPipeline();

@@ -1,10 +1,10 @@
 import { When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { seelctCardFromOptions, catalogPageObj, catalogPage } from '../../pages/add_page';
+import { addPage.selectCardFromOptions, catalogPageObj, catalogPage } from '../../pages/add_page';
 import { addOptions } from '../../constants/add';
 import { topologyPage } from '../../pages/topology_page';
 
 When('user clicks Database card', () => {
-  seelctCardFromOptions(addOptions.Database);
+  addPage.selectCardFromOptions(addOptions.Database);
 });
 
 When('user selects {string} databse on Developer Catalog', (database: string) => {

@@ -1,9 +1,5 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 
-Given('open shift cluster is installed with apache camel source operator', () => {
-  // TODO: implement step
-});
-
 Given('create the project {string}', (a: string) => {
  cy.log(a)
 });
