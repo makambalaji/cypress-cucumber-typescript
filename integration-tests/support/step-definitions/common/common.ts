@@ -48,7 +48,7 @@ Given('open shift cluster is installed with Serverless and eventing operator', (
   operatorsPage.verifyOperatorInNavigationMenu('Serverless');
 });
 
-Given('user is on dev perspective +Add page', () => {
+Given('user is on dev perspective Add page', () => {
   perspective.switchTo(switchPerspective.Developer);
   naviagteTo(devNavigationMenu.Add);
 });

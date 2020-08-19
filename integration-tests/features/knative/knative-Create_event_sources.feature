@@ -3,8 +3,8 @@ Feature: Create event sources
 
 Background:
    Given open shift cluster is installed with Serverless and eventing operator
+   And user is at developer perspecitve
    And open project namespace "aut-create-knative-event-source"
-   And user is at Developer Perspective
 
 
 @regression, @smoke
@@ -20,7 +20,7 @@ Scenario: CamelSource event source - Kn-08-TC03
    Given cluster is installed with knative Apache camel operator 
    When user clicks on "Event Sources" card
    Then user redirects to page with header name "Event Sources"
-   And user able to see "CamelSource" event source type
+   And user able to see "Camel Source" event source type
 
 
 Scenario: knative eventing in operator backed - Kn-07-TC04
@@ -105,15 +105,16 @@ Scenario: Event source details for CamelSource event source type - Kn-10-TC07
 
 @regression, @smoke
 Scenario: Create ApiServerSource event source - Kn-10-TC08
-   Given user is on Event Sources page
+   Given knative service name "nodejs-ex-git" is higlighted on topology page
+   And user is on Event Sources page
    When user selects event source type "Api Server Source"
    And type Resoruce APIVERSION as "sources.knative.dev/v1alpha1"
    And type Resource KIND as "ApiServerSource"
    And selects "default" option from Service Account Name field
-   And selects an option from Kantive service field
+   And selects an "nodejs-ex-git" option from Kantive service field
    And user clicks on Create button
    Then user redirects to Topology page
-   And ApiServerSource event source is created and linked to selected kantive service
+   And ApiServerSource event source is created and linked to selected kantive service "nodejs-ex-git"
 
 
 @regression
@@ -122,7 +123,7 @@ Scenario: Create ContainerSource event source - Kn-10-TC09
    And knative service is available for selected namespace
    When user selects event source type "Container Source"
    And type Container Image as "openshift/hello-openshift"
-   And selects an option from Kantive service field
+   And selects an "nodejs-ex-git" option from Kantive service field
    And user clicks on Create button
    Then user redirects to Topology page
    And ContainerSource event source is created and linked to selected kantive service
@@ -134,7 +135,7 @@ Scenario: Create CronJobSource event source - Kn-10-TC10
    And knative service is available for selected namespace
    When user selects event source type "CronJobSource"
    And type schedule as "*/2 * * * *"
-   And selects an option from Kantive service field
+   And selects an "nodejs-ex-git" option from Kantive service field
    And user clicks on Create button
    Then user redirects to Topology page
    And CronJobSource event source is created and linked to selected kantive service
@@ -146,7 +147,7 @@ Scenario: Create PingSource event source - Kn-10-TC11
    And knative service is available for selected namespace
    When user selects event source type "PingSource"
    And type schedule as "*/2 * * * *"
-   And selects an option from Kantive service field
+   And selects an "nodejs-ex-git" option from Kantive service field
    And user clicks on Create button
    Then user redirects to Topology page
    And PingSource event source is created and linked to selected kantive service
@@ -159,7 +160,7 @@ Scenario: Create SinkBinding event source - Kn-10-TC12
    When user selects event source type "SinkBinding"
    And type Subject apiVersion as "batch/v1"
    And type Subject Kind as "job"
-   And selects an option from Kantive service field
+   And selects an "nodejs-ex-git" option from Kantive service field
    And user clicks on Create button
    Then user redirects to Topology page
    And SinkBinding event source is created and linked to selected kantive service

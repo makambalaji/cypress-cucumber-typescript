@@ -113,7 +113,7 @@ export const projectNameSpace = {
       .find('button')
       .eq(0)
       .click();
-    cy.get('[data-test-dropdown-menu="#CREATE_RESOURCE_ACTION#"]').click();
+    cy.byTestDropDownMenu('#CREATE_RESOURCE_ACTION#').click();
   },
 
   enterProjectName: (projectName: string) => {
@@ -135,7 +135,7 @@ export const projectNameSpace = {
   cy.wait(2000);
   cy.get('[role="listbox"]', { timeout: 20000 }).then(($el) => {
     if ($el.find('li[role="option"]').length === 0) {
-      cy.get('[data-test-dropdown-menu="#CREATE_RESOURCE_ACTION#"]').click();
+      cy.byTestDropDownMenu('#CREATE_RESOURCE_ACTION#').click();
       projectNameSpace.enterProjectName(projectName);
       projectNameSpace.clickCreateButton();
     }
@@ -152,7 +152,7 @@ export const projectNameSpace = {
       if ($el.find('li[role="option"]').length === 0) {
         // let str = $el.find('li[role="option"]').text();
         // if(str.localeCompare(projectName) === 0) {
-          cy.get('[data-test-dropdown-menu="#CREATE_RESOURCE_ACTION#"]').click();
+          cy.byTestDropDownMenu('#CREATE_RESOURCE_ACTION#').click();
           projectNameSpace.enterProjectName(projectName);
           projectNameSpace.clickCreateButton();
         // }

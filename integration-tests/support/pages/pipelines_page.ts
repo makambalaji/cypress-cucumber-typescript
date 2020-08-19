@@ -174,7 +174,7 @@ export const pipelinesPage = {
   addTrigger:(gitProviderType: string = 'github-pullreq') => {
     cy.alertTitleShouldBe('Add Trigger');
     cy.get(pipelinesObj.addTrigger.gitProviderType).click();
-    cy.get(`[data-test-dropdown-menu="${gitProviderType}"]`).click();
+    cy.byTestDropDownMenu(gitProviderType).click();
     cy.get(pipelinesObj.addTrigger.add).click();
   },
 

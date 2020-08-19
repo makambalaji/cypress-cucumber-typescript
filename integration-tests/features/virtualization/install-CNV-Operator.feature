@@ -6,10 +6,10 @@ Background:
     Given user is in administratr perspective
 
 
-@smoke, @regression
+@regression, @smoke
 Scenario: Install OpenShift Virtualization Operator: VM-01-TC01
-    Given open project namespace "openshift-cnv"
-    And user is at Operator Hub page with the header name "OperatorHub"
+    Given user is at Operator Hub page with the header name "OperatorHub" 
+    And open project namespace "openshift-cnv"
     When user searches for "OpenShift Virtualization"
     And clicks on the OpenShift Virtualization Operator card
     And click install button present on the right side pane
@@ -30,7 +30,7 @@ Scenario: Create HyperConverged Cluster: VM-01-TC02
     And user will see Virtualization item under Workloads
 
 
-@smoke, @regression
+@regression, @smoke
 Scenario: Import Virtual Machine Card on +Add page: VM-01-TC03
     Given user is at Developer Perspective
     When user navigates to Add page

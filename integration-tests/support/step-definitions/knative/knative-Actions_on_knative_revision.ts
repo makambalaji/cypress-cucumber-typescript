@@ -1,23 +1,11 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
+import { editLabels, deleteRevision } from '../../pages/popupAlerts';
+import { topologyPage, topologySidePane } from '../../pages/topology_page';
 
-Given('open shift cluster is installed with Serverless operator', () => {
-  // TODO: implement step
-});
-
-Given('user is on dev perspective topology page', () => {
-  // TODO: implement step
-});
-
-Given('one workload with knative resource is available', () => {
-  // TODO: implement step
-});
-
-Given('knative revision name {string} is higlighted on topology page', (a: string) => {
-  cy.log(a);
-});
-
-Given('number of annotations are {string} present in side pane details tab', (a: string) => {
-  cy.log(a);
+Given('number of annotations are {string} present in revision side pane details of service {string}', (numOfAnnotations: string, serviceName: string) => {
+  topologyPage.revisionNode(serviceName).click();
+  topologySidePane.selectTab('Details');
+  topologySidePane.verifyNumberOfAnnotations(numOfAnnotations);
 });
 
 Given('number of annotations are {string} present in side pane - details tab- annotation section', (a: string) => {
@@ -32,20 +20,16 @@ Given('service should contain multiple revisions', () => {
   // TODO: implement step
 });
 
-When('user right click on the knative revision', () => {
-  // TODO: implement step
+When('user right click on the revision of knative service {string}', (serviceName: string) => {
+  topologyPage.revisionNode(serviceName).trigger('contextmenu', {force: true});
 });
 
-When('user selects {string} option from knative revision context menu', (a: string) => {
-  cy.log(a);
+When('user selects {string} option from knative revision context menu', (option: string) => {
+  cy.byTestActionID(option).click();
 });
 
-When('add the label {string} to exisitng labels list in {string} popup', (a: string, b: string) => {
-  cy.log(a, b);
-});
-
-When('clicks {string} button on the {string} popup', (a: string, b: string) => {
-  cy.log(a, b);
+When('removes the label {string} from exisitng labels list in Edit Labels popup', (labelName: string) => {
+  editLabels.removeLabel(labelName);
 });
 
 When('removes the label {string} from exisitng labels list in {string} popup', (a: string, b: string) => {
@@ -60,8 +44,9 @@ When('click on {string} icon for the annotation with key {string} present in {st
   cy.log(a, b, c);
 });
 
-When('click {string} button on the {string} popup', (a: string, b: string) => {
-  cy.log(a, b);
+When('clicks cancel button on the {string} popup', (popupTitle: string) => {
+  cy.alertTitleShouldBe(popupTitle);
+  editLabels.clickCancel();
 });
 
 When('user clicks on Details tab', () => {
@@ -76,8 +61,11 @@ When('user clicks {string} button on Revision Yaml page', (a: string) => {
   cy.log(a);
 });
 
-Then('user able to see context menu with options {string}, {string}, {string}, {string}', (a: string, b: string, c: string, d: string) => {
-  cy.log(a, b, c, d);
+Then('user able to see context menu with options Edit Labels, Edit Annotations, Edit Revision, Delete Revision', () => {
+  cy.byTestActionID('Edit Labels').should('be.visible');
+  cy.byTestActionID('Edit Annotations').should('be.visible');
+  cy.byTestActionID('Edit Revision').should('be.visible');
+  cy.byTestActionID('Delete Revision').should('be.visible');
 });
 
 Then('popup displays with header name {string}', (a: string) => {
@@ -92,8 +80,10 @@ Then('the label {string} display in side pane details', (a: string) => {
   cy.log(a);
 });
 
-Then('the label {string} will not display in side pane details', (a: string) => {
-  cy.log(a);
+Then('the label {string} display in {string} revision side pane details', (label: string, serviceName: string) => {
+  topologyPage.revisionNode(serviceName).click();
+  topologySidePane.selectTab('Details');
+  topologySidePane.verifyLabel(label);
 });
 
 Then('key, value columns are displayed with respecitve text fields', () => {
@@ -104,8 +94,10 @@ Then('Add more link is enabled', () => {
   // TODO: implement step
 });
 
-Then('number of annotaions increased to {string} in revision side pane details', (a: string) => {
-  cy.log(a);
+Then('number of annotaions increased to {string} in revision side pane details of service {string}', (numOfAnnotations: string, serviceName: string) => {
+  topologyPage.revisionNode(serviceName).click();
+  topologySidePane.selectTab('Details');
+  topologySidePane.verifyNumberOfAnnotations(numOfAnnotations);
 });
 
 Then('verify the number of annotaions equal to {string} in side pane details', (a: string) => {
@@ -136,10 +128,7 @@ Then('popup displayed with message as {string}', (a: string) => {
   cy.log(a);
 });
 
-Then('modal should get closed on clicking {string} button', (a: string) => {
-  cy.log(a);
-});
-
-Then('popup displayed with header name {string} and message as {string}', (a: string, b: string) => {
-  cy.log(a, b);
+Then('popup displayed with header name Unable to delete revision and message as {string}', (message: string) => {
+  cy.alertTitleShouldBe('Unable to delete revision');
+  deleteRevision.verifyMessage(message);
 });

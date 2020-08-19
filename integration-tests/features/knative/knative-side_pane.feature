@@ -3,8 +3,7 @@ Feature: side pane details
 
 Background:
     Given open shift cluster is installed with Serverless operator
-    And user is on dev perspective - Topology page
-    And user should be on the project "default" 
+    And user is on dev perspective
     And one service "nodejs-ex-git-1" should be available
     And one revision "nodejs-ex-git-1-q5rb8" should be available
 
@@ -30,12 +29,10 @@ Scenario: Side pane details of knative Revision : Kn-05-TC02
 Scenario: Resoruce details of kantive revision in side pane : Kn-05-TC03
    Given side pane is displayed for knative revision name "nodejs-ex-git-1-q5rb8" in topology page
    When user clicks on Resoruces section
-   Then 
 
 
 Scenario: links in side pane : Kn-05-TC04
     Given side pane is displayed for knative revision name "nodejs-ex-git-1-q5rb8" in topology page
-    When 
 
 
 @regression
@@ -68,12 +65,10 @@ Scenario: Side pane details of knative Service : Kn-06-TC02
 Scenario: Resoruce details of kantive service in side pane : Kn-06-TC03
    Given side pane is displayed for knative revision name "nodejs-ex-git-1-q5rb8" in topology page
    When user clicks on Resoruces section
-   Then 
 
 
 Scenario: links in side pane : Kn-06-TC04
     Given side pane is displayed for knative revision name "nodejs-ex-git-1-q5rb8" in topology page
-    When 
 
 
 @regression

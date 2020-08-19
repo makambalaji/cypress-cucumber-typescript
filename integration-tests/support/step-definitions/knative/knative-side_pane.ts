@@ -1,25 +1,5 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 
-Given('open shift cluster is installed with Serverless operator', () => {
-  // TODO: implement step
-});
-
-Given('user is on dev perspective - Topology page', () => {
-  // TODO: implement step
-});
-
-Given('user should be on the project {string}', (a: string) => {
- cy.log(a)
-});
-
-Given('one service {string} should be available', (a: string) => {
- cy.log(a)
-});
-
-Given('one revision {string} should be available', (a: string) => {
- cy.log(a)
-});
-
 Given('knative revision name {string} is higlighted on topology page', (a: string) => {
  cy.log(a)
 });
@@ -41,10 +21,6 @@ When('user clciks on the knative revision name {string}', (a: string) => {
 });
 
 When('user clicks on Resoruces section', () => {
-  // TODO: implement step
-});
-
-When('', () => {
   // TODO: implement step
 });
 
@@ -86,10 +62,6 @@ Then('Annotations section contain {string}', (a: string) => {
 
 Then('{string} field the date in format {string}', (a: string, b: string) => {
  cy.log(a, b)
-});
-
-Then('', () => {
-  // TODO: implement step
 });
 
 Then('user able to see the options {string}, {string}, {string}, {string}', (a: string, b: string, c: string, d: string) => {

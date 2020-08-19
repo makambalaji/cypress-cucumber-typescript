@@ -49,7 +49,7 @@ When('user adds another task {string} in parallel', (taskName: string) => {
   pipelineBuilderPage.addResource('git resource');
   pipelineBuilderPage.clickOnTask(taskName);
   cy.get(pipelineBuilderObj.sidePane.inputResource).click();
-  cy.get(`[data-test-dropdown-menu="git resource"]`).click();
+  cy.byTestDropDownMenu('git resource').click();
   pipelineBuilderPage.create();
 });
 

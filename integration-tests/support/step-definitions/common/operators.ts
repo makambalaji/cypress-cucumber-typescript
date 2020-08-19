@@ -52,8 +52,8 @@ Then('user will see a modal with title {string}', (operatorName: string) => {
 });
 
 Then('user will see a View Operator button', () => {
-  cy.get('[role="progressbar"]', {timeout: 15000}).should('not.be.visible');
-  cy.get('button', {timeout: 15000}).contains('View Operator').should('be.visible');
+  cy.get('[role="progressbar"]', {timeout: 30000}).should('not.be.visible');
+  cy.get('button', {timeout: 30000}).contains('View Operator').should('be.visible');
 });
 
 Then('user will see serverless option on left side navigation menu', () => {
@@ -156,5 +156,9 @@ Then('page will contain knative apache camel operator', () => {
 });
 
 Then('Installed operators page will contain {string}', (operatorName: string) => {
+  operatorsPage.verifyOperatoNotAvailable(operatorName);
+})
+
+Then('Installed operators page will not contain {string}', (operatorName: string) => {
   operatorsPage.verifyOperatoNotAvailable(operatorName);
 })

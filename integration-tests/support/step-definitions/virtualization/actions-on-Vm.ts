@@ -4,10 +4,6 @@ Given('user has already created VM', () => {
   // TODO: implement step
 });
 
-Given('user is at Developer Perspective', () => {
-  // TODO: implement step
-});
-
 Given('user is having VM on the Topology page', () => {
   // TODO: implement step
 });

@@ -3,15 +3,15 @@ Feature: Event Sources actions
 
 Background:
    Given open shift cluster is installed with Serverless operator
-   And user is on dev perspective +Add page
-   And open the project "aut-create-knative-event-source"
+   And user is on dev perspective Add page
+   And open project namespace "aut-create-knative-event-source"
 
 
 @regression, @smoke
 Scenario: Evnt source context menu options : Kn-11-TC01
    Given event source "sink-binding" is higlighted on topology page
    When user right clicks on the event source
-   Then user able to see context menu with options "Edit Application Grouping", "Move Sink" "Edit Labels", "Edit Annotations", "Edit SinkBinding", "Delete SinkBinding"
+   Then user able to see context menu with options Edit Application Grouping, Move Sink, Edit Labels, Edit Annotations, Edit SinkBinding, Delete SinkBinding
 
 
 @regression, @smoke
@@ -20,7 +20,7 @@ Scenario: Move the sink via context menu to link differnt knative Service : Kn-1
    When user right clicks on the event source
    And  selects "Move Sink" from context menu
    Then modal displays with the header name "Move Sink" 
-   And knative service dropdown is displayed
+   And knative service dropdown is displayed in Move Sink modal
 
 
 @regression, @smoke

@@ -5,7 +5,7 @@ export const operatorsObj = {
     operatorHub: 'a[href="/operatorhub"]',
     installOperators: 'a[href$="/operators.coreos.com~v1alpha1~ClusterServiceVersion"]',
     link: 'li.pf-c-nav__item.pf-m-expandable',
-    menuItems: 'a.pf-c-nav__link',
+    menuItems: '.pf-c-nav__link',
   },
   operatorHub: {
     search: 'input[placeholder="Filter by keyword..."]',

@@ -196,6 +196,7 @@ export const eventSourceObj = {
     apiVersion: 'input[placeholder="apiversion"]',
     kind: 'input[placeholder="kind"]',
     serviceAccountName: '#form-ns-dropdown-data-apiserversource-serviceAccountName-field',
+    sinkResource: '#form-ns-dropdown-sink-name-field',
   },
 }
 
@@ -219,7 +220,6 @@ export const addPage = {
         cy.get(addPageObj.appName).clear().type(appName)
       }
     });
-
   },
   enterComponentName: (name: string) => {
     cy.get(addPageObj.nodeName).as('nodeName');
@@ -298,6 +298,14 @@ export const eventSourcesPage = {
   verifyEventSourceType: (eventSourceName: string) => cy.get(`button[aria-label="${eventSourceName}"]`).should('be.visible'),
   clickEventSourceType: (eventSourceName: string) => cy.get(`button[aria-label="${eventSourceName}"]`).click(),
   clickCreate:() => cy.get(eventSourceObj.create).click(),
+  selectServiceType:(serviceAccountName: string = 'default') => {
+    cy.get(eventSourceObj.apiServerSource.serviceAccountName).click();
+    cy.get('li').contains(serviceAccountName).click();
+  },
+  selectKnativeService:(knativeService: string) => {
+    cy.get(eventSourceObj.apiServerSource.sinkResource).click();
+    cy.get(`[id^=${knativeService}-link]`).click();
+  }
 }
 
 export const containerImage = {

@@ -3,6 +3,7 @@ import { seelctCardFromOptions, eventSourcesPage, addPage, eventSourceObj } from
 import { naviagteTo } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
 import { addOptions } from '../../constants/add';
+import { topologySidePane, topologyPage } from '../../pages/topology_page';
 
 Given('knative service is not available for selected namespace', () => {
   // TODO: implement step
@@ -35,12 +36,11 @@ When('type Resource KIND as {string}', (version: string) => {
 });
 
 When('selects {string} option from Service Account Name field', (serviceAccountName: string) => {
-  cy.get(eventSourceObj.apiServerSource.serviceAccountName).click();
-  cy.get('li').contains(serviceAccountName).click();
+  eventSourcesPage.selectServiceType(serviceAccountName);
 });
 
-When('selects an option from Kantive service field', () => {
-  
+When('selects an {knativeService} option from Kantive service field', (knativeService: string) => {
+  eventSourcesPage.selectKnativeService(knativeService);
 });
 
 When('user clicks on Create button', () => {
@@ -74,6 +74,10 @@ Then('able to see event source types like ApiServerSource, ContainerSource, Cron
   eventSourcesPage.verifyEventSourceType('Ping Source');
   eventSourcesPage.verifyEventSourceType('Sink Binding');
 });
+
+Then('user able to see {string} event source type', (eventSoruceType: string) => {
+  eventSourcesPage.verifyEventSourceType(eventSoruceType);
+}); 
 
 Then('able to see Knative Eventing card', () => {
   addPage.verifyCard('Knative Eventing');
@@ -155,8 +159,9 @@ Then('Create button is enabled', () => {
   // TODO: implement step
 });
 
-Then('ApiServerSource event source is created and linked to selected kantive service', () => {
-  // TODO: implement step
+Then('ApiServerSource event source is created and linked to selected kantive service {string}', (resourceName: string) => {
+  topologyPage.componentNode(resourceName).click();
+  topologySidePane.verifyResource(resourceName);
 });
 
 Then('ContainerSource event source is created and linked to selected kantive service', () => {

@@ -79,7 +79,7 @@ export const upgradeHelmRelease = {
     updateReplicaCount:() => cy.get(helmPageObj.upgradeHelmRelease.replicaCount).clear().type('2'),
     upgradeChartVersion:() => {
         cy.get(helmPageObj.upgradeHelmRelease.chartVersion).click();
-        cy.get('[data-test-dropdown-menu="0.1.1"]').click();
+        cy.byTestDropDownMenu('0.1.1').click();
         cy.byLegacyTestID('modal-title').should('contain.text', 'Change Chart Version?');
         cy.get('#confirm-action').click();
     },

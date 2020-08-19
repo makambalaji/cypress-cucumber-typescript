@@ -89,8 +89,6 @@ export const pipelineBuilderPage = {
       cy.get('div.pf-c-form__group button[type="button"]').eq(1).click();
       cy.get(pipelineBuilderObj.addResources.name).type(resourceName);
       cy.selectByDropDownText(pipelineBuilderObj.addResources.resourceType, resourceType);
-      // cy.get(pipelineBuilderObj.addResources.resourceType).click();
-      // cy.get('[data-test-dropdown-menu="git"]').click();
     },
   
     verifySection: () => {
@@ -124,7 +122,7 @@ export const pipelineBuilderPage = {
     pipelineBuilderPage.addResource(resourceName);
     pipelineBuilderPage.clickOnTask(taskName);
     cy.get(pipelineBuilderObj.sidePane.inputResource).click();
-    cy.get(`[data-test-dropdown-menu="${resourceName}"]`).click();
+    cy.byTestDropDownMenu(resourceName).click();
     pipelineBuilderPage.create();
     pipelineDetailsPage.verifyTitle(pipelineName);
   },

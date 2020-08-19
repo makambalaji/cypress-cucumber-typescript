@@ -1,29 +1,39 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
+import { topologyPage } from '../../pages/topology_page';
+import { moveSink } from '../../pages/popupAlerts';
 
-Given('event source {string} is higlighted on topology page', (a: string) => {
-  cy.log(a);
+Given('event source {string} is higlighted on topology page', (eventSource: string) => {
+  topologyPage.search(eventSource);
+  cy.get('.is-filtered').should('be.visible')
 });
 
 Given('knative service, event source and sink connector are present in topology page', () => {
-  // TODO: implement step
+  cy.get('[data-type="event-source"]').should('be.visible');
+  cy.get('[data-type="knative-service"]').should('be.visible');
+  cy.get('[data-type="event-source-link"]').should('be.visible');
 });
 
 When('user right clicks on the event source', () => {
-  // TODO: implement step
+  cy.get('[data-type="event-source"] text').eq(0).trigger('contextmenu', {force:true});
 });
 
-When('selects {string} from context menu', (a: string) => {
-  cy.log(a);
+When('selects {string} from context menu', (option: string) => {
+  cy.byTestActionID(option).click();
 });
 
-Then('user able to see context menu with options {string}, {string} {string}, {string}, {string}, {string}', (a: string, b: string, c: string, d: string, e: string, f: string) => {
-  cy.log(a, b, c, d, e, f);
+Then('user able to see context menu with options Edit Application Grouping, Move Sink, Edit Labels, Edit Annotations, Edit SinkBinding, Delete SinkBinding', () => {
+  cy.byTestActionID('Edit Application Grouping').should('be.visible');
+  cy.byTestActionID('Move Sink').should('be.visible');
+  cy.byTestActionID('Edit Labels').should('be.visible');
+  cy.byTestActionID('Edit Annotations').should('be.visible');
+  cy.byTestActionID('Edit SinkBinding').should('be.visible');
+  cy.byTestActionID('Delete SinkBinding').should('be.visible');
 });
 
-Then('modal displays with the header name {string}', (a: string) => {
-  cy.log(a);
+Then('modal displays with the header name {string}', (title: string) => {
+  cy.alertTitleShouldBe(title);
 });
 
-Then('knative service dropdown is displayed', () => {
-  // TODO: implement step
+Then('knative service dropdown is displayed in Move Sink modal', () => {
+  moveSink.verifyKnativeServiceDropDown();
 });

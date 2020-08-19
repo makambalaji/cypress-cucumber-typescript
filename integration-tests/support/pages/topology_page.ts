@@ -19,7 +19,9 @@ export const topologyObj = {
         tabs: '[role="dialog"] li button',
         sectionTitle:'[role="dialog"] h2',
         close: 'button[aria-label="Close"]',
-    }
+        labelsList: '[data-test="label-list"]',
+        editAnnotations: '[data-test-id="edit-annotations"]',
+    },
 }
 
 export const topologyPage = {
@@ -27,9 +29,7 @@ export const topologyPage = {
         cy.get('.co-m-loader').should('not.be.visible');
         cy.get(topologyObj.graph.reset, {timeout:9000}).should('be.visible');
     },
-    verifyContextMenu:() => {
-        cy.get('#popper-container ul').should('be.visible');
-    },
+    verifyContextMenu:() => cy.get('#popper-container ul').should('be.visible'),
     verifyNoWorkLoadsText:(text: string) => cy.get('h2.co-hint-block__title').should('contain.text', text),
     verifyWorkLoads:() => cy.get('g[data-surface="true"]').should('be.visible'),
     search: (name: string)=> cy.byLegacyTestID('item-filter').clear().type(name),
@@ -95,6 +95,9 @@ export const topologyPage = {
         // });
         // return ele;
     },
+    revisionNode:(serviceName: string) => {
+        return cy.get('g.odc-base-node__label > text').contains(serviceName).parentsUntil('[data-type="knative-service"]').children('[data-type="knative-revision"] circle[filter$="graph#NodeShadowsFilterId)"]')
+    },
     verifyContextMenuOptions:(...options: string[]) => {
         cy.get('#popper-container li[role="menuitem"]').each(($el) => {
             expect(options).contains($el.text());
@@ -105,6 +108,9 @@ export const topologyPage = {
     },
     verifyDecorators:(nodeName: string, numOfDecorators: number) => {
         topologyPage.componentNode(nodeName).siblings('a').should('have.length', numOfDecorators);
+    },
+    selectContextMenuAction: (action: nodeActions | string) => {
+        topologySidePane.selectNodeAction(action);
     },
 }
 
@@ -164,6 +170,25 @@ export const topologySidePane = {
             throw new Error('operator is not available');
           }
         }
+    },
+    verifyLabel:(labelName: string) => {
+        topologySidePane.verifySection('Labels');
+        cy.get(topologyObj.sidePane.labelsList).find('a').then(($el) => {
+            if($el.text().includes(labelName)) {
+                expect($el.text()).contains(labelName);
+            }
+        });
+    },
+    verifyNumberOfAnnotations:(num: string) => {
+        topologySidePane.verifySection('Annotations');
+        cy.get(topologyObj.sidePane.editAnnotations).then(($el) => {
+            let res = $el.text().split(' ')
+            expect(res[0]).eq(num);
+        });
+    },
+    verifyResource:(resourceName: string) => {
+        topologySidePane.selectTab('Resources');
+        cy.byLegacyTestID(resourceName).should('be.visible');
     },
 }
 
