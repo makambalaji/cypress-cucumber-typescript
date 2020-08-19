@@ -1,6 +1,7 @@
 import { naviagteTo } from "./app";
 import { devNavigationMenu } from "../constants/global";
-import { addPage.selectCardFromOptions, catalogPage } from "./add_page";
+import { catalogPage } from "./add/catalog_page";
+import { addPage } from "./add/add_page";
 import { addOptions } from "../constants/add";
 
 export const helmPageObj = {

@@ -1,5 +1,5 @@
-import { addOptions, gitAdvancedOptions } from '../constants/add';
-import { topologyPage } from './topology_page';
+import { addOptions, gitAdvancedOptions } from '../../constants/add';
+import { topologyPage } from '../topology_page';
 
 export const addPageObj = {
   cardTitle: 'div.catalog-tile-pf-title',
@@ -224,8 +224,3 @@ export const addPage = {
     addPage.clicKCreate();
   },
 };
-
-export const yamlPage = {
-  clickOnCreateButton:() => cy.get(catalogPageObj.create).click(),
-  clickOnCancelButton:() => cy.get(catalogPageObj.mariaDBTemplate.cancel).click(),
-}

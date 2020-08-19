@@ -1,5 +1,5 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { addPage } from '../../pages/add_page';
+import { addPage } from '../../pages/add/add_page';
 import { topologyPage, topologyObj } from '../../pages/topology_page';
 
 Given('git workload {string} with resource type {string}', (componentName: string) => {

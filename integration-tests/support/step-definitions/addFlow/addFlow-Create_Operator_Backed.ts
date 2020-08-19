@@ -1,5 +1,5 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { catalogPage, catalogPageObj } from '../../pages/add_page';
+import { catalogPage, catalogPageObj } from '../../pages/add/catalog_page';
 import { topologyPage } from '../../pages/topology_page';
 
 Given('Opeator Backed is selected on Developer Catalog page', () => {

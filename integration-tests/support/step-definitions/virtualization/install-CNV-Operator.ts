@@ -1,7 +1,7 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { operatorsPage, operatorsObj } from '../../pages/operators_page';
 import { operators } from '../../constants/global';
-import { addPage } from '../../pages/add_page';
+import { addPage } from '../../pages/add/add_page';
 
 Given('user is at Installed Operator page', () => {
   operatorsPage.navigateToInstalloperatorsPage();

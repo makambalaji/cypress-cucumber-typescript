@@ -1,4 +1,4 @@
-import { pipelineActions } from "../constants/pipelines";
+import { pipelineActions } from "../../constants/pipelines";
 
 export const pipelinesObj = {
   createPipeline: '#yaml-create',

@@ -1,11 +1,11 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { pipelinesPage, startPipelineInPipelinsPage as startPipeline } from '../../pages/pipelines_page';
-import { pipelineBuilderPage } from '../../pages/pipelineBuilder_page';
-import { pipelineRunDetailsPage, pipelienRunsPage } from '../../pages/pipelineRunDetails_page';
+import { pipelinesPage, startPipelineInPipelinsPage as startPipeline } from '../../pages/pipelines/pipelines_page';
+import { pipelineBuilderPage } from '../../pages/pipelines/pipelineBuilder_page';
+import { pipelineRunDetailsPage, pipelienRunsPage } from '../../pages/pipelines/pipelineRunDetails_page';
 import { naviagteTo } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
-import { pipelineDetailsPage } from '../../pages/pipelineDetails_page';
-import { addPage.selectCardFromOptions, addPage } from '../../pages/add_page';
+import { pipelineDetailsPage } from '../../pages/pipelines/pipelineDetails_page';
+import { addPage } from '../../pages/add/add_page';
 import { addOptions } from '../../constants/add';
 import { topologyPage, topologySidePane } from '../../pages/topology_page';
 

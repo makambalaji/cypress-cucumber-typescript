@@ -1,5 +1,6 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { addPage.selectCardFromOptions, eventSourcesPage, addPage, eventSourceObj } from '../../pages/add_page';
+import { addPage } from '../../pages/add/add_page';
+import { eventSourcesPage, eventSourceObj } from '../../pages/add/eventSource_page';
 import { naviagteTo } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
 import { addOptions } from '../../constants/add';
@@ -24,7 +25,7 @@ When('user clicks on {string} card', (cardName: string) => {
 });
 
 When('user selects event source type {string}', (eventSourceType: string) => {
-  eventSourcesPage.clickEventSourceType(eventSourceType);
+  eventSourcesPage.selectEventSourceType(eventSourceType);
 });
 
 When('type Resoruce APIVERSION as {string}', (apiVersion: string) => {

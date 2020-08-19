@@ -1,6 +1,6 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { topologyPage, topologySidePane } from '../../pages/topology_page';
-import { catalogPage } from '../../pages/add_page';
+import { catalogPage } from '../../pages/add/catalog_page';
 
 Given('helm release {string} is present in topology page', (workloadName: string) => {
   cy.get('body div').then(($el) => {

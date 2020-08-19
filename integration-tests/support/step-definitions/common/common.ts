@@ -2,11 +2,11 @@ import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { perspective, projectNameSpace as project, naviagteTo } from '../../pages/app';
 import { operatorsPage } from '../../pages/operators_page';
 import {switchPerspective, devNavigationMenu as menu, devNavigationMenu} from '../../constants/global';
-import { pipelineBuilderPage} from '../../pages/pipelineBuilder_page';
-import  {pipelineRunDetailsPage} from '../../pages/pipelineRunDetails_page';
-import { pipelinesPage } from '../../pages/pipelines_page';
+import { pipelineBuilderPage} from '../../pages/pipelines/pipelineBuilder_page';
+import  {pipelineRunDetailsPage} from '../../pages/pipelines/pipelineRunDetails_page';
+import { pipelinesPage } from '../../pages/pipelines/pipelines_page';
 import { topologyPage } from '../../pages/topology_page';
-import { addPage.selectCardFromOptions } from '../../pages/add_page';
+import { addPage } from '../../pages/add/add_page';
 import { addOptions } from '../../constants/add';
 
 // Given('user logged into the openshift application', () => {

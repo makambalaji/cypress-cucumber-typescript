@@ -1,5 +1,6 @@
 import { When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { addPage.selectCardFromOptions, catalogPageObj, catalogPage } from '../../pages/add_page';
+import { addPage } from '../../pages/add/add_page';
+import { catalogPageObj, catalogPage } from '../../pages/add/catalog_page';
 import { addOptions } from '../../constants/add';
 import { topologyPage } from '../../pages/topology_page';
 
