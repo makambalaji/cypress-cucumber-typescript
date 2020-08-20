@@ -123,7 +123,7 @@ export const projectNameSpace = {
 
   clickCreateButton: () => {
     cy.get('#confirm-action').click();
-    // cy.byLegacyTestID("namespace-bar-dropdown").find('button').eq(0).contains('Project').should('contain.text', projectName);
+    cy.get('form', {timeout: 3000}).should('not.be.visible');
   },
 
   createNewProject: (projectName: string) => {
@@ -148,14 +148,11 @@ export const projectNameSpace = {
       .click();
     cy.byLegacyTestID('dropdown-text-filter').type(projectName);
     cy.wait(3000);
-    cy.get('[role="listbox"]', { timeout: 20000 }).then(($el) => {
-      if ($el.find('li[role="option"]').length === 0) {
-        // let str = $el.find('li[role="option"]').text();
-        // if(str.localeCompare(projectName) === 0) {
+    cy.get('[role="listbox"]', { timeout: 10000 }).then(($el) => {
+      if ($el.find('li[role="option"]').length === 0 || $el.find('li[role="option"]').text() !==  projectName) {
           cy.byTestDropDownMenu('#CREATE_RESOURCE_ACTION#').click();
           projectNameSpace.enterProjectName(projectName);
           projectNameSpace.clickCreateButton();
-        // }
       }
       else {
         cy.get('[role="listbox"]')

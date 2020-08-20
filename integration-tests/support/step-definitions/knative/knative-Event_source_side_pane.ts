@@ -6,6 +6,10 @@ When('user clicks on event source {string}', (eventSourceName: string) => {
   cy.get('[data-type="event-source"] text').eq(0).click();
 });
 
+Given('one service {string} should be available', (serviceName: string) => {
+  
+});
+
 When('select the {string} from Action menu present in right side pane', (action: string) => {
   topologySidePane.selectNodeAction(action);
 });

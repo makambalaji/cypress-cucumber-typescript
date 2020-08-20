@@ -7,7 +7,6 @@ declare global {
       selectByDropDownText(selector: string, dropdownText: string): Chainable<Element>;
       selectRowByColumnName(columnName: string, referenceRowValue: string): Chainable<Element>;
       mouseHover(selector: string): Chainable<Element>;
-      // rightclick(selector: string): Chainable<Element>;
       selectValueFromAutoCompleteDropDown(selector: string, dropdownText: string): Chainable<Element>;
     }
   }
@@ -47,10 +46,6 @@ Cypress.Commands.add('selectRowByColumnName', (columnName: string, referenceRowV
 Cypress.Commands.add('mouseHover', (selector: string) => {
     cy.get(selector).invoke('show').should('be.visible').trigger('mouseover');
 });
-
-// Cypress.Commands.add('rightclick', (selector: string) => {
-//   cy.get(selector).trigger('contextmenu');
-// });
 
 Cypress.Commands.add('selectValueFromAutoCompleteDropDown', (selector: string, dropdownText: string) => {
   cy.get(selector).click();

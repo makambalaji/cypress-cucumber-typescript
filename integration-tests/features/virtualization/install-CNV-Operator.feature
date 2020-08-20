@@ -1,5 +1,5 @@
-Feature: Install OpenShift Virtualization Operator
-    User should be able to install the OpenShift Virtualization Operator
+Feature: Virtual Machine
+    User should be able to create the Virtual machine
 
 
 Background: 
@@ -7,31 +7,9 @@ Background:
 
 
 @regression, @smoke
-Scenario: Install OpenShift Virtualization Operator: VM-01-TC01
-    Given user is at Operator Hub page with the header name "OperatorHub" 
-    And open project namespace "openshift-cnv"
-    When user searches for "OpenShift Virtualization"
-    And clicks on the OpenShift Virtualization Operator card
-    And click install button present on the right side pane
-    And user installs the OpenShift Virtualization operator with default values
-    Then user will see a modal with title "OpenShift Virtualization"
-    And user will see a View Operator button
-
-
-@regression
-Scenario: Create HyperConverged Cluster: VM-01-TC02
-    Given open project namespace "openshift-cnv"
-    And user is at Installed Operator page
-    When user clicks on OpenShift Virtualization Operator
-    And user clicks on CNV Operator Deployment tab
-    And user clicks on the Create HyperConverged Cluster button
-    And user clicks on Create button
-    Then user will see a HyperConverged Cluster created
-    And user will see Virtualization item under Workloads
-
-
-@regression, @smoke
 Scenario: Import Virtual Machine Card on +Add page: VM-01-TC03
-    Given user is at Developer Perspective
-    When user navigates to Add page
+    Given openshift cluster is installed with Virtualization operator and deployed with cnv operator
+    And open project namespace "aut-virtualization"
+    When user switches to developer perspective
+    And user navigates to Add page
     Then user will see Import Virtual Machine Card on Add page

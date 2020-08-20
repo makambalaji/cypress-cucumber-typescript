@@ -13,7 +13,6 @@ export const operatorsObj = {
   },
   subscription: {
     logo: 'h1.co-clusterserviceversion-logo__name__clusterserviceversion',
-    create: 'button[type="submit"]',
   },
   installOperators: {
     title: 'h1.co-m-pane__heading',
@@ -132,11 +131,9 @@ export const operatorsPage = {
   },
 
   verifyOperatorInNavigationMenu: (menuItem: string) => {
-    cy.get(operatorsObj.nav.menuItems, {timeout:9000}).contains(menuItem).should('be.visible');
+    cy.get(operatorsObj.nav.menuItems).contains(menuItem, {timeout: 10000}).should('be.visible');
   },
 
-  clickOnCreate:() => {
-    cy.get(operatorsObj.subscription.create).click();
-  },
-
+  clickOnCreate:() => cy.byButtonText('Install').click(),
+  clickOnCancel:() => cy.byButtonText('Cancel').click(),
 };

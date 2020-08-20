@@ -8,7 +8,6 @@ import { devNavigationMenu } from '../../constants/global';
 
 
 Given('pipeline run is available for {string}', (pipelineName: string) => {
-  // To Do
   cy.log(pipelineName);
 });
 

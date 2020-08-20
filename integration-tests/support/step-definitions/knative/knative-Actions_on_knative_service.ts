@@ -4,24 +4,33 @@ import { resourceTypes } from '../../constants/add';
 import { topologyPage, topologySidePane } from '../../pages/topology_page';
 import { editLabels, editAnnotations, deleteservice, deleteRevision } from '../../pages/popupAlerts';
 
-Given('knative service name {string} is higlighted on topology page', (kantiveServiceName: string) => {
-  topologyPage.search(kantiveServiceName).then(() => {
-    cy.get('body').then(($el) => {
-      if($el.find('.is-filtered').length === 0) {
-        addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git',kantiveServiceName, resourceTypes.KnativeService);
-      }
-    });
-  }) ;
+Given('knative service name {string} is higlighted on topology page', (knativeServiceName: string) => {
+  cy.get('.co-m-loader').should('not.be.visible');
+  cy.get('body').then(($el) => {
+    cy.wait(3000);
+    if($el.find('.pf-c-card__title').length !== 0) {
+      addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git',knativeServiceName, resourceTypes.KnativeService);
+    }
+    else if($el.find('[data-test-id="item-filter"]').length !== 0) {
+      topologyPage.search(knativeServiceName).then(() => {
+        cy.get('body').then(($el) => {
+          if($el.find('.is-filtered').length === 0) {
+            addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git',knativeServiceName, resourceTypes.KnativeService);
+          }
+        });
+      }) ;
+    }
+  });
 });
 
-When('user right click on the knative service {string}', (kantiveServiceName: string) => {
-  topologyPage.componentNode(kantiveServiceName).should('be.visible').trigger('contextmenu', {force:true});
+When('user right click on the knative service {string}', (knativeServiceName: string) => {
+  topologyPage.componentNode(knativeServiceName).should('be.visible').trigger('contextmenu', {force:true});
 });
 
-Then('user able to see the options like Edit Application Grouping, Set Traffic Distribution, Edit Health Checks, Edit Labels, Edit Annotations, Edit Service, Delete Service, {string}',(kantiveServiceName: string) => {
+Then('user able to see the options like Edit Application Grouping, Set Traffic Distribution, Edit Health Checks, Edit Labels, Edit Annotations, Edit Service, Delete Service, {string}',(knativeServiceName: string) => {
   cy.byTestActionID('Edit Application Grouping').should('be.visible');
   cy.byTestActionID('Set Traffic Distribution').should('be.visible');
-  cy.byTestActionID(`Edit ${kantiveServiceName}`).should('be.visible');
+  cy.byTestActionID(`Edit ${knativeServiceName}`).should('be.visible');
   cy.byTestActionID('Edit Health Checks').should('be.visible');
   cy.byTestActionID('Edit Labels').should('be.visible');
   cy.byTestActionID('Edit Annotations').should('be.visible');
@@ -50,8 +59,8 @@ Given('service should have at least 1 revision', () => {
   // TODO: implement step
 });
 
-When('user selects {string} option from context menu of knative service {string}', (option: string, kantiveServiceName: string) => {
-  topologyPage.componentNode(kantiveServiceName).click();
+When('user selects {string} option from context menu of knative service {string}', (option: string, knativeServiceName: string) => {
+  topologyPage.componentNode(knativeServiceName).click();
   topologyPage.selectContextMenuAction(option);
 });
 

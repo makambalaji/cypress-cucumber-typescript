@@ -32,13 +32,8 @@ Given('cluster is installed with pipeline operator', () => {
   
 });
 
-Given('cluster is installed with serverless operator', () => {
-  // TODO: implement step
-});
-
 Then('message displays as {string}', (a: string) => {
   cy.log(a)
-  // TODO: implement step
 });
 
 Then('page contains Pipeline card', () => {

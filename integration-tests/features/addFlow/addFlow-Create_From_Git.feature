@@ -34,21 +34,25 @@ Examples:
 Scenario Outline: Add new git workload with new application for resoruce type "<resource_type>" : A-04-TC02, A-04-TC13
    Given user is at Import from git page
    When user types Git Repo url as "<git_url>"
+   And types Application name as "<app_name>"
+   And types Name as "<name>"
    And selects "<resource_type>" resource type
    And clicks Create button on Add page 
    Then user redirects to Topology page
    And created workload "<name>" is present in topology page
 
 Examples:
-| git_url                                  | app_name           | name           | resource_type     |
-| https://github.com/sclorg/dancer-ex.git  | dancer-ex-git-app  | dancer-ex-git  | Deployment        |
-| https://github.com/sclorg/cakephp-ex.git | cakephp-ex-git-app | cakephp-ex-git | Deployment Config |
+| git_url                                  | app_name           | name             | resource_type     |
+| https://github.com/sclorg/dancer-ex.git  | dancer-ex-git-app  | dancer-ex-git-1  | Deployment        |
+| https://github.com/sclorg/cakephp-ex.git | cakephp-ex-git-app | cakephp-ex-git-1 | Deployment Config |
 
 
 @regression
 Scenario: Add new git workload to the existing application : A-04-TC03
    Given user is at Import from git page
    When user types Git Repo url as "https://github.com/sclorg/nodejs-ex.git"
+   And types Application name as "nodejs-ex-git-app"
+   And types Name as "nodejs-ex-git-2"
    And selects "deployment config" resource type
    And clicks Create button on Add page
    Then user redirects to Topology page
@@ -69,7 +73,7 @@ Scenario: Create workload without application route : A-04-TC05
    When user types Git Repo url as "https://github.com/sclorg/dancer-ex.git"
    And types Application name as "app-with-no-app-route"
    And types Name as "node-with-no-app-route"
-   And unselect the advanced option "Create a route to the application"
+   And unselect the advanced option Create a route to the application
    And clicks Create button on Add page 
    Then user redirects to Topology page
    And public url is not created for node "node-with-no-app-route"
@@ -90,7 +94,7 @@ Scenario Outline: Create a git workload with advanced option "Routing" : A-04-TC
 
 Examples:
 | git_url                                 | hostname | path  | name            |
-| https://github.com/sclorg/nodejs-ex.git | home     | /home | nodejs-ex.git-1 |
+| https://github.com/sclorg/nodejs-ex.git | home     | /home | nodejs-ex.git-3 |
 
 
 @regression
@@ -110,7 +114,7 @@ Scenario Outline: Creaete the workload by unselecting options in "Build Configur
 
 Examples:
 | git_url                                 | name | value | name            |
-| https://github.com/sclorg/nodejs-ex.git | home | value | nodejs-ex.git-2 |
+| https://github.com/sclorg/nodejs-ex.git | home | value | nodejs-ex.git-4 |
 
 
 @regression
@@ -127,7 +131,7 @@ Scenario Outline: Create a git workload with advanced option "Deployment" : A-04
 
 Examples:
 | git_url                                 | name | value | name            |
-| https://github.com/sclorg/nodejs-ex.git | home | value | nodejs-ex.git-3 |
+| https://github.com/sclorg/nodejs-ex.git | home | value | nodejs-ex.git-5 |
 
 
 @regression
@@ -145,7 +149,7 @@ Scenario Outline: Create a git workload with advanced option "Resource Limits" :
 
 Examples:
 | git_url                                 | cpu_request | cpu_limit | memory_request | memory_limit | name            |
-| https://github.com/sclorg/nodejs-ex.git | 10          | 12        | 200            | 300          | nodejs-ex.git-4 |
+| https://github.com/sclorg/nodejs-ex.git | 10          | 12        | 200            | 300          | nodejs-ex.git-6 |
 
 
 @regression
@@ -160,7 +164,7 @@ Scenario Outline: Create a git workload with advanced option "Scaling" : A-04-TC
 
 Examples:
 | git_url                                 | replica_set_value | name            |
-| https://github.com/sclorg/nodejs-ex.git | 5                 | nodejs-ex.git-5 |
+| https://github.com/sclorg/nodejs-ex.git | 5                 | nodejs-ex.git-7 |
 
 
 @regression
@@ -176,7 +180,7 @@ Scenario Outline: Create a git workload with advanced option "Labels" : A-04-TC1
 
 Examples:
 | git_url                                 | label_name   | name            |
-| https://github.com/sclorg/nodejs-ex.git | app=frontend | nodejs-ex.git-6 |
+| https://github.com/sclorg/nodejs-ex.git | app=frontend | nodejs-ex.git-8 |
 
 
 @regression
@@ -193,4 +197,4 @@ Scenario Outline: Create a git workload with advanced option "Health Checks" : A
 
 Examples:
 | git_url                                 | label_name   | name            |
-| https://github.com/sclorg/nodejs-ex.git | app=frontend | nodejs-ex.git-7 |   
+| https://github.com/sclorg/nodejs-ex.git | app=frontend | nodejs-ex.git-9 |   

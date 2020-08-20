@@ -1,21 +1,14 @@
-import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { perspective } from '../../pages/app';
-import { switchPerspective } from '../../constants/global';
+import { When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { addPage } from '../../pages/add/add_page';
 import { catalogPage, catalogPageObj } from '../../pages/add/catalog_page';
 import { addOptions } from '../../constants/add';
 import { topologyPage } from '../../pages/topology_page';
 
-Given('user is at developer perspecitve', () => {
-  perspective.switchTo(switchPerspective.Developer);
-  perspective.verifyPerspective('Developer');
-});
-
-Then('user can see Helm Chart card on the +Add page', () => {
+Then('user can see Helm Chart card on the Add page', () => {
   addPage.verifyCard('Helm Chart');
 });
 
-When('user clicks on the Helm Chart card on the +Add page', () => {
+When('user clicks on the Helm Chart card on the Add page', () => {
   addPage.verifyCard('Helm Chart');
   addPage.selectCardFromOptions(addOptions.HelmChart);
 });
@@ -54,7 +47,7 @@ Then('Topology page have the helm chart workload {string}', (nodeName: string) =
   topologyPage.verifyWorkloadInTopologyPage(nodeName);
 });
 
-When('user clicks on the Developer Catalog card on the +Add page', () => {
+When('user clicks on the Developer Catalog card on the Add page', () => {
   addPage.selectCardFromOptions(addOptions.Catalog);
 });
 

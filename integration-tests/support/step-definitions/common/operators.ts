@@ -24,6 +24,7 @@ When('click install button present on the right side pane', () => {
 
 Then('OpenShift Pipeline operator subscription page will be displayed', () => {
   operatorsPage.verifySubscriptionPage('OpenShift Pipelines Operator');
+  operatorsPage.clickOnCancel();
 });
 
 Given('user is at OpenShift Pipeline Operator subscription page', () => {

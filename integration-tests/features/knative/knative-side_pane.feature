@@ -3,9 +3,8 @@ Feature: side pane details
 
 Background:
     Given open shift cluster is installed with Serverless operator
-    And user is on dev perspective
+    And user is at developer perspecitve
     And one service "nodejs-ex-git-1" should be available
-    And one revision "nodejs-ex-git-1-q5rb8" should be available
 
 
 @regression, @smoke

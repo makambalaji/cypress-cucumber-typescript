@@ -73,7 +73,7 @@ Then('user redirects to page with header name {string}', (headerName: string) =>
 });
 
 Then('Knaive Service option is displayed in Resources section', () => {
-  cy.get(addPageObj.resources.knative).should('be.visible');
+  cy.get(addPageObj.resources.knative).scrollIntoView().should('be.visible');
 });
 
 Then('created workload {string} is present in List View of topology page', (workloadName: string) => {

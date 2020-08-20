@@ -3,22 +3,11 @@ import { perspective, projectNameSpace as project, naviagteTo } from '../../page
 import { operatorsPage } from '../../pages/operators_page';
 import {switchPerspective, devNavigationMenu as menu, devNavigationMenu} from '../../constants/global';
 import { pipelineBuilderPage} from '../../pages/pipelines/pipelineBuilder_page';
-import  {pipelineRunDetailsPage} from '../../pages/pipelines/pipelineRunDetails_page';
+import { pipelineRunDetailsPage } from '../../pages/pipelines/pipelineRunDetails_page';
 import { pipelinesPage } from '../../pages/pipelines/pipelines_page';
 import { topologyPage } from '../../pages/topology_page';
 import { addPage } from '../../pages/add/add_page';
 import { addOptions } from '../../constants/add';
-
-// Given('user logged into the openshift application', () => {
-//     loginPage.loginWithValidCredentials(Cypress.env('username'), Cypress.env('password'));
-//     loginPage.checkLoginSuccess();
-// });
-
-// { tags:"@smoke" },
-// Before({ tags:"@smoke" },() => {
-//   loginPage.loginWithValidCredentials(Cypress.env('username'), Cypress.env('password'));
-//     loginPage.checkLoginSuccess();
-// });
   
 Given('user is at admin perspecitve', () => {
   perspective.verifyPerspective('Administrator');
@@ -40,6 +29,7 @@ Given('user is at developer perspecitve', () => {
 
 Given('open shift cluster is installed with Serverless operator', () => {
   perspective.switchTo(switchPerspective.Administrator);
+  cy.wait(3000); //To Load the navigation menu
   operatorsPage.verifyOperatorInNavigationMenu('Serverless');
 });
 

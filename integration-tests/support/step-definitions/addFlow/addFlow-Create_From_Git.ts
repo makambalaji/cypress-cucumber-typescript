@@ -51,113 +51,93 @@ Then('created workload is linked to existing application', () => {
   
 });
 
-When('types Application name as {string}', (a: string) => {
-  // TODO: implement step
-  cy.log(a)
+When('types Application name as {string}', (appName: string) => {
+  addPage.enterAppName(appName);
 });
 
-When('types Name as {string}', (a: string) => {
-  // TODO: implement step
-  cy.log(a)
+When('types Name as {string}', (name: string) => {
+  addPage.enterComponentName(name);
 });
 
-When('unselect the advanced option {string}', (a: string) => {
-  // TODO: implement step
-  cy.log(a)
+When('unselect the advanced option Create a route to the application', () => {
+  addPage.unselectRoute();
 });
 
-When('type name as {string} in General section', (a: string) => {
-  // TODO: implement step
-  cy.log(a)
+When('type name as {string} in General section', (name: string) => {
+  addPage.enterComponentName(name);
 });
 
-When('click {string} link in Advanced Options section', (a: string) => {
-  // TODO: implement step
-  cy.log(a)
+When('click {string} link in Advanced Options section', (linkName: string) => {
+  cy.byButtonText(linkName);
 });
 
-When('type Hostname as {string}', (a: string) => {
-  cy.log(a)
-  // TODO: implement step
+When('type Hostname as {string}', (hostName: string) => {
+  cy.get(addPageObj.advancedOptions.routing.hostname).type(hostName);
 });
 
-When('type Path as {string}', (a: string) => {
-  cy.log(a)
-  // TODO: implement step
+When('type Path as {string}', (path: string) => {
+  cy.get(addPageObj.advancedOptions.routing.path).type(path);
 });
 
-When('select Target Port as {string}', (a: string) => {
-  cy.log(a)
-  // TODO: implement step
+When('select Target Port as {string}', (targetPort: string) => {
+  cy.get(addPageObj.advancedOptions.routing.targetPort).click();
+  cy.get('li button[data-test-id="dropdown-menu"]').contains(targetPort).click();
 });
 
-When('user types name as {string} in General section', (a: string) => {
-  // TODO: implement step
-  cy.log(a)
+When('user types name as {string} in General section', (name: string) => {
+  addPage.enterComponentName(name);
 });
 
-When('clicks {string} link in Advanced Options section', (a: string) => {
-  cy.log(a)
-  // TODO: implement step
+When('clicks {string} link in Advanced Options section', (linkName: string) => {
+  cy.byButtonText(linkName).click();
 });
 
-When('unselects {string} checkbox in build configuration section', (a: string) => {
-  cy.log(a)
-  // TODO: implement step
+When('unselects {string} checkbox in build configuration section', (checkBoxName: string) => {
+  cy.get('div.pf-c-check label').contains(checkBoxName).next('input').uncheck();
 });
 
-When('type Name as {string} in Environment Variables section', (a: string) => {
-  cy.log(a)
-  // TODO: implement step
+When('type Name as {string} in Environment Variables section', (envName: string) => {
+  cy.get(addPageObj.advancedOptions.buildConfig.envName).type(envName);
 });
 
-When('type Value as {string} in Environment Variables section', (a: string) => {
-  cy.log(a)
-  // TODO: implement step
+When('type Value as {string} in Environment Variables section', (envValue: string) => {
+  cy.get(addPageObj.advancedOptions.buildConfig.envValue).type(envValue);
 });
 
 Then('build does not get started', () => {
 
 });
 
-When('verify {string} checkbox is seleceted', (a: string) => {
-  cy.log(a)
-  // TODO: implement step
+When('verify {string} checkbox is seleceted', (checkBoxName: string) => {
+ cy.get('div.pf-c-check label').contains(checkBoxName).next('input').should('be.checked');
 });
 
-When('type Name as {string} in Environment Variables (Runtime only) section', (a: string) => {
-  cy.log(a);
-  // TODO: implement step
+When('type Name as {string} in Environment Variables Runtime only section', (envName: string) => {
+  cy.get(addPageObj.advancedOptions.deployment.envName).type(envName);
 });
 
-When('type Value as {string} in Environment Variables (Runtime only) section', (a: string) => {
-  cy.log(a);
-  // TODO: implement step
+When('type Value as {string} in Environment Variables Runtime only section', (envValue: string) => {
+  cy.get(addPageObj.advancedOptions.deployment.envName).type(envValue);
 });
 
-When('type CPU Request as {string} in CPU section', (a: string) => {
-  cy.log(a)
-  // TODO: implement step
+When('type CPU Request as {string} in CPU section', (cpuResquestValue: string) => {
+  cy.get(addPageObj.advancedOptions.resourceLimit.cpuRequest).type(cpuResquestValue);
 });
 
-When('type CPU Limits as {string} in CPU section', (a: string) => {
-  cy.log(a)
-  // TODO: implement step
+When('type CPU Limits as {string} in CPU section', (cpuLimitValue: string) => {
+  cy.get(addPageObj.advancedOptions.resourceLimit.cpuLimit).type(cpuLimitValue);
 });
 
-When('type Memory Request as {string} in Memory section', (a: string) => {
-  cy.log(a)
-  // TODO: implement step
+When('type Memory Request as {string} in Memory section', (memoryRequestValue: string) => {
+  cy.get(addPageObj.advancedOptions.resourceLimit.memoryRequest).type(memoryRequestValue);
 });
 
-When('type Memory Limit as {string} in Memory section', (a: string) => {
-  cy.log(a)
-  // TODO: implement step
+When('type Memory Limit as {string} in Memory section', (memoryLimitValue: string) => {
+  cy.get(addPageObj.advancedOptions.resourceLimit.memoryLimit).type(memoryLimitValue);
 });
 
-When('type number of replicas as {string} in Replicas section', (a: string) => {
-  cy.log(a)
-  // TODO: implement step
+When('type number of replicas as {string} in Replicas section', (replicaCount: string) => {
+  cy.get(addPageObj.advancedOptions.scaling.replicaCount).type(replicaCount)
 });
 
 When('fill the Readiness Probe details', () => {
@@ -172,14 +152,13 @@ When('fill the Startup Probe details', () => {
 
 });
 
-When('type label as {string}', (a: string) => {
-  cy.log(a)
-  // TODO: implement step
+When('type label as {string}', (labelName: string) => {
+  cy.get(addPageObj.advancedOptions.labels).type(labelName);
 });
 
 Then('public url is not created for node {string}', (a: string) => {
-  // TODO: implement step
-  cy.log(a)
+    // TODO: implement step
+    cy.log(a)
 });
 
 Then('the route of application contains {string}', (a: string) => {

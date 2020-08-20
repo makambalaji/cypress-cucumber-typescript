@@ -32,7 +32,7 @@ Scenario:  Pipeline card display on pipeline operator installation : A-02-TC01
 
 @regression
 Scenario:  Operator Backed card display on serverless operator installation : A-02-TC01
-   Given cluster is installed with serverless operator
+   Given open shift cluster is installed with Serverless operator
    And open project namespace "knative-serving"
    When user selects Add option from left side navigation menu
    Then user redirects to Add page
@@ -41,7 +41,7 @@ Scenario:  Operator Backed card display on serverless operator installation : A-
 
 @regression, @smoke
 Scenario: Event Soruces card display on serverless operator installation : A-03-TC02
-   Given cluster is installed with serverless operator
+   Given open shift cluster is installed with Serverless operator
    When user selects Add option from left side navigation menu
    Then user redirects to Add page
    And page contains Event Soruces card

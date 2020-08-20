@@ -40,7 +40,7 @@ When('selects {string} option from Service Account Name field', (serviceAccountN
   eventSourcesPage.selectServiceType(serviceAccountName);
 });
 
-When('selects an {knativeService} option from Kantive service field', (knativeService: string) => {
+When('selects an {string} option from Kantive service field', (knativeService: string) => {
   eventSourcesPage.selectKnativeService(knativeService);
 });
 

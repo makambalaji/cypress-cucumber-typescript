@@ -35,10 +35,11 @@ export const eventSourcesPage = {
       cy.get(`[id^=${knativeService}-link]`).click();
     },
     enterEventSourceName:(eventSourceName: string) => cy.get(eventSourceObj.sinkBinding.name).type(eventSourceName),
-    createSinkBinding:(apiVersion: string) => {
+    createSinkBinding:(apiVersion: string, kind: string) => {
       addPage.selectCardFromOptions(addOptions.EventSource);
       eventSourcesPage.selectEventSourceType("Sink Binding");
       cy.get(eventSourceObj.sinkBinding.apiVersion).type(apiVersion);
+      cy.get(eventSourceObj.sinkBinding.kind).type(kind);
     },
     createEventSource:(eventSourceName: string) => {
       addPage.selectCardFromOptions(addOptions.EventSource);

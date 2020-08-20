@@ -14,8 +14,8 @@ Scenario Outline: Knative service menu options: Kn-04-TC01
    Then user able to see the options like Edit Application Grouping, Set Traffic Distribution, Edit Health Checks, Edit Labels, Edit Annotations, Edit Service, Delete Service, "<service_name>"
 
 Examples:
-    | service_name    | 
-    | nodejs-ex-git-1 |
+   | service_name    | 
+   | nodejs-ex-git-1 |
 
 
 @regression
@@ -198,8 +198,6 @@ Scenario: Perform cancel opeartion on Edit Health Checks for a service : Kn-04-T
 Scenario: Edit Health Checks for a service: Kn-04-TC09
    Given knative service name "nodejs-ex-git-1" is higlighted on topology page
    When user selects "Edit Health Checks" option from context menu of knative service "nodejs-ex-git-1"
-   And 
-   Then 
 
 
 Scenario: Perform cancel opeartion on Edit NameOfWorkload for a service : Kn-04-TC21
@@ -215,7 +213,6 @@ Scenario: Edit NameOfWorkload for a service [TBD] : Kn-04-TC20
    When user selects "Edit nodejs-ex-git-1" option from context menu of knative service "nodejs-ex-git-1"
    And select the "Application -1" option from "Application" drop down
    And click on "Save" button
-   Then 
 
 
 @regression, @smoke

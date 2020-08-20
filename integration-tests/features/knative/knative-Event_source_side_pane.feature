@@ -3,8 +3,9 @@ Feature: Event Sources actions
 
 Background:
    Given open shift cluster is installed with Serverless operator
-   And user is on dev perspective +Add page
+   And user is at developer perspecitve
    And open project namespace "aut-knative-event-source-actions"
+   And one service "nodejs-ex-git-1" should be available
 
 
 @regression, @smoke

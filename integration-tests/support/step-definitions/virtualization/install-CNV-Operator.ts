@@ -7,6 +7,10 @@ Given('user is at Installed Operator page', () => {
   operatorsPage.navigateToInstalloperatorsPage();
 });
 
+Given ('openshift cluster is installed with Virtualization operator and deployed with cnv operator', () => {
+  operatorsPage.verifyOperatorInNavigationMenu('Virtualization');
+});
+
 When('clicks on the OpenShift Virtualization Operator card', () => {
   operatorsPage.selectOperator(operators.virtualizationOperator);
 });
@@ -38,7 +42,7 @@ Then('user will see a HyperConverged Cluster created', () => {
 });
 
 Then('user will see Virtualization item under Workloads', () => {
-  
+  operatorsPage.verifyOperatorInNavigationMenu('Virtualization');
 });
 
 Then('user will see Import Virtual Machine Card on Add page', () => {

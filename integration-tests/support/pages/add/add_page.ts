@@ -10,7 +10,7 @@ export const addPageObj = {
   create: '[data-test-id="submit-button"]',
   cancel: '[data-test-id="reset-button"]',
   gitSection: {
-    validatedMessage: '#form-input-searchTerm-field-helper',
+    validatedMessage: '#form-input-git-url-field-helper',
   },
   builderSection: {
     builderImageDetected: '[aria-label="Success Alert"]',
@@ -75,6 +75,7 @@ export const addPageObj = {
 }
 
 export const addPage = {
+  unselectRoute:() => cy.get(addPageObj.advancedOptions.createRoute).uncheck(),
   verifyNoWorkLoadsText:(text: string) => cy.get('h2.co-hint-block__title').should('contain.text', text),
   verifyTitle: (title: string) => cy.titleShouldBe(title),
   verifyPipelinesSection: (message: string) => {
@@ -114,7 +115,7 @@ export const addPage = {
         break;
       case 'knative':
       case 'Knative':
-        cy.get(addPageObj.resources.knative).check();
+        cy.get(addPageObj.resources.knative).scrollIntoView().check();
         break;
       default:
         throw new Error('Option is not available');
@@ -215,7 +216,7 @@ export const addPage = {
   verifyBuilderImageDetectedMessage:() => cy.get(addPageObj.builderSection.builderImageDetected).should('be.visible'),
   verifyBuilderImageVersion:() => cy.get(addPageObj.builderSection.builderImageVersion).should('be.visible'),
   verifyCard:(cardName: string) => cy.get(addPageObj.cardTitle).contains(cardName).should('be.visible'),
-  createGitWorkload:(gitUrl: string = 'https://github.com/sclorg/nodejs-ex.git', appName: string = 'nodejs-ex-git-app', componentName: string = 'nodejs-ex-git', resourceType: string = 'Deployment') => {
+  createGitWorkload: (gitUrl: string = 'https://github.com/sclorg/nodejs-ex.git', componentName: string = 'nodejs-ex-git', resourceType: string = 'Deployment', appName: string = 'nodejs-ex-git-app') => {
     addPage.selectCardFromOptions(addOptions.Git);
     addPage.enterGitUrl(gitUrl);
     addPage.enterAppName(appName);

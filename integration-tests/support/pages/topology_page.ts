@@ -86,7 +86,8 @@ export const topologyPage = {
         return cy.get(`[data-id="group:${appName}"] g.odc-resource-icon text`).contains('A').parent('g').next('text').contains(appName);
     },
     componentNode:(nodeName:string) => {
-        return cy.get('g.odc-base-node__label > text').contains(nodeName).parent('[data-test-id="base-node-handler"]');
+        return cy.get('g.odc-base-node__label > text').contains(nodeName)
+        // .parent('[data-test-id="base-node-handler"]');
         // let ele;
         // cy.get(`g.odc-base-node__label > text`).each(($el, index) => {
         //     if($el.mouseover().text().includes(nodeName)) {
