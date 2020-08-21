@@ -3,7 +3,7 @@ Feature: Perform actions on knative revision
 
 Background:
    Given open shift cluster is installed with Serverless operator
-   And user is on dev perspective
+   And user is at developer perspecitve
    And open project namespace "aut-knative-actions-revision"
 
 

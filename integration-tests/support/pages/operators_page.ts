@@ -131,6 +131,7 @@ export const operatorsPage = {
   },
 
   verifyOperatorInNavigationMenu: (menuItem: string) => {
+    cy.wait(3000);
     cy.get(operatorsObj.nav.menuItems).contains(menuItem, {timeout: 10000}).should('be.visible');
   },
 

@@ -3,6 +3,7 @@ import { operatorsPage, operatorsObj } from '../../pages/operators_page';
 import  { operators, switchPerspective, devNavigationMenu } from '../../constants/global'
 import { projectNameSpace, perspective, naviagteTo } from '../../pages/app';
 import { addPage } from '../../pages/add/add_page';
+import { eventSourcesPage } from '../../pages/add/eventSource_page';
 
 Given('user is at Operator Hub page with the header name {string}', (headerName) => {
   operatorsPage.navigateToOperaotorHubPage();
@@ -11,6 +12,18 @@ Given('user is at Operator Hub page with the header name {string}', (headerName)
 
 When('user searches for {string}', (operatorName: operators) => {
   operatorsPage.searchOperator(operatorName);
+});
+
+When('user executes commands from cli as {string}', (command: string) => {
+  cy.exec(command);
+});
+
+Then('user redirects to Event Sources page', () => {
+  cy.titleShouldBe('Event Sources');
+});
+
+Then('GitHub Source is displayed in Types section', () => {
+  eventSourcesPage.verifyEventSourceType('Git Hub Source');
 });
 
 When('clicks OpenShift Pipelines Operator card on Operator Hub page', () => {

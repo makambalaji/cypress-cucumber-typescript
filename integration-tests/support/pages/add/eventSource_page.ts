@@ -15,15 +15,21 @@ export const eventSourceObj = {
       kind: '[data-test-id="sinkbinding-kind-field"]',
       sinkResource: '#form-ns-dropdown-sink-name-field',
       name: '[data-test-id="application-form-app-name"]',
-    }
+    },
   }
 
 
 export const eventSourcesPage = {
     verifyTitle: (title: string = 'Event Sources') => cy.titleShouldBe(title),
     search: (type: string) => cy.get(eventSourceObj.search).type(type),
-    verifyEventSourceType: (eventSourceName: string) => cy.get(`button[aria-label="${eventSourceName}"]`).should('be.visible'),
-    selectEventSourceType: (eventSourceName: string) => cy.get(`button[aria-label="${eventSourceName}"]`).click(),
+    verifyEventSourceType: (eventSourceName: string) => {
+      cy.get('.co-m-loader').should('not.be.visible');
+      cy.get(`button[aria-label="${eventSourceName}"]`).should('be.visible');
+    },
+    selectEventSourceType: (eventSourceName: string) => {
+      cy.get('.co-m-loader').should('not.be.visible');
+      cy.get(`button[aria-label="${eventSourceName}"]`).click();
+    },
     clickCreate:() => cy.byLegacyTestID('submit-button').click(),
     clickCancel:() => cy.byLegacyTestID('reset-button').click(),
     selectServiceType:(serviceAccountName: string = 'default') => {
@@ -41,8 +47,11 @@ export const eventSourcesPage = {
       cy.get(eventSourceObj.sinkBinding.apiVersion).type(apiVersion);
       cy.get(eventSourceObj.sinkBinding.kind).type(kind);
     },
-    createEventSource:(eventSourceName: string) => {
+    createEventSource:(eventSourceName: string, apiVersion:string = 'batch/v1', kind:string = 'Job') => {
       addPage.selectCardFromOptions(addOptions.EventSource);
       eventSourcesPage.selectEventSourceType(eventSourceName);
+      cy.get(eventSourceObj.sinkBinding.apiVersion).type(apiVersion);
+      cy.get(eventSourceObj.sinkBinding.kind).type(kind);
+      eventSourcesPage.clickCreate();
     }
   }

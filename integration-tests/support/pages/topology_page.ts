@@ -127,6 +127,7 @@ export const topologySidePane = {
             expect(actions).contains($el.text());
         });
     },
+    verifyFieldinDetailsTab:(fieldName:string) => cy.get(`data-test-selector="details-item-label__${fieldName}"`).should('be.visible'),
     verifyWorkload:() => cy.get('[role="dialog"] h2').contains('Services').next('ul li a').should('be.visible'),
     verifyFieldValue:(fieldName: string, fieldValue: string) => cy.get(`[data-test-selector="details-item-value__${fieldName}"]`).should('contain.text', fieldValue),
     selectAddHealthChecks:() => cy.get('a').contains('Add Health Checks').click(),

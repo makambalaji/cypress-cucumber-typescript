@@ -17,6 +17,10 @@ Given('user is in administratr perspective', () => {
   perspective.verifyPerspective('Administrator');
 });
 
+Given('cluster is installed with knative Apache camel operator', () => {
+
+});
+
 Given('user is at dev perspecitve', () => {
   perspective.switchTo(switchPerspective.Developer);
   perspective.verifyPerspective('Developer');
@@ -35,6 +39,8 @@ Given('open shift cluster is installed with Serverless operator', () => {
 
 Given('open shift cluster is installed with apache camel source operator', () => {
   perspective.switchTo(switchPerspective.Administrator);
+  operatorsPage.navigateToInstalloperatorsPage();
+  operatorsPage.verifyInstalledOperator('Knative Apache Camel Operator');
 });
 
 Given('open shift cluster is installed with Serverless and eventing operator', () => {

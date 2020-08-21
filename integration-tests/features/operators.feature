@@ -22,15 +22,6 @@ Scenario: Install the Pipeline Operator from Operator Hub page : P-01-TC02
    And user will see a View Operator button
 
 
-@regression
-Scenario: Uninstall the Pipeline Operator from Operator Hub page : P-013-TC01, P-013-TC02
-   Given user is at Operator Hub page with the header name "OperatorHub"
-   When user uninstalls the pipeline operator from right side pane
-   And clicks on Unistall button present in popup with header message Uninstall Operator?
-   Then user redirects to Installed operators page
-   And Installed operators page will not contain "OpenShift Pipelines Operator"
-
-
 @regression, @smoke
 Scenario: Install the Serverless Operator from Operator Hub page : Kn-01-TC01, Kn-01-TC02
    Given user is at OpenShift Serverless Operator subscription page
@@ -63,16 +54,11 @@ Scenario: Install the knative apache camel operator : Kn-08-TC01
 @regression, @smoke, @manual
 Scenario: Install the dynamic event operator : Kn-09-TC01, Kn-09-TC02
    Given cluster is installed with kantive serverless operator
-   And user logged into the cluster via cli
-   When user executes "kubectl apply -f https://github.com/knative/eventing-contrib/releases/download/v0.14.1/github.yaml"
+   When user executes commands from cli as "kubectl apply -f https://github.com/knative/eventing-contrib/releases/download/v0.14.1/github.yaml"
    And user navigates to Add page
-   And user clicks on Event sources page
+   And user clicks on "Event sources" card
    Then user redirects to Event Sources page
    And GitHub Source is displayed in Types section
-
-
-Scenario: Uninstall the Knative serverless operator from Operator Hub page 
-   Given user is at OpenShift Serverless Operator subscription page
 
 
 @regression, @smoke
@@ -105,3 +91,16 @@ Scenario: Create HyperConverged Cluster: VM-01-TC02
     And user clicks on Create button
     Then user will see a HyperConverged Cluster created
     And user will see Virtualization item under Workloads
+
+
+@regression
+Scenario: Uninstall the Pipeline Operator from Operator Hub page : P-013-TC01, P-013-TC02
+   Given user is at Operator Hub page with the header name "OperatorHub"
+   When user uninstalls the pipeline operator from right side pane
+   And clicks on Unistall button present in popup with header message Uninstall Operator?
+   Then user redirects to Installed operators page
+   And Installed operators page will not contain "OpenShift Pipelines Operator"
+
+
+Scenario: Uninstall the Knative serverless operator from Operator Hub page 
+   Given user is at OpenShift Serverless Operator subscription page
