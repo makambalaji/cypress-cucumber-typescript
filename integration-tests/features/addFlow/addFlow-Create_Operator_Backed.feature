@@ -8,7 +8,7 @@ Background:
     And open project namespace "knative-serving"
 
 
-@regression, @smoke
+@regression, @smoke-1
 Scenario: Create the workload from Operator Backed : A-08-TC01
     Given user is at Developer Catlog page
     And Opeator Backed is selected on Developer Catalog page
@@ -20,7 +20,7 @@ Scenario: Create the workload from Operator Backed : A-08-TC01
     And created workload "knative-serving-1" is present in topology page
 
 
-@regression, @smoke
+@regression, @smoke-1
 Scenario: Perform cancel operation : A-08-TC02
     Given user is at Developer Catlog page
     And Opeator Backed is selected on Developer Catalog page

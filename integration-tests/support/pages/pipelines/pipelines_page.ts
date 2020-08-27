@@ -6,7 +6,7 @@ export const pipelinesObj = {
   pipelinesTable: {
     table: 'div[role="grid"]',
     pipelineName: 'tr td:nth-child(1)',
-    pipelineRunName: 'tr td:nth-child(3)',
+    pipelineRunName: 'tr td:nth-child(2)',
     kebabMenu: '[data-test-id="kebab-button"]',
     columnValues: '[aria-label="Pipelines"] tbody tr td',
     columnNames: 'div[aria-label="Pipelines"] thead tr th',
@@ -160,7 +160,7 @@ export const pipelinesPage = {
   },
 
   verifyLastRunStatusInPipelinesTable:(lastRunStatus: string) => {
-    cy.get('tbody td:nth-child(5) span span').should('have.text', lastRunStatus);
+    cy.get('tbody td:nth-child(4) span span').should('have.text', lastRunStatus);
   },
 
   verifyOptionInKebabMenu:(option:string) => {

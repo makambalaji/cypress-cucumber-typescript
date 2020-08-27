@@ -19,11 +19,12 @@ export const pipelineRunDetailsPage = {
   
     verifyPipelineRunStatus:(status: string) => cy.get('span.co-resource-item__resource-status').should('have.text', status),
     fieldDetails:(fieldName: string, expectedFieldValue: string) => {
-      cy.get(pipelineRunDetailsObj.pipelineRunDetails).each(($el) => {
-        if($el.text().includes(fieldName)) {
-          expect($el.next('dd').text()).equals(expectedFieldValue);
-        }
-      });
+      cy.get(pipelineRunDetailsObj.pipelineRunDetails).contains(fieldName).next('dd').should('have.text', expectedFieldValue);
+      // .each(($el, index) => {
+      //   if($el.text().includes(fieldName)) {
+      //     expect($el.eq(index).next('dd').text()).equals(expectedFieldValue);
+      //   }
+      // });
     },
     selectFromActionsDropdown:(action: string) => {
       cy.get(pipelineRunDetailsObj.actions).click();
@@ -66,45 +67,44 @@ export const pipelineRunDetailsPage = {
     },
     verifyActionsDropdown:() => cy.get(pipelineRunDetailsObj.actions).should('be.visible'),
     selectPipeline:() => cy.get(pipelineRunDetailsObj.details.pipelineLink, {timeout:3000}).click(),
-  }
+}
 
-  export const pipelienRunsPage = {
-    verifyTitle:() => cy.titleShouldBe('Pipeline Runs'),
-    search:(pipelineRunName: string) => cy.byLegacyTestID('item-filter').type(pipelineRunName),
-    selectKebabMenu:(pipelineRunName: string) => {
-      cy.get(pipelineRunsObj.pipelineRunsTable.table).should('exist');
-      cy.get(pipelineRunsObj.pipelineRunsTable.pipelineRunName).each(($el, index) => {
-        const text = $el.text()
-        if(text.includes(pipelineRunName)) {
-          cy.get('tbody tr').eq(index).find('td:nth-child(7) button').click();
-        }
-      });
-    },
-    verifyPipelineRunsTableDisplay:() => cy.get(pipelineRunsObj.pipelineRunsTable.table).should('be.visible'),
-    filterByStatus:(status: string = 'Succeeded') => {
-      cy.byLegacyTestID('filter-dropdown-toggle').click();
-      switch (status) {
-        case 'Succeeded': {
-          cy.get('#Succeeded').click();
-          break;
-        }
-        case 'Running': {
-          cy.get('#Running').click();
-          break;
-        }
-        case 'Failed': {
-          cy.get('#Failed').click();
-          break;
-        }
-        case 'Cancelled': {
-          cy.get('#Cancelled').click();
-          break;
-        }
-        default: {
-          throw new Error('operator is not available');
-        }
+export const pipelienRunsPage = {
+  verifyTitle:() => cy.titleShouldBe('Pipeline Runs'),
+  search:(pipelineRunName: string) => cy.byLegacyTestID('item-filter').type(pipelineRunName),
+  selectKebabMenu:(pipelineRunName: string) => {
+    cy.get(pipelineRunsObj.pipelineRunsTable.table).should('exist');
+    cy.get(pipelineRunsObj.pipelineRunsTable.pipelineRunName).each(($el, index) => {
+      const text = $el.text()
+      if(text.includes(pipelineRunName)) {
+        cy.get('tbody tr').eq(index).find('td:nth-child(6) button').click();
       }
-      cy.byButtonText('Clear all filters').should('be.visible');      
+    });
+  },
+  verifyPipelineRunsTableDisplay:() => cy.get(pipelineRunsObj.pipelineRunsTable.table).should('be.visible'),
+  filterByStatus:(status: string = 'Succeeded') => {
+    cy.byLegacyTestID('filter-dropdown-toggle').click();
+    switch (status) {
+      case 'Succeeded': {
+        cy.get('#Succeeded').click();
+        break;
+      }
+      case 'Running': {
+        cy.get('#Running').click();
+        break;
+      }
+      case 'Failed': {
+        cy.get('#Failed').click();
+        break;
+      }
+      case 'Cancelled': {
+        cy.get('#Cancelled').click();
+        break;
+      }
+      default: {
+        throw new Error('operator is not available');
+      }
     }
-    
+    cy.byButtonText('Clear all filters').should('be.visible');      
   }
+}

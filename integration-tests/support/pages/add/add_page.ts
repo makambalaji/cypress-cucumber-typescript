@@ -86,13 +86,18 @@ export const addPage = {
   verifyPipelineCheckBox: () => cy.get(addPageObj.pipeline.addPipeline).should('be.visible'),
   enterAppName:(appName: string) => {
     cy.get(addPageObj.appName).then(($el) => {
-      const tag: string = $el.prop("tagName");
-      if(tag.includes('button')) {
+      cy.wait(2000);
+      // const tag: string = $el.prop("tagName");
+      if($el.prop("tagName").includes('button')) {
+        cy.log('button tagname is available')
         cy.get(addPageObj.appName).click();
         cy.get(`li #${appName}-link`).click();
       }
-      else {
+      else if($el.prop("tagName").includes('input')){
         cy.get(addPageObj.appName).clear().type(appName)
+      }
+      else {
+        cy.log('Some issue is there, please check once')
       }
     });
   },

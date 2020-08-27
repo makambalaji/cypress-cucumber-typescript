@@ -44,7 +44,7 @@ Scenario Outline: Add new git workload with new application for resoruce type "<
 Examples:
 | git_url                                  | app_name           | name             | resource_type     |
 | https://github.com/sclorg/dancer-ex.git  | dancer-ex-git-app  | dancer-ex-git-1  | Deployment        |
-| https://github.com/sclorg/cakephp-ex.git | cakephp-ex-git-app | cakephp-ex-git-1 | Deployment Config |
+| https://github.com/sclorg/cakephp-ex.git | dancer-ex-git-app  | cakephp-ex-git-1 | Deployment Config |
 
 
 @regression
