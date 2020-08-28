@@ -45,5 +45,5 @@ Then('page contains Operator Backed card', () => {
 });
 
 Then('page contains Event Soruces card', () => {
-  addPage.verifyCard('Event Sources');
+  addPage.verifyCard('Event Source');
 });

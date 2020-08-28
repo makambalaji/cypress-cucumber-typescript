@@ -13,6 +13,7 @@
     "test:addFlow": "cypress run --env TAGS='@smoke' --browser chrome --spec \"features/addFlow/*.feature\"",
     "test:knative": "cypress run --env TAGS='@smoke' --browser chrome --spec \"features/knative/*.feature\"",
     "test:virtualization": "cypress run --env TAGS='@smoke' --browser chrome --spec \"features/virtualization/*.feature\"",
+    "test:topology": "cypress run --env TAGS='@smoke' --browser chrome --spec \"features/topology/*.feature\"",
     "test:all": "cypress run --spec \"**/*.features\"",
     "cy:update-snapshots": "cypress run --env updateSnapshots=true",
     "cy:run--snapshot-tests-with-reporter": "cypress run --reporter cypress-image-snapshot/reporter",

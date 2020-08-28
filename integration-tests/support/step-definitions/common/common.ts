@@ -152,7 +152,8 @@ Then('user redirects to Topology page', () => {
 });
 
 Then('user redirects to Add page', () => {
-  cy.titleShouldBe('Add');
+  // cy.titleShouldBe('Add');
+  cy.get('h1.ocs-page-layout__title').should('have.text', 'Add');
 });
 
 Then('user redirects to Pipelines page', () => {

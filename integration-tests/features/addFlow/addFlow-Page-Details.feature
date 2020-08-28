@@ -42,6 +42,8 @@ Scenario:  Operator Backed card display on serverless operator installation : A-
 @regression, @smoke
 Scenario: Event Soruces card display on serverless operator installation : A-03-TC02
    Given open shift cluster is installed with Serverless operator
+   And user is at dev perspecitve
+   And user is at the new project namespace "aut-new-project-namespace" 
    When user selects Add option from left side navigation menu
    Then user redirects to Add page
    And page contains Event Soruces card

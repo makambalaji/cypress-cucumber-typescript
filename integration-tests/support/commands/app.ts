@@ -13,7 +13,7 @@ declare global {
 }
 
 Cypress.Commands.add('titleShouldBe', (title: string) => {
-    cy.get('[data-test-id ="resource-title"]', {timeout: 10000}).should('be.visible').and('contain.text', title);
+    cy.get('[data-test-id ="resource-title"]').should('be.visible').and('contain.text', title);
 });
 
 Cypress.Commands.add('alertTitleShouldBe', (alertTitle: string) => {

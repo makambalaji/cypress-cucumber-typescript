@@ -1,5 +1,6 @@
 import {displayOptions, nodeActions} from '../constants/topology';
 import { helmPage } from './helm_page';
+import { app } from './app';
 
 export const topologyObj = {
     switcher: '[data-test-id="namespace-bar-dropdown"] a',
@@ -26,8 +27,8 @@ export const topologyObj = {
 
 export const topologyPage = {
     verifyTopologyPage: () => {
-        cy.get('.co-m-loader').should('not.be.visible');
-        cy.get(topologyObj.graph.reset, {timeout:9000}).should('be.visible');
+        app.waitForLoad();
+        cy.get(topologyObj.graph.reset).should('be.visible');
     },
     verifyContextMenu:() => cy.get('#popper-container ul').should('be.visible'),
     verifyNoWorkLoadsText:(text: string) => cy.get('h2.co-hint-block__title').should('contain.text', text),
