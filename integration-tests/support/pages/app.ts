@@ -201,3 +201,9 @@ export const projectNameSpace = {
   cy.exec(`oc delete project ${project}`);
 },
 }
+
+export const app = {
+  waitForLoad:() => {
+    cy.get('.co-m-loader').should('not.be.visible');
+  },
+}

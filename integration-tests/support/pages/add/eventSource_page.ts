@@ -9,6 +9,7 @@ export const eventSourceObj = {
       serviceAccountName: '#form-ns-dropdown-data-apiserversource-serviceAccountName-field',
       sinkResource: '#form-ns-dropdown-sink-name-field',
       name: '[data-test-id="application-form-app-name"]',
+      mode: '#form-dropdown-data-apiserversource-mode-field',
     },
     sinkBinding: {
       apiVersion: '[data-test-id="sinkbinding-apiversion-field"]',
@@ -23,7 +24,6 @@ export const eventSourcesPage = {
     verifyTitle: (title: string = 'Event Sources') => cy.titleShouldBe(title),
     search: (type: string) => cy.get(eventSourceObj.search).type(type),
     verifyEventSourceType: (eventSourceName: string) => {
-      cy.get('.co-m-loader').should('not.be.visible');
       cy.get(`button[aria-label="${eventSourceName}"]`).should('be.visible');
     },
     selectEventSourceType: (eventSourceName: string) => {
@@ -40,7 +40,11 @@ export const eventSourcesPage = {
       cy.get(eventSourceObj.apiServerSource.sinkResource).click();
       cy.get(`[id^=${knativeService}-link]`).click();
     },
-    enterEventSourceName:(eventSourceName: string) => cy.get(eventSourceObj.sinkBinding.name).type(eventSourceName),
+    selectMode:(mode: string) => {
+      cy.get(eventSourceObj.apiServerSource.mode).click();
+      cy.get(`[data-test-dropdown-menu="${mode}"]`).click();
+    },
+    enterEventSourceName:(eventSourceName: string) => cy.get(eventSourceObj.sinkBinding.name).clear().type(eventSourceName),
     createSinkBinding:(apiVersion: string, kind: string) => {
       addPage.selectCardFromOptions(addOptions.EventSource);
       eventSourcesPage.selectEventSourceType("Sink Binding");

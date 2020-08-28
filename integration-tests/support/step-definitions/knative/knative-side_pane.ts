@@ -29,8 +29,8 @@ Then('side pane is displayed with heading name as {string}', (serviceName: strin
  topologySidePane.verifyTitle(serviceName);
 });
 
-Then('user able to see pods status as {string} by default', (a: string) => {
- cy.log(a)
+Then('user able to see pods status as {string} by default', (podStatus: string) => {
+ cy.log(podStatus);
 });
 
 // Then('name displays as {string}', (a: string) => {

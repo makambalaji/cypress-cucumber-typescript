@@ -1,7 +1,7 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { addPage } from '../../pages/add/add_page';
 import { eventSourcesPage, eventSourceObj } from '../../pages/add/eventSource_page';
-import { naviagteTo } from '../../pages/app';
+import { naviagteTo, app } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
 import { addOptions } from '../../constants/add';
 import { topologySidePane, topologyPage } from '../../pages/topology_page';
@@ -40,6 +40,10 @@ When('selects {string} option from Service Account Name field', (serviceAccountN
   eventSourcesPage.selectServiceType(serviceAccountName);
 });
 
+When('selects {string} option from Mode field', (mode: string) => {
+  eventSourcesPage.selectMode(mode);
+}); 
+
 When('selects an {string} option from Kantive service field', (knativeService: string) => {
   eventSourcesPage.selectKnativeService(knativeService);
 });
@@ -48,20 +52,24 @@ When('user clicks on Create button', () => {
   eventSourcesPage.clickCreate();
 });
 
-When('type Container Image as {string}', (a: string) => {
- cy.log(a)
+When('type event source name as {string}', (eventSourceName: string) => {
+  eventSourcesPage.enterEventSourceName(eventSourceName);
+ });
+ 
+When('type Container Image as {string}', (containerImageName: string) => {
+ cy.log(containerImageName);
 });
 
-When('type schedule as {string}', (a: string) => {
- cy.log(a)
+When('type schedule as {string}', (schedule: string) => {
+ cy.log(schedule);
 });
 
-When('type Subject apiVersion as {string}', (a: string) => {
- cy.log(a)
+When('type Subject apiVersion as {string}', (subjectApiVersion: string) => {
+ cy.log(subjectApiVersion);
 });
 
-When('type Subject Kind as {string}', (a: string) => {
- cy.log(a)
+When('type Subject Kind as {string}', (subjectKind: string) => {
+ cy.log(subjectKind);
 });
 
 Then('user redirects to page with header name {string}', (pageTitle: string) => {
@@ -69,11 +77,12 @@ Then('user redirects to page with header name {string}', (pageTitle: string) => 
 });
 
 Then('able to see event source types like ApiServerSource, ContainerSource, CronJobSource, PingSource, SinkBinding', () => {
+  app.waitForLoad();
   eventSourcesPage.verifyEventSourceType('Api Server Source');
   eventSourcesPage.verifyEventSourceType('Container Source');
-  eventSourcesPage.verifyEventSourceType('Cron Job Source');
   eventSourcesPage.verifyEventSourceType('Ping Source');
   eventSourcesPage.verifyEventSourceType('Sink Binding');
+  // eventSourcesPage.verifyEventSourceType('Cron Job Source');  - Cron Job Source is removed change
 });
 
 Then('user able to see {string} event source type', (eventSoruceType: string) => {
@@ -84,12 +93,12 @@ Then('able to see Knative Eventing card', () => {
   addPage.verifyCard('Knative Eventing');
 });
 
-Then('able to see notifier with header {string}', (a: string) => {
- cy.log(a)
+Then('able to see notifier with header {string}', (headerName: string) => {
+ cy.log(headerName);
 });
 
-Then('message as {string}', (a: string) => {
- cy.log(a)
+Then('message as {string}', (message: string) => {
+ cy.log(message);
 });
 
 Then('page contains Resource, Mode, Service Account Name, Sink, General sections', () => {
@@ -100,12 +109,12 @@ Then('Resoruce contains App Version, Kind fields', () => {
   // TODO: implement step
 });
 
-Then('sink has Kantive service dropdown with defautl text {string}', (a: string) => {
- cy.log(a)
+Then('sink has Kantive service dropdown with defautl text {string}', (text: string) => {
+ cy.log(text);
 });
 
-Then('Application Name, Name fields have defautl text as {string}, {string}', (a: string, b: string) => {
- cy.log(a, b,)
+Then('Application Name, Name fields have defautl text as {string}, {string}', (appName: string, name: string) => {
+ cy.log(appName, name)
 });
 
 Then('Create button is disabled', () => {
@@ -124,8 +133,8 @@ Then('Environmental variables has Name, Value fields and Add More link', () => {
   // TODO: implement step
 });
 
-Then('Application Name, Name fields will have defautl text as {string}, {string}', (a: string, b: string) => {
- cy.log(a, b,)
+Then('Application Name, Name fields will have defautl text as {string}, {string}', (appName: string, name: string) => {
+ cy.log(appName, name)
 });
 
 Then('page contains CronJobSource, Sink, General sections', () => {

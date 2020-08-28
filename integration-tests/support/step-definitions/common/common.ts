@@ -18,7 +18,9 @@ Given('user is in administratr perspective', () => {
 });
 
 Given('cluster is installed with knative Apache camel operator', () => {
-
+  perspective.switchTo(switchPerspective.Administrator);
+  operatorsPage.navigateToInstalloperatorsPage();
+  operatorsPage.verifyInstalledOperator('Knative Apache Camel Operator');
 });
 
 Given('user is at dev perspecitve', () => {
@@ -34,13 +36,15 @@ Given('user is at developer perspecitve', () => {
 Given('open shift cluster is installed with Serverless operator', () => {
   perspective.switchTo(switchPerspective.Administrator);
   cy.wait(3000); //To Load the navigation menu
-  operatorsPage.verifyOperatorInNavigationMenu('Serverless');
+  operatorsPage.navigateToInstalloperatorsPage();
+  operatorsPage.verifyInstalledOperator('Serverless');
+  // operatorsPage.verifyOperatorInNavigationMenu('Serverless');
 });
 
 Given('open shift cluster is installed with apache camel source operator', () => {
   perspective.switchTo(switchPerspective.Administrator);
   operatorsPage.navigateToInstalloperatorsPage();
-  operatorsPage.verifyInstalledOperator('Knative Apache Camel Operator');
+  operatorsPage.verifyInstalledOperator('apache camel source Operator');
 });
 
 Given('open shift cluster is installed with Serverless and eventing operator', () => {

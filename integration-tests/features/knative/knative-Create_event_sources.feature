@@ -1,5 +1,5 @@
 Feature: Create event sources
-    As a developer I want to create event sources for ApiServerSource, ContainerSource, CronJobSource, PingSource, SinkBinding. 
+    As a developer I want to create event sources 
 
 Background:
    Given open shift cluster is installed with Serverless and eventing operator
@@ -17,7 +17,9 @@ Scenario: Different event source types display in event sources add page - Kn-07
 
 @regression, @smoke
 Scenario: CamelSource event source - Kn-08-TC03
-   Given cluster is installed with knative Apache camel operator 
+   Given cluster is installed with knative Apache camel operator
+   And user is at developer perspecitve
+   And user is at Add page
    When user clicks on "Event Sources" card
    Then user redirects to page with header name "Event Sources"
    And user able to see "Camel Source" event source type
@@ -110,8 +112,10 @@ Scenario: Create ApiServerSource event source - Kn-10-TC08
    When user selects event source type "Api Server Source"
    And type Resoruce APIVERSION as "sources.knative.dev/v1alpha1"
    And type Resource KIND as "ApiServerSource"
+   And selects "Resource" option from Mode field
    And selects "default" option from Service Account Name field
    And selects an "nodejs-ex-git" option from Kantive service field
+   And type event source name as "api-service-1"
    And user clicks on Create button
    Then user redirects to Topology page
    And ApiServerSource event source is created and linked to selected kantive service "nodejs-ex-git"

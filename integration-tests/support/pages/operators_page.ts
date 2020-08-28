@@ -38,8 +38,8 @@ export const operatorsPage = {
   },
 
   navigateToInstalloperatorsPage: () => {
+    cy.get(operatorsObj.nav.link).contains('Operators').click();
     cy.get(operatorsObj.nav.link).contains('Installed Operators').click();
-    cy.get(operatorsObj.nav.operatorHub,).click();
   },
 
   searchOperator: (operatorName: string) => {
