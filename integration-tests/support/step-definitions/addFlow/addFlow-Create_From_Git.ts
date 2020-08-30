@@ -68,7 +68,7 @@ When('type name as {string} in General section', (name: string) => {
 });
 
 When('click {string} link in Advanced Options section', (linkName: string) => {
-  cy.byButtonText(linkName);
+  cy.byButtonText(linkName).click();
 });
 
 When('type Hostname as {string}', (hostName: string) => {
@@ -81,7 +81,8 @@ When('type Path as {string}', (path: string) => {
 
 When('select Target Port as {string}', (targetPort: string) => {
   cy.get(addPageObj.advancedOptions.routing.targetPort).click();
-  cy.get('li button[data-test-id="dropdown-menu"]').contains(targetPort).click();
+  cy.contains(targetPort).should('be.visible');
+  cy.get('li button[data-test-id="dropdown-menu"]').eq(0).click();
 });
 
 When('user types name as {string} in General section', (name: string) => {
@@ -93,7 +94,20 @@ When('clicks {string} link in Advanced Options section', (linkName: string) => {
 });
 
 When('unselects {string} checkbox in build configuration section', (checkBoxName: string) => {
-  cy.get('div.pf-c-check label').contains(checkBoxName).next('input').uncheck();
+  cy.get('div.pf-c-check label').contains(checkBoxName).should('be.visible');
+  switch (checkBoxName) {
+    case 'Configure a webhook build trigger':
+      cy.get('#form-checkbox-build-triggers-webhook-field').uncheck();
+      break;
+    case 'Automatically build a new image when the builder image changes':
+      cy.get('#form-checkbox-build-triggers-image-field').uncheck();
+      break;
+    case 'Launch the first build when the build configuration is created':
+      cy.get('#form-checkbox-build-triggers-config-field').uncheck();
+      break;
+    default:
+      throw new Error(`Unable to find the "${checkBoxName}" checbox in Build Configuration Section`);
+  }
 });
 
 When('type Name as {string} in Environment Variables section', (envName: string) => {
@@ -109,7 +123,10 @@ Then('build does not get started', () => {
 });
 
 When('verify {string} checkbox is seleceted', (checkBoxName: string) => {
- cy.get('div.pf-c-check label').contains(checkBoxName).next('input').should('be.checked');
+  if(checkBoxName === 'Auto deploy when new image is available') {
+    cy.get('#form-checkbox-deployment-triggers-image-field').should('be.checked');
+  }
+//  cy.get('div.pf-c-check label').contains(checkBoxName).next('input').should('be.checked');
 });
 
 When('type Name as {string} in Environment Variables Runtime only section', (envName: string) => {

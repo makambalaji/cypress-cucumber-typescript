@@ -10,7 +10,7 @@ Background:
 @regression
 Scenario: From Git Page pipelines section: P-01-TC03
    Given user is at Add page
-   When user clicks From Git card on the +Add page
+   When user clicks From Git card on the Add page
    Then user navigates to page with header name Import from git
    And pipeline section is displayed with message "Select a builder image and resource to see if there is a pipeline template available for this runtime."
 
@@ -18,7 +18,7 @@ Scenario: From Git Page pipelines section: P-01-TC03
 @regression
 Scenario: From Dockerfile Page Pipelines section : P-01-TC04
    Given user is at Add page
-   When user clicks From Dockerfile card on the +Add page
+   When user clicks From Dockerfile card on the Add page
    Then user navigates to page with header name Import from git
    And Add pipeline section is displayed
 
@@ -105,31 +105,31 @@ Examples:
 
 @regression
 Scenario Outline: Create a workload with pipeline from Docker file : P-02-TC04
-   Given user is at "Import from Docker file" form
+   Given user is on Import from Docker file page
    When user type Git Repo url as "<docker_git_url>" 
-   And select "Add Pipeline" checkbox in Pipelines section
-   And clicks "Create" button on Add page   
-   Then user redirects to the topology page
-   And created workload is present in topology page
+   And select Add Pipeline checkbox in Pipelines section
+   And clicks Create button on Add page   
+   Then user gets redirected to topology page
+   And created workload "<name>" is present in topology page
 
 Examples:
-| docker_git_url | 
-|                |
+| docker_git_url                         | name          |
+| https://github.com/sclorg/nginx-ex.git | nginx-ex-git  |
 
 
 Scenario Outline: Create a pipeline with s2i builder images : P-02-TC05
-   Given user is at "Developer Catalog" form with builder images
+   Given user is at Developer Catalog form with builder images
    When the user enters "node" into the Builder Image search bar
    And create the application with the selected builder image
-   And user type "Git Repo url" as "<git_url>" 
-   And select "Add Pipeline" checkbox in Pipelines section
-   And click "Create" button on Create Source-to-Image application
-   Then user redirects to the topology page
-   And created workload is present in topology page
+   And user type Git Repo url as "<git_url>" 
+   And select Add Pipeline checkbox in Pipelines section
+   And click Create button on Create Source-to-Image application
+   Then user gets redirected to topology page
+   And created workload "<name>" is present in topology page
 
 Examples:
-| git_url                                 | 
-| https://github.com/sclorg/nodejs-ex.git |
+| git_url                                 | name          |
+| https://github.com/sclorg/nodejs-ex.git | nodejs-ex-git |
 
 
 @regression
@@ -143,4 +143,4 @@ Scenario Outline: Pipelines section in topology page: P-02-TC09
 
 Examples:
 | node_name       | 
-| nodejs-ex.git-D |
+| nodejs-ex-D-git |

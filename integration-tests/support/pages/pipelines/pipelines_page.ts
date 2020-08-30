@@ -120,8 +120,8 @@ export const pipelinesPage = {
   },
 
   search:(pipelineName: string) => {
-    cy.get(pipelinesObj.search, {timeout: 5000}).should('be.visible').clear().type(pipelineName)
-    cy.get(pipelinesObj.pipelinesTable.table, {timeout: 2000}).should('be.visible');
+    cy.get(pipelinesObj.search).should('be.visible').clear().type(pipelineName)
+    cy.get(pipelinesObj.pipelinesTable.table).should('be.visible');
   },
 
   selectPipeline:(pipelineName: string) => cy.byLegacyTestID(pipelineName).click(),
@@ -131,6 +131,7 @@ export const pipelinesPage = {
     cy.get(pipelinesObj.pipelinesTable.pipelineName).each(($el, index) => {
       if($el.text().includes(pipelineName)) {
         cy.get(pipelinesObj.pipelinesTable.pipelineRunName).eq(index).click();
+        cy.get('[data-test-section-heading="Pipeline Run Details"]').should('be.visible');
       }
     });
   },

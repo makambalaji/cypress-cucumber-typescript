@@ -164,22 +164,29 @@ Given('pipeline {string} is executed for 3 times', (pipelineName: string) => {
   pipelineDetailsPage.clickActionMenu();
   cy.byTestActionID('Start').click();
   pipelineRunDetailsPage.verifyTitle();
+  cy.get('.fa-spin').should('not.be.visible');
   cy.selectActionsMenuOption('Rerun');
+  cy.get('.fa-spin').should('not.be.visible');
   cy.selectActionsMenuOption('Rerun');
+});
+
+Given('user is at the Pipeline Runs page', () => {
   cy.selectLinkInBreadCrumb('Pipeline Runs');
   pipelienRunsPage.verifyTitle();
 });
 
-Given('user is at the Pipeline Runs page', () => {
-  pipelienRunsPage.verifyTitle();
-});
-
-When('user filters the pipeline runs based on the {string}', (status: string) => {
+When('user filters the pipeline runs of pipeline {string} based on the {string}', (pipelineName: string, status: string) => {
+  // cy.selectLinkInBreadCrumb('Pipeline Runs');
+  // pipelienRunsPage.verifyTitle();
+  naviagteTo(devNavigationMenu.Pipelines);
+  pipelinesPage.seelctPipelineRun(pipelineName);
+  cy.selectLinkInBreadCrumb('Pipeline Runs');
   pipelienRunsPage.filterByStatus(status);
 });
 
 Then('user able to see the pipelineruns with {string}', (status: string) => {
-  cy.log(status);  
+  pipelienRunsPage.verifyPipelineRunsTableDisplay();
+  pipelienRunsPage.verifyStatusInPipelineRunsTable(status);
 });
 
 Then ('Last Run status of the {string} displays as {string}', (pipelineName: string, lastRunStatus: string) => {
@@ -200,7 +207,6 @@ Given('pipeline {string} is created from git page', (name: string) => {
   addPage.selectCardFromOptions(addOptions.Git);
   addPage.verifyTitle('Import from git');
   addPage.enterGitUrl('https://github.com/sclorg/nodejs-ex.git');
-
   addPage.enterComponentName(name);
   addPage.selectAddPipeline();
   addPage.clicKCreate();
@@ -208,10 +214,12 @@ Given('pipeline {string} is created from git page', (name: string) => {
 })
 
 Given('pipeline run is displayed for {string} in pipelines page', (name: string) => {
+  naviagteTo(devNavigationMenu.Pipelines);
   pipelinesPage.search(name);
   pipelinesPage.selectKebabMenu(name);
   cy.byTestActionID('Start').click();
   cy.alertTitleShouldBe('Start Pipeline');
+  startPipeline.addGitResource('https://github.com/sclorg/dancer-ex.git');
   startPipeline.start();
   pipelineRunDetailsPage.verifyTitle();
   naviagteTo(devNavigationMenu.Pipelines);

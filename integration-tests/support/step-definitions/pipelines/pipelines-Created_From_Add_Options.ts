@@ -5,6 +5,7 @@ import { devNavigationMenu as menu } from '../../constants/global';
 import { addOptions } from '../../constants/add';
 import { topologyPage, topologySidePane } from '../../pages/topology_page';
 import { pipelinesPage } from '../../pages/pipelines/pipelines_page';
+import { catalogPage } from '../../pages/add/catalog_page';
 
 Given('user is at Add page', () => {
   naviagteTo(menu.Add);
@@ -20,6 +21,14 @@ Then('user navigates to page with header name Import from git', () => {
 
 Then('pipeline section is displayed with message {string}', (message: string) => {
   addPage.verifyPipelinesSection(message);
+});
+
+When('user clicks From Dockerfile card on the Add page', () => {
+  addPage.selectCardFromOptions(addOptions.DockerFile);
+});
+
+Then('Add pipeline section is displayed', () => {
+  addPage.verifyPipelineCheckBox();
 });
 
 Given('user is at Import from git form', () => {
@@ -91,4 +100,22 @@ Given('workload {string} is created from add page with pipeline', (pipelineName:
   addPage.enterComponentName(pipelineName);
   addPage.selectAddPipeline();
   addPage.clicKCreate();
+  topologyPage.verifyTopologyPage();
+});
+
+Given('user is at Developer Catalog form with builder images', () => {
+  addPage.selectCardFromOptions(addOptions.Catalog);
+});
+
+When('the user enters {string} into the Builder Image search bar', (searchItem: string) => {
+  catalogPage.search(searchItem);
+});
+
+When('create the application with the selected builder image', () => {
+  catalogPage.isCardsDisplayed();
+  // To Do
+});
+
+When('click Create button on Create Source-to-Image application', () => {
+  catalogPage.clickOnCreateButton();
 });

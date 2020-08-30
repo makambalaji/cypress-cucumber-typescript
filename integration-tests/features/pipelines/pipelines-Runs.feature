@@ -103,8 +103,7 @@ Examples:
 @regression, @smoke
 Scenario Outline: Filter the pipeline runs based on status : P-06-TC07
     Given pipeline "<pipeline_name>" is executed for 3 times
-    And user is at the Pipeline Runs page
-    When user filters the pipeline runs based on the "<status>"
+    When user filters the pipeline runs of pipeline "<pipeline_name>" based on the "<status>"
     Then user able to see the pipelineruns with "<status>"
 
 Examples:
@@ -175,7 +174,7 @@ Scenario: Start the pipeline wtih successful tasks: P-07- TC06
 
 
 @regression, @smoke
-Scenario Outline: Verify the pipeline status in side pane of topology page : P-05- TC02
+Scenario Outline: Pipeline status display in side pane of topology page : P-05- TC02
     Given pipeline "<pipeline_name>" is created from git page
     And pipeline run is displayed for "<pipeline_name>" in pipelines page
     When user navigates to Topology page

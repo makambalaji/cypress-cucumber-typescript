@@ -1,5 +1,4 @@
 import { addOptions, gitAdvancedOptions } from '../../constants/add';
-import { topologyPage } from '../topology_page';
 
 export const addPageObj = {
   cardTitle: 'div.catalog-tile-pf-title',
@@ -210,8 +209,7 @@ export const addPage = {
         cy.titleShouldBe('Import YAML');
         break;
       default:
-        throw new Error('Option is not available');
-        break;
+        throw new Error(`Unable to find the "${card}" card on Add page`);
     }
   },
   selectAddPipeline: () => cy.get(addPageObj.pipeline.addPipeline).scrollIntoView().check(),

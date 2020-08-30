@@ -106,5 +106,8 @@ export const pipelienRunsPage = {
       }
     }
     cy.byButtonText('Clear all filters').should('be.visible');      
-  }
+  },
+  verifyStatusInPipelineRunsTable:(status: string) => {
+    cy.get('tbody td:nth-child(2) span').should('have.text', status);
+  },
 }

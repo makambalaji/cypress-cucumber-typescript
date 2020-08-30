@@ -30,7 +30,7 @@ Cypress.Commands.add('selectKebabMenuOption', (kebabMenuOption: string) => {
 
 Cypress.Commands.add('selectActionsMenuOption', (actionsMenuOption: string) => {
     cy.byLegacyTestID("actions-menu-button").click();
-    cy.byTestActionID(actionsMenuOption).click();
+    cy.byTestActionID(actionsMenuOption).should('be.visible').click();
 })
 
 before(() => {
