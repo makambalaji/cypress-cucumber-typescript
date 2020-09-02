@@ -206,7 +206,7 @@ export const addPage = {
       case 'Yaml':
       case addOptions.YAML:
         cy.byLegacyTestID('import-yaml').click();
-        cy.titleShouldBe('Import YAML');
+        cy.get('[data-mode-id="yaml"]').should('be.visible');
         break;
       default:
         throw new Error(`Unable to find the "${card}" card on Add page`);

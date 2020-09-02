@@ -1,7 +1,7 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { addPage, addPageObj } from '../../pages/add/add_page';
 import { addOptions } from '../../constants/add';
-import { topologyPage } from '../../pages/topology_page';
+import { topologyPage, topologySidePane, addHealthChecksPage } from '../../pages/topology_page';
 
 Given('user is at Import from git page', () => {
   addPage.selectCardFromOptions(addOptions.Git);
@@ -79,10 +79,10 @@ When('type Path as {string}', (path: string) => {
   cy.get(addPageObj.advancedOptions.routing.path).type(path);
 });
 
-When('select Target Port as {string}', (targetPort: string) => {
+When('select default Target Port', () => {
   cy.get(addPageObj.advancedOptions.routing.targetPort).click();
-  cy.contains(targetPort).should('be.visible');
-  cy.get('li button[data-test-id="dropdown-menu"]').eq(0).click();
+  cy.get('[data-test-dropdown-menu="8080-tcp"]').click();
+  // cy.get('li button[data-test-id="dropdown-menu"]').eq(0).click();
 });
 
 When('user types name as {string} in General section', (name: string) => {
@@ -118,8 +118,11 @@ When('type Value as {string} in Environment Variables section', (envValue: strin
   cy.get(addPageObj.advancedOptions.buildConfig.envValue).type(envValue);
 });
 
-Then('build does not get started', () => {
-
+Then('build does not get started for {string}', (nodeName: string) => {
+  // topologyPage.getBuild(nodeName).should('not.be.visible');
+  topologyPage.componentNode(nodeName).click({force:true});
+  topologySidePane.verify();
+  cy.get('div.build-overview li.list-group-item > span').should('contain.text', 'No Builds found for this Build Config.');
 });
 
 When('verify {string} checkbox is seleceted', (checkBoxName: string) => {
@@ -158,7 +161,7 @@ When('type number of replicas as {string} in Replicas section', (replicaCount: s
 });
 
 When('fill the Readiness Probe details', () => {
-
+  addHealthChecksPage.addReadinessProbe();
 });
 
 When('fill the Liveness Probe details', () => {
@@ -173,20 +176,16 @@ When('type label as {string}', (labelName: string) => {
   cy.get(addPageObj.advancedOptions.labels).type(labelName);
 });
 
-Then('public url is not created for node {string}', (a: string) => {
-    // TODO: implement step
-    cy.log(a)
+Then('public url is not created for node {string}', (nodeName: string) => {
+  topologyPage.getRoute(nodeName).should('not.be.visible');
 });
 
-Then('the route of application contains {string}', (a: string) => {
-  cy.log(a)
-  // TODO: implement step
+Then('the route of application {string} contains {string}', (nodeName: string, routeName: string) => {
+  topologyPage.getRoute(nodeName).should('contain.text', routeName);
 });
 
-Then('build doesnot get started', () => {
-  // TODO: implement step
-});
-
-Then('verify the label in application node side pane', () => {
-  // TODO: implement step
+Then('verify the label {string} in side pane of application node {string}', (labelName: string, nodeName: string) => {
+  topologyPage.componentNode(nodeName).click({force:true});
+  topologySidePane.selectTab('Details');
+  topologySidePane.verifyLabel(labelName);
 });

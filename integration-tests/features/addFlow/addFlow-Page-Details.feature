@@ -33,7 +33,8 @@ Scenario:  Pipeline card display on pipeline operator installation : A-02-TC01
 @regression
 Scenario:  Operator Backed card display on serverless operator installation : A-02-TC01
    Given open shift cluster is installed with Serverless operator
-   And open project namespace "knative-serving"
+   And user is at dev perspecitve
+   And user is at the new project namespace "aut-new-project-namespace" 
    When user selects Add option from left side navigation menu
    Then user redirects to Add page
    And page contains Operator Backed card

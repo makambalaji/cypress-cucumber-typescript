@@ -43,7 +43,7 @@ export const operatorsPage = {
   },
 
   searchOperator: (operatorName: string) => {
-    cy.get(operatorsObj.operatorHub.search, { timeout: 40000 }).should('be.visible').type(operatorName);
+    cy.get(operatorsObj.operatorHub.search).should('be.visible').type(operatorName);
     cy.get(operatorsObj.operatorHub.numOfItems).should('be.visible');
   },
 
@@ -57,8 +57,10 @@ export const operatorsPage = {
   verifySubscriptionPage: (operatorLogo: string) => 
     cy.get(operatorsObj.subscription.logo).should('have.text', operatorLogo),
 
-  verifyInstalledOperator: (operatorName: string) => 
-    cy.get(operatorsObj.installOperators.operatorsNameRow).should('contain.text', operatorName),
+  verifyInstalledOperator: (operatorName: string) => {
+    cy.get(operatorsObj.installOperators.search).type(operatorName);
+    cy.get(operatorsObj.installOperators.operatorsNameRow).should('contain.text', operatorName)
+  },
   
   verifyOperatoNotAvailable:(operatorName: string) => {
     cy.get(operatorsObj.installOperators.search).type(operatorName);

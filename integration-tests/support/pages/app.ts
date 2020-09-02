@@ -155,10 +155,14 @@ export const projectNameSpace = {
           projectNameSpace.clickCreateButton();
       }
       else if($el.find('li[role="option"]').text() ===  projectName) {
-        cy.get('[role="listbox"]')
-        .find('li[role="option"]')
-        .contains(projectName)
-        .click();
+        projectNameSpace.deleteProjectNameSpace(projectName);
+        cy.byTestDropDownMenu('#CREATE_RESOURCE_ACTION#').click();
+        projectNameSpace.enterProjectName(projectName);
+        projectNameSpace.clickCreateButton();
+        // cy.get('[role="listbox"]')
+        // .find('li[role="option"]')
+        // .contains(projectName)
+        // .click();
       }
       else {
         cy.byTestDropDownMenu('#CREATE_RESOURCE_ACTION#').click();

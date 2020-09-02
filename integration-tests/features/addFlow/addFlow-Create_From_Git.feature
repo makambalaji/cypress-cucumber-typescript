@@ -79,7 +79,7 @@ Scenario: Create workload without application route : A-04-TC05
    And public url is not created for node "node-with-no-app-route"
 
 
-@regression
+@regression-1
 Scenario Outline: Create a git workload with advanced option "Routing" : A-04-TC06
    Given user is at Import from git page
    When user types Git Repo url as "<git_url>"
@@ -87,10 +87,10 @@ Scenario Outline: Create a git workload with advanced option "Routing" : A-04-TC
    And click "Routing" link in Advanced Options section
    And type Hostname as "<hostname>"
    And type Path as "<path>"
-   And select Target Port as "8080 -> 8080 (TCP)"
+   And select default Target Port
    And click Create button on Add page
    Then user redirects to Topology page
-   And the route of application contains "<hostname>"
+   And the route of application "<name>" contains "<hostname>"
 
 Examples:
 | git_url                                 | hostname | path  | name            |
@@ -110,7 +110,7 @@ Scenario Outline: Creaete the workload by unselecting options in "Build Configur
    And type Value as "<value>" in Environment Variables section
    And click Create button on Add page
    Then user redirects to Topology page
-   And build does not get started
+   And build does not get started for "<name>"
 
 Examples:
 | git_url                                 | name | value | name            |
@@ -176,7 +176,7 @@ Scenario Outline: Create a git workload with advanced option "Labels" : A-04-TC1
    And type label as "<label_name>"
    And click Create button on Add page
    Then user redirects to Topology page
-   And verify the label in application node side pane
+   And verify the label "<label_name>" in side pane of application node "<name>"
 
 Examples:
 | git_url                                 | label_name   | name            |

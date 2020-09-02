@@ -29,6 +29,6 @@
   "env": {
     "username": "kubeadmin",
     "password": "mkgNY-Vuo73-dgVoo-LAooB",
-    "TAGS": "@smoke and not @manual"
+    "TAGS": "@regression-1 and not @manual"
   }
 }

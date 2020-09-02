@@ -22,6 +22,7 @@ Then('Application name displays as {string}', (appName: string) => {
 
 Then('Name displays as {string}', (nodeName: string) => {
   cy.get(addPageObj.nodeName, {timeout:3000}).should('have.value', nodeName);
+  cy.get(addPageObj.cancel).click();
 });
 
 Then('advanced option Create a route to the application is selected', () => {

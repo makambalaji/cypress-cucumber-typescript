@@ -86,6 +86,12 @@ export const topologyPage = {
     appNode:(appName:string) => {
         return cy.get(`[data-id="group:${appName}"] g.odc-resource-icon text`).contains('A').parent('g').next('text').contains(appName);
     },
+    getRoute:(nodeName: string) => {
+        return cy.get('[data-test-id="base-node-handler"] > text').contains(nodeName).parentsUntil('[data-test-id="base-node-handler"]').next('a').eq(2);
+    },
+    getBuild: (nodeName: string) => {
+        return cy.get(`a[href="/k8s/ns/aut/builds/${nodeName}-1/logs"]`);
+    },
     componentNode:(nodeName:string) => {
         return cy.get('g.odc-base-node__label > text').contains(nodeName)
         // .parent('[data-test-id="base-node-handler"]');
@@ -105,15 +111,12 @@ export const topologyPage = {
             expect(options).contains($el.text());
         });
     },
-    clickContextMenuOption:(menuOption: string) => {
-        cy.get('#popper-container li[role="menuitem"]').contains(menuOption).click();
-    },
-    verifyDecorators:(nodeName: string, numOfDecorators: number) => {
-        topologyPage.componentNode(nodeName).siblings('a').should('have.length', numOfDecorators);
-    },
-    selectContextMenuAction: (action: nodeActions | string) => {
-        topologySidePane.selectNodeAction(action);
-    },
+    clickContextMenuOption:(menuOption: string) => 
+        cy.get('#popper-container li[role="menuitem"]').contains(menuOption).click(),
+    verifyDecorators:(nodeName: string, numOfDecorators: number) => 
+        topologyPage.componentNode(nodeName).siblings('a').should('have.length', numOfDecorators),
+    selectContextMenuAction: (action: nodeActions | string) => 
+        topologySidePane.selectNodeAction(action),
 }
 
 export const topologySidePane = {
@@ -240,6 +243,7 @@ export const addHealthChecksPage = {
     verifyTitle: () => cy.titleShouldBe('Add Health Checks'),
     addReadinessProbe:() => {
         cy.byButtonText('Add Readiness Probe').click();
+        cy.get('div.odc-heath-check-probe-form').should('be.visible');
         
     },
     clickCheckIcon:() => cy.byLegacyTestID('check-icon').click(),
