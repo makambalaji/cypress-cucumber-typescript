@@ -3,7 +3,7 @@ Feature: Virtual Machine
 
 
 Background: 
-    Given user is at administratr perspective
+    Given user is at administrator perspective
 
 
 @regression, @smoke

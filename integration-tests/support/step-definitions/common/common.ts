@@ -9,7 +9,7 @@ import { topologyPage } from '../../pages/topology_page';
 import { addPage } from '../../pages/add/add_page';
 import { addOptions } from '../../constants/add';
 
-Given('user is at administratr perspective', () => {
+Given('user is at administrator perspective', () => {
   perspective.verifyPerspective('Administrator');
 });
 

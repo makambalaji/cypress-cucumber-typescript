@@ -2,7 +2,7 @@ Feature: Operators
     As a user I want to install or uninstall the operators
 
 Background:
-   Given user is at administratr perspective
+   Given user is at administrator perspective
 
 
 @regression
