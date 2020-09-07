@@ -85,7 +85,7 @@ Given('pipeline {string} with trigger in pipelines page', (pipelineName: string)
   pipelinesPage.addTrigger();
 });
 
-When('user click on {string}', (pipelineName: string) => {
+When('user clicks pipeline {string}', (pipelineName: string) => {
   pipelinesPage.selectPipeline(pipelineName);
 });
 
@@ -113,7 +113,7 @@ Given('user is at pipeline Details page', () => {
   pipelineDetailsPage.verifyPage();
 });
 
-When('user click on trigger template', () => {
+When('user clicks on trigger template', () => {
   pipelineDetailsPage.selectTriggerTemplateLink();
 });
 
@@ -140,7 +140,7 @@ Given('user is at Trigger Template Details page', () => {
   triggerTemplateDetailsPage.verifyPage();
 });
 
-When('user click on Event listener', () => {
+When('user clicks on Event listener', () => {
   triggerTemplateDetailsPage.selectEventListener();
 });
 
@@ -161,7 +161,7 @@ Given('user is at Event Listener Details page', () => {
   eventListenerDetailsPage.verifyPage();
 });
 
-When('user click on Trigger Binding', () => {
+When('user clicks on Trigger Binding', () => {
   eventListenerDetailsPage.selectTriggerBindingLink();
 });
 

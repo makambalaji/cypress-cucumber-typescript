@@ -40,7 +40,7 @@ Then('user able to see the options like Edit Application Grouping, Set Traffic D
   cy.byTestActionID('Delete Service').should('be.visible');
 });
 
-When('add the label {string} to exisitng labels list in Edit Labels popup', (labelName: string) => {
+When('add the label {string} to exisitng labels list in Edit Labels modal', (labelName: string) => {
   editLabels.enterLabel(labelName);
 });
 
@@ -89,7 +89,7 @@ When('types annotation value as {string}', (value: string) => {
   editAnnotations.enterValue(value);
 });
 
-When('removes the label {string} from exisitng labels list in {string} popup', (a: string, b: string) => {
+When('removes the label {string} from exisitng labels list in {string} modal', (a: string, b: string) => {
  cy.log(a, b,)
 });
 
@@ -97,11 +97,11 @@ When('types {string} into the {string} text box', (a: string, b: string) => {
  cy.log(a, b,)
 });
 
-When('click on {string} icon for the annotation with key {string} present in {string} popup', (a: string, b: string, c: string) => {
+When('click on {string} icon for the annotation with key {string} present in {string} modal', (a: string, b: string, c: string) => {
  cy.log(a, b, c)
 });
 
-When('click {string} button on the {string} popup', (a: string, b: string) => {
+When('click {string} button on the {string} modal', (a: string, b: string) => {
  cy.log(a, b,)
 });
 
@@ -113,7 +113,7 @@ When('click on {string} button', (a: string) => {
  cy.log(a)
 });
 
-When('select the {string} from {string} drop down present in {string} popup', (a: string, b: string, c: string) => {
+When('select the {string} from {string} drop down present in {string} modal', (a: string, b: string, c: string) => {
  cy.log(a, b, c)
 });
 
@@ -125,11 +125,11 @@ When('click on {string} on topology page', (a: string) => {
  cy.log(a)
 });
 
-When(' select the {string} option from {string} drop down present in {string} popup', (a: string, b: string, c: string) => {
+When(' select the {string} option from {string} drop down present in {string} modal', (a: string, b: string, c: string) => {
  cy.log(a, b, c)
 });
 
-When('select the {string} option from {string} drop down present in {string} popup', (a: string, b: string, c: string) => {
+When('select the {string} option from {string} drop down present in {string} modal', (a: string, b: string, c: string) => {
   cy.log(a, b, c);
 });
 
@@ -137,7 +137,7 @@ When('type {string} into the {string} text box', (a: string, b: string) => {
   cy.log(a, b);
 });
 
-When('click on {string} button present in {string} popup', (a: string, b: string) => {
+When('click on {string} button present in {string} modal', (a: string, b: string) => {
   cy.log(a, b);
 });
 
@@ -149,7 +149,7 @@ When('select the {string} option from {string} drop down', (a: string, b: string
   cy.log(a, b);
 });
 
-When('click {string} buttonn on {string} popup', (a: string, b: string) => {
+When('click {string} buttonn on {string} modal', (a: string, b: string) => {
   cy.log(a, b);
 });
 
@@ -192,7 +192,7 @@ Then('number of annotaions increased to {string} in {string} service side bar de
   topologySidePane.verifyNumberOfAnnotations(numOfAnnotations);
 });
 
-When('click on remove icon for the annotation with key {string} present in Edit Annotaions popup', (key: string) => {
+When('click on remove icon for the annotation with key {string} present in Edit Annotaions modal', (key: string) => {
   editAnnotations.removeAnnotation(key);
 });
 
@@ -228,7 +228,7 @@ Then('number of routes should get increased in side bar - resources tab - routes
   // TODO: implement step
 });
 
-Then('popup displayed with header name {string}', (headerName: string) => {
+Then('modal displayed with header name {string}', (headerName: string) => {
   cy.alertTitleShouldBe(headerName);
 });
 

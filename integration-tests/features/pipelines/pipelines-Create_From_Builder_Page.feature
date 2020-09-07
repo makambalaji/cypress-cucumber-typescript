@@ -90,7 +90,7 @@ Examples:
 @regression, @manual
 Scenario: Create the pipeline from yaml editor : P-07- TC01
     Given user is at Pipeline Builder page
-    When user clicks Edit YAML button
-    And clicks Continue on Switch to YAML editor
-    And clicks Create button on Pipeline Yaml page
-    Then user redirects to Pipeline Details page
+    # When user clicks Edit YAML button
+    # And clicks Continue on Switch to YAML editor
+    # And clicks Create button on Pipeline Yaml page
+    # Then user redirects to Pipeline Details page

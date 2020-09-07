@@ -95,7 +95,7 @@ Scenario: Select all filters: HR-11-TC05
 @regression
 Scenario: Clear all filters: HR-11-TC06
     Given user has selected all filters
-    When user click on the clear all filters button
+    When user clicks on the clear all filters button
     Then all filters selected will get removed
 
 

@@ -9,15 +9,15 @@ Background:
 
 @regression, @smoke
 Scenario: side bar display for knative service : Kn-06-TC01
-    Given knative service name "nodejs-ex-git-1" is higlighted on topology page
+    Given knative service named "nodejs-ex-git-1" is higlighted on topology page
     When user clicks on the knative serivce "nodejs-ex-git-1"
     Then side bar is displayed with heading name same as kantive service name "nodejs-ex-git-1"
 
 
 @regression, @smoke
 Scenario: side bar details of knative Service : Kn-06-TC02
-    Given knative service name "nodejs-ex-git-1" is higlighted on topology page
-    When user click on the knative service name "nodejs-ex-git-1"
+    Given knative service named "nodejs-ex-git-1" is higlighted on topology page
+    When user clicks on the knative service name "nodejs-ex-git-1"
     Then side bar is displayed with heading name as "nodejs-ex-git-1"
     And Name, Namespace, Labels, Annotations, Created on, Owner fields displayed  in topology details
     # And Name display as "nodejs-ex-git-1" in topology details
@@ -30,7 +30,7 @@ Scenario: side bar details of knative Service : Kn-06-TC02
 
 @regression, @smoke
 Scenario: side bar details of for knative Revision : Kn-05-TC01, Kn-05-TC02
-    Given knative service name "nodejs-ex-git-1" is higlighted on topology page
+    Given knative service named "nodejs-ex-git-1" is higlighted on topology page
     When user clicks on the revision of knative service "nodejs-ex-git-1"
     Then side bar is displayed
     And Name, Namespace, Labels, Annotations, Created on, Owner fields displayed  in topology details

@@ -19,7 +19,7 @@ Examples:
 
 
 @regression
-Scenario: Edit labels popup details : Kn-04-TC02
+Scenario: Edit labels modal details : Kn-04-TC02
    Given knative service named "nodejs-ex-git-1" is higlighted on topology page
    When user selects "Edit Labels" option from context menu of knative service "nodejs-ex-git-1"
    Then modal with "Edit Labels" appears
@@ -30,8 +30,8 @@ Scenario: Edit labels popup details : Kn-04-TC02
 Scenario: Add label to the exisitng labels list : Kn-04-TC03
    Given knative service named "nodejs-ex-git-1" is higlighted on topology page
    When user selects "Edit Labels" option from context menu of knative service "nodejs-ex-git-1"
-   And add the label "app=label" to exisitng labels list in Edit Labels popup
-   And clicks save button on the "Edit Labels" popup
+   And add the label "app=label" to exisitng labels list in Edit Labels modal
+   And clicks save button on the "Edit Labels" modal
    Then the label "app=label" display in "nodejs-ex-git-1" service side bar details
 
 
@@ -39,8 +39,8 @@ Scenario: Add label to the exisitng labels list : Kn-04-TC03
 Scenario: Remove label from exisitng labels list : Kn-04-TC04
    Given knative service named "nodejs-ex-git-1" is higlighted on topology page
    When user selects "Edit Labels" option from context menu of knative service "nodejs-ex-git-1"
-   And removes the label "app=label" from exisitng labels list in Edit Labels popup
-   And clicks save button on the "Edit Labels" popup
+   And removes the label "app=label" from exisitng labels list in "Edit Labels" modal
+   And clicks save button on the "Edit Labels" modal
    Then the label "app=label" will not display in "nodejs-ex-git-1" service side bar details
 
 
@@ -48,13 +48,13 @@ Scenario: Remove label from exisitng labels list : Kn-04-TC04
 Scenario: Add labels to exisitng labels list and cancel it : Kn-04-TC05
    Given knative service named "nodejs-ex-git-1" is higlighted on topology page
    When user selects "Edit Labels" option from context menu of knative service "nodejs-ex-git-1"
-   And add the label "app=label" to exisitng labels list in Edit Labels popup
-   And clicks cancel button on the "Edit Labels" popup
+   And add the label "app=label" to exisitng labels list in Edit Labels modal
+   And clicks cancel button on the "Edit Labels" modal
    Then the label "app=label" will not display in side bar details
 
 
 @regression
-Scenario: Edit Annotation popup details : Kn-04-TC11
+Scenario: Edit Annotation modal details : Kn-04-TC11
    Given knative service named "nodejs-ex-git-1" is higlighted on topology page
    When user selects "Edit Annotaions" option from context menu of knative service "nodejs-ex-git-1"
    Then modal with "Edit Annotations" appears
@@ -68,10 +68,10 @@ Scenario: Add annotation to the exisitng annonations list : Kn-04-TC12
    Given knative service named "nodejs-ex-git-1" is higlighted on topology page
    And number of annotations are "5" present in "nodejs-ex-git-1" service side bar details tab
    When user selects "Edit Annotaions" option from context menu of knative service "nodejs-ex-git-1"
-   And clicks Add button on the Edit Annotaions popup
+   And clicks Add button on the Edit Annotaions modal
    And types annotation key as "serving.knative.dev/creator "
    And types annotation value as "kube:admin" 
-   And clicks save button on the "Edit Annotaions" popup
+   And clicks save button on the "Edit Annotaions" modal
    Then number of annotaions increased to "6" in "nodejs-ex-git-1" service side bar details
 
 
@@ -79,8 +79,8 @@ Scenario: perform cancel action after Edit Annotations : Kn-04-TC14
    Given knative service named "nodejs-ex-git-1" is higlighted on topology page
    And number of annotations are "6" present in side bar - details tab- annotation section
    When user selects "Edit Annotations" option from context menu of knative service "nodejs-ex-git-1"
-   And click on remove icon for the annotation with key "serving.knative.dev/creator" present in Edit Annotaions popup
-   And clicks cancel button on the "Edit Annotaions" popup
+   And click on remove icon for the annotation with key "serving.knative.dev/creator" present in Edit Annotaions modal
+   And clicks cancel button on the "Edit Annotaions" modal
    Then number of annotaions remains same in side bar details
 
 
@@ -89,8 +89,8 @@ Scenario: Remove annotation from exisitng annonations list : Kn-04-TC13
    Given knative service named "nodejs-ex-git-1" is higlighted on topology page
    And number of annotations are "6" present in side bar - details tab
    When user selects "Edit Annotaions" option from context menu of knative service "nodejs-ex-git-1"
-   And click on remove icon for the annotation with key "serving.knative.dev/creator" present in Edit Annotaions popup
-   And clicks save button on the "Edit Annotaions" popup
+   And click on remove icon for the annotation with key "serving.knative.dev/creator" present in Edit Annotaions modal
+   And clicks save button on the "Edit Annotaions" modal
    Then number of annotaions decreased to "5" in side bar details
 
 
@@ -108,8 +108,8 @@ Scenario: Edit the service from yaml editor: Kn-04-TC15
 Scenario Outline: Update the service to different application group existing in same project : Kn-04-TC07
    Given knative service named "nodejs-ex-git-1" is higlighted on topology page
    When user selects "Edit Application Grouping" option from context menu of knative service "nodejs-ex-git-1"
-   And select the "<application_name>" from "application" drop down present in "Edit Application Grouping" popup
-   And clicks save button on the "Edit Application Grouping" popup
+   And select the "<application_name>" from "application" drop down present in "Edit Application Grouping" modal
+   And clicks save button on the "Edit Application Grouping" modal
    And search for application name "<application_name>" 
    And click on "<application_name>" on topology page
    Then updated service is present in side bar
@@ -122,8 +122,8 @@ Examples:
 Scenario Outline: Perform cancel operation while editing application group : Kn-04-TC08
    Given knative service named "nodejs-ex-git-1" is higlighted on topology page
    When user selects "Edit Application Grouping" option from context menu of knative service "nodejs-ex-git-1"
-   And  select the "openshift-app" option from "application" drop down present in "Edit Application Grouping" popup
-   And clicks cancel button on the "Edit Application Grouping" popup
+   And  select the "openshift-app" option from "application" drop down present in "Edit Application Grouping" modal
+   And clicks cancel button on the "Edit Application Grouping" modal
    And search for application name "<application_name>" 
    And click on "<application_name>" on topology page
    Then updated service should not display in side bar
@@ -137,9 +137,9 @@ Examples:
 Scenario Outline: Update the service to new application group : Kn-04-TC06
    Given knative service named "nodejs-ex-git-1" is higlighted on topology page
    When user selects "Edit Application Grouping" option from context menu of knative service "nodejs-ex-git-1"
-   And select the "Create Application" option from "application" drop down present in "Edit Application Grouping" popup
+   And select the "Create Application" option from "application" drop down present in "Edit Application Grouping" modal
    And type "<application_name>" into the "Application Name" text box
-   And clicks save button on the "Edit Application Grouping" popup
+   And clicks save button on the "Edit Application Grouping" modal
    And search for application name "<application_name>" 
    And click on "<application_name>" on topology page 
    Then updated service is present in side bar
@@ -154,10 +154,10 @@ Scenario: Set traffic distribution greater than 100% for the Revisions of the Kn
    Given knative service named "nodejs-ex-git-1" is higlighted on topology page
    And service should have at least 1 revision 
    When user selects "Set Traffic Distribution" option from context menu of knative service "nodejs-ex-git-1"
-   And click on "Add Revision" button present in "Set Traffic Dsitribution" popup
+   And click on "Add Revision" button present in "Set Traffic Dsitribution" modal
    And type "50" into the "Split" text box of new revision
    And select the "Revision" option from "revision" drop down
-   And clicks save button on the "Set Traffic Dsitribution" popup
+   And clicks save button on the "Set Traffic Dsitribution" modal
    Then error message displays as "validation failed: Traffic targets sum to 150, want 100: spec.traffic"
 
 
@@ -167,10 +167,10 @@ Scenario: Set traffic distribution less than 100% for the Revisions of the Knati
    And service should have at least 1 revision 
    When user selects "Set Traffic Distribution" option from context menu of knative service "nodejs-ex-git-1"
    And type "25" into the "Split" text box
-   And click on "Add Revision" button present in "Set Traffic Dsitribution" popup
+   And click on "Add Revision" button present in "Set Traffic Dsitribution" modal
    And type "50" into the "Split" text box of new revision
    And select the "Revision" option from "revision" drop down
-   And clicks save button on the "Set Traffic Dsitribution" popup
+   And clicks save button on the "Set Traffic Dsitribution" modal
    Then error message displays as "validation failed: Traffic targets sum to 75, want 100: spec.traffic"
 
 
@@ -180,10 +180,10 @@ Scenario: Set traffic distribution equal to 100% for the Revisions of the Knativ
    And service should have at least 1 revision 
    When user selects "Set Traffic Distribution" option from context menu of knative service "nodejs-ex-git-1"
    And type "50" into the "Split" text box
-   And click on "Add Revision" button present in "Set Traffic Dsitribution" popup
+   And click on "Add Revision" button present in "Set Traffic Dsitribution" modal
    And type "50" into the "Split" text box of new revision
    And select the "Revision" option from "revision" drop down
-   And clicks save button on the "Set Traffic Dsitribution" popup
+   And clicks save button on the "Set Traffic Dsitribution" modal
    Then number of routes should get increased in side bar - resources tab - routes section
 
 

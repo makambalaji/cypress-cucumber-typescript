@@ -47,7 +47,7 @@ Examples:
 @regression, @smoke
 Scenario Outline: Pipeline Trigger template display in pipeline details page: P-09-TC04
     Given pipeline "<pipeline_name>" with trigger in pipelines page
-    When user click on "<pipeline_name>"
+    When user clicks pipeline "<pipeline_name>"
     Then pipeline Details page is displayed with header name "<pipeline_name>"
     And Trigger Templates section is displayed
 
@@ -60,7 +60,7 @@ Examples:
 Scenario: Trigger template details page : P-09-TC05
     Given Trigger is added to the pipeline "git-pipeline" present in pipeline details page
     And user is at pipeline Details page 
-    When user click on trigger template
+    When user clicks on trigger template
     Then user redirects to Trigger Template Details page
     And user is able to see Details, YAML tabs
     And Details tab is displayed with field names Name, Namespace, Labels, Annotations, Created At, Owner, Pipelines and Event Listeners
@@ -71,7 +71,7 @@ Scenario: Trigger template details page : P-09-TC05
 Scenario: Event Listener Details page : P-09-TC06, P-09-TC07
     Given Trigger is added to the pipeline "git-pipeline-events" present in pipeline details page 
     And user is at Trigger Template Details page
-    When user click on Event listener
+    When user clicks on Event listener
     Then user redirects to Event Listener Details page
     And user is able to see Details, YAML tabs
     And Details tab is displayed with field names Name, Namespace, Labels, Annotations, Created At, Owner, Trigger Templates and Trigger Bindings
@@ -82,7 +82,7 @@ Scenario: Event Listener Details page : P-09-TC06, P-09-TC07
 Scenario: Cluster Trigger Binding Details page : P-09-TC08, P-09-TC09
     Given Trigger is added to the pipeline "git-pipeline-triggerbinding" present in pipeline details page 
     And user is at Event Listener Details page
-    When user click on Trigger Binding
+    When user clicks on Trigger Binding
     Then user redirects to Cluster Trigger Binding Details page
     And user is able to see Details, YAML tabs
     And Details tab is displayed with field names Name, Labels, Annotations, Created At, Owner

@@ -89,7 +89,7 @@ When('user selects checkbox for the Other Helm charts', () => {
   // TODO: implement step
 });
 
-When('user click on the clear all filters button', () => {
+When('user clicks on the clear all filters button', () => {
   // TODO: implement step
 });
 

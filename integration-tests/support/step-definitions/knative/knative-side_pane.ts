@@ -65,7 +65,7 @@ Then('side bar is displayed', () => {
   topologySidePane.verify();
 });
 
-When('user click on the knative service name {string}', (serviceName: string) => {
+When('user clicks on the knative service name {string}', (serviceName: string) => {
   topologyPage.componentNode(serviceName).click();
 });
 
