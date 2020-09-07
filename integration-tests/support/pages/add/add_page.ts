@@ -9,7 +9,7 @@ export const addPageObj = {
   create: '[data-test-id="submit-button"]',
   cancel: '[data-test-id="reset-button"]',
   gitSection: {
-    validatedMessage: '#form-input-git-url-field-helper',
+    validatedMessage: '[id$="git-url-field-helper"]',
   },
   builderSection: {
     builderImageDetected: '[aria-label="Success Alert"]',

@@ -1,5 +1,5 @@
 Feature: Create Application from Container image file
-    As a user I want to create the application, component or service from Add Flow Container image
+    As a user, I want to create the application, component or service from Add Flow Container image
 
 Background:
     Given user is at dev perspecitve
@@ -11,7 +11,7 @@ Background:
 Scenario: Deploy image page details on entering external registry image name : A-05-TC01
    Given user is at Deploy Image page
    When user types Image name from external registry as "openshift/hello-openshift"
-   Then git url gets Validated
+   Then image name gets Validated
    And Application name displays as "hello-openshift-app"
    And Name displays as "hello-openshift"
    And advanced option Create a route to the application is selected

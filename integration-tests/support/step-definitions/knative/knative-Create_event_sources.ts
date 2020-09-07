@@ -169,8 +169,8 @@ Then('Create button is enabled', () => {
   // TODO: implement step
 });
 
-Then('ApiServerSource event source is created and linked to selected kantive service {string}', (resourceName: string) => {
-  topologyPage.componentNode(resourceName).click();
+Then('ApiServerSource event source {string} is created and linked to selected kantive service {string}', (eventSource: string, resourceName: string) => {
+  topologyPage.getEventSource(eventSource).click({force: true});
   topologySidePane.verifyResource(resourceName);
 });
 

@@ -1,5 +1,5 @@
 Feature: Create Application from Yaml file
-    As a user I want to create the application, component or service from Add Flow Yaml file
+    As a user, I want to create the application, component or service from Add Flow Yaml file
 
 Background:
     Given user is at dev perspecitve

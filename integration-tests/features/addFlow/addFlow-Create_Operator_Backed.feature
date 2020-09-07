@@ -1,5 +1,5 @@
 Feature: Create workload from Operator Backed file
-    As a user I want to create the application, component or service from Developer Catlog Operator backed file
+    As a user, I want to create the application, component or service from Developer Catlog Operator backed file
 
 Background:
     Given openshift cluster is installed with knative operator

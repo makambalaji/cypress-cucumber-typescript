@@ -254,7 +254,7 @@ When('user clicks Last Run value of the pipeline {string}', (pipelineName: strin
   pipelinesPage.seelctPipelineRun(pipelineName);
 });
 
-Then('Start Pipeline popup displays with Git Resources, Advanced Options sections', () => {
+Then('Start Pipeline modal displays with Git Resources, Advanced Options sections', () => {
   
 });
 
@@ -262,9 +262,8 @@ Then('start button is disabled', () => {
   // TODO: implement step
 });
 
-Then('Actions menu display with the options {string}, {string}', (a: string, b: string) => {
-  cy.log(a,b);
-  // TODO: implement step
+Then('Actions menu display with the options {string}, {string}', (option1: string, option2: string) => {
+  cy.log(option1,option2);
 });
 
 Then('Pipeline Resources field will be displayed', () => {

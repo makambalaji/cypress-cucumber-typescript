@@ -3,7 +3,7 @@ Feature: Pipeline Runs
 
 Background:
     Given openshift cluster is installed with pipeline operator
-    And user is at the project namespace "aut-pipelines-runs" in dev perspecitve
+    And user has selected namespace "aut-pipelines-runs"
     And user is at pipelines page
 
 
@@ -11,7 +11,7 @@ Background:
 Scenario Outline: Start pipeline popup details for pipeline with one resource : P-04-TC02    
     Given pipeline "<pipeline_name>" consists of task "<task_name>" with one git resource
     When user selects "Start" option from kebab menu for pipeline "<pipeline_name>"
-    Then Start Pipeline popup displays with Git Resources, Advanced Options sections
+    Then Start Pipeline modal displays with Git Resources, Advanced Options sections
     And start button is disabled 
 
 Examples:

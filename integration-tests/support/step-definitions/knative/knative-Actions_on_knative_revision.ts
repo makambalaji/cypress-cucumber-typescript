@@ -20,7 +20,7 @@ Given('service should contain multiple revisions', () => {
   // TODO: implement step
 });
 
-When('user right click on the revision of knative service {string}', (serviceName: string) => {
+When('user right clicks on the revision of knative service {string}', (serviceName: string) => {
   topologyPage.revisionNode(serviceName).trigger('contextmenu', {force: true});
 });
 
@@ -28,11 +28,15 @@ When('user selects {string} option from knative revision context menu', (option:
   cy.byTestActionID(option).click();
 });
 
-When('removes the label {string} from exisitng labels list in Edit Labels popup', (labelName: string) => {
+When('removes the label {string} from existing labels list in Edit Labels modal', (labelName: string) => {
   editLabels.removeLabel(labelName);
 });
 
-When('removes the label {string} from exisitng labels list in {string} popup', (a: string, b: string) => {
+When('add the label {string} to existing labels list in Edit Labels modal', (labelName: string) => {
+  editLabels.enterLabel(labelName);
+});
+
+When('removes the label {string} from existing labels list in {string} modal', (a: string, b: string) => {
   cy.log(a, b);
 });
 
@@ -40,12 +44,12 @@ When('types {string} into the {string} text box', (a: string, b: string) => {
   cy.log(a, b);
 });
 
-When('click on {string} icon for the annotation with key {string} present in {string} popup', (a: string, b: string, c: string) => {
+When('click on {string} icon for the annotation with key {string} present in {string} modal', (a: string, b: string, c: string) => {
   cy.log(a, b, c);
 });
 
-When('clicks cancel button on the {string} popup', (popupTitle: string) => {
-  cy.alertTitleShouldBe(popupTitle);
+When('clicks cancel button on the {string} modal', (modalTitle: string) => {
+  cy.alertTitleShouldBe(modalTitle);
   editLabels.clickCancel();
 });
 
@@ -68,10 +72,6 @@ Then('user able to see context menu with options Edit Labels, Edit Annotations, 
   cy.byTestActionID('Delete Revision').should('be.visible');
 });
 
-Then('popup displays with header name {string}', (a: string) => {
-  cy.log(a);
-});
-
 Then('save button is disabled', () => {
   // TODO: implement step
 });
@@ -80,7 +80,7 @@ Then('the label {string} display in side pane details', (a: string) => {
   cy.log(a);
 });
 
-Then('the label {string} display in {string} revision side pane details', (label: string, serviceName: string) => {
+Then('user can see the label {string} in the Details tab of the Sidebar of {string}', (label: string, serviceName: string) => {
   topologyPage.revisionNode(serviceName).click();
   topologySidePane.selectTab('Details');
   topologySidePane.verifyLabel(label);
@@ -124,11 +124,6 @@ Then('another message display as {string}', (a: string) => {
   cy.log(a);
 });
 
-Then('popup displayed with message as {string}', (a: string) => {
-  cy.log(a);
-});
-
-Then('popup displayed with header name Unable to delete revision and message as {string}', (message: string) => {
-  cy.alertTitleShouldBe('Unable to delete revision');
+Then('modal contains message as {string}', (message: string) => {
   deleteRevision.verifyMessage(message);
 });

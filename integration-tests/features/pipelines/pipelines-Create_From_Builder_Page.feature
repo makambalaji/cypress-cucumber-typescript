@@ -3,7 +3,7 @@ Feature: Create the pipeline from builder page
 
 Background:
     Given openshift cluster is installed with pipeline operator
-    And user is at the project namespace "aut-pipelines-builder" in dev perspecitve
+    And user has selected namespace "aut-pipelines-builder"
 
 
 @regression, @smoke

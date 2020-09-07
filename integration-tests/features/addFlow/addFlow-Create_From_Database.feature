@@ -1,5 +1,5 @@
 Feature: Create Application from Database
-    As a user I want to create the application, component or service from Add Flow Database
+    As a user, I want to create the application, component or service from Add Flow Database
 
 Background:
     Given user is at dev perspecitve

@@ -1,9 +1,9 @@
 Feature: Perform Actions on Helm Chart
-    As a user I want to perform the actions on the helm chart releases in topology page
+    As a user, I want to perform the actions on the helm chart releases in topology page
 
 Background:
     Given user is at developer perspecitve
-    And user is at the project namespace "aut-actions-helm" in dev perspecitve
+    And uuser has selected namespace "aut-actions-helm"
     And helm release "nodejs-ex-k" is present in topology page
 
 
@@ -21,7 +21,7 @@ Scenario: Perform Upgrade action on Helm Release through Context Menu: HR-08-TC0
 @regression, @smoke
 Scenario: Perform Rollback action on Helm Release through Context Menu: HR-08-TC03
     Given user is at the topolgy page
-    When user right clicks on the Helm Release "nodejs-ex-k"  to open the context menu
+    When user right clicks on the Helm Release "nodejs-ex-k" to open the context menu
     And user clicks on the "Rollback" action
     And user selects the version to Rollback
     And user clicks on the rollback button

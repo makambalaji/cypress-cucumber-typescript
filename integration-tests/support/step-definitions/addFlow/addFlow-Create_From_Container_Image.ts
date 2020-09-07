@@ -16,17 +16,20 @@ Then('git url gets Validated', () => {
   addPage.verifyValidatedMessage();
 });
 
+Then('image name gets Validated', () => {
+  cy.get('#form-input-searchTerm-field-helper').should('have.text', 'Validated');
+});
+
 Then('Application name displays as {string}', (appName: string) => {
-  cy.get(addPageObj.appName, {timeout:3000}).should('have.value', appName);
+  cy.get(addPageObj.appName).should('have.value', appName);
 });
 
 Then('Name displays as {string}', (nodeName: string) => {
-  cy.get(addPageObj.nodeName, {timeout:3000}).should('have.value', nodeName);
-  cy.get(addPageObj.cancel).click();
+  cy.get(addPageObj.nodeName).should('have.value', nodeName);
 });
 
 Then('advanced option Create a route to the application is selected', () => {
-  cy.get(addPageObj.advancedOptions.createRoute).should('be.checked');
+  cy.get(addPageObj.advancedOptions.createRoute).scrollIntoView().should('be.visible').and('be.checked');
   cy.get(addPageObj.cancel).click();
 });
 

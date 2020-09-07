@@ -4,18 +4,20 @@ import { resourceTypes } from '../../constants/add';
 import { topologyPage, topologySidePane } from '../../pages/topology_page';
 import { editLabels, editAnnotations, deleteservice, deleteRevision } from '../../pages/popupAlerts';
 
-Given('knative service name {string} is higlighted on topology page', (knativeServiceName: string) => {
+Given('knative service named {string} is higlighted on topology page', (knativeServiceName: string) => {
   cy.get('.co-m-loader').should('not.be.visible');
   cy.get('body').then(($el) => {
     cy.wait(3000);
     if($el.find('.pf-c-card__title').length !== 0) {
       addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git',knativeServiceName, resourceTypes.KnativeService);
+      topologyPage.verifyTopologyPage();
     }
     else if($el.find('[data-test-id="item-filter"]').length !== 0) {
       topologyPage.search(knativeServiceName).then(() => {
         cy.get('body').then(($el) => {
           if($el.find('.is-filtered').length === 0) {
             addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git',knativeServiceName, resourceTypes.KnativeService);
+            topologyPage.verifyTopologyPage();
           }
         });
       }) ;
@@ -42,9 +44,14 @@ When('add the label {string} to exisitng labels list in Edit Labels popup', (lab
   editLabels.enterLabel(labelName);
 });
 
-When('clicks save button on the {string} popup', (popupTitle: string) => {
-  cy.alertTitleShouldBe(popupTitle);
+When('clicks save button on the {string} modal', (modalTitle: string) => {
+  cy.alertTitleShouldBe(modalTitle);
   editLabels.clicKSave();
+});
+
+When('clicks cancel button on the {string} modal', (modalTitle: string) => {
+  cy.alertTitleShouldBe(modalTitle);
+  editLabels.clickCancel();
 });
 
 Given('number of annotations are {string} present in side pane - details tab- annotation section', (a: string) => {
@@ -64,7 +71,7 @@ When('user selects {string} option from context menu of knative service {string}
   topologyPage.selectContextMenuAction(option);
 });
 
-When('clicks Add button on the Edit Annotaions popup', () => {
+When('clicks Add button on the Edit Annotaions modal', () => {
  editAnnotations.add();
 });
 
@@ -146,15 +153,7 @@ When('click {string} buttonn on {string} popup', (a: string, b: string) => {
   cy.log(a, b);
 });
 
-When('', () => {
-  // TODO: implement step
-});
-
 When('click on {string} button present in redirected page', (a: string) => {
-  cy.log(a);
-});
-
-Then('popup displays with header name {string}', (a: string) => {
   cy.log(a);
 });
 

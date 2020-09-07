@@ -3,7 +3,7 @@ import { upgradeHelmRelease, helmDetailsPage, rollBackHelmRelease, helmPage } fr
 import { topologyPage } from '../../pages/topology_page';
 
 When('user right clicks on the Helm Release {string} to open the context menu', (nodeName: string) => {
-  cy.get('g.odc-base-node__label').should('be.visible').contains(nodeName).trigger('contextmenu');
+  cy.get('g.odc-base-node__label').should('be.visible').contains(nodeName).trigger('contextmenu', {force: true});
 });
 
 When('user clicks on the {string} action', (actionName: string) => {

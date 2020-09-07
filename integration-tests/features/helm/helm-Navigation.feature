@@ -1,9 +1,9 @@
 Feature: Navigations on Helm Chart
-    As a user I want to navigate to different pages related to Helm Charts
+    As a user, I want to navigate to different pages related to Helm Charts
 
 Background:
     Given user is at developer perspecitve
-    And user is at the project namespace "aut-helm-navigation" in dev perspecitve
+    And user has selected namespace "aut-helm-navigation"
 
 
 @regression, @smoke
@@ -16,9 +16,9 @@ Scenario: Open the Helm tab on the navigation bar when helm charts are absent: H
 
 
 @regression, @smoke
-Scenario: Install Helm Chart details page: HR-02-TC04
+Scenario: Install Helm Chart page: HR-02-TC04
     Given user is at Add page
-    When user clicks on the Helm Chart card on the +Add page
+    When user clicks on the Helm Chart card on the Add page
     And user searches for the "Nodejs Ex K v0.2.0" helm chart
     And user clicks on the "Nodejs Ex K v0.2.0" helm chart card
     And user clicks on the Install Helm Chart button on side pane
@@ -36,7 +36,7 @@ Scenario: Yaml view editor for Install Helm Chart page: HR-02-TC05
 @regression, @smoke
 Scenario: Install Helm Chart: HR-02-TC01, HR-02-TC03, HR-02-TC06
     Given user is at Add page
-    When user clicks on the Helm Chart card on the +Add page
+    When user clicks on the Helm Chart card on the Add page
     And user searches for the "Nodejs Ex K v0.2.0" helm chart
     And user clicks on the "Nodejs Ex K v0.2.0" helm chart card
     And user clicks on the Install Helm Chart button on side pane
@@ -54,7 +54,7 @@ Scenario: Open the Helm tab on the navigation bar when helm charts are present: 
 
 
 @regression
-Scenario: Enable the deployed helm charts" filter: HR-11-TC02
+Scenario: Enable the deployed helm charts filter: HR-11-TC02
     Given user is at the Helm page
     When user clicks on the filter drop down menu
     And user selects checkbox for the Deployed Helm charts
@@ -63,7 +63,7 @@ Scenario: Enable the deployed helm charts" filter: HR-11-TC02
 
 
 @regression
-Scenario: Enable the failed helm charts" filter: HR-11-TC03
+Scenario: Enable the failed helm charts filter: HR-11-TC03
     Given user is at the Helm page
     When user clicks on the filter drop down menu
     And user selects checkbox for the Failed Helm charts
@@ -72,7 +72,7 @@ Scenario: Enable the failed helm charts" filter: HR-11-TC03
 
 
 @regression
-Scenario: Enable the other helm charts" filter: HR-11-TC04
+Scenario: Enable the other helm charts filter: HR-11-TC04
     Given user is at the Helm page
     When user clicks on the filter drop down menu
     And user selects checkbox for the Other Helm charts

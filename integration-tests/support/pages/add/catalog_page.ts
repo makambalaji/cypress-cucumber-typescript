@@ -67,7 +67,10 @@ export const catalogPageObj = {
         cy.get('div.co-m-loader', {timeout:20000}).should('not.be.visible')
       });
     },
-    createHelmChartFromAddPage:(workloadName: string = 'nodejs-example', helmChartName: string = 'Nodejs Ex K v0.2.0') => {
+    enterReleaseName:(releaseName: string) => {
+      cy.get(catalogPageObj.installHelmChart.releaseName).type(releaseName);
+    },
+    createHelmChartFromAddPage:(releaseName: string = 'nodejs-ex-k', helmChartName: string = 'Nodejs Ex K v0.2.0') => {
       addPage.verifyCard('Helm Chart');
       addPage.selectCardFromOptions(addOptions.HelmChart);
       catalogPage.verifyTitle();
@@ -77,7 +80,8 @@ export const catalogPageObj = {
       catalogPage.verifyDialog();
       cy.get(catalogPageObj.sidePane.createHelmChart).click();
       catalogPage.verifyInstallHelmChartPage();
+      catalogPage.enterReleaseName(releaseName);
       catalogPage.clickOnInstallButton();
-      topologyPage.verifyWorkloadInTopologyPage(workloadName);
+      topologyPage.verifyWorkloadInTopologyPage(releaseName);
     }
   }

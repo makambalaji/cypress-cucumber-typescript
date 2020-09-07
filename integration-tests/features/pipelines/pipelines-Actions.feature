@@ -3,7 +3,7 @@ Feature: Perform the actions on Pipelines page
 
 Background:
     Given openshift cluster is installed with pipeline operator
-    And user is at the project namespace "aut-pipeline-actions" in dev perspecitve
+    And user has selected namespace "aut-pipeline-actions"
 
 
 @regression, @smoke

@@ -17,11 +17,11 @@ Then('user redirects to Developer Catalog page', () => {
   catalogPage.verifyTitle();
 });
 
-Then('user able to see Helm Chart option is selected in Developer Catalog page', () => {
+Then('user is able to see Helm Chart option is selected in Developer Catalog page', () => {
   catalogPage.isCheckBoxSelected('Helm Charts');
 });
 
-Then('user able to see Helm Charts cards', () => {
+Then('user is able to see Helm Charts cards', () => {
   catalogPage.isCardsDisplayed();
 });
 
@@ -31,6 +31,10 @@ When('user searches for the {string} helm chart', (helmChartName: string) => {
 
 When('user clicks on the {string} helm chart card', (helmChartName: string) => {
   catalogPage.selectHelmChartCard(helmChartName);
+});
+
+When('user types Release Name as {string}', (releaseName: string) => {
+  catalogPage.enterReleaseName(releaseName);
 });
 
 When('user clicks on the Install Helm Chart button on side pane', () => {
@@ -55,22 +59,22 @@ When('user checks the Helm Charts checkbox', () => {
   cy.get('input[title="Helm Charts"]').check();
 });
 
-When('user right clicks on the workload', () => {
-  // TODO: implement step
+When('user right clicks on the helm release {string}', (helmReleaseName: string) => {
+  topologyPage.appNode(helmReleaseName).trigger('contextmenu', {force: true});
 });
 
 Then('user sees the context menu with actions', () => {
-  // TODO: implement step
+  cy.get('ul[role="menu"]').should('be.visible');
 });
 
 Then('user sees the Upgrade action item', () => {
-  // TODO: implement step
+  cy.byTestActionID('Upgrade').should('be.visible');
 });
 
 Then('user sees the Rollback action item', () => {
-  // TODO: implement step
+  cy.byTestActionID('Rollback').should('be.visible');
 });
 
 Then('user sees the Uninstall Helm Release action item', () => {
-  // TODO: implement step
+  cy.byTestActionID('Uninstall Helm Release').should('be.visible');
 });

@@ -35,7 +35,6 @@ Given('user is at developer perspecitve', () => {
 
 Given('open shift cluster is installed with Serverless operator', () => {
   perspective.switchTo(switchPerspective.Administrator);
-  cy.wait(3000); //To Load the navigation menu
   operatorsPage.navigateToInstalloperatorsPage();
   operatorsPage.verifyInstalledOperator('Serverless');
   // operatorsPage.verifyOperatorInNavigationMenu('Serverless');
@@ -67,7 +66,7 @@ Given('openshift cluster is installed with pipeline operator', () => {
     })
 });
 
-Given('user is at the project namespace {string} in dev perspecitve', (projectName: string) => {
+Given('user has selected namespace {string}', (projectName: string) => {
   perspective.switchTo(switchPerspective.Developer);
   project.selectProject(projectName);
 });
@@ -135,7 +134,7 @@ When('user selects {string} option from Actions menu', (option: string) => {
   cy.byTestActionID(option).click();
 })
 
-Then('popup displays with header name {string}', (header: string) => {
+Then('modal with {string} appears', (header: string) => {
   cy.alertTitleShouldBe(header);
 });
 

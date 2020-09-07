@@ -118,7 +118,7 @@ Scenario: Create ApiServerSource event source - Kn-10-TC08
    And type event source name as "api-service-1"
    And user clicks on Create button
    Then user redirects to Topology page
-   And ApiServerSource event source is created and linked to selected kantive service "nodejs-ex-git"
+   And ApiServerSource event source "api-service-1" is created and linked to selected kantive service "nodejs-ex-git"
 
 
 @regression

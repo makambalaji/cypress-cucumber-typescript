@@ -84,7 +84,8 @@ export const topologyPage = {
         cy.get(topologyObj.sidePane.tabs).eq(2).should('contain.text', 'Release Notes');
     },
     appNode:(appName:string) => {
-        return cy.get(`[data-id="group:${appName}"] g.odc-resource-icon text`).contains('A').parent('g').next('text').contains(appName);
+        return cy.get(`[data-id="group:"${appName}""] g.odc-resource-icon text`).contains('A')
+        // parent('g').next('text').contains(appName);
     },
     getRoute:(nodeName: string) => {
         return cy.get('[data-test-id="base-node-handler"] > text').contains(nodeName).parentsUntil('[data-test-id="base-node-handler"]').next('a').eq(2);
@@ -102,6 +103,9 @@ export const topologyPage = {
         //     }
         // });
         // return ele;
+    },
+    getEventSource:(eventSource: string) => {
+        return cy.get('[data-type="event-source"] g.odc-base-node__label > text').contains(eventSource);
     },
     revisionNode:(serviceName: string) => {
         return cy.get('g.odc-base-node__label > text').contains(serviceName).parentsUntil('[data-type="knative-service"]').children('[data-type="knative-revision"] circle[filter$="graph#NodeShadowsFilterId)"]')

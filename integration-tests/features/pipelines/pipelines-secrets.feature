@@ -3,7 +3,7 @@ Feature: Secrets
 
 Background:
     Given openshift cluster is installed with pipeline operator
-    And user is at the project namespace "aut-pipeline-secrets" in dev perspecitve
+    And user has selected namespace "aut-pipeline-secrets"
     And user is at pipelines page
 
 

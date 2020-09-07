@@ -3,7 +3,7 @@ Feature: Triggers
 
 Background:
     Given openshift cluster is installed with pipeline operator
-    And user is at the project namespace "aut-pipeline-triggers" in dev perspecitve
+    And user has selected namespace "aut-pipeline-triggers"
     And user is at pipelines page
 
 
@@ -11,7 +11,7 @@ Background:
 Scenario Outline: Add Trigger popup details : P-09-TC01
     Given pipeline "<pipeline_name>" is available with git resource
     When user selects "Add Trigger" from the kebab menu for "<pipeline_name>"
-    Then popup displays with header name "Add Trigger" 
+    Then pmodal with "Add Trigger" appears  
     And Git provider type field is enabled
     And Add button is disabled
 

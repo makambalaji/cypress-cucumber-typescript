@@ -59,7 +59,7 @@ export const operatorsPage = {
 
   verifyInstalledOperator: (operatorName: string) => {
     cy.get(operatorsObj.installOperators.search).type(operatorName);
-    cy.get(operatorsObj.installOperators.operatorsNameRow).should('contain.text', operatorName)
+    cy.get(operatorsObj.installOperators.operatorsNameRow).should('contain.text', operatorName);
   },
   
   verifyOperatoNotAvailable:(operatorName: string) => {
@@ -133,8 +133,8 @@ export const operatorsPage = {
   },
 
   verifyOperatorInNavigationMenu: (menuItem: string) => {
-    cy.wait(3000);
-    cy.get(operatorsObj.nav.menuItems).contains(menuItem, {timeout: 10000}).should('be.visible');
+    cy.get(operatorsObj.nav.menuItems).should('have.length.greaterThan', '62');
+    cy.get(operatorsObj.nav.menuItems).contains(menuItem).should('be.visible');
   },
 
   clickOnCreate:() => cy.byButtonText('Install').click(),

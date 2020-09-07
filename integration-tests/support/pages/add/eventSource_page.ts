@@ -1,5 +1,8 @@
 import { addPage } from "../add/add_page";
 import { addOptions } from "../../constants/add";
+import { topologyPage } from "../topology_page";
+import { naviagteTo } from "../app";
+import { devNavigationMenu } from "../../constants/global";
 
 export const eventSourceObj = {
     search: '[placeholder="Filter by type..."]',
@@ -16,6 +19,8 @@ export const eventSourceObj = {
       kind: '[data-test-id="sinkbinding-kind-field"]',
       sinkResource: '#form-ns-dropdown-sink-name-field',
       name: '[data-test-id="application-form-app-name"]',
+      resource: '#form-radiobutton-sinkType-resource-field',
+      uri: '#form-radiobutton-sinkType-uri-field',
     },
   }
 
@@ -45,11 +50,25 @@ export const eventSourcesPage = {
       cy.get(`[data-test-dropdown-menu="${mode}"]`).click();
     },
     enterEventSourceName:(eventSourceName: string) => cy.get(eventSourceObj.sinkBinding.name).clear().type(eventSourceName),
-    createSinkBinding:(apiVersion: string, kind: string) => {
+    createSinkBinding:(eventSourceName: string, apiVersion:string = 'batch/v1', kind:string = 'Job') => {
       addPage.selectCardFromOptions(addOptions.EventSource);
       eventSourcesPage.selectEventSourceType("Sink Binding");
       cy.get(eventSourceObj.sinkBinding.apiVersion).type(apiVersion);
       cy.get(eventSourceObj.sinkBinding.kind).type(kind);
+      cy.get(eventSourceObj.sinkBinding.resource).click();
+      cy.get(eventSourceObj.sinkBinding.sinkResource).then(($el) => {
+        if($el.prop('disabled') === true) {
+          cy.log('Knative workload is not available, due to which Event Resource is disabled');
+          // naviagteTo(devNavigationMenu.Add);
+          // addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git');
+          // topologyPage.verifyTopologyPage();
+        }
+        else {
+          eventSourcesPage.selectKnativeService('nodejs-ex-git');
+        }
+      });
+      cy.get(eventSourceObj.sinkBinding.name).type(eventSourceName)
+      eventSourcesPage.clickCreate();
     },
     createEventSource:(eventSourceName: string, apiVersion:string = 'batch/v1', kind:string = 'Job') => {
       addPage.selectCardFromOptions(addOptions.EventSource);

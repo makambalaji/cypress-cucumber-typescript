@@ -1,10 +1,15 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { topologyPage } from '../../pages/topology_page';
 import { moveSink } from '../../pages/popupAlerts';
+import { eventSourcesPage } from '../../pages/add/eventSource_page';
+import { naviagteTo } from '../../pages/app';
+import { devNavigationMenu } from '../../constants/global';
 
-Given('event source {string} is higlighted on topology page', (eventSource: string) => {
-  topologyPage.search(eventSource);
-  cy.get('.is-filtered').should('be.visible')
+Given('event source {string} is higlighted on topology page', (eventSourceName: string) => {
+  naviagteTo(devNavigationMenu.Add);
+  eventSourcesPage.createSinkBinding(eventSourceName);
+  topologyPage.search(eventSourceName);
+  cy.get('.is-filtered').should('be.visible');
 });
 
 Given('knative service, event source and sink connector are present in topology page', () => {

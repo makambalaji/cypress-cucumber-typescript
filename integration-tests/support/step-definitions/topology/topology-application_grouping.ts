@@ -8,27 +8,18 @@ let gitUrl = 'https://github.com/sclorg/nodejs-ex.git';
 let appName = '';
 
 Given('topology has application name with node name {string}', (componentName: string) => {
-  // cy.byLegacyTestID('topology-header').click();
-  // cy.byLegacyTestID('topology-header').should('be.visible');
-  // cy.get('body div', {timeout: 5000}).then(($el) => {
-  //   if($el.find('div.ocs-page-layout__header').length !== 0) {
-      appName = componentName;
-      naviagteTo(devNavigationMenu.Add);
-      addPage.createGitWorkload(gitUrl, componentName);
-      topologyPage.verifyTopologyPage();
-  //   }
-  //   else {
-  //     topologyPage.verifyTopologyPage();
-  //   }
-  // });
+  appName = componentName;
+  naviagteTo(devNavigationMenu.Add);
+  addPage.createGitWorkload(gitUrl, componentName);
+  topologyPage.verifyTopologyPage();
 });
 
-When('user clicks on an applicaton grouping', () => {
-  topologyPage.appNode('nodejs-ex-git-app').should('be.visible').click({force: true});
+When('user clicks on an applicaton grouping {string}', (appName: string) => {
+  topologyPage.appNode(appName).should('be.visible').click({force: true});
 });
 
-When('user right click on Application to open context menu', () => {
-  topologyPage.appNode('nodejs-ex-git-app').trigger('contextmenu', {force: true});
+When('user right click on Application {string} to open context menu', (appName: string) => {
+  topologyPage.appNode(appName).trigger('contextmenu', {force: true});
   // .invoke('show').should('be.visible').invoke('trigger', 'contextmenu');
 });
 

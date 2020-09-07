@@ -3,7 +3,7 @@ Feature: Install the Helm Chart
 
 Background:
     Given user is at developer perspecitve
-    And user is at the project namespace "aut-helm-installation" in dev perspecitve 
+    And user has selected namespace "aut-helm-installation"
 
 
 @regression, @smoke
@@ -17,8 +17,8 @@ Scenario: Catalog Page display on selecitng Helm chart: HR-01-TC02, HR-02-TC02
     Given user is at Add page
     When user clicks on the Helm Chart card on the Add page
     Then user redirects to Developer Catalog page
-    And user able to see Helm Chart option is selected in Developer Catalog page
-    And user able to see Helm Charts cards
+    And user is able to see Helm Chart option is selected in Developer Catalog page
+    And user is able to see Helm Charts cards
 
 
 @regression
@@ -29,15 +29,16 @@ Scenario: Install Helm Chart from Developer Catalog Page: HR-03
     And user searches for the "Nodejs Ex K v0.2.0" helm chart
     And user clicks on the "Nodejs Ex K v0.2.0" helm chart card
     And user clicks on the Install Helm Chart button on side pane
+    And user types Release Name as "nodejs-ex-k"
     And user clicks on the Install button
     Then user is redirected to Topology page
-    And Topology page have the helm chart workload "Nodejs Ex K v0.2.0"
+    And Topology page have the helm chart workload "nodejs-ex-k"
 
 
 @regression, @smoke
 Scenario: Open context menu and check the actions available: HR-07-TC01
     Given user is at Topology page
-    When user right clicks on the workload
+    When user right clicks on the helm release "nodejs-ex-k"
     Then user sees the context menu with actions
     And user sees the Upgrade action item
     And user sees the Rollback action item
