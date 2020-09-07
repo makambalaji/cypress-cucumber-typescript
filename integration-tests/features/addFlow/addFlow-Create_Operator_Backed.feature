@@ -3,9 +3,9 @@ Feature: Create workload from Operator Backed file
 
 Background:
     Given openshift cluster is installed with knative operator
-    And user is at dev perspecitve
+    And user is at developer perspecitve
     And user is at Add page
-    And open project namespace "knative-serving"
+    And user has selected namespace "knative-serving"
 
 
 @regression, @smoke-1

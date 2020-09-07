@@ -2,8 +2,8 @@ Feature: Create Application from Database
     As a user, I want to create the application, component or service from Add Flow Database
 
 Background:
-    Given user is at dev perspecitve
-    And open project namespace "aut-addflow-database"
+    Given user is at developer perspecitve
+    And user has selected namespace "aut-addflow-database"
 
 
 @regression, @smoke

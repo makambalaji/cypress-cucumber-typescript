@@ -2,8 +2,8 @@ Feature: Deleteing an application node
 	As a user, I want to delete an application   
 
 Background:
-   Given user is at Topology page
-   And open project namespace "aut-topology-delete-workload"
+   Given user is at the Topolgy page
+   And user has selected namespace "aut-topology-delete-workload"
 
 @regression
 Scenario: Deleting a workload through Action menu : T-09-TC01

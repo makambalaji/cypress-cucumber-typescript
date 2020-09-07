@@ -4,7 +4,7 @@ Feature: Event Sources actions
 Background:
    Given open shift cluster is installed with Serverless operator
    And user is on dev perspective Add page
-   And open project namespace "aut-create-knative-event-source"
+   And user has selected namespace "aut-create-knative-event-source"
 
 
 @regression, @smoke

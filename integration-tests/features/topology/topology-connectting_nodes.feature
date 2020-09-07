@@ -2,8 +2,8 @@ Feature: Connecting nodes
 	As a user, I want to connect two application   
 
 Background:
-    Given user is at dev perspecitve
-    And open project namespace "aut-topology-connectingNodes"
+    Given user is at developer perspecitve
+    And user has selected namespace "aut-topology-connectingNodes"
 
 
 @regression, @smoke

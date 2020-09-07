@@ -2,8 +2,8 @@ Feature: List view in topology
 	As a user, I want to see list view in topology   
 
 Background:
-    Given user is at Topology page
-    And open project namespace "aut-topology-list-view"
+    Given user is at the Topolgy page
+    And user has selected namespace "aut-topology-list-view"
 
 
 @regression, @smoke

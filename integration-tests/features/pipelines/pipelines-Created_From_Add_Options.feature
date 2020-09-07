@@ -80,7 +80,7 @@ Examples:
 @regression, @smoke
 Scenario Outline: Pipeline in topology page : P-02-TC02
    Given workload "<name>" is created from add page with pipeline 
-   And user is at Topology page
+   And user is at the Topolgy page
    And "<name>" component is added to namespace
    When the user enters "<name>" into the search bar in topology page
    And clicks node "<name>" from results
@@ -134,7 +134,7 @@ Examples:
 
 @regression
 Scenario Outline: Pipelines section in topology page: P-02-TC09
-   Given user is at Topology page
+   Given user is at the Topolgy page
    # When the user enters "<node_name>" into the search bar
    # And user clicks node on topology page
    # Then right side bar opens in topology page

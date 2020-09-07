@@ -2,8 +2,8 @@ Feature: Sidebar in topology
 	As a user, I want to check sidebar of workloads
 
 Background:
-    Given user is at Topology page
-    And open project namespace "aut-topology-sidebar"
+    Given user is at the Topolgy page
+    And user has selected namespace "aut-topology-sidebar"
 
 
 @regression, @smoke

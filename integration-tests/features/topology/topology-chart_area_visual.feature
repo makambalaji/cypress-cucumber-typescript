@@ -4,7 +4,7 @@ Feature: Topology chart area
 
 @regression, @smoke
 Scenario: Empty state of topology : T-01-TC01
-   Given user is in administratr perspective
+   Given user is at administratr perspective
    When user switches to developer perspective
    And user creates a new project
    And user navigates to Topology page
@@ -13,7 +13,7 @@ Scenario: Empty state of topology : T-01-TC01
 
 @regression, @smoke
 Scenario: Topology with workloads : T-02-TC01
-   Given user is in administratr perspective
+   Given user is at administratr perspective
    When user switches to developer perspective
    And user selects an existing project from project list with existing workloads
    And user navigates to Topology page
@@ -22,7 +22,7 @@ Scenario: Topology with workloads : T-02-TC01
 
 @regression, @smoke, @manual
 Scenario: Visual for deployment : T-02-TC01
-   Given user is at the topolgy page
+   Given user is at the Topolgy page
    And deployment workload is present in topology
    When user checks nodes and the decorators associated with them
    Then nodes are circular shaped with builder image in them
@@ -35,7 +35,7 @@ Scenario: Visual for deployment : T-02-TC01
 
 @regression, @smoke, @manual
 Scenario: Visual for deployment-config : T-02-TC01
-   Given user is in topology
+   Given user is at the Topolgy page
    And deployment-config workload is present in topology
    When user checks nodes and the decorators associated with them
    Then nodes are circular shaped with builder image in them
@@ -48,7 +48,7 @@ Scenario: Visual for deployment-config : T-02-TC01
 
 @regression, @smoke, @manual
 Scenario: Visual for knative service with no revision : T-02-TC03
-   Given user is in topology
+   Given user is at the Topolgy page
    And knative workload without revision is present in topology
    When user checks nodes and the decorators associated with them
    Then user can view knative service are rectangular shaped with round corners
@@ -60,7 +60,7 @@ Scenario: Visual for knative service with no revision : T-02-TC03
 
 @regression, @smoke, @manual
 Scenario: Visual for knative service with revisions : T-02-TC03
-   Given user is in topology
+   Given user is at the Topolgy page
    And knative workload with revison is present in topology
    When user checks nodes and the decorators associated with them
    Then user can view knative service are rectangular shaped with round corners
@@ -77,7 +77,7 @@ Scenario: Visual for knative service with revisions : T-02-TC03
 
 @regression, @smoke
 Scenario: Context menu of nodes : T-06-TC10
-   Given user is at the topolgy page
+   Given user is at the Topolgy page
    And topology has workloads
    When user right clicks on the node 
    Then user sees context menu
@@ -85,7 +85,7 @@ Scenario: Context menu of nodes : T-06-TC10
 
 @regression, @smoke, @manual
 Scenario: Zoom In in topology : T-07-TC01
-   Given user is in topology
+   Given user is at the Topolgy page
    And topology has workloads
    When user clicks on Zoom In option
    Then user sees the chart area is zoomed
@@ -93,7 +93,7 @@ Scenario: Zoom In in topology : T-07-TC01
 
 @regression, @smoke, @manual
 Scenario: Zoom Out in topology : T-07-TC01
-   Given user is in topology
+   Given user is at the Topolgy page
    And topology has workloads
    When user clicks on Zoom Out option
    Then user sees the chart area is zoomed out
@@ -101,7 +101,7 @@ Scenario: Zoom Out in topology : T-07-TC01
 
 @regression, @manual
 Scenario: Fit to Screen in topology : T-07-TC03
-   Given user is in topology
+   Given user is at the Topolgy page
    And topology has workloads
    When user clicks on Zoom In option
    And user sees the chart area is zoomed
@@ -111,7 +111,7 @@ Scenario: Fit to Screen in topology : T-07-TC03
 
 @regression, @manual
 Scenario: Reset view in topology: T-07-TC02
-   Given user is in topology
+   Given user is at the Topolgy page
    And topology has workloads
    When user clicks on Zoom In option
    And user sees the chart area is zoomed

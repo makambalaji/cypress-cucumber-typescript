@@ -4,7 +4,7 @@ Feature: Perform actions on knative revision
 Background:
    Given open shift cluster is installed with Serverless operator
    And user is at developer perspecitve
-   And open project namespace "aut-knative-actions-revision"
+   And user has selected namespace "aut-knative-actions-revision"
 
 
 @regression, @smoke

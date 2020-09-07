@@ -4,7 +4,7 @@ Feature: Event Sources actions
 Background:
    Given open shift cluster is installed with Serverless operator
    And user is at developer perspecitve
-   And open project namespace "aut-knative-event-source-actions"
+   And user has selected namespace "aut-knative-event-source-actions"
    And knative service "nodejs-ex-git-1" is available in topology page
    And event source "Sink Binding" is available on topology page
 

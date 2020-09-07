@@ -2,8 +2,8 @@ Feature: Create Application from Container image file
     As a user, I want to create the application, component or service from Add Flow Container image
 
 Background:
-    Given user is at dev perspecitve
-    And open project namespace "aut-addflow-containerimage"
+    Given user is at developer perspecitve
+    And user has selected namespace "aut-addflow-containerimage"
     And user is at Add page
 
 

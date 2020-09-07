@@ -2,7 +2,7 @@ Feature: Operators
     As a user I want to install or uninstall the operators
 
 Background:
-   Given user is at admin perspecitve
+   Given user is at administratr perspective
 
 
 @regression
@@ -72,7 +72,7 @@ Scenario: Install the Che Operator from Operator Hub page : CRW-01-TC01
 @regression, @smoke
 Scenario: Install OpenShift Virtualization Operator: VM-01-TC01
     Given user is at Operator Hub page with the header name "OperatorHub" 
-    And open project namespace "openshift-cnv"
+    And user has selected namespace "openshift-cnv"
     When user searches for "OpenShift Virtualization"
     And clicks on the OpenShift Virtualization Operator card
     And clicks install button present on the right side bar
@@ -83,7 +83,7 @@ Scenario: Install OpenShift Virtualization Operator: VM-01-TC01
 
 @regression, @smoke
 Scenario: Create HyperConverged Cluster: VM-01-TC02
-    Given open project namespace "openshift-cnv"
+    Given user has selected namespace "openshift-cnv"
     And user is at Installed Operator page
     When user clicks on OpenShift Virtualization Operator
     And user clicks on CNV Operator Deployment tab

@@ -37,7 +37,7 @@ Scenario: Install Helm Chart from Developer Catalog Page: HR-03
 
 @regression, @smoke
 Scenario: Open context menu and check the actions available: HR-07-TC01
-    Given user is at Topology page
+    Given user is at the Topolgy page
     When user right clicks on the helm release "nodejs-ex-k"
     Then user sees the context menu with actions
     And user sees the Upgrade action item

@@ -8,12 +8,8 @@ import { pipelinesPage } from '../../pages/pipelines/pipelines_page';
 import { topologyPage } from '../../pages/topology_page';
 import { addPage } from '../../pages/add/add_page';
 import { addOptions } from '../../constants/add';
-  
-Given('user is at admin perspecitve', () => {
-  perspective.verifyPerspective('Administrator');
-});
 
-Given('user is in administratr perspective', () => {
+Given('user is at administratr perspective', () => {
   perspective.verifyPerspective('Administrator');
 });
 
@@ -21,11 +17,6 @@ Given('cluster is installed with knative Apache camel operator', () => {
   perspective.switchTo(switchPerspective.Administrator);
   operatorsPage.navigateToInstalloperatorsPage();
   operatorsPage.verifyInstalledOperator('Knative Apache Camel Operator');
-});
-
-Given('user is at dev perspecitve', () => {
-  perspective.switchTo(switchPerspective.Developer);
-  perspective.verifyPerspective('Developer');
 });
 
 Given('user is at developer perspecitve', () => {
@@ -78,20 +69,11 @@ Given('openshift cluster is installed with knative operator', () => {
   operatorsPage.verifyOperatorInNavigationMenu('Serverless');
 });
 
-Given('open project namespace {string}', (namespace: string) => {
-  project.selectProject(namespace);
-});
-
 Given('user is at Add page', () => {
   naviagteTo(devNavigationMenu.Add);
 });
 
-Given('user is at Topology page', () => {
-  naviagteTo(menu.Topology);
-  topologyPage.verifyTopologyPage();
-});
-
-Given('user is at the topolgy page', () => {
+Given('user is at the Topolgy page', () => {
   naviagteTo(menu.Topology);
   topologyPage.verifyTopologyPage();
 });
@@ -151,7 +133,6 @@ Then('user redirects to Topology page', () => {
 });
 
 Then('user redirects to Add page', () => {
-  // cy.titleShouldBe('Add');
   cy.get('h1.ocs-page-layout__title').should('have.text', 'Add');
 });
 

@@ -4,7 +4,7 @@ Feature: side bar details
 Background:
     Given open shift cluster is installed with Serverless operator
     And user is at developer perspecitve
-    And open project namespace "aut-knative-side-pane-details"
+    And user has selected namespace "aut-knative-side-pane-details"
 
 
 @regression, @smoke

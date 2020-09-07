@@ -4,7 +4,7 @@ Feature: Create event sources
 Background:
    Given open shift cluster is installed with Serverless and eventing operator
    And user is at developer perspecitve
-   And open project namespace "aut-create-knative-event-source"
+   And user has selected namespace "aut-create-knative-event-source"
 
 
 @regression, @smoke
@@ -107,7 +107,7 @@ Scenario: Event source details for CamelSource event source type - Kn-10-TC07
 
 @regression, @smoke
 Scenario: Create ApiServerSource event source - Kn-10-TC08
-   Given knative service name "nodejs-ex-git" is higlighted on topology page
+   Given knative service named "nodejs-ex-git" is higlighted on topology page
    And user is on Event Sources page
    When user selects event source type "Api Server Source"
    And type Resoruce APIVERSION as "sources.knative.dev/v1alpha1"

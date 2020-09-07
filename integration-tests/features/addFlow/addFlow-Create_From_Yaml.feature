@@ -2,8 +2,8 @@ Feature: Create Application from Yaml file
     As a user, I want to create the application, component or service from Add Flow Yaml file
 
 Background:
-    Given user is at dev perspecitve
-    And open project namespace "aut-addflow-yaml"
+    Given user is at developer perspecitve
+    And user has selected namespace "aut-addflow-yaml"
 
 
 @regression

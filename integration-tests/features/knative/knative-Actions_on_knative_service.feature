@@ -4,7 +4,7 @@ Feature: Perform actions on knative service
 Background:
    Given open shift cluster is installed with Serverless operator
    And user is at developer perspecitve
-   And open project namespace "aut-create-knative-actions-service"
+   And user has selected namespace "aut-create-knative-actions-service"
 
 
 @regression, @smoke

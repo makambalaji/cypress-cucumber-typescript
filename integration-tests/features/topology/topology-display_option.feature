@@ -2,8 +2,8 @@ Feature: Display options in topology
 	As a user, I want to see display options  
 
 Background:
-    Given user is at Topology page
-    And open project namespace "aut-topology-displayOptions"
+    Given user is at the Topolgy page
+    And user has selected namespace "aut-topology-displayOptions"
 
 
 @regression

@@ -4,7 +4,7 @@ Feature: Apache Camel eventing
 Background:
    Given open shift cluster is installed with apache camel source operator
    And user is at developer perspecitve
-   And open project namespace "aut-knative-camel-event-source"
+   And user has selected namespace "aut-knative-camel-event-source"
 
 
 @regression, @smoke

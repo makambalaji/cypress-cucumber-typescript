@@ -4,7 +4,7 @@ Feature: Create a workload of 'Knative Service' type resource
 Background:
    Given open shift cluster is installed with Serverless operator
    And user is at developer perspecitve
-   And open project namespace "aut-create-knative-workload"
+   And user has selected namespace "aut-create-knative-workload"
 
 
 @regression, @smoke

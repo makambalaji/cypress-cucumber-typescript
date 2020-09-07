@@ -3,7 +3,7 @@ Feature: project namespace
 
 @e2e, @4.5
 Scenario Outline: Create the project namespace
-    Given user is at dev perspecitve
+    Given user is at developer perspecitve
     When user selects the Create Project option from Projects dropdown on top navigation bar
     And type Name as "<project_name>" in Create Project popup
     And click Create button present in Create Project popup

@@ -134,20 +134,20 @@ Scenario: kebab menu options in pipelines page : P-04-TC07
 
 @regression
 Scenario: Start LastRun from topolgy page : P-05- TC04
-    Given user is at the topolgy page
+    Given user is at the Topolgy page
     And one pipeline run is completed with the workload
 
 
 @regression
 Scenario: Start LastRun from topolgy page : P-05- TC04
-    Given user is at the topolgy page
+    Given user is at the Topolgy page
     And one pipeline run is completed with the workload
 
 
 @regression
 Scenario: Maximum pipeline runs display in topology page: P-05-TC05
     Given 5 pipeline runs are completed with the git workload
-    And user is at the topolgy page
+    And user is at the Topolgy page
     When user clicks on the node name
     Then side bar is displayed with the pipelines section
     And 3 pipeline runs are displayed under pipelines section of topolgy page

@@ -9,14 +9,14 @@ Background:
 
 @regression, @smoke
 Scenario: Open Context Menu and check the actions available for Helm Release: HR-08-TC01
-    Given user is at Topology page
+    Given user is at the Topolgy page
     When user right clicks on the helm release
     Then user sees the context menu with actions
 
 
 @regression, @smoke
 Scenario: Open Side Bar for the Helm release: HR-10-TC01, HR-10-TC02
-    Given user is at Topology page
+    Given user is at the Topolgy page
     When user clicks on the helm release
     Then user sees the sidebar for the helm release
     And user sees the Details, Resources, Release Notes tabs
