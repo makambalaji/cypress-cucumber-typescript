@@ -9,7 +9,7 @@ Background:
 
 @regression, @smoke
 Scenario: Evnt source context menu options : Kn-11-TC01
-   Given knative service name "nodejs-ex-git" is higlighted on topology page
+   Given knative service named "nodejs-ex-git" is higlighted on topology page
    And event source "sink-binding" is higlighted on topology page
    When user right clicks on the event source
    Then user able to see context menu with options Edit Application Grouping, Move Sink, Edit Labels, Edit Annotations, Edit SinkBinding, Delete SinkBinding
@@ -17,7 +17,7 @@ Scenario: Evnt source context menu options : Kn-11-TC01
 
 @regression, @smoke
 Scenario: Move the sink via context menu to link differnt knative Service : Kn-11-TC02
-   Given knative service name "nodejs-ex-git" is higlighted on topology page
+   Given knative service named "nodejs-ex-git" is higlighted on topology page
    And event source "sink-binding" is higlighted on topology page
    And knative service, event source and sink connector are present in topology page
    When user right clicks on the event source
@@ -28,7 +28,7 @@ Scenario: Move the sink via context menu to link differnt knative Service : Kn-1
 
 @regression, @smoke
 Scenario: Delete kantive Service : Kn-11-TC06
-   Given knative service name "nodejs-ex-git" is higlighted on topology page
+   Given knative service named "nodejs-ex-git" is higlighted on topology page
    And event source "sink-binding" is higlighted on topology page
    And knative service, event source and sink connector are present in topology page
    When user right clicks on the event source
