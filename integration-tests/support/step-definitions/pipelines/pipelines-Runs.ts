@@ -134,7 +134,7 @@ Then('page redirects to pipeline runs page', () => {
   pipelienRunsPage.verifyTitle();
 });
 
-Then ('side pane is displayed with the pipelines section', () => {
+Then ('side bar is displayed with the pipelines section', () => {
 
 });
 

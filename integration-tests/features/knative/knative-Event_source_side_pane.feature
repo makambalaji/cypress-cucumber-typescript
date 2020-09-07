@@ -10,16 +10,16 @@ Background:
 
 
 @regression, @smoke
-Scenario: Side pane display of event source : Kn-12-TC01
+Scenario: side bar display of event source : Kn-12-TC01
    Given knative service, event source and sink connector are present in topology page
    When user clicks on event source "Sink Binding"
-   Then side pane dsiplays with header name as "Sink Binding"
+   Then side bar dsiplays with header name as "Sink Binding"
 
 
 @regression, @smoke
 Scenario: Move the sink via Action menu to link knative Service : Kn-12-TC02
    Given knative service, event source and sink connector are present in topology page
    When user clicks on event source "Sink Binding"
-   And select the "Move Sink" from Action menu present in right side pane
+   And select the "Move Sink" from Action menu present in right side bar
    Then modal displays with the header name "Move Sink" 
    And knative service dropdown is displayed in Move Sink modal

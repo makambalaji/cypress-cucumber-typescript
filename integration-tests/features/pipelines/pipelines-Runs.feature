@@ -149,7 +149,7 @@ Scenario: Maximum pipeline runs display in topology page: P-05-TC05
     Given 5 pipeline runs are completed with the git workload
     And user is at the topolgy page
     When user clicks on the node name
-    Then side pane is displayed with the pipelines section
+    Then side bar is displayed with the pipelines section
     And 3 pipeline runs are displayed under pipelines section of topolgy page
  
 
@@ -174,7 +174,7 @@ Scenario: Start the pipeline wtih successful tasks: P-07- TC06
 
 
 @regression, @smoke
-Scenario Outline: Pipeline status display in side pane of topology page : P-05- TC02
+Scenario Outline: Pipeline status display in side bar of topology page : P-05- TC02
     Given pipeline "<pipeline_name>" is created from git page
     And pipeline run is displayed for "<pipeline_name>" in pipelines page
     When user navigates to Topology page

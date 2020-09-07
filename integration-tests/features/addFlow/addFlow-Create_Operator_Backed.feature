@@ -13,7 +13,7 @@ Scenario: Create the workload from Operator Backed : A-08-TC01
     Given user is at Developer Catlog page
     And Opeator Backed is selected on Developer Catalog page
     When user selects knative Serving card
-    And click on Create button in side pane
+    And clicks on Create button in side bar
     And type name as "knative-serving-1" in Create Knative Serving page
     And user clicks create button in Create Knative Serving page
     Then user redirects to Topology page
@@ -25,6 +25,6 @@ Scenario: Perform cancel operation : A-08-TC02
     Given user is at Developer Catlog page
     And Opeator Backed is selected on Developer Catalog page
     When user selects knative Serving card
-    And click on Create button in side pane
+    And clicks on Create button in side bar
     And user clicks cancel button in Create Knative Serving page
     Then user redirects to Add page

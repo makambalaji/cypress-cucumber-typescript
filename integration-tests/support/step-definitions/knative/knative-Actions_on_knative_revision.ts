@@ -2,17 +2,17 @@ import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { editLabels, deleteRevision } from '../../pages/popupAlerts';
 import { topologyPage, topologySidePane } from '../../pages/topology_page';
 
-Given('number of annotations are {string} present in revision side pane details of service {string}', (numOfAnnotations: string, serviceName: string) => {
+Given('number of annotations are {string} present in revision side bar details of service {string}', (numOfAnnotations: string, serviceName: string) => {
   topologyPage.revisionNode(serviceName).click();
   topologySidePane.selectTab('Details');
   topologySidePane.verifyNumberOfAnnotations(numOfAnnotations);
 });
 
-Given('number of annotations are {string} present in side pane - details tab- annotation section', (a: string) => {
+Given('number of annotations are {string} present in side bar - details tab- annotation section', (a: string) => {
   cy.log(a);
 });
 
-Given('number of annotations are {string} present in side pane - details tab', (a: string) => {
+Given('number of annotations are {string} present in side bar - details tab', (a: string) => {
   cy.log(a);
 });
 
@@ -76,7 +76,7 @@ Then('save button is disabled', () => {
   // TODO: implement step
 });
 
-Then('the label {string} display in side pane details', (a: string) => {
+Then('the label {string} display in side bar details', (a: string) => {
   cy.log(a);
 });
 
@@ -94,17 +94,17 @@ Then('Add more link is enabled', () => {
   // TODO: implement step
 });
 
-Then('number of annotaions increased to {string} in revision side pane details of service {string}', (numOfAnnotations: string, serviceName: string) => {
+Then('number of annotaions increased to {string} in revision side bar details of service {string}', (numOfAnnotations: string, serviceName: string) => {
   topologyPage.revisionNode(serviceName).click();
   topologySidePane.selectTab('Details');
   topologySidePane.verifyNumberOfAnnotations(numOfAnnotations);
 });
 
-Then('verify the number of annotaions equal to {string} in side pane details', (a: string) => {
+Then('verify the number of annotaions equal to {string} in side bar details', (a: string) => {
   cy.log(a);
 });
 
-Then('verify the number of annotaions decreased to {string} in side pane details', (a: string) => {
+Then('verify the number of annotaions decreased to {string} in side bar details', (a: string) => {
   cy.log(a);
 });
 

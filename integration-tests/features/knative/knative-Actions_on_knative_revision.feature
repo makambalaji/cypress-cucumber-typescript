@@ -42,7 +42,7 @@ Scenario: Remove label from existing labels list : Kn-03-TC04
    When user selects "Edit Labels" option from knative revision context menu
    And removes the label "app=label" from existing labels list in "Edit Labels" modal
    And clicks save button on the "Edit Labels" modal
-   Then the label "app=label" will not display in side pane details
+   Then the label "app=label" will not display in side bar details
 
 
 @regression
@@ -51,7 +51,7 @@ Scenario: Add labels to existing labels list and cancel the activity : Kn-03-TC0
    When user selects "Edit Labels" option from knative revision context menu
    And add the label "app=label" to existing labels list in Edit Labels modal
    And clicks cancel button on the "Edit Labels" modal
-   Then the label "app=label" will not display in side pane details
+   Then the label "app=label" will not display in side bar details
 
 
 @regression
@@ -67,14 +67,14 @@ Scenario: Edit Annotation modal details : Kn-03-TC06
 @regression, @smoke
 Scenario Outline: Add annotation to the existing annonations list : Kn-03-TC07
    Given knative service named "nodejs-ex-git-2" is higlighted on topology page
-   And number of annotations are "5" present in revision side pane details of service "nodejs-ex-git-2"
+   And number of annotations are "5" present in revision side bar details of service "nodejs-ex-git-2"
    When user right clicks on the revision of knative service "nodejs-ex-git-2" 
    And user selects "Edit Annotaions" option from knative revision context menu
    And clicks Add button on the Edit Annotaions modal
    And types "<key_name>" into the "Key" text box
    And types "<key_value>" into the "value" text box 
    And clicks save button on the "Edit Annotaions" modal
-   Then number of annotaions increased to "6" in revision side pane details of service "nodejs-ex-git-2"
+   Then number of annotaions increased to "6" in revision side bar details of service "nodejs-ex-git-2"
 
 Examples:
 | key_name                    | key_value  |
@@ -84,11 +84,11 @@ Examples:
 @regression
 Scenario Outline: perform cancel action on Edit Annotations : Kn-03-TC09
    Given knative service named "<service_name>" is higlighted on topology page
-   And number of annotations are "6" present in side pane - details tab- annotation section
+   And number of annotations are "6" present in side bar - details tab- annotation section
    When user selects "Edit Annotations" option from knative revision context menu
    And click on "remove" icon for the annotation with key "<key_name>" present in "Edit Annotaions" modal
    And clicks cancel button on the "Edit Annotaions" modal
-   Then verify the number of annotaions equal to "6" in side pane details
+   Then verify the number of annotaions equal to "6" in side bar details
 
 Examples:
 | key_name                    |
@@ -97,11 +97,11 @@ Examples:
 
 Scenario Outline: Remove annotation from existing annonations list : Kn-03-TC08 
    Given knative service named "<service_name>" is higlighted on topology page
-   And number of annotations are "6" present in side pane - details tab
+   And number of annotations are "6" present in side bar - details tab
    When user selects "Edit Annotaions" option from knative revision context menu
    And click on "remove" icon for the annotation with key "<key_name>" present in "Edit Annotaions" modal
    And clicks save button on the "Edit Annotaions" modal
-   Then verify the number of annotaions decreased to "5" in side pane details
+   Then verify the number of annotaions decreased to "5" in side bar details
 
 Examples:
 | key_name                    |

@@ -184,7 +184,7 @@ Then('the route of application {string} contains {string}', (nodeName: string, r
   topologyPage.getRoute(nodeName).should('contain.text', routeName);
 });
 
-Then('verify the label {string} in side pane of application node {string}', (labelName: string, nodeName: string) => {
+Then('verify the label {string} in side bar of application node {string}', (labelName: string, nodeName: string) => {
   topologyPage.componentNode(nodeName).click({force:true});
   topologySidePane.selectTab('Details');
   topologySidePane.verifyLabel(labelName);

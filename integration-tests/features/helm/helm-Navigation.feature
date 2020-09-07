@@ -21,7 +21,7 @@ Scenario: Install Helm Chart page: HR-02-TC04
     When user clicks on the Helm Chart card on the Add page
     And user searches for the "Nodejs Ex K v0.2.0" helm chart
     And user clicks on the "Nodejs Ex K v0.2.0" helm chart card
-    And user clicks on the Install Helm Chart button on side pane
+    And user clicks on the Install Helm Chart button on side bar
     Then Install Helm Chart page is displayed
     And release name displays as "nodejs-ex-k"
 
@@ -39,7 +39,7 @@ Scenario: Install Helm Chart: HR-02-TC01, HR-02-TC03, HR-02-TC06
     When user clicks on the Helm Chart card on the Add page
     And user searches for the "Nodejs Ex K v0.2.0" helm chart
     And user clicks on the "Nodejs Ex K v0.2.0" helm chart card
-    And user clicks on the Install Helm Chart button on side pane
+    And user clicks on the Install Helm Chart button on side bar
     And user clicks on the Install button
     Then user redirects to Topology page
     And Topology page have the helm chart workload "nodejs-example"

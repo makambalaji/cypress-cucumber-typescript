@@ -46,10 +46,10 @@ Given('event source {string} is available on topology page', (eventSourceName: s
   });
 });
 
-When('select the {string} from Action menu present in right side pane', (action: string) => {
+When('select the {string} from Action menu present in right side bar', (action: string) => {
   topologySidePane.selectNodeAction(action);
 });
 
-Then('side pane dsiplays with header name as {string}', (headerName: string) => {
+Then('side bar dsiplays with header name as {string}', (headerName: string) => {
   topologySidePane.verifyTitle(headerName);
 });

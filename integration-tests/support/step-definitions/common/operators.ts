@@ -30,7 +30,7 @@ When('clicks OpenShift Pipelines Operator card on Operator Hub page', () => {
   operatorsPage.selectOperator(operators.pipelineOperator);
 });
 
-When('click install button present on the right side pane', () => {
+When('clicks install button present on the right side bar', () => {
   operatorsPage.verifySiedPane();
   operatorsPage.clickInstallOnSidePane();
 });
@@ -111,7 +111,7 @@ Given('user is at Eclipse che Operator subscription page', () => {
   operatorsPage.verifySubscriptionPage('Eclipse Che');
 });
 
-When('user uninstalls the pipeline operator from right side pane', () => {
+When('user uninstalls the pipeline operator from right side bar', () => {
   operatorsPage.verifySiedPane();
   operatorsPage.clickUninstallOnSidePane();
 });

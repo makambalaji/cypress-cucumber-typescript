@@ -35,7 +35,7 @@ When('user clicks on the {string} helm chart card', (helmChartName: string) => {
   catalogPage.selectHelmChartCard(helmChartName);
 });
 
-When('user clicks on the Install Helm Chart button on side pane', () => {
+When('user clicks on the Install Helm Chart button on side bar', () => {
   catalogPage.clickInstallHelmChartOnSidePane();
 });
 

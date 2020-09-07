@@ -10,7 +10,7 @@ When('user selects knative Serving card', () => {
   catalogPage.selectKnativeServingCard();
 });
 
-When('click on Create button in side pane', () => {
+When('clicks on Create button in side bar', () => {
   catalogPage.clickCreateButtonOnSidePane();
 });
 

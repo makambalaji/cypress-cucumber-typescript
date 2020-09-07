@@ -1,7 +1,7 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { topologyPage, topologySidePane } from '../../pages/topology_page';
 
-// Given('side pane is displayed for revision of kantive service {string} in topology page', (a: string) => {
+// Given('side bar is displayed for revision of kantive service {string} in topology page', (a: string) => {
   
 // });
 
@@ -13,7 +13,7 @@ When('user clicks on Resoruces section', () => {
   // TODO: implement step
 });
 
-When('user clicks on Actions dropdown in top right corner of side pane', () => {
+When('user clicks on Actions dropdown in top right corner of side bar', () => {
   
 });
 
@@ -25,7 +25,7 @@ When('user click on the knative revision name {string}', (a: string) => {
  cy.log(a)
 });
 
-Then('side pane is displayed with heading name as {string}', (serviceName: string) => {
+Then('side bar is displayed with heading name as {string}', (serviceName: string) => {
  topologySidePane.verifyTitle(serviceName);
 });
 
@@ -57,11 +57,11 @@ Then('user able to see the options {string}, {string}, {string}, {string}', (a: 
   cy.log(a, b, c, d)
 });
 
-Then('side pane is displayed with heading name same as kantive service name {string}', (serviceName: string) => {
+Then('side bar is displayed with heading name same as kantive service name {string}', (serviceName: string) => {
   topologySidePane.verifyTitle(serviceName);
 });
 
-Then('side pane is displayed', () => {
+Then('side bar is displayed', () => {
   topologySidePane.verify();
 });
 

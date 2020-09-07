@@ -84,7 +84,7 @@ When('clicks node {string} from results', (name: string) => {
   // cy.byNodeName(name).click({force:true});
 });
 
-Then('side pane is displayed with pipeline name same as component name {string}', (appName: string) => {
+Then('side bar is displayed with pipeline name same as component name {string}', (appName: string) => {
   topologySidePane.verify();
   topologySidePane.verifyTitle(appName);
 });

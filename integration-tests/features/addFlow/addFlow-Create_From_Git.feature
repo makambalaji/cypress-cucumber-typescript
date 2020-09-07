@@ -176,7 +176,7 @@ Scenario Outline: Create a git workload with advanced option "Labels" : A-04-TC1
    And type label as "<label_name>"
    And click Create button on Add page
    Then user redirects to Topology page
-   And verify the label "<label_name>" in side pane of application node "<name>"
+   And verify the label "<label_name>" in side bar of application node "<name>"
 
 Examples:
 | git_url                                 | label_name   | name            |

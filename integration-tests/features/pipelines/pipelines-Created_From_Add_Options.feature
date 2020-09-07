@@ -84,7 +84,7 @@ Scenario Outline: Pipeline in topology page : P-02-TC02
    And "<name>" component is added to namespace
    When the user enters "<name>" into the search bar in topology page
    And clicks node "<name>" from results
-   Then side pane is displayed with pipeline name same as component name "<name>"
+   Then side bar is displayed with pipeline name same as component name "<name>"
 
 Examples:
 | name            |
@@ -137,7 +137,7 @@ Scenario Outline: Pipelines section in topology page: P-02-TC09
    Given user is at Topology page
    When the user enters "<node_name>" into the search bar
    And user clicks node on topology page
-   Then right side pane opens in topology page
+   Then right side bar opens in topology page
    And pipelines section is displayed
    And "Start LastRun" button is disabled
 

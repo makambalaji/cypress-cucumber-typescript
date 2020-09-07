@@ -10,7 +10,7 @@ Scenario: OpenShift Pipeline operator subscription page : P-01-TC01
    Given user is at Operator Hub page with the header name "OperatorHub"
    When user searches for "OpenShift Pipelines Operator"
    And clicks OpenShift Pipelines Operator card on Operator Hub page
-   And click install button present on the right side pane
+   And clicks install button present on the right side bar
    Then OpenShift Pipeline operator subscription page will be displayed
 
 
@@ -75,7 +75,7 @@ Scenario: Install OpenShift Virtualization Operator: VM-01-TC01
     And open project namespace "openshift-cnv"
     When user searches for "OpenShift Virtualization"
     And clicks on the OpenShift Virtualization Operator card
-    And click install button present on the right side pane
+    And clicks install button present on the right side bar
     And user installs the OpenShift Virtualization operator with default values
     Then user will see a modal with title "OpenShift Virtualization"
     And user will see a View Operator button
@@ -96,7 +96,7 @@ Scenario: Create HyperConverged Cluster: VM-01-TC02
 @regression
 Scenario: Uninstall the Pipeline Operator from Operator Hub page : P-013-TC01, P-013-TC02
    Given user is at Operator Hub page with the header name "OperatorHub"
-   When user uninstalls the pipeline operator from right side pane
+   When user uninstalls the pipeline operator from right side bar
    And clicks on Unistall button present in popup with header message Uninstall Operator?
    Then user redirects to Installed operators page
    And Installed operators page will not contain "OpenShift Pipelines Operator"

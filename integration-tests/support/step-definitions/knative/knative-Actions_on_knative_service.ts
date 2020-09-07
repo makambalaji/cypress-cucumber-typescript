@@ -54,11 +54,11 @@ When('clicks cancel button on the {string} modal', (modalTitle: string) => {
   editLabels.clickCancel();
 });
 
-Given('number of annotations are {string} present in side pane - details tab- annotation section', (a: string) => {
+Given('number of annotations are {string} present in side bar - details tab- annotation section', (a: string) => {
  cy.log(a)
 });
 
-Given('number of annotations are {string} present in side pane - details tab', (a: string) => {
+Given('number of annotations are {string} present in side bar - details tab', (a: string) => {
  cy.log(a)
 });
 
@@ -75,7 +75,7 @@ When('clicks Add button on the Edit Annotaions modal', () => {
  editAnnotations.add();
 });
 
-Given('number of annotations are {string} present in {string} service side pane details tab', (numOfAnnotations: string, servicename: string) => {
+Given('number of annotations are {string} present in {string} service side bar details tab', (numOfAnnotations: string, servicename: string) => {
   topologyPage.componentNode(servicename).click();
   topologySidePane.selectTab('Details');
   topologySidePane.verifyNumberOfAnnotations(numOfAnnotations);
@@ -161,20 +161,20 @@ Then('save button is disabled', () => {
   // TODO: implement step
 });
 
-Then('the label {string} display in {string} service side pane details', (label: string, serviceName: string) => {
+Then('the label {string} display in {string} service side bar details', (label: string, serviceName: string) => {
   topologyPage.componentNode(serviceName).click();
   topologySidePane.selectTab('Details');
   topologySidePane.verifyLabel(label);
 });
 
-Then('the label {string} will not display in {string} service side pane details', (label: string, serviceName: string) => {
+Then('the label {string} will not display in {string} service side bar details', (label: string, serviceName: string) => {
   topologyPage.componentNode(serviceName).click();
   topologySidePane.selectTab('Details');
   topologySidePane.verifySection('Labels');
   // Add one more line to check the condition
 });
 
-Then('the label {string} will not display in side pane details', (a: string) => {
+Then('the label {string} will not display in side bar details', (a: string) => {
   cy.log(a);
 });
 
@@ -186,7 +186,7 @@ Then('Add more link is enabled', () => {
   // TODO: implement step
 });
 
-Then('number of annotaions increased to {string} in {string} service side pane details', (numOfAnnotations: string, serviceName: string) => {
+Then('number of annotaions increased to {string} in {string} service side bar details', (numOfAnnotations: string, serviceName: string) => {
   topologyPage.componentNode(serviceName).click();
   topologySidePane.selectTab('Details');
   topologySidePane.verifyNumberOfAnnotations(numOfAnnotations);
@@ -196,11 +196,11 @@ When('click on remove icon for the annotation with key {string} present in Edit 
   editAnnotations.removeAnnotation(key);
 });
 
-Then('number of annotaions remains same in side pane details', () => {
+Then('number of annotaions remains same in side bar details', () => {
   // TODO: implement step
 });
 
-Then('number of annotaions decreased to {string} in side pane details', (a: string) => {
+Then('number of annotaions decreased to {string} in side bar details', (a: string) => {
   cy.log(a);
 });
 
@@ -212,11 +212,11 @@ Then('another message should display as {string}', (a: string) => {
   cy.log(a);
 });
 
-Then('updated service is present in side pane', () => {
+Then('updated service is present in side bar', () => {
   // TODO: implement step
 });
 
-Then('updated service should not display in side pane', () => {
+Then('updated service should not display in side bar', () => {
   // TODO: implement step
 });
 
@@ -224,7 +224,7 @@ Then('error message displays as {string}', (errorMessage: string) => {
   // TODO: implement step
 });
 
-Then('number of routes should get increased in side pane - resources tab - routes section', () => {
+Then('number of routes should get increased in side bar - resources tab - routes section', () => {
   // TODO: implement step
 });
 

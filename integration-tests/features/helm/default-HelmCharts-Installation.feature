@@ -28,7 +28,7 @@ Scenario: Install Helm Chart from Developer Catalog Page: HR-03
     And user checks the Helm Charts checkbox
     And user searches for the "Nodejs Ex K v0.2.0" helm chart
     And user clicks on the "Nodejs Ex K v0.2.0" helm chart card
-    And user clicks on the Install Helm Chart button on side pane
+    And user clicks on the Install Helm Chart button on side bar
     And user types Release Name as "nodejs-ex-k"
     And user clicks on the Install button
     Then user is redirected to Topology page
