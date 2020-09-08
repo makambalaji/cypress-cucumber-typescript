@@ -1,5 +1,5 @@
 Feature: project namespace
-    As a user I want to create the project to group and isolate related objects
+    As a user, I want to create the project to group and isolate related objects
 
 @e2e, @4.5
 Scenario Outline: Create the project namespace
@@ -8,7 +8,8 @@ Scenario Outline: Create the project namespace
     And type Name as "<project_name>" in Create Project popup
     And click Create button present in Create Project popup
     Then popup should get closed
-    And page displays with message "No workloads found"
+    And topology page displays with message "No workloads found"
+    And topology page have cards from Add page
 
 Examples:
 | project_name   |

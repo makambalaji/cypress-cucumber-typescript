@@ -65,7 +65,7 @@ When('user clicks {string} button on Revision Yaml page', (a: string) => {
   cy.log(a);
 });
 
-Then('user able to see context menu with options Edit Labels, Edit Annotations, Edit Revision, Delete Revision', () => {
+Then('user is able to see context menu with options Edit Labels, Edit Annotations, Edit Revision, Delete Revision', () => {
   cy.byTestActionID('Edit Labels').should('be.visible');
   cy.byTestActionID('Edit Annotations').should('be.visible');
   cy.byTestActionID('Edit Revision').should('be.visible');

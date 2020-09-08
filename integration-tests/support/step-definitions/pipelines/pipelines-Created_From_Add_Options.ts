@@ -15,7 +15,7 @@ When('user clicks From Git card on the +Add page', () => {
   addPage.selectCardFromOptions(addOptions.Git);
 });
 
-Then('user navigates to page with header name Import from git', () => {
+Then('user redirects to Import from git page', () => {
   addPage.verifyTitle('Import from git');
 });
 
@@ -35,7 +35,7 @@ Given('user is at Import from git form', () => {
   addPage.selectCardFromOptions(addOptions.Git);
 });
 
-When('user type Git Repo url as {string}', (gitUrl: string) => {
+When('user types Git Repo url as {string}', (gitUrl: string) => {
   addPage.enterGitUrl(gitUrl);
 });
 

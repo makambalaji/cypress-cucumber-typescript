@@ -39,7 +39,7 @@ When('user types pipeline name as {string}', (pipelineName: string) => {
   pipelineBuilderPage.enterPipelineName(pipelineName);
 });
 
-When('select {string} from Task drop down', (taskName: string) => {
+When('selects {string} from Task drop down', (taskName: string) => {
   pipelineBuilderPage.selectTask(taskName);
 });
 

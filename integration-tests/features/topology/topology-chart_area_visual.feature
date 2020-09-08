@@ -15,7 +15,7 @@ Scenario: Empty state of topology : T-01-TC01
 Scenario: Topology with workloads : T-02-TC01
    Given user is at administrator perspective
    When user switches to developer perspective
-   And user selects an existing project from project list with existing workloads
+   And user selects an existing project "aut-topology-existing-project" from project list with existing workloads
    And user navigates to Topology page
    Then user sees different workloads in topology chart area
 

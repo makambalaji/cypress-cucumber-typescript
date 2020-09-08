@@ -2,7 +2,7 @@ import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { addPage } from '../../pages/add/add_page';
 import { topologyPage, topologyObj } from '../../pages/topology_page';
 
-Given('git workload {string} with resource type {string}', (componentName: string) => {
+Given('user created git workload {string} with resource type {string}', (componentName: string) => {
   addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git', 'nodejs-ex-git-app', componentName, 'Deployment');
 });
 

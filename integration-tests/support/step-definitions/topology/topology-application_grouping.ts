@@ -18,7 +18,7 @@ When('user clicks on an applicaton grouping {string}', (appName: string) => {
   topologyPage.appNode(appName).should('be.visible').click({force: true});
 });
 
-When('user right click on Application {string} to open context menu', (appName: string) => {
+When('user right clicks on Application {string} to open context menu', (appName: string) => {
   topologyPage.appNode(appName).trigger('contextmenu', {force: true});
   // .invoke('show').should('be.visible').invoke('trigger', 'contextmenu');
 });

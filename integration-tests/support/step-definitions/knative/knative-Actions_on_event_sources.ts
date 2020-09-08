@@ -1,6 +1,6 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { topologyPage } from '../../pages/topology_page';
-import { moveSink } from '../../pages/popupAlerts';
+import { topologyPage, topologySidePane } from '../../pages/topology_page';
+import { moveSink, deleteSinkBinding } from '../../pages/popupAlerts';
 import { eventSourcesPage } from '../../pages/add/eventSource_page';
 import { naviagteTo } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
@@ -26,7 +26,7 @@ When('selects {string} from context menu', (option: string) => {
   cy.byTestActionID(option).click();
 });
 
-Then('user able to see context menu with options Edit Application Grouping, Move Sink, Edit Labels, Edit Annotations, Edit SinkBinding, Delete SinkBinding', () => {
+Then('user can see options Edit Application Groupings, Move Sink, Edit Labels, Edit Annotations, Edit SinkBinding, Delete SinkBinding', () => {
   cy.byTestActionID('Edit Application Grouping').should('be.visible');
   cy.byTestActionID('Move Sink').should('be.visible');
   cy.byTestActionID('Edit Labels').should('be.visible');
@@ -35,10 +35,35 @@ Then('user able to see context menu with options Edit Application Grouping, Move
   cy.byTestActionID('Delete SinkBinding').should('be.visible');
 });
 
+Then('user is able to see context menu', () => {
+  cy.get('ul[role="menu"]').should('be.visible');
+});
+
 Then('modal displays with the header name {string}', (title: string) => {
   cy.alertTitleShouldBe(title);
 });
 
-Then('knative service dropdown is displayed in Move Sink modal', () => {
-  moveSink.verifyKnativeServiceDropDown();
+Then('selects the Delete option on {string} modal', (modalTitle: string) => {
+  cy.alertTitleShouldBe(modalTitle);
+  deleteSinkBinding.clicKDelete();
+});
+
+Then('event source {string} will not be displayed in topology page', (eventSourceName: string)=> {
+  topologyPage.search(eventSourceName);
+  cy.get('[data-type="event-source"] text').should('not.be.visible');
+});
+
+Then('Resource dropdown is displayed in Move Sink modal', () => {
+  moveSink.verifyResourceDropDown();
+});
+
+When('selects the knative service {string} from Resource dropdown', (knativeService: string) => {
+  cy.alertTitleShouldBe("Move Sink");
+  moveSink.verifyResourceDropDown();
+  moveSink.selectResource(knativeService);
+});
+
+Then('user is connected to differnt knative Service {string}', (knativeService: string) => {
+  cy.get('[data-type="event-source"] text').eq(0).click({force:true});
+  topologySidePane.verifyResource(knativeService);
 });

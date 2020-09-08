@@ -6,6 +6,7 @@ Install all dependencies using below commmand
 npm install
 
 Run all pipeline test scenarios
+PreRequisite: Install pipeline operator
 npm run test:pipeline:allure
 
 Reports are stored under below folder

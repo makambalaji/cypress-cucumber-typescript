@@ -19,5 +19,5 @@ Scenario: Verify Application grouping sidebar: T-04-TC08
 @regression, @smoke
 Scenario: Verify Application grouping context menu : T-06-TC04
    Given topology has application name with node name "nodejs-ex-git-1"
-   When user right click on Application "nodejs-ex-git-app" to open context menu
+   When user right clicks on Application "nodejs-ex-git-app" to open context menu
    Then user can view Add to Application and Delete Application options

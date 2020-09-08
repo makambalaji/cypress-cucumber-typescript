@@ -1,5 +1,5 @@
 Feature: Perform Actions on created VM
-    User should be able to perform Actions on imported VM
+    As a user, I should be able to perform Actions on imported VM
 
 
 Background: 
@@ -106,4 +106,3 @@ Scenario: Delete VM action on VM: VM-04-TC08
     And user clicks on the Delete VM
     And user clicks on the Delete button on the modal
     Then VM will get deleted
-    And user wont be able to see the VM again

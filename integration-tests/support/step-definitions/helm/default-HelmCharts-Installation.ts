@@ -13,7 +13,7 @@ When('user clicks on the Helm Chart card on the Add page', () => {
   addPage.selectCardFromOptions(addOptions.HelmChart);
 });
 
-Then('user redirects to Developer Catalog page', () => {
+Then('user will get redirected to Developer Catalog page', () => {
   catalogPage.verifyTitle();
 });
 

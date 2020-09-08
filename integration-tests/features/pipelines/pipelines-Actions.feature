@@ -1,8 +1,8 @@
 Feature: Perform the actions on Pipelines page
-    As a user I want to view pipeline details, create, edit and delete the pipeline from Pipelines page
+    As a user, I want to view pipeline details, create, edit and delete the pipeline from Pipelines page
 
 Background:
-    Given openshift cluster is installed with pipeline operator
+    Given user has installed OpenShift Pipelines operator
     And user has selected namespace "aut-pipeline-actions"
 
 
@@ -26,9 +26,9 @@ Examples:
 @regression
 Scenario: Kebab menu options of newly created pipeline in Pipelines page : P-04-TC09
    Given user is at pipelines page
-   When the user enters "nodejs-ex.git" into the pipelines search bar
-   And click kebab menu for the pipeline "nodejs-ex.git"
-   Then kebab menu display with  options Start, Add Trigger, Remove Trigger, Edit Pipeline, Delete Pipeline
+   When user enters "nodejs-ex.git" into the pipelines search bar
+   And clicks kebab menu for the pipeline "nodejs-ex.git"
+   Then kebab menu displays with options Start, Add Trigger, Remove Trigger, Edit Pipeline, Delete Pipeline
 
 
 @regression, @smoke
@@ -36,7 +36,7 @@ Scenario Outline: Pipelines Details page : P-03-TC01
    Given user is at pipelines page
    And pipeline with name "<pipeline_name>" is present on Pipelines page
    When user clicks pipeline name "<pipeline_name>" on Pipelines page
-   Then user redirects to Pipeline Details page with header name "<pipeline_name>"
+   Then user will get redirected to Pipeline Details page with header name "<pipeline_name>"
    And user is able to see Details, YAML, Pipeline Runs, Parameters and Resources tabs
    And Details tab is displayed with field names Name, Namespace, Labels, Annotations, Created At, Owner and Tasks
    And Actions dropdown display in the top right corner of the page
@@ -58,8 +58,8 @@ Scenario Outline: Verify the details of completed pipeline run
     And pipeline run is available for "<pipeline_name>"
     When user clicks pipeline run of pipeline "<pipeline_name>"
     Then Pipeline run details page is dislayed
-    And the pipelien run status displays as "<pipeline_status>" in Pipeline run page
-    And the Last run status of the "<pipeline_name>" displays as "<pipeline_status>" in pipelines page
+    And pipelien run status displays as "<pipeline_status>" in Pipeline run page
+    And Last run status of the "<pipeline_name>" displays as "<pipeline_status>" in pipelines page
 
 Examples:
 | pipeline_name | pipeline_status |
@@ -70,11 +70,11 @@ Examples:
 Scenario Outline: Edit the Pipeline from pipelines Details page : P-08-TC01
    Given user is at pipelines page
    And pipeline with name "<pipeline_name>" is present on Pipelines page
-   When the user enters "<pipeline_name>" into the pipelines search bar
-   And click pipeline name "<pipeline_name>" from searched results on Pipelines page
+   When user enters "<pipeline_name>" into the pipelines search bar
+   And clicks pipeline name "<pipeline_name>" from searched results on Pipelines page
    And user selects the option "Edit Pipeline" from Actions menu drop down
    Then user is at the Pipeline Builder page
-   And Name field should be disabled
+   And Name field will be disabled
    And Add Parameters, Add Resources, Task should be displayed
 
 Examples:
@@ -86,10 +86,10 @@ Examples:
 Scenario Outline: Delete the Pipeline from pipelines Details page: P-03-TC13
    Given user is at pipelines page
    And pipeline with name "<pipeline_name>" is present on Pipelines page
-   When the user enters "<pipeline_name>" into the pipelines search bar
-   And click pipeline name "<pipeline_name>" from searched results on Pipelines page
+   When user enters "<pipeline_name>" into the pipelines search bar
+   And clicks pipeline name "<pipeline_name>" from searched results on Pipelines page
    And user selects the option "Delete Pipeline" from Actions menu drop down
-   And click Delete on Delete Pipeline popup
+   And clicks Delete on Delete Pipeline popup
    Then user redirects to Pipelines page
    But "<pipeline_name>" is not displayed on Pipelines page
 
@@ -121,8 +121,8 @@ Examples:
 @regression
 Scenario: Kebab menu options of pipeline with atleast one pipeline run in Pipelines page : P-04-TC09
    Given user is at pipelines page
-   When the user clicks kebab menu for the pipeline "nodejs-ex.git"
-   Then kebab menu contains option as "Start Last Run"
+   When user clicks kebab menu for the pipeline "nodejs-ex.git"
+   Then user will see "Start Last Run" under Kebab menu
 
 
 @regression

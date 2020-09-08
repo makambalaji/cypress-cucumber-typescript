@@ -1,5 +1,5 @@
-Feature: Virtual Machine
-    User should be able to create the Virtual machine
+Feature: Perform actions on Virtual Machine
+    As a user, I should be able to perform the actions on Virtual machine
 
 
 Background: 
@@ -8,6 +8,8 @@ Background:
 
 @regression, @smoke
 Scenario: Import Virtual Machine Card on +Add page: VM-01-TC03
+    Given user has installed OpenShift Virtualization operator
+    And user has created the Hyperconverged Cluster
     Given openshift cluster is installed with Virtualization operator and deployed with cnv operator
     And user has selected namespace "aut-virtualization"
     When user switches to developer perspective

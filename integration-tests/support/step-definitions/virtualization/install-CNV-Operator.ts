@@ -7,7 +7,7 @@ Given('user is at Installed Operator page', () => {
   operatorsPage.navigateToInstalloperatorsPage();
 });
 
-Given ('openshift cluster is installed with Virtualization operator and deployed with cnv operator', () => {
+Given('user has created the Hyperconverged Cluster', () => {
   operatorsPage.verifyOperatorInNavigationMenu('Virtualization');
 });
 

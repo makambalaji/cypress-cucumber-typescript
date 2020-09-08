@@ -7,7 +7,6 @@ import { editLabels, editAnnotations, deleteservice, deleteRevision } from '../.
 Given('knative service named {string} is higlighted on topology page', (knativeServiceName: string) => {
   cy.get('.co-m-loader').should('not.be.visible');
   cy.get('body').then(($el) => {
-    cy.wait(3000);
     if($el.find('.pf-c-card__title').length !== 0) {
       addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git',knativeServiceName, resourceTypes.KnativeService);
       topologyPage.verifyTopologyPage();
@@ -17,6 +16,30 @@ Given('knative service named {string} is higlighted on topology page', (knativeS
         cy.get('body').then(($el) => {
           if($el.find('.is-filtered').length === 0) {
             addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git',knativeServiceName, resourceTypes.KnativeService);
+            topologyPage.verifyTopologyPage();
+          }
+        });
+      }) ;
+    }
+  });
+});
+
+Given('knative services named {string} and {string} are higlighted on topology page', (knativeServiceName: string, knativeServiceName1: string) => {
+  cy.get('.co-m-loader').should('not.be.visible');
+  cy.get('body').then(($el) => {
+    if($el.find('.pf-c-card__title').length !== 0) {
+      addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git',knativeServiceName, resourceTypes.KnativeService);
+      topologyPage.verifyTopologyPage();
+      addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git',knativeServiceName1, resourceTypes.KnativeService);
+      topologyPage.verifyTopologyPage();
+    }
+    else if($el.find('[data-test-id="item-filter"]').length !== 0) {
+      topologyPage.search(knativeServiceName).then(() => {
+        cy.get('body').then(($el) => {
+          if($el.find('.is-filtered').length === 0) {
+            addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git',knativeServiceName, resourceTypes.KnativeService);
+            topologyPage.verifyTopologyPage();
+            addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git',knativeServiceName1, resourceTypes.KnativeService);
             topologyPage.verifyTopologyPage();
           }
         });

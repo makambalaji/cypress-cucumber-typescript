@@ -132,10 +132,21 @@ export const moveSink = {
         cy.byTestID('confirm-action').click();
         cy.get('form').should('not.be.visible');
     },
-    verifyKnativeServiceDropDown: () => cy.get('#form-ns-dropdown-sink-name-field').should('be.visible'),
+    verifyResourceDropDown: () => cy.get('#form-ns-dropdown-sink-name-field').should('be.visible'),
 }
 
 export const deleteAPIService = {
+    clicKDelete: () => {
+        cy.byTestID('confirm-action').click();
+        cy.get('form').should('not.be.visible');
+    },
+    clickCancel: () => {
+        cy.byLegacyTestID('modal-cancel-action').click();
+        cy.get('form').should('not.be.visible');
+    },
+}
+
+export const deleteSinkBinding = {
     clicKDelete: () => {
         cy.byTestID('confirm-action').click();
         cy.get('form').should('not.be.visible');

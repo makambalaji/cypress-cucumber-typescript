@@ -14,7 +14,7 @@ export const perspective = {
         .click();
         cy.get('body div').then(($el) => {
           if($el.find('#guided-tour-modal').length !== 0) {
-            cy.get('#tour-step-footer-secondary').click();
+            // cy.get('#tour-step-footer-secondary').click();
             // cy.get('#tour-step-footer-primary').should('be.visible').click();
           }
         });
@@ -27,7 +27,7 @@ export const perspective = {
         cy.get('body div').then(($el) => {
           if($el.find('#guided-tour-modal').length !== 0) {
             cy.get('#tour-step-footer-secondary').click();
-            cy.get('#tour-step-footer-primary').should('be.visible').click();
+            // cy.get('#tour-step-footer-primary').should('be.visible').click();
           }
         });
         break;
@@ -73,7 +73,6 @@ export const naviagteTo = (opt: devNavigationMenu) => {
     }
     case devNavigationMenu.Pipelines: {
       cy.byLegacyTestID('pipeline-header').click()
-        // cy.wait(5000);
         cy.titleShouldBe('Pipelines');
       break;
     }
@@ -123,17 +122,17 @@ export const projectNameSpace = {
 
   clickCreateButton: () => {
     cy.get('#confirm-action').click();
-    cy.get('form', {timeout: 3000}).should('not.be.visible');
+    cy.get('form').should('not.be.visible');
   },
 
   createNewProject: (projectName: string) => {
-    cy.get('[data-test-id="namespace-bar-dropdown"]', { timeout: 80000 })
+    cy.get('[data-test-id="namespace-bar-dropdown"]')
     .find('button')
     .eq(0)
     .click();
   cy.byLegacyTestID('dropdown-text-filter').type(projectName);
-  cy.wait(2000);
-  cy.get('[role="listbox"]', { timeout: 20000 }).then(($el) => {
+  app.waitForLoad();
+  cy.get('[role="listbox"]').then(($el) => {
     if ($el.find('li[role="option"]').length === 0) {
       cy.byTestDropDownMenu('#CREATE_RESOURCE_ACTION#').click();
       projectNameSpace.enterProjectName(projectName);
@@ -142,12 +141,11 @@ export const projectNameSpace = {
   });
   },
   selectProject: (projectName: string) => {
-    cy.get('[data-test-id="namespace-bar-dropdown"]', { timeout: 80000 })
+    cy.get('[data-test-id="namespace-bar-dropdown"]')
       .find('button')
       .eq(0)
       .click();
     cy.byLegacyTestID('dropdown-text-filter').type(projectName);
-    // cy.wait(3000);
     cy.get('[role="listbox"]').then(($el) => {
       if ($el.find('li[role="option"]').length === 0) {
           cy.byTestDropDownMenu('#CREATE_RESOURCE_ACTION#').click();

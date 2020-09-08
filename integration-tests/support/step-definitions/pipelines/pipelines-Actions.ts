@@ -11,7 +11,7 @@ Given('pipeline run is available for {string}', (pipelineName: string) => {
   cy.log(pipelineName);
 });
 
-When('the user enters {string} into the pipelines search bar', (pipelineName: string) => {
+When('user enters {string} into the pipelines search bar', (pipelineName: string) => {
   pipelinesPage.search(pipelineName);
 });
 
@@ -39,11 +39,11 @@ Then('kebab menu is displayed', () => {
   pipelinesPage.verifyKebabMenu();
 });
 
-When('click kebab menu for the pipeline {string}', (pipelineName: string) => {
+When('clicks kebab menu for the pipeline {string}', (pipelineName: string) => {
   pipelinesPage.selectKebabMenu(pipelineName);
 });
 
-Then('kebab menu contains option as {string}', (option: string) => {
+Then('user will see {string} under Kebab menu', (option: string) => {
   pipelinesPage.verifyOptionInKebabMenu(option);
 });
 
@@ -75,7 +75,7 @@ When('user clicks pipeline run of pipeline {string}', (pipelineName: string) => 
   pipelinesPage.seelctPipelineRun(pipelineName);
 });
 
-When('click pipeline name {string} from searched results on Pipelines page', (pipelineName: string) => {
+When('clicks pipeline name {string} from searched results on Pipelines page', (pipelineName: string) => {
   pipelinesPage.selectPipeline(pipelineName);
 });
 
@@ -83,7 +83,7 @@ When('user selects the option {string} from Actions menu drop down', (action: st
   pipelineDetailsPage.selectActionFromActionsDropdown(action);
 });
 
-When('click Delete on Delete Pipeline popup', () => {
+When('clicks Delete on Delete Pipeline popup', () => {
   cy.alertTitleShouldBe('Delete Pipeline?');
   cy.get(pipelinesObj.deletePipeline.delete).click();
 });
@@ -93,18 +93,16 @@ When('user selects {string} from the kebab menu for {string}', (option: string, 
   cy.byTestActionID(option).click();
 });
 
-When('the user clicks kebab menu for the pipeline {string}', (a: string) => {
-  cy.log(a)
+When('user clicks kebab menu for the pipeline {string}', (pipelien: string) => {
+  cy.log(pipelien);
+});
+
+Then('kebab menu displays with options Start, Add Trigger, Remove Trigger, Edit Pipeline, Delete Pipeline', () => {
   // TODO: implement step
 });
 
-Then('kebab menu display with  options Start, Add Trigger, Remove Trigger, Edit Pipeline, Delete Pipeline', () => {
-  // TODO: implement step
-});
-
-Then('user redirects to Pipeline Details page with header name {string}', (a: string) => {
-  cy.log(a)
-  // TODO: implement step
+Then('user will get redirected to Pipeline Details page with header name {string}', (headerName: string) => {
+  cy.log(headerName);
 });
 
 Then('user is able to see Details, YAML, Pipeline Runs, Parameters and Resources tabs', () => {
@@ -128,17 +126,15 @@ Then('Pipeline run details page is dislayed', () => {
   // TODO: implement step
 });
 
-Then('the pipelien run status displays as {string} in Pipeline run page', (a: string) => {
-  cy.log(a);
-  // TODO: implement step
+Then('pipelien run status displays as {string} in Pipeline run page', (status: string) => {
+  cy.log(status);
 });
 
-Then('the Last run status of the {string} displays as {string} in pipelines page', (a: string, b: string) => {
+Then('Last run status of the {string} displays as {string} in pipelines page', (a: string, b: string) => {
   cy.log(a, b);
-  // TODO: implement step
 });
 
-Then('Name field should be disabled', () => {
+Then('Name field will be disabled', () => {
   cy.get('#form-input-name-field').should('be.disabled');
 });
 

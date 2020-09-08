@@ -32,3 +32,4 @@ Scenario: Editing a knative service : T-06-TC14, T-06-TC15
    And user edits Application name as "nodejs-ex-git-app-1"
    And user clicks on save
    Then user can see the change of knative service to the new Application defined above
+   

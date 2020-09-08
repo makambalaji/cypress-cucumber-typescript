@@ -1,8 +1,8 @@
 Feature: Pipeline Runs
-    As a user I want to start pipeline, rerun, delete pipeline run
+    As a user, I want to start pipeline, rerun, delete pipeline run
 
 Background:
-    Given openshift cluster is installed with pipeline operator
+    Given user has installed OpenShift Pipelines operator
     And user has selected namespace "aut-pipelines-runs"
     And user is at pipelines page
 

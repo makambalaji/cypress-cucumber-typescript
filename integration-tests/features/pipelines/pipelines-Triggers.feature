@@ -1,8 +1,8 @@
 Feature: Triggers
-    As a user I want to add or remove trigger details and verify the trigger for the git web hooks from pipeline
+    As a user, I want to add or remove trigger details and verify the trigger for the git web hooks from pipeline
 
 Background:
-    Given openshift cluster is installed with pipeline operator
+    Given user has installed OpenShift Pipelines operator
     And user has selected namespace "aut-pipeline-triggers"
     And user is at pipelines page
 
@@ -11,7 +11,7 @@ Background:
 Scenario Outline: Add Trigger popup details : P-09-TC01
     Given pipeline "<pipeline_name>" is available with git resource
     When user selects "Add Trigger" from the kebab menu for "<pipeline_name>"
-    Then pmodal with "Add Trigger" appears  
+    Then modal with "Add Trigger" appears  
     And Git provider type field is enabled
     And Add button is disabled
 

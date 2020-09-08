@@ -31,10 +31,10 @@ When('user creates a new project', () => {
   projectNameSpace.createNewProject('aut-topology-new-project');
 });
 
-When('user selects an existing project from project list with existing workloads', () => {
-  projectNameSpace.createNewProject('aut-topology-existing-project');
+When('user selects an existing project {string} from project list with existing workloads', (projectName: string) => {
+  projectNameSpace.createNewProject(projectName);
   addPage.createGitWorkload();
-  projectNameSpace.selectProject('aut-topology-existing-project');
+   cy.get('[role="listbox"]').find('li[role="option"]').contains(projectName).click();
 });
 
 When('user checks nodes and the decorators associated with them', () => {

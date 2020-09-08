@@ -37,17 +37,18 @@ Given('open shift cluster is installed with apache camel source operator', () =>
   operatorsPage.verifyInstalledOperator('apache camel source Operator');
 });
 
+Given ('user has installed OpenShift Virtualization operator', () => {
+  perspective.switchTo(switchPerspective.Administrator);
+  operatorsPage.navigateToInstalloperatorsPage();
+  operatorsPage.verifyInstalledOperator('OpenShift Virtualization operator');
+});
+
 Given('open shift cluster is installed with Serverless and eventing operator', () => {
   perspective.switchTo(switchPerspective.Administrator);
   operatorsPage.verifyOperatorInNavigationMenu('Serverless');
 });
 
-Given('user is on dev perspective Add page', () => {
-  perspective.switchTo(switchPerspective.Developer);
-  naviagteTo(devNavigationMenu.Add);
-});
-
-Given('openshift cluster is installed with pipeline operator', () => {
+Given('user has installed OpenShift Pipelines operator', () => {
     perspective.switchTo(switchPerspective.Developer);
     perspective.verifyPerspective('Developer');
     cy.get('#page-sidebar').then(($navMenu) => {

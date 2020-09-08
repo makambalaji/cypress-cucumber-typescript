@@ -1,8 +1,8 @@
 Feature: Create Pipeline from Add Options
-    As a user I want to view pipeline, create, edit and delete the pipeline
+    As a user, I want to view pipeline, create, edit and delete the pipeline
 
 Background:
-    Given openshift cluster is installed with pipeline operator
+    Given user has installed OpenShift Pipelines operator
     And user has selected namespace "aut-pipelines-add-options"
     And user is at Add page
 
@@ -11,7 +11,7 @@ Background:
 Scenario: From Git Page pipelines section: P-01-TC03
    Given user is at Add page
    When user clicks From Git card on the Add page
-   Then user navigates to page with header name Import from git
+   Then user redirects to Import from git page
    And pipeline section is displayed with message "Select a builder image and resource to see if there is a pipeline template available for this runtime."
 
 
@@ -19,14 +19,14 @@ Scenario: From Git Page pipelines section: P-01-TC03
 Scenario: From Dockerfile Page Pipelines section : P-01-TC04
    Given user is at Add page
    When user clicks From Dockerfile card on the Add page
-   Then user navigates to page with header name Import from git
+   Then user redirects to Import from git page
    And Add pipeline section is displayed
 
 
 @regression
 Scenario Outline: Add Pipeline display in git workload for builder image : P-02-TC08
    Given user is at Import from git form
-   When user type Git Repo url as "<git_url>"
+   When user types Git Repo url as "<git_url>"
    Then Add pipeline checkbox is displayed
 
 Examples:
@@ -46,7 +46,7 @@ Examples:
 @regression, @smoke
 Scenario Outline: Create a pipeline from git workload with resource type "<resource>" : P-02-TC01, P-02-TC06
    Given user is at Import from git form
-   When user type Git Repo url as "<git_url>"
+   When user types Git Repo url as "<git_url>"
    And type Name as "<pipeline_name>" in General section
    And select "<resource>" radio button in Resources section
    And select Add Pipeline checkbox in Pipelines section
@@ -64,7 +64,7 @@ Examples:
 Scenario Outline: Create a pipeline from git workload with knative resource type  : P-02-TC07
    Given openshift cluster is installed with knative operator
    And user is at Import from git form
-   When user type Git Repo url as "<git_url>"
+   When user types Git Repo url as "<git_url>"
    And type Name as "<name>" in General section
    And select "knative" radio button in Resources section
    And select Add Pipeline checkbox in Pipelines section
@@ -106,7 +106,7 @@ Examples:
 @regression
 Scenario Outline: Create a workload with pipeline from Docker file : P-02-TC04
    Given user is on Import from Docker file page
-   When user type Git Repo url as "<docker_git_url>" 
+   When user types Git Repo url as "<docker_git_url>" 
    And select Add Pipeline checkbox in Pipelines section
    And clicks Create button on Add page   
    Then user gets redirected to topology page
@@ -121,7 +121,7 @@ Scenario Outline: Create a pipeline with s2i builder images : P-02-TC05
    Given user is at Developer Catalog form with builder images
    When the user enters "node" into the Builder Image search bar
    And create the application with the selected builder image
-   And user type Git Repo url as "<git_url>" 
+   And user types Git Repo url as "<git_url>" 
    And select Add Pipeline checkbox in Pipelines section
    And click Create button on Create Source-to-Image application
    Then user gets redirected to topology page

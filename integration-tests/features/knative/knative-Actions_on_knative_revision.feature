@@ -11,7 +11,7 @@ Background:
 Scenario Outline: Knative revision menu options : Kn-03-TC01
    Given knative service named "<service_name>" is higlighted on topology page
    When user right clicks on the revision of knative service "<service_name>"
-   Then user able to see context menu with options Edit Labels, Edit Annotations, Edit Revision, Delete Revision
+   Then user is able to see context menu with options Edit Labels, Edit Annotations, Edit Revision, Delete Revision
 
 Examples:
     | service_name    | 

@@ -21,7 +21,7 @@ When('clicks on {string} link', (buttonName: string) => {
   cy.byButtonText(buttonName).click();
 });
 
-Then('user able to see Create Source Secret section', () => {
+Then('user is able to see Create Source Secret section', () => {
   startPipelineInPipelinsPage.verifyCreateSourceSecretSection();
 });
 
@@ -37,7 +37,7 @@ Given('user is at Start Pipeline popup', () => {
   cy.alertTitleShouldBe('Start Pipeline');
 });
 
-When('the user enters URL, Revision as {string} and {string}', (gitUrl: string, revision: string) => {
+When('user enters URL, Revision as {string} and {string}', (gitUrl: string, revision: string) => {
   startPipelineInPipelinsPage.addGitResource(gitUrl,revision);
 });
 

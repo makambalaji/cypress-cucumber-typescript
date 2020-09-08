@@ -1,5 +1,5 @@
-Feature: Install the Helm Chart
-    As a user, I want to install the helm charts
+Feature: Install the Helm Release
+    As a user, I want to install the helm release
 
 Background:
     Given user is at developer perspecitve
@@ -16,7 +16,7 @@ Scenario: The Helm Chart option on the +Add Page: HR-01-TC01
 Scenario: Catalog Page display on selecitng Helm chart: HR-01-TC02, HR-02-TC02
     Given user is at Add page
     When user clicks on the Helm Chart card on the Add page
-    Then user redirects to Developer Catalog page
+    Then user will get redirected to Developer Catalog page
     And user is able to see Helm Chart option is selected in Developer Catalog page
     And user is able to see Helm Charts cards
 
