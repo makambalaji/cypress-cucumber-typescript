@@ -26,8 +26,3 @@ When('user clicks create button in Create Knative Serving page', () => {
 When('user clicks cancel button in Create Knative Serving page', () => {
   cy.contains('Cancel').click();
 });
-
-Then('created workload {string} is present in topology page', (name: string) => {
-  topologyPage.verifyWorkloadInTopologyPage(name);
-});
-

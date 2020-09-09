@@ -47,20 +47,12 @@ When('user enters Name as {string} in General section', (name: string) => {
   addPage.enterComponentName(name);
 });
 
-When('select {string} radio button in Resources section', (resoruce: string) => {
-  addPage.selectResource(resoruce);
-});
-
-When('select Add Pipeline checkbox in Pipelines section', () => {
+When('user selects Add Pipeline checkbox in Pipelines section', () => {
   addPage.selectAddPipeline();
 });
 
 Then('user will be redirected to Topology page', () => {
   topologyPage.verifyTopologyPage();
-});
-
-Then('created workload {string} is present in topology page', (name: string) => {
-  topologyPage.verifyWorkloadInTopologyPage(name);
 });
 
 Given('{string} component is added to namespace', (componentName: string) => {

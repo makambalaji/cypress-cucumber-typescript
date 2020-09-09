@@ -18,7 +18,3 @@ When('user clicks on create button wtih default yaml', () => {
 When('user clicks on cancel button wtih default yaml', () => {
   yamlPage.clickOnCancelButton();
 });
-
-Then('created workload {string} is present in topology page', (name: string) => {
-  topologyPage.verifyWorkloadInTopologyPage(name);
-});

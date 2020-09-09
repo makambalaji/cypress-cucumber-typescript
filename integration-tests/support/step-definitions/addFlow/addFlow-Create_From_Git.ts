@@ -35,10 +35,6 @@ When('user selects resource type as {string}', (resourceType: string) => {
   addPage.selectResource(resourceType);
 });
 
-Then('created workload {string} is present in topology page', (workloadName: string) => {
-  topologyPage.verifyWorkloadInTopologyPage(workloadName);
-});
-
 Then('created workload is linked to existing application', () => {
   
 });

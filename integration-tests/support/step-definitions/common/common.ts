@@ -63,7 +63,7 @@ Given('user has selected namespace {string}', (projectName: string) => {
   project.selectProject(projectName);
 });
   
-Given('openshift cluster is installed with knative operator', () => {
+Given('user has installed OpenShift Serverless Operator', () => {
   perspective.switchTo(switchPerspective.Administrator);
   perspective.verifyPerspective('Administrator');
   cy.wait(5000);
@@ -143,4 +143,12 @@ Then('user will be redirected to Add page', () => {
 
 Then('user will be redirected to Pipelines page', () => {
   cy.titleShouldBe('Pipelines');
+});
+
+Then('user is able to see workload {string} in topology page list view', (workloadName: string) => {
+  topologyPage.verifyWorkloadInTopologyPage(workloadName);
+});
+
+Then('user is able to see workload {string} in topology page', (workloadName: string) => {
+  topologyPage.verifyWorkloadInTopologyPage(workloadName);
 });

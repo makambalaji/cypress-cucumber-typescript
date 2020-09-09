@@ -2,7 +2,7 @@ Feature: Create workload from Operator Backed file
     As a user, I want to create the application, component or service from Developer Catlog Operator backed file
 
 Background:
-    Given openshift cluster is installed with knative operator
+    Given user has installed OpenShift Serverless Operator
     And user is at developer perspecitve
     And user is at Add page
     And user has selected namespace "knative-serving"
@@ -17,7 +17,7 @@ Scenario: Create the workload from Operator Backed : A-08-TC01
     And user enters name as "knative-serving-1" in Create Knative Serving page
     And user clicks create button in Create Knative Serving page
     Then user will be redirected to Topology page
-    And created workload "knative-serving-1" is present in topology page
+    And user is able to see workload "knative-serving-1" in topology page
 
 
 @regression, @smoke-1

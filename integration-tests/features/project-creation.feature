@@ -13,4 +13,4 @@ Scenario Outline: Create the project namespace
 
 Examples:
 | project_name   |
-| AUT_MB_project |
+| aut-mb-project |

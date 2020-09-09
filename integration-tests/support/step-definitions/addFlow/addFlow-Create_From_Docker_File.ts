@@ -15,10 +15,6 @@ When('user selects {string} radio button in Resoruce type section', (resourceTyp
   addPage.selectResource(resourceType)
 });
 
-Then('created workload {string} is present in topology page', (workloadName: string) => {
-  topologyPage.verifyWorkloadInTopologyPage(workloadName);
-});
-
 When('user clicks Cancel button on Add page', () => {
   addPage.clickCancel();
 });

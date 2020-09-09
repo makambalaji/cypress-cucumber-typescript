@@ -48,11 +48,11 @@ Scenario Outline: Create a pipeline from git workload with resource type "<resou
    Given user is at Import from git form
    When user enters Git Repo url as "<git_url>"
    And user enters Name as "<pipeline_name>" in General section
-   And select "<resource>" radio button in Resources section
-   And select Add Pipeline checkbox in Pipelines section
+   And user selects resource type as "<resource>"
+   And user selects Add Pipeline checkbox in Pipelines section
    And user clicks Create button on Add page
    Then user will be redirected to Topology page
-   And created workload "<pipeline_name>" is present in topology page
+   And user is able to see workload "<pipeline_name>" in topology page
 
 Examples:
 | git_url                                 | pipeline_name    | resource          |
@@ -62,15 +62,15 @@ Examples:
 
 @regression
 Scenario Outline: Create a pipeline from git workload with knative resource type  : P-02-TC07
-   Given openshift cluster is installed with knative operator
+   Given user has installed OpenShift Serverless Operator
    And user is at Import from git form
    When user enters Git Repo url as "<git_url>"
    And user enters Name as "<name>" in General section
-   And select "knative" radio button in Resources section
-   And select Add Pipeline checkbox in Pipelines section
+   And user selects resource type as "knative"
+   And user selects Add Pipeline checkbox in Pipelines section
    And user clicks Create button on Add page
    Then user will be redirected to Topology page
-   And created workload "<workload_name>" is present in topology page
+   And user is able to see workload "<pipeline_name>" in topology page
 
 Examples:
 | git_url                                 | pipeline_name    | workload_name    |
@@ -107,10 +107,10 @@ Examples:
 Scenario Outline: Create a workload with pipeline from Docker file : P-02-TC04
    Given user is on Import from Docker file page
    When user enters Git Repo url as "<docker_git_url>" 
-   And select Add Pipeline checkbox in Pipelines section
+   And user selects Add Pipeline checkbox in Pipelines section
    And user clicks Create button on Add page   
    Then user will be redirected to Topology page
-   And created workload "<name>" is present in topology page
+   And user is able to see workload "<pipeline_name>" in topology page
 
 Examples:
 | docker_git_url                         | name          |
@@ -122,11 +122,11 @@ Scenario Outline: Create a pipeline with s2i builder images : P-02-TC05
    When the user enters "node" into the Builder Image search bar
    And create the application with the selected builder image
    And user enters Git Repo url as "<git_url>" 
-   And select Add Pipeline checkbox in Pipelines section
+   And user selects Add Pipeline checkbox in Pipelines section
    And click Create button on Create Source-to-Image application
    Then user will be redirected to Topology page
-   And created workload "<name>" is present in topology page
-
+   And user is able to see workload "<name>" in topology page
+   
 Examples:
 | git_url                                 | name          |
 | https://github.com/sclorg/nodejs-ex.git | nodejs-ex-git |

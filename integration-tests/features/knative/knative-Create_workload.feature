@@ -48,7 +48,7 @@ Scenario Outline: Create knative work load from From Git card on Add page : Kn-0
    And select "Knative" radio button on Add page
    And user clicks Create button on Add page
    Then user will be redirected to Topology page
-   And user is able to see workload "<workload_name>" on topology page list view
+   And user is able to see workload "<workload_name>" in topology page list view
 
 Examples:
 | form_name | header_name     | git_url                                 | workload_name |
@@ -63,7 +63,7 @@ Scenario Outline: Create knative workload from Container image card on Add page 
    And select "Knative" radio button on Add page
    And user clicks Create button on Add page
    Then user will be redirected to Topology page
-   And user is able to see workload "<workload_name>" on topology page list view
+   And user is able to see workload "<workload_name>" in topology page list view
 
 Examples:
 | form_name       | header_name  | image_name                | workload_name |
@@ -77,7 +77,7 @@ Scenario Outline: Create a workload from Docker file card on Add page :Kn-01-TC0
    And user selects resource type as "Knative"
    And user clicks Create button on Add page   
    Then user will be redirected to Topology page
-   And user is able to see workload "<workload_name>" on topology page list view
+   And user is able to see workload "<workload_name>" in topology page list view
 
 Examples:
 | form_name   | header_name             | docker_git_url            | workload_name | 
@@ -94,5 +94,5 @@ Scenario: Create a workload from DevCatalog BuilderImages card on Add page : Kn-
    And user selects resource type as "Knative"
    And user clicks Create button on Add page  
    Then user will be redirected to Topology page
-   And user is able to see workload "nodejs-ex-git" on topology page list view
+   And user is able to see workload "nodejs-ex-git" in topology page list view
    
