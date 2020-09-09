@@ -15,7 +15,7 @@ Scenario: Perform Upgrade action on Helm Release through Context Menu: HR-08-TC0
     And user upgrades the chart Version
     And user clicks on the upgrade button
     Then the helm release should get upgradaed
-    And user gets redirected to topology page
+    And user will be redirected to Topology page
 
 
 @regression, @smoke
@@ -26,7 +26,7 @@ Scenario: Perform Rollback action on Helm Release through Context Menu: HR-08-TC
     And user selects the version to Rollback
     And user clicks on the rollback button
     Then the helm release rollbacks to the version
-    And user gets redirected to topology page
+    And user will be redirected to Topology page
 
 
 @regression, @smoke

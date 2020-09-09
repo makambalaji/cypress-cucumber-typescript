@@ -23,10 +23,6 @@ Then('the helm release should get upgradaed', () => {
   helmDetailsPage.verifyFieldValue('Chart Version', '0.1.1');
 });
 
-Then('user gets redirected to topology page', () => {
-  topologyPage.verifyTopologyPage();
-});
-
 When('user selects the version to Rollback', () => {
   rollBackHelmRelease.selectRevision();
 });

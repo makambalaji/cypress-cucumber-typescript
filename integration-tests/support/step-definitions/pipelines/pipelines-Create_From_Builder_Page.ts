@@ -9,7 +9,7 @@ When('user clicks Create Pipeline button on Pipelines page', () => {
   pipelinesPage.createPipeline();
 });
 
-Then('user redirects to Pipeline Builder page', () => {
+Then('user will be redirected to Pipeline Builder page', () => {
   pipelineBuilderPage.verifyTitle();
 });
 
@@ -35,7 +35,7 @@ Given('user is at Pipeline Builder page', () => {
   pipelineBuilderPage.verifyTitle();
 });
 
-When('user types pipeline name as {string}', (pipelineName: string) => {
+When('user enters pipeline name as {string}', (pipelineName: string) => {
   pipelineBuilderPage.enterPipelineName(pipelineName);
 });
 
@@ -57,7 +57,7 @@ When('clicks Create button on Pipeline Builder page', () => {
   pipelineBuilderPage.create();
 });
 
-Then('user redirects to Pipeline Details page with header name {string}', (pipelineName: string) => {
+Then('user will be redirected to Pipeline Details page with header name {string}', (pipelineName: string) => {
   pipelineDetailsPage.verifyTitle(pipelineName);
 });
 

@@ -29,9 +29,9 @@ Scenario: Install Helm Chart from Developer Catalog Page: HR-03
     And user searches for the "Nodejs Ex K v0.2.0" helm chart
     And user clicks on the "Nodejs Ex K v0.2.0" helm chart card
     And user clicks on the Install Helm Chart button on side bar
-    And user types Release Name as "nodejs-ex-k"
+    And user enters Release Name as "nodejs-ex-k"
     And user clicks on the Install button
-    Then user is redirected to Topology page
+    Then user will be redirected to Topology page
     And Topology page have the helm chart workload "nodejs-ex-k"
 
 
@@ -39,7 +39,4 @@ Scenario: Install Helm Chart from Developer Catalog Page: HR-03
 Scenario: Open context menu and check the actions available: HR-07-TC01
     Given user is at the Topolgy page
     When user right clicks on the helm release "nodejs-ex-k"
-    Then user sees the context menu with actions
-    And user sees the Upgrade action item
-    And user sees the Rollback action item
-    And user sees the Uninstall Helm Release action item
+    Then user is able to see the context menu with actions Upgrade, Rollback and Uninstall Helm Release

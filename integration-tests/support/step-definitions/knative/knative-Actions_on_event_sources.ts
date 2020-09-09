@@ -22,7 +22,7 @@ When('user right clicks on the event source', () => {
   cy.get('[data-type="event-source"] text').eq(0).trigger('contextmenu', {force:true});
 });
 
-When('selects {string} from context menu', (option: string) => {
+When('user selects {string} from context menu', (option: string) => {
   cy.byTestActionID(option).click();
 });
 

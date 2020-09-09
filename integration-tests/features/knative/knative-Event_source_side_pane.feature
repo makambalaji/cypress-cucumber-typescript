@@ -22,4 +22,4 @@ Scenario: Move the sink via Action menu to link knative Service : Kn-12-TC02
    When user clicks on event source "Sink Binding"
    And select the "Move Sink" from Action menu present in right side bar
    Then modal displays with the header name "Move Sink" 
-   And knative service dropdown is displayed in Move Sink modal
+   And Resource dropdown is displayed in Move Sink modal

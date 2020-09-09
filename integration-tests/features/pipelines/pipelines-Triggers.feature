@@ -61,7 +61,7 @@ Scenario: Trigger template details page : P-09-TC05
     Given Trigger is added to the pipeline "git-pipeline" present in pipeline details page
     And user is at pipeline Details page 
     When user clicks on trigger template
-    Then user redirects to Trigger Template Details page
+    Then user will be redirected to Trigger Template Details page
     And user is able to see Details, YAML tabs
     And Details tab is displayed with field names Name, Namespace, Labels, Annotations, Created At, Owner, Pipelines and Event Listeners
     And Actions dropdown display on the top right corner of the page
@@ -72,7 +72,7 @@ Scenario: Event Listener Details page : P-09-TC06, P-09-TC07
     Given Trigger is added to the pipeline "git-pipeline-events" present in pipeline details page 
     And user is at Trigger Template Details page
     When user clicks on Event listener
-    Then user redirects to Event Listener Details page
+    Then user will be redirected to Event Listener Details page
     And user is able to see Details, YAML tabs
     And Details tab is displayed with field names Name, Namespace, Labels, Annotations, Created At, Owner, Trigger Templates and Trigger Bindings
     And Actions dropdown display on the top right corner of the page
@@ -83,7 +83,7 @@ Scenario: Cluster Trigger Binding Details page : P-09-TC08, P-09-TC09
     Given Trigger is added to the pipeline "git-pipeline-triggerbinding" present in pipeline details page 
     And user is at Event Listener Details page
     When user clicks on Trigger Binding
-    Then user redirects to Cluster Trigger Binding Details page
+    Then user will be redirected to Cluster Trigger Binding Details page
     And user is able to see Details, YAML tabs
     And Details tab is displayed with field names Name, Labels, Annotations, Created At, Owner
     And Actions dropdown display on Cluster Trigger Binding page

@@ -117,7 +117,7 @@ When('user clicks on trigger template', () => {
   pipelineDetailsPage.selectTriggerTemplateLink();
 });
 
-Then('user redirects to Trigger Template Details page', () => {
+Then('user will be redirected to Trigger Template Details page', () => {
   triggerTemplateDetailsPage.verifyPage();
 });
 
@@ -144,7 +144,7 @@ When('user clicks on Event listener', () => {
   triggerTemplateDetailsPage.selectEventListener();
 });
 
-Then('user redirects to Event Listener Details page', () => {
+Then('user will be redirected to Event Listener Details page', () => {
   eventListenerDetailsPage.verifyPage();
 });
 
@@ -165,7 +165,7 @@ When('user clicks on Trigger Binding', () => {
   eventListenerDetailsPage.selectTriggerBindingLink();
 });
 
-Then('user redirects to Cluster Trigger Binding Details page', () => {
+Then('user will be redirected to Cluster Trigger Binding Details page', () => {
  clusterTriggerBindingDetailsPage.verifyPage();
 });
 

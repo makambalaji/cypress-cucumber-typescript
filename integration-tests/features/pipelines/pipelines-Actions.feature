@@ -10,7 +10,7 @@ Background:
 Scenario Outline: Newly created pipeline details in Pipelines page : P-03-TC12 
    Given user is at pipelines page
    And pipeline with name "<pipeline_name>" is present on Pipelines page
-   When the user enters "<pipeline_name>" into the pipelines search bar
+   When user enters "<pipeline_name>" into the pipelines search bar
    Then pipelines table displayed with column names Name, Namespace, Last Run, Task Status, Last Run Status and Last Run Time
    And column Name display with value "<pipeline_name>"
    # And column Namespace display with value "aut-pipeline-actions"
@@ -90,7 +90,7 @@ Scenario Outline: Delete the Pipeline from pipelines Details page: P-03-TC13
    And clicks pipeline name "<pipeline_name>" from searched results on Pipelines page
    And user selects the option "Delete Pipeline" from Actions menu drop down
    And clicks Delete on Delete Pipeline popup
-   Then user redirects to Pipelines page
+   Then user will be redirected to Pipelines page
    But "<pipeline_name>" is not displayed on Pipelines page
 
 Examples:
@@ -111,7 +111,7 @@ Scenario Outline: Start the basic pipeline from pipelines page: P-04-TC01
     Given user is at pipelines page
     And pipeline "<pipeline_name>" consists of task "<task_name>" without parameters and resources
     When user selects "Start" from the kebab menu for "<pipeline_name>" 
-    Then page redirects to Pipeline Run Details page
+    Then page will be redirected to Pipeline Run Details page
     
 Examples:
 | pipeline_name                     | task_name |
@@ -130,4 +130,4 @@ Scenario: Start Last Run for the basic pipeline from pipelines page: P-05-TC03
     Given user is at pipelines page
     And pipeline "pipe-task-withoutparams-resoruces" consists of task "kn" without parameters and resources
     When user selects "Start Last Run" from the kebab menu for "pipe-task-withoutparams-resoruces"
-    Then page redirects to Pipeline Run Details page
+    Then page will be redirected to Pipeline Run Details page

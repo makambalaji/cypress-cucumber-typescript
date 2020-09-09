@@ -8,11 +8,11 @@ Background:
 
 
 @regression, @smoke
-Scenario: Different event source types display in event sources add page - Kn-07-TC03, Kn-08-TC02
+Scenario: Different event source enters display in event sources add page - Kn-07-TC03, Kn-08-TC02
    Given user is at Add page 
    When user clicks on "Event Sources" card
-   Then user redirects to page with header name "Event Sources"
-   And able to see event source types like ApiServerSource, ContainerSource, CronJobSource, PingSource, SinkBinding
+   Then user will be redirected to page with header name "Event Sources"
+   And able to see event source enters like ApiServerSource, ContainerSource, CronJobSource, PingSource, SinkBinding
 
 
 @regression, @smoke
@@ -21,14 +21,14 @@ Scenario: CamelSource event source - Kn-08-TC03
    And user is at developer perspecitve
    And user is at Add page
    When user clicks on "Event Sources" card
-   Then user redirects to page with header name "Event Sources"
+   Then user will be redirected to page with header name "Event Sources"
    And user able to see "Camel Source" event source type
 
 
 Scenario: knative eventing in operator backed - Kn-07-TC04
    Given user is at Add page 
    When user clicks on "Operator Backed" card
-   Then user redirects to page with header name "Developer Catalog"
+   Then user will be redirected to page with header name "Developer Catalog"
    And able to see Knative Eventing card
 
 
@@ -36,7 +36,7 @@ Scenario: Notifier message display in Event sources page when knative service is
    Given user is at Add page 
    But knative service is not available for selected namespace
    When user clicks on "Event Sources" card
-   Then user redirects to page with header name "Event Sources"
+   Then user will be redirected to page with header name "Event Sources"
    And able to see notifier with header "Event Sources Cannot be Created"
    And message as "Event Sources can only sink to Knative Services. No Knative Services exist in this project."
 
@@ -117,7 +117,7 @@ Scenario: Create ApiServerSource event source - Kn-10-TC08
    And selects an "nodejs-ex-git" option from Kantive service field
    And type event source name as "api-service-1"
    And user clicks on Create button
-   Then user redirects to Topology page
+   Then user will be redirected to Topology page
    And ApiServerSource event source "api-service-1" is created and linked to selected kantive service "nodejs-ex-git"
 
 
@@ -129,7 +129,7 @@ Scenario: Create ContainerSource event source - Kn-10-TC09
    And type Container Image as "openshift/hello-openshift"
    And selects an "nodejs-ex-git" option from Kantive service field
    And user clicks on Create button
-   Then user redirects to Topology page
+   Then user will be redirected to Topology page
    And ContainerSource event source is created and linked to selected kantive service
 
 
@@ -141,7 +141,7 @@ Scenario: Create CronJobSource event source - Kn-10-TC10
    And type schedule as "*/2 * * * *"
    And selects an "nodejs-ex-git" option from Kantive service field
    And user clicks on Create button
-   Then user redirects to Topology page
+   Then user will be redirected to Topology page
    And CronJobSource event source is created and linked to selected kantive service
 
 
@@ -153,7 +153,7 @@ Scenario: Create PingSource event source - Kn-10-TC11
    And type schedule as "*/2 * * * *"
    And selects an "nodejs-ex-git" option from Kantive service field
    And user clicks on Create button
-   Then user redirects to Topology page
+   Then user will be redirected to Topology page
    And PingSource event source is created and linked to selected kantive service
 
 
@@ -166,7 +166,7 @@ Scenario: Create SinkBinding event source - Kn-10-TC12
    And type Subject Kind as "job"
    And selects an "nodejs-ex-git" option from Kantive service field
    And user clicks on Create button
-   Then user redirects to Topology page
+   Then user will be redirected to Topology page
    And SinkBinding event source is created and linked to selected kantive service
 
 
@@ -176,5 +176,5 @@ Scenario: Create CamelSource event source - Kn-10-TC13, Kn-08-TC03
    And knative service is available for selected namespace
    When user selects event source type "CamelSource"
    And user clicks on Create button
-   Then user redirects to Topology page
+   Then user will be redirected to Topology page
    And CamelSource event source is created and linked to selected kantive service

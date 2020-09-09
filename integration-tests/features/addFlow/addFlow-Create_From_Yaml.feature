@@ -10,7 +10,7 @@ Background:
 Scenario: Create a workload from Yaml file : A-07-TC01
     Given user is at Import YAML page
     When user clicks on create button wtih default yaml
-    Then user redirects to Topology page
+    Then user will be redirected to Topology page
     And created workload "mariadb" is present in topology page
  
 
@@ -18,4 +18,4 @@ Scenario: Create a workload from Yaml file : A-07-TC01
 Scenario: Perform cancel operation on Yaml file : A-07-TC02
     Given user is at Import YAML page
     When user clicks on cancel button wtih default yaml
-    Then user redirects to Add page
+    Then user will be redirected to Add page

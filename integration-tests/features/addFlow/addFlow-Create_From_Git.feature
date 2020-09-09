@@ -7,9 +7,9 @@ Background:
     And user has selected namespace "aut-addflow-git"
 
 @regression
-Scenario Outline: Builder iamge display for git url "<git_url>" : A-04-TC01
+Scenario Outline: Builder iamge detected for git url "<git_url>" : A-04-TC01
    Given user is at Import from git page
-   When user types Git Repo url as "<git_url>"
+   When user enters Git Repo url as "<git_url>"
    Then git url gets Validated
    And builder image is detetced
    And builder image version drop down is displayed
@@ -33,12 +33,12 @@ Examples:
 @regression, @smoke
 Scenario Outline: Add new git workload with new application for resoruce type "<resource_type>" : A-04-TC02, A-04-TC13
    Given user is at Import from git page
-   When user types Git Repo url as "<git_url>"
-   And types Application name as "<app_name>"
-   And types Name as "<name>"
-   And selects "<resource_type>" resource type
-   And clicks Create button on Add page 
-   Then user redirects to Topology page
+   When user enters Git Repo url as "<git_url>"
+   And user enters Application name as "<app_name>"
+   And user enters Name as "<name>"
+   And user selects resource type as "<resource_type>"
+   And user clicks Create button on Add page 
+   Then user will be redirected to Topology page
    And created workload "<name>" is present in topology page
 
 Examples:
@@ -50,46 +50,46 @@ Examples:
 @regression
 Scenario: Add new git workload to the existing application : A-04-TC03
    Given user is at Import from git page
-   When user types Git Repo url as "https://github.com/sclorg/nodejs-ex.git"
-   And types Application name as "nodejs-ex-git-app"
-   And types Name as "nodejs-ex-2-git"
-   And selects "deployment config" resource type
-   And clicks Create button on Add page
-   Then user redirects to Topology page
+   When user enters Git Repo url as "https://github.com/sclorg/nodejs-ex.git"
+   And user enters Application name as "nodejs-ex-git-app"
+   And user enters Name as "nodejs-ex-2-git"
+   And user selects resource type as "deployment config"
+   And user clicks Create button on Add page
+   Then user will be redirected to Topology page
    And created workload is linked to existing application
 
 
 @regression
 Scenario: Cancel the git workload creation : A-04-TC04
    Given user is at Import from git page
-   When user types Git Repo url as "https://github.com/sclorg/dancer-ex.git"
-   And click Cancel button on Add page 
-   Then user redirects to Add page
+   When user enters Git Repo url as "https://github.com/sclorg/dancer-ex.git"
+   And user clicks Cancel button on Add page 
+   Then user will be redirected to Add page
 
 
 @regression
 Scenario: Create workload without application route : A-04-TC05
    Given user is at Import from git page
-   When user types Git Repo url as "https://github.com/sclorg/dancer-ex.git"
-   And types Application name as "app-with-no-app-route"
-   And types Name as "node-with-no-app-route"
-   And unselect the advanced option Create a route to the application
-   And clicks Create button on Add page 
-   Then user redirects to Topology page
+   When user enters Git Repo url as "https://github.com/sclorg/dancer-ex.git"
+   And user enters Application name as "app-with-no-app-route"
+   And user enters Name as "node-with-no-app-route"
+   And user unselects the advanced option Create a route to the application
+   And user clicks Create button on Add page 
+   Then user will be redirected to Topology page
    And public url is not created for node "node-with-no-app-route"
 
 
 @regression-1
 Scenario Outline: Create a git workload with advanced option "Routing" : A-04-TC06
    Given user is at Import from git page
-   When user types Git Repo url as "<git_url>"
-   And type name as "<name>" in General section
-   And click "Routing" link in Advanced Options section
-   And type Hostname as "<hostname>"
-   And type Path as "<path>"
+   When user enters Git Repo url as "<git_url>"
+   And user enters name as "<name>" in General section
+   And user clicks "Routing" link in Advanced Options section
+   And user enters Hostname as "<hostname>"
+   And user enters Path as "<path>"
    And select default Target Port
-   And click Create button on Add page
-   Then user redirects to Topology page
+   And user clicks Create button on Add page
+   Then user will be redirected to Topology page
    And the route of application "<name>" contains "<hostname>"
 
 Examples:
@@ -100,16 +100,16 @@ Examples:
 @regression
 Scenario Outline: Creaete the workload by unselecting options in "Build Configuration" section: A-04-TC07
    Given user is at Import from git page
-   When user types Git Repo url as "<git_url>"
-   And user types name as "<name>" in General section
-   And clicks "Build Configuration" link in Advanced Options section
+   When user enters Git Repo url as "<git_url>"
+   And user enters name as "<name>" in General section
+   And user clicks "Build Configuration" link in Advanced Options section
    And unselects "Configure a webhook build trigger" checkbox in build configuration section
    And unselects "Automatically build a new image when the builder image changes" checkbox in build configuration section
    And unselects "Launch the first build when the build configuration is created" checkbox in build configuration section
-   And type Name as "<name>" in Environment Variables section
-   And type Value as "<value>" in Environment Variables section
-   And click Create button on Add page
-   Then user redirects to Topology page
+   And user enters Name as "<name>" in Environment Variables section
+   And user enters Value as "<value>" in Environment Variables section
+   And user clicks Create button on Add page
+   Then user will be redirected to Topology page
    And build does not get started for "<name>"
 
 Examples:
@@ -120,14 +120,14 @@ Examples:
 @regression
 Scenario Outline: Create a git workload with advanced option "Deployment" : A-04-TC08
    Given user is at Import from git page
-   When user types Git Repo url as "<git_url>"
-   And type name as "<name>" in General section
-   And click "Deployment" link in Advanced Options section
+   When user enters Git Repo url as "<git_url>"
+   And user enters name as "<name>" in General section
+   And user clicks "Deployment" link in Advanced Options section
    And verify "Auto deploy when new image is available" checkbox is seleceted
-   And type Name as "<name>" in Environment Variables Runtime only section
-   And type Value as "<value>" in Environment Variables Runtime only section
-   And click Create button on Add page
-   Then user redirects to Topology page
+   And user enters Name as "<name>" in Environment Variables Runtime only section
+   And user enters Value as "<value>" in Environment Variables Runtime only section
+   And user clicks Create button on Add page
+   Then user will be redirected to Topology page
 
 Examples:
 | git_url                                 | name | value | name            |
@@ -137,15 +137,15 @@ Examples:
 @regression
 Scenario Outline: Create a git workload with advanced option "Resource Limits" : A-04-TC09
    Given user is at Import from git page
-   When user types Git Repo url as "<git_url>"
-   And type name as "<name>" in General section
-   And click "Resource Limits" link in Advanced Options section
-   And type CPU Request as "<cpu_request>" in CPU section
-   And type CPU Limits as "<cpu_limit>" in CPU section
-   And type Memory Request as "<memory_request>" in Memory section
-   And type Memory Limit as "<memory_limit>" in Memory section
-   And click Create button on Add page
-   Then user redirects to Topology page
+   When user enters Git Repo url as "<git_url>"
+   And user enters name as "<name>" in General section
+   And user clicks "Resource Limits" link in Advanced Options section
+   And user enters CPU Request as "<cpu_request>" in CPU section
+   And user enters CPU Limits as "<cpu_limit>" in CPU section
+   And user enters Memory Request as "<memory_request>" in Memory section
+   And user enters Memory Limit as "<memory_limit>" in Memory section
+   And user clicks Create button on Add page
+   Then user will be redirected to Topology page
 
 Examples:
 | git_url                                 | cpu_request | cpu_limit | memory_request | memory_limit | name            |
@@ -155,12 +155,12 @@ Examples:
 @regression
 Scenario Outline: Create a git workload with advanced option "Scaling" : A-04-TC10
    Given user is at Import from git page
-   When user types Git Repo url as "<git_url>"
-   And type name as "<name>" in General section
-   And click "Scaling" link in Advanced Options section
-   And type number of replicas as "<replica_set_value>" in Replicas section
-   And click Create button on Add page
-   Then user redirects to Topology page
+   When user enters Git Repo url as "<git_url>"
+   And user enters name as "<name>" in General section
+   And user clicks "Scaling" link in Advanced Options section
+   And user enters number of replicas as "<replica_set_value>" in Replicas section
+   And user clicks Create button on Add page
+   Then user will be redirected to Topology page
 
 Examples:
 | git_url                                 | replica_set_value | name            |
@@ -170,12 +170,12 @@ Examples:
 @regression
 Scenario Outline: Create a git workload with advanced option "Labels" : A-04-TC11
    Given user is at Import from git page
-   When user types Git Repo url as "<git_url>"
-   And type name as "<name>" in General section
-   And click "Labels" link in Advanced Options section
-   And type label as "<label_name>"
-   And click Create button on Add page
-   Then user redirects to Topology page
+   When user enters Git Repo url as "<git_url>"
+   And user enters name as "<name>" in General section
+   And user clicks "Labels" link in Advanced Options section
+   And user enters label as "<label_name>"
+   And user clicks Create button on Add page
+   Then user will be redirected to Topology page
    And verify the label "<label_name>" in side bar of application node "<name>"
 
 Examples:
@@ -186,14 +186,14 @@ Examples:
 @regression
 Scenario Outline: Create a git workload with advanced option "Health Checks" : A-04-TC12
    Given user is at Import from git page
-   When user types Git Repo url as "<git_url>"
-   And type name as "<name>" in General section
-   And click "Health Checks" link in Advanced Options section
+   When user enters Git Repo url as "<git_url>"
+   And user enters name as "<name>" in General section
+   And user clicks "Health Checks" link in Advanced Options section
    And fill the Readiness Probe details
    And fill the Liveness Probe details
    And fill the Startup Probe details
-   And click Create button on Add page
-   Then user redirects to Topology page
+   And user clicks Create button on Add page
+   Then user will be redirected to Topology page
 
 Examples:
 | git_url                                 | label_name   | name            |

@@ -15,7 +15,7 @@ When('user clicks From Git card on the +Add page', () => {
   addPage.selectCardFromOptions(addOptions.Git);
 });
 
-Then('user redirects to Import from git page', () => {
+Then('user will be redirected to Import from git page', () => {
   addPage.verifyTitle('Import from git');
 });
 
@@ -35,7 +35,7 @@ Given('user is at Import from git form', () => {
   addPage.selectCardFromOptions(addOptions.Git);
 });
 
-When('user types Git Repo url as {string}', (gitUrl: string) => {
+When('user enters Git Repo url as {string}', (gitUrl: string) => {
   addPage.enterGitUrl(gitUrl);
 });
 
@@ -43,7 +43,7 @@ Then('Add pipeline checkbox is displayed', () => {
   addPage.verifyPipelineCheckBox();
 });
 
-When('type Name as {string} in General section', (name: string) => {
+When('user enters Name as {string} in General section', (name: string) => {
   addPage.enterComponentName(name);
 });
 
@@ -55,11 +55,7 @@ When('select Add Pipeline checkbox in Pipelines section', () => {
   addPage.selectAddPipeline();
 });
 
-When('click Create button on Add page', () => {
-  addPage.clicKCreate();
-});
-
-Then('user redirects to Topology page', () => {
+Then('user will be redirected to Topology page', () => {
   topologyPage.verifyTopologyPage();
 });
 
@@ -71,7 +67,7 @@ Given('{string} component is added to namespace', (componentName: string) => {
   topologyPage.verifyWorkloadInTopologyPage(componentName)
 });
 
-When('the user enters {string} into the search bar in topology page', (name: string) => {
+When('user searches for {string} in topology page', (name: string) => {
   topologyPage.search(name);
 });
 
@@ -79,7 +75,7 @@ When('the user enters {string} into the search bar in pipelines page', (name: st
   pipelinesPage.search(name);
 });
 
-When('clicks node {string} from results', (name: string) => {
+When('clicks node {string} in topology page', (name: string) => {
   topologyPage.componentNode(name).click({force: true});
   // cy.byNodeName(name).click({force:true});
 });

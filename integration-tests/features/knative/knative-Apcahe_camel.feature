@@ -11,6 +11,6 @@ Background:
 Scenario: CamelSource display in event sources add page - Kn-07-TC03
    Given user is at Add page 
    When user clicks on "Event Sources" card
-   Then user redirects to page with header name "Event Sources"
+   Then user will be redirected to page with header name "Event Sources"
    And able to see CamelSource event type
 

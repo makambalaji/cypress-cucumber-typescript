@@ -32,7 +32,7 @@ Scenario: Add label to the existing labels list : Kn-03-TC03
    When user right clicks on the revision of knative service "nodejs-ex-git-2" 
    And user selects "Edit Labels" option from knative revision context menu
    And add the label "app=label" to existing labels list in Edit Labels modal
-   And clicks save button on the "Edit Labels" modal
+   And user clicks save button on the "Edit Labels" modal
    Then user can see the label "app-label" in the Details tab of the Sidebar of "nodejs-ex-git-2"
 
 
@@ -41,7 +41,7 @@ Scenario: Remove label from existing labels list : Kn-03-TC04
    Given knative service named "<service_name>" is higlighted on topology page
    When user selects "Edit Labels" option from knative revision context menu
    And removes the label "app=label" from existing labels list in "Edit Labels" modal
-   And clicks save button on the "Edit Labels" modal
+   And user clicks save button on the "Edit Labels" modal
    Then the label "app=label" will not display in side bar details
 
 
@@ -71,9 +71,9 @@ Scenario Outline: Add annotation to the existing annonations list : Kn-03-TC07
    When user right clicks on the revision of knative service "nodejs-ex-git-2" 
    And user selects "Edit Annotaions" option from knative revision context menu
    And clicks Add button on the Edit Annotaions modal
-   And types "<key_name>" into the "Key" text box
-   And types "<key_value>" into the "value" text box 
-   And clicks save button on the "Edit Annotaions" modal
+   And enters annotation key as "<key_name>"
+   And enters annotation value as "<key_value>"
+   And user clicks save button on the "Edit Annotaions" modal
    Then number of annotaions increased to "6" in revision side bar details of service "nodejs-ex-git-2"
 
 Examples:
@@ -100,7 +100,7 @@ Scenario Outline: Remove annotation from existing annonations list : Kn-03-TC08
    And number of annotations are "6" present in side bar - details tab
    When user selects "Edit Annotaions" option from knative revision context menu
    And click on "remove" icon for the annotation with key "<key_name>" present in "Edit Annotaions" modal
-   And clicks save button on the "Edit Annotaions" modal
+   And user clicks save button on the "Edit Annotaions" modal
    Then verify the number of annotaions decreased to "5" in side bar details
 
 Examples:

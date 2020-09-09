@@ -73,10 +73,6 @@ When('user clicks on the link for the routes of helm release', () => {
   // TODO: implement step
 });
 
-Then('user is redirected to Topology page', () => {
-  // TODO: implement step
-});
-
 Then('user is redirected to the Deployment Config Details page for the helm release', () => {
   // TODO: implement step
 });

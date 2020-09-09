@@ -148,6 +148,6 @@ Then('{string} is not displayed on Pipelines page', (pipelineName: string) => {
   cy.byLegacyTestID(pipelineName).should('not.be.visible');
 });
 
-Then('page redirects to Pipeline Run Details page', () => {
+Then('page will be redirected to Pipeline Run Details page', () => {
   pipelineRunDetailsPage.verifyTitle();
 });

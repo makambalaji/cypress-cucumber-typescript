@@ -36,10 +36,6 @@ When('create the application with s2i builder image', () => {
   // TODO: implement step
 });
 
-When('user type {string} into the Git Repo url text box', (gitRepoUrl: string) => {
-  addPage.enterGitUrl(gitRepoUrl);
-});
-
 When('user type {string} into the Image name from External registry text box', (imageName: string) => {
   containerImage.enterExternalRegistryImageName(imageName);
 });
@@ -48,11 +44,7 @@ When('select {string} radio button on Add page', (resourceType: string) => {
  addPage.selectResource(resourceType)
 });
 
-When('click Create button on Add page', () => {
- addPage.clicKCreate();
-});
-
-When('user search and select the {string} card', (cardName: string) => {
+When('user searches and selects the {string} card', (cardName: string) => {
  catalogPage.search(cardName);
 });
 
@@ -60,15 +52,11 @@ When('create the application with the selected builder image', () => {
   // TODO: implement step
 });
 
-When('type name as {string}', (workloadName: string) => {
+When('user enters name as {string}', (workloadName: string) => {
   addPage.enterComponentName(workloadName)
 });
 
-When('select the resource type {string} radio button on Add page', (optionName: string) => {
-  addPage.selectResource(optionName);
-});
-
-Then('user redirects to page with header name {string}', (headerName: string) => {
+Then('user will be redirected to page with header name {string}', (headerName: string) => {
   addPage.verifyTitle(headerName);
 });
 
@@ -76,6 +64,6 @@ Then('Knaive Service option is displayed in Resources section', () => {
   cy.get(addPageObj.resources.knative).scrollIntoView().should('be.visible');
 });
 
-Then('created workload {string} is present in List View of topology page', (workloadName: string) => {
+Then('user is able to see workload {string} on topology page list view', (workloadName: string) => {
   topologyPage.verifyWorkloadInTopologyPage(workloadName);
 });

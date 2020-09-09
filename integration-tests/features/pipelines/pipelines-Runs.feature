@@ -24,7 +24,7 @@ Scenario Outline: Start the pipeline with one resource : P-04-TC03
     Given pipeline "<pipeline_name>" consists of task "<task_name>" with one git resource
     When user selects "Start" option from kebab menu for pipeline "<pipeline_name>"
     And fills the details in Start Pipeline popup
-    Then page redirects to Pipeline Run Details page
+    Then page will be redirected to Pipeline Run Details page
     And Pipeline run status displays as "Running"
     And pipeline run details for "<pipeline_name>" display in Pipelines page
 
@@ -48,7 +48,7 @@ Examples:
 Scenario Outline: Pipeline Run Details page for pipeline without resource : P-06-TC03
     Given pipeline run is displayed for "<pipeline_name>" without resource
     When user clicks Last Run value of "<pipeline_name>"
-    Then user redirects to Pipeline Run Details page
+    Then user will be redirected to Pipeline Run Details page
     And user is able to see Details, YAML and Logs tabs
     And Details tab is displayed with field names Name, Namespace, Labels, Annotations, Created At, Owner, Status, Pipeline and Triggered by
     And Actions dropdown display on the top right corner of the page
@@ -81,7 +81,7 @@ Scenario Outline: Rerun the Pipeline Run from pipeline runs page : P-06-TC02
     Given pipeline run is displayed for "<pipeline_name>" without resource
     When user selects the Pipeline Run for "<pipeline_name>"
     And user selects Rerun option from kebab menu of "<pipeline_name>"
-    Then page redirects to pipeline runs page
+    Then page will be redirected to pipeline runs page
 
 Examples:
 | pipeline_name             |
@@ -92,7 +92,7 @@ Examples:
 Scenario Outline: Pipeline Run Details page for a pipeline with resource : P-06-TC04
     Given pipeline run is displayed for "<pipeline_name>" with resource
     When user clicks Last Run value of the pipeline "<pipeline_name>"
-    Then user redirects to Pipeline Run Details page
+    Then user will be redirected to Pipeline Run Details page
     And Pipeline Resources field will be displayed
 
 Examples:
@@ -115,7 +115,7 @@ Examples:
 Scenario Outline: Start the pipeline from Pipeline Details page : P-04-TC04
     Given pipeline "<pipeline_name>" is available in pipelines page
     When user selects "Start" option from pipeline Details Actions menu
-    Then user redirects to Pipeline Run Details page
+    Then user will be redirected to Pipeline Run Details page
 
 Examples:
 | pipeline_name             |

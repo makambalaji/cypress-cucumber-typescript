@@ -103,6 +103,10 @@ When('user navigates to Add page', () => {
   naviagteTo(devNavigationMenu.Add);
 });
 
+When('user clicks Create button on Add page', () => {
+  addPage.clicKCreate();
+});
+
 When('user selects {string} option from kebab menu', (option: string) => {
   cy.byTestActionID(option).click();
 });
@@ -125,18 +129,18 @@ Then('user is at the Pipeline Builder page', () => {
   pipelineBuilderPage.verifyTitle();
 });
 
-Then('user redirects to Pipeline Run Details page', () => {
+Then('user will be redirected to Pipeline Run Details page', () => {
   pipelineRunDetailsPage.verifyTitle();
 });
 
-Then('user redirects to Topology page', () => {
+Then('user will be redirected to Topology page', () => {
   topologyPage.verifyTopologyPage();
 });
 
-Then('user redirects to Add page', () => {
+Then('user will be redirected to Add page', () => {
   cy.get('h1.ocs-page-layout__title').should('have.text', 'Add');
 });
 
-Then('user redirects to Pipelines page', () => {
+Then('user will be redirected to Pipelines page', () => {
   cy.titleShouldBe('Pipelines');
 });

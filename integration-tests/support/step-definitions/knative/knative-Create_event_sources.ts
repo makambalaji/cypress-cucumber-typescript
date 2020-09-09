@@ -72,11 +72,11 @@ When('type Subject Kind as {string}', (subjectKind: string) => {
  cy.log(subjectKind);
 });
 
-Then('user redirects to page with header name {string}', (pageTitle: string) => {
+Then('user will be redirected to page with header name {string}', (pageTitle: string) => {
  eventSourcesPage.verifyTitle(pageTitle);
 });
 
-Then('able to see event source types like ApiServerSource, ContainerSource, CronJobSource, PingSource, SinkBinding', () => {
+Then('able to see event source enters like ApiServerSource, ContainerSource, CronJobSource, PingSource, SinkBinding', () => {
   app.waitForLoad();
   eventSourcesPage.verifyEventSourceType('Api Server Source');
   eventSourcesPage.verifyEventSourceType('Container Source');

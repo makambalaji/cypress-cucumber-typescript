@@ -57,8 +57,8 @@ Scenario: Install the dynamic event operator : Kn-09-TC01, Kn-09-TC02
    When user executes commands from cli as "kubectl apply -f https://github.com/knative/eventing-contrib/releases/download/v0.14.1/github.yaml"
    And user navigates to Add page
    And user clicks on "Event sources" card
-   Then user redirects to Event Sources page
-   And GitHub Source is displayed in Types section
+   Then user will be redirected to Event Sources page
+   And GitHub Source is displayed in enters section
 
 
 @regression, @smoke
@@ -98,7 +98,7 @@ Scenario: Uninstall the Pipeline Operator from Operator Hub page : P-013-TC01, P
    Given user is at Operator Hub page with the header name "OperatorHub"
    When user uninstalls the pipeline operator from right side bar
    And clicks on Unistall button present in popup with header message Uninstall Operator?
-   Then user redirects to Installed operators page
+   Then user will be redirected to Installed operators page
    And Installed operators page will not contain "OpenShift Pipelines Operator"
 
 

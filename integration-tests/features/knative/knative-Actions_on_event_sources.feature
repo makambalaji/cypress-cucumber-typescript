@@ -23,7 +23,7 @@ Scenario: Move the sink via context menu to link differnt knative Service : Kn-1
    And event source "sink-binding" is higlighted on topology page
    And knative service, event source and sink connector are present in topology page
    When user right clicks on the event source
-   And selects "Move Sink" from context menu
+   And user selects "Move Sink" from context menu
    And selects the knative service "nodejs-ex-git-1" from Resource dropdown
    And user clicks on save
    Then user is connected to differnt knative Service "nodejs-ex-git-1"
@@ -35,6 +35,6 @@ Scenario: Delete event source : Kn-11-TC06
    And event source "sink-binding" is higlighted on topology page
    And knative service, event source and sink connector are present in topology page
    When user right clicks on the event source
-   And selects "Delete SinkBinding" from context menu
+   And user selects "Delete SinkBinding" from context menu
    And selects the Delete option on "Delete SinkBinding?" modal
    Then event source "sink-binding" will not be displayed in topology page

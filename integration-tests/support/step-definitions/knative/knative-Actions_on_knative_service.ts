@@ -67,12 +67,12 @@ When('add the label {string} to exisitng labels list in Edit Labels modal', (lab
   editLabels.enterLabel(labelName);
 });
 
-When('clicks save button on the {string} modal', (modalTitle: string) => {
+When('user clicks save button on the {string} modal', (modalTitle: string) => {
   cy.alertTitleShouldBe(modalTitle);
   editLabels.clicKSave();
 });
 
-When('clicks cancel button on the {string} modal', (modalTitle: string) => {
+When('user clicks cancel button on the {string} modal', (modalTitle: string) => {
   cy.alertTitleShouldBe(modalTitle);
   editLabels.clickCancel();
 });
@@ -89,7 +89,7 @@ Given('service should have at least 1 revision', () => {
   // TODO: implement step
 });
 
-When('user selects {string} option from context menu of knative service {string}', (option: string, knativeServiceName: string) => {
+When('user selects {string} context menu option of knative service {string}', (option: string, knativeServiceName: string) => {
   topologyPage.componentNode(knativeServiceName).click();
   topologyPage.selectContextMenuAction(option);
 });
@@ -104,19 +104,15 @@ Given('number of annotations are {string} present in {string} service side bar d
   topologySidePane.verifyNumberOfAnnotations(numOfAnnotations);
 });
 
-When('types annotation key as {string}', (key: string) => {
+When('enters annotation key as {string}', (key: string) => {
   editAnnotations.enterKey(key);
 });
 
-When('types annotation value as {string}', (value: string) => {
+When('enters annotation value as {string}', (value: string) => {
   editAnnotations.enterValue(value);
 });
 
 When('removes the label {string} from exisitng labels list in {string} modal', (a: string, b: string) => {
- cy.log(a, b,)
-});
-
-When('types {string} into the {string} text box', (a: string, b: string) => {
  cy.log(a, b,)
 });
 

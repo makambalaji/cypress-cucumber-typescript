@@ -28,22 +28,14 @@ Then('page contains From Git, Container Image, From Dockerfile, YAML, From Catal
   addPage.verifyCard('Helm Chart');
 });
 
-Given('cluster is installed with pipeline operator', () => {
-  
+Then('user is able to see message {string} on Add page', (message: string) => {
+  cy.log(message);
 });
 
-Then('message displays as {string}', (a: string) => {
-  cy.log(a)
-});
-
-Then('page contains Pipeline card', () => {
+Then('user is able to see Pipeline card on Git form', () => {
   addPage.verifyCard('Pipeline');
 });
 
-Then('page contains Operator Backed card', () => {
-  addPage.verifyCard('Operator Backed');
-});
-
-Then('page contains Event Soruces card', () => {
-  addPage.verifyCard('Event Source');
+Then('user is able to see {string} card on Add page', (cardName: string) => {
+  addPage.verifyCard(cardName);
 });

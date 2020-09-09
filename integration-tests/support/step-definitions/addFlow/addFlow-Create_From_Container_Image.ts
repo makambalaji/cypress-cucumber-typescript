@@ -8,7 +8,7 @@ Given('user is at Deploy Image page', () => {
   addPage.selectCardFromOptions(addOptions.ContainerImage);
 });
 
-When('user types Image name from external registry as {string}', (imageName: string) => {
+When('user enters Image name from external registry as {string}', (imageName: string) => {
   containerImage.enterExternalRegistryImageName(imageName);
 });
 
@@ -20,16 +20,16 @@ Then('image name gets Validated', () => {
   cy.get('#form-input-searchTerm-field-helper').should('have.text', 'Validated');
 });
 
-Then('Application name displays as {string}', (appName: string) => {
+Then('application name displays as {string}', (appName: string) => {
   cy.get(addPageObj.appName).should('have.value', appName);
 });
 
-Then('Name displays as {string} in Import from Docker file page', (nodeName: string) => {
+Then('name displays as {string} in Import from Docker file page', (nodeName: string) => {
   cy.get(addPageObj.nodeName).should('have.value', nodeName);
   cy.get(addPageObj.cancel).click();
 });
 
-Then('Name displays as {string}', (nodeName: string) => {
+Then('name displays as {string}', (nodeName: string) => {
   cy.get(addPageObj.nodeName).should('have.value', nodeName);
 });
 
@@ -46,7 +46,7 @@ Then('node is displayed with name {string}', (nodeName: string) => {
   topologyPage.verifyWorkloadInTopologyPage(nodeName);
 });
 
-When('user selects Projects as {string} from internal registry', (projectName: string) => {
+When('user selects Project as {string} from internal registry', (projectName: string) => {
   containerImage.selectProject(projectName)
 });
 
@@ -54,11 +54,11 @@ When('user selects Image stream tag from internal registry', () => {
   containerImage.selectInternalImageRegistry();
 });
 
-When('selects Image Stream as {string} from internal registry', (imageSrream: string) => {
+When('user selects Image Stream as {string} from internal registry', (imageSrream: string) => {
   containerImage.selectImageStream(imageSrream);
 });
 
-When('selects tag as {string} from internal registry', (tag: string) => {
+When('user selects tag as {string} from internal registry', (tag: string) => {
   containerImage.selectTag(tag);
 });
 

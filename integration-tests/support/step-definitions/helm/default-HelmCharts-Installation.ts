@@ -33,7 +33,7 @@ When('user clicks on the {string} helm chart card', (helmChartName: string) => {
   catalogPage.selectHelmChartCard(helmChartName);
 });
 
-When('user types Release Name as {string}', (releaseName: string) => {
+When('user enters Release Name as {string}', (releaseName: string) => {
   catalogPage.enterReleaseName(releaseName);
 });
 
@@ -63,18 +63,9 @@ When('user right clicks on the helm release {string}', (helmReleaseName: string)
   topologyPage.appNode(helmReleaseName).trigger('contextmenu', {force: true});
 });
 
-Then('user sees the context menu with actions', () => {
+Then('user is able to see the context menu with actions Upgrade, Rollback and Uninstall Helm Release', () => {
   cy.get('ul[role="menu"]').should('be.visible');
-});
-
-Then('user sees the Upgrade action item', () => {
   cy.byTestActionID('Upgrade').should('be.visible');
-});
-
-Then('user sees the Rollback action item', () => {
   cy.byTestActionID('Rollback').should('be.visible');
-});
-
-Then('user sees the Uninstall Helm Release action item', () => {
   cy.byTestActionID('Uninstall Helm Release').should('be.visible');
 });

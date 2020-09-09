@@ -23,7 +23,7 @@ When('fills the details in Start Pipeline popup', () => {
   startPipeline.start();
 });
 
-Then('page redirects to pipeline run details page', () => {
+Then('page will be redirected to pipeline run details page', () => {
   pipelineRunDetailsPage.verifyTitle();
 });
 
@@ -126,11 +126,11 @@ Then('status displays as {string} in pipeline run details page', (PipelineStatus
   pipelineRunDetailsPage.fieldDetails('Status', PipelineStatus);
 });
 
-Then('page redirects to pipeline run details page', () => {
+Then('page will be redirected to pipeline run details page', () => {
   pipelineRunDetailsPage.verifyTitle();
 });
 
-Then('page redirects to pipeline runs page', () => {
+Then('page will be redirected to pipeline runs page', () => {
   pipelienRunsPage.verifyTitle();
 });
 

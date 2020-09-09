@@ -107,11 +107,11 @@ Given('helm chart is installed', () => {
   topologyPage.verifyWorkloadInTopologyPage('nodejs-example');
 });
 
-Then('helm releases page will get opened', () => {
+Then('user will be redirected to Helm releases page', () => {
   cy.titleShouldBe('Helm Releases');
 });
 
-Then('user will see the message of no helm charts present', () => {
+Then('user is able to see the message as no helm charts present', () => {
   helmPage.verifyMessage();
 });
 

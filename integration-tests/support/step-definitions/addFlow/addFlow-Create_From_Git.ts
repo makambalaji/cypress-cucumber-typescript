@@ -7,7 +7,7 @@ Given('user is at Import from git page', () => {
   addPage.selectCardFromOptions(addOptions.Git);
 });
 
-When('user types Git Repo url as {string}', (gitUrl: string) => {
+When('user enters Git Repo url as {string}', (gitUrl: string) => {
   addPage.enterGitUrl(gitUrl);
 });
 
@@ -31,16 +31,8 @@ Then('Name displays as {string}', (nodeName: string) => {
   cy.get(addPageObj.nodeName).should('have.value', nodeName);
 });
 
-When('clicks Create button on Add page', () => {
-  addPage.clicKCreate();
-});
-
-When('selects {string} resource type', (resourceType: string) => {
+When('user selects resource type as {string}', (resourceType: string) => {
   addPage.selectResource(resourceType);
-});
-
-When('click Create button on Add page', () => {
-  addPage.clicKCreate();
 });
 
 Then('created workload {string} is present in topology page', (workloadName: string) => {
@@ -51,31 +43,31 @@ Then('created workload is linked to existing application', () => {
   
 });
 
-When('types Application name as {string}', (appName: string) => {
+When('user enters Application name as {string}', (appName: string) => {
   addPage.enterAppName(appName);
 });
 
-When('types Name as {string}', (name: string) => {
+When('user enters Name as {string}', (name: string) => {
   addPage.enterComponentName(name);
 });
 
-When('unselect the advanced option Create a route to the application', () => {
+When('user unselects the advanced option Create a route to the application', () => {
   addPage.unselectRoute();
 });
 
-When('type name as {string} in General section', (name: string) => {
+When('user enters name as {string} in General section', (name: string) => {
   addPage.enterComponentName(name);
 });
 
-When('click {string} link in Advanced Options section', (linkName: string) => {
+When('user clicks {string} link in Advanced Options section', (linkName: string) => {
   cy.byButtonText(linkName).click();
 });
 
-When('type Hostname as {string}', (hostName: string) => {
+When('user enters Hostname as {string}', (hostName: string) => {
   cy.get(addPageObj.advancedOptions.routing.hostname).type(hostName);
 });
 
-When('type Path as {string}', (path: string) => {
+When('user enters Path as {string}', (path: string) => {
   cy.get(addPageObj.advancedOptions.routing.path).type(path);
 });
 
@@ -85,12 +77,8 @@ When('select default Target Port', () => {
   // cy.get('li button[data-test-id="dropdown-menu"]').eq(0).click();
 });
 
-When('user types name as {string} in General section', (name: string) => {
+When('user enters name as {string} in General section', (name: string) => {
   addPage.enterComponentName(name);
-});
-
-When('clicks {string} link in Advanced Options section', (linkName: string) => {
-  cy.byButtonText(linkName).click();
 });
 
 When('unselects {string} checkbox in build configuration section', (checkBoxName: string) => {
@@ -110,11 +98,11 @@ When('unselects {string} checkbox in build configuration section', (checkBoxName
   }
 });
 
-When('type Name as {string} in Environment Variables section', (envName: string) => {
+When('user enters Name as {string} in Environment Variables section', (envName: string) => {
   cy.get(addPageObj.advancedOptions.buildConfig.envName).type(envName);
 });
 
-When('type Value as {string} in Environment Variables section', (envValue: string) => {
+When('user enters Value as {string} in Environment Variables section', (envValue: string) => {
   cy.get(addPageObj.advancedOptions.buildConfig.envValue).type(envValue);
 });
 
@@ -132,31 +120,31 @@ When('verify {string} checkbox is seleceted', (checkBoxName: string) => {
 //  cy.get('div.pf-c-check label').contains(checkBoxName).next('input').should('be.checked');
 });
 
-When('type Name as {string} in Environment Variables Runtime only section', (envName: string) => {
+When('user enters Name as {string} in Environment Variables Runtime only section', (envName: string) => {
   cy.get(addPageObj.advancedOptions.deployment.envName).type(envName);
 });
 
-When('type Value as {string} in Environment Variables Runtime only section', (envValue: string) => {
+When('user enters Value as {string} in Environment Variables Runtime only section', (envValue: string) => {
   cy.get(addPageObj.advancedOptions.deployment.envName).type(envValue);
 });
 
-When('type CPU Request as {string} in CPU section', (cpuResquestValue: string) => {
+When('user enters CPU Request as {string} in CPU section', (cpuResquestValue: string) => {
   cy.get(addPageObj.advancedOptions.resourceLimit.cpuRequest).type(cpuResquestValue);
 });
 
-When('type CPU Limits as {string} in CPU section', (cpuLimitValue: string) => {
+When('user enters CPU Limits as {string} in CPU section', (cpuLimitValue: string) => {
   cy.get(addPageObj.advancedOptions.resourceLimit.cpuLimit).type(cpuLimitValue);
 });
 
-When('type Memory Request as {string} in Memory section', (memoryRequestValue: string) => {
+When('user enters Memory Request as {string} in Memory section', (memoryRequestValue: string) => {
   cy.get(addPageObj.advancedOptions.resourceLimit.memoryRequest).type(memoryRequestValue);
 });
 
-When('type Memory Limit as {string} in Memory section', (memoryLimitValue: string) => {
+When('user enters Memory Limit as {string} in Memory section', (memoryLimitValue: string) => {
   cy.get(addPageObj.advancedOptions.resourceLimit.memoryLimit).type(memoryLimitValue);
 });
 
-When('type number of replicas as {string} in Replicas section', (replicaCount: string) => {
+When('user enters number of replicas as {string} in Replicas section', (replicaCount: string) => {
   cy.get(addPageObj.advancedOptions.scaling.replicaCount).type(replicaCount)
 });
 
@@ -172,7 +160,7 @@ When('fill the Startup Probe details', () => {
 
 });
 
-When('type label as {string}', (labelName: string) => {
+When('user enters label as {string}', (labelName: string) => {
   cy.get(addPageObj.advancedOptions.labels).type(labelName);
 });
 

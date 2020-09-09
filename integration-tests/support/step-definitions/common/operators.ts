@@ -18,11 +18,11 @@ When('user executes commands from cli as {string}', (command: string) => {
   cy.exec(command);
 });
 
-Then('user redirects to Event Sources page', () => {
+Then('user will be redirected to Event Sources page', () => {
   cy.titleShouldBe('Event Sources');
 });
 
-Then('GitHub Source is displayed in Types section', () => {
+Then('GitHub Source is displayed in enters section', () => {
   eventSourcesPage.verifyEventSourceType('Git Hub Source');
 });
 
@@ -53,7 +53,7 @@ When('user installs the pipeline operator with default values', () => {
   operatorsPage.installOperator();
 });
 
-Then('page redirects to Installed operators', () => {
+Then('page will be redirected to Installed operators', () => {
   cy.titleShouldBe('Installed Operators');
 });
 
@@ -161,7 +161,7 @@ Then('Event sources card display in +Add page in dev perspecitve', () => {
   addPage.verifyCard('Event Source');
 });
 
-Then('user redirects to Installed operators page', () => {
+Then('user will be redirected to Installed operators page', () => {
   cy.titleShouldBe('Installed Operators');
 });
 

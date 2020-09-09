@@ -8,7 +8,7 @@ Background:
 
 @regression, @smoke
 Scenario Outline: Sidebar of workload with "<resource_type>": T-05-TC01
-   Given user created git workload "<workload_name>" with resource type "<resource_type>" 
+   Given user created workload "<workload_name>" with resource type "<resource_type>" 
    When user clicks on workload "<workload_name>"
    Then right sidebar opens with Resources tab selected by default 
    And user checks for sidebar tabs as Details, Resources and Monitoring

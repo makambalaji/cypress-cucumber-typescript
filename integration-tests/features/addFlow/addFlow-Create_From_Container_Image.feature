@@ -10,7 +10,7 @@ Background:
 @regression
 Scenario: Deploy image page details on entering external registry image name : A-05-TC01
    Given user is at Deploy Image page
-   When user types Image name from external registry as "openshift/hello-openshift"
+   When user enters Image name from external registry as "openshift/hello-openshift"
    Then image name gets Validated
    And Application name displays as "hello-openshift-app"
    And Name displays as "hello-openshift"
@@ -20,9 +20,9 @@ Scenario: Deploy image page details on entering external registry image name : A
 @regression, @smoke
 Scenario: Create the container image with extrenal registry : A-05-TC02
    Given user is at Deploy Image page
-   When user types Image name from external registry as "openshift/hello-openshift"
+   When user enters Image name from external registry as "openshift/hello-openshift"
    And user clicks Create button on Deploy Image page
-   Then user redirects to Topology page
+   Then user will be redirected to Topology page
    And node is displayed with name "hello-openshift"
 
 
@@ -30,20 +30,20 @@ Scenario: Create the container image with extrenal registry : A-05-TC02
 Scenario: Create the container image with internal registry : A-05-TC03
    Given user is at Deploy Image page
    When user selects Image stream tag from internal registry 
-   And user selects Projects as "openshift" from internal registry
-   And selects Image Stream as "golang" from internal registry
-   And selects tag as "latest" from internal registry
+   And user selects Project as "openshift" from internal registry
+   And user selects Image Stream as "golang" from internal registry
+   And user selects tag as "latest" from internal registry
    And user clicks Create button on Deploy Image page
-   Then user redirects to Topology page
+   Then user will be redirected to Topology page
    And node is displayed with name "golang"
 
 
 @regression
-Scenario: Perform cancel operation on Container image form should redirects the user to Add page : A-05-TC04 
+Scenario: Perform cancel operation on Container image form : A-05-TC04 
    Given user is at Deploy Image page
    When user selects Image stream tag from internal registry 
-   And user selects Projects as "openshift" from internal registry
-   And selects Image Stream as "golang" from internal registry
-   And selects tag as "latest" from internal registry
+   And user selects Project as "openshift" from internal registry
+   And user selects Image Stream as "golang" from internal registry
+   And user selects tag as "latest" from internal registry
    And user clicks Cancel button on Deploy Image page
-   Then user redirects to Add page
+   Then user will be redirected to Add page

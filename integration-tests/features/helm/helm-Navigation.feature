@@ -10,8 +10,8 @@ Background:
 Scenario: Open the Helm tab on the navigation bar when helm charts are absent: HR-11-TC02
     Given user is at developer perspecitve
     When user clicks on the Helm tab
-    Then helm releases page will get opened
-    And user will see the message of no helm charts present
+    Then user will be redirected to Helm releases page
+    And user is able to see the message as no helm charts present
     And user will get the link to install helm charts from developer catalog
 
 
@@ -41,7 +41,7 @@ Scenario: Install Helm Chart: HR-02-TC01, HR-02-TC03, HR-02-TC06
     And user clicks on the "Nodejs Ex K v0.2.0" helm chart card
     And user clicks on the Install Helm Chart button on side bar
     And user clicks on the Install button
-    Then user redirects to Topology page
+    Then user will be redirected to Topology page
     And Topology page have the helm chart workload "nodejs-example"
 
 
@@ -49,7 +49,7 @@ Scenario: Install Helm Chart: HR-02-TC01, HR-02-TC03, HR-02-TC06
 Scenario: Open the Helm tab on the navigation bar when helm charts are present: HR-11-TC01
     Given helm chart is installed
     When user clicks on the Helm tab
-    Then helm releases page will get opened
+    Then user will be redirected to Helm releases page
     And user will see the helm charts listed
 
 
@@ -107,7 +107,7 @@ Scenario: Search for the Helm Chart: HR-11-TC07
 
 
 @regression, @smoke
-Scenario: Helm release details page display: HR-11-TC08
+Scenario: Helm release details page : HR-11-TC08
     Given user is at the Helm page with one helm release
     When user clicks on the helm release name "nodejs-ex-k"
     Then user will see the Details page opened

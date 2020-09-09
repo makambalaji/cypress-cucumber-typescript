@@ -13,7 +13,7 @@ When('user selects {string} databse on Developer Catalog', (database: string) =>
   cy.byTestID('Template-mariadb-persistent').click();
 });
 
-When('clicks Instantiate Template button on side bar', () => {
+When('user clicks Instantiate Template button on side bar', () => {
   catalogPage.clickInstantiateButtonOnSidePane();
 });
 

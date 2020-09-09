@@ -7,22 +7,18 @@ Given('user is on Import from Docker file page', () => {
   addPage.selectCardFromOptions(addOptions.DockerFile);
 });
 
-When('user type docker git url as {string}', (gitUrl: string) => {
+When('user enters docker git url as {string}', (gitUrl: string) => {
   addPage.enterGitUrl(gitUrl);
 });
 
-When('select {string} radio button in Resoruce type section', (resourceType: string) => {
+When('user selects {string} radio button in Resoruce type section', (resourceType: string) => {
   addPage.selectResource(resourceType)
-});
-
-When('click Create button on Add page', () => {
-  addPage.clicKCreate();
 });
 
 Then('created workload {string} is present in topology page', (workloadName: string) => {
   topologyPage.verifyWorkloadInTopologyPage(workloadName);
 });
 
-When('click Cancel button on Add page', () => {
+When('user clicks Cancel button on Add page', () => {
   addPage.clickCancel();
 });

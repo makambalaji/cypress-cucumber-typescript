@@ -10,11 +10,11 @@ When('user selects knative Serving card', () => {
   catalogPage.selectKnativeServingCard();
 });
 
-When('clicks on Create button in side bar', () => {
+When('user clicks Create button in side bar', () => {
   catalogPage.clickCreateButtonOnSidePane();
 });
 
-When('type name as {string} in Create Knative Serving page', (name: string) => {
+When('user enters name as {string} in Create Knative Serving page', (name: string) => {
   cy.get(catalogPageObj.createKnativeServing.logo).should('be.visible');
   cy.get(catalogPageObj.createKnativeServing.name).type(name);
 });
