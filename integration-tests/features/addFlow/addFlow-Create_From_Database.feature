@@ -14,4 +14,4 @@ Scenario: Create the Database from Add page : A-10-TC01
     And user clicks Instantiate Template button on side bar
     And user clicks create button on Instantiate Template page with default values
     Then user will be redirected to Topology page
-    And created workload "mariadb" is present in topology page
+    And user is able to see workload "mariadb" in topology page

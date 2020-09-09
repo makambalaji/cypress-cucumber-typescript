@@ -11,7 +11,7 @@ Scenario: Create a workload from Yaml file : A-07-TC01
     Given user is at Import YAML page
     When user clicks on create button wtih default yaml
     Then user will be redirected to Topology page
-    And created workload "mariadb" is present in topology page
+    And user is able to see workload "mariadb" in topology page
  
 
 @regression

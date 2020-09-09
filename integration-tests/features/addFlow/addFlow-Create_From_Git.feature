@@ -39,7 +39,7 @@ Scenario Outline: Add new git workload with new application for resoruce type "<
    And user selects resource type as "<resource_type>"
    And user clicks Create button on Add page 
    Then user will be redirected to Topology page
-   And created workload "<name>" is present in topology page
+   And user is able to see workload "<name>" in topology page
 
 Examples:
 | git_url                                  | app_name           | name             | resource_type     |
