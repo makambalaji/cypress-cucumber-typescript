@@ -24,7 +24,7 @@ Then('application name displays as {string}', (appName: string) => {
   cy.get(addPageObj.appName).should('have.value', appName);
 });
 
-Then('name displays as {string} in Import from Docker file page', (nodeName: string) => {
+Then('name field auto populates with value {string} in Import from Docker file page', (nodeName: string) => {
   cy.get(addPageObj.nodeName).should('have.value', nodeName);
   cy.get(addPageObj.cancel).click();
 });

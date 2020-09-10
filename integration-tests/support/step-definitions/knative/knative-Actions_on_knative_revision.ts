@@ -20,7 +20,7 @@ Given('service should contain multiple revisions', () => {
   // TODO: implement step
 });
 
-When('user right clicks on the revision of knative service {string}', (serviceName: string) => {
+When('user right clicks on the revision of knative service {string} to open the context menu', (serviceName: string) => {
   topologyPage.revisionNode(serviceName).trigger('contextmenu', {force: true});
 });
 
@@ -28,11 +28,11 @@ When('user selects {string} option from knative revision context menu', (option:
   cy.byTestActionID(option).click();
 });
 
-When('removes the label {string} from existing labels list in Edit Labels modal', (labelName: string) => {
+When('user removes the label {string} from existing labels list in Edit Labels modal', (labelName: string) => {
   editLabels.removeLabel(labelName);
 });
 
-When('add the label {string} to existing labels list in Edit Labels modal', (labelName: string) => {
+When('user adds the label {string} to existing labels list in Edit Labels modal', (labelName: string) => {
   editLabels.enterLabel(labelName);
 });
 
@@ -65,7 +65,7 @@ When('user clicks {string} button on Revision Yaml page', (a: string) => {
   cy.log(a);
 });
 
-Then('user is able to see context menu with options Edit Labels, Edit Annotations, Edit Revision, Delete Revision', () => {
+Then('user is able to see Edit Labels, Edit Annotations, Edit Revision, Delete Revision options in context menu', () => {
   cy.byTestActionID('Edit Labels').should('be.visible');
   cy.byTestActionID('Edit Annotations').should('be.visible');
   cy.byTestActionID('Edit Revision').should('be.visible');

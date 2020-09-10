@@ -13,7 +13,7 @@ Scenario: The Helm Chart option on the +Add Page: HR-01-TC01
 
 
 @regression, @smoke
-Scenario: Catalog Page display on selecitng Helm chart: HR-01-TC02, HR-02-TC02
+Scenario: Developer Catalog Page when Helm Charts checkbox is selected: HR-01-TC02, HR-02-TC02
     Given user is at Add page
     When user clicks on the Helm Chart card on the Add page
     Then user will get redirected to Developer Catalog page

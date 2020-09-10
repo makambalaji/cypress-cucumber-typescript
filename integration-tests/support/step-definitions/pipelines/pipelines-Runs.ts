@@ -17,7 +17,7 @@ Given('pipeline {string} consists of task {string} with one git resource', (pipe
   store.pipelineWithOneGitResource = pipelineName;
 });
 
-When('fills the details in Start Pipeline popup', () => {
+When('user fills the details in Start Pipeline popup', () => {
   cy.alertTitleShouldBe('Start Pipeline');
   startPipeline.addGitResource('https://github.com/sclorg/nodejs-ex.git');
   startPipeline.start();

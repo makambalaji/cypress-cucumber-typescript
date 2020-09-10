@@ -29,8 +29,8 @@ Scenario: Install Helm Chart page: HR-02-TC04
 @regression, @smoke
 Scenario: Yaml view editor for Install Helm Chart page: HR-02-TC05
     Given user is at Install Helm Chart page
-    When user selects Yaml view
-    Then user able to see Yaml editor
+    When user selects YAML view
+    Then user is able to see YAML editor
 
 
 @regression, @smoke
@@ -54,27 +54,27 @@ Scenario: Open the Helm tab on the navigation bar when helm charts are present: 
 
 
 @regression
-Scenario: Enable the deployed helm charts filter: HR-11-TC02
+Scenario: Filter out deployed Helm Charts: HR-11-TC02
     Given user is at the Helm page
-    When user clicks on the filter drop down menu
+    When user clicks on the filter drop down
     And user selects checkbox for the Deployed Helm charts
     Then the checkbox for the Deployed Helm chart is checked
     And helm charts with status deployed are listed
 
 
 @regression
-Scenario: Enable the failed helm charts filter: HR-11-TC03
+Scenario: Filter out failed Helm Charts: HR-11-TC03
     Given user is at the Helm page
-    When user clicks on the filter drop down menu
+    When user clicks on the filter drop down
     And user selects checkbox for the Failed Helm charts
     Then the checkbox for the Failed Helm chart is checked
     And helm charts with status failed are listed
 
 
 @regression
-Scenario: Enable the other helm charts filter: HR-11-TC04
+Scenario: Filter out other Helm charts : HR-11-TC04
     Given user is at the Helm page
-    When user clicks on the filter drop down menu
+    When user clicks on the filter drop down
     And user selects checkbox for the Other Helm charts
     Then the checkbox for the Other Helm chart is checked
     And helm charts with status other are listed
@@ -83,7 +83,7 @@ Scenario: Enable the other helm charts filter: HR-11-TC04
 @regression
 Scenario: Select all filters: HR-11-TC05
     Given user is at the Helm page
-    When user clicks on the filter drop down menu 
+    When user clicks on the filter drop down 
     And user selects checkbox for the Deployed Helm charts
     And user selects checkbox for the Failed Helm charts
     And user selects checkbox for the Other Helm charts
@@ -102,8 +102,14 @@ Scenario: Clear all filters: HR-11-TC06
 @regression
 Scenario: Search for the Helm Chart: HR-11-TC07
     Given user is at the Helm page
-    When user searches for a helm chart
-    Then the helm charts with that search name will be shown
+    When user searches for a helm chart "Nodejs Ex K v0.2.0"
+    Then the helm chart "Nodejs Ex K v0.2.0" will be shown
+
+
+Scenario: Search for the not available Helm Chart
+    Given user is at the Helm page
+    When user searches for a helm chart "Nodejs Ex K v0.10.0"
+    # Then user is able to see message on the Helm page as "message" - update message
 
 
 @regression, @smoke

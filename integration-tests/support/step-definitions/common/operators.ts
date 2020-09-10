@@ -87,7 +87,7 @@ When('user installs the Serverless operator with default values', () => {
   operatorsPage.installOperator();
 });
 
-Given('cluster is installed with kantive serverless operator', () => {
+Given('cluster is installed with knative serverless operator', () => {
   operatorsPage.verifyOperatorInNavigationMenu('Serverless');
 });
 
@@ -125,12 +125,12 @@ When('user navigates to installed operators page in Admin perspecitve', () => {
   operatorsPage.navigateToInstalloperatorsPage();
 });
 
-When('clicks kantive eventing provided api pressent in kantive serverless operator', () => {
+When('clicks knative eventing provided api pressent in knative serverless operator', () => {
   cy.get('a[title="knativeeventings.operator.knative.dev"]').click();
 });
 
-When('click Create Kantive Eventing button present in kantive Eventing tab', () => {
-  cy.titleShouldBe('Knative Eventings');
+When('click Create knative Eventing button present in knative Eventing tab', () => {
+  cy.titleShouldBe('knative Eventings');
   cy.get('[data-test="yaml-create"]').click();
 });
 
@@ -138,12 +138,12 @@ When('click on create button', () => {
   cy.get('[type="submit"]').click();
 });
 
-When('user search and installs the kantive Camel operator with default values', () => {
+When('user search and installs the knative Camel operator with default values', () => {
   operatorsPage.searchOperator('OpenShift Serverless Operator');
   operatorsPage.selectOperator(operators.knativeCamelOperator);
   operatorsPage.verifySiedPane();
   operatorsPage.clickInstallOnSidePane();
-  operatorsPage.verifySubscriptionPage('Knative Apache Camel Operator');
+  operatorsPage.verifySubscriptionPage('knative Apache Camel Operator');
   operatorsPage.installOperator();
 });
 

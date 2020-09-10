@@ -14,7 +14,7 @@ Scenario: Add page displays with message "No workloads found" for newly created 
 
 
 @regression, @smoke
-Scenario: Display of workloads in Add Page by default : A-01-TC02
+Scenario: Display of cards in Add Page : A-01-TC02
    Given user is at Add page
    And user is at the new project namespace "aut-new-project-namespace"
    When user selects Add option from left side navigation menu
@@ -32,7 +32,7 @@ Scenario:  Pipeline card display on pipeline operator installation : A-02-TC01
 
 @regression
 Scenario:  Operator Backed card display on serverless operator installation : A-02-TC01
-   Given open shift cluster is installed with Serverless operator
+   Given user has installed Openshift Serverless operator
    And user is at developer perspecitve
    And user is at the new project namespace "aut-new-project-namespace" 
    When user selects Add option from left side navigation menu
@@ -41,8 +41,8 @@ Scenario:  Operator Backed card display on serverless operator installation : A-
 
 
 @regression, @smoke
-Scenario: Event Soruces card display on serverless operator installation : A-03-TC02
-   Given open shift cluster is installed with Serverless operator
+Scenario: Event Source card display on serverless operator installation : A-03-TC02
+   Given user has installed Openshift Serverless operator
    And user is at developer perspecitve
    And user is at the new project namespace "aut-new-project-namespace" 
    When user selects Add option from left side navigation menu

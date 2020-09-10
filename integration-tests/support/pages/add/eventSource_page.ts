@@ -41,7 +41,7 @@ export const eventSourcesPage = {
       cy.get(eventSourceObj.apiServerSource.serviceAccountName).click();
       cy.get('li').contains(serviceAccountName).click();
     },
-    selectKnativeService:(knativeService: string) => {
+    selectknativeService:(knativeService: string) => {
       cy.get(eventSourceObj.apiServerSource.sinkResource).click();
       cy.get(`[id^=${knativeService}-link]`).click();
     },
@@ -58,13 +58,13 @@ export const eventSourcesPage = {
       cy.get(eventSourceObj.sinkBinding.resource).click();
       cy.get(eventSourceObj.sinkBinding.sinkResource).then(($el) => {
         if($el.prop('disabled') === true) {
-          cy.log('Knative workload is not available, due to which Event Resource is disabled');
+          cy.log('knative workload is not available, due to which Event Resource is disabled');
           // naviagteTo(devNavigationMenu.Add);
           // addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git');
           // topologyPage.verifyTopologyPage();
         }
         else {
-          eventSourcesPage.selectKnativeService('nodejs-ex-git');
+          eventSourcesPage.selectknativeService('nodejs-ex-git');
         }
       });
       cy.get(eventSourceObj.sinkBinding.name).type(eventSourceName)

@@ -6,7 +6,7 @@ import { eventSourcesPage } from '../../pages/add/eventSource_page';
 import { naviagteTo } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
 
-When('user clicks on event source {string}', (eventSourceName: string) => {
+When('user clicks on event source {string} to open side bar', (eventSourceName: string) => {
   topologyPage.search(eventSourceName);
   cy.get('[data-type="event-source"]').eq(0).click();
 });
@@ -16,13 +16,13 @@ Given('knative service {string} is available in topology page', (serviceName: st
   cy.get('body').then(($el) => {
     cy.wait(3000);
     if($el.find('.pf-c-card__title').length !== 0) {
-      addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git',serviceName, resourceTypes.KnativeService);
+      addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git',serviceName, resourceTypes.knativeService);
     }
     else if($el.find('[data-test-id="item-filter"]').length !== 0) {
       topologyPage.search(serviceName).then(() => {
         cy.get('body').then(($el) => {
           if($el.find('.is-filtered').length === 0) {
-            addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git',serviceName, resourceTypes.KnativeService);
+            addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git',serviceName, resourceTypes.knativeService);
           }
         });
       }) ;
@@ -46,10 +46,10 @@ Given('event source {string} is available on topology page', (eventSourceName: s
   });
 });
 
-When('select the {string} from Action menu present in right side bar', (action: string) => {
+When('user selects {string} from side bar Action menu', (action: string) => {
   topologySidePane.selectNodeAction(action);
 });
 
-Then('side bar dsiplays with header name as {string}', (headerName: string) => {
+Then('user can see side bar with header name {string}', (headerName: string) => {
   topologySidePane.verifyTitle(headerName);
 });

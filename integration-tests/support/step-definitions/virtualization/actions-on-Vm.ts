@@ -1,6 +1,6 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 
-Given('user has already created VM', () => {
+Given('user has created VM', () => {
   // TODO: implement step
 });
 

@@ -7,15 +7,15 @@ Background:
 
 
 @regression, @smoke
-Scenario Outline: Sidebar of workload with "<resource_type>": T-05-TC01
+Scenario Outline: Sidebar for workload: T-05-TC01
    Given user created workload "<workload_name>" with resource type "<resource_type>" 
    When user clicks on workload "<workload_name>"
-   Then right sidebar opens with Resources tab selected by default 
-   And user checks for sidebar tabs as Details, Resources and Monitoring
+   Then user can see sidebar opens with Resources tab selected by default
+   And user can see sidebar Details, Resources and Monitoring tabs
    And user verifies name of the node "<workload_name>" and Action menu present on top of the sidebar
-   And user able to see health check notifiation for "<resource_type>"
-   And user checks for close button on top right corner of sidebar 
-
+   And user is able to see health check notifiation for "<resource_type>"
+   And user can see close button
+   
 Examples:
     | resource_type     | workload_name   |
     | deployment        | nodejs-ex-git   |

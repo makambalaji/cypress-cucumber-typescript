@@ -13,7 +13,7 @@ Then('user will be redirected to Pipeline Builder page', () => {
   pipelineBuilderPage.verifyTitle();
 });
 
-Then('Name displayed wtih default value new-pipeline', () => {
+Then('Name displayed with default value new-pipeline', () => {
   pipelineBuilderPage.verifyDefaultPipelineName();
 });
 
@@ -39,7 +39,7 @@ When('user enters pipeline name as {string}', (pipelineName: string) => {
   pipelineBuilderPage.enterPipelineName(pipelineName);
 });
 
-When('selects {string} from Task drop down', (taskName: string) => {
+When('user selects {string} from Task drop down', (taskName: string) => {
   pipelineBuilderPage.selectTask(taskName);
 });
 
@@ -53,7 +53,7 @@ When('user adds another task {string} in parallel', (taskName: string) => {
   pipelineBuilderPage.create();
 });
 
-When('clicks Create button on Pipeline Builder page', () => {
+When('user clicks Create button on Pipeline Builder page', () => {
   pipelineBuilderPage.create();
 });
 
@@ -74,7 +74,7 @@ Then('tasks displayed serially in pipelines section', () => {
   // TODO: implement step
 });
 
-When('add {string} resource with name {string} to the {string}', (resourceType: string, resourceName: string, taskName: string) => {
+When('user adds {string} resource with name {string} to the {string}', (resourceType: string, resourceName: string, taskName: string) => {
   
 });
 
@@ -82,7 +82,7 @@ When('user clicks {string} button on Pipeline Builder page', (buttonName: string
   cy.log(buttonName);
 });
 
-When('add the parameter details like Name, Description and Default Value', () => {
+When('user adds the parameter details like Name, Description and Default Value', () => {
 
 });
 
@@ -92,4 +92,20 @@ Then('task details present in pipeline details section', () => {
 
 Then('parameter details displayed in parameters section', () => {
 
+});
+
+When('user clicks Edit YAML button', () => {
+  // manual step
+});
+
+When('user clicks Continue on Switch to YAML editor', () => {
+  // manual step
+});
+
+When('user clicks Create button on Pipeline Yaml page', () => {
+  // manual step  
+});
+
+Then('user will be redirected to Pipeline Details page', () => {
+  // manual step
 });

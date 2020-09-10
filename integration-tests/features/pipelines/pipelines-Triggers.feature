@@ -8,7 +8,7 @@ Background:
 
 
 @regression, @smoke
-Scenario Outline: Add Trigger popup details : P-09-TC01
+Scenario Outline: Add Trigger modal details : P-09-TC01
     Given pipeline "<pipeline_name>" is available with git resource
     When user selects "Add Trigger" from the kebab menu for "<pipeline_name>"
     Then modal with "Add Trigger" appears  
@@ -21,11 +21,11 @@ Examples:
 
 
 @regression
-Scenario: Variables section in Add Trigger popup details : P-09-TC02
-    Given user is at Add Trigger popup
-    When selects the "github-pullreq" from Git Provider Type field
+Scenario: Variables section in Add Trigger modal details : P-09-TC02
+    Given user is at Add Trigger modal
+    When user selects the "github-pullreq" from Git Provider Type field
     And  user clicks on "show variables" link 
-    Then user should able to see "Hide Variables" link with varaibles section
+    Then user should be able to see "Hide Variables" link with varaibles section
     And variables section displayed with message "The following variables can be used in the Parameters or when created new Resources."
     And Add button is enabled
 
@@ -34,8 +34,8 @@ Scenario: Variables section in Add Trigger popup details : P-09-TC02
 Scenario Outline: Add the trigger to the pipeline from pipelines page : P-09-TC03
     Given "<pipeline_name>" is displayed on pipelines page
     When user selects "Add Trigger" from the kebab menu for "<pipeline_name>"
-    And selects the "github-pullreq" from Git Provider Type field
-    And clicks on Add button present in Add Trigger popup
+    And user selects the "github-pullreq" from Git Provider Type field
+    And user clicks on Add button present in Add Trigger modal
     Then pipelines page is displayed
     And "Remove Trigger" is displayed in kebab menu for "<pipeline_name>"
 
@@ -90,11 +90,11 @@ Scenario: Cluster Trigger Binding Details page : P-09-TC08, P-09-TC09
 
 
 @regression, @smoke
-Scenario Outline: Remove Trigger popup details : P-09-TC10
+Scenario Outline: Remove Trigger modal details : P-09-TC10
     Given Trigger is added to the pipeline "<pipeline_name>" present in pipeline details page
     And user is at pipelines page
     When user selects "Remove Trigger" from the kebab menu for "<pipeline_name>"
-    Then popup is displayed with header message "Remove Trigger"
+    Then modal is displayed with header message "Remove Trigger"
     And trigger template dropdown displayed with help text Select Trigger Template
     And Remove button will be disabled
 
@@ -108,7 +108,7 @@ Scenario Outline: Remove the trigger from pipelines page : P-09-TC11
     Given Trigger is added to the pipeline "<pipeline_name>" present in pipeline details page
     And user is at pipelines page
     When user selects "Remove Trigger" from the kebab menu for "<pipeline_name>"
-    And selet the first option from the Trigger Template drop down field
+    And user selects the first option from the Trigger Template drop down field
     And user clicks on Remove button
     Then option "Remove Trigger" is not availale in kebab menu for "<pipeline_name>"
 

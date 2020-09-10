@@ -13,7 +13,7 @@ Scenario Outline: Dockerfile details after entering git repo url: A-06-TC01
    When user enters Git Repo url as "<docker_git_url>"
    Then git url gets Validated
    And application name displays as "<app_name>"
-   And name displays as "<name>" in Import from Docker file page
+   And name field auto populates with value "<name>" in Import from Docker file page
 
 Examples:
 | docker_git_url                           | app_name           | name           |

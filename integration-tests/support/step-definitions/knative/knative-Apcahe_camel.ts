@@ -5,6 +5,6 @@ Then('user will be redirected to page with header name {string}', (headerName: s
   cy.titleShouldBe(headerName);
 });
 
-Then('able to see CamelSource event type', () => {
+Then('user is able to see CamelSource event type', () => {
   eventSourcesPage.verifyEventSourceType('Camel Source');
 });

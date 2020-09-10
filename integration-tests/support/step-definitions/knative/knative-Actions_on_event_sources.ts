@@ -18,7 +18,8 @@ Given('knative service, event source and sink connector are present in topology 
   cy.get('[data-type="event-source-link"]').should('be.visible');
 });
 
-When('user right clicks on the event source', () => {
+When('user right clicks on the event source {string} to open context menu', (eventSourceName: string) => {
+  topologyPage.search(eventSourceName);
   cy.get('[data-type="event-source"] text').eq(0).trigger('contextmenu', {force:true});
 });
 
@@ -43,7 +44,7 @@ Then('modal displays with the header name {string}', (title: string) => {
   cy.alertTitleShouldBe(title);
 });
 
-Then('selects the Delete option on {string} modal', (modalTitle: string) => {
+When('user selects the Delete option on {string} modal', (modalTitle: string) => {
   cy.alertTitleShouldBe(modalTitle);
   deleteSinkBinding.clicKDelete();
 });
@@ -57,13 +58,14 @@ Then('Resource dropdown is displayed in Move Sink modal', () => {
   moveSink.verifyResourceDropDown();
 });
 
-When('selects the knative service {string} from Resource dropdown', (knativeService: string) => {
+When('user selects the knative service {string} from Resource dropdown', (knativeService: string) => {
   cy.alertTitleShouldBe("Move Sink");
   moveSink.verifyResourceDropDown();
   moveSink.selectResource(knativeService);
 });
 
-Then('user is connected to differnt knative Service {string}', (knativeService: string) => {
+Then('user will see that event source {string} is sinked with knative Service {string}', (eventSourceName: string, knativeService: string) => {
+  cy.log(eventSourceName);
   cy.get('[data-type="event-source"] text').eq(0).click({force:true});
   topologySidePane.verifyResource(knativeService);
 });

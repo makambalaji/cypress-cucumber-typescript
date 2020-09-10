@@ -8,7 +8,7 @@ When('user clicks Database card', () => {
   addPage.selectCardFromOptions(addOptions.Database);
 });
 
-When('user selects {string} databse on Developer Catalog', (database: string) => {
+When('user selects {string} database on Developer Catalog', (database: string) => {
   catalogPage.search(database);
   cy.byTestID('Template-mariadb-persistent').click();
 });

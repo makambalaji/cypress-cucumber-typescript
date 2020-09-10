@@ -88,7 +88,7 @@ export const operatorsPage = {
         cy.byTestID('kubevirt-hyperconverged-redhat-operators-openshift-marketplace').click();
         break;
       }
-      case 'Knative Apache Camel Operator':
+      case 'knative Apache Camel Operator':
       case operators.knativeCamelOperator: {
         cy.byTestID('knative-camel-operator-community-operators-openshift-marketplace').click();
         cy.alertTitleShouldBe('Show Community Operator');

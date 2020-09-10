@@ -40,7 +40,7 @@ When('user type {string} into the Image name from External registry text box', (
   containerImage.enterExternalRegistryImageName(imageName);
 });
 
-When('select {string} radio button on Add page', (resourceType: string) => {
+When('user selects {string} radio button on Add page', (resourceType: string) => {
  addPage.selectResource(resourceType)
 });
 
@@ -48,7 +48,7 @@ When('user searches and selects the {string} card', (cardName: string) => {
  catalogPage.search(cardName);
 });
 
-When('create the application with the selected builder image', () => {
+When('user creates the application with the selected builder image', () => {
   // TODO: implement step
 });
 
@@ -60,6 +60,6 @@ Then('user will be redirected to page with header name {string}', (headerName: s
   addPage.verifyTitle(headerName);
 });
 
-Then('Knaive Service option is displayed in Resources section', () => {
+Then('Knative Service option is displayed under Resources section', () => {
   cy.get(addPageObj.resources.knative).scrollIntoView().should('be.visible');
 });

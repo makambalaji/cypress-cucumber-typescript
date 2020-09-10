@@ -7,7 +7,7 @@ import { devNavigationMenu } from '../../constants/global';
 let gitUrl = 'https://github.com/sclorg/nodejs-ex.git';
 let appName = '';
 
-Given('topology has application name with node name {string}', (componentName: string) => {
+Given('user has created a workload named {string}', (componentName: string) => {
   appName = componentName;
   naviagteTo(devNavigationMenu.Add);
   addPage.createGitWorkload(gitUrl, componentName);
@@ -27,7 +27,7 @@ Then('user can see application sidebar', () => {
   topologySidePane.verify();
 });
 
-Then('user can confirm the workload information present under resources in the sidebar', () => {
+Then('user can confirm the workload information present under resources tab in the sidebar', () => {
   topologySidePane.verifyWorkload();
 }); 
 

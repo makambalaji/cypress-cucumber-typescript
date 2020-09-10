@@ -1,14 +1,7 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { projectNameSpace, naviagteTo } from '../../pages/app';
+import { projectNameSpace } from '../../pages/app';
 import { addPage } from '../../pages/add/add_page';
 import { topologyPage } from '../../pages/topology_page';
-import { devNavigationMenu } from '../../constants/global';
-
-Given('deployment workload is present in topology', () => {
-  projectNameSpace.createNewProject('aut-topology-deployment-project');
-  addPage.createGitWorkload();
-  naviagteTo(devNavigationMenu.Topology);
-});
 
 Given('deployment-config workload is present in topology', () => {
   // TODO: implement step
@@ -41,8 +34,9 @@ When('user checks nodes and the decorators associated with them', () => {
   // TODO: implement step
 });
 
-When('user right clicks on the node', () => {
-  topologyPage.appNode('nodejs-ex-git-app').trigger('contextmenu', {force: true});
+When('user right clicks on the node {string} to open context menu', (componentNode: string) => {
+  topologyPage.componentNode(componentNode).trigger('contextmenu', {force: true});
+  topologyPage.verifyContextMenu();
 });
 
 When('user clicks on Zoom In option', () => {

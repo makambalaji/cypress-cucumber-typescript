@@ -2,24 +2,15 @@ import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { addPage, addPageObj } from '../../pages/add/add_page';
 import { topologyPage } from '../../pages/topology_page';
 
-Given('user is in the topology with deployment workload {string}', (workloadName: string) => {
-  addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git', 'nodejs-ex-git-app', workloadName);
-  topologyPage.verifyTopologyPage();
+Given('user has created workload {string}', (workloadName: string) => {
+  addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git', workloadName, 'deployment');
 });
 
-Given('user is in the topology with knative workload', () => {
-  // TODO: implement step
+Given('user has created knative workload {string}', (workloadName: string) => {
+  addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git', workloadName, 'knative');
 });
 
-When('user right clicks on the node {string}', (nodeName: string) => {
-  topologyPage.componentNode(nodeName).trigger('contextmenu', {force: true});
-});
-
-When('user sees context menu', () => {
-  topologyPage.verifyContextMenu();
-});
-
-When('selects context menu option {string}', (menuOption: string) => {
+When('user selects option {string} from context menu', (menuOption: string) => {
   topologyPage.clickContextMenuOption(menuOption);
 });
 

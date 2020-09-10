@@ -11,10 +11,10 @@ Given('user is at Import YAML page', () => {
   addPage.selectCardFromOptions(addOptions.YAML);
 });
 
-When('user clicks on create button wtih default yaml', () => {
+When('user clicks on create button with default yaml', () => {
   yamlPage.clickOnCreateButton();
 });
 
-When('user clicks on cancel button wtih default yaml', () => {
+When('user clicks on cancel button with default yaml', () => {
   yamlPage.clickOnCancelButton();
 });

@@ -22,6 +22,6 @@ export enum operators {
   pipelineOperator = 'Pipeline Operator',
   serverlessOperator = 'Serverless Operator',
   virtualizationOperator = 'Virtualization Operator',
-  knativeCamelOperator = 'Knative Apache Camel Operator',
+  knativeCamelOperator = 'knative Apache Camel Operator',
   eclipseCheOperator = 'Eclipse Che'
 }

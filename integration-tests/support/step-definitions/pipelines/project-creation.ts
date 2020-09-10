@@ -6,15 +6,15 @@ When('user selects the Create Project option from Projects dropdown on top navig
   projectNameSpace.selectCreateProjectOption();
 });
 
-When('type Name as {string} in Create Project popup', (projectName: string) => {
+When('user enters project name as {string} in Create Project modal', (projectName: string) => {
   projectNameSpace.enterProjectName(projectName);
 });
 
-When('click Create button present in Create Project popup', () => {
+When('user clicks Create button present in Create Project modal', () => {
   projectNameSpace.clickCreateButton();
 });
   
-Then('popup should get closed', () => {
+Then('modal will get closed', () => {
   projectNameSpace.verifyPopupClosed();
 });
 

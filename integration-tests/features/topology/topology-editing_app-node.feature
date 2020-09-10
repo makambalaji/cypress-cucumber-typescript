@@ -8,10 +8,10 @@ Background:
 
 @regression, @smoke
 Scenario: Editing a workload : T-06-TC14, T-06-TC15
-   Given user is in the topology with deployment workload "nodejs-ex-git"
-   When user right clicks on the node "nodejs-ex-git"
-   And user sees context menu
-   And selects context menu option "Edit nodejs-ex-git"
+   Given user has created workload "nodejs-ex-git"
+   And user is at the Topolgy page
+   When user right clicks on the node "nodejs-ex-git" to open context menu
+   And user selects option "Edit nodejs-ex-git" from context menu
    And user can see Edit form
    And user verifies that name of the node and route option is not editable
    And user verifies that Application grouping, git url, builder image version and advanced option can be edited
@@ -22,10 +22,10 @@ Scenario: Editing a workload : T-06-TC14, T-06-TC15
 
 @regression
 Scenario: Editing a knative service : T-06-TC14, T-06-TC15
-   Given user is in the topology with knative workload
-   When user right clicks on the node 
-   And user sees context menu
-   And selects context menu option "Edit Service"
+   Given user has created knative workload "nodejs-ex-git"
+   And user is at the Topolgy page
+   When user right clicks on the node "nodejs-ex-git" to open context menu
+   And user selects option "Edit Service" from context menu
    And user can see Edit form
    And user verifies that name of service and route option is not editable
    And user verifies that Application grouping, git url, builder image version and advanced option can be edited

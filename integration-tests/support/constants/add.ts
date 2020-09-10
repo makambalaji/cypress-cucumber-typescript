@@ -14,7 +14,7 @@ export enum addOptions {
 export enum resourceTypes {
   Deployment = 'Deployment',
   DeploymentConfig = 'Deployment Config',
-  KnativeService = 'Knative',
+  knativeService = 'knative',
 }
 
 export enum gitAdvancedOptions {

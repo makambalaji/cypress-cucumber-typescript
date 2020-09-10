@@ -28,7 +28,7 @@ Then('Add button is disabled', () => {
   cy.get(pipelinesObj.addTrigger.cancel).click();
 });
 
-Given('user is at Add Trigger popup', () => {
+Given('user is at Add Trigger modal', () => {
   pipelinesPage.selectKebabMenu(store.pipelineName);
   cy.byTestActionID('Add Trigger').click();
 });
@@ -37,7 +37,7 @@ When('user clicks on {string} link', (linkName: string) => {
   cy.get(pipelinesObj.addTrigger.variablesLink).contains(linkName).click();
 });
 
-Then('user should able to see {string} link with varaibles section', (linkName: string) => {
+Then('user should be able to see {string} link with varaibles section', (linkName: string) => {
   cy.get(pipelinesObj.addTrigger.variablesLink).contains(linkName).click();
 });
 
@@ -57,12 +57,12 @@ Given('{string} is displayed on pipelines page', (pipelineName: string) => {
   pipelinesPage.verifyNameInPipelinesTable(pipelineName);
 });
 
-When('selects the {string} from Git Provider Type field', (gitProviderType: string) => {
+When('user selects the {string} from Git Provider Type field', (gitProviderType: string) => {
   cy.get(pipelinesObj.addTrigger.gitProviderType).click();
   cy.get(`[data-test-dropdown-menu="${gitProviderType}"]`).click();
 });
 
-When('clicks on Add button present in Add Trigger popup', () => {
+When('user clicks on Add button present in Add Trigger modal', () => {
   cy.get(pipelinesObj.addTrigger.add).click();
 });
 
@@ -178,7 +178,7 @@ Then('Actions dropdown display on Cluster Trigger Binding page', () => {
   naviagteTo(devNavigationMenu.Pipelines);
 });
 
-When('selet the first option from the Trigger Template drop down field', () => {
+When('user selects the first option from the Trigger Template drop down field', () => {
   cy.get(pipelinesObj.removeTrigger.triggerTemplate).should('be.enabled').click();
   cy.get('[data-test-id="dropdown-menu"]').click();
 });
@@ -187,7 +187,7 @@ When('user clicks on Remove button', () => {
   cy.get(pipelinesObj.removeTrigger.remove).should('be.enabled').click();
 });
 
-Then('popup is displayed with header message {string}', (headerName: string) => {
+Then('modal is displayed with header message {string}', (headerName: string) => {
   cy.alertTitleShouldBe(headerName);
 });
 

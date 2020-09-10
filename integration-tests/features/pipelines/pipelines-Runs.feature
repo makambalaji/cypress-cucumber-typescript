@@ -23,7 +23,7 @@ Examples:
 Scenario Outline: Start the pipeline with one resource : P-04-TC03
     Given pipeline "<pipeline_name>" consists of task "<task_name>" with one git resource
     When user selects "Start" option from kebab menu for pipeline "<pipeline_name>"
-    And fills the details in Start Pipeline popup
+    And user fills the details in Start Pipeline popup
     Then page will be redirected to Pipeline Run Details page
     And Pipeline run status displays as "Running"
     And pipeline run details for "<pipeline_name>" display in Pipelines page
@@ -158,17 +158,17 @@ Scenario: Download the logs from Pipeline Details page after pipleine run: P-05-
     Given user is at the Pipeline Details page
 
 
-Scenario: Start the pipeline wtih cancelled tasks: P-07- TC04
+Scenario: Start the pipeline with cancelled tasks: P-07- TC04
     Given user is at the Pipeline Details page
     And pipeline run is available with cancelled tasks
 
 
-Scenario: Start the pipeline wtih failed tasks: P-07- TC05
+Scenario: Start the pipeline with failed tasks: P-07- TC05
     Given user is at the Pipeline Details page
     And pipeline run is available with failed tasks
 
 
-Scenario: Start the pipeline wtih successful tasks: P-07- TC06
+Scenario: Start the pipeline with successful tasks: P-07- TC06
     Given user is at the Pipeline Details page
     And pipeline run is available with failed tasks
 

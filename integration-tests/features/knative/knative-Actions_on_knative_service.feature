@@ -2,13 +2,13 @@ Feature: Perform actions on knative service
     As a user I want to perform edit or delete operations and Set Traffic Distribution on knative Service in topology page
 
 Background:
-   Given open shift cluster is installed with Serverless operator
+   Given user has installed Openshift Serverless operator
    And user is at developer perspecitve
    And user has selected namespace "aut-create-knative-actions-service"
 
 
 @regression, @smoke
-Scenario Outline: Knative service menu options: Kn-04-TC01
+Scenario Outline: knative service menu options: Kn-04-TC01
    Given knative service named "<service_name>" is higlighted on topology page
    When user right click on the knative service "<service_name>"
    Then user able to see the options like Edit Application Grouping, Set Traffic Distribution, Edit Health Checks, Edit Labels, Edit Annotations, Edit Service, Delete Service, "<service_name>"
@@ -31,7 +31,7 @@ Scenario: Add label to the exisitng labels list : Kn-04-TC03
    Given knative service named "nodejs-ex-git-1" is higlighted on topology page
    When user selects "Edit Labels" context menu option of knative service "nodejs-ex-git-1"
    And add the label "app=label" to exisitng labels list in Edit Labels modal
-   And user clicks save button on the "Edit Labels" modal
+   And user clicks the save button on the "Edit Labels" modal
    Then the label "app=label" display in "nodejs-ex-git-1" service side bar details
 
 
@@ -40,7 +40,7 @@ Scenario: Remove label from exisitng labels list : Kn-04-TC04
    Given knative service named "nodejs-ex-git-1" is higlighted on topology page
    When user selects "Edit Labels" context menu option of knative service "nodejs-ex-git-1"
    And removes the label "app=label" from exisitng labels list in "Edit Labels" modal
-   And user clicks save button on the "Edit Labels" modal
+   And user clicks the save button on the "Edit Labels" modal
    Then the label "app=label" will not display in "nodejs-ex-git-1" service side bar details
 
 
@@ -50,7 +50,7 @@ Scenario: Add labels to exisitng labels list and cancel it : Kn-04-TC05
    When user selects "Edit Labels" context menu option of knative service "nodejs-ex-git-1"
    And add the label "app=label" to exisitng labels list in Edit Labels modal
    And clicks cancel button on the "Edit Labels" modal
-   Then the label "app=label" will not display in side bar details
+   Then user will not see the label "app-label" in the Details tab of the Sidebar of "nodejs-ex-git-2"
 
 
 @regression
@@ -71,7 +71,7 @@ Scenario: Add annotation to the exisitng annonations list : Kn-04-TC12
    And clicks Add button on the Edit Annotaions modal
    And enters annotation key as "serving.knative.dev/creator "
    And enters annotation value as "kube:admin" 
-   And user clicks save button on the "Edit Annotaions" modal
+   And user clicks the save button on the "Edit Annotaions" modal
    Then number of annotaions increased to "6" in "nodejs-ex-git-1" service side bar details
 
 
@@ -90,7 +90,7 @@ Scenario: Remove annotation from exisitng annonations list : Kn-04-TC13
    And number of annotations are "6" present in side bar - details tab
    When user selects "Edit Annotaions" context menu option of knative service "nodejs-ex-git-1"
    And click on remove icon for the annotation with key "serving.knative.dev/creator" present in Edit Annotaions modal
-   And user clicks save button on the "Edit Annotaions" modal
+   And user clicks the save button on the "Edit Annotaions" modal
    Then number of annotaions decreased to "5" in side bar details
 
 
@@ -109,7 +109,7 @@ Scenario Outline: Update the service to different application group existing in 
    Given knative service named "nodejs-ex-git-1" is higlighted on topology page
    When user selects "Edit Application Grouping" context menu option of knative service "nodejs-ex-git-1"
    And select the "<application_name>" from "application" drop down present in "Edit Application Grouping" modal
-   And user clicks save button on the "Edit Application Grouping" modal
+   And user clicks the save button on the "Edit Application Grouping" modal
    And search for application name "<application_name>" 
    And click on "<application_name>" on topology page
    Then updated service is present in side bar
@@ -139,7 +139,7 @@ Scenario Outline: Update the service to new application group : Kn-04-TC06
    When user selects "Edit Application Grouping" context menu option of knative service "nodejs-ex-git-1"
    And select the "Create Application" option from "application" drop down present in "Edit Application Grouping" modal
    And type "<application_name>" into the "Application Name" text box
-   And user clicks save button on the "Edit Application Grouping" modal
+   And user clicks the save button on the "Edit Application Grouping" modal
    And search for application name "<application_name>" 
    And click on "<application_name>" on topology page 
    Then updated service is present in side bar
@@ -150,19 +150,19 @@ Examples:
 
 
 @regression
-Scenario: Set traffic distribution greater than 100% for the Revisions of the Knative Service : Kn-04-TC17
+Scenario: Set traffic distribution greater than 100% for the Revisions of the knative Service : Kn-04-TC17
    Given knative service named "nodejs-ex-git-1" is higlighted on topology page
    And service should have at least 1 revision 
    When user selects "Set Traffic Distribution" context menu option of knative service "nodejs-ex-git-1"
    And click on "Add Revision" button present in "Set Traffic Dsitribution" modal
    And type "50" into the "Split" text box of new revision
    And select the "Revision" option from "revision" drop down
-   And user clicks save button on the "Set Traffic Dsitribution" modal
+   And user clicks the save button on the "Set Traffic Dsitribution" modal
    Then error message displays as "validation failed: Traffic targets sum to 150, want 100: spec.traffic"
 
 
 @regression
-Scenario: Set traffic distribution less than 100% for the Revisions of the Knative Service : Kn-04-TC18
+Scenario: Set traffic distribution less than 100% for the Revisions of the knative Service : Kn-04-TC18
    Given knative service named "nodejs-ex-git-1" is higlighted on topology page
    And service should have at least 1 revision 
    When user selects "Set Traffic Distribution" context menu option of knative service "nodejs-ex-git-1"
@@ -170,12 +170,12 @@ Scenario: Set traffic distribution less than 100% for the Revisions of the Knati
    And click on "Add Revision" button present in "Set Traffic Dsitribution" modal
    And type "50" into the "Split" text box of new revision
    And select the "Revision" option from "revision" drop down
-   And user clicks save button on the "Set Traffic Dsitribution" modal
+   And user clicks the save button on the "Set Traffic Dsitribution" modal
    Then error message displays as "validation failed: Traffic targets sum to 75, want 100: spec.traffic"
 
 
 @regression, @smoke
-Scenario: Set traffic distribution equal to 100% for the Revisions of the Knative Service : Kn-04-TC19
+Scenario: Set traffic distribution equal to 100% for the Revisions of the knative Service : Kn-04-TC19
    Given knative service named "nodejs-ex-git-1" is higlighted on topology page
    And service should have at least 1 revision 
    When user selects "Set Traffic Distribution" context menu option of knative service "nodejs-ex-git-1"
@@ -183,7 +183,7 @@ Scenario: Set traffic distribution equal to 100% for the Revisions of the Knativ
    And click on "Add Revision" button present in "Set Traffic Dsitribution" modal
    And type "50" into the "Split" text box of new revision
    And select the "Revision" option from "revision" drop down
-   And user clicks save button on the "Set Traffic Dsitribution" modal
+   And user clicks the save button on the "Set Traffic Dsitribution" modal
    Then number of routes should get increased in side bar - resources tab - routes section
 
 

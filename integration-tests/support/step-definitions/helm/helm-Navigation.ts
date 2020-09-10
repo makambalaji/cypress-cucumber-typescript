@@ -60,11 +60,11 @@ Given('user is at Install Helm Chart page', () => {
   catalogPage.clickInstallHelmChartOnSidePane();
 });
 
-When('user selects Yaml view', () => {
+When('user selects YAML view', () => {
   cy.get(catalogPageObj.installHelmChart.yamlView).check();
 });
 
-Then('user able to see Yaml editor', () => {
+Then('user is able to see YAML editor', () => {
   cy.get('div.view-lines').should('be.visible');
   cy.get(catalogPageObj.installHelmChart.cancel).click();
 });
@@ -73,7 +73,7 @@ Then('Topology page have the helm chart workload {string}', (nodeName: string) =
   topologyPage.verifyWorkloadInTopologyPage(nodeName);
 });
 
-When('user clicks on the filter drop down menu', () => {
+When('user clicks on the filter drop down', () => {
   // TODO: implement step,
 });
 
@@ -93,8 +93,8 @@ When('user clicks on the clear all filters button', () => {
   // TODO: implement step
 });
 
-When('user searches for a helm chart', () => {
-  // TODO: implement step
+When('user searches for a helm chart {string}', (helmChartName:string) => {
+  helmPage.search(helmChartName);
 });
 
 When('user clicks on the helm release name {string}', (helmChartName:string) => {
@@ -151,12 +151,16 @@ Then('all filters selected will get removed', () => {
   // TODO: implement step
 });
 
-Then('the helm charts with that search name will be shown', () => {
-  // TODO: implement step
+Then('the helm chart {string} will be shown', (helmChartName: string) => {
+  cy.log(helmChartName);
 });
 
 Then('user will see the Details page opened', () => {
   helmDetailsPage.verifyTitle();
+});
+
+Then('user is able to see message on the Helm page as {string}', (message: string) => {
+  cy.log(message);
 });
 
 Then('user will see the Resources tab', () => {

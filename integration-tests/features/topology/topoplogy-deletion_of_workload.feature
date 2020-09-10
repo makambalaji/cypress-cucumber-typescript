@@ -7,7 +7,7 @@ Background:
 
 @regression
 Scenario: Deleting a workload through Action menu : T-09-TC01
-   Given topology has workloads
+   Given user created workload "nodejs-ex-git" with resource type "Deployment" 
    When user clicks on workload to open sidebar
    And user clicks on Action menu
    And user clicks delete workload
@@ -19,7 +19,7 @@ Scenario: Deleting a workload through Action menu : T-09-TC01
 
 @regression, @smoke
 Scenario: Deleting a workload through context menu : T-06-TC16
-   Given user created git workload "nodejs-ex-git" with resource type "Deployment" 
+   Given user created workload "nodejs-ex-git" with resource type "Deployment" 
    When user right clicks on the node "nodejs-ex-git"
    And user selects "Delete Deployment" from the context menu
    And user sees "Delete" modal box to open

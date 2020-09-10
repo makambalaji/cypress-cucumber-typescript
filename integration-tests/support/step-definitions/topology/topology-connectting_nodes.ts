@@ -1,26 +1,21 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { addPage } from '../../pages/add/add_page';
 import { topologyPage, topologySidePane } from '../../pages/topology_page';
-import { naviagteTo } from '../../pages/app';
-import { devNavigationMenu } from '../../constants/global';
 
-let firstComponent = 'nodejs-ex-git';
-let secondComponent = 'dancer-ex-git'
-
-Given('topology has atleast two nodes', () => {
-  addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git', 'nodejs-ex-git-app', firstComponent);
-  addPage.createGitWorkload('https://github.com/sclorg/dancer-ex.git', 'dancer-ex-git-app', secondComponent);
-  naviagteTo(devNavigationMenu.Topology);
-  topologyPage.componentNode(firstComponent).should('be.visible');
-  topologyPage.componentNode(secondComponent).should('be.visible');
+Given('user has creaeted two worloads {string} and {string}', (firstWorkload: string, secondWorkload: string) => {
+  addPage.createGitWorkload('https://github.com/sclorsg/nodejs-ex.git', 'nodejs-ex-git-app', firstWorkload);
+  addPage.createGitWorkload('https://github.com/sclorg/dancer-ex.git', 'dancer-ex-git-app', secondWorkload);
+  // naviagteTo(devNavigationMenu.Topology);
+  // topologyPage.componentNode(firstComponent).should('be.visible');
+  // topologyPage.componentNode(secondComponent).should('be.visible');
 });
 
-When('user opens sidebar of one of the node', () => {
-  topologyPage.componentNode(firstComponent).click();
+When('user clicks node {string} to open the side bar', (componentNode) => {
+  topologyPage.componentNode(componentNode).click();
   topologySidePane.verify();
 });
 
-When('user opens action menu and selects {string} option', (actionMenuOption: string) => {
+When('user selects {string} option from Action menu', (actionMenuOption: string) => {
   topologySidePane.selectNodeAction(actionMenuOption);
 });
 
@@ -29,12 +24,12 @@ When('user enters key as {string}', (key: string) => {
   cy.get('input[placeholder="key"][value=""]').type(key);
 });
 
-When('user enters value as name of the node to which it will be associated', () => {
+When('user enters value as name of the node {string} to which it will be associated', (secondComponent: string) => {
   cy.get('input[placeholder="value"][value=""]').type(secondComponent);
   cy.byTestID('confirm-action').click();
 });
 
-Then('user can see the arrow between two nodes', () => {
+Then('user can see that two nodes are connected with dotted arrow', () => {
   cy.get('[data-test-id="edge-handler"]').should('be.visible');
 });
 

@@ -95,15 +95,15 @@ Given('user is at Developer Catalog form with builder images', () => {
   addPage.selectCardFromOptions(addOptions.Catalog);
 });
 
-When('the user enters {string} into the Builder Image search bar', (searchItem: string) => {
+When('user enters {string} into the Builder Image search bar', (searchItem: string) => {
   catalogPage.search(searchItem);
 });
 
-When('create the application with the selected builder image', () => {
+When('user creates the application with the selected builder image', () => {
   catalogPage.isCardsDisplayed();
   // To Do
 });
 
-When('click Create button on Create Source-to-Image application', () => {
+When('user clicks Create button on Create Source-to-Image application', () => {
   catalogPage.clickOnCreateButton();
 });

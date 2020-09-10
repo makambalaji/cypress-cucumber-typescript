@@ -20,7 +20,7 @@ Given('user is on the topology sidebar of the helm release {string}', (helmRelea
   topologySidePane.verify();
 });
 
-Then('user sees the context menu with actions', () => {
+Then('user will see the actions on context menu', () => {
   cy.byTestActionID('Upgrade').should('be.visible');
   cy.byTestActionID('Rollback').should('be.visible');
   cy.byTestActionID('Uninstall Helm Release').should('be.visible');
@@ -30,11 +30,11 @@ When('user clicks on the helm release {string}', (helmReleaseName: string) => {
   cy.get('g.odc-base-node__label').should('be.visible').contains(helmReleaseName).click({force:true});
 });
 
-Then('user sees the sidebar for the helm release', () => {
+Then('user will see the sidebar for the helm release', () => {
   topologySidePane.verify();
 });
 
-Then('user sees the Details, Resources, Release Notes tabs', () => {
+Then('user will see the Details, Resources, Release Notes tabs', () => {
   topologyPage.verifyHelmReleaseSidePaneTabs();
 });
 
@@ -42,7 +42,7 @@ When('user clicks on the Actions drop down menu', () => {
   cy.byLegacyTestID('actions-menu-button').click();
 });
 
-Then('user sees the {string} action item', (actionItem: string) => {
+Then('user will see the {string} action item', (actionItem: string) => {
   cy.byTestActionID(actionItem).should('be.visible');
 });
 

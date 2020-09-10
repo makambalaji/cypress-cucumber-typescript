@@ -7,13 +7,13 @@ let secondComponent = 'dancer-ex-git';
 let thirdComponent = 'dancer-ex-git-knative';
 
 
-Given('topology has deployment,deployment-config and knative workloads', () => {
+Given('user has created deployment, deployment-config and knative-service type resources', () => {
   addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git', 'nodejs-ex-git-app', firstComponent, 'Deployment');
   addPage.createGitWorkload('https://github.com/sclorg/dancer-ex.git', 'dancer-ex-git-app', secondComponent, 'Deployment Config');
-  addPage.createGitWorkload('https://github.com/sclorg/dancer-ex.git', 'dancer-ex-git-app', thirdComponent, 'Knative');
+  addPage.createGitWorkload('https://github.com/sclorg/dancer-ex.git', 'dancer-ex-git-app', thirdComponent, 'knative');
 });
 
-When('user clicks on Display Options on top of topology', () => {
+When('user clicks on Display Options', () => {
   topologyPage.clicKDisplayOptionDropdown()
 });
 
@@ -21,7 +21,7 @@ When('user sees {string} and {string} under {string} and {string} have options a
   
 });
 
-When('user deselect {string} which is selected by default', (a: string) => {
+When('user deselects {string} which is selected by default', (a: string) => {
   // TODO: implement step
 });
 
@@ -29,11 +29,11 @@ When('user sees the labels under the workloads have dissapeared', () => {
   // TODO: implement step
 });
 
-When('user hover over application grouping the label appears', () => {
+When('user hovers over application grouping the label appears', () => {
   // TODO: implement step
 });
 
-When('user select {string} which is deselected by default', (a: string) => {
+When('user selects {string} which is deselected by default', (a: string) => {
   // TODO: implement step
 });
 
@@ -41,7 +41,7 @@ When('user checks the workloads which shows pod count instead of buider images',
   // TODO: implement step
 });
 
-When('user deselect {string} in the Expand section', (a: string) => {
+When('user deselects {string} in the Expand section', (a: string) => {
   // TODO: implement step
 });
 
@@ -49,11 +49,11 @@ Then('user can see workloads squashed in Application grouping', () => {
   // TODO: implement step
 });
 
-Then('user select {string} in the Expand section', (a: string) => {
+Then('user selects {string} in the Expand section', (a: string) => {
   // TODO: implement step
 });
 
-Then('user deselect {string} in the Expand section', (a: string) => {
+Then('user deselects {string} in the Expand section', (a: string) => {
   // TODO: implement step
 });
 

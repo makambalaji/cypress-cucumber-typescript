@@ -118,7 +118,8 @@ export const addPage = {
         cy.get(addPageObj.resources.deploymentConfig).check();
         break;
       case 'knative':
-      case 'Knative':
+      case 'knative':
+      case 'Knative Service':
         cy.get(addPageObj.resources.knative).scrollIntoView().check();
         break;
       default:

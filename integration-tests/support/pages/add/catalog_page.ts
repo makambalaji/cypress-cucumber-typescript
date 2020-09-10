@@ -23,7 +23,7 @@ export const catalogPageObj = {
       mariaDBConnectionUserName: '#MYSQL_USER',
       cancel: '#cancel',
     },
-    createKnativeServing: {
+    createknativeServing: {
       logo: 'h1.co-clusterserviceversion-logo__name__clusterserviceversion',
       name: '#root_metadata_name',
       labels: 'input[placeholder="app=frontend"]',
@@ -61,7 +61,7 @@ export const catalogPageObj = {
     clickOnCreateButton:() => cy.get(catalogPageObj.create).click(),
     clickOnCancelButton:() => cy.get(catalogPageObj.mariaDBTemplate.cancel).click(),
     selectOperatorBackedCheckBox:() => cy.byTestID('kind-cluster-service-version').check(),
-    selectKnativeServingCard:() => cy.get('div.catalog-tile-pf-title').contains('Knative Serving').click(),
+    selectknativeServingCard:() => cy.get('div.catalog-tile-pf-title').contains('knative Serving').click(),
     selectHelmChartCard:(cardName: string) => cy.get('a div.catalog-tile-pf-title').contains(cardName).click(),
     clickOnInstallButton:() => {
       cy.get(catalogPageObj.installHelmChart.install).click();
