@@ -44,7 +44,7 @@ export const naviagteTo = (opt: devNavigationMenu) => {
     case devNavigationMenu.Add: {
       cy.byLegacyTestID('+Add-header').click().then(() => {
         cy.url().should('include', 'add');
-        cy.get('.co-m-loader').should('not.be.visible');
+        app.waitForLoad();
       });
       break;
     }
@@ -122,7 +122,7 @@ export const projectNameSpace = {
 
   clickCreateButton: () => {
     cy.get('#confirm-action').click();
-    cy.get('form').should('not.be.visible');
+    // cy.get('[data-test-id="modal-title"]').contains('Create Project').should('not.be.visible');
   },
 
   createNewProject: (projectName: string) => {
@@ -205,7 +205,7 @@ export const projectNameSpace = {
 }
 
 export const app = {
-  waitForLoad:() => {
-    cy.get('.co-m-loader').should('not.be.visible');
+  waitForLoad:(timeout: number = 30000) => {
+    cy.get('.co-m-loader', {timeout: timeout}).should('not.be.visible');
   },
 }

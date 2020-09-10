@@ -71,15 +71,15 @@ Scenario: Cancel the git workload creation : A-04-TC04
 Scenario: Create workload without application route : A-04-TC05
    Given user is at Import from git page
    When user enters Git Repo url as "https://github.com/sclorg/dancer-ex.git"
-   And user enters Application name as "app-with-no-app-route"
-   And user enters Name as "node-with-no-app-route"
+   And user enters Application name as "app-no-route"
+   And user enters Name as "app-no-route"
    And user unselects the advanced option Create a route to the application
    And user clicks Create button on Add page 
    Then user will be redirected to Topology page
-   And public url is not created for node "node-with-no-app-route"
+   And public url is not created for node "app-no-route"
 
 
-@regression-1
+@regression
 Scenario Outline: Create a git workload with advanced option "Routing" : A-04-TC06
    Given user is at Import from git page
    When user enters Git Repo url as "<git_url>"

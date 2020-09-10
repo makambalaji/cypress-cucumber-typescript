@@ -6,7 +6,7 @@ Background:
 
 
 @regression
-Scenario: Add page displays with message "No workloads found" fo newly created project : A-01-TC01
+Scenario: Add page displays with message "No workloads found" for newly created project : A-01-TC01
    Given user is at the new project namespace "aut-new-project-namespace"
    When user selects Add option from left side navigation menu
    Then user will be redirected to Add page
@@ -47,4 +47,4 @@ Scenario: Event Soruces card display on serverless operator installation : A-03-
    And user is at the new project namespace "aut-new-project-namespace" 
    When user selects Add option from left side navigation menu
    Then user will be redirected to Add page
-   And user is able to see "Event Soruces" card on Add page
+   And user is able to see "Event Soruce" card on Add page

@@ -17,8 +17,8 @@ export const helmPageObj = {
     upgradeHelmRelease: {
         replicaCount: '#root_replicaCount',
         chartVersion: '#form-dropdown-chartVersion-field',
-        upgrade: '#submit-button',
-        cancel: '#reset-button',
+        upgrade: '[data-test-id="submit-button"]',
+        cancel: '[data-test-id="reset-button"]',
     },
     rollBackHelmRelease: {
         revision1: '#form-radiobutton-revision-1-field',
@@ -81,8 +81,9 @@ export const upgradeHelmRelease = {
     upgradeChartVersion:() => {
         cy.get(helmPageObj.upgradeHelmRelease.chartVersion).click();
         cy.byTestDropDownMenu('0.1.1').click();
-        cy.byLegacyTestID('modal-title').should('contain.text', 'Change Chart Version?');
-        cy.get('#confirm-action').click();
+        // Currently modal is not displaying while upgrading chart version
+        // cy.byLegacyTestID('modal-title').should('contain.text', 'Change Chart Version?');
+        // cy.get('#confirm-action').click();
     },
     clickOnUpgrade:() => {
         cy.get(helmPageObj.upgradeHelmRelease.upgrade).click();

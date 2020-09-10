@@ -98,7 +98,7 @@ Then('able to see notifier with header {string}', (headerName: string) => {
 });
 
 Then('message as {string}', (message: string) => {
- cy.log(message);
+ addPage.verifyNoWorkLoadsText(message);
 });
 
 Then('page contains Resource, Mode, Service Account Name, Sink, General sections', () => {

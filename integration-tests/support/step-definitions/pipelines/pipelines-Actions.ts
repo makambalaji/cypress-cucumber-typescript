@@ -15,17 +15,13 @@ When('user enters {string} into the pipelines search bar', (pipelineName: string
   pipelinesPage.search(pipelineName);
 });
 
-Then('pipelines table displayed with column names Name, Namespace, Last Run, Task Status, Last Run Status and Last Run Time', () => {
+Then('pipelines table displayed with column names Name, Last Run, Task Status, Last Run Status and Last Run Time', () => {
   pipelinesPage.verifyPipelineTableColumns();
 });
 
 Then('column Name display with value {string}', (pipelineName: string) => {
   pipelinesPage.verifyNameInPipelinesTable(pipelineName);
 });
-
-// Then('column Namespace display with value {string}', (projectNamespace: string) => {
-//   pipelinesPage.verifyNameSpaceInPipelinesTable(projectNamespace);
-// });
 
 Then('columns Last Run, Task Run Status, Last Run Status, Last Run Time with values display {string}', (defaultValue: string) => {
   pipelinesPage.verifyDefaultPipelineColumnValues(defaultValue);
@@ -37,10 +33,6 @@ Then('Create Pipeline button is enabled', () => {
 
 Then('kebab menu is displayed', () => {
   pipelinesPage.verifyKebabMenu();
-});
-
-When('clicks kebab menu for the pipeline {string}', (pipelineName: string) => {
-  pipelinesPage.selectKebabMenu(pipelineName);
 });
 
 Then('user will see {string} under Kebab menu', (option: string) => {
@@ -93,12 +85,16 @@ When('user selects {string} from the kebab menu for {string}', (option: string, 
   cy.byTestActionID(option).click();
 });
 
-When('user clicks kebab menu for the pipeline {string}', (pipelien: string) => {
-  cy.log(pipelien);
+When('user clicks kebab menu for the pipeline {string}', (pipelineName: string) => {
+  pipelinesPage.selectKebabMenu(pipelineName);
 });
 
 Then('kebab menu displays with options Start, Add Trigger, Remove Trigger, Edit Pipeline, Delete Pipeline', () => {
-  // TODO: implement step
+  cy.byTestActionID('Start').should('be.visible');
+  cy.byTestActionID('Add Trigger').should('be.visible');
+  cy.byTestActionID('Remove Trigger').should('be.visible');
+  cy.byTestActionID('Edit Pipeline').should('be.visible');
+  cy.byTestActionID('Delete Pipeline').should('be.visible');
 });
 
 Then('user will get redirected to Pipeline Details page with header name {string}', (headerName: string) => {

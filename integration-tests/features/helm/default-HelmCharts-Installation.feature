@@ -36,7 +36,7 @@ Scenario: Install Helm Chart from Developer Catalog Page: HR-03
 
 
 @regression, @smoke
-Scenario: Open context menu and check the actions available: HR-07-TC01
-    Given user is at the Topolgy page
+Scenario: Context menu options of helm release: HR-07-TC01
+    Given helm release "nodejs-ex-k" is present in topology page
     When user right clicks on the helm release "nodejs-ex-k"
     Then user is able to see the context menu with actions Upgrade, Rollback and Uninstall Helm Release

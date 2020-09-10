@@ -65,7 +65,7 @@ When('user selects Yaml view', () => {
 });
 
 Then('user able to see Yaml editor', () => {
-  cy.get('div.view-lines', {timeout: 5000}).should('be.visible');
+  cy.get('div.view-lines').should('be.visible');
   cy.get(catalogPageObj.installHelmChart.cancel).click();
 });
 

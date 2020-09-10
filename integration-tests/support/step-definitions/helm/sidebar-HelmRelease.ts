@@ -3,24 +3,21 @@ import { topologyPage, topologySidePane } from '../../pages/topology_page';
 import { catalogPage } from '../../pages/add/catalog_page';
 
 Given('helm release {string} is present in topology page', (workloadName: string) => {
-  cy.get('body div').then(($el) => {
-    if($el.find('h2.co-hint-block__title h4').length === 0) {
-      catalogPage.createHelmChartFromAddPage(workloadName);
-    }
-    else {
-      cy.log('helm release is available');
-    }
-  });
+  catalogPage.createHelmChartFromAddPage(workloadName);
+  // cy.get('body div').then(($el) => {
+  //   if($el.find('h2.co-hint-block__title h4').length === 0) {
+  //     catalogPage.createHelmChartFromAddPage(workloadName);
+  //   }
+  //   else {
+  //     cy.log('helm release is available');
+  //   }
+  // });
   // topologyPage.searchHelmRelease(workloadName);
 });
 
-Given('user is on the sidebar for the helm release', () => {
-  cy.get('[data-type="helm-release"] [data-kind="node"]').click();
+Given('user is on the topology sidebar of the helm release {string}', (helmReleaseName: string) => {
+  cy.get('g.odc-base-node__label').should('be.visible').contains(helmReleaseName).click({force:true});
   topologySidePane.verify();
-});
-
-When('user right clicks on the helm release', () => {
-  cy.get('[data-type="helm-release"] [data-kind="node"]').trigger('contextmenu');
 });
 
 Then('user sees the context menu with actions', () => {
@@ -29,8 +26,8 @@ Then('user sees the context menu with actions', () => {
   cy.byTestActionID('Uninstall Helm Release').should('be.visible');
 });
 
-When('user clicks on the helm release', () => {
-  cy.get('[data-type="helm-release"] [data-kind="node"]').click();
+When('user clicks on the helm release {string}', (helmReleaseName: string) => {
+  cy.get('g.odc-base-node__label').should('be.visible').contains(helmReleaseName).click({force:true});
 });
 
 Then('user sees the sidebar for the helm release', () => {

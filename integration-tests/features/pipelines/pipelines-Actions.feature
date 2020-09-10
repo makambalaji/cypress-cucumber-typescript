@@ -11,7 +11,7 @@ Scenario Outline: Newly created pipeline details in Pipelines page : P-03-TC12
    Given user is at pipelines page
    And pipeline with name "<pipeline_name>" is present on Pipelines page
    When user enters "<pipeline_name>" into the pipelines search bar
-   Then pipelines table displayed with column names Name, Namespace, Last Run, Task Status, Last Run Status and Last Run Time
+   Then pipelines table displayed with column names Name, Last Run, Task Status, Last Run Status and Last Run Time
    And column Name display with value "<pipeline_name>"
    # And column Namespace display with value "aut-pipeline-actions"
    And columns Last Run, Task Run Status, Last Run Status, Last Run Time with values display "-"
@@ -26,8 +26,9 @@ Examples:
 @regression
 Scenario: Kebab menu options of newly created pipeline in Pipelines page : P-04-TC09
    Given user is at pipelines page
-   When user enters "nodejs-ex.git" into the pipelines search bar
-   And clicks kebab menu for the pipeline "nodejs-ex.git"
+   And pipeline with name "pipelines-aaa" is present on Pipelines page
+   When user enters "pipelines-aaa" into the pipelines search bar
+   And user clicks kebab menu for the pipeline "pipelines-aaa"
    Then kebab menu displays with options Start, Add Trigger, Remove Trigger, Edit Pipeline, Delete Pipeline
 
 

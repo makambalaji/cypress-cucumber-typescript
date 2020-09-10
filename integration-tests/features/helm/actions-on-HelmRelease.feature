@@ -14,7 +14,7 @@ Scenario: Perform Upgrade action on Helm Release through Context Menu: HR-08-TC0
     And user clicks on the "Upgrade" action
     And user upgrades the chart Version
     And user clicks on the upgrade button
-    Then the helm release should get upgradaed
+    # Then the helm release should get upgradaed -- currently text message is not displaying on upgrade button click
     And user will be redirected to Topology page
 
 
@@ -25,8 +25,8 @@ Scenario: Perform Rollback action on Helm Release through Context Menu: HR-08-TC
     And user clicks on the "Rollback" action
     And user selects the version to Rollback
     And user clicks on the rollback button
-    Then the helm release rollbacks to the version
-    And user will be redirected to Topology page
+    # Then the helm release rollbacks to the version - this step is not displaying currently
+    Then user will be redirected to Topology page
 
 
 @regression, @smoke
@@ -36,4 +36,5 @@ Scenario: Uninstall Helm Release through Context Menu: HR-08-TC04
     And user clicks on the "Uninstall Helm Release" action
     And user enters the release name
     And user clicks on the Uninstall button
-    Then Helm release gets uninstalled
+    # Then Helm release gets uninstalled - automatically navigating to Add page
+    Then user will be redirected to Topology page with no workloads

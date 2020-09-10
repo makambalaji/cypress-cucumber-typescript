@@ -1,6 +1,7 @@
 import { addPage } from "../add/add_page";
 import { addOptions } from "../../constants/add";
 import { topologyPage } from "../topology_page";
+import { app } from "../app";
 
 export const catalogPageObj = {
     search: 'input[placeholder="Filter by keyword..."]',
@@ -43,7 +44,7 @@ export const catalogPageObj = {
     isCheckBoxSelected: (type: string) => cy.get(`input[title="${type}"]`).should('be.checked'),
     isCardsDisplayed:() => cy.get(catalogPageObj.card).should('be.visible'),
     search: (keyword: string) => cy.get(catalogPageObj.search).type(keyword),
-    verifyDialog:() => cy.get(catalogPageObj.sidePane.dialog, {timeout: 5000}).should('be.visible'),
+    verifyDialog:() => cy.get(catalogPageObj.sidePane.dialog).should('be.visible'),
     verifyInstallHelmChartPage:() => cy.get('form h1').eq(0).should('have.text', 'Install Helm Chart'),
     clickInstantiateButtonOnSidePane:() => {
       catalogPage.verifyDialog();
@@ -63,12 +64,11 @@ export const catalogPageObj = {
     selectKnativeServingCard:() => cy.get('div.catalog-tile-pf-title').contains('Knative Serving').click(),
     selectHelmChartCard:(cardName: string) => cy.get('a div.catalog-tile-pf-title').contains(cardName).click(),
     clickOnInstallButton:() => {
-      cy.get(catalogPageObj.installHelmChart.install).click().then(() => {
-        cy.get('div.co-m-loader', {timeout:20000}).should('not.be.visible')
-      });
+      cy.get(catalogPageObj.installHelmChart.install).click();
+      app.waitForLoad(40000);
     },
     enterReleaseName:(releaseName: string) => {
-      cy.get(catalogPageObj.installHelmChart.releaseName).type(releaseName);
+      cy.get(catalogPageObj.installHelmChart.releaseName).clear().type(releaseName);
     },
     createHelmChartFromAddPage:(releaseName: string = 'nodejs-ex-k', helmChartName: string = 'Nodejs Ex K v0.2.0') => {
       addPage.verifyCard('Helm Chart');

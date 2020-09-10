@@ -24,7 +24,7 @@ Then('builder image version drop down is displayed', () => {
 });
 
 Then('Application name displays as {string}', (appName: string) => {
-  cy.get(addPageObj.appName, {timeout:3000}).should('have.value', appName);
+  cy.get(addPageObj.appName).should('have.value', appName);
 });
 
 Then('Name displays as {string}', (nodeName: string) => {
@@ -161,11 +161,22 @@ When('user enters label as {string}', (labelName: string) => {
 });
 
 Then('public url is not created for node {string}', (nodeName: string) => {
-  topologyPage.getRoute(nodeName).should('not.be.visible');
+  topologyPage.verifyWorkloadInTopologyPage(nodeName);
+  // topologyPage.getRoute(nodeName).should('not.be.visible');
+  topologyPage.componentNode(nodeName).click({force:true});
+  topologySidePane.selectTab('Resources');
+  topologySidePane.verifySection('Routes').should('be.visible');
+  cy.get('[role="dialog"] h2').contains('Routes').next('span').should('contain.text', 'No Routes found for this resource.');
 });
 
 Then('the route of application {string} contains {string}', (nodeName: string, routeName: string) => {
-  topologyPage.getRoute(nodeName).should('contain.text', routeName);
+  // topologyPage.getRoute(nodeName).should('contain.text', routeName);
+  topologyPage.verifyWorkloadInTopologyPage(nodeName);
+  // topologyPage.getRoute(nodeName).should('not.be.visible');
+  topologyPage.componentNode(nodeName).click({force:true});
+  topologySidePane.selectTab('Resources');
+  topologySidePane.verifySection('Routes').should('be.visible');
+  cy.get('[role="dialog"] h2').contains('Routes').next('span').should('contain.text', routeName);
 });
 
 Then('verify the label {string} in side bar of application node {string}', (labelName: string, nodeName: string) => {

@@ -262,7 +262,7 @@ Then('modal should get closed on clicking OK button', () => {
 
 Then('{string} service should not be displayed in project', (serviceName: string) => {
   topologyPage.search(serviceName);
-  cy.get('.is-filtered', {timeout: 10000}).should('not.be.visible');
+  cy.get('.is-filtered').should('not.be.visible');
 });
 
 When('click save button on yaml page', () => {

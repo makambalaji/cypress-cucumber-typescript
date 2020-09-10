@@ -140,7 +140,7 @@ export const pipelinesPage = {
 
   verifyPipelineTableColumns:() => {
     cy.get(pipelinesObj.pipelinesTable.columnNames).each(($el) => {
-      expect(['Name', 'Namespace', 'Last Run', 'Task Status', 'Last Run Status', 'Last Run Time', '']).include($el.text())
+      expect(['Name', 'Last Run', 'Task Status', 'Last Run Status', 'Last Run Time', '']).include($el.text())
     });
   },
 

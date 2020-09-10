@@ -15,7 +15,7 @@ export const pipelineRunsObj = {
 
 export const pipelineRunDetailsPage = {
     verifyTitle:() => 
-      cy.get('h2.co-section-heading span', {timeout:9000}).should('have.text', 'Pipeline Run Details'),
+      cy.get('h2.co-section-heading span').should('have.text', 'Pipeline Run Details'),
   
     verifyPipelineRunStatus:(status: string) => cy.get('span.co-resource-item__resource-status').should('have.text', status),
     fieldDetails:(fieldName: string, expectedFieldValue: string) => {
@@ -66,7 +66,7 @@ export const pipelineRunDetailsPage = {
       cy.get('@dynamicLinks').eq(2).should('have.text', 'Triggered by:');
     },
     verifyActionsDropdown:() => cy.get(pipelineRunDetailsObj.actions).should('be.visible'),
-    selectPipeline:() => cy.get(pipelineRunDetailsObj.details.pipelineLink, {timeout:3000}).click(),
+    selectPipeline:() => cy.get(pipelineRunDetailsObj.details.pipelineLink).click(),
 }
 
 export const pipelienRunsPage = {

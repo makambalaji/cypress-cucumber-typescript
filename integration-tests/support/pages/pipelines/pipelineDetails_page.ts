@@ -70,7 +70,7 @@ export const triggerTemplateDetailsPage = {
     cy.get('@dynamicLinks').eq(1, {timeout: 8000}).find('dl dt').should('have.text', 'Event Listeners');
   },
   verifyActionsDropdown:() => cy.get(triggerTemplateDetailsObj.actions).should('be.visible'),
-  selectEventListener:() => cy.get(triggerTemplateDetailsObj.details.eventListenerLink, {timeout:3000}).click(),
+  selectEventListener:() => cy.get(triggerTemplateDetailsObj.details.eventListenerLink).click(),
 }
 
 export const eventListenerDetailsPage = {
