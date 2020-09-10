@@ -20,19 +20,17 @@ When('user clicks on an applicaton grouping {string}', (appName: string) => {
 
 When('user right clicks on Application {string} to open context menu', (appName: string) => {
   topologyPage.appNode(appName).trigger('contextmenu', {force: true});
-  // .invoke('show').should('be.visible').invoke('trigger', 'contextmenu');
 });
 
 Then('user can see application sidebar', () => {
   topologySidePane.verify();
 });
 
-Then('user can confirm the workload information present under resources tab in the sidebar', () => {
-  topologySidePane.verifyWorkload();
+Then('user is able to see workload {string} under resources tab in the sidebar', (workloadName: string) => {
+  topologySidePane.verifyWorkloadInAppSideBar(workloadName);
 }); 
 
 Then('user can see Add to Application and Delete Application in the Action menu', () => {
-  topologySidePane.verify();
   cy.byLegacyTestID('actions-menu-button').click();
   topologySidePane.verifyActions('Add to Application', 'Delete Application');
 });

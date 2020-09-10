@@ -1,12 +1,15 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { addPage, addPageObj } from '../../pages/add/add_page';
 import { topologyPage } from '../../pages/topology_page';
+import { naviagteTo } from '../../pages/app';
+import { devNavigationMenu } from '../../constants/global';
 
 Given('user has created workload {string}', (workloadName: string) => {
   addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git', workloadName, 'deployment');
 });
 
 Given('user has created knative workload {string}', (workloadName: string) => {
+  naviagteTo(devNavigationMenu.Add);
   addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git', workloadName, 'knative');
 });
 

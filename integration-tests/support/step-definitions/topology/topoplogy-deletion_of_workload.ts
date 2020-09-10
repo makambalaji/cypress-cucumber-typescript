@@ -34,7 +34,7 @@ When('user right clicks on the node {string}', (nodeName: string) => {
 });
 
 When('user selects {string} from the context menu', (option: string) => {
-  topologyPage.clickContextMenuOption(option);
+  cy.byTestActionID(option).click();
 });
 
 Then('workload {string} disappeared from topology', (workloadName: string) => {

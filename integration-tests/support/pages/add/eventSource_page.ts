@@ -1,7 +1,7 @@
 import { addPage } from "../add/add_page";
 import { addOptions } from "../../constants/add";
 import { topologyPage } from "../topology_page";
-import { naviagteTo } from "../app";
+import { naviagteTo, app } from "../app";
 import { devNavigationMenu } from "../../constants/global";
 
 export const eventSourceObj = {
@@ -32,7 +32,7 @@ export const eventSourcesPage = {
       cy.get(`button[aria-label="${eventSourceName}"]`).should('be.visible');
     },
     selectEventSourceType: (eventSourceName: string) => {
-      cy.get('.co-m-loader').should('not.be.visible');
+      app.waitForLoad();
       cy.get(`button[aria-label="${eventSourceName}"]`).click();
     },
     clickCreate:() => cy.byLegacyTestID('submit-button').click(),

@@ -119,11 +119,11 @@ Examples:
 
 Scenario Outline: Create a pipeline with s2i builder images : P-02-TC05
    Given user is at Developer Catalog form with builder images
-   When the user enters "node" into the Builder Image search bar
-   And create the application with the selected builder image
+   When user enters "node" into the Builder Image search bar
+   And user creates the application with the selected builder image
    And user enters Git Repo url as "<git_url>" 
    And user selects Add Pipeline checkbox in Pipelines section
-   And click Create button on Create Source-to-Image application
+   And user clicks Create button on Create Source-to-Image application
    Then user will be redirected to Topology page
    And user is able to see workload "<name>" in topology page
    

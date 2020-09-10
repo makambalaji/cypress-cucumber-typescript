@@ -17,13 +17,13 @@
     "after:tests": "npm run merge-report; npm run generate-report",
     "cypress": "npm run clean-reports; npm run test; npm run after:tests",
     "report": "allure generate allure-results --clean -o allure-report && allure open allure-report",
-    "test:virtualization:allure": "rm -rf allure-results && cypress run --env TAGS='@smoke and not @manual' -b chrome -r mocha-allure-reporter --spec \"features/virtualization/*.feature\";",
-    "test:helm:allure": "rm -rf allure-results && cypress run --env TAGS='@smoke and not @manual' -b chrome -r mocha-allure-reporter --spec \"features/helm/*.feature\";",
-    "test:topology:allure": "rm -rf allure-results && cypress run --env TAGS='@smoke and not @manual' -b chrome -r mocha-allure-reporter --spec \"features/topology/*.feature\";",
-    "test:pipeline:allure": "rm -rf allure-results && cypress run --env TAGS='@smoke and not @manual' -b chrome -r mocha-allure-reporter --spec \"features/pipelines/*.feature\";",
-    "test:knative:allure": "rm -rf allure-results && cypress run --env TAGS='@smoke and not @manual' -b chrome -r mocha-allure-reporter --spec \"features/knative/*.feature\";",
-    "test:addFlow:allure": "rm -rf allure-results && cypress run --env TAGS='@regression or @smoke and not @manual' -b chrome -r mocha-allure-reporter --spec \"features/addFlow/*.feature\";",
-    "test": "npm run test:addFlow:allure; npm run test:pipeline:allure; npm run test:knative:allure;"
+    "test:virtualization:allure": "cypress run --env TAGS='@smoke and not @manual' -b chrome -r mocha-allure-reporter --spec \"features/virtualization/*.feature\";",
+    "test:helm:allure": "cypress run --env TAGS='@smoke and not @manual' -b chrome -r mocha-allure-reporter --spec \"features/helm/*.feature\";",
+    "test:topology:allure": "cypress run --env TAGS='@smoke and not @manual' -b chrome -r mocha-allure-reporter --spec \"features/topology/*.feature\";",
+    "test:pipeline:allure": "cypress run --env TAGS='@smoke and not @manual' -b chrome -r mocha-allure-reporter --spec \"features/pipelines/*.feature\";",
+    "test:knative:allure": "cypress run --env TAGS='@smoke and not @manual' -b chrome -r mocha-allure-reporter --spec \"features/knative/*.feature\";",
+    "test:addFlow:allure": "cypress run --env TAGS='@regression or @smoke and not @manual' -b chrome -r mocha-allure-reporter --spec \"features/addFlow/*.feature\";",
+    "test": "npm run clean-results; npm run test:addFlow:allure; npm run test:pipeline:allure; npm run test:knative:allure;"
   },
   "devDependencies": {
     "@cypress/webpack-preprocessor": "^4.0.2",

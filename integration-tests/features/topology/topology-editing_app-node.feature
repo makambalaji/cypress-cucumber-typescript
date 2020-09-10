@@ -2,8 +2,8 @@ Feature: Editing an application
 	As a user, I want to edit an application   
 
 Background:
-    Given user is at the Topolgy page
-    And user has selected namespace "aut-topology-editingAppNode"
+   Given user is at developer perspecitve
+   And user has selected namespace "aut-topology-editing-app-node"
 
 
 @regression, @smoke

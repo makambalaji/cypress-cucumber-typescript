@@ -2,7 +2,7 @@ Feature: Deleteing an application node
 	As a user, I want to delete an application   
 
 Background:
-   Given user is at the Topolgy page
+   Given user is at developer perspecitve
    And user has selected namespace "aut-topology-delete-workload"
 
 @regression

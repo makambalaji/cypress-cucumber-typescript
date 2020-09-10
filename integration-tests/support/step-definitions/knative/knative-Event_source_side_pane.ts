@@ -3,7 +3,7 @@ import { topologySidePane, topologyPage } from '../../pages/topology_page';
 import { addPage } from '../../pages/add/add_page';
 import { resourceTypes } from '../../constants/add';
 import { eventSourcesPage } from '../../pages/add/eventSource_page';
-import { naviagteTo } from '../../pages/app';
+import { naviagteTo, app } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
 
 When('user clicks on event source {string} to open side bar', (eventSourceName: string) => {
@@ -12,7 +12,7 @@ When('user clicks on event source {string} to open side bar', (eventSourceName: 
 });
 
 Given('knative service {string} is available in topology page', (serviceName: string) => {
-  cy.get('.co-m-loader').should('not.be.visible');
+  app.waitForLoad();
   cy.get('body').then(($el) => {
     cy.wait(3000);
     if($el.find('.pf-c-card__title').length !== 0) {
@@ -31,7 +31,7 @@ Given('knative service {string} is available in topology page', (serviceName: st
 });
 
 Given('event source {string} is available on topology page', (eventSourceName: string) => {
-  cy.get('.co-m-loader').should('not.be.visible');
+  app.waitForLoad();
   // cy.get('body').then(($el) => {
   //   if($el.find('[data-test-id="item-filter"]').length !== 0) {
       topologyPage.search(eventSourceName).then(() => {

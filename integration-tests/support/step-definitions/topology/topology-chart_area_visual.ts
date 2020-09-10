@@ -39,6 +39,10 @@ When('user right clicks on the node {string} to open context menu', (componentNo
   topologyPage.verifyContextMenu();
 });
 
+Then('user is able to context menu options like Edit Application Grouping, Edit Pod Count, Pause Rollouts, Add Health Checks, Add Horizontal Pod Autoscaler, Add Storage, Edit Update Strategy, Edit Labels, Edit Annotations, Edit Deployment, Delete Deployment', () => {
+  topologyPage.verifyContextMenuOptions('Edit Application Grouping', 'Edit Pod Count', 'Pause Rollouts', 'Add Health Checks', 'Add Horizontal Pod Autoscaler', 'Add Storage', 'Edit Update Strategy', 'Edit Labels', 'Edit Annotations', 'Edit Deployment', 'Delete Deployment');
+});
+
 When('user clicks on Zoom In option', () => {
   // TODO: implement step
 });
@@ -145,10 +149,6 @@ Then('user sees build decorator on bottom left on knative service app which will
 
 Then('user checks revisions having label {string} and then the name', (a: string) => {
   // TODO: implement step
-});
-
-Then('user sees context menu', () => {
-  topologyPage.verifyContextMenuOptions('Add to Application', 'Delete Application');
 });
 
 Then('user sees the chart area is zoomed', () => {

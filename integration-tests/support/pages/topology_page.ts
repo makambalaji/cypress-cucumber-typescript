@@ -84,7 +84,7 @@ export const topologyPage = {
         cy.get(topologyObj.sidePane.tabs).eq(2).should('contain.text', 'Release Notes');
     },
     appNode:(appName:string) => {
-        return cy.get(`[data-id="group:"${appName}""] g.odc-resource-icon text`).contains('A')
+        return cy.get(`[data-id="group:${appName}"] g.odc-resource-icon text`).contains('A')
         // parent('g').next('text').contains(appName);
     },
     getRoute:(nodeName: string) => {
@@ -96,7 +96,7 @@ export const topologyPage = {
     componentNode:(nodeName:string) => {
         return cy.get('g.odc-base-node__label > text').contains(nodeName)
         // .parent('[data-test-id="base-node-handler"]');
-        // let ele;
+        // let ele; 
         // cy.get(`g.odc-base-node__label > text`).each(($el, index) => {
         //     if($el.mouseover().text().includes(nodeName)) {
         //         ele = cy.get(`g.odc-base-node__label > text`).eq(index)
@@ -140,6 +140,7 @@ export const topologySidePane = {
     verifyFieldValue:(fieldName: string, fieldValue: string) => cy.get(`[data-test-selector="details-item-value__${fieldName}"]`).should('contain.text', fieldValue),
     selectAddHealthChecks:() => cy.get('a').contains('Add Health Checks').click(),
     // selectActionFromMenu:(actionMenuOption: string) => cy.selectActionsMenuOption(actionMenuOption),
+    verifyWorkloadInAppSideBar:(workloadName: string) => cy.get('[role="dialog"] a').should('contain.text', workloadName),
     selectNodeAction:(action: nodeActions | string)=> {
         switch (action) {
           case 'Edit Application Grouping':

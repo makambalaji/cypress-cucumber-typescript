@@ -1,4 +1,4 @@
-import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
+import { When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { topologyPage, topologySidePane, topologyObj } from '../../pages/topology_page';
 
 When('user clicks on workload {string}', (workloadName: string) => {

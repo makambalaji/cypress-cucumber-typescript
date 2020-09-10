@@ -3,8 +3,8 @@ import { addPage } from '../../pages/add/add_page';
 import { topologyPage, topologySidePane } from '../../pages/topology_page';
 
 Given('user has creaeted two worloads {string} and {string}', (firstWorkload: string, secondWorkload: string) => {
-  addPage.createGitWorkload('https://github.com/sclorsg/nodejs-ex.git', 'nodejs-ex-git-app', firstWorkload);
-  addPage.createGitWorkload('https://github.com/sclorg/dancer-ex.git', 'dancer-ex-git-app', secondWorkload);
+  addPage.createGitWorkload('https://github.com/sclorsg/nodejs-ex.git', firstWorkload,'deployment');
+  addPage.createGitWorkload('https://github.com/sclorg/dancer-ex.git', secondWorkload,'deployment');
   // naviagteTo(devNavigationMenu.Topology);
   // topologyPage.componentNode(firstComponent).should('be.visible');
   // topologyPage.componentNode(secondComponent).should('be.visible');

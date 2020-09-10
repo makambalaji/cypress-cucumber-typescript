@@ -3,7 +3,7 @@ Feature: Connecting nodes
 
 Background:
     Given user is at developer perspecitve
-    And user has selected namespace "aut-topology-connectingNodes"
+    And user has selected namespace "aut-topology-connecting-nodes"
 
 
 @regression, @smoke

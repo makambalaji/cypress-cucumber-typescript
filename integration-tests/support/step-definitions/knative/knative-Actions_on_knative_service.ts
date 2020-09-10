@@ -3,12 +3,12 @@ import { addPage } from '../../pages/add/add_page';
 import { resourceTypes } from '../../constants/add';
 import { topologyPage, topologySidePane } from '../../pages/topology_page';
 import { editLabels, editAnnotations, deleteservice, deleteRevision } from '../../pages/popupAlerts';
-import { naviagteTo } from '../../pages/app';
+import { naviagteTo, app } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
 import { eventSourcesPage } from '../../pages/add/eventSource_page';
 
 Given('knative service named {string} is higlighted on topology page', (knativeServiceName: string) => {
-  cy.get('.co-m-loader').should('not.be.visible');
+  app.waitForLoad();
   cy.get('body').then(($el) => {
     if($el.find('.pf-c-card__title').length !== 0) {
       addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git',knativeServiceName, resourceTypes.knativeService);
@@ -45,7 +45,7 @@ Given('user has created {string} event source', (eventSourceName: string) => {
 });
 
 Given('knative services named {string} and {string} are higlighted on topology page', (knativeServiceName: string, knativeServiceName1: string) => {
-  cy.get('.co-m-loader').should('not.be.visible');
+  app.waitForLoad();
   cy.get('body').then(($el) => {
     if($el.find('.pf-c-card__title').length !== 0) {
       addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git',knativeServiceName, resourceTypes.knativeService);

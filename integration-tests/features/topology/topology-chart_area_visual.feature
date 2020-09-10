@@ -80,7 +80,7 @@ Scenario: Context menu of node : T-06-TC10
    Given user has created a workload named "nodejs-ex-git"
    And user is at the Topolgy page
    When user right clicks on the node "nodejs-ex-git" to open context menu 
-   Then user sees context menu
+   Then user is able to context menu options like Edit Application Grouping, Edit Pod Count, Pause Rollouts, Add Health Checks, Add Horizontal Pod Autoscaler, Add Storage, Edit Update Strategy, Edit Labels, Edit Annotations, Edit Deployment, Delete Deployment 
 
 
 @regression, @smoke, @manual
