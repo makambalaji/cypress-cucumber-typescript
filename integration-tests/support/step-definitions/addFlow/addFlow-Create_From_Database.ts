@@ -1,8 +1,7 @@
-import { When, Then } from 'cypress-cucumber-preprocessor/steps';
+import { When } from 'cypress-cucumber-preprocessor/steps';
 import { addPage } from '../../pages/add/add_page';
-import { catalogPageObj, catalogPage } from '../../pages/add/catalog_page';
-import { addOptions } from '../../constants/add';
-import { topologyPage } from '../../pages/topology_page';
+import { catalogPage } from '../../pages/add/catalog_page';
+import { addOptions, caatalogCards } from '../../constants/add';
 
 When('user clicks Database card', () => {
   addPage.selectCardFromOptions(addOptions.Database);
@@ -10,7 +9,7 @@ When('user clicks Database card', () => {
 
 When('user selects {string} database on Developer Catalog', (database: string) => {
   catalogPage.search(database);
-  cy.byTestID('Template-mariadb-persistent').click();
+  catalogPage.selectCardInCatalog(database);
 });
 
 When('user clicks Instantiate Template button on side bar', () => {
@@ -18,5 +17,5 @@ When('user clicks Instantiate Template button on side bar', () => {
 });
 
 When('user clicks create button on Instantiate Template page with default values', () => {
-  cy.get(catalogPageObj.create).click();
+  addPage.clicKCreate();
 });

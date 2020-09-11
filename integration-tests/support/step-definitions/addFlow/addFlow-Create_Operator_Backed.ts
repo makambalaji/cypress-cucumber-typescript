@@ -1,6 +1,7 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { catalogPage, catalogPageObj } from '../../pages/add/catalog_page';
 import { topologyPage } from '../../pages/topology_page';
+import { addPage } from '../../pages/add/add_page';
 
 Given('Opeator Backed is selected on Developer Catalog page', () => {
   catalogPage.selectOperatorBackedCheckBox();
@@ -20,9 +21,9 @@ When('user enters name as {string} in Create knative Serving page', (name: strin
 });
 
 When('user clicks create button in Create knative Serving page', () => {
-  cy.get(catalogPageObj.create).should('be.enabled').click();
+  addPage.clicKCreate();
 });
 
 When('user clicks cancel button in Create knative Serving page', () => {
-  cy.contains('Cancel').click();
+  addPage.clickCancel();
 });

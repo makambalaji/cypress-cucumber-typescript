@@ -109,5 +109,5 @@ When('user creates the application with the selected builder image', () => {
 });
 
 When('user clicks Create button on Create Source-to-Image application', () => {
-  catalogPage.clickOnCreateButton();
+  addPage.clicKCreate();
 });

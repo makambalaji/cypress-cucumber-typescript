@@ -28,7 +28,6 @@ Given('user has installed Openshift Serverless operator', () => {
   perspective.switchTo(switchPerspective.Administrator);
   operatorsPage.navigateToInstalloperatorsPage();
   operatorsPage.verifyInstalledOperator('Serverless');
-  // operatorsPage.verifyOperatorInNavigationMenu('Serverless');
 });
 
 Given('user has installed apache camel source operator', () => {

@@ -6,6 +6,7 @@ export const containerImageObj = {
       externalRegistry: {
         allowImageFromInsecureRegistry: '#form-checkbox-allowInsecureRegistry-field',
         imageName: '#form-input-searchTerm-field',
+        validatedMessage: '#form-input-searchTerm-field-helper'
       },
       internalRegistry: {
         selectProject: '#form-ns-dropdown-imageStream-namespace-field',
@@ -16,7 +17,7 @@ export const containerImageObj = {
   }
 
 
-export const containerImage = {
+export const containerImagePage = {
     enterExternalRegistryImageName: (imageName: string) => cy.get(containerImageObj.imageSection.externalRegistry.imageName).type(imageName),
     selectProject: (projectName: string) => 
       cy.selectValueFromAutoCompleteDropDown(containerImageObj.imageSection.internalRegistry.selectProject, projectName),
@@ -26,4 +27,5 @@ export const containerImage = {
       cy.selectValueFromAutoCompleteDropDown(containerImageObj.imageSection.internalRegistry.tag, tag),
     selectInternalImageRegistry:() => 
     cy.get(containerImageObj.imageSection.internalRegistryImageCheckBox).check(),
+    verifyValidatedMessage:() => cy.get(containerImageObj.imageSection.externalRegistry.validatedMessage).should('have.text', 'Validated'),
   }

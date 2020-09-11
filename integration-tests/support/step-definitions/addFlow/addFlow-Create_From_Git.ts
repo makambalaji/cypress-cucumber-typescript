@@ -24,11 +24,11 @@ Then('builder image version drop down is displayed', () => {
 });
 
 Then('Application name displays as {string}', (appName: string) => {
-  cy.get(addPageObj.appName).should('have.value', appName);
+  addPage.veirfyAppName(appName);
 });
 
 Then('Name displays as {string}', (nodeName: string) => {
-  cy.get(addPageObj.nodeName).should('have.value', nodeName);
+  addPage.veirfyNodeName(nodeName);
 });
 
 When('user selects resource type as {string}', (resourceType: string) => {
@@ -60,17 +60,15 @@ When('user clicks {string} link in Advanced Options section', (linkName: string)
 });
 
 When('user enters Hostname as {string}', (hostName: string) => {
-  cy.get(addPageObj.advancedOptions.routing.hostname).type(hostName);
+  addPage.enterRoutingHostName(hostName);
 });
 
 When('user enters Path as {string}', (path: string) => {
-  cy.get(addPageObj.advancedOptions.routing.path).type(path);
+  addPage.eneterRoutingPath(path);
 });
 
 When('select default Target Port', () => {
-  cy.get(addPageObj.advancedOptions.routing.targetPort).click();
-  cy.get('[data-test-dropdown-menu="8080-tcp"]').click();
-  // cy.get('li button[data-test-id="dropdown-menu"]').eq(0).click();
+  addPage.selectTargetPortForRouting();
 });
 
 When('user enters name as {string} in General section', (name: string) => {
@@ -78,70 +76,53 @@ When('user enters name as {string} in General section', (name: string) => {
 });
 
 When('unselects {string} checkbox in build configuration section', (checkBoxName: string) => {
-  cy.get('div.pf-c-check label').contains(checkBoxName).should('be.visible');
-  switch (checkBoxName) {
-    case 'Configure a webhook build trigger':
-      cy.get('#form-checkbox-build-triggers-webhook-field').uncheck();
-      break;
-    case 'Automatically build a new image when the builder image changes':
-      cy.get('#form-checkbox-build-triggers-image-field').uncheck();
-      break;
-    case 'Launch the first build when the build configuration is created':
-      cy.get('#form-checkbox-build-triggers-config-field').uncheck();
-      break;
-    default:
-      throw new Error(`Unable to find the "${checkBoxName}" checbox in Build Configuration Section`);
-  }
+  addPage.uncheckBuildConfigOption(checkBoxName);
 });
 
 When('user enters Name as {string} in Environment Variables section', (envName: string) => {
-  cy.get(addPageObj.advancedOptions.buildConfig.envName).type(envName);
+  addPage.enterBuildConfigEnvName(envName);
 });
 
 When('user enters Value as {string} in Environment Variables section', (envValue: string) => {
-  cy.get(addPageObj.advancedOptions.buildConfig.envValue).type(envValue);
+  addPage.enterBuildConfigEnvValue(envValue);
 });
 
 Then('build does not get started for {string}', (nodeName: string) => {
-  // topologyPage.getBuild(nodeName).should('not.be.visible');
   topologyPage.componentNode(nodeName).click({force:true});
   topologySidePane.verify();
   cy.get('div.build-overview li.list-group-item > span').should('contain.text', 'No Builds found for this Build Config.');
 });
 
 When('verify {string} checkbox is seleceted', (checkBoxName: string) => {
-  if(checkBoxName === 'Auto deploy when new image is available') {
-    cy.get('#form-checkbox-deployment-triggers-image-field').should('be.checked');
-  }
-//  cy.get('div.pf-c-check label').contains(checkBoxName).next('input').should('be.checked');
+  addPage.verifyDeploymentOptionIsChecked(checkBoxName);
 });
 
 When('user enters Name as {string} in Environment Variables Runtime only section', (envName: string) => {
-  cy.get(addPageObj.advancedOptions.deployment.envName).type(envName);
+  addPage.enterDeploymentEnvName(envName);
 });
 
 When('user enters Value as {string} in Environment Variables Runtime only section', (envValue: string) => {
-  cy.get(addPageObj.advancedOptions.deployment.envName).type(envValue);
+  addPage.enterDeploymentEnvValue(envValue);
 });
 
-When('user enters CPU Request as {string} in CPU section', (cpuResquestValue: string) => {
-  cy.get(addPageObj.advancedOptions.resourceLimit.cpuRequest).type(cpuResquestValue);
+When('user enters CPU Request as {string} in CPU section', (cpuRequestValue: string) => {
+  addPage.enterResourceLimitCPURequest(cpuRequestValue);
 });
 
 When('user enters CPU Limits as {string} in CPU section', (cpuLimitValue: string) => {
-  cy.get(addPageObj.advancedOptions.resourceLimit.cpuLimit).type(cpuLimitValue);
+  addPage.enterResourceLimitCPULimit(cpuLimitValue);
 });
 
 When('user enters Memory Request as {string} in Memory section', (memoryRequestValue: string) => {
-  cy.get(addPageObj.advancedOptions.resourceLimit.memoryRequest).type(memoryRequestValue);
+  addPage.enterResourceLimitMemoryRequest(memoryRequestValue);
 });
 
 When('user enters Memory Limit as {string} in Memory section', (memoryLimitValue: string) => {
-  cy.get(addPageObj.advancedOptions.resourceLimit.memoryLimit).type(memoryLimitValue);
+  addPage.enterResourceLimitMemoryLimit(memoryLimitValue);
 });
 
 When('user enters number of replicas as {string} in Replicas section', (replicaCount: string) => {
-  cy.get(addPageObj.advancedOptions.scaling.replicaCount).type(replicaCount)
+  addPage.enterScalingReplicaCount(replicaCount);
 });
 
 When('user fills the Readiness Probe details', () => {
@@ -157,12 +138,11 @@ When('user fills the Startup Probe details', () => {
 });
 
 When('user enters label as {string}', (labelName: string) => {
-  cy.get(addPageObj.advancedOptions.labels).type(labelName);
+  addPage.enterLabels(labelName);
 });
 
 Then('public url is not created for node {string}', (nodeName: string) => {
   topologyPage.verifyWorkloadInTopologyPage(nodeName);
-  // topologyPage.getRoute(nodeName).should('not.be.visible');
   topologyPage.componentNode(nodeName).click({force:true});
   topologySidePane.selectTab('Resources');
   topologySidePane.verifySection('Routes').should('be.visible');
@@ -170,9 +150,7 @@ Then('public url is not created for node {string}', (nodeName: string) => {
 });
 
 Then('the route of application {string} contains {string}', (nodeName: string, routeName: string) => {
-  // topologyPage.getRoute(nodeName).should('contain.text', routeName);
   topologyPage.verifyWorkloadInTopologyPage(nodeName);
-  // topologyPage.getRoute(nodeName).should('not.be.visible');
   topologyPage.componentNode(nodeName).click({force:true});
   topologySidePane.selectTab('Resources');
   topologySidePane.verifySection('Routes').should('be.visible');

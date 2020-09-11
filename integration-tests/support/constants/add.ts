@@ -26,3 +26,7 @@ export enum gitAdvancedOptions {
   Labels = 'Labels',
   HealthChecks = 'Health Checks',
 }
+
+export enum caatalogCards {
+  mariaDB = 'MariaDB',
+}

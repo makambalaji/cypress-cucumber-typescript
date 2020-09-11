@@ -1,12 +1,14 @@
 import { addPage } from "../add/add_page";
-import { addOptions } from "../../constants/add";
+import { addOptions, caatalogCards } from "../../constants/add";
 import { topologyPage } from "../topology_page";
 import { app } from "../app";
 
 export const catalogPageObj = {
     search: 'input[placeholder="Filter by keyword..."]',
-    create: 'button[type="submit"]',
     card: 'a.pf-c-card',
+    cards: {
+      mariaDBTemplate: '[data-test="Template-mariadb-persistent"]'
+    },
     sidePane: {
       dialog: '[role="dialog"]',
       instantiateTemplate: 'a[title="Instantiate Template"]',
@@ -21,7 +23,6 @@ export const catalogPageObj = {
       imageSrreamNameSpace: '#NAMESPACE',
       databaseServiceName: '#DATABASE_SERVICE_NAME',
       mariaDBConnectionUserName: '#MYSQL_USER',
-      cancel: '#cancel',
     },
     createknativeServing: {
       logo: 'h1.co-clusterserviceversion-logo__name__clusterserviceversion',
@@ -58,8 +59,7 @@ export const catalogPageObj = {
       catalogPage.verifyDialog();
       cy.get(catalogPageObj.sidePane.installHelmChart).click();
     },
-    clickOnCreateButton:() => cy.get(catalogPageObj.create).click(),
-    clickOnCancelButton:() => cy.get(catalogPageObj.mariaDBTemplate.cancel).click(),
+    clickOnCancelButton:() => cy.byButtonText('Cancel').click(),
     selectOperatorBackedCheckBox:() => cy.byTestID('kind-cluster-service-version').check(),
     selectknativeServingCard:() => cy.get('div.catalog-tile-pf-title').contains('knative Serving').click(),
     selectHelmChartCard:(cardName: string) => cy.get('a div.catalog-tile-pf-title').contains(cardName).click(),
@@ -67,9 +67,8 @@ export const catalogPageObj = {
       cy.get(catalogPageObj.installHelmChart.install).click();
       app.waitForLoad(40000);
     },
-    enterReleaseName:(releaseName: string) => {
-      cy.get(catalogPageObj.installHelmChart.releaseName).clear().type(releaseName);
-    },
+    enterReleaseName:(releaseName: string) => 
+      cy.get(catalogPageObj.installHelmChart.releaseName).clear().type(releaseName),
     createHelmChartFromAddPage:(releaseName: string = 'nodejs-ex-k', helmChartName: string = 'Nodejs Ex K v0.2.0') => {
       addPage.verifyCard('Helm Chart');
       addPage.selectCardFromOptions(addOptions.HelmChart);
@@ -83,5 +82,19 @@ export const catalogPageObj = {
       catalogPage.enterReleaseName(releaseName);
       catalogPage.clickOnInstallButton();
       topologyPage.verifyWorkloadInTopologyPage(releaseName);
+    },
+    selectCardInCatalog : (card: caatalogCards | string) => {
+      cy.byLegacyTestID('perspective-switcher-toggle').click();
+      switch (card) {
+        case caatalogCards.mariaDB:
+        case 'MariaDB':
+        {
+          cy.get(catalogPageObj.cards.mariaDBTemplate).click();
+          break;
+        }
+        default: {
+          throw new Error('Card is not available in Catalog');
+        }
     }
+  }
   }

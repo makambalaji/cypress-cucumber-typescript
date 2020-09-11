@@ -100,6 +100,7 @@ export const addPage = {
       }
     });
   },
+  veirfyAppName:(nodeName: string) => cy.get(addPageObj.appName).should('have.value', nodeName),
   enterComponentName: (name: string) => {
     cy.get(addPageObj.nodeName).as('nodeName');
     cy.wait(2000);
@@ -107,6 +108,8 @@ export const addPage = {
     cy.get('@nodeName').type(name);
     cy.get('@nodeName').should('have.value', name);
   },
+  veirfyNodeName:(componentName: string) => 
+    cy.get(addPageObj.nodeName).should('have.value', componentName),
   selectResource: (resource: string = 'deployment') => {
     switch (resource) {
       case 'deployment':
@@ -214,8 +217,8 @@ export const addPage = {
     }
   },
   selectAddPipeline: () => cy.get(addPageObj.pipeline.addPipeline).scrollIntoView().check(),
-  clicKCreate: () => cy.get(addPageObj.create).click(),
-  clickCancel:() => cy.get(addPageObj.cancel).click(),
+  clicKCreate: () => cy.get(addPageObj.create).should('be.enabled').click(),
+  clickCancel:() => cy.get(addPageObj.cancel).should('be.enabled').click(),
   verifyValidatedMessage:() => cy.get(addPageObj.gitSection.validatedMessage).should('have.text', 'Validated'),
   verifyBuilderImageDetectedMessage:() => cy.get(addPageObj.builderSection.builderImageDetected).should('be.visible'),
   verifyBuilderImageVersion:() => cy.get(addPageObj.builderSection.builderImageVersion).should('be.visible'),
@@ -228,4 +231,45 @@ export const addPage = {
     addPage.selectResource(resourceType);
     addPage.clicKCreate();
   },
+  selectTargetPortForRouting:() => {
+    cy.get(addPageObj.advancedOptions.routing.targetPort).click();
+    cy.get('[data-test-dropdown-menu="8080-tcp"]').click();
+  },
+  enterRoutingHostName:(hostName: string) => cy.get(addPageObj.advancedOptions.routing.hostname).type(hostName),
+  eneterRoutingPath:(path: string) => cy.get(addPageObj.advancedOptions.routing.path).type(path),
+  uncheckBuildConfigOption:(checkBoxName: string) => {
+    cy.get('div.pf-c-check label').contains(checkBoxName).should('be.visible');
+    switch (checkBoxName) {
+      case 'Configure a webhook build trigger':
+        cy.get(addPageObj.advancedOptions.buildConfig.webHookBuildTrigger).uncheck();
+        break;
+      case 'Automatically build a new image when the builder image changes':
+        cy.get(addPageObj.advancedOptions.buildConfig.buildTriggerImage).uncheck();
+        break;
+      case 'Launch the first build when the build configuration is created':
+        cy.get(addPageObj.advancedOptions.buildConfig.buildTriggerConfigField).uncheck();
+        break;
+      default:
+        throw new Error(`Unable to find the "${checkBoxName}" checbox in Build Configuration Section`);
+    }
+  },
+  enterBuildConfigEnvName: (envName:string) =>   cy.get(addPageObj.advancedOptions.buildConfig.envName).type(envName),
+  enterBuildConfigEnvValue: (envValue: string) =>   cy.get(addPageObj.advancedOptions.buildConfig.envValue).type(envValue),
+  verifyDeploymentOptionIsChecked: (checkBoxName: string) => {
+    switch (checkBoxName) {
+      case 'Auto deploy when new image is available':
+        cy.get('#form-checkbox-deployment-triggers-image-field').should('be.checked');
+        break;
+      default:
+        throw new Error(`Unable to find the "${checkBoxName}" checbox in Deployment Section`);
+    }
+  },
+  enterDeploymentEnvName: (envName:string) =>   cy.get(addPageObj.advancedOptions.deployment.envName).type(envName),
+  enterDeploymentEnvValue: (envValue: string) =>   cy.get(addPageObj.advancedOptions.deployment.envValue).type(envValue),
+  enterResourceLimitCPURequest:(cpuResquestValue:string) => cy.get(addPageObj.advancedOptions.resourceLimit.cpuRequest).type(cpuResquestValue),
+  enterResourceLimitCPULimit:(cpuLimitValue:string) => cy.get(addPageObj.advancedOptions.resourceLimit.cpuLimit).type(cpuLimitValue),
+  enterResourceLimitMemoryRequest:(memoryRequestValue:string) => cy.get(addPageObj.advancedOptions.resourceLimit.memoryRequest).type(memoryRequestValue),
+  enterResourceLimitMemoryLimit:(memoryLimitValue:string) =>  cy.get(addPageObj.advancedOptions.resourceLimit.memoryLimit).type(memoryLimitValue),
+  enterScalingReplicaCount:(replicaCount:string) => cy.get(addPageObj.advancedOptions.scaling.replicaCount).type(replicaCount),
+  enterLabels:(labelName: string) => cy.get(addPageObj.advancedOptions.labels).type(labelName),
 };

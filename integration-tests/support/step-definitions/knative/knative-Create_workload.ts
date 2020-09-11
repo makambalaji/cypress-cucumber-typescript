@@ -1,11 +1,10 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { addPage, addPageObj } from '../../pages/add/add_page';
-import { containerImage } from '../../pages/add/containerImage_page';
+import { containerImagePage } from '../../pages/add/containerImage_page';
 import { catalogPage } from '../../pages/add/catalog_page';
 import { addOptions } from '../../constants/add';
 import { naviagteTo } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
-import { topologyPage } from '../../pages/topology_page';
 
 Given('user is on {string} form', (formName: string) => {
   naviagteTo(devNavigationMenu.Add);
@@ -37,7 +36,7 @@ When('create the application with s2i builder image', () => {
 });
 
 When('user type {string} into the Image name from External registry text box', (imageName: string) => {
-  containerImage.enterExternalRegistryImageName(imageName);
+  containerImagePage.enterExternalRegistryImageName(imageName);
 });
 
 When('user selects {string} radio button on Add page', (resourceType: string) => {

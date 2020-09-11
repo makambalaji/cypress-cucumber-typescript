@@ -1,8 +1,6 @@
 import { addPage } from "../add/add_page";
 import { addOptions } from "../../constants/add";
-import { topologyPage } from "../topology_page";
-import { naviagteTo, app } from "../app";
-import { devNavigationMenu } from "../../constants/global";
+import { app } from "../app";
 
 export const eventSourceObj = {
     search: '[placeholder="Filter by type..."]',

@@ -29,7 +29,7 @@ Then('page contains From Git, Container Image, From Dockerfile, YAML, From Catal
 });
 
 Then('user is able to see message {string} on Add page', (message: string) => {
-  cy.log(message);
+  addPage.verifyNoWorkLoadsText(message);
 });
 
 Then('user is able to see Pipeline card on Git form', () => {

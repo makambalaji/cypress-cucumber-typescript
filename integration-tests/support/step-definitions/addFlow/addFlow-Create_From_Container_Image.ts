@@ -1,6 +1,6 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { addPage, addPageObj } from '../../pages/add/add_page';
-import { containerImage } from '../../pages/add/containerImage_page';
+import { containerImagePage } from '../../pages/add/containerImage_page';
 import { addOptions } from '../../constants/add';
 import { topologyPage } from '../../pages/topology_page';
 
@@ -9,7 +9,7 @@ Given('user is at Deploy Image page', () => {
 });
 
 When('user enters Image name from external registry as {string}', (imageName: string) => {
-  containerImage.enterExternalRegistryImageName(imageName);
+  containerImagePage.enterExternalRegistryImageName(imageName);
 });
 
 Then('git url gets Validated', () => {
@@ -17,25 +17,21 @@ Then('git url gets Validated', () => {
 });
 
 Then('image name gets Validated', () => {
-  cy.get('#form-input-searchTerm-field-helper').should('have.text', 'Validated');
+  containerImagePage.verifyValidatedMessage();
 });
 
 Then('application name displays as {string}', (appName: string) => {
-  cy.get(addPageObj.appName).should('have.value', appName);
+  addPage.veirfyAppName(appName);
 });
 
 Then('name field auto populates with value {string} in Import from Docker file page', (nodeName: string) => {
-  cy.get(addPageObj.nodeName).should('have.value', nodeName);
-  cy.get(addPageObj.cancel).click();
-});
-
-Then('name displays as {string}', (nodeName: string) => {
-  cy.get(addPageObj.nodeName).should('have.value', nodeName);
+  addPage.veirfyNodeName(nodeName);
+  addPage.clickCancel();
 });
 
 Then('advanced option Create a route to the application is selected', () => {
   cy.get(addPageObj.advancedOptions.createRoute).scrollIntoView().should('be.visible').and('be.checked');
-  cy.get(addPageObj.cancel).click();
+  addPage.clickCancel();
 });
 
 When('user clicks Create button on Deploy Image page', () => {
@@ -47,21 +43,21 @@ Then('node is displayed with name {string}', (nodeName: string) => {
 });
 
 When('user selects Project as {string} from internal registry', (projectName: string) => {
-  containerImage.selectProject(projectName)
+  containerImagePage.selectProject(projectName)
 });
 
 When('user selects Image stream tag from internal registry', () => {
-  containerImage.selectInternalImageRegistry();
+  containerImagePage.selectInternalImageRegistry();
 });
 
 When('user selects Image Stream as {string} from internal registry', (imageSrream: string) => {
-  containerImage.selectImageStream(imageSrream);
+  containerImagePage.selectImageStream(imageSrream);
 });
 
 When('user selects tag as {string} from internal registry', (tag: string) => {
-  containerImage.selectTag(tag);
+  containerImagePage.selectTag(tag);
 });
 
 When('user clicks Cancel button on Deploy Image page', () => {
-    cy.get(addPageObj.cancel).click();
+    addPage.clickCancel();
 });

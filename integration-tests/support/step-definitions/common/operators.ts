@@ -67,7 +67,7 @@ Then('user will see a modal with title {string}', (operatorName: string) => {
 
 Then('user will see a View Operator button', () => {
   cy.get('[role="progressbar"]').should('not.be.visible');
-  cy.get('button').contains('View Operator').should('be.visible');
+  cy.byButtonText('View Operator').should('be.visible');
 });
 
 Then('user will see serverless option on left side navigation menu', () => {
