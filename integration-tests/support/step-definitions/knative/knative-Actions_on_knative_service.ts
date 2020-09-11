@@ -72,7 +72,7 @@ When('user right clicks on the knative service {string}', (knativeServiceName: s
   topologyPage.componentNode(knativeServiceName).should('be.visible').trigger('contextmenu', {force:true});
 });
 
-Then('user able to see the options like Edit Application Grouping, Set Traffic Distribution, Edit Health Checks, Edit Labels, Edit Annotations, Edit Service, Delete Service, {string}',(knativeServiceName: string) => {
+Then('user is able to see the options like Edit Application Grouping, Set Traffic Distribution, Edit Health Checks, Edit Labels, Edit Annotations, Edit Service, Delete Service, {string}',(knativeServiceName: string) => {
   cy.byTestActionID('Edit Application Grouping').should('be.visible');
   cy.byTestActionID('Set Traffic Distribution').should('be.visible');
   cy.byTestActionID(`Edit ${knativeServiceName}`).should('be.visible');
@@ -114,7 +114,7 @@ When('user selects {string} context menu option of knative service {string}', (o
   topologyPage.selectContextMenuAction(option);
 });
 
-When('clicks Add button on the Edit Annotaions modal', () => {
+When('user clicks Add button on the Edit Annotaions modal', () => {
  editAnnotations.add();
 });
 
@@ -286,7 +286,7 @@ Then('{string} service should not be displayed in project', (serviceName: string
   cy.get('.is-filtered').should('not.be.visible');
 });
 
-When('click save button on yaml page', () => {
+When('user clicks save button on yaml page', () => {
 
 });
 

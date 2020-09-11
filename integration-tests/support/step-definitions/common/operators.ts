@@ -83,7 +83,7 @@ Given('user is at OpenShift Serverless Operator subscription page', () => {
   operatorsPage.verifySubscriptionPage('OpenShift Serverless Operator');
 });
 
-When('user installs the Serverless operator with default values', () => {
+When('user installs the OpenShift Serverless operator with default values', () => {
   operatorsPage.installOperator();
 });
 

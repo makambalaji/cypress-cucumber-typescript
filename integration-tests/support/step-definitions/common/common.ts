@@ -43,7 +43,7 @@ Given ('user has installed OpenShift Virtualization operator', () => {
   operatorsPage.verifyInstalledOperator('OpenShift Virtualization operator');
 });
 
-Given('user has installed Serverless and eventing operator', () => {
+Given('user has installed OpenShift Serverless and eventing operator', () => {
   perspective.switchTo(switchPerspective.Administrator);
   operatorsPage.verifyOperatorInNavigationMenu('Serverless');
 });

@@ -15,7 +15,11 @@ When('user clicks From Git card on the +Add page', () => {
   addPage.selectCardFromOptions(addOptions.Git);
 });
 
-Then('user will be redirected to Import from git page', () => {
+Then('user will be redirected to Import from git form', () => {
+  addPage.verifyTitle('Import from git');
+});
+
+Then('user will be redirected to Import from Dockerfile form', () => {
   addPage.verifyTitle('Import from git');
 });
 

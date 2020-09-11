@@ -15,7 +15,7 @@ Then('user can see sidebar Details, Resources and Monitoring tabs', () => {
  topologySidePane.verifyTab('Monitoring');
 });
 
-Then('user verifies name of the node {string} and Action menu present on top of the sidebar', (nodeName: string) => {
+Then('user verifies name of the node {string} and Action drop down present on top of the sidebar', (nodeName: string) => {
   topologySidePane.verifyTitle(nodeName);
   cy.byLegacyTestID('actions-menu-button').should('be.visible');
 });

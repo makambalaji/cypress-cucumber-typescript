@@ -11,7 +11,7 @@ Background:
 Scenario Outline: knative service menu options: Kn-04-TC01
    Given knative service named "<service_name>" is higlighted on topology page
    When user right clicks on the knative service "<service_name>"
-   Then user able to see the options like Edit Application Grouping, Set Traffic Distribution, Edit Health Checks, Edit Labels, Edit Annotations, Edit Service, Delete Service, "<service_name>"
+   Then user is able to see the options like Edit Application Grouping, Set Traffic Distribution, Edit Health Checks, Edit Labels, Edit Annotations, Edit Service, Delete Service, "<service_name>"
 
 Examples:
    | service_name    | 
@@ -68,7 +68,7 @@ Scenario: Add annotation to the exisitng annonations list : Kn-04-TC12
    Given knative service named "nodejs-ex-git-1" is higlighted on topology page
    And number of annotations are "5" present in "nodejs-ex-git-1" service side bar details tab
    When user selects "Edit Annotaions" context menu option of knative service "nodejs-ex-git-1"
-   And clicks Add button on the Edit Annotaions modal
+   And user clicks Add button on the Edit Annotaions modal
    And user enters annotation key as "serving.knative.dev/creator "
    And user enters annotation value as "kube:admin" 
    And user clicks the save button on the "Edit Annotaions" modal
@@ -99,7 +99,7 @@ Scenario: Edit the service from yaml editor: Kn-04-TC15
    Given knative service named "nodejs-ex-git-1" is higlighted on topology page
    When user selects "Edit Service" context menu option of knative service "nodejs-ex-git-1"
    And user modifies the Yaml file of the Revision details page 
-   And click save button on yaml page
+   And user clicks save button on yaml page
    Then message should display as "{service name} has been updated to version {nnnnnn}"
    And another message should display as "This object has been updated."
 

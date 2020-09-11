@@ -144,15 +144,15 @@ When('user enters number of replicas as {string} in Replicas section', (replicaC
   cy.get(addPageObj.advancedOptions.scaling.replicaCount).type(replicaCount)
 });
 
-When('fill the Readiness Probe details', () => {
+When('user fills the Readiness Probe details', () => {
   addHealthChecksPage.addReadinessProbe();
 });
 
-When('fill the Liveness Probe details', () => {
+When('user fills the Liveness Probe details', () => {
 
 });
 
-When('fill the Startup Probe details', () => {
+When('user fills the Startup Probe details', () => {
 
 });
 
