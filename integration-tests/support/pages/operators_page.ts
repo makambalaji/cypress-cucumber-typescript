@@ -33,7 +33,7 @@ export const operatorsObj = {
 export const operatorsPage = {
   navigateToOperaotorHubPage: () => {
     cy.get(operatorsObj.nav.link).contains('Operators').click();
-    cy.get(operatorsObj.nav.operatorHub,).click();
+    cy.get(operatorsObj.nav.operatorHub,).click({force:true});
     cy.titleShouldBe('OperatorHub');
   },
 

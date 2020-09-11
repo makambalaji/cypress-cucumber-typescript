@@ -44,11 +44,11 @@ When('types {string} into the {string} text box', (a: string, b: string) => {
   cy.log(a, b);
 });
 
-When('click on {string} icon for the annotation with key {string} present in {string} modal', (a: string, b: string, c: string) => {
+When('user clicks on {string} icon for the annotation with key {string} present in {string} modal', (a: string, b: string, c: string) => {
   cy.log(a, b, c);
 });
 
-When('clicks cancel button on the {string} modal', (modalTitle: string) => {
+When('user clicks cancel button on the {string} modal', (modalTitle: string) => {
   cy.alertTitleShouldBe(modalTitle);
   editLabels.clickCancel();
 });
@@ -57,7 +57,7 @@ When('user clicks on Details tab', () => {
   // TODO: implement step
 });
 
-When('modify the Yaml file of the Revision details page', () => {
+When('user modifies the Yaml file of the Revision details page', () => {
   // TODO: implement step
 });
 
@@ -94,10 +94,10 @@ Then('Add more link is enabled', () => {
   // TODO: implement step
 });
 
-Then('number of annotaions increased to {string} in revision side bar details of service {string}', (numOfAnnotations: string, serviceName: string) => {
+Then('user can see the annotation {string} in the Details tab of the Sidebar of {string}', (numOfAnnotations: string, serviceName: string) => {
   topologyPage.revisionNode(serviceName).click();
   topologySidePane.selectTab('Details');
-  topologySidePane.verifyNumberOfAnnotations(numOfAnnotations);
+  // topologySidePane.verifyNumberOfAnnotations(numOfAnnotations);
 });
 
 Then('verify the number of annotaions equal to {string} in side bar details', (a: string) => {
@@ -126,4 +126,10 @@ Then('another message display as {string}', (a: string) => {
 
 Then('modal contains message as {string}', (message: string) => {
   deleteRevision.verifyMessage(message);
+});
+
+Then('number of annotaions increased to {string} in revision side bar details of service {string}', (numOfAnnotations: string, serviceName: string) => {
+  topologyPage.revisionNode(serviceName).click();
+  topologySidePane.selectTab('Details');
+  topologySidePane.verifyNumberOfAnnotations(numOfAnnotations);
 });

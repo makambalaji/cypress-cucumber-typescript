@@ -22,15 +22,15 @@ Then('user will be redirected to Event Sources page', () => {
   cy.titleShouldBe('Event Sources');
 });
 
-Then('GitHub Source is displayed in enters section', () => {
+Then('GitHub Source is displayed in types section', () => {
   eventSourcesPage.verifyEventSourceType('Git Hub Source');
 });
 
-When('clicks OpenShift Pipelines Operator card on Operator Hub page', () => {
+When('user clicks OpenShift Pipelines Operator card on Operator Hub page', () => {
   operatorsPage.selectOperator(operators.pipelineOperator);
 });
 
-When('clicks install button present on the right side bar', () => {
+When('user clicks install button present on the right side bar', () => {
   operatorsPage.verifySiedPane();
   operatorsPage.clickInstallOnSidePane();
 });
@@ -116,7 +116,7 @@ When('user uninstalls the pipeline operator from right side bar', () => {
   operatorsPage.clickUninstallOnSidePane();
 });
 
-When('clicks on Unistall button present in popup with header message Uninstall Operator?', () => {
+When('user clicks unistall button present in modal with header message Uninstall Operator?', () => {
   cy.alertTitleShouldBe('Uninstall Operator?');
   cy.get(operatorsObj.uninstallPopup.uninstall).click();
 });
@@ -125,16 +125,16 @@ When('user navigates to installed operators page in Admin perspecitve', () => {
   operatorsPage.navigateToInstalloperatorsPage();
 });
 
-When('clicks knative eventing provided api pressent in knative serverless operator', () => {
+When('user clicks knative eventing provided api pressent in knative serverless operator', () => {
   cy.get('a[title="knativeeventings.operator.knative.dev"]').click();
 });
 
-When('click Create knative Eventing button present in knative Eventing tab', () => {
+When('user clicks Create knative Eventing button present in knative Eventing tab', () => {
   cy.titleShouldBe('knative Eventings');
   cy.get('[data-test="yaml-create"]').click();
 });
 
-When('click on create button', () => {
+When('user clicks create button', () => {
   cy.get('[type="submit"]').click();
 });
 
@@ -171,8 +171,12 @@ Then('page will contain knative apache camel operator', () => {
 
 Then('Installed operators page will contain {string}', (operatorName: string) => {
   operatorsPage.verifyOperatoNotAvailable(operatorName);
-})
+});
 
 Then('Installed operators page will not contain {string}', (operatorName: string) => {
   operatorsPage.verifyOperatoNotAvailable(operatorName);
+});
+
+Given('user executed command {string}', (command:string) => {
+  cy.exec(command);
 })

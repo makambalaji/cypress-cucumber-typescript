@@ -183,14 +183,12 @@ export const topologySidePane = {
         }
     },
     verifyLabel:(labelName: string) => {
-        // topologySidePane.verifySection('Labels');
         cy.get('dt[data-test-selector$="Labels"]').should('be.visible');
         cy.get('[data-test="label-list"] a').contains(labelName).should('be.visible');
-        // cy.get(topologyObj.sidePane.labelsList).find('a').then(($el) => {
-        //     if($el.text().includes(labelName)) {
-        //         expect($el.text()).contains(labelName);
-        //     }
-        // });
+    },
+    verifyAnnotaiton:(annotationName: string) => {
+        cy.get('[data-test-id="edit-annotations"]').click();
+        cy.get('[data-test="label-list"] a').contains(annotationName).should('be.visible');
     },
     verifyNumberOfAnnotations:(num: string) => {
         topologySidePane.verifySection('Annotations');

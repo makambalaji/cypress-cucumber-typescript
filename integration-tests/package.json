@@ -22,7 +22,7 @@
     "test:topology:allure": "cypress run --env TAGS='@smoke and not @manual' -b chrome -r mocha-allure-reporter --spec \"features/topology/*.feature\";",
     "test:pipeline:allure": "cypress run --env TAGS='@smoke and not @manual' -b chrome -r mocha-allure-reporter --spec \"features/pipelines/*.feature\";",
     "test:knative:allure": "cypress run --env TAGS='@smoke and not @manual' -b chrome -r mocha-allure-reporter --spec \"features/knative/*.feature\";",
-    "test:addFlow:allure": "cypress run --env TAGS='@regression or @smoke and not @manual' -b chrome -r mocha-allure-reporter --spec \"features/addFlow/*.feature\";",
+    "test:addFlow:allure": "cypress run --env TAGS='@regression or @smoke and not @manual' -b chrome -r mocha-allure-reporter --spec \"features/addFlow/addFlow-Create_From_Git.feature\";",
     "test": "npm run clean-results; npm run test:addFlow:allure; npm run test:pipeline:allure; npm run test:knative:allure;"
   },
   "devDependencies": {

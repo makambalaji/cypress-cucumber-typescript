@@ -68,7 +68,7 @@ Given('knative services named {string} and {string} are higlighted on topology p
   });
 });
 
-When('user right click on the knative service {string}', (knativeServiceName: string) => {
+When('user right clicks on the knative service {string}', (knativeServiceName: string) => {
   topologyPage.componentNode(knativeServiceName).should('be.visible').trigger('contextmenu', {force:true});
 });
 
@@ -83,7 +83,7 @@ Then('user able to see the options like Edit Application Grouping, Set Traffic D
   cy.byTestActionID('Delete Service').should('be.visible');
 });
 
-When('add the label {string} to exisitng labels list in Edit Labels modal', (labelName: string) => {
+When('user adds the label {string} to exisitng labels list in Edit Labels modal', (labelName: string) => {
   editLabels.enterLabel(labelName);
 });
 
@@ -124,75 +124,75 @@ Given('number of annotations are {string} present in {string} service side bar d
   topologySidePane.verifyNumberOfAnnotations(numOfAnnotations);
 });
 
-When('enters annotation key as {string}', (key: string) => {
+When('user enters annotation key as {string}', (key: string) => {
   editAnnotations.enterKey(key);
 });
 
-When('enters annotation value as {string}', (value: string) => {
+When('user enters annotation value as {string}', (value: string) => {
   editAnnotations.enterValue(value);
 });
 
-When('removes the label {string} from exisitng labels list in {string} modal', (a: string, b: string) => {
+When('user removes the label {string} from exisitng labels list in {string} modal', (a: string, b: string) => {
  cy.log(a, b,)
 });
 
-When('click on {string} icon for the annotation with key {string} present in {string} modal', (a: string, b: string, c: string) => {
+When('user clicks on {string} icon for the annotation with key {string} present in {string} modal', (a: string, b: string, c: string) => {
  cy.log(a, b, c)
 });
 
-When('click {string} button on the {string} modal', (a: string, b: string) => {
+When('user clicks {string} button on the {string} modal', (a: string, b: string) => {
  cy.log(a, b,)
 });
 
-When('modify the Yaml file of the Revision details pagex', () => {
+When('user modifies the Yaml file of the Revision details pagex', () => {
   // TODO: implement step
 });
 
-When('click on {string} button', (a: string) => {
+When('user clicks on {string} button', (a: string) => {
  cy.log(a)
 });
 
-When('select the {string} from {string} drop down present in {string} modal', (a: string, b: string, c: string) => {
+When('user selects the {string} from {string} drop down present in {string} modal', (a: string, b: string, c: string) => {
  cy.log(a, b, c)
 });
 
-When('search for application name {string}', (a: string) => {
+When('user searches for application name {string}', (a: string) => {
  cy.log(a)
 });
 
-When('click on {string} on topology page', (a: string) => {
+When('user clicks on {string} on topology page', (a: string) => {
  cy.log(a)
 });
 
-When(' select the {string} option from {string} drop down present in {string} modal', (a: string, b: string, c: string) => {
+When('user selects the {string} option from {string} drop down present in {string} modal', (a: string, b: string, c: string) => {
  cy.log(a, b, c)
 });
 
-When('select the {string} option from {string} drop down present in {string} modal', (a: string, b: string, c: string) => {
+When('user selects the {string} option from {string} drop down present in {string} modal', (a: string, b: string, c: string) => {
   cy.log(a, b, c);
 });
 
-When('type {string} into the {string} text box', (a: string, b: string) => {
+When('user enters {string} into the {string} text box', (a: string, b: string) => {
   cy.log(a, b);
 });
 
-When('click on {string} button present in {string} modal', (a: string, b: string) => {
+When('user clicks on {string} button present in {string} modal', (a: string, b: string) => {
   cy.log(a, b);
 });
 
-When('type {string} into the {string} text box of new revision', (a: string, b: string) => {
+When('user enters {string} into the {string} text box of new revision', (a: string, b: string) => {
   cy.log(a, b);
 });
 
-When('select the {string} option from {string} drop down', (a: string, b: string) => {
+When('user selects the {string} option from {string} drop down', (a: string, b: string) => {
   cy.log(a, b);
 });
 
-When('click {string} buttonn on {string} modal', (a: string, b: string) => {
+When('user clicks {string} buttonn on {string} modal', (a: string, b: string) => {
   cy.log(a, b);
 });
 
-When('click on {string} button present in redirected page', (a: string) => {
+When('user clicks on {string} button present in redirected page', (a: string) => {
   cy.log(a);
 });
 
@@ -232,7 +232,7 @@ Then('number of annotaions increased to {string} in {string} service side bar de
   topologySidePane.verifyNumberOfAnnotations(numOfAnnotations);
 });
 
-When('click on remove icon for the annotation with key {string} present in Edit Annotaions modal', (key: string) => {
+When('user clicks on remove icon for the annotation with key {string} present in Edit Annotaions modal', (key: string) => {
   editAnnotations.removeAnnotation(key);
 });
 
@@ -290,6 +290,6 @@ When('click save button on yaml page', () => {
 
 });
 
-When('click cancel button on {string} page', (buttonName: string) => {
+When('user clicks cancel button on {string} page', (buttonName: string) => {
   cy.log(buttonName);
 });

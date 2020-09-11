@@ -11,7 +11,7 @@ Given('user has created the Hyperconverged Cluster', () => {
   operatorsPage.verifyOperatorInNavigationMenu('Virtualization');
 });
 
-When('clicks on the OpenShift Virtualization Operator card', () => {
+When('user clicks on the OpenShift Virtualization Operator card', () => {
   operatorsPage.selectOperator(operators.virtualizationOperator);
 });
 
