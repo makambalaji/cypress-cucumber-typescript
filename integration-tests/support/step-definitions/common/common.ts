@@ -59,7 +59,9 @@ Given('user has installed OpenShift Pipelines operator', () => {
 
 Given('user has selected namespace {string}', (projectName: string) => {
   perspective.switchTo(switchPerspective.Developer);
-  project.selectProject(projectName);
+  let d = new Date();
+  let timestamp = d.getTime();
+  project.selectProject(`${projectName}-${timestamp}`);
 });
   
 Given('user has installed OpenShift Serverless Operator', () => {

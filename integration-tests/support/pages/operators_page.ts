@@ -21,7 +21,7 @@ export const operatorsObj = {
     noOperatorFoundMessage: 'div.cos-status-box__title',
   },
   sidePane: {
-    install: '[data-test-id="operator-install-btn"]',
+    install: 'a[data-test-id="operator-install-btn"]',
     uninstall: '[data-test-id="operator-uninstall-btn"]',
   },
   alertDialog: '[role="dialog"]',
@@ -51,7 +51,6 @@ export const operatorsPage = {
     cy.get(operatorsObj.installOperators.title).should('have.text', 'Install Operator');
     cy.byButtonText('Install').click();
     cy.get('article h1').should('be.visible');
-    // cy.byLegacyTestID('resource-title').contains('Installed Operators');
   },
 
   verifySubscriptionPage: (operatorLogo: string) => 
@@ -111,7 +110,9 @@ export const operatorsPage = {
   verifySiedPane:() => cy.get(operatorsObj.alertDialog).should('be.exist'),
 
   clickInstallOnSidePane: () => {
-    cy.get(operatorsObj.alertDialog).then(($sidePane) => {
+    cy.get(operatorsObj.alertDialog)
+    // .should('be.visible');
+    .then(($sidePane) => {
       if ($sidePane.find(operatorsObj.sidePane.install).length) {
         cy.get(operatorsObj.sidePane.install).click();
       }
