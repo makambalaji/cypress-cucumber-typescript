@@ -57,7 +57,7 @@ Given('user has selected namespace {string}', (projectName: string) => {
   perspective.switchTo(switchPerspective.Developer);
   let d = new Date();
   let timestamp = d.getTime();
-  project.selectProject(`${projectName}-${timestamp}`);
+  project.selectProject(`${projectName}-${timestamp}-ns`);
 });
   
 Given('user has installed OpenShift Serverless Operator', () => {

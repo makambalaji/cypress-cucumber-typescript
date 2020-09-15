@@ -61,10 +61,6 @@ Then('side bar is displayed with heading name same as knative service name {stri
   topologySidePane.verifyTitle(serviceName);
 });
 
-Then('side bar is displayed', () => {
-  topologySidePane.verify();
-});
-
 When('user clicks on the knative service name {string}', (serviceName: string) => {
   topologyPage.componentNode(serviceName).click();
 });

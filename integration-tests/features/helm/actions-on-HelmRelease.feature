@@ -9,7 +9,7 @@ Background:
 
 @regression, @smoke
 Scenario: Perform Upgrade action on Helm Release through Context Menu: HR-08-TC02
-    Given user is at the Topolgy page
+    Given user is at the Topology page
     When user right clicks on the Helm Release "nodejs-ex-k" to open the context menu
     And user clicks on the "Upgrade" action
     And user upgrades the chart Version
@@ -20,7 +20,7 @@ Scenario: Perform Upgrade action on Helm Release through Context Menu: HR-08-TC0
 
 @regression, @smoke
 Scenario: Perform Rollback action on Helm Release through Context Menu: HR-08-TC03
-    Given user is at the Topolgy page
+    Given user is at the Topology page
     When user right clicks on the Helm Release "nodejs-ex-k" to open the context menu
     And user clicks on the "Rollback" action
     And user selects the version to Rollback
@@ -31,7 +31,7 @@ Scenario: Perform Rollback action on Helm Release through Context Menu: HR-08-TC
 
 @regression, @smoke
 Scenario: Uninstall Helm Release through Context Menu: HR-08-TC04
-    Given user is at the Topolgy page
+    Given user is at the Topology page
     When user right clicks on the Helm Release "nodejs-ex-k" to open the context menu
     And user clicks on the "Uninstall Helm Release" action
     And user enters the release name

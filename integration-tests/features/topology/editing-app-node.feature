@@ -9,7 +9,7 @@ Background:
 @regression, @smoke
 Scenario: Editing a workload : T-06-TC14, T-06-TC15
    Given user has created workload "nodejs-ex-git"
-   And user is at the Topolgy page
+   And user is at the Topology page
    When user right clicks on the node "nodejs-ex-git" to open context menu
    And user selects option "Edit nodejs-ex-git" from context menu
    And user can see Edit form
@@ -23,7 +23,7 @@ Scenario: Editing a workload : T-06-TC14, T-06-TC15
 @regression
 Scenario: Editing a knative service : T-06-TC14, T-06-TC15
    Given user has created knative workload "nodejs-ex-git"
-   And user is at the Topolgy page
+   And user is at the Topology page
    When user right clicks on the node "nodejs-ex-git" to open context menu
    And user selects option "Edit Service" from context menu
    And user can see Edit form

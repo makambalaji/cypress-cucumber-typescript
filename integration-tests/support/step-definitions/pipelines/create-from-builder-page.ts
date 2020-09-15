@@ -105,7 +105,3 @@ When('user clicks Continue on Switch to YAML editor', () => {
 When('user clicks Create button on Pipeline Yaml page', () => {
   // manual step  
 });
-
-Then('user will be redirected to Pipeline Details page', () => {
-  // manual step
-});

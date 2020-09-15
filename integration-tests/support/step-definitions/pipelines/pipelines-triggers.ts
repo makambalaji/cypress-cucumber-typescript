@@ -108,6 +108,10 @@ Given('Trigger is added to the pipeline {string} present in pipeline details pag
   store.pipeline1 = pipelineName;
 });
 
+Given('webhook secret is created and added to workload', () => {
+
+});
+
 Given('user is at pipeline Details page', () => {
   pipelinesPage.selectPipeline(store.pipeline1)
   pipelineDetailsPage.verifyPage();

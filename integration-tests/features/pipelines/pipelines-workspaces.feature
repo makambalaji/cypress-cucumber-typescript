@@ -7,16 +7,16 @@ Background:
 
 
 @regression, @smoke, @manual
-Scenario: Create the pipeline with workspace : P-012-TC01
+Scenario: Create the pipeline with workspace : P-12-TC01
 
 
 @regression
-Scenario: Workspaces section in start modal : P-012-TC02
+Scenario: Workspaces section in start modal : P-12-TC02
 
 
 @regression
-Scenario: Add volume type to the workspaces : P-012-TC03
+Scenario: Add volume type to the workspaces : P-12-TC03
 
 
 @regression
-Scenario: Start the pipeline with workspace : P-012-TC04
+Scenario: Start the pipeline with workspace : P-12-TC04

@@ -21,11 +21,7 @@
   "videosFolder": "videos",
   "reporter": "./node_modules/mochawesome/src/mochawesome.js",
   "reporterOptions": {
-    "reportDir": "reports/separate-reports",
-    "overwrite": false,
-    "html": false,
-    "json": true,
-    "charts": true
+    "configFile": "reporter-config.json"
   },
   "env": {
     "username": "kubeadmin",

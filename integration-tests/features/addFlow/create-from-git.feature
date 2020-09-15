@@ -1,10 +1,10 @@
 Feature: Create Application from git form
-    As a user, I want to create the application, component or service from Add options
+   As a user, I want to create the application, component or service from Add options
 
 Background:
-    Given user is at developer perspecitve
-    And user is at Add page
-    And user has selected namespace "aut-addflow-git"
+   Given user is at developer perspecitve
+   And user is at Add page
+   And user has selected namespace "aut-addflow-git"
 
 @regression
 Scenario Outline: Builder iamge detected for git url "<git_url>" : A-04-TC01

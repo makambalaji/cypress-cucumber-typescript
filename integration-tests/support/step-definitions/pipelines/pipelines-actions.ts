@@ -8,10 +8,16 @@ import { devNavigationMenu } from '../../constants/global';
 
 
 Given('pipeline run is available for {string}', (pipelineName: string) => {
+  // To Do
   cy.log(pipelineName);
 });
 
-When('user enters {string} into the pipelines search bar', (pipelineName: string) => {
+Given('pipeline with task {string} is present on Pipelines page', (pipelineName: string) => {
+  // To Do
+  cy.log(pipelineName);
+});
+
+When('user searches pipeline {string} in pipelines page', (pipelineName: string) => {
   pipelinesPage.search(pipelineName);
 });
 
@@ -44,7 +50,7 @@ Given('user is at pipeline details page with newly created pipeline {string}', (
   pipelinesPage.verifyPipelinesTableDisplay();
 });
 
-Given('pipeline with name {string} is present on Pipelines page', (pipelineName: string) => {
+Given('pipeline {string} is present on Pipelines page', (pipelineName: string) => {
   pipelinesPage.clickOncreatePipeline();
   pipelineBuilderPage.createPipelineFromBuilderPage(pipelineName);
   naviagteTo(devNavigationMenu.Pipelines);
@@ -68,15 +74,15 @@ When('user clicks pipeline run of pipeline {string}', (pipelineName: string) => 
   pipelinesPage.seelctPipelineRun(pipelineName);
 });
 
-When('clicks pipeline name {string} from searched results on Pipelines page', (pipelineName: string) => {
+When('user clicks pipeline {string} from searched results on Pipelines page', (pipelineName: string) => {
   pipelinesPage.selectPipeline(pipelineName);
 });
 
-When('user selects the option {string} from Actions menu drop down', (action: string) => {
+When('user selects option {string} from Actions menu drop down', (action: string) => {
   pipelineDetailsPage.selectActionFromActionsDropdown(action);
 });
 
-When('clicks Delete on Delete Pipeline popup', () => {
+When('clicks Delete button on Delete Pipeline modal', () => {
   cy.alertTitleShouldBe('Delete Pipeline?');
   cy.get(pipelinesObj.deletePipeline.delete).click();
 });
@@ -98,8 +104,8 @@ Then('kebab menu displays with options Start, Add Trigger, Remove Trigger, Edit 
   cy.byTestActionID('Delete Pipeline').should('be.visible');
 });
 
-Then('user will get redirected to Pipeline Details page with header name {string}', (headerName: string) => {
-  cy.log(headerName);
+Then('user will be redirected to Pipeline Details page with header name {string}', (pipelineName: string) => {
+  pipelineDetailsPage.verifyTitle(pipelineName)
 });
 
 Then('user is able to see Details, YAML, Pipeline Runs, Parameters and Resources tabs', () => {
@@ -144,6 +150,10 @@ Then('{string} is not displayed on Pipelines page', (pipelineName: string) => {
   cy.byLegacyTestID(pipelineName).should('not.be.visible');
 });
 
-Then('page will be redirected to Pipeline Run Details page', () => {
+Then('user will be redirected to Pipeline Run Details page', () => {
   pipelineRunDetailsPage.verifyTitle();
+});
+
+Then('user is able to see pipeline run in topology side bar', () => {
+  // TO Do
 });

@@ -52,8 +52,8 @@ export const pipelineRunDetailsPage = {
     },
     verifyTabs:() => {
       cy.get(pipelineRunDetailsObj.detailsTab).should('have.text', 'Details');
-      cy.get(pipelineRunDetailsObj.yamlTab).eq(1).should('have.text', 'YAML');
-      cy.get(pipelineRunDetailsObj.logsTab).eq(2).should('have.text', 'Logs');
+      cy.get(pipelineRunDetailsObj.yamlTab).should('have.text', 'YAML');
+      cy.get(pipelineRunDetailsObj.logsTab).should('have.text', 'Logs');
     },
     verifyFields:() => {
       cy.get('div dl dt').as('fieldNames');
@@ -70,6 +70,7 @@ export const pipelineRunDetailsPage = {
     verifyActionsDropdown:() => cy.get(pipelineRunDetailsObj.actions).should('be.visible'),
     selectPipeline:() => cy.get(pipelineRunDetailsObj.details.pipelineLink).click(),
     clickOnDownloadLink:() => cy.byButtonText('Download').click(),
+    clickOnExpandLink:() => cy.byButtonText('Expand').click(),
     selectTab:(tabName: string) => {
       switch (tabName) {
         case 'Details': {

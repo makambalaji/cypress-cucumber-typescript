@@ -4,7 +4,7 @@ Feature: Application groupings in topology
 Background:
     Given user is at developer perspecitve
     And user has selected namespace "aut-topology-grouping"
-   #  And user is at the Topolgy page
+   #  And user is at the Topology page
     
 
 @regression, @smoke

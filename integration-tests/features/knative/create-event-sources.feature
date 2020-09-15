@@ -2,7 +2,7 @@ Feature: Create event sources
     As a user, I want to create event sources 
 
 Background:
-   Given user has installed Serverless and eventing operator
+   Given user has installed OpenShift Serverless and eventing operator
    And user is at developer perspecitve
    And user has selected namespace "aut-create-knative-event-source"
 

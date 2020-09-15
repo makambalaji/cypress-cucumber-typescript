@@ -146,7 +146,6 @@ export const projectNameSpace = {
       .eq(0)
       .click();
     cy.byLegacyTestID('dropdown-text-filter').type(projectName);
-    cy.wait(3000);
     cy.get('[role="listbox"]').then(($el) => {
       if ($el.find('li[role="option"]').length === 0) {
           cy.byTestDropDownMenu('#CREATE_RESOURCE_ACTION#').click();
@@ -158,10 +157,6 @@ export const projectNameSpace = {
         cy.byTestDropDownMenu('#CREATE_RESOURCE_ACTION#').click();
         projectNameSpace.enterProjectName(projectName);
         projectNameSpace.clickCreateButton();
-        // cy.get('[role="listbox"]')
-        // .find('li[role="option"]')
-        // .contains(projectName)
-        // .click();
       }
       else {
         cy.byTestDropDownMenu('#CREATE_RESOURCE_ACTION#').click();

@@ -51,7 +51,7 @@ When('user enters Name as {string} in General section', (name: string) => {
   addPage.enterComponentName(name);
 });
 
-When('user selects Add Pipeline checkbox in Pipelines section', () => {
+When('user selects pipeline option', () => {
   addPage.selectAddPipeline();
 });
 
@@ -59,7 +59,7 @@ Then('user will be redirected to Topology page', () => {
   topologyPage.verifyTopologyPage();
 });
 
-Given('{string} component is added to namespace', (componentName: string) => {
+Given('workload {string} is added to namespace', (componentName: string) => {
   topologyPage.verifyWorkloadInTopologyPage(componentName)
 });
 
@@ -67,21 +67,20 @@ When('user searches for {string} in topology page', (name: string) => {
   topologyPage.search(name);
 });
 
-When('the user enters {string} into the search bar in pipelines page', (name: string) => {
+When('user searches for pipeline {string} in pipelines page', (name: string) => {
   pipelinesPage.search(name);
 });
 
 When('clicks node {string} in topology page', (name: string) => {
   topologyPage.componentNode(name).click({force: true});
-  // cy.byNodeName(name).click({force:true});
 });
 
-Then('side bar is displayed with pipeline name same as component name {string}', (appName: string) => {
+Then('pipeline name {string} is displayed in topology side bar', (appName: string) => {
   topologySidePane.verify();
   topologySidePane.verifyTitle(appName);
 });
 
-Then('pipeline name is displayed with the component name {string}', (pipelineName: string) => {
+Then('pipeline {string} is displayed in pipelines page', (pipelineName: string) => {
   pipelinesPage.verifyNameInPipelinesTable(pipelineName)
 });
 
@@ -99,7 +98,7 @@ Given('user is at Developer Catalog form with builder images', () => {
   addPage.selectCardFromOptions(addOptions.Catalog);
 });
 
-When('user enters {string} into the Builder Image search bar', (searchItem: string) => {
+When('user searches builder image {string} in developer catalog', (searchItem: string) => {
   catalogPage.search(searchItem);
 });
 

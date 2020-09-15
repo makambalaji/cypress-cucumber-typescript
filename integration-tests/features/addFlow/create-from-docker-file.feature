@@ -3,7 +3,7 @@ Feature: Create Application from Docker file
 
 Background:
     Given user is at developer perspecitve
-    And user has selected namespace "aut-addflow-docker"
+    And user has selected namespace "aut-addflow-git"
     And user is at Add page
 
 

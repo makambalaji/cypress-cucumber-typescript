@@ -178,10 +178,6 @@ export const pipelinesPage = {
     cy.byTestDropDownMenu(gitProviderType).click();
     cy.get(pipelinesObj.addTrigger.add).click();
   },
-
-  editPipeline:() => {
-
-  },
 };
 
 export const startPipelineInPipelinsPage = {

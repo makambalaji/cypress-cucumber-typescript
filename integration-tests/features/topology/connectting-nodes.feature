@@ -9,7 +9,7 @@ Background:
 @regression, @smoke
 Scenario: Create visual connection between two nodes using Annotations : T-05-TC01, T-05-TC02
    Given user has creaeted two worloads "nodejs-ex-git" and "dancer-ex-git"
-   And user is at the Topolgy page
+   And user is at the Topology page
    When user clicks node "nodejs-ex-git" to open the side bar
    And user selects "Edit Annotations" option from Actions menu
    And user enters key as "app.openshift.io/connects-to"

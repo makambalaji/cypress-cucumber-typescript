@@ -10,7 +10,7 @@ Background:
 @regression, @smoke
 Scenario: Context menu for knative Revision: Kn-03-TC01
    Given user has created knative service "nodejs-ex-git-2"
-   And user is at the Topolgy page
+   And user is at the Topology page
    When user right clicks on the revision of knative service "nodejs-ex-git-2" to open the context menu
    Then user is able to see Edit Labels, Edit Annotations, Edit Revision, Delete Revision options in context menu
 
@@ -18,7 +18,7 @@ Scenario: Context menu for knative Revision: Kn-03-TC01
 @regression
 Scenario: Edit labels modal details : Kn-03-TC02
    Given user has created knative service "nodejs-ex-git-2"
-   And user is at the Topolgy page
+   And user is at the Topology page
    When user selects "Edit Labels" option from knative revision context menu
    Then modal with "Edit Labels" appears
    And save button is disabled
@@ -27,7 +27,7 @@ Scenario: Edit labels modal details : Kn-03-TC02
 @regression, @smoke
 Scenario: Add new label to knative Revision: Kn-03-TC03
    Given user has created knative service "nodejs-ex-git-2"
-   And user is at the Topolgy page
+   And user is at the Topology page
    When user right clicks on the revision of knative service "nodejs-ex-git-2" to open the context menu
    And user selects "Edit Labels" option from knative revision context menu
    And user adds the label "app=label" to existing labels list in Edit Labels modal
@@ -38,7 +38,7 @@ Scenario: Add new label to knative Revision: Kn-03-TC03
 @regression
 Scenario: Remove label from knative Revision: Kn-03-TC04
    Given user has created knative service "nodejs-ex-git-2"
-   And user is at the Topolgy page
+   And user is at the Topology page
    When user selects "Edit Labels" option from knative revision context menu
    And user removes the label "app=label" from existing labels list in "Edit Labels" modal
    And user clicks the save button on the "Edit Labels" modal
@@ -48,7 +48,7 @@ Scenario: Remove label from knative Revision: Kn-03-TC04
 @regression
 Scenario: Add labels to existing labels list and cancel the activity : Kn-03-TC05
    Given user has created knative service "nodejs-ex-git-2"
-   And user is at the Topolgy page
+   And user is at the Topology page
    When user selects "Edit Labels" option from knative revision context menu
    And user adds the label "app=label" to existing labels list in Edit Labels modal
    And user clicks cancel button on the "Edit Labels" modal
@@ -58,7 +58,7 @@ Scenario: Add labels to existing labels list and cancel the activity : Kn-03-TC0
 @regression
 Scenario: Edit Annotation modal details : Kn-03-TC06
    Given user has created knative service "nodejs-ex-git-2"
-   And user is at the Topolgy page
+   And user is at the Topology page
    When user selects "Edit Annotaions" option from knative revision context menu
    Then modal with "Edit Annotations" appears
    And key, value columns are displayed with respecitve text fields
@@ -69,7 +69,7 @@ Scenario: Edit Annotation modal details : Kn-03-TC06
 @regression, @smoke
 Scenario Outline: Add annotation to the existing annonations list : Kn-03-TC07
    Given user has created knative service "nodejs-ex-git-2"
-   And user is at the Topolgy page
+   And user is at the Topology page
    And number of annotations are "5" present in revision side bar details of service "nodejs-ex-git-2"
    When user right clicks on the revision of knative service "nodejs-ex-git-2" to open the context menu
    And user selects "Edit Annotaions" option from knative revision context menu
@@ -83,7 +83,7 @@ Scenario Outline: Add annotation to the existing annonations list : Kn-03-TC07
 @regression
 Scenario: perform cancel action on Edit Annotations : Kn-03-TC09
    Given user has created knative service "nodejs-ex-git-2"
-   And user is at the Topolgy page
+   And user is at the Topology page
    And number of annotations are "6" present in side bar - details tab- annotation section
    When user selects "Edit Annotations" option from knative revision context menu
    And user clicks on "remove" icon for the annotation with key "serving.knative.dev/creator" present in "Edit Annotaions" modal
@@ -93,7 +93,7 @@ Scenario: perform cancel action on Edit Annotations : Kn-03-TC09
 
 Scenario Outline: Remove annotation from existing annonations list : Kn-03-TC08 
    Given user has created knative service "nodejs-ex-git-2"
-   And user is at the Topolgy page
+   And user is at the Topology page
    And number of annotations are "6" present in side bar - details tab
    When user selects "Edit Annotaions" option from knative revision context menu
    And user clicks on "remove" icon for the annotation with key "<key_name>" present in "Edit Annotaions" modal
@@ -108,7 +108,7 @@ Examples:
 @regression, @manual
 Scenario: Edit revision details page : Kn-03-TC10
    Given user has created knative service "nodejs-ex-git-2"
-   And user is at the Topolgy page
+   And user is at the Topology page
    When user selects "Edit Revision" option from knative revision context menu
    And user clicks on Details tab
    Then details tab displayed with Revision Details and Conditions sections
@@ -118,7 +118,7 @@ Scenario: Edit revision details page : Kn-03-TC10
 @regression, @smoke, @manual
 Scenario: Update the revision detials : Kn-03-TC11
    Given user has created knative service "nodejs-ex-git-2"
-   And user is at the Topolgy page
+   And user is at the Topology page
    When user selects "Edit Revision" option from knative revision context menu
    And user modifies the Yaml file of the Revision details page
    And user clicks "save" button on Revision Yaml page
@@ -129,7 +129,7 @@ Scenario: Update the revision detials : Kn-03-TC11
 @regression
 Scenario Outline: Delete revision modal details for service with multiple revisions : Kn-03-TC13
    Given user has created knative service "nodejs-ex-git-2"
-   And user is at the Topolgy page
+   And user is at the Topology page
    And service should contain multiple revisions 
    When user selects "Delete Revision" option from knative revision context menu
    Then modal with "Update the traffic distribution among the remaining Revisions" appears
@@ -139,7 +139,7 @@ Scenario Outline: Delete revision modal details for service with multiple revisi
 @regression
 Scenario Outline: Delete revision for the service which contains multiple revisions : Kn-03-TC14
    Given user has created knative service "nodejs-ex-git-2"
-   And user is at the Topolgy page
+   And user is at the Topology page
    And service should contain multiple revisions 
    When user selects "Delete Revision" option from knative revision context menu
    Then modal with "Update the traffic distribution among the remaining Revisions" appears

@@ -47,7 +47,7 @@ When('user enters Secret Name as {string}', (secretName: string) => {
   cy.get(pipelinesObj.startPipeline.advancedOptions.secretName).type(secretName);
 });
 
-When('user selects the {string} option from Access to drop down', (option: string) => {
+When('user selects the {string} option from accessTo drop down', (option: string) => {
   cy.selectByDropDownText(pipelinesObj.startPipeline.advancedOptions.accessTo, option);
 });
 

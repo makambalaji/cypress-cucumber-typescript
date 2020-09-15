@@ -37,6 +37,14 @@ Then('pipeline run details for {string} display in Pipelines page', (pipelineNam
   cy.get('[title="PipelineRun"]').should('be.visible');
 });
 
+Given('user started the pipeline {string} in pipelines page', (pipelineName: string) => {
+  naviagteTo(devNavigationMenu.Pipelines);
+  pipelinesPage.search(pipelineName);
+  pipelinesPage.selectKebabMenu(pipelineName);
+  cy.byTestActionID('Start').click();
+  pipelineRunDetailsPage.verifyTitle();
+});
+
 Given('pipeline run is displayed for {string} without resource', (pipelineName: string) => {
   pipelinesPage.clickOncreatePipeline();
   pipelineBuilderPage.createPipelineFromBuilderPage(pipelineName);
@@ -73,6 +81,18 @@ Given('pipeline {string} is available in pipelines page', (pipelineName: string)
 
 When('user clicks Last Run value of {string}', (pipelineName: string) => {
   pipelinesPage.seelctPipelineRun(pipelineName);
+});
+
+When('user navigates to pipelineRuns page', () => {
+
+});
+
+When('user selects the kebab menu in pipeline Runs page', () => {
+
+});
+
+Then('user is able to see kebab menu options Rerun, Delete Pipeline Run', () => {
+
 });
 
 Then('user is able to see Details, YAML and Logs tabs', () => {
@@ -135,19 +155,21 @@ Then('page will be redirected to pipeline runs page', () => {
 });
 
 Then ('side bar is displayed with the pipelines section', () => {
-
+  topologySidePane.verifyTab('Resources');
 });
 
 Then('3 pipeline runs are displayed under pipelines section of topolgy page', () => {
   // TODO: implement step
 });
 
-Given('pipeline run is available with cancelled tasks', () => {
+Given('pipeline run is available with cancelled tasks for pipeline {string}', (pipelineName: string) => {
   // TODO: implement step
+  cy.log(pipelineName);
 });
 
-Given('pipeline run is available with failed tasks', () => {
+Given('pipeline run is available with failed tasks for pipeline {string}', (pipelineName: string) => {
   // TODO: implement step
+  cy.log(pipelineName);
 });
 
 When('user clicks on the node name', () => {
@@ -270,6 +292,30 @@ Then('Pipeline Resources field will be displayed', () => {
   // TODO: implement step
 });
 
-When('user navigates to pipeline logs tab', () => {
-  
+When('user navigates to pipelineRun logs tab', () => {
+  pipelineRunDetailsPage.selectTab('Logs');
+});
+
+When('user clicks on Download button', () => {
+  pipelineRunDetailsPage.clickOnDownloadLink();
+});
+
+When('user clicks on Expand button', () => {
+  pipelineRunDetailsPage.clickOnExpandLink();
+});
+
+Then('user is able to see expanded logs page', () => {
+  cy.byButtonText('Collapse').should('be.visible');
+});
+
+Then('user is able to see the downloaded file', () => {
+  // Manual step
+});
+
+When('user selects Start LastRun from topology side bar', () => {
+  // To Do
+});
+
+Then('logs should be displayed as expected', () => {
+  // Manual step
 });

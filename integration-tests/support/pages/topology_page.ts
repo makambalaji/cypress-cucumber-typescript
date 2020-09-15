@@ -38,7 +38,6 @@ export const topologyPage = {
         cy.get(topologyObj.switcher).as('switcher');
         cy.get('@switcher').click();
         topologyPage.search(appName);
-        // cy.get(topologyObj.list.nodeName).should('contain.text', appName);
         cy.get('div.is-filtered').should('be.visible');
         cy.get('@switcher').click();
     },
@@ -85,7 +84,6 @@ export const topologyPage = {
     },
     appNode:(appName:string) => {
         return cy.get(`[data-id="group:${appName}"] g.odc-resource-icon text`).contains('A')
-        // parent('g').next('text').contains(appName);
     },
     getRoute:(nodeName: string) => {
         return cy.get('[data-test-id="base-node-handler"] > text').contains(nodeName).parentsUntil('[data-test-id="base-node-handler"]').next('a').eq(2);
@@ -94,15 +92,7 @@ export const topologyPage = {
         return cy.get(`a[href="/k8s/ns/aut/builds/${nodeName}-1/logs"]`);
     },
     componentNode:(nodeName:string) => {
-        return cy.get('g.odc-base-node__label > text').contains(nodeName)
-        // .parent('[data-test-id="base-node-handler"]');
-        // let ele; 
-        // cy.get(`g.odc-base-node__label > text`).each(($el, index) => {
-        //     if($el.mouseover().text().includes(nodeName)) {
-        //         ele = cy.get(`g.odc-base-node__label > text`).eq(index)
-        //     }
-        // });
-        // return ele;
+        return cy.get('g.odc-base-node__label > text').contains(nodeName);
     },
     getEventSource:(eventSource: string) => {
         return cy.get('[data-type="event-source"] g.odc-base-node__label > text').contains(eventSource);
@@ -139,7 +129,6 @@ export const topologySidePane = {
     verifyWorkload:() => cy.get('[role="dialog"] h2').contains('Services').next('ul li a').should('be.visible'),
     verifyFieldValue:(fieldName: string, fieldValue: string) => cy.get(`[data-test-selector="details-item-value__${fieldName}"]`).should('contain.text', fieldValue),
     selectAddHealthChecks:() => cy.get('a').contains('Add Health Checks').click(),
-    // selectActionFromMenu:(actionMenuOption: string) => cy.selectActionsMenuOption(actionMenuOption),
     verifyWorkloadInAppSideBar:(workloadName: string) => cy.get('[role="dialog"] a').should('contain.text', workloadName),
     selectNodeAction:(action: nodeActions | string)=> {
         switch (action) {

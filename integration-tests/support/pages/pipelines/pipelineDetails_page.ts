@@ -6,6 +6,7 @@ export const pipelineDetailsObj = {
     triggerTemplateLink: 'a[data-test-id^="trigger-template-"]',
   }
 }
+
 export const triggerTemplateDetailsObj = {
   title: '[data-test-section-heading="Trigger Template Details"]',
   actions: '[data-test-id="actions-menu-button"]',
@@ -28,25 +29,15 @@ export const clusterTriggerBindingDetailsObj = {
 }
 
 export const pipelineDetailsPage = {
-  verifyTitle:(pipelineName: string) => 
-    cy.titleShouldBe(pipelineName),
-
-  clickActionMenu: () => 
-    cy.byLegacyTestID('actions-menu-button').click(),
-  
+  verifyTitle:(pipelineName: string) => cy.titleShouldBe(pipelineName),
+  clickActionMenu: () => cy.byLegacyTestID('actions-menu-button').click(),
   selectActionFromActionsDropdown:(action: string) => {
     cy.get(pipelineDetailsObj.actionsMenu).should('be.enabled').click();
     cy.byTestActionID(action).click();
   },
-
-  verifyTriggerTemplateSection:() => 
-    cy.get(pipelineDetailsObj.details.triggerTemplateSection).should('be.visible'),
-
-  verifyPage:() => 
-    cy.get(pipelineDetailsObj.title).should('contain.text', 'Pipeline Details'),
-  
-  selectTriggerTemplateLink:() => 
-  cy.get(pipelineDetailsObj.details.triggerTemplateLink).click(),
+  verifyTriggerTemplateSection:() => cy.get(pipelineDetailsObj.details.triggerTemplateSection).should('be.visible'),
+  verifyPage:() => cy.get(pipelineDetailsObj.title).should('contain.text', 'Pipeline Details'),
+  selectTriggerTemplateLink:() => cy.get(pipelineDetailsObj.details.triggerTemplateLink).click(),
 }
 
 export const triggerTemplateDetailsPage = {

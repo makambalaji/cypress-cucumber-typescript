@@ -6,7 +6,7 @@ Background:
     Given user is at developer perspecitve
     And user has selected namespace "aut-vm-actions"
     And user has created VM
-    And user is at the Topolgy page
+    And user is at the Topology page
 
 
 @regression
