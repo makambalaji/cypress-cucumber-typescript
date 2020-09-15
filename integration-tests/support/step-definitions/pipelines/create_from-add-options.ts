@@ -111,3 +111,7 @@ When('user creates the application with the selected builder image', () => {
 When('user clicks Create button on Create Source-to-Image application', () => {
   addPage.clicKCreate();
 });
+
+Then('Start LastRun button is disabled', () => {
+
+});

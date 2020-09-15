@@ -1,7 +1,7 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { pipelinesPage, startPipelineInPipelinsPage as startPipeline } from '../../pages/pipelines/pipelines_page';
 import { pipelineBuilderPage } from '../../pages/pipelines/pipelineBuilder_page';
-import { pipelineRunDetailsPage, pipelienRunsPage } from '../../pages/pipelines/pipelineRunDetails_page';
+import { pipelineRunDetailsPage, pipelienRunsPage } from '../../pages/pipelines/pipelineRun-details-page';
 import { naviagteTo } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
 import { pipelineDetailsPage } from '../../pages/pipelines/pipelineDetails_page';
@@ -12,7 +12,7 @@ import { topologyPage, topologySidePane } from '../../pages/topology_page';
 const store: Record<string, string> = {};
 
 Given('pipeline {string} consists of task {string} with one git resource', (pipelineName: string, taskName: string) => {
-  pipelinesPage.createPipeline();
+  pipelinesPage.clickOncreatePipeline();
   pipelineBuilderPage.createPipelineWithGitresources(pipelineName, taskName);
   store.pipelineWithOneGitResource = pipelineName;
 });
@@ -38,7 +38,7 @@ Then('pipeline run details for {string} display in Pipelines page', (pipelineNam
 });
 
 Given('pipeline run is displayed for {string} without resource', (pipelineName: string) => {
-  pipelinesPage.createPipeline();
+  pipelinesPage.clickOncreatePipeline();
   pipelineBuilderPage.createPipelineFromBuilderPage(pipelineName);
   store.pipelineWithOutResource = pipelineName;
   cy.selectLinkInBreadCrumb('Pipelines');
@@ -51,7 +51,7 @@ Given('pipeline run is displayed for {string} without resource', (pipelineName: 
 });
 
 Given('pipeline run is displayed for {string} with resource', (pipelineName: string) => {
-  pipelinesPage.createPipeline();
+  pipelinesPage.clickOncreatePipeline();
   pipelineBuilderPage.createPipelineWithGitresources(pipelineName);
   store.pipelineWithResource = pipelineName;
   cy.selectLinkInBreadCrumb('Pipelines');
@@ -67,7 +67,7 @@ Given('pipeline run is displayed for {string} with resource', (pipelineName: str
 });
 
 Given('pipeline {string} is available in pipelines page', (pipelineName: string) => {
-  pipelinesPage.createPipeline();
+  pipelinesPage.clickOncreatePipeline();
   pipelineBuilderPage.createPipelineFromBuilderPage(pipelineName);
 });
 
@@ -159,7 +159,7 @@ Given('user is at the Pipeline Details page', () => {
 });
 
 Given('pipeline {string} is executed for 3 times', (pipelineName: string) => {
-  pipelinesPage.createPipeline();
+  pipelinesPage.clickOncreatePipeline();
   pipelineBuilderPage.createPipelineFromBuilderPage(pipelineName);
   pipelineDetailsPage.clickActionMenu();
   cy.byTestActionID('Start').click();
@@ -184,7 +184,7 @@ When('user filters the pipeline runs of pipeline {string} based on the {string}'
   pipelienRunsPage.filterByStatus(status);
 });
 
-Then('user able to see the pipelineruns with {string}', (status: string) => {
+Then('user is able to see the pipelineruns with {string}', (status: string) => {
   pipelienRunsPage.verifyPipelineRunsTableDisplay();
   pipelienRunsPage.verifyStatusInPipelineRunsTable(status);
 });
@@ -268,4 +268,8 @@ Then('Actions menu display with the options {string}, {string}', (option1: strin
 
 Then('Pipeline Resources field will be displayed', () => {
   // TODO: implement step
+});
+
+When('user navigates to pipeline logs tab', () => {
+  
 });

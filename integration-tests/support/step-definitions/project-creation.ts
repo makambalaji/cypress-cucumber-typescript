@@ -1,6 +1,6 @@
 import { When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { projectNameSpace } from '../../pages/app';
-import { addPageObj } from '../../pages/add/add_page';
+import { projectNameSpace } from '../pages/app';
+import { addPageObj } from '../pages/add/add_page';
 
 When('user selects the Create Project option from Projects dropdown on top navigation bar', () => {
   projectNameSpace.selectCreateProjectOption();

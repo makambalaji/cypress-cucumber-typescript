@@ -1,5 +1,5 @@
 Feature: Event Sources actions
-    As a user, I want to perform actions on event sources
+    As a user, I want to perform actions on event sources from side bar
 
 Background:
    Given user has installed Openshift Serverless operator

@@ -6,7 +6,7 @@ import { naviagteTo } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global'
 
 When('user clicks Create Pipeline button on Pipelines page', () => {
-  pipelinesPage.createPipeline();
+  pipelinesPage.clickOncreatePipeline();
 });
 
 Then('user will be redirected to Pipeline Builder page', () => {
@@ -31,7 +31,7 @@ Then('Create button is in disabled state', () => {
 
 Given('user is at Pipeline Builder page', () => {
   naviagteTo(devNavigationMenu.Pipelines);
-  pipelinesPage.createPipeline();
+  pipelinesPage.clickOncreatePipeline();
   pipelineBuilderPage.verifyTitle();
 });
 

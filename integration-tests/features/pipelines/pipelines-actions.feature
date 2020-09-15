@@ -13,7 +13,6 @@ Scenario Outline: Newly created pipeline details in Pipelines page : P-03-TC12
    When user enters "<pipeline_name>" into the pipelines search bar
    Then pipelines table displayed with column names Name, Last Run, Task Status, Last Run Status and Last Run Time
    And column Name display with value "<pipeline_name>"
-   # And column Namespace display with value "aut-pipeline-actions"
    And columns Last Run, Task Run Status, Last Run Status, Last Run Time with values display "-"
    And Create Pipeline button is enabled
    And kebab menu is displayed
@@ -24,7 +23,7 @@ Examples:
 
 
 @regression
-Scenario: Kebab menu options of newly created pipeline in Pipelines page : P-04-TC09
+Scenario: Kebab menu options of newly created pipeline in Pipelines page : P-03-TC09
    Given user is at pipelines page
    And pipeline with name "pipelines-aaa" is present on Pipelines page
    When user enters "pipelines-aaa" into the pipelines search bar
@@ -39,7 +38,7 @@ Scenario Outline: Pipelines Details page : P-03-TC01
    When user clicks pipeline name "<pipeline_name>" on Pipelines page
    Then user will get redirected to Pipeline Details page with header name "<pipeline_name>"
    And user is able to see Details, YAML, Pipeline Runs, Parameters and Resources tabs
-   And Details tab is displayed with field names Name, Namespace, Labels, Annotations, Created At, Owner and Tasks
+   And Details tab is displayed with field names Name, Labels, Annotations, Created At, Owner and Tasks
    And Actions dropdown display in the top right corner of the page
 
 Examples:
@@ -49,7 +48,7 @@ Examples:
 
 @regression
 Scenario: Actions menu of newly created pipeline in Pipeline Details page : P-03-TC10
-   Given user is at pipeline details page with newly created pipeline
+   Given user is at pipeline details page with newly created pipeline "nodejs-ex-git"
    When user clicks Actions menu in pipeline Details page
    Then Actions menu display with options "Start", "Add Trigger", "Edit Pipeline", "Delete Pipeline"
 
@@ -120,7 +119,7 @@ Examples:
 
 
 @regression
-Scenario: Kebab menu options of pipeline with atleast one pipeline run in Pipelines page : P-04-TC09
+Scenario: Kebab menu options of pipeline with atleast one pipeline run in Pipelines page : P-03-TC09
    Given user is at pipelines page
    When user clicks kebab menu for the pipeline "nodejs-ex.git"
    Then user will see "Start Last Run" under Kebab menu

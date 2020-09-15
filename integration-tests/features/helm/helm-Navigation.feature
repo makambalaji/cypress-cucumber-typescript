@@ -123,7 +123,7 @@ Scenario: Helm release details page : HR-11-TC08
     And user will see the Actions drop down menu
 
 
-Scenario: Actions menu of Helm Details page : P-03-TC10
+Scenario: Actions menu of Helm Details page : HR-03-TC10
    Given user is at the Helm page
    When user clicks Actions menu in Helm Details page
    Then Actions menu display with options Upgrade, Rollback, and Uninstall Helm Release

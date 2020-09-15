@@ -2,10 +2,6 @@ import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { perspective, projectNameSpace as project, naviagteTo } from '../../pages/app';
 import { operatorsPage } from '../../pages/operators_page';
 import {switchPerspective, devNavigationMenu as menu, devNavigationMenu} from '../../constants/global';
-import { pipelineBuilderPage} from '../../pages/pipelines/pipelineBuilder_page';
-import { pipelineRunDetailsPage } from '../../pages/pipelines/pipelineRunDetails_page';
-import { pipelinesPage } from '../../pages/pipelines/pipelines_page';
-import { topologyPage } from '../../pages/topology_page';
 import { addPage } from '../../pages/add/add_page';
 import { addOptions } from '../../constants/add';
 
@@ -75,21 +71,12 @@ Given('user is at Add page', () => {
   naviagteTo(devNavigationMenu.Add);
 });
 
-Given('user is at the Topolgy page', () => {
-  naviagteTo(menu.Topology);
-  topologyPage.verifyTopologyPage();
-});
-
 Given('user is at Developer Catlog page', () => {
   addPage.selectCardFromOptions(addOptions.Catalog);
 });
 
 Given('user is at pipelines page', () => {
   naviagteTo(menu.Pipelines);
-});
-
-Given('user is at pipeline Runs page', () => {
-  pipelineRunDetailsPage.verifyTitle();
 });
 
 When('user switches to developer perspective', () => {
@@ -112,12 +99,6 @@ When('user selects {string} option from kebab menu', (option: string) => {
   cy.byTestActionID(option).click();
 });
 
-When('user selects {string} option from kebab menu for pipeline {string}', (option: string, pipelineName: string) => {
-  naviagteTo(devNavigationMenu.Pipelines);
-  pipelinesPage.selectKebabMenu(pipelineName);
-  cy.byTestActionID(option).click();
-});
-
 When('user selects {string} option from Actions menu', (option: string) => {
   cy.byTestActionID(option).click();
 })
@@ -126,30 +107,10 @@ Then('modal with {string} appears', (header: string) => {
   cy.alertTitleShouldBe(header);
 });
 
-Then('user is at the Pipeline Builder page', () => {
-  pipelineBuilderPage.verifyTitle();
-});
-
-Then('user will be redirected to Pipeline Run Details page', () => {
-  pipelineRunDetailsPage.verifyTitle();
-});
-
-Then('user will be redirected to Topology page', () => {
-  topologyPage.verifyTopologyPage();
-});
-
 Then('user will be redirected to Add page', () => {
   cy.get('h1.ocs-page-layout__title').should('have.text', 'Add');
 });
 
 Then('user will be redirected to Pipelines page', () => {
   cy.titleShouldBe('Pipelines');
-});
-
-Then('user is able to see workload {string} in topology page list view', (workloadName: string) => {
-  topologyPage.verifyWorkloadInTopologyPage(workloadName);
-});
-
-Then('user is able to see workload {string} in topology page', (workloadName: string) => {
-  topologyPage.verifyWorkloadInTopologyPage(workloadName);
 });

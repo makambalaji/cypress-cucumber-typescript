@@ -8,7 +8,7 @@ import { devNavigationMenu } from '../../constants/global';
 const store: Record<string, string> = {};
 
 Given('pipeline {string} is available with git resource', (pipelineName: string) => {
-  pipelinesPage.createPipeline();
+  pipelinesPage.clickOncreatePipeline();
   pipelineBuilderPage.createPipelineWithGitresources(pipelineName);
   store.pipelineName = pipelineName;
   cy.get('[data-test-id="breadcrumb-link-0"]').click();
@@ -51,7 +51,7 @@ Then('Add button is enabled', () => {
 });
 
 Given('{string} is displayed on pipelines page', (pipelineName: string) => {
-  pipelinesPage.createPipeline();
+  pipelinesPage.clickOncreatePipeline();
   pipelineBuilderPage.createPipelineFromBuilderPage(pipelineName);
   cy.get('[data-test-id="breadcrumb-link-0"]').click();
   pipelinesPage.verifyNameInPipelinesTable(pipelineName);
@@ -76,7 +76,7 @@ Then('{string} is displayed in kebab menu for {string}', (option: string, pipeli
 });
 
 Given('pipeline {string} with trigger in pipelines page', (pipelineName: string) => {
-  pipelinesPage.createPipeline();
+  pipelinesPage.clickOncreatePipeline();
   pipelineBuilderPage.createPipelineFromBuilderPage(pipelineName);
   cy.get('[data-test-id="breadcrumb-link-0"]').click();
   pipelinesPage.verifyNameInPipelinesTable(pipelineName);
@@ -98,7 +98,7 @@ Then('Trigger Templates section is displayed', () => {
 });
 
 Given('Trigger is added to the pipeline {string} present in pipeline details page', (pipelineName: string) => {
-  pipelinesPage.createPipeline();
+  pipelinesPage.clickOncreatePipeline();
   pipelineBuilderPage.createPipelineFromBuilderPage(pipelineName);
   cy.get('[data-test-id="breadcrumb-link-0"]').click();
   pipelinesPage.verifyNameInPipelinesTable(pipelineName);

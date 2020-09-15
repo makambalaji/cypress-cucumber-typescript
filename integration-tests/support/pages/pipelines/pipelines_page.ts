@@ -57,7 +57,7 @@ export const pipelinesObj = {
 }
 
 export const pipelinesPage = {
-  createPipeline: () => cy.get(pipelinesObj.createPipeline).click(),
+  clickOncreatePipeline: () => cy.get(pipelinesObj.createPipeline).click(),
 
   selectKebabMenu:(pipelineName: string) => {
     cy.get(pipelinesObj.pipelinesTable.table).should('exist');

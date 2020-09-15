@@ -2,7 +2,7 @@ import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { pipelinesPage, pipelinesObj } from '../../pages/pipelines/pipelines_page';
 import { pipelineBuilderPage, pipelineBuilderObj } from '../../pages/pipelines/pipelineBuilder_page';
 import { pipelineDetailsPage } from '../../pages/pipelines/pipelineDetails_page';
-import { pipelineRunDetailsPage} from '../../pages/pipelines/pipelineRunDetails_page';
+import { pipelineRunDetailsPage} from '../../pages/pipelines/pipelineRun-details-page';
 import { naviagteTo } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
 
@@ -39,18 +39,19 @@ Then('user will see {string} under Kebab menu', (option: string) => {
   pipelinesPage.verifyOptionInKebabMenu(option);
 });
 
-Given('user is at pipeline details page with newly created pipeline', () => {
+Given('user is at pipeline details page with newly created pipeline {string}', (pipelineName: string) => {
+  pipelinesPage.clickOncreatePipeline();
   pipelinesPage.verifyPipelinesTableDisplay();
 });
 
 Given('pipeline with name {string} is present on Pipelines page', (pipelineName: string) => {
-  pipelinesPage.createPipeline();
+  pipelinesPage.clickOncreatePipeline();
   pipelineBuilderPage.createPipelineFromBuilderPage(pipelineName);
   naviagteTo(devNavigationMenu.Pipelines);
 });
 
 Given('pipeline {string} consists of task {string} without parameters and resources', (pipelineName: string, b: string) => {
-  pipelinesPage.createPipeline();
+  pipelinesPage.clickOncreatePipeline();
   pipelineBuilderPage.createPipelineFromBuilderPage(pipelineName);
   naviagteTo(devNavigationMenu.Pipelines);
 });
@@ -105,7 +106,7 @@ Then('user is able to see Details, YAML, Pipeline Runs, Parameters and Resources
   // TODO: implement step
 });
 
-Then('Details tab is displayed with field names Name, Namespace, Labels, Annotations, Created At, Owner and Tasks', () => {
+Then('Details tab is displayed with field names Name, Labels, Annotations, Created At, Owner and Tasks', () => {
   // TODO: implement step
 });
 
@@ -114,7 +115,6 @@ Then('Actions dropdown display in the top right corner of the page', () => {
 });
 
 Then('Actions menu display with options {string}, {string}, {string}, {string}', (a: string, b: string, c: string, d: string) => {
-  // TODO: implement step
   cy.log(a,b,c,d);
 });
 

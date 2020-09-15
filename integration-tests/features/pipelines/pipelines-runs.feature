@@ -104,7 +104,7 @@ Examples:
 Scenario Outline: Filter the pipeline runs based on status : P-06-TC07
     Given pipeline "<pipeline_name>" is executed for 3 times
     When user filters the pipeline runs of pipeline "<pipeline_name>" based on the "<status>"
-    Then user able to see the pipelineruns with "<status>"
+    Then user is able to see the pipelineruns with "<status>"
 
 Examples:
 | pipeline_name              | status    |
@@ -124,7 +124,8 @@ Examples:
 
 @regression, @manual
 Scenario Outline: Download the logs from Pipeline Details page : P-04-TC05
-    Given user is at the Pipeline Details page
+    Given pipeline run is displayed for "pipe-task-with-resoruce" with resource
+    When user navigates to pipeline logs tab
 
 
 @regression

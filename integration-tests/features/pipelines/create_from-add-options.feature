@@ -135,11 +135,11 @@ Examples:
 @regression
 Scenario Outline: Pipelines section in topology page: P-02-TC09
    Given user is at the Topolgy page
-   # When the user enters "<node_name>" into the search bar
-   # And user clicks node on topology page
-   # Then right side bar opens in topology page
-   # And pipelines section is displayed
-   # And "Start LastRun" button is disabled
+   When user searches for "<node_name>" in topology page
+   And user clicks on workload "<node_name>"
+   Then user can see sidebar opens with Resources tab selected by default
+   And side bar is displayed with the pipelines section
+   And Start LastRun button is disabled
 
 Examples:
 | node_name       | 

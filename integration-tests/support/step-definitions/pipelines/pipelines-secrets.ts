@@ -7,7 +7,7 @@ import { devNavigationMenu } from '../../constants/global';
 const store: Record<string, string> = {};
 
 Given('user has created pipeline {string} with git resources', (pipelineName: string) => {
-  pipelinesPage.createPipeline();
+  pipelinesPage.clickOncreatePipeline();
   pipelineBuilderPage.createPipelineWithGitresources(pipelineName);
   store.pipelineName = pipelineName;
 });
