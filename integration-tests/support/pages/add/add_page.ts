@@ -175,7 +175,7 @@ export const addPage = {
         cy.byLegacyTestID('import-from-dockerfile').click();
         cy.titleShouldBe('Import from Dockerfile');
         break;
-      case 'Catalog file':
+      case 'From Catalog':
       case addOptions.Catalog:
         cy.byLegacyTestID('dev-catalog').click();
         cy.titleShouldBe('Developer Catalog');
@@ -185,7 +185,7 @@ export const addPage = {
         cy.byLegacyTestID('dev-catalog-databases').click();
         cy.titleShouldBe('Developer Catalog');
         break;
-      case 'Event Sources':
+      case 'Event Source':
       case addOptions.EventSource:
         cy.byLegacyTestID('knative-event-source').click();
         cy.titleShouldBe('Event Sources');

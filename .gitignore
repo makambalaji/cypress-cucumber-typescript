@@ -1,6 +1,6 @@
 integration-tests/screenshots/
 integration-tests/videos/
-integration-tests/videos
+integration-tests/mochawesome-report/
 integration-tests/node_modules/
 npm-debug.log
 integration-tests/testData
