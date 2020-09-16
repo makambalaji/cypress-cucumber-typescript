@@ -52,7 +52,7 @@ Then('Topology page have the helm chart workload {string}', (nodeName: string) =
 });
 
 When('user clicks on the Developer Catalog card on the Add page', () => {
-  addPage.selectCardFromOptions(addOptions.Catalog);
+  addPage.selectCardFromOptions(addOptions.DeveloperCatalog);
 });
 
 When('user checks the Helm Charts checkbox', () => {

@@ -3,7 +3,7 @@ import { addPage } from '../../pages/add/add_page';
 import { addOptions } from '../../constants/add';
 
 When('user selects From Catalog card from add page', () => {
-  addPage.selectCardFromOptions(addOptions.Catalog)
+  addPage.selectCardFromOptions(addOptions.DeveloperCatalog)
 });
 
 When('user searches {string} card from catalog page', (a: string) => {

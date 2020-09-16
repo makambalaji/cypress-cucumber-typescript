@@ -28,7 +28,7 @@ When('user clicks on From Dockerfile card', () => {
 });
 
 When('user clicks on From Catalog card', () => {
-  addPage.selectCardFromOptions(addOptions.Catalog);
+  addPage.selectCardFromOptions(addOptions.DeveloperCatalog);
 });
 
 When('create the application with s2i builder image', () => {

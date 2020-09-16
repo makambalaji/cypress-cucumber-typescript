@@ -235,11 +235,24 @@ export const addHealthChecksObj = {
 
 export const addHealthChecksPage = {
     verifyTitle: () => cy.titleShouldBe('Add Health Checks'),
+    clickCheckIcon:() => cy.byLegacyTestID('check-icon').click(),
+    clickCancelIcon:() => cy.byLegacyTestID('close-icon').click(),
     addReadinessProbe:() => {
         cy.byButtonText('Add Readiness Probe').click();
         cy.get('div.odc-heath-check-probe-form').should('be.visible');
-        
+        addHealthChecksPage.clickCheckIcon();
+        cy.get('span.odc-heath-check-probe__successText').contains('Readiness Probe Added').should('be.visible');
     },
-    clickCheckIcon:() => cy.byLegacyTestID('check-icon').click(),
-    clickCancelIcon:() => cy.byLegacyTestID('close-icon').click(),
+    addLivenessProbe:() => {
+        cy.byButtonText('Add liveness Probe').click();
+        cy.get('div.odc-heath-check-probe-form').should('be.visible');
+        addHealthChecksPage.clickCheckIcon();
+        cy.get('span.odc-heath-check-probe__successText').contains('Liveness Probe Added').should('be.visible');
+    },
+    addStartupProbe:() => {
+        cy.byButtonText('Add Startup Probe').click();
+        cy.get('div.odc-heath-check-probe-form').should('be.visible');
+        addHealthChecksPage.clickCheckIcon();
+        cy.get('span.odc-heath-check-probe__successText').contains('Startup Probe Added').should('be.visible');
+    },
 }

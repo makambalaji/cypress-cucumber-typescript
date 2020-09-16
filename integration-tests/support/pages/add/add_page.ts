@@ -176,7 +176,7 @@ export const addPage = {
         cy.titleShouldBe('Import from Dockerfile');
         break;
       case 'From Catalog':
-      case addOptions.Catalog:
+      case addOptions.DeveloperCatalog:
         cy.byLegacyTestID('dev-catalog').click();
         cy.titleShouldBe('Developer Catalog');
         break;

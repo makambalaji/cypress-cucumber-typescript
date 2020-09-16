@@ -3,7 +3,7 @@ export enum addOptions {
   ContainerImage = 'Container Image',
   DockerFile = 'From Dockerfile',
   YAML = 'YAML',
-  Catalog = 'From Catalog',
+  DeveloperCatalog = 'From Catalog',
   Database = 'Database',
   OperatorBacked = 'Operator Backed',
   HelmChart = 'Helm Chart',

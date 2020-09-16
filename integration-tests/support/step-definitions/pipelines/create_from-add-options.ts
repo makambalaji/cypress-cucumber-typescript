@@ -95,7 +95,7 @@ Given('workload {string} is created from add page with pipeline', (pipelineName:
 });
 
 Given('user is at Developer Catalog form with builder images', () => {
-  addPage.selectCardFromOptions(addOptions.Catalog);
+  addPage.selectCardFromOptions(addOptions.DeveloperCatalog);
 });
 
 When('user searches builder image {string} in developer catalog', (searchItem: string) => {

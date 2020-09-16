@@ -72,7 +72,7 @@ Given('user is at Add page', () => {
 });
 
 Given('user is at Developer Catlog page', () => {
-  addPage.selectCardFromOptions(addOptions.Catalog);
+  addPage.selectCardFromOptions(addOptions.DeveloperCatalog);
 });
 
 Given('user is at pipelines page', () => {

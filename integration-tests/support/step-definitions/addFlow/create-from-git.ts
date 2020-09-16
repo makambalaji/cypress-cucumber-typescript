@@ -130,11 +130,11 @@ When('user fills the Readiness Probe details', () => {
 });
 
 When('user fills the Liveness Probe details', () => {
-
+  addHealthChecksPage.addLivenessProbe();
 });
 
 When('user fills the Startup Probe details', () => {
-
+  addHealthChecksPage.addStartupProbe();
 });
 
 When('user enters label as {string}', (labelName: string) => {
