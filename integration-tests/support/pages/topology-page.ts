@@ -248,13 +248,13 @@ export const addHealthChecksPage = {
         cy.get('span.odc-heath-check-probe__successText').contains('Readiness Probe Added').should('be.visible');
     },
     addLivenessProbe:() => {
-        cy.byButtonText('Add liveness Probe').click();
+        cy.byButtonText('Add liveness Probe').scrollIntoView().click();
         cy.get('div.odc-heath-check-probe-form').should('be.visible');
         addHealthChecksPage.clickCheckIcon();
         cy.get('span.odc-heath-check-probe__successText').contains('Liveness Probe Added').should('be.visible');
     },
     addStartupProbe:() => {
-        cy.byButtonText('Add Startup Probe').click();
+        cy.byButtonText('Add Startup Probe').scrollIntoView().click();
         cy.get('div.odc-heath-check-probe-form').should('be.visible');
         addHealthChecksPage.clickCheckIcon();
         cy.get('span.odc-heath-check-probe__successText').contains('Startup Probe Added').should('be.visible');

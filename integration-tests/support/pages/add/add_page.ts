@@ -29,7 +29,8 @@ export const addPageObj = {
     routing: {
       hostname: '#form-input-route-hostname-field',
       path: '#form-input-route-path-field',
-      targetPort: 'button#form-dropdown-route-targetPort-field',
+      targetPort:'#form-input-route-unknownTargetPort-field',
+      // targetPort: 'button#form-dropdown-route-targetPort-field',
       secureRoute: 'input#form-checkbox-route-secure-field',
       tlsTermination: 'button#form-dropdown-route-tls-termination-field',
       insecureTraffic: 'button#form-dropdown-route-tls-insecureEdgeTerminationPolicy-field',
@@ -86,7 +87,6 @@ export const addPage = {
   enterAppName:(appName: string) => {
     cy.get(addPageObj.appName).then(($el) => {
       cy.wait(2000);
-      // const tag: string = $el.prop("tagName");
       if($el.prop("tagName").includes('button')) {
         cy.log('button tagname is available')
         cy.get(addPageObj.appName).click();
@@ -232,8 +232,9 @@ export const addPage = {
     addPage.clicKCreate();
   },
   selectTargetPortForRouting:() => {
-    cy.get(addPageObj.advancedOptions.routing.targetPort).click();
-    cy.get('[data-test-dropdown-menu="8080-tcp"]').click();
+    // cy.get(addPageObj.advancedOptions.routing.targetPort).click();
+    // cy.get('[data-test-dropdown-menu="8080-tcp"]').click();
+    cy.get(addPageObj.advancedOptions.routing.targetPort).type('8080');
   },
   enterRoutingHostName:(hostName: string) => cy.get(addPageObj.advancedOptions.routing.hostname).type(hostName),
   eneterRoutingPath:(path: string) => cy.get(addPageObj.advancedOptions.routing.path).type(path),

@@ -8,7 +8,7 @@ Background:
 
 @regression, @smoke
 Scenario: Topology List view : T-07-TC05
-   Given user created workload "nodejs-ex-git" with resource type "Deployment" 
+   Given user created workload "nodejs-ex-git" with resource type "Deployment"
    When user clicks on List view button
    And user verifies the Group by filter on top
    Then user will see workloads are segregated by applications groupings

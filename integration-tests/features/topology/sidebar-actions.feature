@@ -8,7 +8,7 @@ Background:
 
 @regression, @smoke
 Scenario Outline: Sidebar for workload: T-05-TC01
-   Given user created workload "<workload_name>" with resource type "<resource_type>" 
+   Given user created workload "<workload_name>" with resource type "<resource_type>"
    When user clicks on workload "<workload_name>"
    Then user can see sidebar opens with Resources tab selected by default
    And user can see sidebar Details, Resources and Monitoring tabs

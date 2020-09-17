@@ -21,7 +21,7 @@ When('user selects Template card {string} from catalog page', (cardName: string)
 });
 
 When('user clicks create button on Instantiate Template page with default values', () => {
-  cy.byButtonText('Create').scrollIntoView().click();
+  cy.get('button[type="submit"]').scrollIntoView().click();
 });
 
 Then('user is ale to see Operator Backed, Helm Charts, Builder Image, Template, Service Class types are not selected by default', () => {

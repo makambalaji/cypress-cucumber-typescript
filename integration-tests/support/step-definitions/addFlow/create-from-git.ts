@@ -35,8 +35,9 @@ When('user selects resource type as {string}', (resourceType: string) => {
   addPage.selectResource(resourceType);
 });
 
-Then('created workload is linked to existing application', () => {
-  
+Then('created workload {string} is linked to existing application {string}', (workloadName: string, appName: string) => {
+  topologyPage.appNode(appName).click({force:true});
+  topologySidePane.verifyResource(workloadName);
 });
 
 When('user enters Application name as {string}', (appName: string) => {

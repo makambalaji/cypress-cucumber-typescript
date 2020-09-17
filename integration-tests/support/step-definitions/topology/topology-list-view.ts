@@ -2,8 +2,8 @@ import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { addPage } from '../../pages/add/add_page';
 import { topologyPage, topologyObj } from '../../pages/topology-page';
 
-Given('user created workload {string} with resource type {string}', (componentName: string) => {
-  addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git', componentName, 'deployment', 'nodejs-ex-git-app');
+Given('user created workload {string} with resource type {string}', (componentName: string, resourceType: string = "Deployment") => {
+  addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git', componentName, resourceType, 'nodejs-ex-git-app');
 });
 
 When('user clicks on List view button', () => {
