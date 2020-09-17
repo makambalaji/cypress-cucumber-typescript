@@ -1,10 +1,10 @@
-import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
+import { Given, When } from 'cypress-cucumber-preprocessor/steps';
 import { catalogPage, catalogPageObj } from '../../pages/add/catalog_page';
-import { topologyPage } from '../../pages/topology-page';
 import { addPage } from '../../pages/add/add_page';
+import { catalogTypes } from '../../constants/add';
 
 Given('Opeator Backed is selected on Developer Catalog page', () => {
-  catalogPage.selectOperatorBackedCheckBox();
+  catalogPage.selectCatalogTypeCheckBox(catalogTypes.OperatorBacked);
 });
 
 When('user selects knative Serving card', () => {
