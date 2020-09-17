@@ -7,7 +7,7 @@ Background:
     And user is at Add page
 
 
-@regression
+@regression-1
 Scenario Outline: Dockerfile details after entering git repo url: A-06-TC01
    Given user is on Import from Docker file page
    When user enters Git Repo url as "<docker_git_url>"
@@ -21,7 +21,7 @@ Examples:
 | https://github.com/sclorg/cakephp-ex.git | cakephp-ex-git-app | cakephp-ex-git |
 
 
-@regression, @smoke
+@regression-1, @smoke-1
 Scenario Outline: Create a workload from Docker file with "<resource_type>" as resource type : A-06-TC03, A-06-TC04
    Given user is on Import from Docker file page
    When user enters docker git url as "<docker_git_url>"
@@ -36,7 +36,7 @@ Examples:
 | https://github.com/sclorg/nginx-ex.git  | Deployment Config | nginx-ex-git  |
 
 
-@regression
+@regression-1
 Scenario: Perform cancel operation on Dockerfile form should will be redirected the user to Add page : A-06-TC02
    Given user is on Import from Docker file page
    When user enters docker git url as "https://github.com/sclorg/nodejs-ex.git"

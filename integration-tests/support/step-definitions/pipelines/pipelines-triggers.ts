@@ -108,10 +108,6 @@ Given('Trigger is added to the pipeline {string} present in pipeline details pag
   store.pipeline1 = pipelineName;
 });
 
-Given('webhook secret is created and added to workload', () => {
-
-});
-
 Given('user is at pipeline Details page', () => {
   pipelinesPage.selectPipeline(store.pipeline1)
   pipelineDetailsPage.verifyPage();
@@ -207,4 +203,56 @@ Then('Remove button will be disabled', () => {
 Then('option {string} is not availale in kebab menu for {string}', (option: string, pipelineName: string) => {
   pipelinesPage.selectKebabMenu(pipelineName);
   cy.byTestActionID(option).should('not.be.visible');
+});
+
+Given('Trigger is added to the pipeline {string} present in pipeline details page', (a: string) => {
+  // Manual step
+});
+
+Given('user is at pipeline trigger template page for pipeline {string}', (a: string) => {
+  // Manual step
+});
+
+When('user navigates to github repo url', () => {
+  // Manual step
+});
+
+When('user selects webhooks from github settings page', () => {
+  // Manual step
+});
+
+When('user clicks Add Webhook', () => {
+  // Manual step
+});
+
+When('user enters payload url as trigger template url', () => {
+  // Manual step
+});
+
+When('user eneters content type as {string}', (a: string) => {
+  // Manual step
+});
+
+When('user clicks on Add Webhook', () => {
+  // Manual step
+});
+
+When('update the content in ReadMe file', () => {
+  // Manual step
+});
+
+When('user navigates to pipelines page', () => {
+  // Manual step
+});
+
+When('user enters the secret authentication key', () => {
+  // Manual step
+});
+
+Then('user is able to see new pipeline run for {string} in pipelines page', (a: string) => {
+  // Manual step
+});
+
+Then('user is able to see new pipeline in pipelines page', () => {
+  // Manual step
 });
