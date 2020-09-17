@@ -1,5 +1,5 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { addPage } from '../../pages/add/add_page';
+import { addPage } from '../../pages/add-flow/add-page';
 import { topologyPage, topologyObj } from '../../pages/topology-page';
 
 Given('user created workload {string} with resource type {string}', (componentName: string, resourceType: string = "Deployment") => {

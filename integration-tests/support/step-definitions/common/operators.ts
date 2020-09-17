@@ -2,8 +2,8 @@ import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { operatorsPage, operatorsObj } from '../../pages/operators-page';
 import  { operators, switchPerspective, devNavigationMenu } from '../../constants/global'
 import { projectNameSpace, perspective, naviagteTo } from '../../pages/app';
-import { addPage } from '../../pages/add/add_page';
-import { eventSourcesPage } from '../../pages/add/eventSource_page';
+import { addPage } from '../../pages/add-flow/add-page';
+import { eventSourcesPage } from '../../pages/add-flow/eventSource-page';
 
 Given('user is at Operator Hub page with the header name {string}', (headerName) => {
   operatorsPage.navigateToOperaotorHubPage();

@@ -1,8 +1,8 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { topologySidePane, topologyPage } from '../../pages/topology-page';
-import { addPage } from '../../pages/add/add_page';
+import { addPage } from '../../pages/add-flow/add-page';
 import { resourceTypes } from '../../constants/add';
-import { eventSourcesPage } from '../../pages/add/eventSource_page';
+import { eventSourcesPage } from '../../pages/add-flow/eventSource-page';
 import { naviagteTo, app } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
 

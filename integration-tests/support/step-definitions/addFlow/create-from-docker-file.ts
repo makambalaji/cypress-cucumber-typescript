@@ -1,5 +1,5 @@
 import { Given, When } from 'cypress-cucumber-preprocessor/steps';
-import { addPage } from '../../pages/add/add_page';
+import { addPage } from '../../pages/add-flow/add-page';
 import { addOptions } from '../../constants/add';
 
 Given('user is on Import from Docker file page', () => {

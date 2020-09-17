@@ -1,4 +1,4 @@
-import { addPage } from "../add/add_page";
+import { addPage } from "./add-page";
 import { addOptions, caatalogCards, catalogTypes } from "../../constants/add";
 import { app } from "../app";
 
@@ -144,11 +144,13 @@ export const catalogPage = {
         {
           // cy.get(catalogPageObj.cards.phpCakeTemplate).click();
           // card name is not available
+          break;
         }
       case caatalogCards.cakePhp:
       case 'CakePHP + MySQL':
         {
           cy.get(catalogPageObj.cards.phpCakeTemplate).click();
+          break;
         }
       default: {
         throw new Error('Card is not available in Catalog');

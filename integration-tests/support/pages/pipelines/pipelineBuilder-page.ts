@@ -1,4 +1,4 @@
-import { pipelineDetailsPage, pipelineDetailsObj } from "./pipelineDetails_page";
+import { pipelineDetailsPage, pipelineDetailsObj } from "./pipelineDetails-page";
 
 export const pipelineBuilderObj = {
   title: '.odc-pipeline-builder-header h1',

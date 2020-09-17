@@ -1,7 +1,7 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { addPage, addPageObj } from '../../pages/add/add_page';
-import { containerImagePage } from '../../pages/add/containerImage_page';
-import { catalogPage } from '../../pages/add/catalog_page';
+import { addPage, addPageObj } from '../../pages/add-flow/add-page';
+import { containerImagePage } from '../../pages/add-flow/containerImage-page';
+import { catalogPage } from '../../pages/add-flow/catalog-page';
 import { addOptions } from '../../constants/add';
 import { naviagteTo } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';

@@ -1,11 +1,11 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { addPage } from '../../pages/add/add_page';
+import { addPage } from '../../pages/add-flow/add-page';
 import { resourceTypes } from '../../constants/add';
 import { topologyPage, topologySidePane } from '../../pages/topology-page';
 import { editLabels, editAnnotations, deleteservice, deleteRevision } from '../../pages/popupAlerts';
 import { naviagteTo, app } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
-import { eventSourcesPage } from '../../pages/add/eventSource_page';
+import { eventSourcesPage } from '../../pages/add-flow/eventSource-page';
 
 Given('knative service named {string} is higlighted on topology page', (knativeServiceName: string) => {
   app.waitForLoad();

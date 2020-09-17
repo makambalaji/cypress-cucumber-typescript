@@ -1,4 +1,4 @@
-import { addPage } from "../add/add_page";
+import { addPage } from "./add-page";
 import { addOptions } from "../../constants/add";
 import { app } from "../app";
 

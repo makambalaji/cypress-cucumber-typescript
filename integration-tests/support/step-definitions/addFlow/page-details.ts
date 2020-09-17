@@ -1,7 +1,7 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { projectNameSpace, naviagteTo, perspective } from '../../pages/app';
 import { devNavigationMenu, switchPerspective } from '../../constants/global';
-import { addPage } from '../../pages/add/add_page';
+import { addPage } from '../../pages/add-flow/add-page';
 import { operatorsPage, operatorsObj } from '../../pages/operators-page';
 
 Given('user is at the new project namespace {string}', (namespace: string) => {

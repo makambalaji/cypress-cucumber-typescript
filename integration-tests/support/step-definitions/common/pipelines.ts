@@ -1,7 +1,7 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { pipelineBuilderPage} from '../../pages/pipelines/pipelineBuilder_page';
+import { pipelineBuilderPage} from '../../pages/pipelines/pipelineBuilder-page';
 import { pipelineRunDetailsPage } from '../../pages/pipelines/pipelineRun-details-page';
-import { pipelinesPage } from '../../pages/pipelines/pipelines_page';
+import { pipelinesPage } from '../../pages/pipelines/pipelines-page';
 import { naviagteTo } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
 

@@ -1,4 +1,4 @@
-import { eventSourcesPage } from "./add/eventSource_page";
+import { eventSourcesPage } from "./add-flow/eventSource-page";
 
 export const editLabels = {
     enterLabel:(labelName: string) => cy.byTestID('tags-input').type(labelName).type('{enter'),

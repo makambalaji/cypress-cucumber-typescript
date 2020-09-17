@@ -1,11 +1,11 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { addPage } from '../../pages/add/add_page';
+import { addPage } from '../../pages/add-flow/add-page';
 import { naviagteTo } from '../../pages/app';
 import { devNavigationMenu as menu } from '../../constants/global';
 import { addOptions } from '../../constants/add';
 import { topologyPage, topologySidePane } from '../../pages/topology-page';
-import { pipelinesPage } from '../../pages/pipelines/pipelines_page';
-import { catalogPage } from '../../pages/add/catalog_page';
+import { pipelinesPage } from '../../pages/pipelines/pipelines-page';
+import { catalogPage } from '../../pages/add-flow/catalog-page';
 
 Given('user is at Add page', () => {
   naviagteTo(menu.Add);

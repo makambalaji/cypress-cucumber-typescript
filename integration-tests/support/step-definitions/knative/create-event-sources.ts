@@ -1,6 +1,6 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { addPage } from '../../pages/add/add_page';
-import { eventSourcesPage, eventSourceObj } from '../../pages/add/eventSource_page';
+import { addPage } from '../../pages/add-flow/add-page';
+import { eventSourcesPage, eventSourceObj } from '../../pages/add-flow/eventSource-page';
 import { naviagteTo, app } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
 import { addOptions } from '../../constants/add';

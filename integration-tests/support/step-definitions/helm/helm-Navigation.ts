@@ -2,10 +2,10 @@ import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { naviagteTo } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
 import { helmPage, helmDetailsPage } from '../../pages/helm-page';
-import { addPage } from '../../pages/add/add_page';
+import { addPage } from '../../pages/add-flow/add-page';
 import { addOptions } from '../../constants/add';
 import { topologyPage } from '../../pages/topology-page';
-import { catalogPage, catalogPageObj } from '../../pages/add/catalog_page';
+import { catalogPage, catalogPageObj } from '../../pages/add-flow/catalog-page';
 
 Given('user is at the Helm page', () => {
   naviagteTo(devNavigationMenu.Helm);
