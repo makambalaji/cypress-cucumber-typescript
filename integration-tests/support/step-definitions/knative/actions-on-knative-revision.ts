@@ -1,6 +1,6 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { editLabels, deleteRevision } from '../../pages/popupAlerts';
-import { topologyPage, topologySidePane } from '../../pages/topology_page';
+import { topologyPage, topologySidePane } from '../../pages/topology-page';
 
 Given('number of annotations are {string} present in revision side bar details of service {string}', (numOfAnnotations: string, serviceName: string) => {
   topologyPage.revisionNode(serviceName).click();

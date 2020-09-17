@@ -1,5 +1,5 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { operatorsPage, operatorsObj } from '../../pages/operators_page';
+import { operatorsPage, operatorsObj } from '../../pages/operators-page';
 import  { operators, switchPerspective, devNavigationMenu } from '../../constants/global'
 import { projectNameSpace, perspective, naviagteTo } from '../../pages/app';
 import { addPage } from '../../pages/add/add_page';

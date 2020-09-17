@@ -1,5 +1,5 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { topologyPage, topologySidePane } from '../../pages/topology_page';
+import { topologyPage, topologySidePane } from '../../pages/topology-page';
 
 // Given('side bar is displayed for revision of knative service {string} in topology page', (a: string) => {
   

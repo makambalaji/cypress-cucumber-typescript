@@ -12,14 +12,13 @@ Scenario: Developer Catalog page details
     Then user will be redirected to Developer Catalog page
     And user is ale to see Operator Backed, Helm Charts, Builder Image, Template, Service Class types are not selected by default
     And search option is displayed in Developer Catalog page
-    And GroupBy filter is displayed with options None, Operator
-    And all cards are displayed in Developer Catalog page
-
+    And GroupBy filter is selected with default option None
+    
 
 Scenario: Search builder image from Catalog page
     Given user is at Developer Catlog page
-    When user searches "node" card from catalog page
-    Then user is able to see cards with name contains "node"
+    When user searches "Node" card from catalog page
+    Then user is able to see cards with name contains "Node"
 
 
 Scenario Outline: Filter the cards with type
@@ -45,12 +44,12 @@ Scenario: Filter the catalog using GroupBy option
 Scenario: Create the workload using template
     Given user is at Developer Catlog page
     When user selects "Template" option from Type section
-    And user selects Template card ".NET Core Example" from catalog page
+    And user selects Template card "CakePHP + MySQL" from catalog page
     And user clicks Instantiate Template button on side bar
-    And user eneters Name as "dotnet-one" in Instantiate Template page
+    And user eneters Name as "php-one" in Instantiate Template page
     And user clicks create button on Instantiate Template page with default values
     And user will be redirected to Topology page
-    And user is able to see workload "dotnet-one" in topology page
+    And user is able to see workload "php-one" in topology page
 
 
 Scenario: Create the workload using Builder Image

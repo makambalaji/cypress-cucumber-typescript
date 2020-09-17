@@ -1,7 +1,7 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { projectNameSpace } from '../../pages/app';
 import { addPage } from '../../pages/add/add_page';
-import { topologyPage } from '../../pages/topology_page';
+import { topologyPage } from '../../pages/topology-page';
 
 Given('deployment-config workload is present in topology', () => {
   // TODO: implement step

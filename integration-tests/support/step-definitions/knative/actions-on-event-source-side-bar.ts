@@ -1,5 +1,5 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { topologySidePane, topologyPage } from '../../pages/topology_page';
+import { topologySidePane, topologyPage } from '../../pages/topology-page';
 import { addPage } from '../../pages/add/add_page';
 import { resourceTypes } from '../../constants/add';
 import { eventSourcesPage } from '../../pages/add/eventSource_page';

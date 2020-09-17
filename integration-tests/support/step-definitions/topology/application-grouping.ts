@@ -1,6 +1,6 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { addPage } from '../../pages/add/add_page';
-import { topologyPage, topologySidePane } from '../../pages/topology_page';
+import { topologyPage, topologySidePane } from '../../pages/topology-page';
 import { naviagteTo } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
 

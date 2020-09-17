@@ -29,4 +29,14 @@ export enum gitAdvancedOptions {
 
 export enum caatalogCards {
   mariaDB = 'MariaDB',
+  dotnetCoreExample = '.NET Core Example',
+  cakePhp = 'CakePHP + MySQL',
+}
+
+export enum catalogTypes {
+  OperatorBacked = 'Operator Backed',
+  HelmCharts = 'Helm Charts',
+  BuilderImage = 'Builder Image',
+  Template = 'Template',
+  ServiceClass = 'Service Class',
 }

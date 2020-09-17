@@ -2,7 +2,7 @@ import { When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { addPage } from '../../pages/add/add_page';
 import { catalogPage, catalogPageObj } from '../../pages/add/catalog_page';
 import { addOptions } from '../../constants/add';
-import { topologyPage } from '../../pages/topology_page';
+import { topologyPage } from '../../pages/topology-page';
 
 Then('user can see Helm Chart card on the Add page', () => {
   addPage.verifyCard('Helm Chart');

@@ -1,5 +1,5 @@
 import { When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { topologyPage, topologySidePane, topologyObj } from '../../pages/topology_page';
+import { topologyPage, topologySidePane, topologyObj } from '../../pages/topology-page';
 
 When('user clicks on workload {string}', (workloadName: string) => {
   topologyPage.componentNode(workloadName).click({force: true});

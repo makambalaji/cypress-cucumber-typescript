@@ -1,6 +1,6 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { addPage } from '../../pages/add/add_page';
-import { topologyPage, topologySidePane } from '../../pages/topology_page';
+import { topologyPage, topologySidePane } from '../../pages/topology-page';
 
 Given('user has creaeted two worloads {string} and {string}', (firstWorkload: string, secondWorkload: string) => {
   addPage.createGitWorkload('https://github.com/sclorsg/nodejs-ex.git', firstWorkload,'deployment');

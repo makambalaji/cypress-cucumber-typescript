@@ -4,7 +4,7 @@ import { eventSourcesPage, eventSourceObj } from '../../pages/add/eventSource_pa
 import { naviagteTo, app } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
 import { addOptions } from '../../constants/add';
-import { topologySidePane, topologyPage } from '../../pages/topology_page';
+import { topologySidePane, topologyPage } from '../../pages/topology-page';
 
 Given('knative service is not available for selected namespace', () => {
   // TODO: implement step

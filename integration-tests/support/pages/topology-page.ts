@@ -1,5 +1,5 @@
 import {displayOptions, nodeActions} from '../constants/topology';
-import { helmPage } from './helm_page';
+import { helmPage } from './helm-page';
 import { app } from './app';
 
 export const topologyObj = {
@@ -23,6 +23,50 @@ export const topologyObj = {
         labelsList: '[data-test="label-list"]',
         editAnnotations: '[data-test-id="edit-annotations"]',
     },
+}
+
+export const topologyActions = {
+    selectAction:(action: nodeActions | string) => {
+    switch (action) {
+        case 'Edit Application Grouping':
+        case nodeActions.EditApplicatoinGrouping: {
+          cy.selectActionsMenuOption(action);
+          break;
+        }
+        case 'Edit Pod Count':
+        case nodeActions.EditPodCount: {
+          cy.selectActionsMenuOption(action);
+          break;
+        }
+        case 'Edit Labels':
+        case nodeActions.EditLabels: {
+          cy.selectActionsMenuOption(action);
+          cy.get('form').should('be.visible');
+          cy.alertTitleShouldBe('Edit Labels');
+          break;
+        }
+        case 'Edit Annotations':
+        case nodeActions.EditAnnotations: {
+          cy.selectActionsMenuOption(action);
+          cy.get('form').should('be.visible');
+          cy.alertTitleShouldBe('Edit Annotations');
+          break;
+        }
+        case 'Edit Update Strategy':
+        case nodeActions.EditUpdateStrategy: {
+          cy.selectActionsMenuOption(action);
+          break;
+        }
+        case 'Delete Deployment':
+        case nodeActions.DeleteDeployment: {
+          cy.selectActionsMenuOption(action);
+          break;
+        }
+        default: {
+          throw new Error(`${action} is not available in action menu`);
+        }
+      }
+    }
 }
 
 export const topologyPage = {
@@ -105,12 +149,10 @@ export const topologyPage = {
             expect(options).contains($el.text());
         });
     },
-    clickContextMenuOption:(menuOption: string) => 
-        cy.get('#popper-container li[role="menuitem"]').contains(menuOption).click(),
-    verifyDecorators:(nodeName: string, numOfDecorators: number) => 
-        topologyPage.componentNode(nodeName).siblings('a').should('have.length', numOfDecorators),
+    clickContextMenuOption:(menuOption: string) => cy.get('#popper-container li[role="menuitem"]').contains(menuOption).click(),
+    verifyDecorators:(nodeName: string, numOfDecorators: number) => topologyPage.componentNode(nodeName).siblings('a').should('have.length', numOfDecorators),
     selectContextMenuAction: (action: nodeActions | string) => 
-        topologySidePane.selectNodeAction(action),
+        topologyActions.selectAction(action),
 }
 
 export const topologySidePane = {
@@ -131,45 +173,7 @@ export const topologySidePane = {
     selectAddHealthChecks:() => cy.get('a').contains('Add Health Checks').click(),
     verifyWorkloadInAppSideBar:(workloadName: string) => cy.get('[role="dialog"] a').should('contain.text', workloadName),
     selectNodeAction:(action: nodeActions | string)=> {
-        switch (action) {
-          case 'Edit Application Grouping':
-          case nodeActions.EditApplicatoinGrouping: {
-            cy.selectActionsMenuOption(action);
-            break;
-          }
-          case 'Edit Pod Count':
-          case nodeActions.EditPodCount: {
-            cy.selectActionsMenuOption(action);
-            break;
-          }
-          case 'Edit Labels':
-          case nodeActions.EditLabels: {
-            cy.selectActionsMenuOption(action);
-            cy.get('form').should('be.visible');
-            cy.alertTitleShouldBe('Edit Labels');
-            break;
-          }
-          case 'Edit Annotations':
-          case nodeActions.EditAnnotations: {
-            cy.selectActionsMenuOption(action);
-            cy.get('form').should('be.visible');
-            cy.alertTitleShouldBe('Edit Annotations');
-            break;
-          }
-          case 'Edit Update Strategy':
-          case nodeActions.EditUpdateStrategy: {
-            cy.selectActionsMenuOption(action);
-            break;
-          }
-          case 'Delete Deployment':
-          case nodeActions.DeleteDeployment: {
-            cy.selectActionsMenuOption(action);
-            break;
-          }
-          default: {
-            throw new Error('operator is not available');
-          }
-        }
+       topologyActions.selectAction(action)
     },
     verifyLabel:(labelName: string) => {
         cy.get('dt[data-test-selector$="Labels"]').should('be.visible');
@@ -180,14 +184,14 @@ export const topologySidePane = {
         cy.get('[data-test="label-list"] a').contains(annotationName).should('be.visible');
     },
     verifyNumberOfAnnotations:(num: string) => {
-        topologySidePane.verifySection('Annotations');
+        cy.get(topologyObj.sidePane.sectionTitle).contains('Annotations').should('be.visible')
         cy.get(topologyObj.sidePane.editAnnotations).then(($el) => {
             let res = $el.text().split(' ')
             expect(res[0]).eq(num);
         });
     },
     verifyResource:(resourceName: string) => {
-        topologySidePane.selectTab('Resources');
+        cy.get(topologyObj.sidePane.tabs).contains('Resources').click()
         cy.byLegacyTestID(resourceName).should('be.visible');
     },
 }

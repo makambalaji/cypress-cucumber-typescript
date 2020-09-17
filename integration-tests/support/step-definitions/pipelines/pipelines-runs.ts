@@ -7,7 +7,7 @@ import { devNavigationMenu } from '../../constants/global';
 import { pipelineDetailsPage } from '../../pages/pipelines/pipelineDetails_page';
 import { addPage } from '../../pages/add/add_page';
 import { addOptions } from '../../constants/add';
-import { topologyPage, topologySidePane } from '../../pages/topology_page';
+import { topologyPage, topologySidePane } from '../../pages/topology-page';
 
 const store: Record<string, string> = {};
 

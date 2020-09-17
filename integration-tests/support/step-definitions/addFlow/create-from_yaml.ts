@@ -4,7 +4,7 @@ import { yamlPage } from '../../pages/add/yaml_page';
 import { addOptions } from '../../constants/add';
 import { naviagteTo } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
-import { topologyPage } from '../../pages/topology_page';
+import { topologyPage } from '../../pages/topology-page';
 
 Given('user is at Import YAML page', () => {
   naviagteTo(devNavigationMenu.Add);

@@ -3,7 +3,7 @@ import { addPage } from '../../pages/add/add_page';
 import { naviagteTo } from '../../pages/app';
 import { devNavigationMenu as menu } from '../../constants/global';
 import { addOptions } from '../../constants/add';
-import { topologyPage, topologySidePane } from '../../pages/topology_page';
+import { topologyPage, topologySidePane } from '../../pages/topology-page';
 import { pipelinesPage } from '../../pages/pipelines/pipelines_page';
 import { catalogPage } from '../../pages/add/catalog_page';
 

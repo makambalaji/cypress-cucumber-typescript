@@ -1,5 +1,5 @@
 import { When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { upgradeHelmRelease, helmDetailsPage, rollBackHelmRelease, helmPage } from '../../pages/helm_page';
+import { upgradeHelmRelease, helmDetailsPage, rollBackHelmRelease, helmPage } from '../../pages/helm-page';
 
 When('user right clicks on the Helm Release {string} to open the context menu', (nodeName: string) => {
   cy.get('g.odc-base-node__label').should('be.visible').contains(nodeName).trigger('contextmenu', {force: true});
