@@ -34,7 +34,7 @@ When('user clicks on From Catalog card', () => {
 When('create the application with s2i builder image', () => {
   catalogPage.selectCatalogTypeCheckBox('Builder Image');
   catalogPage.selectCardInCatalog(caatalogCards.nodeJs);
-  catalogPage.clickCreateApplicationOnSidePane();
+  catalogPage.clickButtonOnCatalogPageSidePane();
 });
 
 When('user type {string} into the Image name from External registry text box', (imageName: string) => {
@@ -52,7 +52,7 @@ When('user searches and selects the {string} card', (cardName: string) => {
 When('user creates the application with the selected builder image', () => {
   catalogPage.selectCatalogTypeCheckBox('Builder Image');
   catalogPage.selectCardInCatalog(caatalogCards.nodeJs);
-  catalogPage.clickCreateApplicationOnSidePane();
+  catalogPage.clickButtonOnCatalogPageSidePane();
 });
 
 When('user enters name as {string}', (workloadName: string) => {

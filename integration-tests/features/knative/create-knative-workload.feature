@@ -67,12 +67,12 @@ Scenario Outline: Create knative workload from Container image card on Add page 
 
 Examples:
 | form_name       | header_name  | image_name                | workload_name |
-| Container Image | Deploy Image | openshift/hello-openshift |               |
+| Container Image | Deploy Image | openshift/hello-openshift | nodejs-ex-git |
 
 
 @regression
 Scenario Outline: Create a workload from Docker file card on Add page :Kn-01-TC03
-   Given user is on "<form_name>" form
+   Given user is on "Import from Dockerfile" form
    When user enters Git Repo url as "<docker_git_url>"
    And user selects resource type as "Knative Service"
    And user clicks Create button on Add page   
@@ -80,13 +80,13 @@ Scenario Outline: Create a workload from Docker file card on Add page :Kn-01-TC0
    And user is able to see workload "<workload_name>" in topology page list view
 
 Examples:
-| form_name   | header_name             | docker_git_url            | workload_name | 
-| Docker file | Import from Docker file | openshift/hello-openshift |               |
+| form_name   | header_name             | docker_git_url                          | workload_name | 
+| Docker file | Import from Docker file | https://github.com/sclorg/nodejs-ex.git | nodejs-ex-git |
 
 
 @regression
 Scenario: Create a workload from DevCatalog BuilderImages card on Add page : Kn-01-TC04
-   Given user is on "Catalog file" form
+   Given user is on "Developer Catalog" form
    And builder images are displayed
    When user searches and selects the "node" card
    And user creates the application with the selected builder image
