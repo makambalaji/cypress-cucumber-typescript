@@ -90,14 +90,14 @@ export const operatorsPage = {
       case 'knative Apache Camel Operator':
       case operators.knativeCamelOperator: {
         cy.byTestID('knative-camel-operator-community-operators-openshift-marketplace').click();
-        cy.alertTitleShouldBe('Show Community Operator');
+        cy.alertTitleShouldContain('Show Community Operator');
         cy.byTestID('confirm-action').click();
         break;
       }
       case 'Eclipse Che':
         case operators.eclipseCheOperator: {
           cy.byTestID('eclipse-che-community-operators-openshift-marketplace').click();
-          cy.alertTitleShouldBe('Show Community Operator');
+          cy.alertTitleShouldContain('Show Community Operator');
           cy.byTestID('confirm-action').click();
           break;
         }

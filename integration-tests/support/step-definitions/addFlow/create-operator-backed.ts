@@ -12,7 +12,7 @@ When('user selects knative Serving card', () => {
 });
 
 When('user clicks Create button in side bar', () => {
-  catalogPage.clickCreateButtonOnSidePane();
+  catalogPage.clickButtonOnCatalogPageSidePane();
 });
 
 When('user enters name as {string} in Create knative Serving page', (name: string) => {

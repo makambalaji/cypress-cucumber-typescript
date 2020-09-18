@@ -188,7 +188,7 @@ When('user clicks on Remove button', () => {
 });
 
 Then('modal is displayed with header message {string}', (headerName: string) => {
-  cy.alertTitleShouldBe(headerName);
+  cy.alertTitleShouldContain(headerName);
 });
 
 Then('trigger template dropdown displayed with help text Select Trigger Template', () => {

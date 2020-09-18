@@ -88,19 +88,19 @@ export const pipelinesPage = {
       case pipelineActions.AddTrigger: {
         cy.byTestActionID('Add Trigger').click();
         cy.get('form').should('be.visible');
-        cy.alertTitleShouldBe('Add Trigger');
+        cy.alertTitleShouldContain('Add Trigger');
         break;
       }
       case pipelineActions.EditLabels: {
         cy.byTestActionID('Edit Labels').click();
         cy.get('form').should('be.visible');
-        cy.alertTitleShouldBe('Labels');
+        cy.alertTitleShouldContain('Labels');
         break;
       }
       case pipelineActions.EditAnnotations: {
         cy.byTestActionID('Edit Annotations').click();
         cy.get('form').should('be.visible');
-        cy.alertTitleShouldBe('Edit Annotations');
+        cy.alertTitleShouldContain('Edit Annotations');
         break;
       }
       case pipelineActions.EditPipeline: {
@@ -111,7 +111,7 @@ export const pipelinesPage = {
       case pipelineActions.DeletePipeline: {
         cy.byTestActionID('Delete Pipeline').click();
         cy.get('form').should('be.visible');
-        cy.alertTitleShouldBe('Delete Pipeline?');
+        cy.alertTitleShouldContain('Delete Pipeline?');
         break;
       }
       default: {
@@ -174,7 +174,7 @@ export const pipelinesPage = {
   },
 
   addTrigger:(gitProviderType: string = 'github-pullreq') => {
-    cy.alertTitleShouldBe('Add Trigger');
+    cy.alertTitleShouldContain('Add Trigger');
     cy.get(pipelinesObj.addTrigger.gitProviderType).click();
     cy.byTestDropDownMenu(gitProviderType).click();
     cy.get(pipelinesObj.addTrigger.add).click();

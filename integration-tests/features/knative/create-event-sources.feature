@@ -10,7 +10,7 @@ Background:
 @regression, @smoke
 Scenario: Different event source enters display in event sources add page : Kn-07-TC03, Kn-08-TC02
    Given user is at Add page 
-   When user clicks on "Event Sources" card
+   When user clicks on "Event Source" card
    Then user will be redirected to page with header name "Event Sources"
    And able to see event source enters like ApiServerSource, ContainerSource, CronJobSource, PingSource, SinkBinding
 
@@ -20,7 +20,7 @@ Scenario: CamelSource event source : Kn-08-TC03
    Given user has installed knative Apache camel operator
    And user is at developer perspecitve
    And user is at Add page
-   When user clicks on "Event Sources" card
+   When user clicks on "Event Source" card
    Then user will be redirected to page with header name "Event Sources"
    And user is able to see "Camel Source" event source type
 

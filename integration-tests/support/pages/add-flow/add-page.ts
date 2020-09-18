@@ -86,25 +86,23 @@ export const addPage = {
   verifyPipelineCheckBox: () => cy.get(addPageObj.pipeline.addPipeline).should('be.visible'),
   enterAppName:(appName: string) => {
     cy.get(addPageObj.appName).then(($el) => {
-      cy.wait(2000);
       if($el.prop("tagName").includes('button')) {
         cy.log('button tagname is available')
         cy.get(addPageObj.appName).click();
         cy.get(`li #${appName}-link`).click();
       }
       else if($el.prop("tagName").includes('input')){
-        cy.get(addPageObj.appName).clear().type(appName)
+        cy.get(addPageObj.appName).clear().type(appName);
       }
       else {
-        cy.log('Some issue is there, please check once')
+        cy.log(`App name doesn't contain button or input tags`);
       }
     });
   },
   veirfyAppName:(nodeName: string) => cy.get(addPageObj.appName).should('have.value', nodeName),
   enterComponentName: (name: string) => {
     cy.get(addPageObj.nodeName).as('nodeName');
-    cy.wait(2000);
-    cy.get('@nodeName').clear();
+    cy.get('@nodeName').should('not.be.empty').clear();
     cy.get('@nodeName').type(name);
     cy.get('@nodeName').should('have.value', name);
   },
@@ -126,7 +124,7 @@ export const addPage = {
         cy.get(addPageObj.resources.knative).scrollIntoView().check();
         break;
       default:
-        throw new Error('Option is not available');
+        throw new Error('Resource option is not available');
         break;
     }
   },
@@ -154,7 +152,7 @@ export const addPage = {
         cy.byButtonText('Health Checks').click();
         break;
       default:
-        throw new Error('Option is not available');
+        throw new Error('Advanced option is not available');
         break;
     }
   },
@@ -175,6 +173,7 @@ export const addPage = {
         cy.byLegacyTestID('import-from-dockerfile').click();
         cy.titleShouldBe('Import from Dockerfile');
         break;
+      case 'Developer Catalog':
       case 'From Catalog':
       case addOptions.DeveloperCatalog:
         cy.byLegacyTestID('dev-catalog').click();
@@ -217,7 +216,7 @@ export const addPage = {
     }
   },
   selectAddPipeline: () => cy.get(addPageObj.pipeline.addPipeline).scrollIntoView().check(),
-  clicKCreate: () => cy.get(addPageObj.create).should('be.enabled').click(),
+  clickCreate: () => cy.get(addPageObj.create).should('be.enabled').click(),
   clickCancel:() => cy.get(addPageObj.cancel).should('be.enabled').click(),
   verifyValidatedMessage:() => cy.get(addPageObj.gitSection.validatedMessage).should('have.text', 'Validated'),
   verifyBuilderImageDetectedMessage:() => cy.get(addPageObj.builderSection.builderImageDetected).should('be.visible'),
@@ -229,11 +228,9 @@ export const addPage = {
     addPage.enterAppName(appName);
     addPage.enterComponentName(componentName);
     addPage.selectResource(resourceType);
-    addPage.clicKCreate();
+    addPage.clickCreate();
   },
   selectTargetPortForRouting:() => {
-    // cy.get(addPageObj.advancedOptions.routing.targetPort).click();
-    // cy.get('[data-test-dropdown-menu="8080-tcp"]').click();
     cy.get(addPageObj.advancedOptions.routing.targetPort).type('8080');
   },
   enterRoutingHostName:(hostName: string) => cy.get(addPageObj.advancedOptions.routing.hostname).type(hostName),

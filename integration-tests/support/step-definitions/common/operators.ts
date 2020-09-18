@@ -117,7 +117,7 @@ When('user uninstalls the pipeline operator from right side bar', () => {
 });
 
 When('user clicks unistall button present in modal with header message Uninstall Operator?', () => {
-  cy.alertTitleShouldBe('Uninstall Operator?');
+  cy.alertTitleShouldContain('Uninstall Operator?');
   cy.get(operatorsObj.uninstallPopup.uninstall).click();
 });
 

@@ -88,12 +88,12 @@ When('user adds the label {string} to exisitng labels list in Edit Labels modal'
 });
 
 When('user clicks the save button on the {string} modal', (modalTitle: string) => {
-  cy.alertTitleShouldBe(modalTitle);
+  cy.alertTitleShouldContain(modalTitle);
   editLabels.clicKSave();
 });
 
 When('user clicks the cancel button on the {string} modal', (modalTitle: string) => {
-  cy.alertTitleShouldBe(modalTitle);
+  cy.alertTitleShouldContain(modalTitle);
   editLabels.clickCancel();
 });
 
@@ -269,7 +269,7 @@ Then('number of routes should get increased in side bar - resources tab - routes
 });
 
 Then('modal displayed with header name {string}', (headerName: string) => {
-  cy.alertTitleShouldBe(headerName);
+  cy.alertTitleShouldContain(headerName);
 });
 
 Then('modal get closed on clicking Delete button', () => {

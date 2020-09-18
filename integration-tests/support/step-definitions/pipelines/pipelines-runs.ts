@@ -18,7 +18,7 @@ Given('pipeline {string} consists of task {string} with one git resource', (pipe
 });
 
 When('user fills the details in Start Pipeline popup', () => {
-  cy.alertTitleShouldBe('Start Pipeline');
+  cy.alertTitleShouldContain('Start Pipeline');
   startPipeline.addGitResource('https://github.com/sclorg/nodejs-ex.git');
   startPipeline.start();
 });
@@ -49,7 +49,7 @@ Given('pipeline run is displayed for {string} without resource', (pipelineName: 
   pipelinesPage.clickOncreatePipeline();
   pipelineBuilderPage.createPipelineFromBuilderPage(pipelineName);
   store.pipelineWithOutResource = pipelineName;
-  cy.selectLinkInBreadCrumb('Pipelines');
+  cy.clickBreadcrumbLink('Pipelines');
   pipelinesPage.selectKebabMenu(pipelineName);
   cy.byTestActionID('Start').click();
   pipelineRunDetailsPage.verifyTitle();
@@ -62,10 +62,10 @@ Given('pipeline run is displayed for {string} with resource', (pipelineName: str
   pipelinesPage.clickOncreatePipeline();
   pipelineBuilderPage.createPipelineWithGitresources(pipelineName);
   store.pipelineWithResource = pipelineName;
-  cy.selectLinkInBreadCrumb('Pipelines');
+  cy.clickBreadcrumbLink('Pipelines');
   pipelinesPage.selectKebabMenu(pipelineName);
   cy.byTestActionID('Start').click();
-  cy.alertTitleShouldBe('Start Pipeline');
+  cy.alertTitleShouldContain('Start Pipeline');
   startPipeline.addGitResource('https://github.com/sclorg/nodejs-ex.git');
   startPipeline.start();
   pipelineRunDetailsPage.verifyTitle();
@@ -110,7 +110,7 @@ Then('Actions dropdown display on the top right corner of the page', () => {
 When('user selects the Pipeline Run for {string}', (pipelineName: string) => {
   naviagteTo(devNavigationMenu.Pipelines);
   pipelinesPage.seelctPipelineRun(pipelineName);
-  cy.selectLinkInBreadCrumb('Pipeline Runs');
+  cy.clickBreadcrumbLink('Pipeline Runs');
   pipelienRunsPage.verifyTitle();
 });
 
@@ -193,16 +193,16 @@ Given('pipeline {string} is executed for 3 times', (pipelineName: string) => {
 });
 
 Given('user is at the Pipeline Runs page', () => {
-  cy.selectLinkInBreadCrumb('Pipeline Runs');
+  cy.clickBreadcrumbLink('Pipeline Runs');
   pipelienRunsPage.verifyTitle();
 });
 
 When('user filters the pipeline runs of pipeline {string} based on the {string}', (pipelineName: string, status: string) => {
-  // cy.selectLinkInBreadCrumb('Pipeline Runs');
+  // cy.clickBreadcrumbLink('Pipeline Runs');
   // pipelienRunsPage.verifyTitle();
   naviagteTo(devNavigationMenu.Pipelines);
   pipelinesPage.seelctPipelineRun(pipelineName);
-  cy.selectLinkInBreadCrumb('Pipeline Runs');
+  cy.clickBreadcrumbLink('Pipeline Runs');
   pipelienRunsPage.filterByStatus(status);
 });
 
@@ -240,7 +240,7 @@ Given('pipeline run is displayed for {string} in pipelines page', (name: string)
   pipelinesPage.search(name);
   pipelinesPage.selectKebabMenu(name);
   cy.byTestActionID('Start').click();
-  cy.alertTitleShouldBe('Start Pipeline');
+  cy.alertTitleShouldContain('Start Pipeline');
   startPipeline.addGitResource('https://github.com/sclorg/dancer-ex.git');
   startPipeline.start();
   pipelineRunDetailsPage.verifyTitle();

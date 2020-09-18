@@ -50,11 +50,11 @@ When('user adds another task {string} in parallel', (taskName: string) => {
   pipelineBuilderPage.clickOnTask(taskName);
   cy.get(pipelineBuilderObj.sidePane.inputResource).click();
   cy.byTestDropDownMenu('git resource').click();
-  pipelineBuilderPage.create();
+  pipelineBuilderPage.clickCreateButton();
 });
 
 When('user clicks Create button on Pipeline Builder page', () => {
-  pipelineBuilderPage.create();
+  pipelineBuilderPage.clickCreateButton();
 });
 
 Then('user will be redirected to Pipeline Details page with header name {string}', (pipelineName: string) => {

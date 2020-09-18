@@ -41,11 +41,11 @@ Then('user is able to see context menu', () => {
 });
 
 Then('modal displays with the header name {string}', (title: string) => {
-  cy.alertTitleShouldBe(title);
+  cy.alertTitleShouldContain(title);
 });
 
 When('user selects the Delete option on {string} modal', (modalTitle: string) => {
-  cy.alertTitleShouldBe(modalTitle);
+  cy.alertTitleShouldContain(modalTitle);
   deleteSinkBinding.clicKDelete();
 });
 
@@ -59,7 +59,7 @@ Then('Resource dropdown is displayed in Move Sink modal', () => {
 });
 
 When('user selects the knative service {string} from Resource dropdown', (knativeService: string) => {
-  cy.alertTitleShouldBe("Move Sink");
+  cy.alertTitleShouldContain("Move Sink");
   moveSink.verifyResourceDropDown();
   moveSink.selectResource(knativeService);
 });

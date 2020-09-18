@@ -58,6 +58,7 @@ Given('user has selected namespace {string}', (projectName: string) => {
   let d = new Date();
   let timestamp = d.getTime();
   project.selectProject(`${projectName}-${timestamp}-ns`);
+  cy.log(`User has selected namespace "${projectName}-${timestamp}-ns"`)
 });
   
 Given('user has installed OpenShift Serverless Operator', () => {
@@ -104,7 +105,7 @@ When('user selects {string} option from Actions menu', (option: string) => {
 })
 
 Then('modal with {string} appears', (header: string) => {
-  cy.alertTitleShouldBe(header);
+  cy.alertTitleShouldContain(header);
 });
 
 Then('user will be redirected to Add page', () => {

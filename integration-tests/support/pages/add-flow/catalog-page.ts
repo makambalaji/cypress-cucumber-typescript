@@ -17,13 +17,14 @@ export const catalogPageObj = {
     cards: {
       mariaDBTemplate: '[data-test="Template-mariadb-persistent"]',
       phpCakeTemplate: '[data-test="Template-cakephp-mysql-persistent"]',
+      nodeJsBuilderImage: '[data-test="ImageStream-nodejs"]',
     },
     sidePane: {
       dialog: '[role="dialog"]',
-      instantiateTemplate: '.pf-m-primary',
+      instantiateTemplate: '[role="dialog"] .pf-m-primary',
       create: 'a[title="Create"]',
       installHelmChart:'a[title="Install Helm Chart"]',
-      createHelmChart: 'a[title="Install Helm Chart"]',
+      createApplication: 'a[title="Create Application"]'
     },
     mariaDBTemplate: {
       namespace: '#namespace',
@@ -55,17 +56,9 @@ export const catalogPage = {
   search: (keyword: string) => cy.get(catalogPageObj.search).clear().type(keyword),
   verifyDialog:() => cy.get(catalogPageObj.sidePane.dialog).should('be.visible'),
   verifyInstallHelmChartPage:() => cy.get('form h1').eq(0).should('have.text', 'Install Helm Chart'),
-  clickInstantiateButtonOnSidePane:() => {
+  clickButtonOnCatalogPageSidePane:() => {
     catalogPage.verifyDialog();
     cy.get(catalogPageObj.sidePane.instantiateTemplate).click({force:true});
-  },
-  clickCreateButtonOnSidePane:() => {
-    catalogPage.verifyDialog();
-    cy.get(catalogPageObj.sidePane.create).click();
-  },
-  clickInstallHelmChartOnSidePane:() => {
-    catalogPage.verifyDialog();
-    cy.get(catalogPageObj.sidePane.installHelmChart).click();
   },
   clickOnCancelButton:() => cy.byButtonText('Cancel').click(),
   selectCatalogTypeCheckBox:(type: string | catalogTypes) => {
@@ -120,7 +113,7 @@ export const catalogPage = {
     catalogPage.search(helmChartName);
     catalogPage.selectHelmChartCard(helmChartName);
     catalogPage.verifyDialog();
-    cy.get(catalogPageObj.sidePane.createHelmChart).click();
+    cy.get(catalogPageObj.sidePane.installHelmChart).click();
     catalogPage.verifyInstallHelmChartPage();
     catalogPage.enterReleaseName(releaseName);
     catalogPage.clickOnInstallButton();
@@ -139,17 +132,16 @@ export const catalogPage = {
           cy.get(catalogPageObj.cards.mariaDBTemplate).click();
           break;
         }
-      case caatalogCards.dotnetCoreExample:
-      case '.NET Core Example':
-        {
-          // cy.get(catalogPageObj.cards.phpCakeTemplate).click();
-          // card name is not available
-          break;
-        }
       case caatalogCards.cakePhp:
       case 'CakePHP + MySQL':
         {
           cy.get(catalogPageObj.cards.phpCakeTemplate).click();
+          break;
+        }
+      case caatalogCards.nodeJs:
+      case 'Node.js':
+        {
+          cy.get(catalogPageObj.cards.nodeJsBuilderImage).click();
           break;
         }
       default: {

@@ -204,4 +204,17 @@ export const app = {
   waitForLoad:(timeout: number = 30000) => {
     cy.get('.co-m-loader', {timeout: timeout}).should('not.be.visible');
   },
+  login:() => {
+    cy.get('body').then(($body) => {
+      if ($body.find('a[title="Log in with kube:admin"]').length) {
+        cy.get('a[title="Log in with kube:admin"]').click().then(() => {
+          cy.url().should('include', 'login');
+        })
+      }
+    })
+    cy.get('#inputUsername').type(Cypress.env('username'));
+    cy.get('#inputPassword').type(Cypress.env('password'));
+    cy.get('[type="submit"]').click();
+    cy.get('[aria-label="Help menu"]').should('be.visible');
+  },
 }

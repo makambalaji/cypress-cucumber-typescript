@@ -42,14 +42,14 @@ export const topologyActions = {
         case nodeActions.EditLabels: {
           cy.selectActionsMenuOption(action);
           cy.get('form').should('be.visible');
-          cy.alertTitleShouldBe('Edit Labels');
+          cy.alertTitleShouldContain('Edit Labels');
           break;
         }
         case 'Edit Annotations':
         case nodeActions.EditAnnotations: {
           cy.selectActionsMenuOption(action);
           cy.get('form').should('be.visible');
-          cy.alertTitleShouldBe('Edit Annotations');
+          cy.alertTitleShouldContain('Edit Annotations');
           break;
         }
         case 'Edit Update Strategy':

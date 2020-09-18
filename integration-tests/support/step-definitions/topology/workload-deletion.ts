@@ -18,7 +18,7 @@ When('user clicks delete workload', () => {
 });
 
 When('user sees {string} modal box to open', (alertTitle: string) => {
-  cy.alertTitleShouldBe(alertTitle)
+  cy.alertTitleShouldContain(alertTitle)
 });
 
 When('user checks Delete dependent objects of this resource to be checked', () => {

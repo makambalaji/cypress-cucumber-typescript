@@ -49,7 +49,7 @@ When('user clicks on {string} icon for the annotation with key {string} present 
 });
 
 When('user clicks cancel button on the {string} modal', (modalTitle: string) => {
-  cy.alertTitleShouldBe(modalTitle);
+  cy.alertTitleShouldContain(modalTitle);
   editLabels.clickCancel();
 });
 

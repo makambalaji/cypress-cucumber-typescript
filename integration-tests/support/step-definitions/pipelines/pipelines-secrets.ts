@@ -13,7 +13,7 @@ Given('user has created pipeline {string} with git resources', (pipelineName: st
 });
 
 When('user clicks on Show Credentials link present in Start Pipeline modal', () => {
-  cy.alertTitleShouldBe('Start Pipeline');
+  cy.alertTitleShouldContain('Start Pipeline');
   startPipelineInPipelinsPage.clickShowCredentialOptions();
 });
 
@@ -34,7 +34,7 @@ Given('user is at Start Pipeline modal', () => {
   naviagteTo(devNavigationMenu.Pipelines);
   pipelinesPage.selectKebabMenu(store.pipelineName);
   cy.byTestActionID('Start').click();
-  cy.alertTitleShouldBe('Start Pipeline');
+  cy.alertTitleShouldContain('Start Pipeline');
 });
 
 When('user enters URL, Revision as {string} and {string}', (gitUrl: string, revision: string) => {
