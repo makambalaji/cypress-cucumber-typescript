@@ -2,7 +2,7 @@ import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { addPage, addPageObj } from '../../pages/add-flow/add-page';
 import { containerImagePage } from '../../pages/add-flow/containerImage-page';
 import { catalogPage } from '../../pages/add-flow/catalog-page';
-import { addOptions } from '../../constants/add';
+import { addOptions, caatalogCards } from '../../constants/add';
 import { naviagteTo } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
 
@@ -32,7 +32,9 @@ When('user clicks on From Catalog card', () => {
 });
 
 When('create the application with s2i builder image', () => {
-  // TODO: implement step
+  catalogPage.selectCatalogTypeCheckBox('Builder Image');
+  catalogPage.selectCardInCatalog(caatalogCards.nodeJs);
+  catalogPage.clickCreateApplicationOnSidePane();
 });
 
 When('user type {string} into the Image name from External registry text box', (imageName: string) => {
@@ -48,7 +50,9 @@ When('user searches and selects the {string} card', (cardName: string) => {
 });
 
 When('user creates the application with the selected builder image', () => {
-  // TODO: implement step
+  catalogPage.selectCatalogTypeCheckBox('Builder Image');
+  catalogPage.selectCardInCatalog(caatalogCards.nodeJs);
+  catalogPage.clickCreateApplicationOnSidePane();
 });
 
 When('user enters name as {string}', (workloadName: string) => {

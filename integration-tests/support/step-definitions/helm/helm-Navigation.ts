@@ -36,7 +36,7 @@ When('user clicks on the {string} helm chart card', (helmChartName: string) => {
 });
 
 When('user clicks on the Install Helm Chart button on side bar', () => {
-  catalogPage.clickInstallHelmChartOnSidePane();
+  catalogPage.clickButtonOnCatalogPageSidePane();
 });
 
 When('user clicks on the Install button', () => {
@@ -57,7 +57,7 @@ Given('user is at Install Helm Chart page', () => {
   addPage.selectCardFromOptions(addOptions.HelmChart);
   catalogPage.search('Nodejs Ex K v0.2.0');
   catalogPage.selectHelmChartCard('Nodejs Ex K v0.2.0');
-  catalogPage.clickInstallHelmChartOnSidePane();
+  catalogPage.clickButtonOnCatalogPageSidePane();
 });
 
 When('user selects YAML view', () => {

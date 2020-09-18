@@ -32,6 +32,7 @@ export const pipelinesObj = {
     sectionTitle: 'h2.odc-form-section__heading',
     gitUrl: '#form-input-resources-0-data-params-url-field',
     revision: '#form-input-resources-0-data-params-revision-field',
+    sharedWorkspace: '#form-dropdown-workspaces-0-type-field',
     start: '#confirm-action',
     cancel: '[data-test-id="modal-cancel-action"]',
     advancedOptions: {
@@ -221,5 +222,5 @@ export const startPipelineInPipelinsPage = {
     cy.get('@labels').eq(1).should('contain.text', 'Access to');
     cy.get('@labels').eq(2).should('contain.text', 'Server URL');
     cy.get('@labels').eq(3).should('contain.text', 'Authentication Type');
-  }
+  },
 }

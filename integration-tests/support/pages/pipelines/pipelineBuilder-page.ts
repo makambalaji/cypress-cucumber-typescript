@@ -26,7 +26,7 @@ export const pipelineBuilderObj = {
   },
   yamlCreatePipeline: {
     helpText: 'p.help-block',
-    create: '#save-changes',
+    create: '[data-test="save-changes"]',
     cancel: '#cancel',
   },
   sidePane: {
@@ -79,12 +79,17 @@ export const pipelineBuilderPage = {
     cy.get('@sectionTitle').eq(1).should('have.text', 'Parameters');
     cy.get('@sectionTitle').eq(2).should('have.text', 'Resources');
   },
-  create:() => cy.get(pipelineBuilderObj.create).click(),
-  editYaml:() => cy.byButtonText('Edit YAML').click(),
+  clickCreateButton:() => cy.get(pipelineBuilderObj.create).click(),
+  editYaml:() => {
+    cy.byButtonText('Edit YAML').click();
+    cy.get('form[name="form"]').should('be.visible');
+    cy.byTestID('confirm-action').click();
+    cy.get('[data-mode-id="yaml"]').should('be.visible');
+  },
   createPipelineFromBuilderPage: (pipelineName: string, taskName: string = 'kn') => {
     pipelineBuilderPage.enterPipelineName(pipelineName);
     pipelineBuilderPage.selectTask(taskName);
-    pipelineBuilderPage.create();
+    pipelineBuilderPage.clickCreateButton();
     cy.get(pipelineDetailsObj.title).should('be.visible');
   },
   createPipelineFromYamlPage: () => {
@@ -102,7 +107,7 @@ export const pipelineBuilderPage = {
     pipelineBuilderPage.clickOnTask(taskName);
     cy.get(pipelineBuilderObj.sidePane.inputResource).click();
     cy.byTestDropDownMenu(resourceName).click();
-    pipelineBuilderPage.create();
+    pipelineBuilderPage.clickCreateButton();
     pipelineDetailsPage.verifyTitle(pipelineName);
   },
 }

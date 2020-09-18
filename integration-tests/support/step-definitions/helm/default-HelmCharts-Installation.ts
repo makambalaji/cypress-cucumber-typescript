@@ -39,7 +39,7 @@ When('user enters Release Name as {string}', (releaseName: string) => {
 
 When('user clicks on the Install Helm Chart button on side bar', () => {
   catalogPage.verifyDialog();
-  cy.get(catalogPageObj.sidePane.createHelmChart).click();
+  cy.get(catalogPageObj.sidePane.installHelmChart).click();
 });
 
 When('user clicks on the Install button in Install Helm chart page', () => {
