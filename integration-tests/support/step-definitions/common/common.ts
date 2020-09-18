@@ -93,7 +93,7 @@ When('user navigates to Add page', () => {
 });
 
 When('user clicks Create button on Add page', () => {
-  addPage.clicKCreate();
+  addPage.clickCreate();
 });
 
 When('user selects {string} option from kebab menu', (option: string) => {

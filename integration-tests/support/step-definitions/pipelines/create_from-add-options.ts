@@ -90,7 +90,7 @@ Given('workload {string} is created from add page with pipeline', (pipelineName:
   addPage.enterGitUrl("https://github.com/sclorg/nodejs-ex.git");
   addPage.enterComponentName(pipelineName);
   addPage.selectAddPipeline();
-  addPage.clicKCreate();
+  addPage.clickCreate();
   topologyPage.verifyTopologyPage();
 });
 
@@ -108,7 +108,7 @@ When('user creates the application with the selected builder image', () => {
 });
 
 When('user clicks Create button on Create Source-to-Image application', () => {
-  addPage.clicKCreate();
+  addPage.clickCreate();
 });
 
 Then('Start LastRun button is disabled', () => {

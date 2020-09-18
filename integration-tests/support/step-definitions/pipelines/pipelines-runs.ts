@@ -231,7 +231,7 @@ Given('pipeline {string} is created from git page', (name: string) => {
   addPage.enterGitUrl('https://github.com/sclorg/nodejs-ex.git');
   addPage.enterComponentName(name);
   addPage.selectAddPipeline();
-  addPage.clicKCreate();
+  addPage.clickCreate();
   topologyPage.verifyTopologyPage();
 })
 

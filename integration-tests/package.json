@@ -19,7 +19,7 @@
     "test:topology": "cypress run -b chrome -r mocha-allure-reporter --spec \"features/topology/*.feature\";",
     "test:pipeline": "cypress run -b chrome -r mocha-allure-reporter --spec \"features/pipelines/*.feature\";",
     "test:knative": "cypress run -b chrome -r mocha-allure-reporter --spec \"features/knative/*.feature\";",
-    "test:addFlow": "cypress run -b chrome -r mocha-allure-reporter --spec \"features/addFlow/*.feature\";",
+    "test:addFlow": "npm run clean-results; cypress run -r mocha-allure-reporter --spec \"features/addFlow/*.feature\";",
     "test": "npm run clean-results; npm run test:addFlow; npm run test:pipeline;", 
     "cypress": "npm run clean-results; npm run test:addFlow; npm run merge-report; npm run generate-report",
     "copyScreenshots": "cp -r screenshots allure-report/attachments",

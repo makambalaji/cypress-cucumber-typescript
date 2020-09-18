@@ -17,5 +17,5 @@ When('user clicks Instantiate Template button on side bar', () => {
 });
 
 When('user clicks create button on Instantiate Template page with default values', () => {
-  addPage.clicKCreate();
+  addPage.clickCreate();
 });

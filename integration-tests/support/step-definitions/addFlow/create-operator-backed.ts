@@ -21,7 +21,7 @@ When('user enters name as {string} in Create knative Serving page', (name: strin
 });
 
 When('user clicks create button in Create knative Serving page', () => {
-  addPage.clicKCreate();
+  addPage.clickCreate();
 });
 
 When('user clicks cancel button in Create knative Serving page', () => {
