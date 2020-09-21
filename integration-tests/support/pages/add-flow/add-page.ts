@@ -87,12 +87,11 @@ export const addPage = {
   enterAppName:(appName: string) => {
     cy.get(addPageObj.appName).then(($el) => {
       if($el.prop("tagName").includes('button')) {
-        cy.log('button tagname is available')
         cy.get(addPageObj.appName).click();
         cy.get(`li #${appName}-link`).click();
       }
       else if($el.prop("tagName").includes('input')){
-        cy.get(addPageObj.appName).clear().type(appName);
+        cy.get(addPageObj.appName).clear().should('be.empty').type(appName).should('have.value', appName);
       }
       else {
         cy.log(`App name doesn't contain button or input tags`);
@@ -101,10 +100,7 @@ export const addPage = {
   },
   veirfyAppName:(nodeName: string) => cy.get(addPageObj.appName).should('have.value', nodeName),
   enterComponentName: (name: string) => {
-    cy.get(addPageObj.nodeName).as('nodeName');
-    cy.get('@nodeName').should('not.be.empty').clear();
-    cy.get('@nodeName').type(name);
-    cy.get('@nodeName').should('have.value', name);
+    cy.get(addPageObj.nodeName).clear().should('be.empty').type(name).should('have.value', name);
   },
   veirfyNodeName:(componentName: string) => 
     cy.get(addPageObj.nodeName).should('have.value', componentName),

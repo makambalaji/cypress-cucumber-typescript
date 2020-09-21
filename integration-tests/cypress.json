@@ -16,7 +16,7 @@
   "supportFile": "support/commands/index.ts",
   "pluginsFile": "plugins/index.js",
   "fixturesFolder": "testData",
-  "video": true,
+  "video": false,
   "screenshotsFolder": "screenshots",
   "videosFolder": "videos",
   "reporter": "./node_modules/mochawesome/src/mochawesome.js",
