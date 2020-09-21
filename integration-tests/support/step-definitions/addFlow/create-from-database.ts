@@ -1,7 +1,7 @@
 import { When } from 'cypress-cucumber-preprocessor/steps';
 import { addPage } from '../../pages/add-flow/add-page';
 import { catalogPage } from '../../pages/add-flow/catalog-page';
-import { addOptions, caatalogCards } from '../../constants/add';
+import { addOptions } from '../../constants/add';
 
 When('user clicks Database card', () => {
   addPage.selectCardFromOptions(addOptions.Database);

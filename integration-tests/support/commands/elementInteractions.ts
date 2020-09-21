@@ -5,7 +5,6 @@ declare global {
     interface Chainable<Subject> {
       clickNavLink(path: [string, string]): Chainable<Element>;
       selectByDropDownText(selector: string, dropdownText: string): Chainable<Element>;
-      selectRowByColumnName(columnName: string, referenceRowValue: string): Chainable<Element>;
       mouseHover(selector: string): Chainable<Element>;
       selectValueFromAutoCompleteDropDown(selector: string, dropdownText: string): Chainable<Element>;
     }
@@ -26,19 +25,6 @@ Cypress.Commands.add('selectByDropDownText', (selector: string, dropdownText: st
     cy.get('ul.pf-c-dropdown__menu li button').each(($el) => {
       if($el.text().includes(dropdownText)) {
         $el.click();
-      }
-    });
-});
-
-Cypress.Commands.add('selectRowByColumnName', (columnName: string, referenceRowValue: string) => {
-    cy.get('div[role="grid"]').should('exist');
-    cy.get('thead th').each(($el, columnNumber) => {
-      if($el.text().includes(columnName)) {
-        cy.get(`tr td:nth-child(${columnNumber})`).each(($el1, index) => {
-          if($el1.text().includes(referenceRowValue)) {
-            return cy.get(`tr td:nth-child(${columnNumber})`).eq(index)
-          }
-        });
       }
     });
 });
