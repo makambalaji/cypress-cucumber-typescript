@@ -67,7 +67,7 @@ When('user clicks on Add button present in Add Trigger modal', () => {
 });
 
 Then('pipelines page is displayed', () => {
-  cy.titleShouldBe('Pipelines');
+  cy.pageTitleShouldContain('Pipelines');
 });
 
 Then('{string} is displayed in kebab menu for {string}', (option: string, pipelineName: string) => {

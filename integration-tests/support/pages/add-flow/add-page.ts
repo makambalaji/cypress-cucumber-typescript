@@ -77,7 +77,7 @@ export const addPageObj = {
 export const addPage = {
   unselectRoute:() => cy.get(addPageObj.advancedOptions.createRoute).uncheck(),
   verifyNoWorkLoadsText:(text: string) => cy.get('h2.co-hint-block__title').should('contain.text', text),
-  verifyTitle: (title: string) => cy.titleShouldBe(title),
+  verifyTitle: (title: string) => cy.pageTitleShouldContain(title),
   verifyPipelinesSection: (message: string) => {
     cy.get(addPageObj.sectionTitle).eq(5).should('have.text', 'Pipelines');
     cy.get(addPageObj.pipeline.infoMessage).should('have.text', message);
@@ -157,44 +157,44 @@ export const addPage = {
       case 'Git':
       case addOptions.Git:
         cy.byLegacyTestID('import-from-git').click();
-        cy.titleShouldBe('Import from git');
+        cy.pageTitleShouldContain('Import from git');
         break;
       case 'Deploy Image':
       case addOptions.ContainerImage:
         cy.byLegacyTestID('deploy-image').click();
-        cy.titleShouldBe('Deploy Image');
+        cy.pageTitleShouldContain('Deploy Image');
         break;
       case 'Import from Dockerfile':
       case addOptions.DockerFile:
         cy.byLegacyTestID('import-from-dockerfile').click();
-        cy.titleShouldBe('Import from Dockerfile');
+        cy.pageTitleShouldContain('Import from Dockerfile');
         break;
       case 'Developer Catalog':
       case 'From Catalog':
       case addOptions.DeveloperCatalog:
         cy.byLegacyTestID('dev-catalog').click();
-        cy.titleShouldBe('Developer Catalog');
+        cy.pageTitleShouldContain('Developer Catalog');
         break;
       case 'Database':
       case addOptions.Database:
         cy.byLegacyTestID('dev-catalog-databases').click();
-        cy.titleShouldBe('Developer Catalog');
+        cy.pageTitleShouldContain('Developer Catalog');
         break;
       case 'Event Source':
       case addOptions.EventSource:
         cy.byLegacyTestID('knative-event-source').click();
-        cy.titleShouldBe('Event Sources');
+        cy.pageTitleShouldContain('Event Sources');
         break;
       case 'Helm Chart':
       case addOptions.HelmChart:
         cy.byLegacyTestID('helm').click();
-        cy.titleShouldBe('Developer Catalog');
+        cy.pageTitleShouldContain('Developer Catalog');
         cy.byTestID('kind-helm-chart').should('be.checked');
         break;
       case 'Operator Backed':
       case addOptions.OperatorBacked:
         cy.byLegacyTestID('operator-backed').click();
-        cy.titleShouldBe('Developer Catalog');
+        cy.pageTitleShouldContain('Developer Catalog');
         cy.byTestID('kind-cluster-service-version').should('be.checked');
         break;
       case 'Pipelines':

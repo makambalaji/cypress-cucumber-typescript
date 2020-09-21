@@ -96,7 +96,7 @@ export const pipelineRunDetailsPage = {
 }
 
 export const pipelienRunsPage = {
-  verifyTitle:() => cy.titleShouldBe('Pipeline Runs'),
+  verifyTitle:() => cy.pageTitleShouldContain('Pipeline Runs'),
   search:(pipelineRunName: string) => cy.byLegacyTestID('item-filter').type(pipelineRunName),
   selectKebabMenu:(pipelineRunName: string) => {
     cy.get(pipelineRunsObj.pipelineRunsTable.table).should('exist');

@@ -56,34 +56,34 @@ export const naviagteTo = (opt: devNavigationMenu) => {
     }
     case devNavigationMenu.GitOps: {
       cy.byLegacyTestID('gitops-header').click().then(() => {
-      cy.titleShouldBe('GitOps');
+      cy.pageTitleShouldContain('GitOps');
       });
       break;
     }
     case devNavigationMenu.Monitoring: {
       cy.byLegacyTestID('monitoring-header').click().then(() => {
-      cy.titleShouldBe('Monitoring');
+      cy.pageTitleShouldContain('Monitoring');
       });
       break;
     }
     case devNavigationMenu.Builds: {
       cy.byLegacyTestID('build-header').click();
-      cy.titleShouldBe('Build Configs');
+      cy.pageTitleShouldContain('Build Configs');
       break;
     }
     case devNavigationMenu.Pipelines: {
       cy.byLegacyTestID('pipeline-header').click()
-        cy.titleShouldBe('Pipelines');
+        cy.pageTitleShouldContain('Pipelines');
       break;
     }
     case devNavigationMenu.Search: {
       cy.byLegacyTestID('search-header').click();
-      cy.titleShouldBe('Search');
+      cy.pageTitleShouldContain('Search');
       break;
     }
     case devNavigationMenu.Helm: {
       cy.byLegacyTestID('helm-releases-header').click();
-      cy.titleShouldBe('Helm Releases');
+      cy.pageTitleShouldContain('Helm Releases');
       break;
     }
     case devNavigationMenu.Project: {
@@ -92,12 +92,12 @@ export const naviagteTo = (opt: devNavigationMenu) => {
     }
     case devNavigationMenu.ConfigMaps: {
       cy.get('#ConfigMap').click();
-      cy.titleShouldBe('Config Maps');
+      cy.pageTitleShouldContain('Config Maps');
       break;
     }
     case devNavigationMenu.Secrets: {
       cy.get('#Secret').click();
-      cy.titleShouldBe('Secrets');
+      cy.pageTitleShouldContain('Secrets');
       break;
     }
     default: {

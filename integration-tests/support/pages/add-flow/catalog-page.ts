@@ -50,7 +50,7 @@ export const catalogPageObj = {
 }
 
 export const catalogPage = {
-  verifyTitle:() => cy.titleShouldBe('Developer Catalog'),
+  verifyTitle:() => cy.pageTitleShouldContain('Developer Catalog'),
   isCheckBoxSelected: (type: string) => cy.get(`input[title="${type}"]`).should('be.checked'),
   isCardsDisplayed:() => cy.get(catalogPageObj.card).should('be.visible'),
   search: (keyword: string) => cy.get(catalogPageObj.search).clear().type(keyword),

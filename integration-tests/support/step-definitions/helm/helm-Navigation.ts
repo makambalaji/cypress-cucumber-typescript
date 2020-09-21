@@ -108,7 +108,7 @@ Given('helm chart is installed', () => {
 });
 
 Then('user will be redirected to Helm releases page', () => {
-  cy.titleShouldBe('Helm Releases');
+  cy.pageTitleShouldContain('Helm Releases');
 });
 
 Then('user is able to see the message as no helm charts present', () => {

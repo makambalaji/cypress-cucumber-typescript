@@ -113,5 +113,5 @@ Then('user will be redirected to Add page', () => {
 });
 
 Then('user will be redirected to Pipelines page', () => {
-  cy.titleShouldBe('Pipelines');
+  cy.pageTitleShouldContain('Pipelines');
 });

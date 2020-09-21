@@ -24,7 +24,7 @@ export const eventSourceObj = {
 
 
 export const eventSourcesPage = {
-    verifyTitle: (title: string = 'Event Sources') => cy.titleShouldBe(title),
+    verifyTitle: (title: string = 'Event Sources') => cy.pageTitleShouldContain(title),
     search: (type: string) => cy.get(eventSourceObj.search).type(type),
     verifyEventSourceType: (eventSourceName: string) => {
       cy.get(`button[aria-label="${eventSourceName}"]`).should('be.visible');
@@ -76,3 +76,4 @@ export const eventSourcesPage = {
       eventSourcesPage.clickCreate();
     }
   }
+  

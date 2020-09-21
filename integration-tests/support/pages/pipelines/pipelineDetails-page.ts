@@ -29,7 +29,7 @@ export const clusterTriggerBindingDetailsObj = {
 }
 
 export const pipelineDetailsPage = {
-  verifyTitle:(pipelineName: string) => cy.titleShouldBe(pipelineName),
+  verifyTitle:(pipelineName: string) => cy.pageTitleShouldContain(pipelineName),
   clickActionMenu: () => cy.byLegacyTestID('actions-menu-button').click(),
   selectActionFromActionsDropdown:(action: string) => {
     cy.get(pipelineDetailsObj.actionsMenu).should('be.enabled').click();

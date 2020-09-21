@@ -3,7 +3,7 @@ declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace,no-redeclare
   namespace Cypress {
     interface Chainable<Subject> {
-      titleShouldBe(title:string): Chainable<Element>;
+      pageTitleShouldContain(title:string): Chainable<Element>;
       alertTitleShouldContain(title:string): Chainable<Element>;
       clickBreadcrumbLink(linkName: string): Chainable<Element>;
       selectKebabMenuOption(kebabMenuOption: string): Chainable<Element>;
@@ -12,7 +12,7 @@ declare global {
   }
 }
 
-Cypress.Commands.add('titleShouldBe', (title: string) => {
+Cypress.Commands.add('pageTitleShouldContain', (title: string) => {
     cy.get('[data-test-id ="resource-title"]').should('be.visible').and('contain.text', title);
 });
 

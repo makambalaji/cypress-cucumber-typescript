@@ -238,7 +238,7 @@ export const addHealthChecksObj = {
 }
 
 export const addHealthChecksPage = {
-    verifyTitle: () => cy.titleShouldBe('Add Health Checks'),
+    verifyTitle: () => cy.pageTitleShouldContain('Add Health Checks'),
     clickCheckIcon:() => cy.byLegacyTestID('check-icon').click(),
     clickCancelIcon:() => cy.byLegacyTestID('close-icon').click(),
     addReadinessProbe:() => {

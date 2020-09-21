@@ -1,4 +1,3 @@
-
 export const containerImageObj = {
     imageSection: {
       externalRegistryImageCheckBox: '#form-radiobutton-registry-external-field',
@@ -29,3 +28,4 @@ export const containerImagePage = {
     cy.get(containerImageObj.imageSection.internalRegistryImageCheckBox).check(),
     verifyValidatedMessage:() => cy.get(containerImageObj.imageSection.externalRegistry.validatedMessage).should('have.text', 'Validated'),
   }
+  
