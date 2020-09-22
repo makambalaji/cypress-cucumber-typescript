@@ -37,7 +37,7 @@ Then('Create Pipeline button is enabled', () => {
   pipelinesPage.verifyCreateButtonIsEnabled();
 });
 
-Then('kebab menu is displayed', () => {
+Then('kebab menu button is displayed', () => {
   pipelinesPage.verifyKebabMenu();
 });
 
@@ -128,7 +128,7 @@ Then('Pipeline run details page is dislayed', () => {
   // TODO: implement step
 });
 
-Then('pipelien run status displays as {string} in Pipeline run page', (status: string) => {
+Then('pipeline run status displays as {string} in Pipeline run page', (status: string) => {
   cy.log(status);
 });
 

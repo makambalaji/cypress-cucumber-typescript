@@ -11,7 +11,7 @@ Scenario: Pipeline Builder page : P-03-TC02
     Given user is at pipelines page 
     When user clicks Create Pipeline button on Pipelines page
     Then user will be redirected to Pipeline Builder page
-    And Name displayed with default value new-pipeline
+    And user is able to see pipeline name with default value "new-pipeline"
     And Tasks, Paramters and Resources sections are displayed
     And Edit Yaml link is enabled
     And Create button is in disabled state

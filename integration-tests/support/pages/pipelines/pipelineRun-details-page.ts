@@ -95,7 +95,7 @@ export const pipelineRunDetailsPage = {
     },
 }
 
-export const pipelienRunsPage = {
+export const pipelineRunsPage = {
   verifyTitle:() => cy.pageTitleShouldContain('Pipeline Runs'),
   search:(pipelineRunName: string) => cy.byLegacyTestID('item-filter').type(pipelineRunName),
   selectKebabMenu:(pipelineRunName: string) => {

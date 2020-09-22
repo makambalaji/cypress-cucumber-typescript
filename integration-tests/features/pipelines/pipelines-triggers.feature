@@ -118,14 +118,14 @@ Examples:
 
 
 @regression, @manual
-Scenario: Start the pipeline from trigger without secret : P-10-TC01
+Scenario: Start the pipeline with secret by updating the git repo : P-10-TC01
     Given Trigger is added to the pipeline "git-pipeline" present in pipeline details page
     And user is at pipeline trigger template page for pipeline "git-pipeline"
     When user navigates to github repo url
     And user selects webhooks from github settings page
     And user clicks Add Webhook
     And user enters payload url as trigger template url
-    And user eneters content type as "application/json"
+    And user enters content type as "application/json"
     And user clicks on Add Webhook
     And update the content in ReadMe file
     And user navigates to pipelines page
@@ -133,31 +133,16 @@ Scenario: Start the pipeline from trigger without secret : P-10-TC01
 
 
 @regression, @manual
-Scenario: Start the pipeline with secret from trigger with authentication key : P-10-TC02
+Scenario: Start the pipeline with secret by updating the git repo : P-10-TC02
     Given Trigger is added to the pipeline "git-pipeline" present in pipeline details page
     And user is at pipeline trigger template page for pipeline "git-pipeline"
     When user navigates to github repo url
     And user selects webhooks from github settings page
     And user clicks Add Webhook
     And user enters payload url as trigger template url
-    And user eneters content type as "application/json"
+    And user enters content type as "application/json"
     And user enters the secret authentication key
     And user clicks on Add Webhook
     And update the content in ReadMe file
     And user navigates to pipelines page
     Then user is able to see new pipeline run for "git-pipeline" in pipelines page
-
-
-@regression, @manual
-Scenario: Start the pipeline with secret from trigger without authentication key : P-10-TC03 
-    Given Trigger is added to the pipeline "git-pipeline" present in pipeline details page
-    And user is at pipeline trigger template page for pipeline "git-pipeline"
-    When user navigates to github repo url
-    And user selects webhooks from github settings page
-    And user clicks Add Webhook
-    And user enters payload url as trigger template url
-    And user eneters content type as "application/json"
-    And user clicks on Add Webhook
-    And update the content in ReadMe file
-    And user navigates to pipelines page
-    Then user is able to see new pipeline in pipelines page

@@ -29,7 +29,7 @@ Scenario Outline: Pipelines page display on newly created pipeline : P-03-TC12
    And column Name display with value "<pipeline_name>"
    And columns Last Run, Task Run Status, Last Run Status, Last Run Time with values display "-"
    And Create Pipeline button is enabled
-   And kebab menu is displayed
+   And kebab menu button is displayed
 
 Examples:
 | pipeline_name |
@@ -62,7 +62,7 @@ Scenario Outline: Details of completed pipeline run
    Given pipeline run is available for "<pipeline_name>"
    When user clicks pipeline run of pipeline "<pipeline_name>"
    Then Pipeline run details page is dislayed
-   And pipelien run status displays as "<pipeline_status>" in Pipeline run page
+   And pipeline run status displays as "<pipeline_status>" in Pipeline run page
    And Last run status of the "<pipeline_name>" displays as "<pipeline_status>" in pipelines page
 
 Examples:

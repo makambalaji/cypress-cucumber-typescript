@@ -38,7 +38,7 @@ export const pipelineBuilderObj = {
 
 export const pipelineBuilderPage = {
   verifyTitle:() => cy.get(pipelineBuilderObj.title).should('have.text', 'Pipeline Builder'),
-  verifyDefaultPipelineName: () => cy.get(pipelineBuilderObj.name).should('have.value', 'new-pipeline'),
+  verifyDefaultPipelineName: (pipelineName: string = "new-pipeline") => cy.get(pipelineBuilderObj.name).should('have.value', pipelineName),
   enterPipelineName: (pipelineName: string) => {
     cy.get(pipelineBuilderObj.name).clear();
     cy.get(pipelineBuilderObj.name).type(pipelineName);

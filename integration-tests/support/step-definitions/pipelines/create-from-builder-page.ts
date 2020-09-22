@@ -13,8 +13,8 @@ Then('user will be redirected to Pipeline Builder page', () => {
   pipelineBuilderPage.verifyTitle();
 });
 
-Then('Name displayed with default value new-pipeline', () => {
-  pipelineBuilderPage.verifyDefaultPipelineName();
+Then('user is able to see pipeline name with default value {string}', (pipelineDefaultValue: string) => {
+  pipelineBuilderPage.verifyDefaultPipelineName(pipelineDefaultValue);
 });
 
 Then('Tasks, Paramters and Resources sections are displayed', () => {

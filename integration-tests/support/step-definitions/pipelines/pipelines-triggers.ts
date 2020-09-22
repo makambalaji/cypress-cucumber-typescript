@@ -229,7 +229,7 @@ When('user enters payload url as trigger template url', () => {
   // Manual step
 });
 
-When('user eneters content type as {string}', (a: string) => {
+When('user enters content type as {string}', (a: string) => {
   // Manual step
 });
 

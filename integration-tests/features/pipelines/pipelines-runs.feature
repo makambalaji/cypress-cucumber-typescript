@@ -133,7 +133,7 @@ Scenario Outline: Download the logs from Pipeline Details page : P-05-TC06
     When user navigates to pipelineRun logs tab
     And user clicks on Download button
     Then user is able to see the downloaded file
-    And logs should be displayed as expected
+    And logs contains tasks with details of execution
 
 
 @regression, @manual

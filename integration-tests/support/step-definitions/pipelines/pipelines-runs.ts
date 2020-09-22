@@ -1,7 +1,7 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { pipelinesPage, startPipelineInPipelinsPage as startPipeline } from '../../pages/pipelines/pipelines-page';
 import { pipelineBuilderPage } from '../../pages/pipelines/pipelineBuilder-page';
-import { pipelineRunDetailsPage, pipelienRunsPage } from '../../pages/pipelines/pipelineRun-details-page';
+import { pipelineRunDetailsPage, pipelineRunsPage } from '../../pages/pipelines/pipelineRun-details-page';
 import { naviagteTo } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
 import { pipelineDetailsPage } from '../../pages/pipelines/pipelineDetails-page';
@@ -111,11 +111,11 @@ When('user selects the Pipeline Run for {string}', (pipelineName: string) => {
   naviagteTo(devNavigationMenu.Pipelines);
   pipelinesPage.seelctPipelineRun(pipelineName);
   cy.clickBreadcrumbLink('Pipeline Runs');
-  pipelienRunsPage.verifyTitle();
+  pipelineRunsPage.verifyTitle();
 });
 
 When('user selects Rerun option from kebab menu of {string}', (pipelineName: string) => {
-  pipelienRunsPage.selectKebabMenu(pipelineName);
+  pipelineRunsPage.selectKebabMenu(pipelineName);
   cy.byTestActionID('Rerun').click();
 });
 
@@ -151,7 +151,7 @@ Then('page will be redirected to pipeline run details page', () => {
 });
 
 Then('page will be redirected to pipeline runs page', () => {
-  pipelienRunsPage.verifyTitle();
+  pipelineRunsPage.verifyTitle();
 });
 
 Then ('side bar is displayed with the pipelines section', () => {
@@ -194,21 +194,21 @@ Given('pipeline {string} is executed for 3 times', (pipelineName: string) => {
 
 Given('user is at the Pipeline Runs page', () => {
   cy.clickBreadcrumbLink('Pipeline Runs');
-  pipelienRunsPage.verifyTitle();
+  pipelineRunsPage.verifyTitle();
 });
 
 When('user filters the pipeline runs of pipeline {string} based on the {string}', (pipelineName: string, status: string) => {
   // cy.clickBreadcrumbLink('Pipeline Runs');
-  // pipelienRunsPage.verifyTitle();
+  // pipelineRunsPage.verifyTitle();
   naviagteTo(devNavigationMenu.Pipelines);
   pipelinesPage.seelctPipelineRun(pipelineName);
   cy.clickBreadcrumbLink('Pipeline Runs');
-  pipelienRunsPage.filterByStatus(status);
+  pipelineRunsPage.filterByStatus(status);
 });
 
 Then('user is able to see the pipelineruns with {string}', (status: string) => {
-  pipelienRunsPage.verifyPipelineRunsTableDisplay();
-  pipelienRunsPage.verifyStatusInPipelineRunsTable(status);
+  pipelineRunsPage.verifyPipelineRunsTableDisplay();
+  pipelineRunsPage.verifyStatusInPipelineRunsTable(status);
 });
 
 Then ('Last Run status of the {string} displays as {string}', (pipelineName: string, lastRunStatus: string) => {
@@ -316,6 +316,6 @@ When('user selects Start LastRun from topology side bar', () => {
   // To Do
 });
 
-Then('logs should be displayed as expected', () => {
+Then('logs contains tasks with details of execution', () => {
   // Manual step
 });
