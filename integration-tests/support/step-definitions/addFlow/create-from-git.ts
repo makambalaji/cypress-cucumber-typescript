@@ -1,6 +1,6 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { addPage } from '../../pages/add-flow/add-page';
-import { addOptions } from '../../constants/add';
+import { addOptions, buildConfigOptions } from '../../constants/add';
 import { topologyPage, topologySidePane, addHealthChecksPage } from '../../pages/topology-page';
 
 Given('user is at Import from git page', () => {
@@ -78,8 +78,16 @@ When('user enters name as {string} in General section', (name: string) => {
   addPage.enterComponentName(name);
 });
 
-When('unselects {string} checkbox in build configuration section', (checkBoxName: string) => {
-  addPage.uncheckBuildConfigOption(checkBoxName);
+When('user unselects Configure a webhook build trigger checkbox in build configuration section', () => {
+  addPage.uncheckBuildConfigOption(buildConfigOptions.webhookBuildTrigger);
+});
+
+When('user unselects Automatically build a new image when the builder image changes checkbox in build configuration section', () => {
+  addPage.uncheckBuildConfigOption(buildConfigOptions.automaticBuildImage);
+});
+
+When('user unselects Launch the first build when the build configuration is created checkbox in build configuration section', () => {
+  addPage.uncheckBuildConfigOption(buildConfigOptions.launchBuildOnCreatingBuildConfig);
 });
 
 When('user enters Name as {string} in Environment Variables section', (envName: string) => {

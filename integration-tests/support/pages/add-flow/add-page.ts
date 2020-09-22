@@ -1,4 +1,4 @@
-import { addOptions, gitAdvancedOptions } from '../../constants/add';
+import { addOptions, gitAdvancedOptions, buildConfigOptions } from '../../constants/add';
 
 export const addPageObj = {
   cardTitle: 'div.catalog-tile-pf-title',
@@ -233,17 +233,16 @@ export const addPage = {
   },
   enterRoutingHostName:(hostName: string) => cy.get(addPageObj.advancedOptions.routing.hostname).type(hostName),
   eneterRoutingPath:(path: string) => cy.get(addPageObj.advancedOptions.routing.path).type(path),
-  uncheckBuildConfigOption:(checkBoxName: string) => {
-    cy.get('div.pf-c-check label').contains(checkBoxName).should('be.visible');
+  uncheckBuildConfigOption:(checkBoxName: string | buildConfigOptions) => {
     switch (checkBoxName) {
-      case 'Configure a webhook build trigger':
-        cy.get(addPageObj.advancedOptions.buildConfig.webHookBuildTrigger).uncheck();
+      case buildConfigOptions.webhookBuildTrigger:
+        cy.get(addPageObj.advancedOptions.buildConfig.webHookBuildTrigger).should('be.visible').uncheck();
         break;
-      case 'Automatically build a new image when the builder image changes':
-        cy.get(addPageObj.advancedOptions.buildConfig.buildTriggerImage).uncheck();
+      case buildConfigOptions.automaticBuildImage:
+        cy.get(addPageObj.advancedOptions.buildConfig.buildTriggerImage).should('be.visible').uncheck();
         break;
-      case 'Launch the first build when the build configuration is created':
-        cy.get(addPageObj.advancedOptions.buildConfig.buildTriggerConfigField).uncheck();
+      case buildConfigOptions.launchBuildOnCreatingBuildConfig:
+        cy.get(addPageObj.advancedOptions.buildConfig.buildTriggerConfigField).should('be.visible').uncheck();
         break;
       default:
         throw new Error(`Unable to find the "${checkBoxName}" checbox in Build Configuration Section`);

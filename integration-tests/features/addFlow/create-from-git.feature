@@ -101,9 +101,9 @@ Scenario: Creaete the workload by unselecting options in "Build Configuration" s
    When user enters Git Repo url as "https://github.com/sclorg/dancer-ex.git"
    And user enters name as "nodejs-ex-4-git" in General section
    And user clicks "Build Configuration" link in Advanced Options section
-   And unselects "Configure a webhook build trigger" checkbox in build configuration section
-   And unselects "Automatically build a new image when the builder image changes" checkbox in build configuration section
-   And unselects "Launch the first build when the build configuration is created" checkbox in build configuration section
+   And user unselects Configure a webhook build trigger checkbox in build configuration section
+   And user unselects Automatically build a new image when the builder image changes checkbox in build configuration section
+   And user unselects Launch the first build when the build configuration is created checkbox in build configuration section
    And user enters Name as "home" in Environment Variables section
    And user enters Value as "value" in Environment Variables section
    And user clicks Create button on Add page

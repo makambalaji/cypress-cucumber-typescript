@@ -3,7 +3,6 @@ import { devNavigationMenu } from "../constants/global";
 import { catalogPage } from "./add-flow/catalog-page";
 import { addPage } from "./add-flow/add-page";
 import { addOptions } from "../constants/add";
-import { should } from "chai";
 
 export const helmPageObj = {
     noHelmReleasesMessage: 'p.odc-helm-release__empty-list__title',
