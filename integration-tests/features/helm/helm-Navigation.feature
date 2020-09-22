@@ -19,8 +19,8 @@ Scenario: Open the Helm tab on the navigation bar when helm charts are absent: H
 Scenario: Install Helm Chart page: HR-02-TC04
     Given user is at Add page
     When user clicks on the Helm Chart card on the Add page
-    And user searches for the "Nodejs Ex K v0.2.0" helm chart
-    And user clicks on the "Nodejs Ex K v0.2.0" helm chart card
+    And user searches for the "Nodejs Ex K v0.2.1" helm chart
+    And user clicks on the "Nodejs Ex K v0.2.1" helm chart card
     And user clicks on the Install Helm Chart button on side bar
     Then Install Helm Chart page is displayed
     And release name displays as "nodejs-ex-k"
@@ -37,8 +37,8 @@ Scenario: Yaml view editor for Install Helm Chart page: HR-02-TC05
 Scenario: Install Helm Chart: HR-02-TC01, HR-02-TC03, HR-02-TC06
     Given user is at Add page
     When user clicks on the Helm Chart card on the Add page
-    And user searches for the "Nodejs Ex K v0.2.0" helm chart
-    And user clicks on the "Nodejs Ex K v0.2.0" helm chart card
+    And user searches for the "Nodejs Ex K v0.2.1" helm chart
+    And user clicks on the "Nodejs Ex K v0.2.1" helm chart card
     And user clicks on the Install Helm Chart button on side bar
     And user clicks on the Install button
     Then user will be redirected to Topology page
@@ -47,7 +47,7 @@ Scenario: Install Helm Chart: HR-02-TC01, HR-02-TC03, HR-02-TC06
 
 @regression, @smoke
 Scenario: Open the Helm tab on the navigation bar when helm charts are present: HR-11-TC01
-    Given helm chart is installed
+    Given helm chart "Nodejs Ex K v0.2.1" is installed
     When user clicks on the Helm tab
     Then user will be redirected to Helm releases page
     And user will see the helm charts listed
@@ -55,41 +55,35 @@ Scenario: Open the Helm tab on the navigation bar when helm charts are present: 
 
 @regression
 Scenario: Filter out deployed Helm Charts: HR-11-TC02
-    Given user is at the Helm page
-    When user clicks on the filter drop down
-    And user selects checkbox for the Deployed Helm charts
-    Then the checkbox for the Deployed Helm chart is checked
-    And helm charts with status deployed are listed
+    Given helm chart "Nodejs Ex K v0.2.1" is installed
+    And user is at the Helm page
+    When user filters "Deployed" helm charts
+    Then helm charts with status "Deployed" are listed
 
 
 @regression
 Scenario: Filter out failed Helm Charts: HR-11-TC03
     Given user is at the Helm page
-    When user clicks on the filter drop down
-    And user selects checkbox for the Failed Helm charts
-    Then the checkbox for the Failed Helm chart is checked
-    And helm charts with status failed are listed
+    When user filters "Failed" helm charts
+    Then helm charts with status "Failed" are listed
 
 
 @regression
 Scenario: Filter out other Helm charts : HR-11-TC04
     Given user is at the Helm page
-    When user clicks on the filter drop down
-    And user selects checkbox for the Other Helm charts
-    Then the checkbox for the Other Helm chart is checked
-    And helm charts with status other are listed
+    When user filters "Other" helm charts
+    Then helm charts with status "Other" are listed
 
 
 @regression
 Scenario: Select all filters: HR-11-TC05
     Given user is at the Helm page
-    When user clicks on the filter drop down 
-    And user selects checkbox for the Deployed Helm charts
-    And user selects checkbox for the Failed Helm charts
-    And user selects checkbox for the Other Helm charts
-    Then the checkbox for the Deployed Helm chart is checked
-    And the checkbox for the Failed Helm chart is checked
-    And the checkbox for the Other Helm chart is checked
+    When user filters "Deployed" helm charts 
+    And user filters "Failed" helm charts
+    And user filters "Other" helm charts
+    Then helm charts with status "Deployed" are listed
+    And helm charts with status "Failed" are listed
+    And helm charts with status "Other" are listed
 
 
 @regression
@@ -102,8 +96,8 @@ Scenario: Clear all filters: HR-11-TC06
 @regression
 Scenario: Search for the Helm Chart: HR-11-TC07
     Given user is at the Helm page
-    When user searches for a helm chart "Nodejs Ex K v0.2.0"
-    Then the helm chart "Nodejs Ex K v0.2.0" will be shown
+    When user searches for a helm chart "Nodejs Ex K v0.2.1"
+    Then the helm chart "Nodejs Ex K v0.2.1" will be shown
 
 
 Scenario: Search for the not available Helm Chart
@@ -114,7 +108,8 @@ Scenario: Search for the not available Helm Chart
 
 @regression, @smoke
 Scenario: Helm release details page : HR-11-TC08
-    Given user is at the Helm page with one helm release
+    Given helm chart "Nodejs Ex K v0.2.1" is installed
+    And user is at the Helm page
     When user clicks on the helm release name "nodejs-ex-k"
     Then user will see the Details page opened
     And user will see the Resources tab

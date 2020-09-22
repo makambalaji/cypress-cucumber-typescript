@@ -26,17 +26,10 @@ Scenario: Install Helm Chart from Developer Catalog Page: HR-03
     Given user is at Add page
     When user clicks on the Developer Catalog card on the Add page
     And user checks the Helm Charts checkbox
-    And user searches for the "Nodejs Ex K v0.2.0" helm chart
-    And user clicks on the "Nodejs Ex K v0.2.0" helm chart card
+    And user searches for the "Nodejs Ex K v0.2.1" helm chart
+    And user clicks on the "Nodejs Ex K v0.2.1" helm chart card
     And user clicks on the Install Helm Chart button on side bar
     And user enters Release Name as "nodejs-ex-k"
     And user clicks on the Install button
     Then user will be redirected to Topology page
     And Topology page have the helm chart workload "nodejs-ex-k"
-
-
-@regression, @smoke
-Scenario: Context menu options of helm release: HR-07-TC01
-    Given helm release "nodejs-ex-k" is present in topology page
-    When user right clicks on the helm release "nodejs-ex-k"
-    Then user is able to see the context menu with actions Upgrade, Rollback and Uninstall Helm Release

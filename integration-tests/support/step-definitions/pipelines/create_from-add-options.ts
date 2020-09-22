@@ -11,7 +11,7 @@ Given('user is at Add page', () => {
   naviagteTo(menu.Add);
 });
 
-When('user clicks From Git card on the +Add page', () => {
+When('user clicks From Git card on the Add page', () => {
   addPage.selectCardFromOptions(addOptions.Git);
 });
 

@@ -5,7 +5,6 @@ Background:
    Given user is at administrator perspective
 
 
-@regression
 Scenario: OpenShift Pipeline operator subscription page : P-01-TC01
    Given user is at Operator Hub page with the header name "OperatorHub"
    When user searches for "OpenShift Pipelines Operator"
@@ -16,7 +15,7 @@ Scenario: OpenShift Pipeline operator subscription page : P-01-TC01
 
 @regression, @smoke
 Scenario: Install the Pipeline Operator from Operator Hub page : P-01-TC02
-   # Given user executed command "oc apply -f https://gist.githubusercontent.com/nikhil-thomas/f6069b00b0e3b0359ae1cbdb929a04d6/raw/7b19be0c52355d041bf3d6a883db06b578f15f0d/openshift-pipelines-early-release-catalog-source.yaml"
+   Given user executed command "oc apply -f https://gist.githubusercontent.com/nikhil-thomas/f6069b00b0e3b0359ae1cbdb929a04d6/raw/7b19be0c52355d041bf3d6a883db06b578f15f0d/openshift-pipelines-early-release-catalog-source.yaml"
    And user is at OpenShift Pipeline Operator subscription page
    When user installs the pipeline operator with default values
    Then user will see a modal with title "OpenShift Pipelines Operator"
@@ -94,7 +93,6 @@ Scenario: Create HyperConverged Cluster: VM-01-TC02
     And user will see Virtualization item under Workloads
 
 
-@regression
 Scenario: Uninstall the Pipeline Operator from Operator Hub page : P-013-TC01, P-013-TC02
    Given user is at Operator Hub page with the header name "OperatorHub"
    When user uninstalls the pipeline operator from right side bar

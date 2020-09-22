@@ -8,6 +8,13 @@ Background:
 
 
 @regression, @smoke
+Scenario: Context menu options of helm release: HR-07-TC01
+    Given user is at the Topology page
+    When user right clicks on the Helm Release "nodejs-ex-k" to open the context menu
+    Then user is able to see the context menu with actions Upgrade, Rollback and Uninstall Helm Release
+
+
+@regression, @smoke
 Scenario: Perform Upgrade action on Helm Release through Context Menu: HR-08-TC02
     Given user is at the Topology page
     When user right clicks on the Helm Release "nodejs-ex-k" to open the context menu
@@ -15,7 +22,7 @@ Scenario: Perform Upgrade action on Helm Release through Context Menu: HR-08-TC0
     And user upgrades the chart Version
     And user clicks on the upgrade button
     # Then the helm release should get upgradaed -- currently text message is not displaying on upgrade button click
-    And user will be redirected to Topology page
+    Then user will be redirected to Topology page
 
 
 @regression, @smoke

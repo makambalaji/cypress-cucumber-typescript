@@ -2,7 +2,7 @@ import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { addPage, addPageObj } from '../../pages/add-flow/add-page';
 import { containerImagePage } from '../../pages/add-flow/containerImage-page';
 import { catalogPage } from '../../pages/add-flow/catalog-page';
-import { addOptions, caatalogCards } from '../../constants/add';
+import { addOptions, caatalogCards, catalogTypes } from '../../constants/add';
 import { naviagteTo } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
 
@@ -12,11 +12,15 @@ Given('user is on {string} form', (formName: string) => {
 });
 
 Given('builder images are displayed', () => {
-  // TODO: implement step
+  catalogPage.selectCatalogTypeCheckBox(catalogTypes.BuilderImage);
 });
 
 When('user clicks on From git card', () => {
   addPage.selectCardFromOptions(addOptions.Git);
+});
+
+When('user enters S2I Git Repo url as {string}', (s2iGitRepoUrl: string) => {
+  addPage.enterGitUrl(s2iGitRepoUrl);
 });
 
 When('user clicks on Container Image card', () => {
@@ -37,8 +41,14 @@ When('create the application with s2i builder image', () => {
   catalogPage.clickButtonOnCatalogPageSidePane();
 });
 
-When('user type {string} into the Image name from External registry text box', (imageName: string) => {
+When('user enters External registry image name as {string}', (imageName: string) => {
   containerImagePage.enterExternalRegistryImageName(imageName);
+  containerImagePage.verifyValidatedMessage();
+});
+
+When('user enters Docker url as {string}', (dockerUrl: string) => {
+  addPage.enterGitUrl(dockerUrl);
+  containerImagePage.verifyValidatedMessage();
 });
 
 When('user selects {string} radio button on Add page', (resourceType: string) => {

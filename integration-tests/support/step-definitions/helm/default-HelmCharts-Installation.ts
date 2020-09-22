@@ -39,7 +39,7 @@ When('user enters Release Name as {string}', (releaseName: string) => {
 
 When('user clicks on the Install Helm Chart button on side bar', () => {
   catalogPage.verifyDialog();
-  cy.get(catalogPageObj.sidePane.installHelmChart).click();
+  cy.get(catalogPageObj.sidePane.installHelmChart).click({force: true});
 });
 
 When('user clicks on the Install button in Install Helm chart page', () => {
@@ -60,7 +60,7 @@ When('user checks the Helm Charts checkbox', () => {
 });
 
 When('user right clicks on the helm release {string}', (helmReleaseName: string) => {
-  topologyPage.appNode(helmReleaseName).trigger('contextmenu', {force: true});
+  cy.get('g.odc-base-node__label').should('be.visible').contains(helmReleaseName).trigger('contextmenu', {force: true});
 });
 
 Then('user is able to see the context menu with actions Upgrade, Rollback and Uninstall Helm Release', () => {

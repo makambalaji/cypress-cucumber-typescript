@@ -4,15 +4,6 @@ import { catalogPage } from '../../pages/add-flow/catalog-page';
 
 Given('helm release {string} is present in topology page', (workloadName: string) => {
   catalogPage.createHelmChartFromAddPage(workloadName);
-  // cy.get('body div').then(($el) => {
-  //   if($el.find('h2.co-hint-block__title h4').length === 0) {
-  //     catalogPage.createHelmChartFromAddPage(workloadName);
-  //   }
-  //   else {
-  //     cy.log('helm release is available');
-  //   }
-  // });
-  // topologyPage.searchHelmRelease(workloadName);
 });
 
 Given('user is on the topology sidebar of the helm release {string}', (helmReleaseName: string) => {

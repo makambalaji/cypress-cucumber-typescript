@@ -58,7 +58,7 @@ Examples:
 @regression
 Scenario Outline: Create knative workload from Container image card on Add page : 
    Given user is on "<form_name>" form
-   When user type "<image_name>" into the Image name from External registry text box
+   When user enters External registry image name as "<image_name>"
    And user enters name as "<workload_name>"
    And user selects "knative" radio button on Add page
    And user clicks Create button on Add page
@@ -73,7 +73,7 @@ Examples:
 @regression
 Scenario Outline: Create a workload from Docker file card on Add page :Kn-01-TC03
    Given user is on "Import from Dockerfile" form
-   When user enters Git Repo url as "<docker_git_url>"
+   When user enters Docker url as "<docker_git_url>"
    And user selects resource type as "Knative Service"
    And user clicks Create button on Add page   
    Then user will be redirected to Topology page
@@ -84,15 +84,14 @@ Examples:
 | Docker file | Import from Docker file | https://github.com/sclorg/nodejs-ex.git | nodejs-ex-git |
 
 
-@regression
+@regression-1
 Scenario: Create a workload from DevCatalog BuilderImages card on Add page : Kn-01-TC04
    Given user is on "Developer Catalog" form
    And builder images are displayed
    When user searches and selects the "node" card
    And user creates the application with the selected builder image
-   And user enters Git Repo url as "https://github.com/sclorg/nodejs-ex.git"
+   And user enters S2I Git Repo url as "https://github.com/sclorg/nodejs-ex.git"
    And user selects resource type as "Knative Service"
    And user clicks Create button on Add page  
    Then user will be redirected to Topology page
    And user is able to see workload "nodejs-ex-git" in topology page list view
-   

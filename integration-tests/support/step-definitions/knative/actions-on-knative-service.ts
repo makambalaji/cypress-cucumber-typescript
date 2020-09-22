@@ -30,13 +30,16 @@ Given('knative service named {string} is higlighted on topology page', (knativeS
 Given('user has created knative service {string}', (knativeServiceName: string) => {
   naviagteTo(devNavigationMenu.Add);
   addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git',knativeServiceName, resourceTypes.knativeService);
+  topologyPage.verifyWorkloadInTopologyPage(knativeServiceName);
 });
 
 Given('user has created knative services {string} and {string}', (knativeServiceName: string, knativeServiceName1: string) => {
   naviagteTo(devNavigationMenu.Add);
   addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git',knativeServiceName, resourceTypes.knativeService);
+  topologyPage.verifyWorkloadInTopologyPage(knativeServiceName);
   naviagteTo(devNavigationMenu.Add);
   addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git',knativeServiceName1, resourceTypes.knativeService);
+  topologyPage.verifyWorkloadInTopologyPage(knativeServiceName1);
 });
 
 Given('user has created {string} event source', (eventSourceName: string) => {
@@ -69,7 +72,7 @@ Given('knative services named {string} and {string} are higlighted on topology p
 });
 
 When('user right clicks on the knative service {string}', (knativeServiceName: string) => {
-  topologyPage.componentNode(knativeServiceName).should('be.visible').trigger('contextmenu', {force:true});
+  cy.get('g.odc-base-node__label').should('be.visible').contains(knativeServiceName).trigger('contextmenu', {force: true});
 });
 
 Then('user is able to see the options like Edit Application Grouping, Set Traffic Distribution, Edit Health Checks, Edit Labels, Edit Annotations, Edit Service, Delete Service, {string}',(knativeServiceName: string) => {

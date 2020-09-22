@@ -105,7 +105,7 @@ export const catalogPage = {
     app.waitForLoad(40000);
   },
   enterReleaseName:(releaseName: string) => cy.get(catalogPageObj.installHelmChart.releaseName).clear().type(releaseName),
-  createHelmChartFromAddPage:(releaseName: string = 'nodejs-ex-k', helmChartName: string = 'Nodejs Ex K v0.2.0') => {
+  createHelmChartFromAddPage:(releaseName: string = 'nodejs-ex-k', helmChartName: string = 'Nodejs Ex K v0.2.1') => {
     addPage.verifyCard('Helm Chart');
     addPage.selectCardFromOptions(addOptions.HelmChart);
     catalogPage.verifyTitle();
@@ -113,7 +113,7 @@ export const catalogPage = {
     catalogPage.search(helmChartName);
     catalogPage.selectHelmChartCard(helmChartName);
     catalogPage.verifyDialog();
-    cy.get(catalogPageObj.sidePane.installHelmChart).click();
+    catalogPage.clickButtonOnCatalogPageSidePane();
     catalogPage.verifyInstallHelmChartPage();
     catalogPage.enterReleaseName(releaseName);
     catalogPage.clickOnInstallButton();

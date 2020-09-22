@@ -11,10 +11,6 @@ Given('user is at the Helm page', () => {
   naviagteTo(devNavigationMenu.Helm);
 });
 
-Given('user is at the Helm page with one helm release', () => {
-  naviagteTo(devNavigationMenu.Helm);
-});
-
 Given('user has selected all filters', () => {
   // TODO: implement step
 });
@@ -55,8 +51,8 @@ Then('release name displays as {string}', (name: string) => {
 Given('user is at Install Helm Chart page', () => {
   naviagteTo(devNavigationMenu.Add);
   addPage.selectCardFromOptions(addOptions.HelmChart);
-  catalogPage.search('Nodejs Ex K v0.2.0');
-  catalogPage.selectHelmChartCard('Nodejs Ex K v0.2.0');
+  catalogPage.search('Nodejs Ex K v0.2.1');
+  catalogPage.selectHelmChartCard('Nodejs Ex K v0.2.1');
   catalogPage.clickButtonOnCatalogPageSidePane();
 });
 
@@ -73,24 +69,12 @@ Then('Topology page have the helm chart workload {string}', (nodeName: string) =
   topologyPage.verifyWorkloadInTopologyPage(nodeName);
 });
 
-When('user clicks on the filter drop down', () => {
-  // TODO: implement step,
-});
-
 When('user selects checkbox for the Deployed Helm charts', (workloadname: string) => { 
   topologyPage.verifyWorkloadInTopologyPage(workloadname);
 });
 
-When('user selects checkbox for the Failed Helm charts', () => {
-  // TODO: implement step
-});
-
-When('user selects checkbox for the Other Helm charts', () => {
-  // TODO: implement step
-});
-
-When('user clicks on the clear all filters button', () => {
-  // TODO: implement step
+When('user filters {string} helm charts', (filterName: string) => {
+  helmPage.selectHelmFilter(filterName);
 });
 
 When('user searches for a helm chart {string}', (helmChartName:string) => {
@@ -100,6 +84,10 @@ When('user searches for a helm chart {string}', (helmChartName:string) => {
 When('user clicks on the helm release name {string}', (helmChartName:string) => {
   helmPage.search(helmChartName);
   helmPage.clickHelmReleaseName(helmChartName);
+});
+
+Given('helm chart {string} is installed', (helmChartName: string) => {
+  helmPage.createHelmRelease(helmChartName);
 });
 
 Given('helm chart is installed', () => {
@@ -123,28 +111,12 @@ Then('user will see the helm charts listed', () => {
   helmPage.verifyHelmReleasesDisplayed();
 });
 
-Then('the checkbox for the Deployed Helm chart is checked', () => {
-  // TODO: implement step
+When('user clicks on the clear all filters button', () => {
+
 });
 
-Then('helm charts with status deployed are listed', () => {
-  // TODO: implement step
-});
-
-Then('the checkbox for the Failed Helm chart is checked', () => {
-  // TODO: implement step
-});
-
-Then('helm charts with status failed are listed', () => {
-  // TODO: implement step
-});
-
-Then('the checkbox for the Other Helm chart is checked', () => {
-  // TODO: implement step
-});
-
-Then('helm charts with status other are listed', () => {
-  // TODO: implement step
+Then('helm charts with status {string} are listed', (helmChartstatus: string) => {
+  
 });
 
 Then('all filters selected will get removed', () => {

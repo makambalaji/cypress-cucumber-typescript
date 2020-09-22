@@ -154,7 +154,7 @@ Scenario: kebab menu options in pipeline Runs page : P-04-TC07
 
 
 @regression
-Scenario: Start LastRun from topolgy page : P-05-TC04
+Scenario: Start LastRun from topology page : P-05-TC04
     Given workload "nodejs-ex-git" is created from add page with pipeline
     And user started the pipeline "nodejs-ex-git" in pipelines page
     When user navigates to Topology page
@@ -169,7 +169,7 @@ Scenario: Maximum pipeline runs display in topology page: P-05-TC05
     And user is at the Topology page
     When user clicks on the node name
     Then side bar is displayed with the pipelines section
-    And 3 pipeline runs are displayed under pipelines section of topolgy page
+    And 3 pipeline runs are displayed under pipelines section of topology page
 
 
 Scenario: Start the pipeline with cancelled tasks: P-07-TC04

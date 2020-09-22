@@ -29,11 +29,11 @@ When('user selects event source type {string}', (eventSourceType: string) => {
 });
 
 When('user enters Resoruce APIVERSION as {string}', (apiVersion: string) => {
-  cy.get(eventSourceObj.apiServerSource.apiVersion).type(apiVersion);
+  cy.get(eventSourceObj.apiServerSource.apiVersion).should('be.visible').type(apiVersion);
 });
 
 When('user enters Resource KIND as {string}', (version: string) => {
-  cy.get(eventSourceObj.apiServerSource.kind).type(version);
+  cy.get(eventSourceObj.apiServerSource.kind).should('be.visible').type(version);
 });
 
 When('user selects {string} option from Service Account Name field', (serviceAccountName: string) => {

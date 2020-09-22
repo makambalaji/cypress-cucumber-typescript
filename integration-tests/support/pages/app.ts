@@ -7,9 +7,8 @@ export const app = {
   login:() => {
     cy.get('body').then(($body) => {
       if ($body.find('a[title="Log in with kube:admin"]').length) {
-        cy.get('a[title="Log in with kube:admin"]').click().then(() => {
+        cy.get('a[title="Log in with kube:admin"]').click();
           cy.url().should('include', 'login');
-        })
       }
     })
     cy.get('#inputUsername').type(Cypress.env('username'));

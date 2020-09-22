@@ -158,7 +158,7 @@ Then ('side bar is displayed with the pipelines section', () => {
   topologySidePane.verifyTab('Resources');
 });
 
-Then('3 pipeline runs are displayed under pipelines section of topolgy page', () => {
+Then('3 pipeline runs are displayed under pipelines section of topology page', () => {
   // TODO: implement step
 });
 
