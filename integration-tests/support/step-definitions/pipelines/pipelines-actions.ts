@@ -82,7 +82,7 @@ When('user selects option {string} from Actions menu drop down', (action: string
   pipelineDetailsPage.selectActionFromActionsDropdown(action);
 });
 
-When('clicks Delete button on Delete Pipeline modal', () => {
+When('user clicks Delete button on Delete Pipeline modal', () => {
   cy.alertTitleShouldContain('Delete Pipeline?');
   cy.get(pipelinesObj.deletePipeline.delete).click();
 });

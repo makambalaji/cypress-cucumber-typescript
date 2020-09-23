@@ -93,7 +93,7 @@ export const addPage = {
         cy.get(`li #${appName}-link`).click();
       }
       else if($el.prop("tagName").includes('input')){
-        cy.get(addPageObj.appName).clear().should('be.empty').type(appName).should('have.value', appName);
+        cy.get(addPageObj.appName).scrollIntoView().clear().should('be.empty', {timeout: 3000}).type(appName).should('have.value', appName);
       }
       else {
         cy.log(`App name doesn't contain button or input tags`);
@@ -102,7 +102,10 @@ export const addPage = {
   },
   veirfyAppName:(nodeName: string) => cy.get(addPageObj.appName).should('have.value', nodeName),
   enterComponentName: (name: string) => {
-    cy.get(addPageObj.nodeName).should('be.visible').clear().should('be.empty').type(name).should('have.value', name);
+    cy.get(addPageObj.nodeName).scrollIntoView().clear();
+    cy.get(addPageObj.nodeName).scrollIntoView().type(name);
+    cy.wait(2000);
+    cy.get(addPageObj.nodeName).should('have.value', name);
   },
   veirfyNodeName:(componentName: string) => 
     cy.get(addPageObj.nodeName).should('have.value', componentName),
@@ -110,11 +113,11 @@ export const addPage = {
     switch (resource) {
       case 'deployment':
       case 'Deployment':
-        cy.get(addPageObj.resources.deployment).check();
+        cy.get(addPageObj.resources.deployment).scrollIntoView().check();
         break;
       case 'deployment config':
       case 'Deployment Config':
-        cy.get(addPageObj.resources.deploymentConfig).check();
+        cy.get(addPageObj.resources.deploymentConfig).scrollIntoView().check();
         break;
       case 'Knative':
       case 'knative':

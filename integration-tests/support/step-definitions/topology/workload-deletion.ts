@@ -30,7 +30,7 @@ When('user clicks on {string}', (buttonName: string) => {
 });
 
 When('user right clicks on the node {string}', (nodeName: string) => {
-  topologyPage.componentNode(nodeName).trigger('contextmenu', {force: true});
+  cy.get('g.odc-base-node__label').should('be.visible').contains(nodeName).trigger('contextmenu', {force: true});
 });
 
 When('user selects {string} from the context menu', (option: string) => {

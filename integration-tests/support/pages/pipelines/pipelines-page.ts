@@ -128,7 +128,7 @@ export const pipelinesPage = {
   selectPipeline:(pipelineName: string) => cy.byLegacyTestID(pipelineName).click(),
 
   seelctPipelineRun:(pipelineName: string) => {
-    cy.get(pipelinesObj.pipelinesTable.table).should('exist');
+    cy.get(pipelinesObj.pipelinesTable.table, {timeout: 30000}).should('exist');
     cy.get(pipelinesObj.pipelinesTable.pipelineName).each(($el, index) => {
       if($el.text().includes(pipelineName)) {
         cy.get(pipelinesObj.pipelinesTable.pipelineRunName).eq(index).click();

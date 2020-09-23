@@ -71,7 +71,7 @@ When('user searches for pipeline {string} in pipelines page', (name: string) => 
   pipelinesPage.search(name);
 });
 
-When('clicks node {string} in topology page', (name: string) => {
+When('user clicks node {string} in topology page', (name: string) => {
   topologyPage.componentNode(name).click({force: true});
 });
 

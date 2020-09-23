@@ -59,13 +59,13 @@ export const pipelineRunDetailsPage = {
       cy.get('div dl dt').as('fieldNames');
       cy.get('@fieldNames').eq(0).should('have.text', 'Name');
       cy.get('@fieldNames').eq(1).should('have.text', 'Namespace');
-      cy.get('@fieldNames').eq(2).should('have.text', 'Labels');
+      cy.get('@fieldNames').eq(2).find('button').eq(0).should('have.text', 'Labels');
       cy.get('@fieldNames').eq(3).should('have.text', 'Annotations');
       cy.get('@fieldNames').eq(4).should('have.text', 'Created At');
       cy.get('@fieldNames').eq(5).should('have.text', 'Owner');
-      cy.get('@dynamicLinks').eq(0).should('have.text', 'Status');
-      cy.get('@dynamicLinks').eq(1).should('have.text', 'Pipeline');
-      cy.get('@dynamicLinks').eq(2).should('have.text', 'Triggered by:');
+      cy.get('@fieldNames').eq(6).should('have.text', 'Status');
+      cy.get('@fieldNames').eq(7).should('have.text', 'Pipeline');
+      cy.get('@fieldNames').eq(8).should('have.text', 'Triggered by:');
     },
     verifyActionsDropdown:() => cy.get(pipelineRunDetailsObj.actions).should('be.visible'),
     selectPipeline:() => cy.get(pipelineRunDetailsObj.details.pipelineLink).click(),

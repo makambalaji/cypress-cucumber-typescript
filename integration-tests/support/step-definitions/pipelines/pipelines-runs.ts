@@ -1,7 +1,7 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { pipelinesPage, startPipelineInPipelinsPage as startPipeline } from '../../pages/pipelines/pipelines-page';
 import { pipelineBuilderPage } from '../../pages/pipelines/pipelineBuilder-page';
-import { pipelineRunDetailsPage, pipelineRunsPage } from '../../pages/pipelines/pipelineRun-details-page';
+import { pipelineRunDetailsPage, pipelineRunsPage, pipelineRunDetailsObj } from '../../pages/pipelines/pipelineRun-details-page';
 import { naviagteTo } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
 import { pipelineDetailsPage } from '../../pages/pipelines/pipelineDetails-page';
@@ -190,6 +190,8 @@ Given('pipeline {string} is executed for 3 times', (pipelineName: string) => {
   cy.selectActionsMenuOption('Rerun');
   cy.get('.fa-spin').should('not.be.visible');
   cy.selectActionsMenuOption('Rerun');
+  pipelineRunDetailsPage.verifyTitle();
+  cy.get(pipelineRunDetailsObj.pipelineRunStatus).contains('Succeeded', {timeout: 50000});
 });
 
 Given('user is at the Pipeline Runs page', () => {
@@ -198,8 +200,6 @@ Given('user is at the Pipeline Runs page', () => {
 });
 
 When('user filters the pipeline runs of pipeline {string} based on the {string}', (pipelineName: string, status: string) => {
-  // cy.clickBreadcrumbLink('Pipeline Runs');
-  // pipelineRunsPage.verifyTitle();
   naviagteTo(devNavigationMenu.Pipelines);
   pipelinesPage.seelctPipelineRun(pipelineName);
   cy.clickBreadcrumbLink('Pipeline Runs');

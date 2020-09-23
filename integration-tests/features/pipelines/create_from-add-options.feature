@@ -35,9 +35,9 @@ Scenario Outline: Create a pipeline from git workload with resource type "<resou
    And user is able to see workload "<pipeline_name>" in topology page
 
 Examples:
-| git_url                                 | pipeline_name    | resource          |
-| https://github.com/sclorg/nodejs-ex.git | nodejs-ex-git-f  | Deployment        |
-| https://github.com/sclorg/nodejs-ex.git | nodejs-ex-git-fc | Deployment Config |
+| git_url                                 | pipeline_name | resource          |
+| https://github.com/sclorg/nodejs-ex.git | nodejs-ex-git | Deployment        |
+| https://github.com/sclorg/nodejs-ex.git | nodejs-ex-git | Deployment Config |
 
 
 @regression, @smoke
@@ -50,8 +50,8 @@ Scenario Outline: Pipeline in topology page : P-02-TC02
    Then pipeline name "<name>" is displayed in topology side bar
 
 Examples:
-| name            |
-| nodejs-ex-git-f |
+| name          |
+| nodejs-ex-git |
 
 
 @regression, @smoke
@@ -62,8 +62,8 @@ Scenario Outline: Search the created pipeline from Add options in pipelines page
    Then pipeline "<name>" is displayed in pipelines page
 
 Examples:
-| name            |
-| nodejs-ex-git-g |
+| name          |
+| nodejs-ex-git |
 
 
 @regression
@@ -109,8 +109,8 @@ Scenario Outline: Create a pipeline from git workload with knative resource type
    And user is able to see workload "<pipeline_name>" in topology page
 
 Examples:
-| git_url                                 | pipeline_name    |
-| https://github.com/sclorg/nodejs-ex.git | nodejs-ex.git-Kn |
+| git_url                                 | pipeline_name |
+| https://github.com/sclorg/nodejs-ex.git | nodejs-ex.git |
 
 
 @regression
@@ -144,4 +144,4 @@ Scenario Outline: Pipelines section in topology page: P-02-TC09
 
 Examples:
 | node_name       | 
-| nodejs-ex-D-git |
+| nodejs-ex-git |

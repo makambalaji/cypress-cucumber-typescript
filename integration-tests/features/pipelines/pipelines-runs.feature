@@ -54,8 +54,8 @@ Scenario Outline: Pipeline Run Details page for pipeline without resource : P-06
     And Actions dropdown display on the top right corner of the page
 
 Examples:
-| pipeline_name          |
-| pipeline-with-resoruce |
+| pipeline_name |
+| nodejs-ex-git |
 
 
 @regression
@@ -70,11 +70,6 @@ Scenario Outline: Rerun the Pipeline Run from pipeline run details page: P-06-TC
     Given user is at the Pipeline Run Details page
     When user selects Rerun option from the Actions menu 
     Then status displays as "Running" in pipeline run details page
-
-Examples:
-| pipeline_name          |
-| pipeline-with-resoruce |
-
 
 @regression, @smoke
 Scenario Outline: Rerun the Pipeline Run from pipeline runs page : P-06-TC02
@@ -100,7 +95,7 @@ Examples:
 | pipeline-with-resoruce |
 
 
-@regression, @smoke
+@regression, @smoke-1
 Scenario Outline: Filter the pipeline runs based on status : P-06-TC07
     Given pipeline "<pipeline_name>" is executed for 3 times
     When user filters the pipeline runs of pipeline "<pipeline_name>" based on the "<status>"
@@ -196,7 +191,7 @@ Scenario: Start the pipeline with successful tasks: P-07-TC06
     And Pipeline run status displays as "Running"
 
 
-@regression, @smoke
+@regression, @smoke-1
 Scenario Outline: Pipeline status display in topology side bar : P-05-TC02
     Given pipeline "<pipeline_name>" is created from git page
     And pipeline run is displayed for "<pipeline_name>" in pipelines page
@@ -204,5 +199,5 @@ Scenario Outline: Pipeline status display in topology side bar : P-05-TC02
     Then Last Run status of the "<pipeline_name>" displays as "Succeeded" in topology page
 
 Examples:
-| pipeline_name          |
-| pipeline-with-resoruce |
+| pipeline_name |
+| nodejs-ex-git |

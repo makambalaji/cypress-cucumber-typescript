@@ -35,7 +35,7 @@ When('user checks nodes and the decorators associated with them', () => {
 });
 
 When('user right clicks on the node {string} to open context menu', (componentNode: string) => {
-  topologyPage.componentNode(componentNode).trigger('contextmenu', {force: true});
+  cy.get('g.odc-base-node__label').should('be.visible').contains(componentNode).trigger('contextmenu', {force: true});
   topologyPage.verifyContextMenu();
 });
 

@@ -14,10 +14,10 @@ Scenario: Create the workload from Operator Backed : A-08-TC01
     And Opeator Backed is selected on Developer Catalog page
     When user selects knative Serving card
     And user clicks Create button in side bar
-    And user enters name as "knative-serving-1" in Create knative Serving page
+    And user enters name as "knative-serving" in Create knative Serving page
     And user clicks create button in Create knative Serving page
     Then user will be redirected to Topology page
-    And user is able to see workload "knative-serving-1" in topology page
+    And user is able to see workload "knative-serving" in topology page
 
 
 @regression, @smoke

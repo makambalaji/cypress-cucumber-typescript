@@ -56,7 +56,7 @@ Examples:
 | pipelines-one |
 
 
-@regression, @smoke
+@regression, @smoke-1
 Scenario: Trigger template details page : P-09-TC05
     Given Trigger is added to the pipeline "git-pipeline" present in pipeline details page
     And user is at pipeline Details page 
@@ -67,7 +67,7 @@ Scenario: Trigger template details page : P-09-TC05
     And Actions dropdown display on the top right corner of the page
 
 
-@regression, @smoke
+@regression, @smoke-1
 Scenario: Event Listener Details page : P-09-TC06, P-09-TC07
     Given Trigger is added to the pipeline "git-pipeline-events" present in pipeline details page 
     And user is at Trigger Template Details page
