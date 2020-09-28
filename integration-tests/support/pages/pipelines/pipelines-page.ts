@@ -14,7 +14,7 @@ export const pipelinesObj = {
   addTrigger: {
     add: '#confirm-action',
     cancel: '[data-test-id="modal-cancel-action"]',
-    gitProviderType: '#form-dropdown-triggerBinding-name-field',
+    gitProviderType: '[id$="triggerBinding-name-field"]',
     gitUrl: '#form-input-resources-0-data-params-url-field',
     revision: '#form-input-resources-0-data-params-revision-field',
     variablesMessage: 'p.odc-trigger-binding-section__variable-descriptor',

@@ -44,6 +44,9 @@ export const operatorsPage = {
 
   searchOperator: (operatorName: string) => {
     cy.get(operatorsObj.operatorHub.search).should('be.visible').type(operatorName);
+    if(operatorName === "OpenShift Pipelines Operator") {
+      cy.byLegacyTestID("catalog-clear-filters")
+    }
     cy.get(operatorsObj.operatorHub.numOfItems).should('be.visible');
   },
 

@@ -40,3 +40,7 @@ Cypress.Commands.add('selectActionsMenuOption', (actionsMenuOption: string) => {
 before(() => {
     cy.visit('/');
 });
+
+beforeEach(() => {
+  cy.clearCookies();
+});

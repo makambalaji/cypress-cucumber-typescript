@@ -102,10 +102,9 @@ export const addPage = {
   },
   veirfyAppName:(nodeName: string) => cy.get(addPageObj.appName).should('have.value', nodeName),
   enterComponentName: (name: string) => {
-    cy.get(addPageObj.nodeName).scrollIntoView().clear();
-    cy.get(addPageObj.nodeName).scrollIntoView().type(name);
+    cy.get(addPageObj.nodeName).scrollIntoView().clear({timeout: 10000}).click();
     cy.wait(2000);
-    cy.get(addPageObj.nodeName).should('have.value', name);
+    cy.get(addPageObj.nodeName).type(name).should('have.value', name);
   },
   veirfyNodeName:(componentName: string) => 
     cy.get(addPageObj.nodeName).should('have.value', componentName),
@@ -162,7 +161,7 @@ export const addPage = {
       case 'Git':
       case addOptions.Git:
         cy.byLegacyTestID('import-from-git').click();
-        cy.pageTitleShouldContain('Import from git');
+        cy.pageTitleShouldContain('Import from Git');
         break;
       case 'Deploy Image':
       case addOptions.ContainerImage:

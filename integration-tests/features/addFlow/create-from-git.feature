@@ -44,7 +44,7 @@ Scenario Outline: Add new git workload with new application for resoruce type "<
 Examples:
 | name          | resource_type     |
 | dancer-ex-git | Deployment        |
-| nodejs-ex-git | Deployment Config |
+| dancer-ex-git | Deployment Config |
 
 
 @regression

@@ -151,22 +151,15 @@ When('user installs the Eclipse che operator with default values', () => {
   operatorsPage.installOperator();
 });
 
-Then('serverless tab displays in navigation menu of admin page', () => {
-  // TODO: implement step
-});
-
 Then('Event sources card display in +Add page in dev perspecitve', () => {
   perspective.switchTo(switchPerspective.Developer);
+  perspective.skipGuidedTours();
   naviagteTo(devNavigationMenu.Add);
   addPage.verifyCard('Event Source');
 });
 
 Then('user will be redirected to Installed operators page', () => {
   cy.pageTitleShouldContain('Installed Operators');
-});
-
-Then('page will contain knative apache camel operator', () => {
-  // TODO: implement step
 });
 
 Then('Installed operators page will contain {string}', (operatorName: string) => {
@@ -177,6 +170,6 @@ Then('Installed operators page will not contain {string}', (operatorName: string
   operatorsPage.verifyOperatoNotAvailable(operatorName);
 });
 
-Given('user executed command {string}', (command:string) => {
-  cy.exec(command);
-})
+Given('user executed command {string}', () => {
+  cy.exec("oc apply -f https://gist.githubusercontent.com/nikhil-thomas/f6069b00b0e3b0359ae1cbdb929a04d6/raw/7b19be0c52355d041bf3d6a883db06b578f15f0d/openshift-pipelines-early-release-catalog-source.yaml")
+});

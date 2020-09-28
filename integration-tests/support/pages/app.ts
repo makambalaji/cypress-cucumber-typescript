@@ -23,6 +23,14 @@ export const perspective = {
     cy.byLegacyTestID('perspective-switcher-toggle').should('contain.text', perspectiveName);
   },
 
+  skipGuidedTours :() => {
+    cy.get('body div').then(($el) => {
+      if($el.find('#guided-tour-modal').length !== 0) {
+        cy.get('#tour-step-footer-secondary').click();
+      }
+    });
+  },
+
   switchTo : (perspectiveName: switchPerspective) => {
     cy.byLegacyTestID('perspective-switcher-toggle').click();
     switch (perspectiveName) {
@@ -30,24 +38,12 @@ export const perspective = {
         cy.get('li[role="menuitem"]')
         .contains('Administrator')
         .click();
-        cy.get('body div').then(($el) => {
-          if($el.find('#guided-tour-modal').length !== 0) {
-            // cy.get('#tour-step-footer-secondary').click();
-            // cy.get('#tour-step-footer-primary').should('be.visible').click();
-          }
-        });
         break;
       }
       case switchPerspective.Developer: {
         cy.get('li[role="menuitem"]')
         .contains('Developer')
         .click();
-        cy.get('body div').then(($el) => {
-          if($el.find('#guided-tour-modal').length !== 0) {
-            cy.get('#tour-step-footer-secondary').click();
-            // cy.get('#tour-step-footer-primary').should('be.visible').click();
-          }
-        });
         break;
       }
       default: {
@@ -60,10 +56,11 @@ export const perspective = {
 export const naviagteTo = (opt: devNavigationMenu) => {
   switch (opt) {
     case devNavigationMenu.Add: {
-      cy.byLegacyTestID('+Add-header').click().then(() => {
+      cy.byLegacyTestID('+Add-header').click()
+      // .then(() => {
         cy.url().should('include', 'add');
         app.waitForLoad();
-      });
+      // });
       break;
     }
     case devNavigationMenu.Topology: {
@@ -192,27 +189,6 @@ export const projectNameSpace = {
   },
 
   deleteProjectNameSpace:(project: string) => {
-    // requester: string = 'kube:admin') => {
-  //   naviagteTo(devNavigationMenu.Project);
-  //   projectNameSpace.selectProject('all projects');
-  //   cy.get('data-test-id="item-filter"').type('aut-');
-  //   cy.get('tbody').should('exist');
-  //   cy.get('tr td:nth-child(4)').each(($el, index) => {
-  //     const text = $el.text()
-  //     if(text.includes(requester)) {
-  //       cy.get('tbody tr').eq(index).find('td:nth-child(1) button').click();
-  //     }
-  //   });
-  //   // cy.get(`button[title="${projectName}"]`).click();
-  //   cy.get('[title="Project"]', {timeout:8000} ).should('be.visible');
-  //   cy.selectByDropDownText('[data-test-id="actions-menu-button"]', 'Delete Project');
-  //   cy.get('form [data-test-id="modal-title"]').should('contain.text', 'Delete Project?');
-  //   cy.get('p strong').eq(1).then(($el) => {
-  //     const text = $el.text()
-  //     cy.get('input[placeholder="Enter name"]').type(text);
-  //     cy.get('#confirm-action').should('be.enabled').click();
-  //   })
-  // },
-  cy.exec(`oc delete project ${project}`);
-},
+    cy.exec(`oc delete project ${project}`);
+  },
 }

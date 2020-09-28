@@ -17,6 +17,7 @@ Given('user has installed knative Apache camel operator', () => {
 
 Given('user is at developer perspecitve', () => {
   perspective.switchTo(switchPerspective.Developer);
+  perspective.skipGuidedTours();
   perspective.verifyPerspective('Developer');
 });
 
@@ -45,6 +46,7 @@ Given('user has installed OpenShift Serverless and eventing operator', () => {
 
 Given('user has installed OpenShift Pipelines operator', () => {
     perspective.switchTo(switchPerspective.Developer);
+    perspective.skipGuidedTours();
     perspective.verifyPerspective('Developer');
     cy.get('#page-sidebar').then(($navMenu) => {
       if ($navMenu.find('[data-test-id="pipeline-header"]').length) {
@@ -55,10 +57,11 @@ Given('user has installed OpenShift Pipelines operator', () => {
 
 Given('user has selected namespace {string}', (projectName: string) => {
   perspective.switchTo(switchPerspective.Developer);
+  perspective.skipGuidedTours();
   let d = new Date();
   let timestamp = d.getTime();
   project.selectProject(`${projectName}-${timestamp}-ns`);
-  cy.log(`User has selected namespace "${projectName}-${timestamp}-ns"`)
+  cy.log(`User has selected namespace "${projectName}-${timestamp}-ns"`);
 });
   
 Given('user has installed OpenShift Serverless Operator', () => {
@@ -82,6 +85,7 @@ Given('user is at pipelines page', () => {
 
 When('user switches to developer perspective', () => {
   perspective.switchTo(switchPerspective.Developer);
+  perspective.skipGuidedTours();
 });
 
 When('user navigates to Topology page', () => {
