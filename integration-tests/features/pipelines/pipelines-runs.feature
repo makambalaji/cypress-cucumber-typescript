@@ -95,7 +95,7 @@ Examples:
 | pipeline-with-resoruce |
 
 
-@regression, @smoke-1
+@regression, @smoke
 Scenario Outline: Filter the pipeline runs based on status : P-06-TC07
     Given pipeline "<pipeline_name>" is executed for 3 times
     When user filters the pipeline runs of pipeline "<pipeline_name>" based on the "<status>"
@@ -191,7 +191,7 @@ Scenario: Start the pipeline with successful tasks: P-07-TC06
     And Pipeline run status displays as "Running"
 
 
-@regression, @smoke-1
+@regression, @smoke
 Scenario Outline: Pipeline status display in topology side bar : P-05-TC02
     Given pipeline "<pipeline_name>" is created from git page
     And pipeline run is displayed for "<pipeline_name>" in pipelines page

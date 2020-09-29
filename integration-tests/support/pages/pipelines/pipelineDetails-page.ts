@@ -55,10 +55,8 @@ export const triggerTemplateDetailsPage = {
     cy.get('@fieldNames').eq(3).should('have.text', 'Annotations');
     cy.get('@fieldNames').eq(4).should('have.text', 'Created At');
     cy.get('@fieldNames').eq(5).should('have.text', 'Owner');
-    cy.get('div.odc-dynamic-resource-link-list').as('dynamicLinks');
-    cy.get('@dynamicLinks').should('have.length', 2);
-    cy.get('@dynamicLinks').eq(0).find('dl dt').should('have.text', 'Pipelines');
-    cy.get('@dynamicLinks').eq(1, {timeout: 8000}).find('dl dt').should('have.text', 'Event Listeners');
+    cy.contains('Pipelines').should('be.visible');
+    cy.contains('Event Listeners').should('be.visible');
   },
   verifyActionsDropdown:() => cy.get(triggerTemplateDetailsObj.actions).should('be.visible'),
   selectEventListener:() => cy.get(triggerTemplateDetailsObj.details.eventListenerLink).click(),
@@ -79,9 +77,7 @@ export const eventListenerDetailsPage = {
     cy.get('@fieldNames').eq(3).should('have.text', 'Annotations');
     cy.get('@fieldNames').eq(4).should('have.text', 'Created At');
     cy.get('@fieldNames').eq(5).should('have.text', 'Owner');
-    cy.get('div.odc-dynamic-resource-link-list dl dt').as('dynamicLinks')
-    cy.get('@dynamicLinks').eq(0, {timeout:5000}).should('have.text', 'Trigger Templates');
-    cy.get('@dynamicLinks').eq(1, {timeout:5000}).should('have.text', 'Trigger Bindings');
+    cy.contains('Triggers').should('be.visible');
   },
   verifyActionsDropdown:() => cy.get(eventListenerDetailsObj.actions).should('be.visible'),
   selectTriggerBindingLink:() => cy.get(eventListenerDetailsObj.details.triggerBindingLink).click(),

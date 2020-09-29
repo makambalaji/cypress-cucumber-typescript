@@ -22,7 +22,8 @@ Examples:
 
 @regression
 Scenario: Variables section in Add Trigger modal details : P-09-TC02
-    Given user is at Add Trigger modal
+    Given pipeline "<pipeline_name>" is available with git resource
+    And user is at Add Trigger modal
     When user selects the "github-pullreq" from Git Provider Type field
     And  user clicks on "show variables" link 
     Then user should be able to see "Hide Variables" link with varaibles section
@@ -56,7 +57,7 @@ Examples:
 | pipelines-one |
 
 
-@regression, @smoke-1
+@regression, @smoke
 Scenario: Trigger template details page : P-09-TC05
     Given Trigger is added to the pipeline "git-pipeline" present in pipeline details page
     And user is at pipeline Details page 
@@ -67,7 +68,7 @@ Scenario: Trigger template details page : P-09-TC05
     And Actions dropdown display on the top right corner of the page
 
 
-@regression, @smoke-1
+@regression, @smoke
 Scenario: Event Listener Details page : P-09-TC06, P-09-TC07
     Given Trigger is added to the pipeline "git-pipeline-events" present in pipeline details page 
     And user is at Trigger Template Details page

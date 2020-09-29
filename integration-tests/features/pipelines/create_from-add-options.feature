@@ -23,7 +23,7 @@ Scenario: Pipelines section on docker file : P-01-TC04
    And Add pipeline section is displayed
 
 
-@regression, @smoke-1
+@regression, @smoke
 Scenario Outline: Create a pipeline from git workload with resource type "<resource>" : P-02-TC01, P-02-TC06
    Given user is at Import from git form
    When user enters Git Repo url as "<git_url>"

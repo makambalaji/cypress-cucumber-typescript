@@ -59,7 +59,7 @@ Given('{string} is displayed on pipelines page', (pipelineName: string) => {
 
 When('user selects the {string} from Git Provider Type field', (gitProviderType: string) => {
   cy.get(pipelinesObj.addTrigger.gitProviderType).click();
-  cy.byTestDropDownMenu(gitProviderType).click({force:true});
+  cy.get(`[id$="${gitProviderType}-link"]`).click({force:true});
 });
 
 When('user clicks on Add button present in Add Trigger modal', () => {
