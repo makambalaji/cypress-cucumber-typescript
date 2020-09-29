@@ -2,7 +2,7 @@ Feature: Perform Actions on Helm Releases
     As a user, I want to perform the actions on the helm releases in topology page
 
 Background:
-    Given user is at developer perspecitve
+    Given user is at developer perspective
     And user has selected namespace "aut-actions-helm"
     And helm release "nodejs-ex-k" is present in topology page
 

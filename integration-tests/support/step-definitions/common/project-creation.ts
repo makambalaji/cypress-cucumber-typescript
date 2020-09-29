@@ -1,6 +1,6 @@
 import { When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { projectNameSpace } from '../pages/app';
-import { addPageObj } from '../pages/add-flow/add-page';
+import { projectNameSpace } from '../../pages/app';
+import { addPageObj } from '../../pages/add-flow/add-page';
 
 When('user enters project name as {string} in Create Project modal', (projectName: string) => {
   projectNameSpace.enterProjectName(projectName);
@@ -14,7 +14,7 @@ Then('modal will get closed', () => {
   projectNameSpace.verifyPopupClosed();
 });
 
-Then('page displays with message {string}', (message: string) => {
+Then('topology page displays with message {string}', (message: string) => {
   projectNameSpace.verifyMessage(message);
 });
 

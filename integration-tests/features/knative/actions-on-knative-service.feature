@@ -3,7 +3,7 @@ Feature: Perform actions on knative service
 
 Background:
    Given user has installed Openshift Serverless operator
-   And user is at developer perspecitve
+   And user is at developer perspective
    And user has selected namespace "aut-create-knative-actions-service"
 
 

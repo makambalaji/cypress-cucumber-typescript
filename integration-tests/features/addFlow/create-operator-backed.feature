@@ -3,7 +3,7 @@ Feature: Create workload from Operator Backed file
 
 Background:
     Given user has installed OpenShift Serverless Operator
-    And user is at developer perspecitve
+    And user is at developer perspective
     And user is at Add page
     And user has selected namespace "knative-serving"
 

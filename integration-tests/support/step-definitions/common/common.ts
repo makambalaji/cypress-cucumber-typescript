@@ -15,7 +15,7 @@ Given('user has installed knative Apache camel operator', () => {
   operatorsPage.verifyInstalledOperator('Camel');
 });
 
-Given('user is at developer perspecitve', () => {
+Given('user is at developer perspective', () => {
   perspective.switchTo(switchPerspective.Developer);
   perspective.skipGuidedTours();
   perspective.verifyPerspective('Developer');

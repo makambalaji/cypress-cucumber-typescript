@@ -2,7 +2,7 @@ Feature: Create Application from Docker file
     As a user, I want to create the application, component or service from Add Flow Docker file
 
 Background:
-    Given user is at developer perspecitve
+    Given user is at developer perspective
     And user has selected namespace "aut-addflow-docker"
     And user is at Add page
 

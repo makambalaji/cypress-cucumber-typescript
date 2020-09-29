@@ -3,7 +3,7 @@ Feature: Apache Camel eventing
 
 Background:
    Given user has installed apache camel source operator
-   And user is at developer perspecitve
+   And user is at developer perspective
    And user has selected namespace "aut-knative-camel-event-source"
 
 

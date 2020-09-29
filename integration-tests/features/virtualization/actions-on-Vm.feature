@@ -3,7 +3,7 @@ Feature: Perform Actions on created VM
 
 
 Background: 
-    Given user is at developer perspecitve
+    Given user is at developer perspective
     And user has selected namespace "aut-vm-actions"
     And user has created VM
     And user is at the Topology page

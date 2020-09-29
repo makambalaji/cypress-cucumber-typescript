@@ -3,7 +3,7 @@ Feature: Create event sources
 
 Background:
    Given user has installed OpenShift Serverless and eventing operator
-   And user is at developer perspecitve
+   And user is at developer perspective
    And user has selected namespace "aut-create-knative-event-source"
 
 
@@ -18,7 +18,7 @@ Scenario: Different event source enters display in event sources add page : Kn-0
 @regression, @smoke
 Scenario: CamelSource event source : Kn-08-TC03
    Given user has installed knative Apache camel operator
-   And user is at developer perspecitve
+   And user is at developer perspective
    And user is at Add page
    When user clicks on "Event Source" card
    Then user will be redirected to page with header name "Event Sources"

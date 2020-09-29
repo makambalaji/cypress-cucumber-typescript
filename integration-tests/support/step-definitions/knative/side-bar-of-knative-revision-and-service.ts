@@ -1,10 +1,6 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { topologyPage, topologySidePane } from '../../pages/topology-page';
 
-// Given('side bar is displayed for revision of knative service {string} in topology page', (a: string) => {
-  
-// });
-
 When('user clicks on the revision of knative service {string}', (serviceName: string) => {
  topologyPage.revisionNode(serviceName).click();
 });
@@ -17,7 +13,7 @@ When('user clicks on Actions dropdown in top right corner of side bar', () => {
   
 });
 
-When('user clicks on the knative serivce {string}', (serviceName: string) => {
+When('user clicks on the knative service {string}', (serviceName: string) => {
   topologyPage.componentNode(serviceName).click();
 });
 

@@ -2,7 +2,7 @@ Feature: Create Application from git form
     As a user, I want to create the application, component or service from Add options
 
 Background:
-   Given user is at developer perspecitve
+   Given user is at developer perspective
    And user is at Add page
 
 
@@ -33,7 +33,7 @@ Scenario: Pipeline card display on pipeline operator installation : A-02-TC01
 @regression
 Scenario: Operator Backed card display on serverless operator installation : A-02-TC01
    Given user has installed Openshift Serverless operator
-   And user is at developer perspecitve
+   And user is at developer perspective
    And user is at the new project namespace "aut-new-project-namespace-3" 
    When user selects Add option from left side navigation menu
    Then user will be redirected to Add page
@@ -43,7 +43,7 @@ Scenario: Operator Backed card display on serverless operator installation : A-0
 @regression, @smoke
 Scenario: Event Source card display on serverless operator installation : A-03-TC02
    Given user has installed Openshift Serverless operator
-   And user is at developer perspecitve
+   And user is at developer perspective
    And user is at the new project namespace "aut-new-project-namespace-4" 
    When user selects Add option from left side navigation menu
    Then user will be redirected to Add page

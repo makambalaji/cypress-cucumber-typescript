@@ -3,7 +3,7 @@ Feature: Create Pipeline from Add Options
 
 Background:
    Given user has installed OpenShift Pipelines operator
-   And user is at developer perspecitve
+   And user is at developer perspective
    And user has selected namespace "aut-pipelines-add-options"
 
 

@@ -3,7 +3,7 @@ Feature: Create a workload of 'knative Service' type resource
 
 Background:
    Given user has installed Openshift Serverless operator
-   And user is at developer perspecitve
+   And user is at developer perspective
    And user has selected namespace "aut-create-knative-workload"
 
 

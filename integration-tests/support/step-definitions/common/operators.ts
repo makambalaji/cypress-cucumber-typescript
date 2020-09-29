@@ -121,7 +121,7 @@ When('user clicks unistall button present in modal with header message Uninstall
   cy.get(operatorsObj.uninstallPopup.uninstall).click();
 });
 
-When('user navigates to installed operators page in Admin perspecitve', () => {
+When('user navigates to installed operators page in Admin perspective', () => {
   operatorsPage.navigateToInstalloperatorsPage();
 });
 
@@ -151,7 +151,7 @@ When('user installs the Eclipse che operator with default values', () => {
   operatorsPage.installOperator();
 });
 
-Then('Event sources card display in +Add page in dev perspecitve', () => {
+Then('Event sources card display in +Add page in dev perspective', () => {
   perspective.switchTo(switchPerspective.Developer);
   perspective.skipGuidedTours();
   naviagteTo(devNavigationMenu.Add);
