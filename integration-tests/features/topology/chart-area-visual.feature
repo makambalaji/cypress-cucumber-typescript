@@ -9,7 +9,7 @@ Background:
 @regression, @smoke
 Scenario: Empty state of topology : T-01-TC01
    When user navigates to Topology page
-   Then user sees Topology page with message on the top "No workloads found"
+   Then user sees Topology page with message on the top "No resources found"
 
 
 @regression, @smoke

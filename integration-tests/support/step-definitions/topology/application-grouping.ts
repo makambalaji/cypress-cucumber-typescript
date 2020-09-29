@@ -5,10 +5,8 @@ import { naviagteTo } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
 
 let gitUrl = 'https://github.com/sclorg/nodejs-ex.git';
-let appName = '';
 
 Given('user has created a workload named {string}', (componentName: string) => {
-  appName = componentName;
   naviagteTo(devNavigationMenu.Add);
   addPage.createGitWorkload(gitUrl, componentName);
   topologyPage.verifyTopologyPage();

@@ -84,7 +84,12 @@ export const addPage = {
     cy.get(addPageObj.sectionTitle).contains('Pipelines').should('be.visible');
     cy.get(addPageObj.pipeline.infoMessage).should('have.text', message);
   },
-  enterGitUrl: (gitUrl: string) => cy.get(addPageObj.gitRepoUrl).type(gitUrl),
+  verifyValidatedMessage:() => cy.get(addPageObj.gitSection.validatedMessage).should('have.text', 'Validated'),
+  verifyBuilderImageDetectedMessage:() => cy.get(addPageObj.builderSection.builderImageDetected).should('be.visible'),
+  verifyBuilderImageVersion:() => cy.get(addPageObj.builderSection.builderImageVersion).should('be.visible'),
+  enterGitUrl: (gitUrl: string) => {
+    cy.get(addPageObj.gitRepoUrl).type(gitUrl);
+  },
   verifyPipelineCheckBox: () => cy.get(addPageObj.pipeline.addPipeline).should('be.visible'),
   enterAppName:(appName: string) => {
     cy.get(addPageObj.appName).then(($el) => {
@@ -102,6 +107,7 @@ export const addPage = {
   },
   veirfyAppName:(nodeName: string) => cy.get(addPageObj.appName).should('have.value', nodeName),
   enterComponentName: (name: string) => {
+    cy.get(addPageObj.gitSection.validatedMessage).should('have.text', 'Validated');
     cy.get(addPageObj.nodeName).scrollIntoView().clear({timeout: 10000}).click();
     cy.wait(2000);
     cy.get(addPageObj.nodeName).type(name).should('have.value', name);
@@ -218,9 +224,6 @@ export const addPage = {
   selectAddPipeline: () => cy.get(addPageObj.pipeline.addPipeline).scrollIntoView().check(),
   clickCreate: () => cy.get(addPageObj.create).should('be.enabled').click(),
   clickCancel:() => cy.get(addPageObj.cancel).should('be.enabled').click(),
-  verifyValidatedMessage:() => cy.get(addPageObj.gitSection.validatedMessage).should('have.text', 'Validated'),
-  verifyBuilderImageDetectedMessage:() => cy.get(addPageObj.builderSection.builderImageDetected).should('be.visible'),
-  verifyBuilderImageVersion:() => cy.get(addPageObj.builderSection.builderImageVersion).should('be.visible'),
   verifyCard:(cardName: string) => cy.get(addPageObj.cardTitle).contains(cardName).should('be.visible'),
   createGitWorkload: (gitUrl: string = 'https://github.com/sclorg/nodejs-ex.git', componentName: string = 'nodejs-ex-git', resourceType: string = 'Deployment', appName: string = 'nodejs-ex-git-app') => {
     addPage.selectCardFromOptions(addOptions.Git);
