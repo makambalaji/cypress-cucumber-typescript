@@ -5,13 +5,12 @@ Background:
     Given user has installed OpenShift Serverless Operator
     And user is at developer perspective
     And user is at Add page
-    And user has selected namespace "knative-serving"
+    And user is at namespace "knative-serving"
 
 
 @regression, @smoke
 Scenario: Create the workload from Operator Backed : A-08-TC01
-    Given user is at Developer Catlog page
-    And Opeator Backed is selected on Developer Catalog page
+    Given user is at Developer Catalog page with OperatorBacked type selection
     When user selects knative Serving card
     And user clicks Create button in side bar
     And user enters name as "knative-serving" in Create knative Serving page
@@ -22,8 +21,7 @@ Scenario: Create the workload from Operator Backed : A-08-TC01
 
 @regression, @smoke
 Scenario: Perform cancel operation : A-08-TC02
-    Given user is at Developer Catlog page
-    And Opeator Backed is selected on Developer Catalog page
+    Given user is at Developer Catalog page with OperatorBacked type selection
     When user selects knative Serving card
     And user clicks Create button in side bar
     And user clicks cancel button in Create knative Serving page

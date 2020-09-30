@@ -84,7 +84,7 @@ Examples:
 | Docker file | Import from Docker file | https://github.com/sclorg/nodejs-ex.git | nodejs-ex-git |
 
 
-@regression-1
+@regression
 Scenario: Create a workload from DevCatalog BuilderImages card on Add page : Kn-01-TC04
    Given user is on "Developer Catalog" form
    And builder images are displayed

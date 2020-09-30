@@ -104,8 +104,8 @@ Then('build does not get started for {string}', (nodeName: string) => {
   cy.get('div.build-overview li.list-group-item > span').should('contain.text', 'No Builds found for this Build Config.');
 });
 
-When('verify {string} checkbox is seleceted', (checkBoxName: string) => {
-  addPage.verifyDeploymentOptionIsChecked(checkBoxName);
+When('verify Auto deploy when new image is available checkbox is seleceted', () => {
+  addPage.verifyDeploymentOptionIsChecked();
 });
 
 When('user enters Name as {string} in Environment Variables Runtime only section', (envName: string) => {

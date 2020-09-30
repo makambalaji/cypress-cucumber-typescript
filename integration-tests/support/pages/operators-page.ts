@@ -43,10 +43,7 @@ export const operatorsPage = {
   },
 
   searchOperator: (operatorName: string) => {
-    cy.get(operatorsObj.operatorHub.search).should('be.visible').type(operatorName);
-    if(operatorName === "OpenShift Pipelines Operator") {
-      cy.byLegacyTestID("catalog-clear-filters")
-    }
+    cy.get(operatorsObj.operatorHub.search).should('be.visible').clear().type(operatorName);
     cy.get(operatorsObj.operatorHub.numOfItems).should('be.visible');
   },
 
@@ -60,12 +57,12 @@ export const operatorsPage = {
     cy.get(operatorsObj.subscription.logo).should('have.text', operatorLogo),
 
   verifyInstalledOperator: (operatorName: string) => {
-    cy.get(operatorsObj.installOperators.search, {timeout:50000}).should('be.visible').type(operatorName);
-    cy.get(operatorsObj.installOperators.operatorsNameRow).contains(operatorName, {timeout:50000}).should('contain.text', operatorName);
+    cy.get(operatorsObj.installOperators.search).should('be.visible').clear().type(operatorName);
+    cy.get(operatorsObj.installOperators.operatorsNameRow, {timeout:50000}).contains(operatorName).should('be.visible');
   },
   
   verifyOperatoNotAvailable:(operatorName: string) => {
-    cy.get(operatorsObj.installOperators.search).type(operatorName);
+    cy.get(operatorsObj.installOperators.search).clear().type(operatorName);
     cy.get(operatorsObj.installOperators.noOperatorFoundMessage).should('have.text', 'No Operators Found');
   },
   
@@ -114,7 +111,6 @@ export const operatorsPage = {
 
   clickInstallOnSidePane: () => {
     cy.get(operatorsObj.alertDialog)
-    // .should('be.visible');
     .then(($sidePane) => {
       if ($sidePane.find(operatorsObj.sidePane.install).length) {
         cy.get(operatorsObj.sidePane.install).click();

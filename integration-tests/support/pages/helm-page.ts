@@ -35,7 +35,7 @@ export const helmPage = {
     verifyMessage: () => cy.get(helmPageObj.noHelmReleasesMessage).should('contain.text', 'No Helm Releases found'),
     verifyInstallHelmLink:() => cy.get('a').contains('Install a Helm Chart from the developer catalog').should('be.visible'),
     search:(name: string) => {
-        cy.get(helmPageObj.search).type(name);
+        cy.get(helmPageObj.search).clear().type(name);
         cy.get(helmPageObj.table).should('be.visible');
     },
     verifyHelmReleasesDisplayed:() => cy.get(helmPageObj.table).should('be.visible'),
@@ -106,7 +106,7 @@ export const helmDetailsPage = {
     },
     enterReleaseNameInUninstallPopup:(releaseName: string = 'nodejs-ex-k') => {
         cy.byLegacyTestID('modal-title').should('contain.text', 'Uninstall Helm Release?');
-        cy.get(helmPageObj.uninstallHelmRelease.releaseName).type(releaseName);
+        cy.get(helmPageObj.uninstallHelmRelease.releaseName).clear().type(releaseName);
     }
 }
 

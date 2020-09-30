@@ -149,7 +149,7 @@ export const topologyPage = {
             expect(options).contains($el.text());
         });
     },
-    clickContextMenuOption:(menuOption: string) => cy.get('#popper-container li[role="menuitem"]').contains(menuOption).click(),
+    clickContextMenuOption:(menuOption: string) => cy.get('#popper-container li[role="menuitem"]').contains(menuOption).click({force:true}),
     verifyDecorators:(nodeName: string, numOfDecorators: number) => topologyPage.componentNode(nodeName).siblings('a').should('have.length', numOfDecorators),
     selectContextMenuAction: (action: nodeActions | string) => 
         topologyActions.selectAction(action),

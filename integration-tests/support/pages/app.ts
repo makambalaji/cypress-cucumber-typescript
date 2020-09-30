@@ -4,18 +4,6 @@ export const app = {
   waitForLoad:(timeout: number = 30000) => {
     cy.get('.co-m-loader', {timeout: timeout}).should('not.be.visible');
   },
-  login:() => {
-    cy.get('body').then(($body) => {
-      if ($body.find('a[title="Log in with kube:admin"]').length) {
-        cy.get('a[title="Log in with kube:admin"]').click();
-          cy.url().should('include', 'login');
-      }
-    })
-    cy.get('#inputUsername').type(Cypress.env('username'));
-    cy.get('#inputPassword').type(Cypress.env('password'));
-    cy.get('[type="submit"]').click();
-    cy.get('[aria-label="Help menu"]').should('be.visible');
-  },
 }
 
 export const perspective = {
@@ -140,21 +128,21 @@ export const projectNameSpace = {
   },
 
   createNewProject: (projectName: string) => {
-    cy.get('[data-test-id="namespace-bar-dropdown"]')
+    cy.byLegacyTestID("namespace-bar-dropdown")
     .find('button')
     .eq(0)
     .click();
-  cy.byLegacyTestID('dropdown-text-filter').type(projectName);
-  cy.get('[role="listbox"]', {timeout:5000}).then(($el) => {
-    if ($el.find('li[role="option"]').length === 0) {
-      cy.byTestDropDownMenu('#CREATE_RESOURCE_ACTION#').click();
-      projectNameSpace.enterProjectName(projectName);
-      projectNameSpace.clickCreateButton();
-    }
-  });
+    cy.byLegacyTestID('dropdown-text-filter').type(projectName);
+    cy.get('[role="listbox"]', {timeout:5000}).then(($el) => {
+      if ($el.find('li[role="option"]').length === 0) {
+        cy.byTestDropDownMenu('#CREATE_RESOURCE_ACTION#').click();
+        projectNameSpace.enterProjectName(projectName);
+        projectNameSpace.clickCreateButton();
+      }
+    });
   },
-  selectProject: (projectName: string) => {
-    cy.get('[data-test-id="namespace-bar-dropdown"]')
+  selectOrCreateProject: (projectName: string) => {
+    cy.byLegacyTestID("namespace-bar-dropdown")
       .find('button')
       .eq(0)
       .click();
@@ -165,18 +153,19 @@ export const projectNameSpace = {
           projectNameSpace.enterProjectName(projectName);
           projectNameSpace.clickCreateButton();
       }
-      else if($el.find('li[role="option"]').text() ===  projectName) {
-        projectNameSpace.deleteProjectNameSpace(projectName);
-        cy.byTestDropDownMenu('#CREATE_RESOURCE_ACTION#').click();
-        projectNameSpace.enterProjectName(projectName);
-        projectNameSpace.clickCreateButton();
-      }
       else {
-        cy.byTestDropDownMenu('#CREATE_RESOURCE_ACTION#').click();
-        projectNameSpace.enterProjectName(projectName);
-        projectNameSpace.clickCreateButton();
+        cy.get(`[id="${projectName}-link"]`).click();
       }
     });
+  },
+
+  selectProject: (projectName: string) => {
+    cy.byLegacyTestID("namespace-bar-dropdown")
+      .find('button')
+      .eq(0)
+      .click();
+    cy.byLegacyTestID('dropdown-text-filter').type(projectName);
+    cy.get(`[id="${projectName}-link"]`).click();
   },
 
   verifyPopupClosed: () => {

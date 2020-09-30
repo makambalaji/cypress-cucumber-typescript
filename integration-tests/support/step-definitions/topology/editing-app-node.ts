@@ -1,11 +1,12 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { addPage, addPageObj } from '../../pages/add-flow/add-page';
 import { topologyPage } from '../../pages/topology-page';
-import { naviagteTo } from '../../pages/app';
+import { naviagteTo, app } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
 
 Given('user has created workload {string}', (workloadName: string) => {
   addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git', workloadName, 'deployment');
+  topologyPage.verifyWorkloadInTopologyPage(workloadName);
 });
 
 Given('user has created knative workload {string}', (workloadName: string) => {
@@ -18,12 +19,13 @@ When('user selects option {string} from context menu', (menuOption: string) => {
 });
 
 When('user can see Edit form', () => {
-  cy.contains('Save').should('be.visible');
+  app.waitForLoad();
+  cy.pageTitleShouldContain('Import from Git');
 });
 
 When('user verifies that name of the node and route option is not editable', () => {
-  cy.get(addPageObj.nodeName).should('be.disabled');
-  cy.get(addPageObj.advancedOptions.createRoute).should('be.disabled');
+  cy.get(addPageObj.nodeName).should('not.be.enabled');
+  cy.get(addPageObj.advancedOptions.createRoute).should('not.be.enabled');
 });
 
 When('user verifies that Application grouping, git url, builder image version and advanced option can be edited', () => {

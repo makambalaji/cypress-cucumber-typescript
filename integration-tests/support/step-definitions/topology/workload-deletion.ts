@@ -1,10 +1,6 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { topologyPage, topologyObj } from '../../pages/topology-page';
 
-Given('topology has workloads', () => {
-  // TODO: implement step
-});
-
 When('user clicks on workload to open sidebar', () => {
   // TODO: implement step
 });

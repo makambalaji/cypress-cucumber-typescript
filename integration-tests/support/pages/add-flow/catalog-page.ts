@@ -98,7 +98,7 @@ export const catalogPage = {
       }
     }
   },
-  selectknativeServingCard:() => cy.get('div.catalog-tile-pf-title', {timeout: 40000}).contains('knative Serving').click(),
+  selectknativeServingCard:() => cy.get('div.catalog-tile-pf-title', {timeout: 40000}).contains('Knative Serving').click(),
   selectHelmChartCard:(cardName: string) => cy.get('a div.catalog-tile-pf-title').contains(cardName).click(),
   clickOnInstallButton:() => {
     cy.get(catalogPageObj.installHelmChart.install).click();

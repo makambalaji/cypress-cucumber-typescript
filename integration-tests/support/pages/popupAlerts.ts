@@ -18,8 +18,8 @@ export const editLabels = {
 
 export const editAnnotations = {
     add:() => cy.byLegacyTestID('pairs-list__add-btn').click(),
-    enterKey:(key: string) => cy.get('input[placeholder="key"]').should('have.value', '').type(key),
-    enterValue:(value: string) => cy.get('input[placeholder="value"]').should('have.value', '').type(value),
+    enterKey:(key: string) => cy.get('input[placeholder="key"]').clear().type(key),
+    enterValue:(value: string) => cy.get('input[placeholder="value"]').clear().type(value),
     clicKSave: () => 
     {
         cy.byTestID('confirm-action').click();
@@ -75,7 +75,7 @@ export const editApplicationrouping = {
     },
     createApplication:(appName: string) => {
         cy.get('#form-dropdown-application-name-field').click();
-        cy.byLegacyTestID('application-form-app-input').type(appName);
+        cy.byLegacyTestID('application-form-app-input').clear().type(appName);
     },
     clicKDelete: () => 
     {
@@ -90,7 +90,7 @@ export const editApplicationrouping = {
 }
 
 export const deleteApplication = {
-    enterApplication: (appName: string) => cy.get('#form-input-resourceName-field').type(appName),
+    enterApplication: (appName: string) => cy.get('#form-input-resourceName-field').clear().type(appName),
     clicKDelete: () => {
         cy.byTestID('confirm-action').should('be.enabled').click();
         cy.get('form').should('not.be.visible');
@@ -120,7 +120,7 @@ export const moveSink = {
     },
     enterURI:(uri: string) => {
         cy.get('#form-radiobutton-sinkType-uri-field').should('be.checked');
-        cy.byLegacyTestID('sink-section-uri').type(uri);
+        cy.byLegacyTestID('sink-section-uri').clear().type(uri);
     },
     clickCancel: () => {
         cy.byLegacyTestID('modal-cancel-action').click();

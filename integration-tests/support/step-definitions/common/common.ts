@@ -6,6 +6,7 @@ import { addPage } from '../../pages/add-flow/add-page';
 import { addOptions } from '../../constants/add';
 
 Given('user is at administrator perspective', () => {
+  perspective.switchTo(switchPerspective.Administrator);
   perspective.verifyPerspective('Administrator');
 });
 
@@ -60,14 +61,19 @@ Given('user has selected namespace {string}', (projectName: string) => {
   perspective.skipGuidedTours();
   let d = new Date();
   let timestamp = d.getTime();
-  project.selectProject(`${projectName}-${timestamp}-ns`);
+  project.createNewProject(`${projectName}-${timestamp}-ns`);
   cy.log(`User has selected namespace "${projectName}-${timestamp}-ns"`);
 });
   
+Given('user is at namespace {string}', (projectName: string) => {
+  perspective.switchTo(switchPerspective.Developer);
+  perspective.skipGuidedTours();
+  project.selectProject(projectName);
+});
+
 Given('user has installed OpenShift Serverless Operator', () => {
   perspective.switchTo(switchPerspective.Administrator);
   perspective.verifyPerspective('Administrator');
-  // cy.wait(5000);
   operatorsPage.verifyOperatorInNavigationMenu('Serverless');
 });
 

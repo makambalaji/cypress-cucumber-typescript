@@ -6,7 +6,7 @@ Background:
    And user is at Add page
    And user has selected namespace "aut-addflow-git"
 
-@regression-1
+@regression
 Scenario Outline: Builder iamge detected for git url "<git_url>" : A-04-TC01
    Given user is at Import from git page
    When user enters Git Repo url as "<git_url>"
@@ -117,7 +117,7 @@ Scenario: Create a git workload with advanced option "Deployment" : A-04-TC08
    When user enters Git Repo url as "https://github.com/sclorg/dancer-ex.git"
    And user enters name as "nodejs-ex-5-git" in General section
    And user clicks "Deployment" link in Advanced Options section
-   And verify "Auto deploy when new image is available" checkbox is seleceted
+   And verify Auto deploy when new image is available checkbox is seleceted
    And user enters Name as "home" in Environment Variables Runtime only section
    And user enters Value as "value" in Environment Variables Runtime only section
    And user clicks Create button on Add page

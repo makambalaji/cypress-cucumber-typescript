@@ -1,17 +1,19 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { addPage } from '../../pages/add-flow/add-page';
 import { topologyPage, topologySidePane } from '../../pages/topology-page';
+import { naviagteTo } from '../../pages/app';
+import { devNavigationMenu } from '../../constants/global';
 
-Given('user has creaeted two worloads {string} and {string}', (firstWorkload: string, secondWorkload: string) => {
-  addPage.createGitWorkload('https://github.com/sclorsg/nodejs-ex.git', firstWorkload,'deployment');
+Given('user has creaeted two workloads {string} and {string}', (firstWorkload: string, secondWorkload: string) => {
+  addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git', firstWorkload,'deployment');
+  topologyPage.verifyWorkloadInTopologyPage(firstWorkload);
+  naviagteTo(devNavigationMenu.Add);
   addPage.createGitWorkload('https://github.com/sclorg/dancer-ex.git', secondWorkload,'deployment');
-  // naviagteTo(devNavigationMenu.Topology);
-  // topologyPage.componentNode(firstComponent).should('be.visible');
-  // topologyPage.componentNode(secondComponent).should('be.visible');
+  topologyPage.verifyWorkloadInTopologyPage(secondWorkload);
 });
 
 When('user clicks node {string} to open the side bar', (componentNode) => {
-  topologyPage.componentNode(componentNode).click();
+  cy.get('g.odc-base-node__label').should('be.visible').contains(componentNode).click({force:true});
   topologySidePane.verify();
 });
 
