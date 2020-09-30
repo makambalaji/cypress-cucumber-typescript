@@ -171,7 +171,7 @@ export const addPage = {
         break;
       case 'Deploy Image':
       case addOptions.ContainerImage:
-        cy.byLegacyTestID('deploy-image').click();
+        cy.byLegacyTestID('deploy-image').click({force:true});
         cy.pageTitleShouldContain('Deploy Image');
         break;
       case 'Import from Dockerfile':
