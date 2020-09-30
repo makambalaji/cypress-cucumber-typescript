@@ -11,7 +11,7 @@ Background:
 Scenario: knative resource type in git import add flow : Kn-01-TC03
    Given user is at Add page
    When user clicks on From git card
-   Then user will be redirected to page with header name "Import from git"
+   Then user will be redirected to page with header name "Import from Git"
    And Knative Service option is displayed under Resources section
 
 

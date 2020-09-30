@@ -50,8 +50,9 @@ When('user selects the Delete option on {string} modal', (modalTitle: string) =>
 });
 
 Then('event source {string} will not be displayed in topology page', (eventSourceName: string)=> {
+  naviagteTo(devNavigationMenu.Topology);
   topologyPage.search(eventSourceName);
-  cy.get('[data-type="event-source"] text').should('not.be.visible');
+  cy.get('[data-type="event-source"]').should('not.be.visible');
 });
 
 Then('Resource dropdown is displayed in Move Sink modal', () => {

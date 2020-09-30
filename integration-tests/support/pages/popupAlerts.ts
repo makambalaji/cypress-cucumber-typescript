@@ -1,5 +1,5 @@
 export const editLabels = {
-    enterLabel:(labelName: string) => cy.byTestID('tags-input').type(labelName).type('{enter'),
+    enterLabel:(labelName: string) => cy.byTestID('tags-input').type(labelName).type('{enter}'),
     clicKSave: () => {
         cy.byTestID('confirm-action').click();
         cy.get('form').should('not.be.visible');
@@ -18,8 +18,10 @@ export const editLabels = {
 
 export const editAnnotations = {
     add:() => cy.byLegacyTestID('pairs-list__add-btn').click(),
-    enterKey:(key: string) => cy.get('input[placeholder="key"]').clear().type(key),
-    enterValue:(value: string) => cy.get('input[placeholder="value"]').clear().type(value),
+    enterKey:(key: string) => {
+        cy.get('input[placeholder="key"]').last().type(key)
+    },
+    enterValue:(value: string) => cy.get('input[placeholder="value"]').last().type(value),
     clicKSave: () => 
     {
         cy.byTestID('confirm-action').click();

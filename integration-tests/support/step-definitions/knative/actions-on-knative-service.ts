@@ -109,22 +109,24 @@ Given('number of annotations are {string} present in side bar - details tab', (a
 });
 
 Given('service should have at least 1 revision', () => {
-  // TODO: implement step
+  cy.get('[data-test-id="base-node-handler"]', {timeout: 150000}).should('be.visible');
 });
 
 When('user selects {string} context menu option of knative service {string}', (option: string, knativeServiceName: string) => {
-  topologyPage.componentNode(knativeServiceName).click();
+  cy.get('g.odc-base-node__label').should('be.visible').contains(knativeServiceName).trigger('contextmenu', {force: true});
   topologyPage.selectContextMenuAction(option);
 });
 
-When('user clicks Add button on the Edit Annotaions modal', () => {
+When('user clicks Add button on the Edit Annotations modal', () => {
  editAnnotations.add();
 });
 
-Given('number of annotations are {string} present in {string} service side bar details tab', (numOfAnnotations: string, servicename: string) => {
-  topologyPage.componentNode(servicename).click();
+Given('number of annotations are {string} present in {string} service side bar details tab', (numOfAnnotations: string, serviceName: string) => {
+  cy.get('g.odc-base-node__label').should('be.visible').contains(serviceName).click({force: true});
+  topologySidePane.verify();
   topologySidePane.selectTab('Details');
   topologySidePane.verifyNumberOfAnnotations(numOfAnnotations);
+  topologySidePane.close();
 });
 
 When('user enters annotation key as {string}', (key: string) => {
@@ -203,18 +205,18 @@ Then('save button is disabled', () => {
   // TODO: implement step
 });
 
-Then('the label {string} display in {string} service side bar details', (label: string, serviceName: string) => {
-  topologyPage.componentNode(serviceName).click();
+Then('user will see the label {string} in {string} service side bar details', (label: string, serviceName: string) => {
+  cy.get('g.odc-base-node__label').should('be.visible').contains(serviceName).click({force: true});
+  topologySidePane.verify();
   topologySidePane.selectTab('Details');
   topologySidePane.verifyLabel(label);
 });
 
-Then('the label {string} will not display in {string} service side bar details', (label: string, serviceName: string) => {
-  cy.log(label);
-  topologyPage.componentNode(serviceName).click();
+Then('user will not see the label {string} in {string} service side bar details', (label: string, serviceName: string) => {
+  cy.get('g.odc-base-node__label').should('be.visible').contains(serviceName).trigger('contextmenu', {force: true});
   topologySidePane.selectTab('Details');
   topologySidePane.verifySection('Labels');
-  // Add one more line to check the condition
+  cy.get('[data-test="label-list"] a').contains(label).should('not.be.visible');
 });
 
 Then('user will not see the label {string} in the Details tab of the Sidebar of {string}', (label: string, serviceName: string) => {
@@ -229,21 +231,22 @@ Then('Add more link is enabled', () => {
   // TODO: implement step
 });
 
-Then('number of annotaions increased to {string} in {string} service side bar details', (numOfAnnotations: string, serviceName: string) => {
-  topologyPage.componentNode(serviceName).click();
+Then('number of Annotations increased to {string} in {string} service side bar details', (numOfAnnotations: string, serviceName: string) => {
+  cy.get('g.odc-base-node__label').should('be.visible').contains(serviceName).click({force: true});
+  topologySidePane.verify();
   topologySidePane.selectTab('Details');
   topologySidePane.verifyNumberOfAnnotations(numOfAnnotations);
 });
 
-When('user clicks on remove icon for the annotation with key {string} present in Edit Annotaions modal', (key: string) => {
+When('user clicks on remove icon for the annotation with key {string} present in Edit Annotations modal', (key: string) => {
   editAnnotations.removeAnnotation(key);
 });
 
-Then('number of annotaions remains same in side bar details', () => {
+Then('number of Annotations remains same in side bar details', () => {
   // TODO: implement step
 });
 
-Then('number of annotaions decreased to {string} in side bar details', (a: string) => {
+Then('number of Annotations decreased to {string} in side bar details', (a: string) => {
   cy.log(a);
 });
 
@@ -285,8 +288,9 @@ Then('modal should get closed on clicking OK button', () => {
 });
 
 Then('{string} service should not be displayed in project', (serviceName: string) => {
-  topologyPage.search(serviceName);
-  cy.get('.is-filtered').should('not.be.visible');
+  topologyPage.verifyNoWorkLoadsText('No resources found').then(() => {
+    cy.log(`${serviceName} is removed from the project namespace`);
+  });
 });
 
 When('user clicks save button on yaml page', () => {

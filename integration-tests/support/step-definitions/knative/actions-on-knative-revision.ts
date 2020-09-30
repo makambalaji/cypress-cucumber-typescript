@@ -3,7 +3,8 @@ import { editLabels, deleteRevision } from '../../pages/popupAlerts';
 import { topologyPage, topologySidePane } from '../../pages/topology-page';
 
 Given('number of annotations are {string} present in revision side bar details of service {string}', (numOfAnnotations: string, serviceName: string) => {
-  topologyPage.revisionNode(serviceName).click();
+  cy.byLegacyTestID("base-node-handler").find('g.odc-resource-icon').click({force: true});
+  topologySidePane.verify();
   topologySidePane.selectTab('Details');
   topologySidePane.verifyNumberOfAnnotations(numOfAnnotations);
 });
@@ -21,7 +22,8 @@ Given('service should contain multiple revisions', () => {
 });
 
 When('user right clicks on the revision of knative service {string} to open the context menu', (serviceName: string) => {
-  topologyPage.revisionNode(serviceName).trigger('contextmenu', {force: true});
+  cy.get('[data-test-id="base-node-handler"]', {timeout: 150000}).should('be.visible');
+  cy.byLegacyTestID("base-node-handler").find('g.odc-resource-icon').trigger('contextmenu', {force: true});
 });
 
 When('user selects {string} option from knative revision context menu', (option: string) => {
@@ -81,7 +83,8 @@ Then('the label {string} display in side bar details', (a: string) => {
 });
 
 Then('user can see the label {string} in the Details tab of the Sidebar of {string}', (label: string, serviceName: string) => {
-  topologyPage.revisionNode(serviceName).click();
+  cy.byLegacyTestID("base-node-handler").find('g.odc-resource-icon').click({force: true});
+  topologySidePane.verify();
   topologySidePane.selectTab('Details');
   topologySidePane.verifyLabel(label);
 });
@@ -95,16 +98,16 @@ Then('Add more link is enabled', () => {
 });
 
 Then('user can see the annotation {string} in the Details tab of the Sidebar of {string}', (numOfAnnotations: string, serviceName: string) => {
-  topologyPage.revisionNode(serviceName).click();
+  cy.byLegacyTestID("base-node-handler").find('g.odc-resource-icon').click({force: true});
+  topologySidePane.verify();
   topologySidePane.selectTab('Details');
-  // topologySidePane.verifyNumberOfAnnotations(numOfAnnotations);
 });
 
-Then('verify the number of annotaions equal to {string} in side bar details', (a: string) => {
+Then('verify the number of Annotations equal to {string} in side bar details', (a: string) => {
   cy.log(a);
 });
 
-Then('verify the number of annotaions decreased to {string} in side bar details', (a: string) => {
+Then('verify the number of Annotations decreased to {string} in side bar details', (a: string) => {
   cy.log(a);
 });
 
@@ -128,8 +131,9 @@ Then('modal contains message as {string}', (message: string) => {
   deleteRevision.verifyMessage(message);
 });
 
-Then('number of annotaions increased to {string} in revision side bar details of service {string}', (numOfAnnotations: string, serviceName: string) => {
-  topologyPage.revisionNode(serviceName).click();
+Then('number of Annotations increased to {string} in revision side bar details of service {string}', (numOfAnnotations: string, serviceName: string) => {
+  cy.byLegacyTestID("base-node-handler").find('g.odc-resource-icon').click({force: true});
+  topologySidePane.verify();
   topologySidePane.selectTab('Details');
   topologySidePane.verifyNumberOfAnnotations(numOfAnnotations);
 });

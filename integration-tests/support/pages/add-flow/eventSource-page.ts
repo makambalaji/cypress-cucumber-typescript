@@ -54,18 +54,8 @@ export const eventSourcesPage = {
       cy.get(eventSourceObj.sinkBinding.apiVersion).type(apiVersion);
       cy.get(eventSourceObj.sinkBinding.kind).type(kind);
       cy.get(eventSourceObj.sinkBinding.resource).click();
-      cy.get(eventSourceObj.sinkBinding.sinkResource).then(($el) => {
-        if($el.prop('disabled') === true) {
-          cy.log('knative workload is not available, due to which Event Resource is disabled');
-          // naviagteTo(devNavigationMenu.Add);
-          // addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git');
-          // topologyPage.verifyTopologyPage();
-        }
-        else {
-          eventSourcesPage.selectknativeService('nodejs-ex-git');
-        }
-      });
-      cy.get(eventSourceObj.sinkBinding.name).type(eventSourceName)
+      eventSourcesPage.selectknativeService('nodejs-ex-git');
+      cy.get(eventSourceObj.sinkBinding.name).clear().type(eventSourceName)
       eventSourcesPage.clickCreate();
     },
     createEventSource:(eventSourceName: string, apiVersion:string = 'batch/v1', kind:string = 'Job') => {

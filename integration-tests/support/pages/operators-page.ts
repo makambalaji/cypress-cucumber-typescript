@@ -58,7 +58,7 @@ export const operatorsPage = {
 
   verifyInstalledOperator: (operatorName: string) => {
     cy.get(operatorsObj.installOperators.search).should('be.visible').clear().type(operatorName);
-    cy.get(operatorsObj.installOperators.operatorsNameRow, {timeout:50000}).contains(operatorName).should('be.visible');
+    cy.get(operatorsObj.installOperators.operatorsNameRow, {timeout:50000}).should('be.visible');
   },
   
   verifyOperatoNotAvailable:(operatorName: string) => {

@@ -28,7 +28,7 @@ Scenario: Add label to the exisitng labels list : Kn-04-TC03
    When user selects "Edit Labels" context menu option of knative service "nodejs-ex-git"
    And user adds the label "app=label" to exisitng labels list in Edit Labels modal
    And user clicks the save button on the "Edit Labels" modal
-   Then the label "app=label" display in "nodejs-ex-git" service side bar details
+   Then user will see the label "app=label" in "nodejs-ex-git" service side bar details
 
 
 @regression
@@ -37,7 +37,7 @@ Scenario: Remove label from exisitng labels list : Kn-04-TC04
    When user selects "Edit Labels" context menu option of knative service "nodejs-ex-git"
    And user removes the label "app=label" from exisitng labels list in "Edit Labels" modal
    And user clicks the save button on the "Edit Labels" modal
-   Then the label "app=label" will not display in "nodejs-ex-git" service side bar details
+   Then user will not see the label "app=label" in "nodejs-ex-git" service side bar details
 
 
 @regression
@@ -53,7 +53,7 @@ Scenario: Add labels to exisitng labels list and cancel it : Kn-04-TC05
 @regression
 Scenario: Edit Annotation modal details : Kn-04-TC11
    Given knative service named "nodejs-ex-git" is higlighted on topology page
-   When user selects "Edit Annotaions" context menu option of knative service "nodejs-ex-git"
+   When user selects "Edit Annotations" context menu option of knative service "nodejs-ex-git"
    Then modal with "Edit Annotations" appears
    And key, value columns are displayed with respecitve text fields
    And Add more link is enabled
@@ -61,34 +61,34 @@ Scenario: Edit Annotation modal details : Kn-04-TC11
 
 
 @regression, @smoke
-Scenario: Add annotation to the exisitng annonations list : Kn-04-TC12
+Scenario: Add annotation to the exisitng annotations list : Kn-04-TC12
    Given knative service named "nodejs-ex-git" is higlighted on topology page
    And number of annotations are "5" present in "nodejs-ex-git" service side bar details tab
-   When user selects "Edit Annotaions" context menu option of knative service "nodejs-ex-git"
-   And user clicks Add button on the Edit Annotaions modal
-   And user enters annotation key as "serving.knative.dev/creator "
+   When user selects "Edit Annotations" context menu option of knative service "nodejs-ex-git"
+   And user clicks Add button on the Edit Annotations modal
+   And user enters annotation key as "serving.knative.qe/creator "
    And user enters annotation value as "kube:admin" 
-   And user clicks the save button on the "Edit Annotaions" modal
-   Then number of annotaions increased to "6" in "nodejs-ex-git" service side bar details
+   And user clicks the save button on the "Edit Annotations" modal
+   Then number of Annotations increased to "6" in "nodejs-ex-git" service side bar details
 
 
 Scenario: perform cancel action after Edit Annotations : Kn-04-TC14
    Given knative service named "nodejs-ex-git" is higlighted on topology page
    And number of annotations are "6" present in side bar - details tab- annotation section
    When user selects "Edit Annotations" context menu option of knative service "nodejs-ex-git"
-   And user clicks on remove icon for the annotation with key "serving.knative.dev/creator" present in Edit Annotaions modal
-   And user clicks cancel button on the "Edit Annotaions" modal
-   Then number of annotaions remains same in side bar details
+   And user clicks on remove icon for the annotation with key "serving.knative.dev/creator" present in Edit Annotations modal
+   And user clicks cancel button on the "Edit Annotations" modal
+   Then number of Annotations remains same in side bar details
 
 
 @regression
-Scenario: Remove annotation from exisitng annonations list : Kn-04-TC13
+Scenario: Remove annotation from exisitng annotations list : Kn-04-TC13
    Given knative service named "nodejs-ex-git" is higlighted on topology page
    And number of annotations are "6" present in side bar - details tab
-   When user selects "Edit Annotaions" context menu option of knative service "nodejs-ex-git"
-   And user clicks on remove icon for the annotation with key "serving.knative.dev/creator" present in Edit Annotaions modal
-   And user clicks the save button on the "Edit Annotaions" modal
-   Then number of annotaions decreased to "5" in side bar details
+   When user selects "Edit Annotations" context menu option of knative service "nodejs-ex-git"
+   And user clicks on remove icon for the annotation with key "serving.knative.dev/creator" present in Edit Annotations modal
+   And user clicks the save button on the "Edit Annotations" modal
+   Then number of Annotations decreased to "5" in side bar details
 
 
 @regression
@@ -162,7 +162,7 @@ Scenario: Set traffic distribution less than 100% for the Revisions of the knati
 @regression, @smoke
 Scenario: Set traffic distribution equal to 100% for the Revisions of the knative Service : Kn-04-TC19
    Given knative service named "nodejs-ex-git" is higlighted on topology page
-   And service should have at least 1 revision 
+   And service should have at least 1 revision
    When user selects "Set Traffic Distribution" context menu option of knative service "nodejs-ex-git"
    And user enters "50" into the "Split" text box
    And user clicks on "Add Revision" button present in "Set Traffic Distribution" modal

@@ -30,37 +30,57 @@ export const topologyActions = {
     switch (action) {
         case 'Edit Application Grouping':
         case nodeActions.EditApplicatoinGrouping: {
-          cy.selectActionsMenuOption(action);
+            cy.byTestActionID(action).should('be.visible').click();
           break;
         }
         case 'Edit Pod Count':
         case nodeActions.EditPodCount: {
-          cy.selectActionsMenuOption(action);
+            cy.byTestActionID(action).should('be.visible').click();
           break;
         }
         case 'Edit Labels':
         case nodeActions.EditLabels: {
-          cy.selectActionsMenuOption(action);
+            cy.byTestActionID(action).should('be.visible').click();
           cy.get('form').should('be.visible');
           cy.alertTitleShouldContain('Edit Labels');
           break;
         }
         case 'Edit Annotations':
         case nodeActions.EditAnnotations: {
-          cy.selectActionsMenuOption(action);
+            cy.byTestActionID(action).should('be.visible').click();
           cy.get('form').should('be.visible');
           cy.alertTitleShouldContain('Edit Annotations');
           break;
         }
         case 'Edit Update Strategy':
         case nodeActions.EditUpdateStrategy: {
-          cy.selectActionsMenuOption(action);
+            cy.byTestActionID(action).should('be.visible').click();
           break;
         }
         case 'Delete Deployment':
         case nodeActions.DeleteDeployment: {
-          cy.selectActionsMenuOption(action);
+            cy.byTestActionID(action).should('be.visible').click();
           break;
+        }
+        case 'Delete SinkBinding':
+        case nodeActions.DeleteSinkBinding: {
+            cy.byTestActionID(action).should('be.visible').click();
+            break;
+        }
+        case 'Edit SinkBinding':
+        case nodeActions.EditSinkBinding: {
+            cy.byTestActionID(action).should('be.visible').click();
+            break;
+        }
+        case 'Move Sink':
+        case nodeActions.MoveSink: {
+            cy.byTestActionID(action).should('be.visible').click();
+            break;
+        }
+        case 'Delete Service':
+        case nodeActions.DeleteService: {
+            cy.byTestActionID(action).should('be.visible').click();
+            break;
         }
         default: {
           throw new Error(`${action} is not available in action menu`);
@@ -151,8 +171,7 @@ export const topologyPage = {
     },
     clickContextMenuOption:(menuOption: string) => cy.get('#popper-container li[role="menuitem"]').contains(menuOption).click({force:true}),
     verifyDecorators:(nodeName: string, numOfDecorators: number) => topologyPage.componentNode(nodeName).siblings('a').should('have.length', numOfDecorators),
-    selectContextMenuAction: (action: nodeActions | string) => 
-        topologyActions.selectAction(action),
+    selectContextMenuAction: (action: nodeActions | string) => cy.byTestActionID(action).should('be.visible').click(),
 }
 
 export const topologySidePane = {
@@ -167,13 +186,15 @@ export const topologySidePane = {
             expect(actions).contains($el.text());
         });
     },
-    verifyFieldinDetailsTab:(fieldName:string) => cy.get(`data-test-selector="details-item-label__${fieldName}"`).should('be.visible'),
+    close:() => cy.get('button[aria-label="Close"]').scrollIntoView().click(),
+    verifyFieldinDetailsTab:(fieldName:string) => cy.get(`[data-test-selector="details-item-label__${fieldName}"]`).should('be.visible'),
     verifyWorkload:() => cy.get('[role="dialog"] h2').contains('Services').next('ul li a').should('be.visible'),
     verifyFieldValue:(fieldName: string, fieldValue: string) => cy.get(`[data-test-selector="details-item-value__${fieldName}"]`).should('contain.text', fieldValue),
     selectAddHealthChecks:() => cy.get('a').contains('Add Health Checks').click(),
     verifyWorkloadInAppSideBar:(workloadName: string) => cy.get('[role="dialog"] a').should('contain.text', workloadName),
     selectNodeAction:(action: nodeActions | string)=> {
-       topologyActions.selectAction(action)
+        cy.byLegacyTestID("actions-menu-button").click();
+        topologyActions.selectAction(action);
     },
     verifyLabel:(labelName: string) => {
         cy.get('dt[data-test-selector$="Labels"]').should('be.visible');
@@ -184,7 +205,7 @@ export const topologySidePane = {
         cy.get('[data-test="label-list"] a').contains(annotationName).should('be.visible');
     },
     verifyNumberOfAnnotations:(num: string) => {
-        cy.get(topologyObj.sidePane.sectionTitle).contains('Annotations').should('be.visible')
+        cy.get('[data-test-selector="details-item-label__Annotations"]').should('be.visible');
         cy.get(topologyObj.sidePane.editAnnotations).then(($el) => {
             let res = $el.text().split(' ')
             expect(res[0]).eq(num);

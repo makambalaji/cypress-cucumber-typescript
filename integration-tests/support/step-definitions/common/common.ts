@@ -28,10 +28,10 @@ Given('user has installed Openshift Serverless operator', () => {
   operatorsPage.verifyInstalledOperator('Serverless');
 });
 
-Given('user has installed apache camel source operator', () => {
+Given('user has installed knative apache camel operator', () => {
   perspective.switchTo(switchPerspective.Administrator);
   operatorsPage.navigateToInstalloperatorsPage();
-  operatorsPage.verifyInstalledOperator('apache camel source Operator');
+  operatorsPage.verifyInstalledOperator('knativecamel');
 });
 
 Given ('user has installed OpenShift Virtualization operator', () => {

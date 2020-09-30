@@ -17,7 +17,7 @@ Scenario: side bar display for knative service : Kn-06-TC01
 @regression, @smoke
 Scenario: side bar details of knative Service : Kn-06-TC02
     Given knative service named "nodejs-ex-git-1" is higlighted on topology page
-    When user clicks on the knative service name "nodejs-ex-git-1"
+    When user clicks on the knative service "nodejs-ex-git-1"
     Then side bar is displayed with heading name as "nodejs-ex-git-1"
     And Name, Namespace, Labels, Annotations, Created on, Owner fields displayed  in topology details
     # And Name display as "nodejs-ex-git-1" in topology details

@@ -2,7 +2,8 @@ import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { topologyPage, topologySidePane } from '../../pages/topology-page';
 
 When('user clicks on the revision of knative service {string}', (serviceName: string) => {
- topologyPage.revisionNode(serviceName).click();
+  cy.get('[data-test-id="base-node-handler"]', {timeout: 150000}).should('be.visible');
+  cy.byLegacyTestID("base-node-handler").find('g.odc-resource-icon').click({force: true});
 });
 
 When('user clicks on Resoruces section', () => {
@@ -14,7 +15,7 @@ When('user clicks on Actions dropdown in top right corner of side bar', () => {
 });
 
 When('user clicks on the knative service {string}', (serviceName: string) => {
-  topologyPage.componentNode(serviceName).click();
+  cy.get('g.odc-base-node__label').should('be.visible').contains(serviceName).click({force: true});
 });
 
 When('user click on the knative revision name {string}', (a: string) => {
@@ -86,6 +87,7 @@ When('user clicks on the knative service name {string}', (serviceName: string) =
 // });
 
 Then('Name, Namespace, Labels, Annotations, Created on, Owner fields displayed  in topology details', () => {
+  topologySidePane.verify();
   topologySidePane.selectTab('Details');
   topologySidePane.verifyFieldinDetailsTab('Name');
   topologySidePane.verifyFieldinDetailsTab('Namespace');
@@ -93,6 +95,7 @@ Then('Name, Namespace, Labels, Annotations, Created on, Owner fields displayed  
   topologySidePane.verifyFieldinDetailsTab('Annotations');
   topologySidePane.verifyFieldinDetailsTab('Created on');
   topologySidePane.verifyFieldinDetailsTab('Owner');
+  topologySidePane.close();
 });
 
 Then('user able to see the options Edit Labels, Edit Annotations, Edit Revision, Delete Revision', () => {
