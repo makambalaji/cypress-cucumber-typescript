@@ -246,7 +246,7 @@ Given('pipeline run is displayed for {string} in pipelines page', (name: string)
   pipelineRunDetailsPage.verifyTitle();
   naviagteTo(devNavigationMenu.Pipelines);
   pipelinesPage.search(name);
-  cy.get('[title="PipelineRun"]').should('be.visible');
+  cy.get('[title="PipelineRun"]').should('be.visible'); 
 });
 
 Then('Last Run status of the {string} displays as {string} in topology page', (name: string, status: string) => {

@@ -1,6 +1,6 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { topologyPage, topologySidePane } from '../../pages/topology-page';
-import { moveSink, deleteSinkBinding } from '../../pages/popupAlerts';
+import { moveSink, modal } from '../../pages/modal';
 import { eventSourcesPage } from '../../pages/add-flow/eventSource-page';
 import { naviagteTo } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
@@ -46,7 +46,7 @@ Then('modal displays with the header name {string}', (title: string) => {
 
 When('user selects the Delete option on {string} modal', (modalTitle: string) => {
   cy.alertTitleShouldContain(modalTitle);
-  deleteSinkBinding.clicKDelete();
+  modal.clicKDelete();
 });
 
 Then('event source {string} will not be displayed in topology page', (eventSourceName: string)=> {

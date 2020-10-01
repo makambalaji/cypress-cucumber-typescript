@@ -13,10 +13,10 @@ Scenario: Create the workload from Operator Backed : A-08-TC01
     Given user is at Developer Catalog page with OperatorBacked type selection
     When user selects knative Serving card
     And user clicks Create button in side bar
-    And user enters name as "knative-serving" in Create knative Serving page
+    And user enters name as "knative-serving-1" in Create knative Serving page
     And user clicks create button in Create knative Serving page
     Then user will be redirected to Topology page
-    And user is able to see workload "knative-serving" in topology page
+    And user is able to see workload "knative-serving-1" in topology page
 
 
 @regression, @smoke
@@ -25,4 +25,4 @@ Scenario: Perform cancel operation : A-08-TC02
     When user selects knative Serving card
     And user clicks Create button in side bar
     And user clicks cancel button in Create knative Serving page
-    Then user will be redirected to Add page
+    Then user will be redirected to Developer Catalog page from knative Serving page

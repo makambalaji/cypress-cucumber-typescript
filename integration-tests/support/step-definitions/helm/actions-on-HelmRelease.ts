@@ -1,8 +1,9 @@
 import { When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { upgradeHelmRelease, helmDetailsPage, rollBackHelmRelease, helmPage } from '../../pages/helm-page';
+import { topologyPage } from '../../pages/topology-page';
 
 When('user right clicks on the Helm Release {string} to open the context menu', (nodeName: string) => {
-  cy.get('g.odc-base-node__label').should('be.visible').contains(nodeName).trigger('contextmenu', {force: true});
+  topologyPage.rightClickOnHelmRelease(nodeName);
 });
 
 When('user clicks on the {string} action', (actionName: string) => {
@@ -47,5 +48,6 @@ Then('Helm release gets uninstalled', () => {
 });
 
 Then('user will be redirected to Topology page with no workloads', () => {
-  cy.get('h1.ocs-page-layout__title').should('have.text', 'Topology');
+  topologyPage.verifyTitle();
+  topologyPage.verifyNoWorkLoadsText('No resources found');
 });

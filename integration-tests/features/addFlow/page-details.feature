@@ -8,7 +8,7 @@ Background:
 
 @regression
 Scenario: Add page displays with message "No workloads found" for newly created project : A-01-TC01
-   Given user is at the new project namespace "aut-new-project-namespace-1"
+   Given user is at namespace "aut-namespace"
    When user selects Add option from left side navigation menu
    Then user will be redirected to Add page
    And user is able to see message "No workloads found" on Add page
@@ -16,7 +16,7 @@ Scenario: Add page displays with message "No workloads found" for newly created 
 
 @regression, @smoke
 Scenario: Display of cards in Add Page : A-01-TC02
-   Given user is at the new project namespace "aut-new-project-namespace-2"
+   Given user is at namespace "aut-namespace"
    When user selects Add option from left side navigation menu
    Then user will be redirected to Add page
    And page contains From Git, Container Image, From Dockerfile, YAML, From Catalog, Database, Helm Chart cards
@@ -24,7 +24,8 @@ Scenario: Display of cards in Add Page : A-01-TC02
 
 @regression
 Scenario: Pipeline card display on pipeline operator installation : A-02-TC01
-   Given user has installed OpenShift Pipelines operator
+   Given user is at namespace "aut-namespace"
+   And user has installed OpenShift Pipelines operator
    When user selects Add option from left side navigation menu
    Then user will be redirected to Add page
    And user is able to see Pipeline card on Git form
@@ -34,7 +35,7 @@ Scenario: Pipeline card display on pipeline operator installation : A-02-TC01
 Scenario: Operator Backed card display on serverless operator installation : A-02-TC01
    Given user has installed Openshift Serverless operator
    And user is at developer perspective
-   And user is at the new project namespace "aut-new-project-namespace-3" 
+   And user is at namespace "aut-namespace" 
    When user selects Add option from left side navigation menu
    Then user will be redirected to Add page
    And user is able to see "Operator Backed" card on Add page
@@ -44,7 +45,7 @@ Scenario: Operator Backed card display on serverless operator installation : A-0
 Scenario: Event Source card display on serverless operator installation : A-03-TC02
    Given user has installed Openshift Serverless operator
    And user is at developer perspective
-   And user is at the new project namespace "aut-new-project-namespace-4" 
+   And user is at namespace "aut-namespace" 
    When user selects Add option from left side navigation menu
    Then user will be redirected to Add page
    And user is able to see "Event Source" card on Add page

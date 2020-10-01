@@ -60,7 +60,7 @@ When('user checks the Helm Charts checkbox', () => {
 });
 
 When('user right clicks on the helm release {string}', (helmReleaseName: string) => {
-  cy.get('g.odc-base-node__label').should('be.visible').contains(helmReleaseName).trigger('contextmenu', {force: true});
+  topologyPage.rightClickOnHelmRelease(helmReleaseName);
 });
 
 Then('user is able to see the context menu with actions Upgrade, Rollback and Uninstall Helm Release', () => {

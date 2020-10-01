@@ -59,5 +59,5 @@ When('user selects tag as {string} from internal registry', (tag: string) => {
 });
 
 When('user clicks Cancel button on Deploy Image page', () => {
-    addPage.clickCancel();
+  addPage.clickCancel();
 });

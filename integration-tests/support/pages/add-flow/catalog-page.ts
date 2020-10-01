@@ -1,6 +1,7 @@
 import { addPage } from "./add-page";
 import { addOptions, caatalogCards, catalogTypes } from "../../constants/add";
 import { app } from "../app";
+import { topologyPage } from "../topology-page";
 
 export const catalogPageObj = {
     search: 'input[placeholder="Filter by keyword..."]',
@@ -117,11 +118,7 @@ export const catalogPage = {
     catalogPage.verifyInstallHelmChartPage();
     catalogPage.enterReleaseName(releaseName);
     catalogPage.clickOnInstallButton();
-    cy.get('[data-test-id="namespace-bar-dropdown"] a').as('switcher');
-    cy.get('@switcher').click();
-    cy.byLegacyTestID('item-filter').clear().type(releaseName);
-    cy.get('div.is-filtered').should('be.visible');
-    cy.get('@switcher').click();
+    topologyPage.verifyWorkloadInTopologyPage(releaseName);
   },
   selectCardInCatalog : (card: caatalogCards | string) => {
     cy.byLegacyTestID('perspective-switcher-toggle').click();

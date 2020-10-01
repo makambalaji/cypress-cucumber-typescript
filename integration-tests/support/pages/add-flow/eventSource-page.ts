@@ -15,7 +15,7 @@ export const eventSourceObj = {
     sinkBinding: {
       apiVersion: '[data-test-id="sinkbinding-apiversion-field"]',
       kind: '[data-test-id="sinkbinding-kind-field"]',
-      sinkResource: '#form-ns-dropdown-sink-name-field',
+      sinkResource: '[id*=sink-key-field]',
       name: '[data-test-id="application-form-app-name"]',
       resource: '#form-radiobutton-sinkType-resource-field',
       uri: '#form-radiobutton-sinkType-uri-field',
@@ -41,7 +41,7 @@ export const eventSourcesPage = {
     },
     selectknativeService:(knativeService: string) => {
       cy.get(eventSourceObj.apiServerSource.sinkResource).click();
-      cy.get(`[id^=${knativeService}-link]`).click();
+      cy.get(`[id*=${knativeService}-link]`).click();
     },
     selectMode:(mode: string) => {
       cy.get(eventSourceObj.apiServerSource.mode).click();

@@ -18,7 +18,7 @@ Then('user will see the actions on context menu', () => {
 });
 
 When('user clicks on the helm release {string}', (helmReleaseName: string) => {
-  cy.get('g.odc-base-node__label').should('be.visible').contains(helmReleaseName).click({force:true});
+  topologyPage.clickOnHelmRelease(helmReleaseName);
 });
 
 Then('user will see the sidebar for the helm release', () => {

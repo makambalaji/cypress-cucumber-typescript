@@ -1,5 +1,5 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { editLabels, deleteRevision } from '../../pages/popupAlerts';
+import { editLabels, deleteRevision, modal } from '../../pages/modal';
 import { topologyPage, topologySidePane } from '../../pages/topology-page';
 
 Given('number of annotations are {string} present in revision side bar details of service {string}', (numOfAnnotations: string, serviceName: string) => {
@@ -23,7 +23,7 @@ Given('service should contain multiple revisions', () => {
 
 When('user right clicks on the revision of knative service {string} to open the context menu', (serviceName: string) => {
   cy.get('[data-test-id="base-node-handler"]', {timeout: 150000}).should('be.visible');
-  cy.byLegacyTestID("base-node-handler").find('g.odc-resource-icon').trigger('contextmenu', {force: true});
+  topologyPage.rightClickOnKnativeRevision();
 });
 
 When('user selects {string} option from knative revision context menu', (option: string) => {
@@ -52,7 +52,7 @@ When('user clicks on {string} icon for the annotation with key {string} present 
 
 When('user clicks cancel button on the {string} modal', (modalTitle: string) => {
   cy.alertTitleShouldContain(modalTitle);
-  editLabels.clickCancel();
+  modal.clickCancel();
 });
 
 When('user clicks on Details tab', () => {

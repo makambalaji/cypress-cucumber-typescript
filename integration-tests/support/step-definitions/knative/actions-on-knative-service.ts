@@ -2,7 +2,7 @@ import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { addPage } from '../../pages/add-flow/add-page';
 import { resourceTypes } from '../../constants/add';
 import { topologyPage, topologySidePane } from '../../pages/topology-page';
-import { editLabels, editAnnotations, deleteservice, deleteRevision } from '../../pages/popupAlerts';
+import { editLabels, editAnnotations, deleteRevision, modal } from '../../pages/modal';
 import { naviagteTo, app } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
 import { eventSourcesPage } from '../../pages/add-flow/eventSource-page';
@@ -72,7 +72,7 @@ Given('knative services named {string} and {string} are higlighted on topology p
 });
 
 When('user right clicks on the knative service {string}', (knativeServiceName: string) => {
-  cy.get('g.odc-base-node__label').should('be.visible').contains(knativeServiceName).trigger('contextmenu', {force: true});
+  topologyPage.rightClickOnKnativeService(knativeServiceName);
 });
 
 Then('user is able to see the options like Edit Application Grouping, Set Traffic Distribution, Edit Health Checks, Edit Labels, Edit Annotations, Edit Service, Delete Service, {string}',(knativeServiceName: string) => {
@@ -92,12 +92,12 @@ When('user adds the label {string} to exisitng labels list in Edit Labels modal'
 
 When('user clicks the save button on the {string} modal', (modalTitle: string) => {
   cy.alertTitleShouldContain(modalTitle);
-  editLabels.clicKSave();
+  modal.clicKSave();
 });
 
 When('user clicks the cancel button on the {string} modal', (modalTitle: string) => {
   cy.alertTitleShouldContain(modalTitle);
-  editLabels.clickCancel();
+  modal.clickCancel();
 });
 
 Given('number of annotations are {string} present in side bar - details tab- annotation section', (a: string) => {
@@ -113,7 +113,7 @@ Given('service should have at least 1 revision', () => {
 });
 
 When('user selects {string} context menu option of knative service {string}', (option: string, knativeServiceName: string) => {
-  cy.get('g.odc-base-node__label').should('be.visible').contains(knativeServiceName).trigger('contextmenu', {force: true});
+  topologyPage.rightClickOnKnativeService(knativeServiceName);
   topologyPage.selectContextMenuAction(option);
 });
 
@@ -122,7 +122,7 @@ When('user clicks Add button on the Edit Annotations modal', () => {
 });
 
 Given('number of annotations are {string} present in {string} service side bar details tab', (numOfAnnotations: string, serviceName: string) => {
-  cy.get('g.odc-base-node__label').should('be.visible').contains(serviceName).click({force: true});
+  topologyPage.clickOnKnativeService(serviceName);
   topologySidePane.verify();
   topologySidePane.selectTab('Details');
   topologySidePane.verifyNumberOfAnnotations(numOfAnnotations);
@@ -206,14 +206,14 @@ Then('save button is disabled', () => {
 });
 
 Then('user will see the label {string} in {string} service side bar details', (label: string, serviceName: string) => {
-  cy.get('g.odc-base-node__label').should('be.visible').contains(serviceName).click({force: true});
+  topologyPage.clickOnKnativeService(serviceName);
   topologySidePane.verify();
   topologySidePane.selectTab('Details');
   topologySidePane.verifyLabel(label);
 });
 
 Then('user will not see the label {string} in {string} service side bar details', (label: string, serviceName: string) => {
-  cy.get('g.odc-base-node__label').should('be.visible').contains(serviceName).trigger('contextmenu', {force: true});
+  topologyPage.rightClickOnKnativeService(serviceName);
   topologySidePane.selectTab('Details');
   topologySidePane.verifySection('Labels');
   cy.get('[data-test="label-list"] a').contains(label).should('not.be.visible');
@@ -232,7 +232,7 @@ Then('Add more link is enabled', () => {
 });
 
 Then('number of Annotations increased to {string} in {string} service side bar details', (numOfAnnotations: string, serviceName: string) => {
-  cy.get('g.odc-base-node__label').should('be.visible').contains(serviceName).click({force: true});
+  topologyPage.clickOnKnativeService(serviceName);
   topologySidePane.verify();
   topologySidePane.selectTab('Details');
   topologySidePane.verifyNumberOfAnnotations(numOfAnnotations);
@@ -279,7 +279,7 @@ Then('modal displayed with header name {string}', (headerName: string) => {
 });
 
 Then('modal get closed on clicking Delete button', () => {
-  deleteservice.clicKDelete();
+  modal.clicKDelete();
   cy.get('form').should('not.be.visible');
 });
 

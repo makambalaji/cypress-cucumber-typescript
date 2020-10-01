@@ -90,6 +90,9 @@ export const topologyActions = {
 }
 
 export const topologyPage = {
+    verifyTitle:() => {
+        cy.get('h1.ocs-page-layout__title').should('have.text', 'Topology');
+    },
     verifyTopologyPage: () => {
         app.waitForLoad();
         cy.get(topologyObj.graph.reset).should('be.visible');
@@ -99,11 +102,10 @@ export const topologyPage = {
     verifyWorkLoads:() => cy.get('g[data-surface="true"]').should('be.visible'),
     search: (name: string)=> cy.byLegacyTestID('item-filter').clear().type(name),
     verifyWorkloadInTopologyPage: (appName: string) => {
-        cy.get(topologyObj.switcher).as('switcher');
-        cy.get('@switcher').click();
+        cy.get(topologyObj.switcher).click();
         topologyPage.search(appName);
         cy.get('div.is-filtered').should('be.visible');
-        cy.get('@switcher').click();
+        cy.get(topologyObj.switcher).click();
     },
     clicKDisplayOptionDropdown:() => cy.get('[id^=pf-select-toggle-id]').contains('Display Options').click(),
     selectDisplayOption: (opt: displayOptions) => {
@@ -169,9 +171,27 @@ export const topologyPage = {
             expect(options).contains($el.text());
         });
     },
-    clickContextMenuOption:(menuOption: string) => cy.get('#popper-container li[role="menuitem"]').contains(menuOption).click({force:true}),
+    clickContextMenuOption:(menuOption: string) => cy.byTestActionID(menuOption).click({force:true}),
     verifyDecorators:(nodeName: string, numOfDecorators: number) => topologyPage.componentNode(nodeName).siblings('a').should('have.length', numOfDecorators),
     selectContextMenuAction: (action: nodeActions | string) => cy.byTestActionID(action).should('be.visible').click(),
+    rightClickOnHelmRelease:(releaseName: string) => {
+        cy.get('g.odc-base-node__label').should('be.visible').contains(releaseName).trigger('contextmenu', {force: true});
+    },
+    clickOnHelmRelease:(releaseName: string) => {
+        cy.get('g.odc-base-node__label').should('be.visible').contains(releaseName).click({force:true});
+    },
+    clickOnKnativeRevision:() => {
+
+    },
+    rightClickOnKnativeRevision:() => {
+        cy.byLegacyTestID("base-node-handler").find('g.odc-resource-icon').trigger('contextmenu', {force: true});
+    },
+    clickOnKnativeService:(knativeServiceName: string) => {
+        cy.get('g.odc-base-node__label').should('be.visible').contains(knativeServiceName).click({force: true});
+    },
+    rightClickOnKnativeService:(knativeServiceName: string) => {
+        cy.get('g.odc-base-node__label').should('be.visible').contains(knativeServiceName).trigger('contextmenu', {force: true});
+    },
 }
 
 export const topologySidePane = {
@@ -182,7 +202,7 @@ export const topologySidePane = {
     selectTab:(tabName: string) => cy.get(topologyObj.sidePane.tabs).contains(tabName).click(),
     verifySection:(sectionTitle: string) => cy.get(topologyObj.sidePane.sectionTitle).contains(sectionTitle).should('be.visible'),
     verifyActions:(...actions: string[]) => {
-        cy.get('[data-test-id="action-items"] li').each(($el) => {
+        cy.byLegacyTestID("action-items").find('li').each(($el) => {
             expect(actions).contains($el.text());
         });
     },
@@ -198,11 +218,11 @@ export const topologySidePane = {
     },
     verifyLabel:(labelName: string) => {
         cy.get('dt[data-test-selector$="Labels"]').should('be.visible');
-        cy.get('[data-test="label-list"] a').contains(labelName).should('be.visible');
+        cy.byTestID("label-list").find('a').contains(labelName).should('be.visible');
     },
     verifyAnnotaiton:(annotationName: string) => {
-        cy.get('[data-test-id="edit-annotations"]').click();
-        cy.get('[data-test="label-list"] a').contains(annotationName).should('be.visible');
+        cy.byLegacyTestID("edit-annotations").click();
+        cy.byTestID("label-list").find('a').contains(annotationName).should('be.visible');
     },
     verifyNumberOfAnnotations:(num: string) => {
         cy.get('[data-test-selector="details-item-label__Annotations"]').should('be.visible');

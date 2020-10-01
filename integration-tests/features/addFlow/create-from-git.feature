@@ -6,7 +6,7 @@ Background:
    And user is at Add page
    And user has selected namespace "aut-addflow-git"
 
-@regression
+@regression-1
 Scenario Outline: Builder iamge detected for git url "<git_url>" : A-04-TC01
    Given user is at Import from git page
    When user enters Git Repo url as "<git_url>"

@@ -91,7 +91,7 @@ export const helmDetailsPage = {
     verifyRevisionHistoryTab:() => cy.get(helmPageObj.revisionHistoryTab).should('be.visible'),
     clickActionMenu:() => cy.byLegacyTestID('actions-menu-button').click(),
     verifyActionsInActionMenu:() => {
-        cy.get('[data-test-id="action-items"] li').each(($el) => {
+        cy.byLegacyTestID("action-items").find("li").each(($el) => {
             expect($el.text()).eq('Upgrade');
             expect($el.text()).eq('Rollback');
             expect($el.text()).eq('Uninstall Helm Release');
@@ -101,24 +101,30 @@ export const helmDetailsPage = {
         cy.get('dl.co-m-pane__details dt').contains(fieldName).next('dd').should('contain.text', fieldValue);
     },
     uninstallHelmRelease:() => {
-        cy.byLegacyTestID('modal-title').should('contain.text', 'Uninstall Helm Release?');
-        cy.get('#confirm-action').click();
+        cy.alertTitleShouldContain('Uninstall Helm Release?');
+        cy.byLegacyTestID("confirm-action").should('be.enabled').click();
     },
     enterReleaseNameInUninstallPopup:(releaseName: string = 'nodejs-ex-k') => {
-        cy.byLegacyTestID('modal-title').should('contain.text', 'Uninstall Helm Release?');
-        cy.get(helmPageObj.uninstallHelmRelease.releaseName).clear().type(releaseName);
+        cy.alertTitleShouldContain('Uninstall Helm Release?');
+        cy.get('form strong').should('have.text', releaseName);
+        cy.get(helmPageObj.uninstallHelmRelease.releaseName).type(releaseName);
     }
 }
 
 export const upgradeHelmRelease = {
     verifyTitle:() => cy.get('h1').contains('Upgrade Helm Release').should('be.visible'),
     updateReplicaCount:() => cy.get(helmPageObj.upgradeHelmRelease.replicaCount).clear().type('2'),
-    upgradeChartVersion:() => {
+    upgradeChartVersion:(yamlView: boolean = false) => {
         cy.get(helmPageObj.upgradeHelmRelease.chartVersion).click();
-        cy.byTestDropDownMenu('0.1.1').click();
-        // Currently modal is not displaying while upgrading chart version
-        // cy.byLegacyTestID('modal-title').should('contain.text', 'Change Chart Version?');
-        // cy.get('#confirm-action').click();
+        cy.byLegacyTestID("dropdown-menu").then(listing => {
+            const count = Cypress.$(listing).length;
+            const randNum = Math.floor(Math.random() * count);
+            cy.byLegacyTestID("dropdown-menu").eq(randNum).click();
+        });
+        if(yamlView === true) {
+            cy.alertTitleShouldContain('Change Chart Version?');
+            cy.byTestID("confirm-action").click();
+        }
     },
     clickOnUpgrade:() => {
         cy.get(helmPageObj.upgradeHelmRelease.upgrade).click();
