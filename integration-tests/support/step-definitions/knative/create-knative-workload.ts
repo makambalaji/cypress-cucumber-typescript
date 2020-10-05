@@ -47,7 +47,7 @@ When('user enters External registry image name as {string}', (imageName: string)
 });
 
 When('user enters Docker url as {string}', (dockerUrl: string) => {
-  addPage.enterGitUrl(dockerUrl);
+  containerImagePage.enterGitUrl(dockerUrl);
   containerImagePage.verifyValidatedMessage();
 });
 
@@ -65,8 +65,8 @@ When('user creates the application with the selected builder image', () => {
   catalogPage.clickButtonOnCatalogPageSidePane();
 });
 
-When('user enters name as {string}', (workloadName: string) => {
-  addPage.enterComponentName(workloadName)
+When('user enters workload name as {string}', (workloadName: string) => {
+  containerImagePage.enterGitUrl(workloadName);
 });
 
 Then('user will be redirected to page with header name {string}', (headerName: string) => {

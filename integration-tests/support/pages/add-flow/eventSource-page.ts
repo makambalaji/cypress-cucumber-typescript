@@ -8,7 +8,7 @@ export const eventSourceObj = {
       apiVersion: 'input[placeholder="apiversion"]',
       kind: 'input[placeholder="kind"]',
       serviceAccountName: '#form-ns-dropdown-data-apiserversource-serviceAccountName-field',
-      sinkResource: '#form-ns-dropdown-sink-name-field',
+      sinkResource: '#form-ns-dropdown-sink-key-field',
       name: '[data-test-id="application-form-app-name"]',
       mode: '#form-dropdown-data-apiserversource-mode-field',
     },

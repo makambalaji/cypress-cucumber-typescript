@@ -227,7 +227,7 @@ Given('one pipeline run is completed with the workload', () => {
 Given('pipeline {string} is created from git page', (name: string) => {
   naviagteTo(devNavigationMenu.Add);
   addPage.selectCardFromOptions(addOptions.Git);
-  addPage.verifyTitle('Import from git');
+  addPage.verifyTitle('Import from Git');
   addPage.enterGitUrl('https://github.com/sclorg/nodejs-ex.git');
   addPage.enterComponentName(name);
   addPage.selectAddPipeline();

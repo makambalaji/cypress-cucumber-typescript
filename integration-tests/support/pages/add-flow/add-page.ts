@@ -80,8 +80,7 @@ export const addPage = {
   verifyNoWorkLoadsText:(text: string) => cy.get('h2.co-hint-block__title').should('contain.text', text),
   verifyTitle: (title: string) => cy.pageTitleShouldContain(title),
   verifyPipelinesSection: (message: string) => {
-    cy.get('body').scrollTo('bottom');
-    cy.get(addPageObj.sectionTitle).contains('Pipelines').should('be.visible');
+    cy.get(addPageObj.sectionTitle).contains('Pipelines').scrollIntoView().should('be.visible');
     cy.get(addPageObj.pipeline.infoMessage).should('have.text', message);
   },
   verifyValidatedMessage:() => cy.get(addPageObj.gitSection.validatedMessage).should('have.text', 'Validated'),

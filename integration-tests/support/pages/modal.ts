@@ -13,7 +13,16 @@ export const modal = {
     {
         cy.byTestID('confirm-action').click();
         cy.get('form').should('not.be.visible');
-    },   
+    },
+    verifySaveButtonIsDisplayed:() => {
+        cy.byTestID('confirm-action').should('be.visible');
+    },
+    verifyCancelButtonIsDisplayed:() => {
+        cy.byLegacyTestID('modal-cancel-action').should('be.visible');
+    },
+    isDisplayed:() => {
+        cy.get('form').should('be.visible');
+    },
 }
 
 export const editLabels = {
@@ -80,7 +89,7 @@ export const moveSink = {
     selectResource:(resourceName: string) => {
         cy.get(eventSourceObj.sinkBinding.resource).should('be.checked');
         cy.get(eventSourceObj.sinkBinding.sinkResource).click();
-        cy.get(`[id="${resourceName}-link"]`).click();
+        cy.get(`[id*="${resourceName}-link"]`).click();
     },
     enterURI:(uri: string) => {
         cy.get(eventSourceObj.sinkBinding.uri).should('be.checked');

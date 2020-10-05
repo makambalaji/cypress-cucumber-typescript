@@ -2,32 +2,19 @@ import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { addPage } from '../../pages/add-flow/add-page';
 import { resourceTypes } from '../../constants/add';
 import { topologyPage, topologySidePane } from '../../pages/topology-page';
-import { editLabels, editAnnotations, deleteRevision, modal } from '../../pages/modal';
+import { editLabels, editAnnotations, deleteRevision, modal, setTrafficDistribution } from '../../pages/modal';
 import { naviagteTo, app } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
 import { eventSourcesPage } from '../../pages/add-flow/eventSource-page';
 
-Given('knative service named {string} is higlighted on topology page', (knativeServiceName: string) => {
-  app.waitForLoad();
-  cy.get('body').then(($el) => {
-    if($el.find('.pf-c-card__title').length !== 0) {
-      addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git',knativeServiceName, resourceTypes.knativeService);
-      topologyPage.verifyTopologyPage();
-    }
-    else if($el.find('[data-test-id="item-filter"]').length !== 0) {
-      topologyPage.search(knativeServiceName).then(() => {
-        cy.get('body').then(($el) => {
-          if($el.find('.is-filtered').length === 0) {
-            addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git',knativeServiceName, resourceTypes.knativeService);
-            topologyPage.verifyTopologyPage();
-          }
-        });
-      }) ;
-    }
-  });
-});
 
 Given('user has created knative service {string}', (knativeServiceName: string) => {
+  naviagteTo(devNavigationMenu.Add);
+  addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git',knativeServiceName, resourceTypes.knativeService);
+  topologyPage.verifyWorkloadInTopologyPage(knativeServiceName);
+});
+
+Given('user has created another knative service {string}', (knativeServiceName: string) => {
   naviagteTo(devNavigationMenu.Add);
   addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git',knativeServiceName, resourceTypes.knativeService);
   topologyPage.verifyWorkloadInTopologyPage(knativeServiceName);
@@ -45,30 +32,6 @@ Given('user has created knative services {string} and {string}', (knativeService
 Given('user has created {string} event source', (eventSourceName: string) => {
   naviagteTo(devNavigationMenu.Add);
   eventSourcesPage.createSinkBinding(eventSourceName);
-});
-
-Given('knative services named {string} and {string} are higlighted on topology page', (knativeServiceName: string, knativeServiceName1: string) => {
-  app.waitForLoad();
-  cy.get('body').then(($el) => {
-    if($el.find('.pf-c-card__title').length !== 0) {
-      addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git',knativeServiceName, resourceTypes.knativeService);
-      topologyPage.verifyTopologyPage();
-      addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git',knativeServiceName1, resourceTypes.knativeService);
-      topologyPage.verifyTopologyPage();
-    }
-    else if($el.find('[data-test-id="item-filter"]').length !== 0) {
-      topologyPage.search(knativeServiceName).then(() => {
-        cy.get('body').then(($el) => {
-          if($el.find('.is-filtered').length === 0) {
-            addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git',knativeServiceName, resourceTypes.knativeService);
-            topologyPage.verifyTopologyPage();
-            addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git',knativeServiceName1, resourceTypes.knativeService);
-            topologyPage.verifyTopologyPage();
-          }
-        });
-      }) ;
-    }
-  });
 });
 
 When('user right clicks on the knative service {string}', (knativeServiceName: string) => {
@@ -108,8 +71,15 @@ Given('number of annotations are {string} present in side bar - details tab', (a
  cy.log(a)
 });
 
-Given('service should have at least 1 revision', () => {
+Given('service should have at least 2 revisions', () => {
   cy.get('[data-test-id="base-node-handler"]', {timeout: 150000}).should('be.visible');
+});
+
+Given('user created another revision {string} for knative Service {string', (revisionName: string, knativeServiceName: string) => {
+  naviagteTo(devNavigationMenu.Add);
+  addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git',revisionName, resourceTypes.knativeService, knativeServiceName);
+  topologyPage.verifyWorkloadInTopologyPage(knativeServiceName);
+  cy.get('[data-test-id="base-node-handler"]', {timeout: 150000}).should('have.length', 2);
 });
 
 When('user selects {string} context menu option of knative service {string}', (option: string, knativeServiceName: string) => {
@@ -119,6 +89,15 @@ When('user selects {string} context menu option of knative service {string}', (o
 
 When('user clicks Add button on the Edit Annotations modal', () => {
  editAnnotations.add();
+});
+
+
+When('user modifies the Yaml file of the Service details page', () => {
+  
+});
+
+When('user clicks {string} button on Service Yaml page', (a: string) => {
+  cy.log(a);
 });
 
 Given('number of annotations are {string} present in {string} service side bar details tab', (numOfAnnotations: string, serviceName: string) => {
@@ -153,20 +132,12 @@ When('user modifies the Yaml file of the Revision details pagex', () => {
   // TODO: implement step
 });
 
-When('user clicks on {string} button', (a: string) => {
- cy.log(a)
+When('user clicks save button on the Edit Service Page', () => {
+  // TODO: implement step
 });
 
 When('user selects the {string} from {string} drop down present in {string} modal', (a: string, b: string, c: string) => {
  cy.log(a, b, c)
-});
-
-When('user searches for application name {string}', (a: string) => {
- cy.log(a)
-});
-
-When('user clicks on {string} on topology page', (a: string) => {
- cy.log(a)
 });
 
 When('user selects the {string} option from {string} drop down present in {string} modal', (a: string, b: string, c: string) => {
@@ -177,32 +148,21 @@ When('user selects the {string} option from {string} drop down present in {strin
   cy.log(a, b, c);
 });
 
-When('user enters {string} into the {string} text box', (a: string, b: string) => {
-  cy.log(a, b);
+When('user enters {string} into the Split text box', (splitPercentage: string) => {
+  cy.get('[id$="percent-field"]').last().type(splitPercentage);
 });
 
-When('user clicks on {string} button present in {string} modal', (a: string, b: string) => {
-  cy.log(a, b);
+When('user clicks on Add Revision button present in Set Traffic Distribution modal', (a: string, b: string) => {
+  setTrafficDistribution.add();
 });
 
-When('user enters {string} into the {string} text box of new revision', (a: string, b: string) => {
-  cy.log(a, b);
+When('user enters {string} into the Split text box of new revision', (splitPercentage: string) => {
+  cy.get('[id$="percent-field"]').last().type(splitPercentage);
 });
 
-When('user selects the {string} option from {string} drop down', (a: string, b: string) => {
-  cy.log(a, b);
-});
-
-When('user clicks {string} buttonn on {string} modal', (a: string, b: string) => {
-  cy.log(a, b);
-});
-
-When('user clicks on {string} button present in redirected page', (a: string) => {
-  cy.log(a);
-});
-
-Then('save button is disabled', () => {
-  // TODO: implement step
+When('user selects another revision from Revision drop down', () => {
+  cy.byLegacyTestID('dropdown-button').click();
+  cy.byLegacyTestID('dropdown-menu').last().click();
 });
 
 Then('user will see the label {string} in {string} service side bar details', (label: string, serviceName: string) => {
@@ -213,22 +173,19 @@ Then('user will see the label {string} in {string} service side bar details', (l
 });
 
 Then('user will not see the label {string} in {string} service side bar details', (label: string, serviceName: string) => {
-  topologyPage.rightClickOnKnativeService(serviceName);
+  topologyPage.clickOnKnativeService(serviceName);
+  topologySidePane.verify();
   topologySidePane.selectTab('Details');
   topologySidePane.verifySection('Labels');
   cy.get('[data-test="label-list"] a').contains(label).should('not.be.visible');
 });
 
-Then('user will not see the label {string} in the Details tab of the Sidebar of {string}', (label: string, serviceName: string) => {
-
-});
-
-Then('key, value columns are displayed with respecitve text fields', () => {
-  // TODO: implement step
-});
-
-Then('Add more link is enabled', () => {
-  // TODO: implement step
+Given('label {string} is added to the knative service {string}', (labelName: string, knativeServiceName: string) => {
+  topologyPage.rightClickOnKnativeService(knativeServiceName);
+  topologyPage.selectContextMenuAction('Edit Labels');
+  modal.isDisplayed();
+  editLabels.enterLabel(labelName);
+  modal.clicKSave();
 });
 
 Then('number of Annotations increased to {string} in {string} service side bar details', (numOfAnnotations: string, serviceName: string) => {
@@ -246,16 +203,19 @@ Then('number of Annotations remains same in side bar details', () => {
   // TODO: implement step
 });
 
-Then('number of Annotations decreased to {string} in side bar details', (a: string) => {
-  cy.log(a);
+Then('number of Annotations decreased to {string} in side bar details', (message: string) => {
+  cy.log(message);
+  // TODO: implement step
 });
 
-Then('message should display as {string}', (a: string) => {
-  cy.log(a);
+Then('message should display as {string}', (message: string) => {
+  cy.log(message);
+  // TODO: implement step
 });
 
-Then('another message should display as {string}', (a: string) => {
-  cy.log(a);
+Then('another message should display as {string}', (message: string) => {
+  cy.log(message);
+  // TODO: implement step
 });
 
 Then('updated service is present in side bar', () => {
@@ -267,11 +227,14 @@ Then('updated service should not display in side bar', () => {
 });
 
 Then('error message displays as {string}', (errorMessage: string) => {
-  // TODO: implement step
+  cy.get('div[aria-label="Danger Alert"] div.co-pre-line').should('contain.text', errorMessage);
 });
 
 Then('number of routes should get increased in side bar - resources tab - routes section', () => {
-  // TODO: implement step
+  topologyPage.clickOnKnativeService('nodejs-ex-git-1');
+  topologySidePane.verify();
+  topologySidePane.verifyTab('Resources');
+  cy.get('[title="Route"]').should('have.length', 2);
 });
 
 Then('modal displayed with header name {string}', (headerName: string) => {
@@ -294,9 +257,9 @@ Then('{string} service should not be displayed in project', (serviceName: string
 });
 
 When('user clicks save button on yaml page', () => {
-
+  cy.get('#save-changes').click();
 });
 
-When('user clicks cancel button on {string} page', (buttonName: string) => {
-  cy.log(buttonName);
+When('user clicks cancel button on Edit Health Checks page', (buttonName: string) => {
+  cy.byLegacyTestID('reset-button').click();
 });

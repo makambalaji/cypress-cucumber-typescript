@@ -29,7 +29,7 @@ Scenario: Move sink to different knative service using context menu: Kn-11-TC02
    Then user will see that event source "sink-binding" is sinked with knative Service "nodejs-ex-git-1"
 
 
-@regression, @smoke
+@regression, @smoke, @debug
 Scenario: Delete event source : Kn-11-TC06
    Given knative service named "nodejs-ex-git" is higlighted on topology page
    And event source "sink-binding" is higlighted on topology page

@@ -27,5 +27,8 @@ export const containerImagePage = {
     selectInternalImageRegistry:() => 
     cy.get(containerImageObj.imageSection.internalRegistryImageCheckBox).check(),
     verifyValidatedMessage:() => cy.get(containerImageObj.imageSection.externalRegistry.validatedMessage).should('have.text', 'Validated'),
+    enterGitUrl: (gitUrl: string) => {
+      cy.byLegacyTestID("application-form-app-name").clear().type(gitUrl);
+    },
   }
   

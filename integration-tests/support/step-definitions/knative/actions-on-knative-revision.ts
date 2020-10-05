@@ -1,5 +1,5 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { editLabels, deleteRevision, modal } from '../../pages/modal';
+import { editLabels, deleteRevision, modal, editAnnotations } from '../../pages/modal';
 import { topologyPage, topologySidePane } from '../../pages/topology-page';
 
 Given('number of annotations are {string} present in revision side bar details of service {string}', (numOfAnnotations: string, serviceName: string) => {
@@ -74,12 +74,10 @@ Then('user is able to see Edit Labels, Edit Annotations, Edit Revision, Delete R
   cy.byTestActionID('Delete Revision').should('be.visible');
 });
 
-Then('save button is disabled', () => {
-  // TODO: implement step
-});
-
-Then('the label {string} display in side bar details', (a: string) => {
-  cy.log(a);
+Then('save, cancel buttons are displayed', () => {
+  modal.verifySaveButtonIsDisplayed();
+  modal.verifySaveButtonIsDisplayed();
+  modal.clickCancel();
 });
 
 Then('user can see the label {string} in the Details tab of the Sidebar of {string}', (label: string, serviceName: string) => {
@@ -94,7 +92,7 @@ Then('key, value columns are displayed with respecitve text fields', () => {
 });
 
 Then('Add more link is enabled', () => {
-  // TODO: implement step
+  editAnnotations.add();
 });
 
 Then('user can see the annotation {string} in the Details tab of the Sidebar of {string}', (numOfAnnotations: string, serviceName: string) => {

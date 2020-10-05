@@ -232,7 +232,7 @@ export const topologySidePane = {
         });
     },
     verifyResource:(resourceName: string) => {
-        cy.get(topologyObj.sidePane.tabs).contains('Resources').click()
+        cy.get(topologyObj.sidePane.tabs).contains('Resources').click();
         cy.byLegacyTestID(resourceName).should('be.visible');
     },
 }

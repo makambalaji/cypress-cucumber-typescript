@@ -16,11 +16,11 @@ When('user clicks From Git card on the Add page', () => {
 });
 
 Then('user will be redirected to Import from git form', () => {
-  addPage.verifyTitle('Import from git');
+  addPage.verifyTitle('Import from Git');
 });
 
 Then('user will be redirected to Import from Dockerfile form', () => {
-  addPage.verifyTitle('Import from git');
+  addPage.verifyTitle('Import from Dockerfile');
 });
 
 Then('pipeline section is displayed with message {string}', (message: string) => {

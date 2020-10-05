@@ -26,12 +26,13 @@ Scenario: Move the sink via Action menu to link knative Service : Kn-12-TC02
 
 
 @regression
-Scenario: Move sink to different knative service using Action menu of side bar
+Scenario: Move sink to different knative service using Action menu of side bar : Kn-12-TC03
    Given knative service, event source and sink connector are present in topology page
    And user has created knative service "nodejs-ex-git-1"
    When user clicks on event source "Sink Binding" to open side bar
    And user selects "Move Sink" from side bar Action menu
    And user selects the knative service "nodejs-ex-git-1" from Resource dropdown
-   And user clicks on save
+   And user clicks save on Move Sink modal
+   And user closes the side bar
    Then user will see that event source "sink-binding" is sinked with knative Service "nodejs-ex-git-1"
    

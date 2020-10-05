@@ -21,7 +21,7 @@ Scenario: Edit labels modal details : Kn-03-TC02
    And user is at the Topology page
    When user selects "Edit Labels" option from knative revision context menu
    Then modal with "Edit Labels" appears
-   And save button is disabled
+   And save, cancel buttons are displayed
 
 
 @regression, @smoke
@@ -63,7 +63,7 @@ Scenario: Edit Annotation modal details : Kn-03-TC06
    Then modal with "Edit Annotations" appears
    And key, value columns are displayed with respecitve text fields
    And Add more link is enabled
-   And save button is disabled
+   And save, cancel buttons are displayed
 
 
 @regression, @smoke
@@ -151,6 +151,6 @@ Scenario: Delete Revision not possible for the service which contains one revisi
    Given knative service named "nodejs-ex-git" is higlighted on topology page
    When user right clicks on the revision of knative service "nodejs-ex-git" to open the context menu
    And user selects "Delete Revision" option from knative revision context menu
-   Then modal with "Unable to delete revision" appears
+   Then modal with "Unable to delete Revision" appears
    And modal contains message as "You cannot delete the last Revision for the Service."
    And modal should get closed on clicking OK button

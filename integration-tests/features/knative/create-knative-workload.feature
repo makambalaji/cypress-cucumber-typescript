@@ -44,7 +44,7 @@ Scenario: knative resource type in catalog add flow : Kn-01-TC06
 Scenario Outline: Create knative work load from From Git card on Add page : Kn-02-TC01
    Given user is on "<form_name>" form
    When user enters Git Repo url as "<git_url>"
-   And user enters name as "<workload_name>"
+   And user enters Name as "<workload_name>"
    And user selects "knative" radio button on Add page
    And user clicks Create button on Add page
    Then user will be redirected to Topology page
@@ -52,14 +52,14 @@ Scenario Outline: Create knative work load from From Git card on Add page : Kn-0
 
 Examples:
 | form_name | header_name     | git_url                                 | workload_name |
-| Git       | Import from git | https://github.com/sclorg/nodejs-ex.git | nodejs-ex-git |
+| Git       | Import from Git | https://github.com/sclorg/nodejs-ex.git | nodejs-ex-git |
 
 
 @regression
 Scenario Outline: Create knative workload from Container image card on Add page : 
    Given user is on "<form_name>" form
    When user enters External registry image name as "<image_name>"
-   And user enters name as "<workload_name>"
+   And user enters workload name as "<workload_name>"
    And user selects "knative" radio button on Add page
    And user clicks Create button on Add page
    Then user will be redirected to Topology page

@@ -57,6 +57,7 @@ Then('event source {string} will not be displayed in topology page', (eventSourc
 
 Then('Resource dropdown is displayed in Move Sink modal', () => {
   moveSink.verifyResourceDropDown();
+  modal.clickCancel();
 });
 
 When('user selects the knative service {string} from Resource dropdown', (knativeService: string) => {
@@ -66,7 +67,17 @@ When('user selects the knative service {string} from Resource dropdown', (knativ
 });
 
 Then('user will see that event source {string} is sinked with knative Service {string}', (eventSourceName: string, knativeService: string) => {
-  cy.log(eventSourceName);
-  cy.get('[data-type="event-source"] text').eq(0).click({force:true});
-  topologySidePane.verifyResource(knativeService);
+  cy.log(`${eventSourceName} is linked with ${knativeService}`);
+  cy.get('[data-type="event-source"] text').eq(0).click({force:true}).then(() => {
+    topologySidePane.verify();
+    topologySidePane.verifyResource(knativeService);
+  });
+});
+
+When('user closes the side bar', () => {
+  topologySidePane.close();
+});
+
+When('user clicks save on Move Sink modal', () => {
+  modal.clicKSave();
 });
