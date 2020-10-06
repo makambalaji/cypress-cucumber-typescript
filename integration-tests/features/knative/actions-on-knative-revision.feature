@@ -42,7 +42,7 @@ Scenario: Remove label from knative Revision: Kn-03-TC04
    When user selects "Edit Labels" option from knative revision context menu
    And user removes the label "app=label" from existing labels list in "Edit Labels" modal
    And user clicks the save button on the "Edit Labels" modal
-   Then user will not see the label "app-label" in the Details tab of the Sidebar of "nodejs-ex-git"
+   Then user will not see the label "app=label" in "nodejs-ex-git" service side bar details
 
 
 @regression
@@ -52,7 +52,7 @@ Scenario: Add labels to existing labels list and cancel the activity : Kn-03-TC0
    When user selects "Edit Labels" option from knative revision context menu
    And user adds the label "app=label" to existing labels list in Edit Labels modal
    And user clicks cancel button on the "Edit Labels" modal
-   Then user will not see the label "app-label" in the Details tab of the Sidebar of "nodejs-ex-git"
+   Then user will not see the label "app=label" in "nodejs-ex-git" service side bar details
 
 
 @regression
@@ -148,7 +148,7 @@ Scenario Outline: Delete revision for the service which contains multiple revisi
 
 @regression, @smoke
 Scenario: Delete Revision not possible for the service which contains one revision : Kn-03-TC12
-   Given knative service named "nodejs-ex-git" is higlighted on topology page
+   Given user has created knative service "nodejs-ex-git"
    When user right clicks on the revision of knative service "nodejs-ex-git" to open the context menu
    And user selects "Delete Revision" option from knative revision context menu
    Then modal with "Unable to delete Revision" appears

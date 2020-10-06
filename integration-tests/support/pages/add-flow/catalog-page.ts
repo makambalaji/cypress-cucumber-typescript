@@ -47,7 +47,24 @@ export const catalogPageObj = {
       yamlView: '#form-radiobutton-editorType-yaml-field',
       formView: '#form-radiobutton-editorType-form-field',
       cancel: '[data-test-id="reset-button"]',
-    }
+    },
+    s2I: {
+      gitRepoUrl: '[data-test-id="git-form-input-url"]',
+      builderImageVersion: '#form-dropdown-image-tag-field',
+      appName: '[data-test-id="application-form-app-input"]',
+      name: '[data-test-id="application-form-app-name"]',
+      resourceTypes: {
+        deployment: '#form-radiobutton-resources-kubernetes-field',
+        deploymentConfig: '#form-radiobutton-resources-openshift-field',
+        knative: '#form-radiobutton-resources-knative-field',
+      },
+      addPipeline: {
+        pipelineCheckBox: '#form-checkbox-pipeline-enabled-field',
+      },
+      createRoute: '#form-checkbox-route-create-field',
+      create: '[data-test-id="submit-button"]',
+      cancel: '[data-test-id="reset-button"]',
+    },
 }
 
 export const catalogPage = {

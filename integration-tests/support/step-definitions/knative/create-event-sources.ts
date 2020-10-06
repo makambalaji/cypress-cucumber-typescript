@@ -6,18 +6,10 @@ import { devNavigationMenu } from '../../constants/global';
 import { addOptions } from '../../constants/add';
 import { topologySidePane, topologyPage } from '../../pages/topology-page';
 
-Given('knative service is not available for selected namespace', () => {
-  // TODO: implement step
-});
-
 Given('user is at Event Sources page', () => {
   naviagteTo(devNavigationMenu.Add);
   addPage.selectCardFromOptions(addOptions.EventSource);
   eventSourcesPage.verifyTitle();
-});
-
-Given('knative service is available for selected namespace', () => {
-  
 });
 
 When('user clicks on {string} card', (cardName: string) => {
@@ -25,7 +17,11 @@ When('user clicks on {string} card', (cardName: string) => {
 });
 
 When('user selects event source type {string}', (eventSourceType: string) => {
-  eventSourcesPage.selectEventSourceType(eventSourceType);
+  eventSourcesPage.clickEventSourceType(eventSourceType);
+});
+
+Given('knative service is not available for selected namespace', () => {
+
 });
 
 When('user enters Resoruce APIVERSION as {string}', (apiVersion: string) => {
@@ -57,19 +53,19 @@ When('user enters event source name as {string}', (eventSourceName: string) => {
  });
  
 When('user enters Container Image as {string}', (containerImageName: string) => {
- cy.log(containerImageName);
+ cy.get(eventSourceObj.containerImage.image).type(containerImageName);
 });
 
 When('user enters schedule as {string}', (schedule: string) => {
- cy.log(schedule);
+ cy.get(eventSourceObj.pingSource.schedule).type(schedule);
 });
 
 When('user enters Subject apiVersion as {string}', (subjectApiVersion: string) => {
- cy.log(subjectApiVersion);
+ cy.get(eventSourceObj.sinkBinding.apiVersion).type(subjectApiVersion);
 });
 
 When('user enters Subject Kind as {string}', (subjectKind: string) => {
- cy.log(subjectKind);
+ cy.get(eventSourceObj.sinkBinding.kind).type(subjectKind);
 });
 
 Then('user will be redirected to page with header name {string}', (pageTitle: string) => {
@@ -82,7 +78,6 @@ Then('able to see event source enters like ApiServerSource, ContainerSource, Cro
   eventSourcesPage.verifyEventSourceType('Container Source');
   eventSourcesPage.verifyEventSourceType('Ping Source');
   eventSourcesPage.verifyEventSourceType('Sink Binding');
-  // eventSourcesPage.verifyEventSourceType('Cron Job Source');  - Cron Job Source is removed change
 });
 
 Then('user is able to see {string} event source type', (eventSoruceType: string) => {
@@ -93,12 +88,20 @@ Then('user is able to see knative Eventing card', () => {
   addPage.verifyCard('knative Eventing');
 });
 
-Then('user is able to see notifier with header {string}', (headerName: string) => {
- cy.log(headerName);
+Then('user is able to see notifier header {string}', (message: string) => {
+  cy.get(eventSourceObj.sinkBinding.notifierHeader).should('contain.text', message);
+});
+
+When('user selects Resource option in Sink section', () => {
+  cy.get(eventSourceObj.sinkBinding.resource).check();
 });
 
 Then('user can see message as {string}', (message: string) => {
  addPage.verifyNoWorkLoadsText(message);
+});
+
+Then('user can see message in sink section as {string}', (message: string) => {
+  cy.get(eventSourceObj.sinkBinding.notifierMessage);
 });
 
 Then('page contains Resource, Mode, Service Account Name, Sink, General sections', () => {
@@ -174,22 +177,27 @@ Then('ApiServerSource event source {string} is created and linked to selected kn
   topologySidePane.verifyResource(resourceName);
 });
 
-Then('ContainerSource event source is created and linked to selected knative service', () => {
-  // TODO: implement step
+Then('ContainerSource event source {string} is created and linked to selected knative service {string}', (eventSource: string, resourceName: string) => {
+  topologyPage.getEventSource(eventSource).click({force: true});
+  topologySidePane.verifyResource(resourceName);
 });
 
-Then('CronJobSource event source is created and linked to selected knative service', () => {
-  // TODO: implement step
+Then('CronJobSource event source {string} is created and linked to selected knative service {string}', (eventSource: string, resourceName: string) => {
+  topologyPage.getEventSource(eventSource).click({force: true});
+  topologySidePane.verifyResource(resourceName);
 });
 
-Then('PingSource event source is created and linked to selected knative service', () => {
-  // TODO: implement step
+Then('PingSource event source {string} is created and linked to selected knative service {string}', (eventSource: string, resourceName: string) => {
+  topologyPage.getEventSource(eventSource).click({force: true});
+  topologySidePane.verifyResource(resourceName);
 });
 
-Then('SinkBinding event source is created and linked to selected knative service', () => {
-  // TODO: implement step
+Then('SinkBinding event source {string} is created and linked to selected knative service {string}', (eventSource: string, resourceName: string) => {
+  topologyPage.getEventSource(eventSource).click({force: true});
+  topologySidePane.verifyResource(resourceName);
 });
 
-Then('CamelSource event source is created and linked to selected knative service', () => {
-  // TODO: implement step
+Then('CamelSource event source {string} is created and linked to selected knative service {string}', (eventSource: string, resourceName: string) => {
+  topologyPage.getEventSource(eventSource).click({force: true});
+  topologySidePane.verifyResource(resourceName);
 });

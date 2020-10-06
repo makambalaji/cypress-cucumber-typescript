@@ -32,13 +32,14 @@ Scenario: knative eventing in operator backed : Kn-07-TC04
    And user is able to see knative Eventing card
 
 
+@regression
 Scenario: Notifier message display in Event sources page when knative service is not available in namespace : Kn-10-TC01
    Given user is at Add page 
-   But knative service is not available for selected namespace
    When user clicks on "Event Source" card
-   Then user will be redirected to page with header name "Event Sources"
-   And user is able to see notifier with header "Event Sources Cannot be Created"
-   And user can see message as "Event Sources can only sink to knative Services. No knative Services exist in this project."
+   And user selects event source type "Api Server Source"
+   And user selects Resource option in Sink section
+   Then user is able to see notifier header "No resources available"
+   And user can see message in sink section as "Event Sources can only sink to knative Services. No knative Services exist in this project."
 
 
 Scenario: Event source details for ApiServerSource event source type : Kn-10-TC02
@@ -130,51 +131,50 @@ Scenario: Create ContainerSource event source : Kn-10-TC09
    And user selects an "nodejs-ex-git" option from knative service field
    And user clicks on Create button
    Then user will be redirected to Topology page
-   And ContainerSource event source is created and linked to selected knative service
+   And ContainerSource event source "container-source" is created and linked to selected knative service "nodejs-ex-git"
 
 
-@regression
 Scenario: Create CronJobSource event source : Kn-10-TC10
    Given user has created knative service "nodejs-ex-git"
    And user is at Event Sources page
-   When user selects event source type "CronJobSource"
+   When user selects event source type "Cron Job Source"
    And user enters schedule as "*/2 * * * *"
    And user selects an "nodejs-ex-git" option from knative service field
    And user clicks on Create button
    Then user will be redirected to Topology page
-   And CronJobSource event source is created and linked to selected knative service
+   And CronJobSource event source "cron-job-source" is created and linked to selected knative service "nodejs-ex-git"
 
 
 @regression
 Scenario: Create PingSource event source : Kn-10-TC11
    Given user has created knative service "nodejs-ex-git"
    And user is at Event Sources page
-   When user selects event source type "PingSource"
+   When user selects event source type "Ping Source"
    And user enters schedule as "*/2 * * * *"
    And user selects an "nodejs-ex-git" option from knative service field
    And user clicks on Create button
    Then user will be redirected to Topology page
-   And PingSource event source is created and linked to selected knative service
+   And PingSource event source "ping-source" is created and linked to selected knative service "nodejs-ex-git"
 
 
-@regression
+@regression, @debug
 Scenario: Create SinkBinding event source : Kn-10-TC12
    Given user has created knative service "nodejs-ex-git"
    And user is at Event Sources page
-   When user selects event source type "SinkBinding"
+   When user selects event source type "Sink Binding"
    And user enters Subject apiVersion as "batch/v1"
    And user enters Subject Kind as "job"
    And user selects an "nodejs-ex-git" option from knative service field
    And user clicks on Create button
    Then user will be redirected to Topology page
-   And SinkBinding event source is created and linked to selected knative service
+   And SinkBinding event source "sink-binding" is created and linked to selected knative service "nodejs-ex-git"
 
 
 @regression, @manual
 Scenario: Create CamelSource event source : Kn-10-TC13, Kn-08-TC03
    Given user has created knative service "nodejs-ex-git"
    And user is at Event Sources page
-   When user selects event source type "CamelSource"
+   When user selects event source type "Camel Source"
    And user clicks on Create button
    Then user will be redirected to Topology page
-   And CamelSource event source is created and linked to selected knative service
+   And CamelSource event source "camel-source" is created and linked to selected knative service "nodejs-ex-git"

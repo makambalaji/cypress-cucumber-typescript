@@ -63,12 +63,8 @@ When('user clicks the cancel button on the {string} modal', (modalTitle: string)
   modal.clickCancel();
 });
 
-Given('number of annotations are {string} present in side bar - details tab- annotation section', (a: string) => {
- cy.log(a)
-});
-
-Given('number of annotations are {string} present in side bar - details tab', (a: string) => {
- cy.log(a)
+When('user searches for application name {string}', (appName: string) => {
+  topologyPage.search(appName);
 });
 
 Given('service should have at least 2 revisions', () => {
@@ -91,13 +87,8 @@ When('user clicks Add button on the Edit Annotations modal', () => {
  editAnnotations.add();
 });
 
-
-When('user modifies the Yaml file of the Service details page', () => {
-  
-});
-
-When('user clicks {string} button on Service Yaml page', (a: string) => {
-  cy.log(a);
+Given('user created another revision {string} for knative Service {string}', (revisionName: string, serviceName: string) => {
+  addPage.createGitWorkload('https://github.com/sclorg/nodejs-ex.git', revisionName, resourceTypes.knativeService, serviceName);
 });
 
 Given('number of annotations are {string} present in {string} service side bar details tab', (numOfAnnotations: string, serviceName: string) => {
@@ -114,38 +105,6 @@ When('user enters annotation key as {string}', (key: string) => {
 
 When('user enters annotation value as {string}', (value: string) => {
   editAnnotations.enterValue(value);
-});
-
-When('user removes the label {string} from exisitng labels list in {string} modal', (a: string, b: string) => {
- cy.log(a, b,)
-});
-
-When('user clicks on {string} icon for the annotation with key {string} present in {string} modal', (a: string, b: string, c: string) => {
- cy.log(a, b, c)
-});
-
-When('user clicks {string} button on the {string} modal', (a: string, b: string) => {
- cy.log(a, b,)
-});
-
-When('user modifies the Yaml file of the Revision details pagex', () => {
-  // TODO: implement step
-});
-
-When('user clicks save button on the Edit Service Page', () => {
-  // TODO: implement step
-});
-
-When('user selects the {string} from {string} drop down present in {string} modal', (a: string, b: string, c: string) => {
- cy.log(a, b, c)
-});
-
-When('user selects the {string} option from {string} drop down present in {string} modal', (a: string, b: string, c: string) => {
- cy.log(a, b, c)
-});
-
-When('user selects the {string} option from {string} drop down present in {string} modal', (a: string, b: string, c: string) => {
-  cy.log(a, b, c);
 });
 
 When('user enters {string} into the Split text box', (splitPercentage: string) => {
@@ -199,33 +158,6 @@ When('user clicks on remove icon for the annotation with key {string} present in
   editAnnotations.removeAnnotation(key);
 });
 
-Then('number of Annotations remains same in side bar details', () => {
-  // TODO: implement step
-});
-
-Then('number of Annotations decreased to {string} in side bar details', (message: string) => {
-  cy.log(message);
-  // TODO: implement step
-});
-
-Then('message should display as {string}', (message: string) => {
-  cy.log(message);
-  // TODO: implement step
-});
-
-Then('another message should display as {string}', (message: string) => {
-  cy.log(message);
-  // TODO: implement step
-});
-
-Then('updated service is present in side bar', () => {
-  // TODO: implement step
-});
-
-Then('updated service should not display in side bar', () => {
-  // TODO: implement step
-});
-
 Then('error message displays as {string}', (errorMessage: string) => {
   cy.get('div[aria-label="Danger Alert"] div.co-pre-line').should('contain.text', errorMessage);
 });
@@ -260,6 +192,86 @@ When('user clicks save button on yaml page', () => {
   cy.get('#save-changes').click();
 });
 
-When('user clicks cancel button on Edit Health Checks page', (buttonName: string) => {
+When('user clicks cancel button on {string} page', (pageName: string) => {
+  cy.pageTitleShouldContain(pageName);
   cy.byLegacyTestID('reset-button').click();
+});
+
+When('user selects the {string} option from Application drop down', () => {
+  
+});
+
+When('user modifies the Yaml file of the Service details page', () => {
+  
+});
+
+When('user enters {string} into the Application Name text box', (appName: string) => {
+
+});
+
+Given('number of annotations are {string} present in side bar - details tab- annotation section', (a: string) => {
+  cy.log(a)
+});
+
+Given('number of annotations are {string} present in side bar - details tab', (a: string) => {
+  cy.log(a)
+});
+
+When('user removes the label {string} from exisitng labels list in {string} modal', (a: string, b: string) => {
+  cy.log(a, b,)
+});
+
+When('user clicks on {string} icon for the annotation with key {string} present in {string} modal', (a: string, b: string, c: string) => {
+  cy.log(a, b, c)
+});
+
+When('user clicks {string} button on the {string} modal', (a: string, b: string) => {
+  cy.log(a, b,)
+});
+
+When('user modifies the Yaml file of the Revision details pagex', () => {
+  // TODO: implement step
+});
+
+When('user clicks save button on the Edit Service Page', () => {
+  // TODO: implement step
+});
+
+When('user selects the {string} from {string} drop down present in {string} modal', (a: string, b: string, c: string) => {
+ cy.log(a, b, c)
+});
+
+When('user selects the {string} option from {string} drop down present in {string} modal', (a: string, b: string, c: string) => {
+ cy.log(a, b, c)
+});
+
+When('user selects the {string} option from {string} drop down present in {string} modal', (a: string, b: string, c: string) => {
+  cy.log(a, b, c);
+});
+
+Then('number of Annotations remains same in side bar details', () => {
+  // TODO: implement step
+});
+
+Then('number of Annotations decreased to {string} in side bar details', (message: string) => {
+  cy.log(message);
+  // TODO: implement step
+});
+
+Then('message should display as {string}', (message: string) => {
+  cy.log(message);
+  // TODO: implement step
+});
+
+Then('another message should display as {string}', (message: string) => {
+  cy.log(message);
+  // TODO: implement step
+});
+
+Then('updated service is present in side bar', () => {
+  // TODO: implement step
+});
+
+Then('updated service should not display in side bar', () => {
+  // TODO: implement step
 });

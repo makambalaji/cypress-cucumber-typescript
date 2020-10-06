@@ -129,7 +129,7 @@ Scenario Outline: Update the service to new application group : Kn-04-TC06
    Given user is at the Topology page
    When user selects "Edit Application Grouping" context menu option of knative service "nodejs-ex-git"
    And user selects the "Create Application" option from "application" drop down present in "Edit Application Grouping" modal
-   And user enters "openshift-app" into the "Application Name" text box
+   And user enters "openshift-app" into the Application Name text box
    And user clicks the save button on the "Edit Application Grouping" modal
    And user searches for application name "openshift-app" 
    And user clicks on "openshift-app" on topology page 
@@ -153,7 +153,7 @@ Scenario: Set traffic distribution less than 100% for the Revisions of the knati
    Given user created another revision "nodejs-ex-git-1" for knative Service "nodejs-ex-git"
    And user is at the Topology page 
    When user selects "Set Traffic Distribution" context menu option of knative service "nodejs-ex-git"
-   And user enters "25" into the "Split" text box
+   And user enters "25" into the Split text box of new revision
    And user clicks on Add Revision button present in Set Traffic Distribution modal
    And user enters "50" into the Split text box of new revision
    And user selects another revision from Revision drop down
@@ -166,7 +166,7 @@ Scenario: Set traffic distribution equal to 100% for the Revisions of the knativ
    Given user created another revision "nodejs-ex-git-1" for knative Service "nodejs-ex-git"
    And user is at the Topology page
    When user selects "Set Traffic Distribution" context menu option of knative service "nodejs-ex-git"
-   And user enters "50" into the "Split" text box
+   And user enters "50" into the Split text box of new revision
    And user clicks on Add Revision button present in Set Traffic Distribution modal
    And user enters "50" into the Split text box of new revision
    And user selects another revision from Revision drop down
@@ -177,7 +177,7 @@ Scenario: Set traffic distribution equal to 100% for the Revisions of the knativ
 Scenario: Perform cancel opeartion on Edit Health Checks for a service : Kn-04-TC10
    Given user is at the Topology page
    When user selects "Edit Health Checks" context menu option of knative service "nodejs-ex-git"
-   And user clicks cancel button on Edit Health Checks page
+   And user clicks cancel button on "Edit Health Checks" page
    Then user will be redirected to Topology page
 
 
@@ -198,7 +198,7 @@ Scenario: Perform cancel opeartion on Edit NameOfWorkload for a service : Kn-04-
 Scenario: Edit NameOfWorkload for a service [TBD] : Kn-04-TC20
    Given user is at the Topology page
    When user selects "Edit nodejs-ex-git" context menu option of knative service "nodejs-ex-git"
-   And user selects the "Application -1" option from "Application" drop down
+   And user selects the "Application -1" option from Application drop down
    And user clicks save button on the Edit Service Page
 
 

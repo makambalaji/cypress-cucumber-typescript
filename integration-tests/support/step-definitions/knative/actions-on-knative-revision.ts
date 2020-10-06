@@ -60,7 +60,7 @@ When('user clicks on Details tab', () => {
 });
 
 When('user modifies the Yaml file of the Revision details page', () => {
-  // TODO: implement step
+  
 });
 
 When('user clicks {string} button on Revision Yaml page', (a: string) => {
@@ -88,7 +88,8 @@ Then('user can see the label {string} in the Details tab of the Sidebar of {stri
 });
 
 Then('key, value columns are displayed with respecitve text fields', () => {
-  // TODO: implement step
+  cy.get('input[placeholder="key"]').should('be.greaterThan', 1);
+  cy.get('input[placeholder="value"]').should('be.greaterThan', 1);
 });
 
 Then('Add more link is enabled', () => {

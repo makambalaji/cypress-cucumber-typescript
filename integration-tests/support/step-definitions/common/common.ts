@@ -13,7 +13,7 @@ Given('user is at administrator perspective', () => {
 Given('user has installed knative Apache camel operator', () => {
   perspective.switchTo(switchPerspective.Administrator);
   operatorsPage.navigateToInstalloperatorsPage();
-  operatorsPage.verifyInstalledOperator('Camel');
+  operatorsPage.verifyInstalledOperator('Knative');
 });
 
 Given('user is at developer perspective', () => {

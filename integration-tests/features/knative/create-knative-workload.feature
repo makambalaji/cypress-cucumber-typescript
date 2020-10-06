@@ -56,7 +56,7 @@ Examples:
 
 
 @regression
-Scenario Outline: Create knative workload from Container image card on Add page : 
+Scenario Outline: Create knative workload from Container image card on Add page : Kn-02-TC02
    Given user is on "<form_name>" form
    When user enters External registry image name as "<image_name>"
    And user enters workload name as "<workload_name>"
@@ -71,7 +71,7 @@ Examples:
 
 
 @regression
-Scenario Outline: Create a workload from Docker file card on Add page :Kn-01-TC03
+Scenario Outline: Create a workload from Docker file card on Add page :Kn-02-TC03
    Given user is on "Import from Dockerfile" form
    When user enters Docker url as "<docker_git_url>"
    And user selects resource type as "Knative Service"
@@ -85,7 +85,7 @@ Examples:
 
 
 @regression
-Scenario: Create a workload from DevCatalog BuilderImages card on Add page : Kn-01-TC04
+Scenario: Create a workload from DevCatalog BuilderImages card on Add page : Kn-02-TC04
    Given user is on "Developer Catalog" form
    And builder images are displayed
    When user searches and selects the "node" card

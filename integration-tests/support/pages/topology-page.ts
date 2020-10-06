@@ -183,6 +183,9 @@ export const topologyPage = {
     clickOnKnativeRevision:() => {
 
     },
+    clickOnSinkBinding:() => {
+        cy.get('g.odc-base-node__label').should('be.visible').contains('sink-binding').click({force:true});
+    },
     rightClickOnKnativeRevision:() => {
         cy.byLegacyTestID("base-node-handler").find('g.odc-resource-icon').trigger('contextmenu', {force: true});
     },

@@ -20,8 +20,21 @@ When('user selects Template card {string} from catalog page', (cardName: string)
   catalogPage.selectCardInCatalog(cardName);
 });
 
+When('user selects Builder Image card {string} from catalog page', (cardName: string) => {
+  cy.get(catalogPageObj.catalogTypes.builderImage).should('be.checked');
+  catalogPage.selectCardInCatalog(cardName);
+});
+
+When('user clicks Create Application button on side bar', () => {
+  cy.get(catalogPageObj.sidePane.createApplication).scrollIntoView().click();
+});
+
+When('user enters Git Repo url in s2i builder image page as {string}', (gitRepoUrl: string) => {
+  cy.get(catalogPageObj.s2I.gitRepoUrl).type(gitRepoUrl);
+});
+
 When('user clicks create button on Instantiate Template page with default values', () => {
-  cy.get('button[type="submit"]').scrollIntoView().click();
+  cy.get(catalogPageObj.sidePane.instantiateTemplate).scrollIntoView().click();
 });
 
 Then('user is ale to see Operator Backed, Helm Charts, Builder Image, Template, Service Class types are not selected by default', () => {

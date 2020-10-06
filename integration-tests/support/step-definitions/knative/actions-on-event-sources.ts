@@ -2,15 +2,9 @@ import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import { topologyPage, topologySidePane } from '../../pages/topology-page';
 import { moveSink, modal } from '../../pages/modal';
 import { eventSourcesPage } from '../../pages/add-flow/eventSource-page';
-import { naviagteTo } from '../../pages/app';
+import { naviagteTo, app } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
 
-Given('event source {string} is higlighted on topology page', (eventSourceName: string) => {
-  naviagteTo(devNavigationMenu.Add);
-  eventSourcesPage.createSinkBinding(eventSourceName);
-  topologyPage.search(eventSourceName);
-  cy.get('.is-filtered').should('be.visible');
-});
 
 Given('knative service, event source and sink connector are present in topology page', () => {
   cy.get('[data-type="event-source"]').should('be.visible');
@@ -47,12 +41,14 @@ Then('modal displays with the header name {string}', (title: string) => {
 When('user selects the Delete option on {string} modal', (modalTitle: string) => {
   cy.alertTitleShouldContain(modalTitle);
   modal.clicKDelete();
+  app.waitForLoad();
 });
 
 Then('event source {string} will not be displayed in topology page', (eventSourceName: string)=> {
   naviagteTo(devNavigationMenu.Topology);
   topologyPage.search(eventSourceName);
-  cy.get('[data-type="event-source"]').should('not.be.visible');
+  cy.reload();
+  cy.get('[data-type="event-source"]', {timeout: 50000}).should('not.be.visible');
 });
 
 Then('Resource dropdown is displayed in Move Sink modal', () => {

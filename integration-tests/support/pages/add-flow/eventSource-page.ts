@@ -19,6 +19,16 @@ export const eventSourceObj = {
       name: '[data-test-id="application-form-app-name"]',
       resource: '#form-radiobutton-sinkType-resource-field',
       uri: '#form-radiobutton-sinkType-uri-field',
+      notifierHeader: 'div[aria-label="Default Alert"] h4',
+      notifierMessage: 'div[aria-label="Default Alert"] div.pf-c-alert__description',
+    },
+    pingSource: {
+      data: '#form-input-data-pingsource-jsonData-field',
+      schedule: '#form-input-data-pingsource-schedule-field',
+      name: '[data-test-id="application-form-app-name"]',
+    },
+    containerImage: {
+      image: '[data-test-id="container-image-field"]',
     },
   }
 
@@ -29,7 +39,7 @@ export const eventSourcesPage = {
     verifyEventSourceType: (eventSourceName: string) => {
       cy.get(`button[aria-label="${eventSourceName}"]`).should('be.visible');
     },
-    selectEventSourceType: (eventSourceName: string) => {
+    clickEventSourceType: (eventSourceName: string) => {
       app.waitForLoad();
       cy.get(`button[aria-label="${eventSourceName}"]`).click();
     },
@@ -50,7 +60,7 @@ export const eventSourcesPage = {
     enterEventSourceName:(eventSourceName: string) => cy.get(eventSourceObj.sinkBinding.name).clear().type(eventSourceName),
     createSinkBinding:(eventSourceName: string, apiVersion:string = 'batch/v1', kind:string = 'Job') => {
       addPage.selectCardFromOptions(addOptions.EventSource);
-      eventSourcesPage.selectEventSourceType("Sink Binding");
+      eventSourcesPage.clickEventSourceType("Sink Binding");
       cy.get(eventSourceObj.sinkBinding.apiVersion).type(apiVersion);
       cy.get(eventSourceObj.sinkBinding.kind).type(kind);
       cy.get(eventSourceObj.sinkBinding.resource).click();
@@ -60,7 +70,7 @@ export const eventSourcesPage = {
     },
     createEventSource:(eventSourceName: string, apiVersion:string = 'batch/v1', kind:string = 'Job') => {
       addPage.selectCardFromOptions(addOptions.EventSource);
-      eventSourcesPage.selectEventSourceType(eventSourceName);
+      eventSourcesPage.clickEventSourceType(eventSourceName);
       cy.get(eventSourceObj.sinkBinding.apiVersion).type(apiVersion);
       cy.get(eventSourceObj.sinkBinding.kind).type(kind);
       eventSourcesPage.clickCreate();

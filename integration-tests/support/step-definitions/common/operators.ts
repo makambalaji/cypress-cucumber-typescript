@@ -135,7 +135,7 @@ When('user clicks Create knative Eventing button present in knative Eventing tab
 });
 
 When('user clicks create button', () => {
-  cy.get('[type="submit"]').click();
+  cy.get('button[type="submit"]').click();
 });
 
 When('user search and installs the knative Camel operator with default values', () => {

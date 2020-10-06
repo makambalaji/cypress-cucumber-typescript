@@ -41,6 +41,7 @@ Scenario: Filter the catalog using GroupBy option
     Then user is able to see cards with name contains "node"
 
 
+@smoke
 Scenario: Create the workload using template
     Given user is at Developer Catlog page
     When user selects "Template" option from Type section
@@ -48,14 +49,19 @@ Scenario: Create the workload using template
     And user clicks Instantiate Template button on side bar
     And user enters Name as "php-one" in Instantiate Template page
     And user clicks create button on Instantiate Template page with default values
-    And user will be redirected to Topology page
+    Then user will be redirected to Topology page
     And user is able to see workload "php-one" in topology page
 
 
 Scenario: Create the workload using Builder Image
     Given user is at Developer Catlog page
     When user selects "Builder Image" option from Type section
-    Then user is able to see cards with name contains "node"
+    And user selects Builder Image card "Node.js" from catalog page
+    And user clicks Create Application button on side bar
+    And user enters Git Repo url in s2i builder image page as "https://github.com/sclorg/nodejs-ex.git"
+    And user clicks create button
+    Then user will be redirected to Topology page
+    And user is able to see workload "nodejs-ex-git" in topology page 
 
 
 @manual
