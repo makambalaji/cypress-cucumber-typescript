@@ -17,7 +17,7 @@ export const addPageObj = {
     unableToDetectBuilderImage: '[aria-label="Warning Alert"]',
   },
   pipeline: {
-    infoMessage: '[aria-label="Info Alert"]',
+    infoMessage: '[aria-label="Info Alert"] h4',
     addPipeline: '#form-checkbox-pipeline-enabled-field',
   },
   resources: {
@@ -79,9 +79,8 @@ export const addPage = {
   unselectRoute:() => cy.get(addPageObj.advancedOptions.createRoute).uncheck(),
   verifyNoWorkLoadsText:(text: string) => cy.get('h2.co-hint-block__title').should('contain.text', text),
   verifyTitle: (title: string) => cy.pageTitleShouldContain(title),
-  verifyPipelinesSection: (message: string) => {
-    cy.get(addPageObj.sectionTitle).contains('Pipelines').scrollIntoView().should('be.visible');
-    cy.get(addPageObj.pipeline.infoMessage).should('have.text', message);
+  verifyPipelineInfoMessage: (message: string) => {
+    cy.get(addPageObj.pipeline.infoMessage).should('contain.text', message);
   },
   verifyValidatedMessage:() => cy.get(addPageObj.gitSection.validatedMessage).should('have.text', 'Validated'),
   verifyBuilderImageDetectedMessage:() => cy.get(addPageObj.builderSection.builderImageDetected).should('be.visible'),
@@ -89,7 +88,7 @@ export const addPage = {
   enterGitUrl: (gitUrl: string) => {
     cy.get(addPageObj.gitRepoUrl).clear().type(gitUrl);
   },
-  verifyPipelineCheckBox: () => cy.get(addPageObj.pipeline.addPipeline).should('be.visible'),
+  verifyPipelineCheckBox: () => cy.get(addPageObj.pipeline.addPipeline).scrollIntoView().should('be.visible'),
   enterAppName:(appName: string) => {
     cy.get(addPageObj.appName).then(($el) => {
       if($el.prop("tagName").includes('button')) {
@@ -255,7 +254,7 @@ export const addPage = {
   enterBuildConfigEnvName: (envName:string) =>   cy.get(addPageObj.advancedOptions.buildConfig.envName).clear().type(envName),
   enterBuildConfigEnvValue: (envValue: string) =>   cy.get(addPageObj.advancedOptions.buildConfig.envValue).clear().type(envValue),
   verifyDeploymentOptionIsChecked: () => {
-    cy.get('#form-checkbox-deployment-triggers-image-field').should('be.checked');
+    cy.get(addPageObj.advancedOptions.deployment.deploymentTriggerImage).should('be.checked');
   },
   enterDeploymentEnvName: (envName:string) =>   cy.get(addPageObj.advancedOptions.deployment.envName).clear().type(envName),
   enterDeploymentEnvValue: (envValue: string) =>   cy.get(addPageObj.advancedOptions.deployment.envValue).clear().type(envValue),

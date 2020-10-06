@@ -5,11 +5,11 @@ Background:
    Given user has installed OpenShift Pipelines operator
    And user is at developer perspective
    And user has selected namespace "aut-pipelines-add-options"
+   And user is at Add page
 
 
 @regression
 Scenario: Pipelines section on git form: P-01-TC03
-   Given user is at Add page
    When user clicks From Git card on the Add page
    Then user will be redirected to Import from git form
    And pipeline section is displayed with message "Select a builder image and resource to see if there is a pipeline template available for this runtime."
@@ -17,7 +17,6 @@ Scenario: Pipelines section on git form: P-01-TC03
 
 @regression
 Scenario: Pipelines section on docker file : P-01-TC04
-   Given user is at Add page
    When user clicks From Dockerfile card on the Add page
    Then user will be redirected to Import from Dockerfile form
    And Add pipeline section is displayed
@@ -69,11 +68,11 @@ Examples:
 @regression
 Scenario Outline: Create a workload with pipeline from Docker file : P-02-TC04
    Given user is on Import from Docker file page
-   When user enters Git Repo url as "<docker_git_url>" 
+   When user enters Git Repo url in docker file as "<docker_git_url>" 
    And user selects pipeline option
    And user clicks Create button on Add page   
    Then user will be redirected to Topology page
-   And user is able to see workload "<pipeline_name>" in topology page
+   And user is able to see workload "<name>" in topology page
 
 Examples:
 | docker_git_url                         | name          |
@@ -85,7 +84,7 @@ Scenario Outline: Create a pipeline with s2i builder images : P-02-TC05
    Given user is at Developer Catalog form with builder images
    When user searches builder image "node" in developer catalog
    And user creates the application with the selected builder image
-   And user enters Git Repo url as "<git_url>" 
+   And user enters Git Repo url in builder image as "<git_url>" 
    And user selects pipeline option
    And user clicks Create button on Create Source-to-Image application
    Then user will be redirected to Topology page

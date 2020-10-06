@@ -24,7 +24,18 @@ Then('user will be redirected to Import from Dockerfile form', () => {
 });
 
 Then('pipeline section is displayed with message {string}', (message: string) => {
-  addPage.verifyPipelinesSection(message);
+  addPage.verifyPipelineInfoMessage(message);
+  addPage.clickCancel();
+});
+
+When('user enters Git Repo url in docker file as {string}', (gitRepoUrl: string) => {
+  addPage.enterGitUrl(gitRepoUrl);
+  addPage.verifyValidatedMessage();
+});
+
+When('user enters Git Repo url in builder image as {string}',(gitRepoUrl: string) => {
+  addPage.enterGitUrl(gitRepoUrl);
+  addPage.verifyValidatedMessage();
 });
 
 When('user clicks From Dockerfile card on the Add page', () => {
@@ -33,6 +44,7 @@ When('user clicks From Dockerfile card on the Add page', () => {
 
 Then('Add pipeline section is displayed', () => {
   addPage.verifyPipelineCheckBox();
+  addPage.clickCancel();
 });
 
 Given('user is at Import from git form', () => {

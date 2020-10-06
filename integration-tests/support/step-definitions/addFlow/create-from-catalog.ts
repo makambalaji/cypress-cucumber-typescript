@@ -34,7 +34,7 @@ When('user enters Git Repo url in s2i builder image page as {string}', (gitRepoU
 });
 
 When('user clicks create button on Instantiate Template page with default values', () => {
-  cy.get(catalogPageObj.sidePane.instantiateTemplate).scrollIntoView().click();
+  cy.get(catalogPageObj.create).scrollIntoView().click();
 });
 
 Then('user is ale to see Operator Backed, Helm Charts, Builder Image, Template, Service Class types are not selected by default', () => {

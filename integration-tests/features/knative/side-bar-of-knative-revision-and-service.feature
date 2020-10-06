@@ -9,14 +9,14 @@ Background:
 
 @regression, @smoke
 Scenario: side bar display for knative service : Kn-06-TC01
-    Given knative service named "nodejs-ex-git-1" is higlighted on topology page
+    Given user has created knative service "nodejs-ex-git"
     When user clicks on the knative service "nodejs-ex-git-1"
     Then side bar is displayed with heading name same as knative service name "nodejs-ex-git-1"
 
 
 @regression, @smoke
 Scenario: side bar details of knative Service : Kn-06-TC02
-    Given knative service named "nodejs-ex-git-1" is higlighted on topology page
+    Given user has created knative service "nodejs-ex-git"
     When user clicks on the knative service "nodejs-ex-git-1"
     Then side bar is displayed with heading name as "nodejs-ex-git-1"
     And Name, Namespace, Labels, Annotations, Created on, Owner fields displayed  in topology details
@@ -30,44 +30,44 @@ Scenario: side bar details of knative Service : Kn-06-TC02
 
 @regression, @smoke
 Scenario: side bar details of for knative Revision : Kn-05-TC01, Kn-05-TC02
-    Given knative service named "nodejs-ex-git-1" is higlighted on topology page
+    Given user has created knative service "nodejs-ex-git"
     When user clicks on the revision of knative service "nodejs-ex-git-1"
     Then side bar is displayed with heading name as "nodejs-ex-git-1"
     And Name, Namespace, Labels, Annotations, Created on, Owner fields displayed  in topology details
 
 
 Scenario: Resoruce details of knative revision in side bar : Kn-05-TC03
-   Given knative service named "nodejs-ex-git-1" is higlighted on topology page 
+   Given user has created knative service "nodejs-ex-git" 
    When user clicks on Resoruces section
 
 
 Scenario: links in side bar : Kn-05-TC04
-    Given knative service named "nodejs-ex-git-1" is higlighted on topology page
+    Given user has created knative service "nodejs-ex-git"
     When user clicks on the revision of knative service "nodejs-ex-git-1"
 
 
 @regression
 Scenario: Actions menu of knative revision in side bar: Kn-05-TC05
-    Given knative service named "nodejs-ex-git-1" is higlighted on topology page
+    Given user has created knative service "nodejs-ex-git"
     When user clicks on the revision of knative service "nodejs-ex-git-1"
     And user clicks on Actions dropdown in top right corner of side bar
     Then user able to see the options Edit Labels, Edit Annotations, Edit Revision, Delete Revision
 
 
 Scenario: Resoruce details of knative service in side bar : Kn-06-TC03
-    Given knative service named "nodejs-ex-git-1" is higlighted on topology page
+    Given user has created knative service "nodejs-ex-git"
     When user clicks on the knative service "nodejs-ex-git-1"
     And user clicks on Resoruces section
 
 
 Scenario: links in side bar : Kn-06-TC04
-    Given knative service named "nodejs-ex-git-1" is higlighted on topology page
+    Given user has created knative service "nodejs-ex-git"
     When user clicks on the revision of knative service "nodejs-ex-git-1"
 
 
 @regression
 Scenario: Actions menu of knative service in side bar: Kn-06-TC05
-    Given knative service named "nodejs-ex-git-1" is higlighted on topology page
+    Given user has created knative service "nodejs-ex-git"
     When user clicks on the knative service "nodejs-ex-git-1"
     And user clicks on Actions dropdown in top right corner of side bar
     Then user able to see the options like Edit Application Grouping, Set Traffic Distribution, Edit NameOfWorkLoad, Edit Health Checks, Edit Labels, Edit Annotations, Edit Service, Delete Service

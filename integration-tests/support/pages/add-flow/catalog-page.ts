@@ -8,6 +8,8 @@ export const catalogPageObj = {
     card: 'a.pf-c-card',
     groupBy: '[data-test-id="dropdown-button"]',
     cardType: 'span.pf-c-badge',
+    create: '[data-test-id="submit-button"]',
+    cancel: '[data-test-id="reset-button"]',
     catalogTypes: {
       operatorBacked: '[data-test="kind-cluster-service-version"]',
       helmCharts: '[data-test="kind-helm-chart"]',
@@ -61,9 +63,7 @@ export const catalogPageObj = {
       addPipeline: {
         pipelineCheckBox: '#form-checkbox-pipeline-enabled-field',
       },
-      createRoute: '#form-checkbox-route-create-field',
-      create: '[data-test-id="submit-button"]',
-      cancel: '[data-test-id="reset-button"]',
+      createRoute: '#form-checkbox-route-create-field'
     },
 }
 
