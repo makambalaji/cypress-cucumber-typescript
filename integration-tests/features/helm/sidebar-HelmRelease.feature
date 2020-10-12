@@ -66,6 +66,4 @@ Scenario: Routes link on the sidebar for the Helm Release: HR-10-TC07
 Scenario: Actions drop down on the side bar: HR-10-TC08
     Given user is on the topology sidebar of the helm release "nodejs-ex-k"
     When user clicks on the Actions drop down menu
-    Then user will see the "Upgrade" action item
-    And user will see the "Rollback" action item
-    And user will see the "Uninstall Helm Release" action item
+    Then user is able to see the actions dropdown menu with actions Upgrade, Rollback and Uninstall Helm Release

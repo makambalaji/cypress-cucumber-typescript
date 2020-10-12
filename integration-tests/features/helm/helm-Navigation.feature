@@ -40,6 +40,7 @@ Scenario: Install Helm Chart: HR-02-TC01, HR-02-TC03, HR-02-TC06
     And user searches for the "Nodejs Ex K v0.2.1" helm chart
     And user clicks on the "Nodejs Ex K v0.2.1" helm chart card
     And user clicks on the Install Helm Chart button on side bar
+    And user enters Release Name as "nodejs-example"
     And user clicks on the Install button
     Then user will be redirected to Topology page
     And Topology page have the helm chart workload "nodejs-example"

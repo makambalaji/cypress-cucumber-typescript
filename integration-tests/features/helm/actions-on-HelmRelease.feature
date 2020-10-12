@@ -32,7 +32,6 @@ Scenario: Perform Rollback action on Helm Release through Context Menu: HR-08-TC
     And user clicks on the "Rollback" action
     And user selects the version to Rollback
     And user clicks on the rollback button
-    # Then the helm release rollbacks to the version - this step is not displaying currently
     Then user will be redirected to Topology page
 
 
@@ -43,5 +42,4 @@ Scenario: Uninstall Helm Release through Context Menu: HR-08-TC04
     And user clicks on the "Uninstall Helm Release" action
     And user enters the release name
     And user clicks on the Uninstall button
-    # Then Helm release gets uninstalled - automatically navigating to Add page
     Then user will be redirected to Topology page with no workloads

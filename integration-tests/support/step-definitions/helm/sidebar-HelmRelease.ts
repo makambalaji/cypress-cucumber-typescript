@@ -37,6 +37,12 @@ Then('user will see the {string} action item', (actionItem: string) => {
   cy.byTestActionID(actionItem).should('be.visible');
 });
 
+Then('user is able to see the actions dropdown menu with actions Upgrade, Rollback and Uninstall Helm Release', () => {
+  cy.byTestActionID('Upgrade').should('be.visible');
+  cy.byTestActionID('Rollback').should('be.visible');
+  cy.byTestActionID('Uninstall Helm Release').should('be.visible');
+});
+
 When('user switches to the Resources tab', () => {
   // TODO: implement step
 });
