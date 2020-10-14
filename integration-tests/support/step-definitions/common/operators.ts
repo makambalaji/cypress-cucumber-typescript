@@ -66,7 +66,7 @@ Then('user will see a modal with title {string}', (operatorName: string) => {
 });
 
 Then('user will see a View Operator button', () => {
-  cy.get('[role="progressbar"]').should('not.be.visible');
+  cy.get('[role="progressbar"]', {timeout: 60000}).should('not.be.visible');
   cy.byButtonText('View Operator').should('be.visible');
 });
 

@@ -13,7 +13,7 @@ Given('user has creaeted two workloads {string} and {string}', (firstWorkload: s
 });
 
 When('user clicks node {string} to open the side bar', (componentNode) => {
-  cy.get('g.odc-base-node__label').should('be.visible').contains(componentNode).click({force:true});
+  topologyPage.clickOnNode(componentNode);
   topologySidePane.verify();
 });
 
@@ -22,7 +22,7 @@ When('user selects {string} option from Action menu', (actionMenuOption: string)
 });
 
 When('user enters key as {string}', (key: string) => {
-  cy.get('[data-test-id="pairs-list__add-btn"]').click();
+  cy.byLegacyTestID("pairs-list__add-btn").click();
   cy.get('input[placeholder="key"][value=""]').type(key);
 });
 
@@ -32,7 +32,7 @@ When('user enters value as name of the node {string} to which it will be associa
 });
 
 Then('user can see that two nodes are connected with dotted arrow', () => {
-  cy.get('[data-test-id="edge-handler"]').should('be.visible');
+  cy.byLegacyTestID("edge-handler").should('be.visible');
 });
 
 When('user scrolls over a node to see the arrow', () => {

@@ -18,7 +18,7 @@ Then('user will see the actions on context menu', () => {
 });
 
 When('user clicks on the helm release {string}', (helmReleaseName: string) => {
-  topologyPage.clickOnHelmRelease(helmReleaseName);
+  topologyPage.clickOnNode(helmReleaseName);
 });
 
 Then('user will see the sidebar for the helm release', () => {

@@ -3,7 +3,7 @@ import { upgradeHelmRelease, helmDetailsPage, rollBackHelmRelease, helmPage } fr
 import { topologyPage } from '../../pages/topology-page';
 
 When('user right clicks on the Helm Release {string} to open the context menu', (nodeName: string) => {
-  topologyPage.rightClickOnHelmRelease(nodeName);
+  topologyPage.rightClickOnNode(nodeName);
 });
 
 When('user clicks on the {string} action', (actionName: string) => {

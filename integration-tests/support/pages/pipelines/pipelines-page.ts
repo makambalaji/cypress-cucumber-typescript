@@ -202,7 +202,7 @@ export const startPipelineInPipelinsPage = {
       }
     });
   },
-  start:() => cy.get(pipelinesObj.startPipeline.start).click(),
+  clickStart:() => cy.get(pipelinesObj.startPipeline.start).click(),
   clickShowCredentialOptions:() => cy.byButtonText('Show Credential Options').click(),
   clickHideCredentialOptions:() => cy.byButtonText('Hide Credential Options').click(),
   addSecret:(secretName: string, serverUrl: string, userName:string, password: string, provider: string = 'Git Server', authenticationType: string = 'Basic Authentication') => {
@@ -213,7 +213,7 @@ export const startPipelineInPipelinsPage = {
     cy.get(pipelinesObj.startPipeline.advancedOptions.userName).type(userName);
     cy.get(pipelinesObj.startPipeline.advancedOptions.password).type(password);
     cy.get(pipelinesObj.startPipeline.advancedOptions.tickIcon).click();
-    cy.get(pipelinesObj.startPipeline.start).click();
+    startPipelineInPipelinsPage.clickStart();
   },
   verifyCreateSourceSecretSection:() => cy.get(pipelinesObj.startPipeline.advancedOptions.secretFormTitle).should('be.visible'),
   verifyFields:() => {

@@ -60,7 +60,7 @@ When('user checks the Helm Charts checkbox', () => {
 });
 
 When('user right clicks on the helm release {string}', (helmReleaseName: string) => {
-  topologyPage.rightClickOnHelmRelease(helmReleaseName);
+  topologyPage.rightClickOnNode(helmReleaseName);
 });
 
 Then('user is able to see the context menu with actions Upgrade, Rollback and Uninstall Helm Release', () => {

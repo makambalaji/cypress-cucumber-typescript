@@ -266,7 +266,8 @@ export const addPage = {
     gitUrl: string = "https://github.com/sclorg/nodejs-ex.git",
     componentName: string = "nodejs-ex-git",
     resourceType: string = "Deployment",
-    appName: string = "nodejs-ex-git-app"
+    appName: string = "nodejs-ex-git-app",
+    isPipelineSelected: boolean = false
   ) => {
     addPage.selectCardFromOptions(addOptions.Git);
     addPage.enterGitUrl(gitUrl);
@@ -280,6 +281,9 @@ export const addPage = {
     addPage.enterAppName(appName);
     addPage.enterComponentName(componentName);
     addPage.selectResource(resourceType);
+    if(isPipelineSelected === true) {
+      addPage.selectAddPipeline();
+    }
     addPage.clickCreate();
   },
   selectTargetPortForRouting: () => {

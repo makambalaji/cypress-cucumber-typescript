@@ -21,7 +21,7 @@ export const operatorsObj = {
     noOperatorFoundMessage: 'div.cos-status-box__title',
   },
   sidePane: {
-    install: 'a[data-test-id="operator-install-btn"]',
+    install: '[data-test-id="operator-install-btn"]',
     uninstall: '[data-test-id="operator-uninstall-btn"]',
   },
   alertDialog: '[role="dialog"]',
@@ -74,7 +74,7 @@ export const operatorsPage = {
     switch (opt) {
       case 'OpenShift Pipelines Operator':
       case operators.pipelineOperator: {
-        cy.byTestID('openshift-pipelines-operator-rh-redhat-operators-openshift-marketplace').click();
+        cy.byTestID('openshift-pipelines-operator-midstr-openshift-pipelines-operators-openshift-marketplace').click();
         break;
       }
       case 'OpenShift Serverless Operator':
@@ -113,7 +113,7 @@ export const operatorsPage = {
     cy.get(operatorsObj.alertDialog)
     .then(($sidePane) => {
       if ($sidePane.find(operatorsObj.sidePane.install).length) {
-        cy.get(operatorsObj.sidePane.install).click();
+        cy.get(operatorsObj.sidePane.install).click({force:true});
       }
       else {
         cy.log('Operator is already installed');

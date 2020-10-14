@@ -35,7 +35,7 @@ Given('user has created {string} event source', (eventSourceName: string) => {
 });
 
 When('user right clicks on the knative service {string}', (knativeServiceName: string) => {
-  topologyPage.rightClickOnKnativeService(knativeServiceName);
+  topologyPage.rightClickOnNode(knativeServiceName);
 });
 
 Then('user is able to see the options like Edit Application Grouping, Set Traffic Distribution, Edit Health Checks, Edit Labels, Edit Annotations, Edit Service, Delete Service, {string}',(knativeServiceName: string) => {
@@ -79,7 +79,7 @@ Given('user created another revision {string} for knative Service {string', (rev
 });
 
 When('user selects {string} context menu option of knative service {string}', (option: string, knativeServiceName: string) => {
-  topologyPage.rightClickOnKnativeService(knativeServiceName);
+  topologyPage.rightClickOnNode(knativeServiceName);
   topologyPage.selectContextMenuAction(option);
 });
 
@@ -92,7 +92,7 @@ Given('user created another revision {string} for knative Service {string}', (re
 });
 
 Given('number of annotations are {string} present in {string} service side bar details tab', (numOfAnnotations: string, serviceName: string) => {
-  topologyPage.clickOnKnativeService(serviceName);
+  topologyPage.clickOnNode(serviceName);
   topologySidePane.verify();
   topologySidePane.selectTab('Details');
   topologySidePane.verifyNumberOfAnnotations(numOfAnnotations);
@@ -125,14 +125,14 @@ When('user selects another revision from Revision drop down', () => {
 });
 
 Then('user will see the label {string} in {string} service side bar details', (label: string, serviceName: string) => {
-  topologyPage.clickOnKnativeService(serviceName);
+  topologyPage.clickOnNode(serviceName);
   topologySidePane.verify();
   topologySidePane.selectTab('Details');
   topologySidePane.verifyLabel(label);
 });
 
 Then('user will not see the label {string} in {string} service side bar details', (label: string, serviceName: string) => {
-  topologyPage.clickOnKnativeService(serviceName);
+  topologyPage.clickOnNode(serviceName);
   topologySidePane.verify();
   topologySidePane.selectTab('Details');
   topologySidePane.verifySection('Labels');
@@ -140,7 +140,7 @@ Then('user will not see the label {string} in {string} service side bar details'
 });
 
 Given('label {string} is added to the knative service {string}', (labelName: string, knativeServiceName: string) => {
-  topologyPage.rightClickOnKnativeService(knativeServiceName);
+  topologyPage.rightClickOnNode(knativeServiceName);
   topologyPage.selectContextMenuAction('Edit Labels');
   modal.isDisplayed();
   editLabels.enterLabel(labelName);
@@ -148,7 +148,7 @@ Given('label {string} is added to the knative service {string}', (labelName: str
 });
 
 Then('number of Annotations increased to {string} in {string} service side bar details', (numOfAnnotations: string, serviceName: string) => {
-  topologyPage.clickOnKnativeService(serviceName);
+  topologyPage.clickOnNode(serviceName);
   topologySidePane.verify();
   topologySidePane.selectTab('Details');
   topologySidePane.verifyNumberOfAnnotations(numOfAnnotations);
@@ -163,7 +163,7 @@ Then('error message displays as {string}', (errorMessage: string) => {
 });
 
 Then('number of routes should get increased in side bar - resources tab - routes section', () => {
-  topologyPage.clickOnKnativeService('nodejs-ex-git-1');
+  topologyPage.clickOnNode('nodejs-ex-git-1');
   topologySidePane.verify();
   topologySidePane.verifyTab('Resources');
   cy.get('[title="Route"]').should('have.length', 2);

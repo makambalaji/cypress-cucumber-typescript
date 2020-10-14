@@ -6,6 +6,7 @@ import { addOptions } from '../../constants/add';
 import { topologyPage, topologySidePane } from '../../pages/topology-page';
 import { pipelinesPage } from '../../pages/pipelines/pipelines-page';
 import { catalogPage } from '../../pages/add-flow/catalog-page';
+import { pipelineRunDetailsPage, pipelineRunDetailsObj } from '../../pages/pipelines/pipelineRun-details-page';
 
 Given('user is at Add page', () => {
   naviagteTo(menu.Add);
@@ -51,12 +52,30 @@ Given('user is at Import from git form', () => {
   addPage.selectCardFromOptions(addOptions.Git);
 });
 
+Given('pipeline {string} is executed for 5 times', (pipelineName: string) => {
+  pipelinesPage.search(pipelineName);
+  pipelinesPage.selectKebabMenu(pipelineName);
+  cy.byTestActionID('Start').click();
+  pipelineRunDetailsPage.verifyTitle();
+  pipelineRunDetailsPage.waitForTaskRunToComplete();
+  cy.selectActionsMenuOption('Rerun');
+  pipelineRunDetailsPage.waitForTaskRunToComplete();
+  cy.selectActionsMenuOption('Rerun');
+  pipelineRunDetailsPage.waitForTaskRunToComplete();
+  cy.selectActionsMenuOption('Rerun');
+  pipelineRunDetailsPage.waitForTaskRunToComplete();
+  cy.selectActionsMenuOption('Rerun');
+  pipelineRunDetailsPage.waitForTaskRunToComplete();
+  cy.get(pipelineRunDetailsObj.pipelineRunStatus).contains('Succeeded', {timeout: 50000});
+});
+
 When('user enters Git Repo url as {string}', (gitUrl: string) => {
   addPage.enterGitUrl(gitUrl);
 });
 
 Then('Add pipeline checkbox is displayed', () => {
   addPage.verifyPipelineCheckBox();
+  addPage.clickCancel();
 });
 
 When('user enters Name as {string} in General section', (name: string) => {

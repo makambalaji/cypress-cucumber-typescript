@@ -5,11 +5,11 @@ import { pipelineDetailsPage } from '../../pages/pipelines/pipelineDetails-page'
 import { pipelineRunDetailsPage} from '../../pages/pipelines/pipelineRun-details-page';
 import { naviagteTo } from '../../pages/app';
 import { devNavigationMenu } from '../../constants/global';
+import { topologySidePane } from '../../pages/topology-page';
 
 
 Given('pipeline run is available for {string}', (pipelineName: string) => {
-  // To Do
-  cy.log(pipelineName);
+    
 });
 
 Given('pipeline with task {string} is present on Pipelines page', (pipelineName: string) => {
@@ -47,19 +47,14 @@ Then('user will see {string} under Kebab menu', (option: string) => {
 
 Given('user is at pipeline details page with newly created pipeline {string}', (pipelineName: string) => {
   pipelinesPage.clickOncreatePipeline();
-  pipelinesPage.verifyPipelinesTableDisplay();
+  pipelineBuilderPage.createPipelineFromBuilderPage(pipelineName);
 });
 
 Given('pipeline {string} is present on Pipelines page', (pipelineName: string) => {
   pipelinesPage.clickOncreatePipeline();
   pipelineBuilderPage.createPipelineFromBuilderPage(pipelineName);
   naviagteTo(devNavigationMenu.Pipelines);
-});
-
-Given('pipeline {string} consists of task {string} without parameters and resources', (pipelineName: string, b: string) => {
-  pipelinesPage.clickOncreatePipeline();
-  pipelineBuilderPage.createPipelineFromBuilderPage(pipelineName);
-  naviagteTo(devNavigationMenu.Pipelines);
+  pipelinesPage.search(pipelineName);
 });
 
 When('user clicks pipeline name {string} on Pipelines page', (pipelineName: string) => {
@@ -100,6 +95,13 @@ Then('kebab menu displays with options Start, Add Trigger, Remove Trigger, Edit 
   cy.byTestActionID('Start').should('be.visible');
   cy.byTestActionID('Add Trigger').should('be.visible');
   cy.byTestActionID('Remove Trigger').should('be.visible');
+  cy.byTestActionID('Edit Pipeline').should('be.visible');
+  cy.byTestActionID('Delete Pipeline').should('be.visible');
+});
+
+Then('kebab menu displays with options Start, Add Trigger, Edit Pipeline, Delete Pipeline', () => {
+  cy.byTestActionID('Start').should('be.visible');
+  cy.byTestActionID('Add Trigger').should('be.visible');
   cy.byTestActionID('Edit Pipeline').should('be.visible');
   cy.byTestActionID('Delete Pipeline').should('be.visible');
 });
@@ -155,5 +157,5 @@ Then('user will be redirected to Pipeline Run Details page', () => {
 });
 
 Then('user is able to see pipeline run in topology side bar', () => {
-  // TO Do
+  topologySidePane.verifyPipelineRuns();
 });

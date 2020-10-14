@@ -1,107 +1,101 @@
-import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { pipelinesPage } from '../../pages/pipelines/pipelines-page';
-import { pipelineBuilderPage, pipelineBuilderObj } from '../../pages/pipelines/pipelineBuilder-page';
-import { pipelineDetailsPage } from '../../pages/pipelines/pipelineDetails-page';
-import { naviagteTo } from '../../pages/app';
-import { devNavigationMenu } from '../../constants/global'
+import { Given, When, Then } from "cypress-cucumber-preprocessor/steps";
+import { pipelinesPage } from "../../pages/pipelines/pipelines-page";
+import {
+  pipelineBuilderPage,
+  pipelineBuilderObj,
+} from "../../pages/pipelines/pipelineBuilder-page";
+import { pipelineDetailsPage } from "../../pages/pipelines/pipelineDetails-page";
+import { naviagteTo } from "../../pages/app";
+import { devNavigationMenu } from "../../constants/global";
 
-When('user clicks Create Pipeline button on Pipelines page', () => {
+When("user clicks Create Pipeline button on Pipelines page", () => {
   pipelinesPage.clickOncreatePipeline();
 });
 
-Then('user will be redirected to Pipeline Builder page', () => {
+Then("user will be redirected to Pipeline Builder page", () => {
   pipelineBuilderPage.verifyTitle();
 });
 
-Then('user is able to see pipeline name with default value {string}', (pipelineDefaultValue: string) => {
-  pipelineBuilderPage.verifyDefaultPipelineName(pipelineDefaultValue);
-});
+Then(
+  "user is able to see pipeline name with default value {string}",
+  (pipelineDefaultValue: string) => {
+    pipelineBuilderPage.verifyDefaultPipelineName(pipelineDefaultValue);
+  }
+);
 
-Then('Tasks, Paramters and Resources sections are displayed', () => {
+Then("Tasks, Paramters and Resources sections are displayed", () => {
   pipelineBuilderPage.verifySection();
 });
 
-Then('Edit Yaml link is enabled', () => {
-  cy.byButtonText('Edit YAML').should('be.enabled');
+Then("Edit Yaml link is enabled", () => {
+  cy.byButtonText("Edit YAML").should("be.enabled");
 });
 
-Then('Create button is in disabled state', () => {
-  cy.byLegacyTestID('submit-button').should('be.disabled');
+Then("Create button is in disabled state", () => {
+  cy.byLegacyTestID("submit-button").should("be.disabled");
 });
 
-Given('user is at Pipeline Builder page', () => {
+Given("user is at Pipeline Builder page", () => {
   naviagteTo(devNavigationMenu.Pipelines);
   pipelinesPage.clickOncreatePipeline();
   pipelineBuilderPage.verifyTitle();
 });
 
-When('user enters pipeline name as {string}', (pipelineName: string) => {
+When("user enters pipeline name as {string}", (pipelineName: string) => {
   pipelineBuilderPage.enterPipelineName(pipelineName);
 });
 
-When('user selects {string} from Task drop down', (taskName: string) => {
+When("user selects {string} from Task drop down", (taskName: string) => {
   pipelineBuilderPage.selectTask(taskName);
 });
 
-When('user adds another task {string} in parallel', (taskName: string) => {
-  // add mouser hover on task to select + button
+When("user adds another task {string} in parallel", (taskName: string) => {
   pipelineBuilderPage.seelctParallelTask(taskName);
-  pipelineBuilderPage.addResource('git resource');
+  pipelineBuilderPage.addResource("git resource");
   pipelineBuilderPage.clickOnTask(taskName);
   cy.get(pipelineBuilderObj.sidePane.inputResource).click();
-  cy.byTestDropDownMenu('git resource').click();
+  cy.byTestDropDownMenu("git resource").click();
   pipelineBuilderPage.clickCreateButton();
 });
 
-When('user clicks Create button on Pipeline Builder page', () => {
+When("user clicks Create button on Pipeline Builder page", () => {
   pipelineBuilderPage.clickCreateButton();
 });
 
-Then('user will be redirected to Pipeline Details page with header name {string}', (pipelineName: string) => {
-  pipelineDetailsPage.verifyTitle(pipelineName);
+Then(
+  "user will be redirected to Pipeline Details page with header name {string}",
+  (pipelineName: string) => {
+    pipelineDetailsPage.verifyTitle(pipelineName);
+  }
+);
+
+When("user adds another task {string} in series", (taskName: string) => {
+  pipelineBuilderPage.seelctSeriesTask(taskName);
+  pipelineBuilderPage.addResource("git resource");
+  pipelineBuilderPage.clickOnTask(taskName);
+  cy.get(pipelineBuilderObj.sidePane.inputResource).click();
+  cy.byTestDropDownMenu("git resource").click();
+  pipelineBuilderPage.clickCreateButton();
 });
 
-Then('tasks displayed parallel in pipelines section', () => {
-  
-});
-
-When('user adds another task {string} in series', (a: string) => {
-  cy.log(a);
+Then("tasks displayed serially in pipelines section", () => {
   // TODO: implement step
 });
 
-Then('tasks displayed serially in pipelines section', () => {
-  // TODO: implement step
-});
+When(
+  "user adds {string} resource with name {string} to the {string}",
+  (resourceType: string, resourceName: string) => {
+    pipelineBuilderPage.addResource(resourceName, resourceType);
+  }
+);
 
-When('user adds {string} resource with name {string} to the {string}', (resourceType: string, resourceName: string, taskName: string) => {
+When(
+  "user adds the parameter details like Name, Description and Default Value",
+  () => {
+    pipelineBuilderPage.addParameters("param-1", "description", "default");
+  }
+);
+
+Then("task details present in pipeline details section", () => {
   
-});
-
-When('user clicks {string} button on Pipeline Builder page', (buttonName: string) => {
-  cy.log(buttonName);
-});
-
-When('user adds the parameter details like Name, Description and Default Value', () => {
-
-});
-
-Then('task details present in pipeline details section', () => {
-
-});
-
-Then('parameter details displayed in parameters section', () => {
-
-});
-
-When('user clicks Edit YAML button', () => {
-  // manual step
-});
-
-When('user clicks Continue on Switch to YAML editor', () => {
-  // manual step
-});
-
-When('user clicks Create button on Pipeline Yaml page', () => {
-  // manual step  
 });

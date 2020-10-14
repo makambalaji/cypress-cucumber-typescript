@@ -1,5 +1,5 @@
 import { Given, When, Then } from "cypress-cucumber-preprocessor/steps";
-import { addPage, addPageObj } from "../../pages/add-flow/add-page";
+import { addPage } from "../../pages/add-flow/add-page";
 import { addOptions, buildConfigOptions } from "../../constants/add";
 import {
   topologyPage,
@@ -14,11 +14,12 @@ Given("user is at Import from git page", () => {
 When("user enters Git Repo url as {string}", (gitUrl: string) => {
   addPage.enterGitUrl(gitUrl);
   addPage.verifyValidatedMessage();
-  addPage.verifyBuilderImageDetectedMessage();
-  cy.get('[aria-label$="Alert"]').then(($el) => {
-    if ($el.length) {
+  cy.get('body').then(($el) => {
+    if ($el.find('[aria-label="Success Alert"]').length) {
+      cy.log('BUilder image detected');
     } else {
       addPage.enterGitUrl(gitUrl);
+      addPage.verifyBuilderImageDetectedMessage();
     }
   });
 });

@@ -29,6 +29,9 @@ export const pipelineRunsObj = {
 
 export const pipelineRunDetailsPage = {
     verifyTitle:() => cy.get(pipelineRunDetailsObj.details.sectionTitle).should('have.text', 'Pipeline Run Details'),
+    waitForTaskRunToComplete:() => {
+      pipelineRunDetailsPage.waitForTaskRunToComplete();
+    },
     verifyPipelineRunStatus:(status: string) => cy.get(pipelineRunDetailsObj.pipelineRunStatus).should('have.text', status),
     fieldDetails:(fieldName: string, expectedFieldValue: string) => cy.get(pipelineRunDetailsObj.details.pipelineRunDetails).contains(fieldName).next('dd').should('have.text', expectedFieldValue),
     selectFromActionsDropdown:(action: string) => {
@@ -41,8 +44,7 @@ export const pipelineRunDetailsPage = {
         }
         case 'Delete Pipeline Run': {
           cy.byTestActionID('Delete Pipeline Run').click();
-          cy.get('form').should('be.visible');
-          cy.byLegacyTestID('modal-title').should('contain.text','Delete Pipeline?');
+          cy.alertTitleShouldContain('Delete Pipeline?');
           break;
         }
         default: {
