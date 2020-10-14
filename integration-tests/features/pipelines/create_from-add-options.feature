@@ -122,7 +122,6 @@ Feature: Create Pipeline from Add Options
       And user clicks on workload "<node_name>"
       Then user can see sidebar opens with Resources tab selected by default
       And side bar is displayed with the pipelines section
-      And Start LastRun button is disabled
 
       Examples:
          | node_name     |

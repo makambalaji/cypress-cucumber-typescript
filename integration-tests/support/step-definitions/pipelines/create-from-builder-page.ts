@@ -96,6 +96,4 @@ When(
   }
 );
 
-Then("task details present in pipeline details section", () => {
-  
-});
+Then("task details present in pipeline details section", () => {});

@@ -1,27 +1,33 @@
-import { When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { projectNameSpace } from '../../pages/app';
-import { addPageObj } from '../../pages/add-flow/add-page';
+import { When, Then } from "cypress-cucumber-preprocessor/steps";
+import { projectNameSpace } from "../../pages/app";
+import { addPageObj } from "../../pages/add-flow/add-page";
 
-When('user enters project name as {string} in Create Project modal', (projectName: string) => {
-  projectNameSpace.enterProjectName(projectName);
-});
+When(
+  "user enters project name as {string} in Create Project modal",
+  (projectName: string) => {
+    projectNameSpace.enterProjectName(projectName);
+  }
+);
 
-When('user clicks Create button present in Create Project modal', () => {
+When("user clicks Create button present in Create Project modal", () => {
   projectNameSpace.clickCreateButton();
 });
-  
-Then('modal will get closed', () => {
+
+Then("modal will get closed", () => {
   projectNameSpace.verifyPopupClosed();
 });
 
-Then('topology page displays with message {string}', (message: string) => {
+Then("topology page displays with message {string}", (message: string) => {
   projectNameSpace.verifyMessage(message);
 });
 
-Then('topology page have cards from Add page', () => {
-  cy.get(addPageObj.cardTitle).should('be.visible');
+Then("topology page have cards from Add page", () => {
+  cy.get(addPageObj.cardTitle).should("be.visible");
 });
 
-When('user selects the Create Project option from Projects dropdown on top navigation bar', () => {
-  projectNameSpace.selectCreateProjectOption();
-});
+When(
+  "user selects the Create Project option from Projects dropdown on top navigation bar",
+  () => {
+    projectNameSpace.selectCreateProjectOption();
+  }
+);

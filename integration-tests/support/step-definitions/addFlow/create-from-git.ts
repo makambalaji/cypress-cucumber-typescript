@@ -14,9 +14,9 @@ Given("user is at Import from git page", () => {
 When("user enters Git Repo url as {string}", (gitUrl: string) => {
   addPage.enterGitUrl(gitUrl);
   addPage.verifyValidatedMessage();
-  cy.get('body').then(($el) => {
+  cy.get("body").then(($el) => {
     if ($el.find('[aria-label="Success Alert"]').length) {
-      cy.log('BUilder image detected');
+      cy.log("BUilder image detected");
     } else {
       addPage.enterGitUrl(gitUrl);
       addPage.verifyBuilderImageDetectedMessage();

@@ -1,10 +1,13 @@
-import { Then } from 'cypress-cucumber-preprocessor/steps';
-import { eventSourcesPage } from '../../pages/add-flow/eventSource-page';
+import { Then } from "cypress-cucumber-preprocessor/steps";
+import { eventSourcesPage } from "../../pages/add-flow/eventSource-page";
 
-Then('user will be redirected to page with header name {string}', (headerName: string) => {
-  cy.pageTitleShouldContain(headerName);
-});
+Then(
+  "user will be redirected to page with header name {string}",
+  (headerName: string) => {
+    cy.pageTitleShouldContain(headerName);
+  }
+);
 
-Then('user is able to see CamelSource event type', () => {
-  eventSourcesPage.verifyEventSourceType('Camel Source');
+Then("user is able to see CamelSource event type", () => {
+  eventSourcesPage.verifyEventSourceType("Camel Source");
 });

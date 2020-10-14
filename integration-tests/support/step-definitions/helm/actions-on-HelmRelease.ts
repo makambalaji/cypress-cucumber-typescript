@@ -1,53 +1,61 @@
-import { When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { upgradeHelmRelease, helmDetailsPage, rollBackHelmRelease, helmPage } from '../../pages/helm-page';
-import { topologyPage } from '../../pages/topology-page';
+import { When, Then } from "cypress-cucumber-preprocessor/steps";
+import {
+  upgradeHelmRelease,
+  helmDetailsPage,
+  rollBackHelmRelease,
+  helmPage,
+} from "../../pages/helm-page";
+import { topologyPage } from "../../pages/topology-page";
 
-When('user right clicks on the Helm Release {string} to open the context menu', (nodeName: string) => {
-  topologyPage.rightClickOnNode(nodeName);
-});
+When(
+  "user right clicks on the Helm Release {string} to open the context menu",
+  (nodeName: string) => {
+    topologyPage.rightClickOnNode(nodeName);
+  }
+);
 
-When('user clicks on the {string} action', (actionName: string) => {
+When("user clicks on the {string} action", (actionName: string) => {
   cy.byTestActionID(actionName).click();
 });
 
-When('user upgrades the chart Version', () => {
+When("user upgrades the chart Version", () => {
   upgradeHelmRelease.upgradeChartVersion();
 });
 
-When('user clicks on the upgrade button', () => {
+When("user clicks on the upgrade button", () => {
   upgradeHelmRelease.clickOnUpgrade();
 });
 
-Then('the helm release should get upgradaed', () => {
+Then("the helm release should get upgradaed", () => {
   helmDetailsPage.verifyTitle();
-  helmDetailsPage.verifyFieldValue('Chart Version', '0.1.1');
+  helmDetailsPage.verifyFieldValue("Chart Version", "0.1.1");
 });
 
-When('user selects the version to Rollback', () => {
+When("user selects the version to Rollback", () => {
   rollBackHelmRelease.selectRevision();
 });
 
-When('user clicks on the rollback button', () => {
+When("user clicks on the rollback button", () => {
   rollBackHelmRelease.clickOnRollBack();
 });
 
-Then('the helm release rollbacks to the version', () => {
-  helmDetailsPage.verifyFieldValue('Revision', '2');
+Then("the helm release rollbacks to the version", () => {
+  helmDetailsPage.verifyFieldValue("Revision", "2");
 });
 
-When('user enters the release name', () => {
+When("user enters the release name", () => {
   helmDetailsPage.enterReleaseNameInUninstallPopup();
 });
 
-When('user clicks on the Uninstall button', () => {
+When("user clicks on the Uninstall button", () => {
   helmDetailsPage.uninstallHelmRelease();
 });
 
-Then('Helm release gets uninstalled', () => {
+Then("Helm release gets uninstalled", () => {
   helmPage.verifyMessage();
 });
 
-Then('user will be redirected to Topology page with no workloads', () => {
+Then("user will be redirected to Topology page with no workloads", () => {
   topologyPage.verifyTitle();
-  topologyPage.verifyNoWorkLoadsText('No resources found');
+  topologyPage.verifyNoWorkLoadsText("No resources found");
 });

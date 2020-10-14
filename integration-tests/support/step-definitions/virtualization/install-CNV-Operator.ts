@@ -1,50 +1,59 @@
-import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { operatorsPage, operatorsObj } from '../../pages/operators-page';
-import { operators } from '../../constants/global';
-import { addPage } from '../../pages/add-flow/add-page';
+import { Given, When, Then } from "cypress-cucumber-preprocessor/steps";
+import { operatorsPage, operatorsObj } from "../../pages/operators-page";
+import { operators } from "../../constants/global";
+import { addPage } from "../../pages/add-flow/add-page";
 
-Given('user is at Installed Operator page', () => {
+Given("user is at Installed Operator page", () => {
   operatorsPage.navigateToInstalloperatorsPage();
 });
 
-Given('user has created the Hyperconverged Cluster', () => {
-  operatorsPage.verifyOperatorInNavigationMenu('Virtualization');
+Given("user has created the Hyperconverged Cluster", () => {
+  operatorsPage.verifyOperatorInNavigationMenu("Virtualization");
 });
 
-When('user clicks on the OpenShift Virtualization Operator card', () => {
+When("user clicks on the OpenShift Virtualization Operator card", () => {
   operatorsPage.selectOperator(operators.virtualizationOperator);
 });
 
-When('user installs the OpenShift Virtualization operator with default values', () => {
-  operatorsPage.verifySubscriptionPage('Container-native virtualization Operator');
-  operatorsPage.installOperator();
+When(
+  "user installs the OpenShift Virtualization operator with default values",
+  () => {
+    operatorsPage.verifySubscriptionPage(
+      "Container-native virtualization Operator"
+    );
+    operatorsPage.installOperator();
+  }
+);
+
+When("user clicks on OpenShift Virtualization Operator", () => {
+  cy.get(operatorsObj.installOperators.operatorsNameRow)
+    .contains("OpenShift Virtualization")
+    .click();
 });
 
-When('user clicks on OpenShift Virtualization Operator', () => {
-  cy.get(operatorsObj.installOperators.operatorsNameRow).contains('OpenShift Virtualization').click();
+When("user clicks on CNV Operator Deployment tab", () => {
+  cy.byLegacyTestID("horizontal-link-CNV Operator Deployment").click();
 });
 
-When('user clicks on CNV Operator Deployment tab', () => {
-  cy.byLegacyTestID('horizontal-link-CNV Operator Deployment').click();
+When("user clicks on the Create HyperConverged Cluster button", () => {
+  cy.byTestID("yaml-create").click();
+  operatorsPage.verifySubscriptionPage("CNV Operator Deployment");
 });
 
-When('user clicks on the Create HyperConverged Cluster button', () => {
-  cy.byTestID('yaml-create').click();
-  operatorsPage.verifySubscriptionPage('CNV Operator Deployment');
-});
-
-When('user clicks on Create button', () => {
+When("user clicks on Create button", () => {
   operatorsPage.clickOnCreate();
 });
 
-Then('user will see a HyperConverged Cluster created', () => {
-  cy.get('[data-test-operand-link="kubevirt-hyperconverged"]').should('be.visible');
+Then("user will see a HyperConverged Cluster created", () => {
+  cy.get('[data-test-operand-link="kubevirt-hyperconverged"]').should(
+    "be.visible"
+  );
 });
 
-Then('user will see Virtualization item under Workloads', () => {
-  operatorsPage.verifyOperatorInNavigationMenu('Virtualization');
+Then("user will see Virtualization item under Workloads", () => {
+  operatorsPage.verifyOperatorInNavigationMenu("Virtualization");
 });
 
-Then('user will see Import Virtual Machine Card on Add page', () => {
-  addPage.verifyCard('Import Virtual Machine');
-}); 
+Then("user will see Import Virtual Machine Card on Add page", () => {
+  addPage.verifyCard("Import Virtual Machine");
+});

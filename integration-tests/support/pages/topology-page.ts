@@ -305,7 +305,9 @@ export const topologySidePane = {
     cy.byLegacyTestID(resourceName).should("be.visible");
   },
   clickStartLastRun: () => {
-    cy.get('[role="dialog"] li.list-group-item.pipeline-overview div button').should('be.enabled').click();
+    cy.get('[role="dialog"] li.list-group-item.pipeline-overview div button')
+      .should("be.enabled")
+      .click();
   },
   verifyPipelineRuns: () => {
     cy.get("li.odc-pipeline-run-item").should("be.visible");

@@ -281,7 +281,7 @@ export const addPage = {
     addPage.enterAppName(appName);
     addPage.enterComponentName(componentName);
     addPage.selectResource(resourceType);
-    if(isPipelineSelected === true) {
+    if (isPipelineSelected === true) {
       addPage.selectAddPipeline();
     }
     addPage.clickCreate();

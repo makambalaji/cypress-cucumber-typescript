@@ -9,10 +9,10 @@ declare global {
   }
 }
 
-Cypress.Commands.add('byNodeName', (nodeName: string) => {
-    cy.get('g.odc-resource-icon').next('text').contains(nodeName);
-  });
+Cypress.Commands.add("byNodeName", (nodeName: string) => {
+  cy.get("g.odc-resource-icon").next("text").contains(nodeName);
+});
 
-Cypress.Commands.add('byAppGroupName', (appName: string) => {
-    cy.get(`[data-id="group:${appName}"] g.odc-application-group__label text`)
+Cypress.Commands.add("byAppGroupName", (appName: string) => {
+  cy.get(`[data-id="group:${appName}"] g.odc-application-group__label text`);
 });
