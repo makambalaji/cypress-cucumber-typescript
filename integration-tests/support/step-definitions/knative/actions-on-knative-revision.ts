@@ -40,9 +40,8 @@ Given("service should contain multiple revisions", () => {
 When(
   "user right clicks on the revision of knative service {string} to open the context menu",
   (serviceName: string) => {
-    cy.get('[data-test-id="base-node-handler"]', { timeout: 150000 }).should(
-      "be.visible"
-    );
+    cy.log(`Right click on the knative revision of service ${serviceName}`);
+    topologyPage.waitForKnativeRevision();
     topologyPage.rightClickOnKnativeRevision();
   }
 );
@@ -114,8 +113,13 @@ Then(
   }
 );
 
+Then("save button is disabled", () => {
+  modal.verifySaveButtonIsDisabled();
+  modal.clickCancel();
+});
+
 Then("save, cancel buttons are displayed", () => {
-  modal.verifySaveButtonIsDisplayed();
+  modal.verifyCancelButtonIsDisplayed();
   modal.verifySaveButtonIsDisplayed();
   modal.clickCancel();
 });

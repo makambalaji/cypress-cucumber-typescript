@@ -76,7 +76,7 @@ Given("user has selected namespace {string}", (projectName: string) => {
 Given("user is at namespace {string}", (projectName: string) => {
   perspective.switchTo(switchPerspective.Developer);
   perspective.skipGuidedTours();
-  project.selectProject(projectName);
+  project.selectOrCreateProject(projectName);
 });
 
 Given("user has installed OpenShift Serverless Operator", () => {

@@ -22,7 +22,7 @@ Feature: Triggers
 
     @regression
     Scenario: Variables section in Add Trigger modal details : P-09-TC02
-        Given pipeline "<pipeline_name>" is available with git resource
+        Given pipeline "git-trigger-one" is available with git resource
         And user is at Add Trigger modal
         When user selects the "github-pullreq" from Git Provider Type field
         And  user clicks on "show variables" link

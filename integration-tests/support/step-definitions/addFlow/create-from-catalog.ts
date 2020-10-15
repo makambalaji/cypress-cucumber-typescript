@@ -19,16 +19,18 @@ When(
 );
 
 When(
-  "user selects Template card {string} from catalog page",
+  "user searches and selects Template card {string} from catalog page",
   (cardName: string) => {
+    catalogPage.search(cardName);
     cy.get(catalogPageObj.catalogTypes.template).should("be.checked");
     catalogPage.selectCardInCatalog(cardName);
   }
 );
 
 When(
-  "user selects Builder Image card {string} from catalog page",
+  "user searches and selects Builder Image card {string} from catalog page",
   (cardName: string) => {
+    catalogPage.search(cardName);
     cy.get(catalogPageObj.catalogTypes.builderImage).should("be.checked");
     catalogPage.selectCardInCatalog(cardName);
   }

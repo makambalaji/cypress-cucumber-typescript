@@ -19,12 +19,13 @@ Feature: Perform actions on knative revision
    Scenario: Edit labels modal details : Kn-03-TC02
       Given user has created knative service "nodejs-ex-git"
       And user is at the Topology page
-      When user selects "Edit Labels" option from knative revision context menu
+      When user right clicks on the revision of knative service "nodejs-ex-git" to open the context menu
+      And user selects "Edit Labels" option from knative revision context menu
       Then modal with "Edit Labels" appears
-      And save, cancel buttons are displayed
+      And save button is disabled
 
 
-   @regression, @smoke
+   @regression, @smoke, @debug
    Scenario: Add new label to knative Revision: Kn-03-TC03
       Given user has created knative service "nodejs-ex-git"
       And user is at the Topology page
@@ -35,38 +36,41 @@ Feature: Perform actions on knative revision
       Then user can see the label "app-label" in the Details tab of the Sidebar of "nodejs-ex-git"
 
 
-   @regression
+   @regression, @debug
    Scenario: Remove label from knative Revision: Kn-03-TC04
       Given user has created knative service "nodejs-ex-git"
       And user is at the Topology page
-      When user selects "Edit Labels" option from knative revision context menu
+      When user right clicks on the revision of knative service "nodejs-ex-git" to open the context menu
+      And user selects "Edit Labels" option from knative revision context menu
       And user removes the label "app=label" from existing labels list in "Edit Labels" modal
       And user clicks the save button on the "Edit Labels" modal
       Then user will not see the label "app=label" in "nodejs-ex-git" service side bar details
 
 
-   @regression
+   @regression, @debug
    Scenario: Add labels to existing labels list and cancel the activity : Kn-03-TC05
       Given user has created knative service "nodejs-ex-git"
       And user is at the Topology page
-      When user selects "Edit Labels" option from knative revision context menu
+      When user right clicks on the revision of knative service "nodejs-ex-git" to open the context menu
+      And user selects "Edit Labels" option from knative revision context menu
       And user adds the label "app=label" to existing labels list in Edit Labels modal
       And user clicks cancel button on the "Edit Labels" modal
       Then user will not see the label "app=label" in "nodejs-ex-git" service side bar details
 
 
-   @regression
+   @regression, @debug
    Scenario: Edit Annotation modal details : Kn-03-TC06
       Given user has created knative service "nodejs-ex-git"
       And user is at the Topology page
-      When user selects "Edit Annotations" option from knative revision context menu
+      When user right clicks on the revision of knative service "nodejs-ex-git" to open the context menu
+      And user selects "Edit Annotations" option from knative revision context menu
       Then modal with "Edit Annotations" appears
       And key, value columns are displayed with respecitve text fields
       And Add more link is enabled
       And save, cancel buttons are displayed
 
 
-   @regression, @smoke
+   @regression, @smoke, @debug
    Scenario Outline: Add annotation to the existing annonations list : Kn-03-TC07
       Given user has created knative service "nodejs-ex-git"
       And user is at the Topology page
@@ -80,12 +84,13 @@ Feature: Perform actions on knative revision
       Then number of Annotations increased to "6" in revision side bar details of service "nodejs-ex-git"
 
 
-   @regression
+   @regression, @debug
    Scenario: perform cancel action on Edit Annotations : Kn-03-TC09
       Given user has created knative service "nodejs-ex-git"
       And user is at the Topology page
       And number of annotations are "6" present in side bar - details tab- annotation section
-      When user selects "Edit Annotations" option from knative revision context menu
+      When user right clicks on the revision of knative service "nodejs-ex-git" to open the context menu
+      And user selects "Edit Annotations" option from knative revision context menu
       And user clicks on "remove" icon for the annotation with key "serving.knative.dev/creator" present in "Edit Annotations" modal
       And user clicks cancel button on the "Edit Annotations" modal
       Then verify the number of Annotations equal to "6" in side bar details
@@ -95,7 +100,8 @@ Feature: Perform actions on knative revision
       Given user has created knative service "nodejs-ex-git"
       And user is at the Topology page
       And number of annotations are "6" present in side bar - details tab
-      When user selects "Edit Annotations" option from knative revision context menu
+      When user right clicks on the revision of knative service "nodejs-ex-git" to open the context menu
+      And user selects "Edit Annotations" option from knative revision context menu
       And user clicks on "remove" icon for the annotation with key "<key_name>" present in "Edit Annotations" modal
       And user clicks the save button on the "Edit Annotations" modal
       Then verify the number of Annotations decreased to "5" in side bar details
@@ -109,7 +115,8 @@ Feature: Perform actions on knative revision
    Scenario: Edit revision details page : Kn-03-TC10
       Given user has created knative service "nodejs-ex-git"
       And user is at the Topology page
-      When user selects "Edit Revision" option from knative revision context menu
+      When user right clicks on the revision of knative service "nodejs-ex-git" to open the context menu
+      And user selects "Edit Revision" option from knative revision context menu
       And user clicks on Details tab
       Then details tab displayed with Revision Details and Conditions sections
       And Revision details contains fields like Name, Namespace, Labels, Annotations, Created At, Owner
@@ -119,7 +126,8 @@ Feature: Perform actions on knative revision
    Scenario: Update the revision detials : Kn-03-TC11
       Given user has created knative service "nodejs-ex-git"
       And user is at the Topology page
-      When user selects "Edit Revision" option from knative revision context menu
+      When user right clicks on the revision of knative service "nodejs-ex-git" to open the context menu
+      And user selects "Edit Revision" option from knative revision context menu
       And user modifies the Yaml file of the Revision details page
       And user clicks "save" button on Revision Yaml page
       Then the message display as "{revision name} has been updated to version {nnnnnn}"
@@ -131,7 +139,8 @@ Feature: Perform actions on knative revision
       Given user has created knative service "nodejs-ex-git"
       And user is at the Topology page
       And service should contain multiple revisions
-      When user selects "Delete Revision" option from knative revision context menu
+      When user right clicks on the revision of knative service "nodejs-ex-git" to open the context menu
+      And user selects "Delete Revision" option from knative revision context menu
       Then modal with "Update the traffic distribution among the remaining Revisions" appears
       And modal should get closed on clicking OK button
 
@@ -141,7 +150,8 @@ Feature: Perform actions on knative revision
       Given user has created knative service "nodejs-ex-git"
       And user is at the Topology page
       And service should contain multiple revisions
-      When user selects "Delete Revision" option from knative revision context menu
+      When user right clicks on the revision of knative service "nodejs-ex-git" to open the context menu
+      And user selects "Delete Revision" option from knative revision context menu
       Then modal with "Update the traffic distribution among the remaining Revisions" appears
       And modal should get closed on clicking OK button
 

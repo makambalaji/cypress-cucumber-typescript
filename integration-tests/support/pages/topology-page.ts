@@ -226,6 +226,11 @@ export const topologyPage = {
       .find("g.odc-resource-icon")
       .trigger("contextmenu", { force: true });
   },
+  waitForKnativeRevision: () => {
+    cy.get('[data-test-id="base-node-handler"]', { timeout: 150000 }).should(
+      "be.visible"
+    );
+  },
 };
 
 export const topologySidePane = {

@@ -16,6 +16,9 @@ export const modal = {
   verifySaveButtonIsDisplayed: () => {
     cy.byTestID("confirm-action").should("be.visible");
   },
+  verifySaveButtonIsDisabled: () => {
+    cy.byTestID("confirm-action").should("be.disabled");
+  },
   verifyCancelButtonIsDisplayed: () => {
     cy.byLegacyTestID("modal-cancel-action").should("be.visible");
   },

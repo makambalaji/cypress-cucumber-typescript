@@ -35,6 +35,7 @@ Feature: Workspaces
         Then user will be redirected to Pipeline Run Details page
 
 
+    @ToDo
     Scenario: Start the pipeline with ConfigMap : P-12-TC04
         Given user created pipeline with workspace
         And user created Config Map using yaml "pipeline-configMap.yaml"
@@ -47,6 +48,7 @@ Feature: Workspaces
         Then user will be redirected to Pipeline Run Details page
 
 
+    @ToDo
     Scenario: Start the pipeline with Secret : P-12-TC05
         Given user created pipeline with workspace
         And user created Secret using yaml "pipeline-secret.yaml"
@@ -59,6 +61,7 @@ Feature: Workspaces
         Then user will be redirected to Pipeline Run Details page
 
 
+    @ToDo
     Scenario: Start the pipeline with PVC : P-12-TC06
         Given user created pipeline with workspace
         And user created Secret using yaml "pipeline-secret.yaml"
