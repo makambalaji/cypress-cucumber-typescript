@@ -43,3 +43,98 @@ Feature: Perform Actions on Helm Releases
         And user enters the release name
         And user clicks on the Uninstall button
         Then user will be redirected to Topology page with no workloads
+
+
+    @regression, @smoke, @debug
+    Scenario: Context menu options of the helm release workload: HR-05-TC01
+        Given user is at the Topology page
+        When user right clicks on the workload of Helm Release "nodejs-ex-k" to open the context menu
+        Then user is able to see the context menu with actions Start Rollout, Pause Rollouts, Edit Pod Count, Add Storage, Edit Health Checks, Edit Labels, Edit Annotations, Edit Deployment Config and Delete Deployment Config
+
+
+    @regression
+    Scenario: Start Rollout for the helm relase workload: HR-05-TC02
+        Given user is at the Topology page
+        When user right clicks on the workload of Helm Release "nodejs-ex-k" to open the context menu
+        And user clicks on the "Start Rollout" action
+        Then pod status updated as "Scaling to 0"
+        And pod status updated as "Scaling to 1"
+        And pod will be displayed in helm release
+
+
+    @regression
+    Scenario: Pause Rollout for the helm relase workload: HR-05-TC03
+        Given user is at the Topology page
+        When user right clicks on the workload of Helm Release "nodejs-ex-k" to open the context menu
+        And user clicks on the "Pause Rollout" action
+        And user right clicks on the workload of Helm Release "nodejs-ex-k" to open the context menu
+        Then Resume Rollout is displayed
+
+
+    @regression
+    Scenario: Edit Pod Count for the helm relase workload: HR-05-TC04
+        Given user is at the Topology page
+        When user right clicks on the workload of Helm Release "nodejs-ex-k" to open the context menu
+        And user clicks on the "Edit Pod Count" action
+        And user updates the pod count as "2" in Edit Pod count modal
+        And user clicks on Save in Edit Pod Count modal
+        Then Pod count displays as "2" for helm release workload "nodejs-ex-k"
+
+
+    @regression
+    Scenario: Add Storage to the helm relase workload: HR-05-TC05
+        Given user is at the Topology page
+        When user right clicks on the workload of Helm Release "nodejs-ex-k" to open the context menu
+        And user clicks on the "Add Storage" action
+        And user creates the new claim "my-storage-claim" with default storage class
+        And user enters the storage capacity as "2" GiB
+        And user enters the Mount Path as "path"
+        And user clicks Save button on Add Storage page
+        Then user redirects to deployment config detils page
+
+
+    @regression
+    Scenario: Edit Health Checks for the helm relase workload: HR-05-TC06
+        Given user is at the Topology page
+        When user right clicks on the workload of Helm Release "nodejs-ex-k" to open the context menu
+        And user clicks on the "Edit Health Checks" action
+        Then user redirects to Edit Health Checks page
+
+
+    @regression
+    Scenario: Edit Labels of the helm relase workload: HR-05-TC07
+        Given user is at the Topology page
+        When user right clicks on the workload of Helm Release "nodejs-ex-k" to open the context menu
+        And user clicks on the "Edit Labels" action
+        And user adds the label "app=label" to exisitng labels list in Edit Labels modal
+        And user clicks Save button on the Edit Labels modal
+        Then user verifies the label in side pane of the Helm Release workload "nodejs-ex-k"
+
+
+    @regression
+    Scenario: Edit Annotations of the helm relase workload: HR-05-TC08
+        Given user is at the Topology page
+        When user right clicks on the workload of Helm Release "nodejs-ex-k" to open the context menu
+        And user clicks on the "Edit Annotaions" action
+        And user adds the annotations
+        And user clicks Save button on the Edit Annotations modal
+        Then number of annotatoins increases in side pane of the Helm Release workload "nodejs-ex-k"
+
+
+    @regression, @manual
+    Scenario: Edit Deployment config of the helm relase workload: HR-05-TC09
+        Given user is at the Topology page
+        When user right clicks on the workload of Helm Release "nodejs-ex-k" to open the context menu
+        And user clicks on the "Edit Deployment Config" action
+        And user updates the yaml file
+        And user clicks Save button on the Deployment Config details page
+        Then number of annotatoins increases in side pane of the Helm Release workload "nodejs-ex-k"
+
+
+    @regression, @manual
+    Scenario: Delete Deployment config of the helm relase workload: HR-05-TC10
+        Given user is at the Topology page
+        When user right clicks on the workload of Helm Release "nodejs-ex-k" to open the context menu
+        And user clicks on the "Delete Deployment Config" action
+        And user clicks Delete button on Delete Deployment Config? modal
+        Then topology page displays with message "No resources found"

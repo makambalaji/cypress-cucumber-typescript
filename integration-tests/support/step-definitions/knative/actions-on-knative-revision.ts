@@ -127,6 +127,7 @@ Then("save, cancel buttons are displayed", () => {
 Then(
   "user can see the label {string} in the Details tab of the Sidebar of {string}",
   (label: string, serviceName: string) => {
+    cy.log(`knative revision of service ${serviceName}`);
     cy.byLegacyTestID("base-node-handler")
       .find("g.odc-resource-icon")
       .click({ force: true });

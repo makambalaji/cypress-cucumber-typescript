@@ -1,6 +1,7 @@
 import { displayOptions, nodeActions } from "../constants/topology";
 import { helmPage } from "./helm-page";
 import { app } from "./app";
+import { modal } from "./modal";
 
 export const topologyObj = {
   switcher: '[data-test-id="namespace-bar-dropdown"] a',
@@ -231,6 +232,11 @@ export const topologyPage = {
       "be.visible"
     );
   },
+  rightClickOnHelmWorkload: () => {
+    cy.byLegacyTestID("base-node-handler")
+      .find("circle")
+      .trigger("contextmenu", { force: true });
+  },
 };
 
 export const topologySidePane = {
@@ -284,10 +290,13 @@ export const topologySidePane = {
   },
   verifyLabel: (labelName: string) => {
     cy.get('dt[data-test-selector$="Labels"]').should("be.visible");
-    cy.byTestID("label-list")
-      .find("a")
+    cy.byButtonText("Edit").click();
+    modal.isDisplayed();
+    cy.get("span.tag-item__content")
       .contains(labelName)
+      .scrollIntoView()
       .should("be.visible");
+    // cy.byTestID("label-list").find("a").contains(labelName).should("be.visible");
   },
   verifyAnnotaiton: (annotationName: string) => {
     cy.byLegacyTestID("edit-annotations").click();

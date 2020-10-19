@@ -64,21 +64,24 @@ Feature: Navigations on Helm Chart
 
     @regression
     Scenario: Filter out failed Helm Charts: HR-11-TC03
-        Given user is at the Helm page
+        Given helm chart "Nodejs Ex K v0.2.1" is installed
+        And user is at the Helm page
         When user filters "Failed" helm charts
         Then helm charts with status "Failed" are listed
 
 
     @regression
     Scenario: Filter out other Helm charts : HR-11-TC04
-        Given user is at the Helm page
+        Given helm chart "Nodejs Ex K v0.2.1" is installed
+        And user is at the Helm page
         When user filters "Other" helm charts
         Then helm charts with status "Other" are listed
 
 
     @regression
     Scenario: Select all filters: HR-11-TC05
-        Given user is at the Helm page
+        Given helm chart "Nodejs Ex K v0.2.1" is installed
+        And user is at the Helm page
         When user filters "Deployed" helm charts
         And user filters "Failed" helm charts
         And user filters "Other" helm charts
@@ -89,16 +92,18 @@ Feature: Navigations on Helm Chart
 
     @regression
     Scenario: Clear all filters: HR-11-TC06
-        Given user has selected all filters
+        Given helm chart "Nodejs Ex K v0.2.1" is installed
+        And user has selected all filters
         When user clicks on the clear all filters button
         Then all filters selected will get removed
 
 
     @regression
     Scenario: Search for the Helm Chart: HR-11-TC07
-        Given user is at the Helm page
-        When user searches for a helm chart "Nodejs Ex K v0.2.1"
-        Then the helm chart "Nodejs Ex K v0.2.1" will be shown
+        Given helm chart "Nodejs Ex K v0.2.1" is installed
+        And user is at the Helm page
+        When user searches for a helm chart "nodejs-ex-k"
+        Then the helm chart "nodejs-ex-k" will be shown
 
 
     Scenario: Search for the not available Helm Chart

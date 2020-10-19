@@ -5,7 +5,7 @@ import { addPage } from "./add-flow/add-page";
 import { addOptions } from "../constants/add";
 
 export const helmPageObj = {
-  noHelmReleasesMessage: "p.odc-helm-release__empty-list__title",
+  noHelmReleasesMessage: "h3",
   search: '[data-test-id="item-filter"]',
   table: '[role="grid"]',
   resourcesTab: '[data-test-id="horizontal-link-Resources"]',
@@ -60,15 +60,15 @@ export const helmPage = {
     cy.get(helmPageObj.filterDropdown).click();
     switch (filterName) {
       case "Deployed": {
-        cy.get("#deployed").check();
+        cy.get("#deployed").click();
         break;
       }
       case "Failed": {
-        cy.get("#failed").check();
+        cy.get("#failed").click();
         break;
       }
       case "Other": {
-        cy.get("#other").check();
+        cy.get("#other").click();
         break;
       }
       default: {
@@ -123,7 +123,7 @@ export const helmDetailsPage = {
   },
   uninstallHelmRelease: () => {
     cy.alertTitleShouldContain("Uninstall Helm Release?");
-    cy.byLegacyTestID("confirm-action").should("be.enabled").click();
+    cy.byTestID("confirm-action").should("be.enabled").click();
   },
   enterReleaseNameInUninstallPopup: (releaseName: string = "nodejs-ex-k") => {
     cy.alertTitleShouldContain("Uninstall Helm Release?");
