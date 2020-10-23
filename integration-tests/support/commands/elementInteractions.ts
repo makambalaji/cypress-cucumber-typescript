@@ -45,6 +45,6 @@ Cypress.Commands.add(
   (selector: string, dropdownText: string) => {
     cy.get(selector).click();
     cy.byLegacyTestID("dropdown-text-filter").type(dropdownText);
-    cy.get('li[role="option"]').contains(dropdownText).click();
+    cy.get('ul[role="listbox"]').find('li').contains(dropdownText).click();
   }
 );

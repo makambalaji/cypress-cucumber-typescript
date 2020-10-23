@@ -37,7 +37,7 @@ When(
 );
 
 When("user clicks Create Application button on side bar", () => {
-  cy.get(catalogPageObj.sidePane.createApplication).scrollIntoView().click();
+  cy.get(catalogPageObj.sidePane.createApplication).scrollIntoView().click({force:true});
 });
 
 When(

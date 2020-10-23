@@ -198,50 +198,50 @@ export const addPage = {
     switch (card) {
       case "Git":
       case addOptions.Git:
-        cy.byLegacyTestID("import-from-git").click();
+        cy.byLegacyTestID("import-from-git").click({ force: true });
         cy.pageTitleShouldContain("Import from Git");
         break;
       case "Deploy Image":
       case addOptions.ContainerImage:
-        cy.byLegacyTestID("deploy-image").click();
+        cy.byLegacyTestID("deploy-image").click({ force: true });
         cy.pageTitleShouldContain("Deploy Image");
         break;
       case "Import from Dockerfile":
       case addOptions.DockerFile:
-        cy.byLegacyTestID("import-from-dockerfile").click();
+        cy.byLegacyTestID("import-from-dockerfile").click({ force: true });
         cy.pageTitleShouldContain("Import from Dockerfile");
         break;
       case "Developer Catalog":
       case "From Catalog":
       case addOptions.DeveloperCatalog:
-        cy.byLegacyTestID("dev-catalog").click();
+        cy.byLegacyTestID("dev-catalog").click({ force: true });
         cy.pageTitleShouldContain("Developer Catalog");
         break;
       case "Database":
       case addOptions.Database:
-        cy.byLegacyTestID("dev-catalog-databases").click();
+        cy.byLegacyTestID("dev-catalog-databases").click({ force: true });
         cy.pageTitleShouldContain("Developer Catalog");
         break;
       case "Event Source":
       case addOptions.EventSource:
-        cy.byLegacyTestID("knative-event-source").click();
+        cy.byLegacyTestID("knative-event-source").click({ force: true });
         cy.pageTitleShouldContain("Event Sources");
         break;
       case "Helm Chart":
       case addOptions.HelmChart:
-        cy.byLegacyTestID("helm").click();
+        cy.byLegacyTestID("helm").click({ force: true });
         cy.pageTitleShouldContain("Developer Catalog");
         cy.byTestID("kind-helm-chart").should("be.checked");
         break;
       case "Operator Backed":
       case addOptions.OperatorBacked:
-        cy.byLegacyTestID("operator-backed").click();
+        cy.byLegacyTestID("operator-backed").click({ force: true });
         cy.pageTitleShouldContain("Developer Catalog");
         cy.byTestID("kind-cluster-service-version").should("be.checked");
         break;
       case "Pipelines":
       case addOptions.Pipeline:
-        cy.byLegacyTestID("pipeline").click();
+        cy.byLegacyTestID("pipeline").click({ force: true });
         cy.get("h1.odc-pipeline-builder-header__title").should(
           "have.text",
           "Pipeline Builder"
@@ -249,7 +249,7 @@ export const addPage = {
         break;
       case "Yaml":
       case addOptions.YAML:
-        cy.byLegacyTestID("import-yaml").click();
+        cy.byLegacyTestID("import-yaml").click({ force: true });
         cy.get('[data-mode-id="yaml"]').should("be.visible");
         break;
       default:

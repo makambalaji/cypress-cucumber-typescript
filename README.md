@@ -3,12 +3,14 @@
 Navigate to `integration-tests` folder and execute below commands
 
 Install all dependencies using below commmand
+
 ```
 npm install
 ```
 
 Run all pipeline test scenarios
 PreRequisite: Install pipeline operator
+
 ```
 npm run test:pipeline:allure
 ```

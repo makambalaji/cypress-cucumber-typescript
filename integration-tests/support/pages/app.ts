@@ -44,10 +44,8 @@ export const naviagteTo = (opt: devNavigationMenu) => {
   switch (opt) {
     case devNavigationMenu.Add: {
       cy.byLegacyTestID("+Add-header").click();
-      // .then(() => {
       cy.url().should("include", "add");
       app.waitForLoad();
-      // });
       break;
     }
     case devNavigationMenu.Topology: {

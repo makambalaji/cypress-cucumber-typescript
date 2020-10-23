@@ -42,9 +42,9 @@ Feature: Create Application from git form
       And user is able to see workload "<name>" in topology page
 
       Examples:
-         | name          | resource_type     |
-         | dancer-ex-git | Deployment        |
-         | dancer-ex-git | Deployment Config |
+         | name            | resource_type     |
+         | dancer-ex-git   | Deployment        |
+         | dancer-ex-git-1 | Deployment Config |
 
 
    @regression

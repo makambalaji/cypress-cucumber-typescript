@@ -85,6 +85,30 @@ Given("user has installed OpenShift Serverless Operator", () => {
   operatorsPage.verifyOperatorInNavigationMenu("Serverless");
 });
 
+Given("user has installed ElasticSearch Operator provided by Red Hat", () => {
+  perspective.switchTo(switchPerspective.Administrator);
+  perspective.verifyPerspective("Administrator");
+  operatorsPage.verifyInstalledOperator("ElasticsearchOperator");
+});
+
+Given("user has installed Red Hat OpenShift Jaeger Operator", () => {
+  perspective.switchTo(switchPerspective.Administrator);
+  perspective.verifyPerspective("Administrator");
+  operatorsPage.verifyInstalledOperator("Jaeger");
+});
+
+Given("user has installed Kiali Operator provided by Red Hat", () => {
+  perspective.switchTo(switchPerspective.Administrator);
+  perspective.verifyPerspective("Administrator");
+  operatorsPage.verifyInstalledOperator("Kiali");
+});
+
+Given("user has installed Red Hat OpenShift Service Mesh Operator", () => {
+  perspective.switchTo(switchPerspective.Administrator);
+  perspective.verifyPerspective("Administrator");
+  operatorsPage.verifyInstalledOperator("ServiceMesh");
+});
+
 Given("user is at Add page", () => {
   naviagteTo(devNavigationMenu.Add);
 });
@@ -95,6 +119,10 @@ Given("user is at Developer Catlog page", () => {
 
 Given("user is at pipelines page", () => {
   naviagteTo(menu.Pipelines);
+});
+
+Given("user is at Monitoring page", () => {
+  naviagteTo(menu.Monitoring);
 });
 
 When("user switches to developer perspective", () => {

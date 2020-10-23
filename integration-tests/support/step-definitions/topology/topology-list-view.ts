@@ -11,6 +11,7 @@ Given(
       resourceType,
       "nodejs-ex-git-app"
     );
+    topologyPage.verifyWorkloadInTopologyPage(componentName);
   }
 );
 

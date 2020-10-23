@@ -5,5 +5,11 @@
         "overwrite": false,
         "html": false,
         "json": true
+    },
+    "mocha" :{
+        "reporter": "mocha-junit-reporter",
+        "reporterOptions": {
+            "mochaFile": "reports/mochaReport.xml"
+        }
     }
 }
