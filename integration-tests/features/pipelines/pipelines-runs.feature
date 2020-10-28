@@ -19,7 +19,7 @@ Feature: Pipeline Runs
             | pipeline-with-resoruce | openshift-client |
 
 
-    @regression, @smoke
+    @smoke
     Scenario Outline: Start the pipeline with one resource : P-04-TC03
         Given pipeline "<pipeline_name>" consists of task "<task_name>" with one git resource
         When user selects "Start" option from kebab menu for pipeline "<pipeline_name>"
@@ -33,7 +33,7 @@ Feature: Pipeline Runs
             | pipe-task     | openshift-client |
 
 
-    @regression, @smoke
+    @regression
     Scenario Outline: Last Run Status of pipeline in pipelines page after starting pipeline Run : P-05-TC01
         Given pipeline run is displayed for "<pipeline_name>" with resource
         When user navigates to Pipelines page
@@ -44,7 +44,7 @@ Feature: Pipeline Runs
             | pipe-task     |
 
 
-    @regression, @smoke
+    @regression
     Scenario Outline: Pipeline Run Details page for pipeline without resource : P-06-TC03
         Given pipeline run is displayed for "<pipeline_name>" without resource
         When user clicks Last Run value of "<pipeline_name>"
@@ -74,7 +74,7 @@ Feature: Pipeline Runs
         Then status displays as "Running" in pipeline run details page
 
 
-    @regression, @smoke
+    @regression
     Scenario Outline: Rerun the Pipeline Run from pipeline runs page : P-06-TC02
         Given pipeline run is displayed for "<pipeline_name>" without resource
         When user selects the Pipeline Run for "<pipeline_name>"
@@ -86,7 +86,7 @@ Feature: Pipeline Runs
             | pipeline-with-resoruce |
 
 
-    @regression, @smoke
+    @regression
     Scenario Outline: Pipeline Run Details page for a pipeline with resource : P-06-TC04
         Given pipeline run is displayed for "<pipeline_name>" with resource
         When user clicks Last Run value of the pipeline "<pipeline_name>"
@@ -98,7 +98,7 @@ Feature: Pipeline Runs
             | pipeline-with-resoruce |
 
 
-    @regression, @smoke, @debug
+    @regression
     Scenario Outline: Filter the pipeline runs based on status : P-06-TC07
         Given pipeline "<pipeline_name>" is executed for 3 times
         When user filters the pipeline runs of pipeline "<pipeline_name>" based on the "<status>"
@@ -109,9 +109,9 @@ Feature: Pipeline Runs
             | pipeline-without-resoruce | Succeeded |
 
 
-    @regression, @smoke, @debug
+    @regression
     Scenario: Start the pipeline from Pipeline Details page : P-04-TC04
-        Given pipeline "pipeline-one" is present on Pipelines page
+        Given pipeline "pipeline-one" is present on Pipeline Details page
         When user selects "Start" option from pipeline Details Actions menu
         Then user will be redirected to Pipeline Run Details page
 
@@ -161,7 +161,7 @@ Feature: Pipeline Runs
         Then user is able to see pipeline run in topology side bar
 
 
-    @regression, @debug
+    @regression
     Scenario: Maximum pipeline runs display in topology page: P-05-TC05
         Given workload "nodejs-ex-git" is created from add page with pipeline
         And user is at pipelines page
@@ -173,7 +173,7 @@ Feature: Pipeline Runs
 
 
     Scenario: Start the pipeline with cancelled tasks: P-07-TC04
-        Given user is at the Pipeline Details page
+        Given pipeline "pipeline-one" is present on Pipeline Details page
         And pipeline run is available with cancelled tasks for pipeline "pipeline-one"
         When user selects "Start" option from kebab menu for pipeline "pipeline-one"
         Then user will be redirected to Pipeline Run Details page
@@ -181,7 +181,7 @@ Feature: Pipeline Runs
 
 
     Scenario: Start the pipeline with failed tasks: P-07-TC05
-        Given user is at the Pipeline Details page
+        Given pipeline "pipeline-one" is present on Pipeline Details page
         And pipeline run is available with failed tasks for pipeline "pipeline-one"
         When user selects "Start" option from kebab menu for pipeline "pipeline-one"
         Then user will be redirected to Pipeline Run Details page
@@ -189,19 +189,19 @@ Feature: Pipeline Runs
 
 
     Scenario: Start the pipeline with successful tasks: P-07-TC06
-        Given user is at the Pipeline Details page
+        Given pipeline "pipeline-one" is present on Pipeline Details page
         And pipeline run is available with failed tasks for pipeline "pipeline-one"
         When user selects "Start" option from kebab menu for pipeline "pipeline-one"
         Then user will be redirected to Pipeline Run Details page
         And Pipeline run status displays as "Running"
 
 
-    @regression, @smoke, @debug
+    @smoke
     Scenario Outline: Pipeline status display in topology side bar : P-05-TC02
         Given pipeline "<pipeline_name>" is created from git page
         And pipeline run is displayed for "<pipeline_name>" in pipelines page
         When user navigates to Topology page
-        Then Last Run status of the "<pipeline_name>" displays as "Succeeded" in topology page
+        Then Last Run status of the "<pipeline_name>" displays as "Running" in topology page
 
         Examples:
             | pipeline_name |

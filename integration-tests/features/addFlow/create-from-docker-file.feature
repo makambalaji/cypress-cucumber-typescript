@@ -16,7 +16,7 @@ Feature: Create Application from Docker file
       And name field auto populates with value "nodejs-ex-git" in Import from Docker file page
 
 
-   @regression, @smoke
+   @smoke
    Scenario Outline: Create a workload from Docker file with "<resource_type>" as resource type : A-06-TC03, A-06-TC04
       Given user is on Import from Docker file page
       When user enters docker git url as "https://github.com/sclorg/nodejs-ex.git"

@@ -7,7 +7,7 @@ Feature: Create event sources
       And user has selected namespace "aut-create-knative-event-source"
 
 
-   @regression, @smoke
+   @smoke
    Scenario: Different event source enters display in event sources add page : Kn-07-TC03, Kn-08-TC02
       Given user is at Add page
       When user clicks on "Event Source" card
@@ -15,7 +15,7 @@ Feature: Create event sources
       And able to see event source enters like ApiServerSource, ContainerSource, CronJobSource, PingSource, SinkBinding
 
 
-   @regression, @smoke
+   @smoke
    Scenario: CamelSource event source : Kn-08-TC03
       Given user has installed knative Apache camel operator
       And user is at developer perspective
@@ -25,6 +25,7 @@ Feature: Create event sources
       And user is able to see "Camel Source" event source type
 
 
+   @regression, @debug
    Scenario: knative eventing in operator backed : Kn-07-TC04
       Given user is at Add page
       When user clicks on "Operator Backed" card
@@ -171,7 +172,7 @@ Feature: Create event sources
 
 
    @regression, @manual
-   Scenario: Create CamelSource event source : Kn-10-TC13, Kn-08-TC03
+   Scenario: Create CamelSource event source : Kn-10-TC13
       Given user has created knative service "nodejs-ex-git"
       And user is at Event Sources page
       When user selects event source type "Camel Source"

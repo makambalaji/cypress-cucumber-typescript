@@ -14,7 +14,7 @@ Feature: Create Application from git form
       And user is able to see message "No workloads found" on Add page
 
 
-   @regression, @smoke
+   @smoke
    Scenario: Display of cards in Add Page : A-01-TC02
       Given user is at namespace "aut-namespace"
       When user selects Add option from left side navigation menu
@@ -33,7 +33,7 @@ Feature: Create Application from git form
 
    @regression
    Scenario: Operator Backed card display on serverless operator installation : A-02-TC01
-      Given user has installed Openshift Serverless operator
+      Given user has installed OpenShift Serverless Operator
       And user is at developer perspective
       And user is at namespace "aut-namespace"
       When user selects Add option from left side navigation menu
@@ -41,9 +41,9 @@ Feature: Create Application from git form
       And user is able to see "Operator Backed" card on Add page
 
 
-   @regression, @smoke
+   @regression
    Scenario: Event Source card display on serverless operator installation : A-03-TC02
-      Given user has installed Openshift Serverless operator
+      Given user has installed OpenShift Serverless Operator
       And user is at developer perspective
       And user is at namespace "aut-namespace"
       When user selects Add option from left side navigation menu

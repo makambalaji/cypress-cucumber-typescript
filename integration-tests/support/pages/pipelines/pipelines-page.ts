@@ -215,15 +215,19 @@ export const startPipelineInPipelinsPage = {
     cy.get("@sectionTitle").eq(1).should("have.text", "Advanced Options");
   },
   addGitResource: (gitUrl: string, revision: string = "master") => {
-    cy.get("form div.odc-pipeline-resource-dropdown").then(($el) => {
-      if ($el.attr("disabled") == "disabled") {
-        cy.get(pipelinesObj.startPipeline.gitUrl).type(gitUrl);
-        cy.get(pipelinesObj.startPipeline.revision).type(revision);
+    cy.get("form").then(($el) => {
+      if ($el.find("#form-input-parameters-1-default-field").length !== 0) {
+        cy.get("#form-input-parameters-1-default-field").type(gitUrl);
       } else {
-        $el.find("button").click();
-        cy.get('button[role="option"]').eq(0).click();
-        cy.get(pipelinesObj.startPipeline.gitUrl).type(gitUrl);
-        cy.get(pipelinesObj.startPipeline.revision).type(revision);
+        if ($el.attr("disabled") === "disabled") {
+          cy.get(pipelinesObj.startPipeline.gitUrl).type(gitUrl);
+          cy.get(pipelinesObj.startPipeline.revision).type(revision);
+        } else {
+          $el.find("button").click();
+          cy.get('button[role="option"]').eq(0).click();
+          cy.get(pipelinesObj.startPipeline.gitUrl).type(gitUrl);
+          cy.get(pipelinesObj.startPipeline.revision).type(revision);
+        }
       }
     });
   },

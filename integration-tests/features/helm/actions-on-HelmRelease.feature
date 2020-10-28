@@ -15,13 +15,26 @@ Feature: Perform Actions on Helm Releases
 
 
     @regression, @smoke
+    Scenario: Actions drop down on the side bar: HR-10-TC08
+        Given user is on the topology sidebar of the helm release "nodejs-ex-k"
+        When user clicks on the Actions drop down menu
+        Then user is able to see the actions dropdown menu with actions Upgrade, Rollback and Uninstall Helm Release
+
+
+    @regression
+    Scenario: Actions menu on Helm page
+        Given user is on the Helm page with helm release "nodejs-ex-k"
+        When user clicks on the Kebab menu
+        Then user is able to see kebab menu with actions Upgrade, Rollback and Uninstall Helm Release
+
+
+    @regression, @smoke
     Scenario: Perform Upgrade action on Helm Release through Context Menu: HR-08-TC02
         Given user is at the Topology page
         When user right clicks on the Helm Release "nodejs-ex-k" to open the context menu
         And user clicks on the "Upgrade" action
         And user upgrades the chart Version
         And user clicks on the upgrade button
-        # Then the helm release should get upgradaed -- currently text message is not displaying on upgrade button click
         Then user will be redirected to Topology page
 
 
@@ -45,7 +58,7 @@ Feature: Perform Actions on Helm Releases
         Then user will be redirected to Topology page with no workloads
 
 
-    @regression, @smoke, @debug
+    @regression, @smoke
     Scenario: Context menu options of the helm release workload: HR-05-TC01
         Given user is at the Topology page
         When user right clicks on the workload of Helm Release "nodejs-ex-k" to open the context menu
@@ -66,7 +79,7 @@ Feature: Perform Actions on Helm Releases
     Scenario: Pause Rollout for the helm relase workload: HR-05-TC03
         Given user is at the Topology page
         When user right clicks on the workload of Helm Release "nodejs-ex-k" to open the context menu
-        And user clicks on the "Pause Rollout" action
+        And user clicks on the "Pause Rollouts" action
         And user right clicks on the workload of Helm Release "nodejs-ex-k" to open the context menu
         Then Resume Rollout is displayed
 
@@ -115,7 +128,7 @@ Feature: Perform Actions on Helm Releases
     Scenario: Edit Annotations of the helm relase workload: HR-05-TC08
         Given user is at the Topology page
         When user right clicks on the workload of Helm Release "nodejs-ex-k" to open the context menu
-        And user clicks on the "Edit Annotaions" action
+        And user clicks on the "Edit Annotations" action
         And user adds the annotations
         And user clicks Save button on the Edit Annotations modal
         Then number of annotatoins increases in side pane of the Helm Release workload "nodejs-ex-k"
@@ -136,5 +149,5 @@ Feature: Perform Actions on Helm Releases
         Given user is at the Topology page
         When user right clicks on the workload of Helm Release "nodejs-ex-k" to open the context menu
         And user clicks on the "Delete Deployment Config" action
-        And user clicks Delete button on Delete Deployment Config? modal
+        And user clicks Delete button on Delete Deployment Config modal
         Then topology page displays with message "No resources found"

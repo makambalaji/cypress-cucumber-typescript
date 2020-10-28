@@ -30,7 +30,7 @@ Feature: Create Application from git form
          | https://github.com/sclorg/nodejs-ex.git                   | nodejs-ex-git-app         | nodejs-ex-git         |
 
 
-   @regression, @smoke
+   @smoke
    Scenario Outline: Add new git workload with new application for resoruce type "<resource_type>" : A-04-TC02, A-04-TC13
       Given user is at Import from git page
       When user enters Git Repo url as "https://github.com/sclorg/dancer-ex.git"

@@ -1,4 +1,4 @@
-import { When, Then } from "cypress-cucumber-preprocessor/steps";
+import { When, Then, Given } from "cypress-cucumber-preprocessor/steps";
 import {
   upgradeHelmRelease,
   helmDetailsPage,
@@ -6,6 +6,9 @@ import {
   helmPage,
 } from "../../pages/helm-page";
 import { topologyPage } from "../../pages/topology-page";
+import { editPodCount, modal } from "../../pages/modal";
+import { naviagteTo } from "../../pages/app";
+import { devNavigationMenu } from "../../constants/global";
 
 When(
   "user right clicks on the Helm Release {string} to open the context menu",
@@ -13,6 +16,40 @@ When(
     topologyPage.rightClickOnNode(nodeName);
   }
 );
+
+Then(
+  "user is able to see the actions dropdown menu with actions Upgrade, Rollback and Uninstall Helm Release",
+  () => {
+    cy.byTestActionID("Upgrade").should("be.visible");
+    cy.byTestActionID("Rollback").should("be.visible");
+    cy.byTestActionID("Uninstall Helm Release").should("be.visible");
+  }
+);
+
+Then(
+  "user is able to see kebab menu with actions Upgrade, Rollback and Uninstall Helm Release",
+  () => {
+    cy.byTestActionID("Upgrade").should("be.visible");
+    cy.byTestActionID("Rollback").should("be.visible");
+    cy.byTestActionID("Uninstall Helm Release").should("be.visible");
+  }
+);
+
+When("user clicks on the Actions drop down menu", () => {
+  cy.byLegacyTestID("actions-menu-button").click();
+});
+
+Given(
+  "user is on the Helm page with helm release {string}",
+  (helmRelease: string) => {
+    naviagteTo(devNavigationMenu.Helm);
+    helmPage.search(helmRelease);
+  }
+);
+
+When("user clicks on the Kebab menu", () => {
+  helmPage.selectKebabMenu();
+});
 
 When(
   "user right clicks on the workload of Helm Release {string} to open the context menu",
@@ -84,14 +121,101 @@ Then(
   }
 );
 
-Then("pod status updated as {string}", (podStatus: string) => {});
-
-Then("pod will be displayed in helm release", () => {});
-
-Then("Resume Rollout is displayed", () => {
-  cy.byTestActionID("Resume Rollout").should("be.visible");
+Then("pod status updated as {string}", (podStatus: string) => {
+  cy.byLegacyTestID("base-node-handler")
+    .find("text tspan")
+    .eq(1)
+    .should("contain.text", podStatus);
 });
 
-When("user updates the pod count as {string} in Edit Pod count modal", (podCount: string) => {
-  
+Then("pod will be displayed in helm release", () => {
+  cy.byLegacyTestID("base-node-handler")
+    .find("text tspan")
+    .eq(1)
+    .should("contain.text", "pod");
+});
+
+Then("Resume Rollout is displayed", () => {
+  cy.byTestActionID("Resume Rollouts").should("be.visible");
+});
+
+When(
+  "user updates the pod count as {string} in Edit Pod count modal",
+  (podCount: string) => {
+    editPodCount.enterPodCount(podCount);
+  }
+);
+
+When("user clicks on Save in Edit Pod Count modal", () => {
+  modal.clicKSave();
+});
+
+Then(
+  "Pod count displays as {string} for helm release workload {string}",
+  (podCount: string, helmReleaseWorkload: string) => {
+    topologyPage.clickOnNode(helmReleaseWorkload);
+    cy.byLegacyTestID("base-node-handler")
+      .find("text tspan")
+      .eq(0)
+      .should("contain.text", podCount);
+  }
+);
+
+When("user clicks Save button on Add Storage page", () => {
+  topologyPage.addStorage.clickSave();
+});
+
+When(
+  "user creates the new claim {string} with default storage class",
+  (claim: string) => {
+    topologyPage.addStorage.pvc.createNewClaim.clickCreateNewClaim();
+    topologyPage.addStorage.pvc.createNewClaim.selectStorageClass();
+    topologyPage.addStorage.pvc.createNewClaim.enterPVCName(claim);
+  }
+);
+
+When(
+  "user enters the storage capacity as {string} GiB",
+  (storageCapacity: string) => {
+    topologyPage.addStorage.pvc.createNewClaim.enterSize(storageCapacity);
+  }
+);
+
+When("user enters the Mount Path as {string}", (mountPath: string) => {
+  topologyPage.addStorage.enterMountPath(mountPath);
+});
+
+Then("user redirects to deployment config detils page", () => {
+  cy.get('[data-test-section-heading="Deployment Config Details"]').should(
+    "contain.text",
+    "Deployment Config Details"
+  );
+});
+
+Then("user redirects to Edit Health Checks page", () => {
+  cy.pageTitleShouldContain("Edit Health Checks");
+});
+
+When("user clicks Save button on the Edit Labels modal", () => {
+  modal.clicKSave();
+});
+
+When("user clicks Save button on the Edit Annotations modal", () => {
+  modal.clicKSave();
+});
+
+Then(
+  "user verifies the label in side pane of the Helm Release workload {string}",
+  (workloadName: string) => {}
+);
+
+Then(
+  "number of annotatoins increases in side pane of the Helm Release workload {string}",
+  (workloadName: string) => {}
+);
+
+When("user clicks Save button on the Deployment Config details page", () => {});
+
+When("user clicks Delete button on Delete Deployment Config modal", () => {
+  modal.clicKDelete();
 });

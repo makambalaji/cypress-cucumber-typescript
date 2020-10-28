@@ -34,7 +34,7 @@ export const editLabels = {
     return cy.get("tags-input span.tag-item__content");
   },
   removeLabel: (labelName: string) => {
-    cy.get("span.tag-item__content")
+    cy.get("tags-input span.tag-item")
       .contains(labelName)
       .next("a.remove-button")
       .click();
@@ -51,8 +51,8 @@ export const editAnnotations = {
   removeAnnotation: (annotationKey: string) => {
     cy.get(`input[value="${annotationKey}"]`)
       .parent()
-      .next("div.pairs-list__action")
-      .find('[data-test-id="pairs-list__delete-btn"]')
+      // .nextUntil("div.pairs-list__action")
+      .nextUntil('div.pairs-list__action button[data-test-id="pairs-list__delete-btn"]')
       .click();
   },
 };
@@ -111,4 +111,10 @@ export const moveSink = {
   },
   verifyResourceDropDown: () =>
     cy.get(eventSourceObj.sinkBinding.sinkResource).should("be.visible"),
+};
+
+export const editPodCount = {
+  enterPodCount:(podCount: string) => {
+    cy.get('input[type="number"]').clear().type(podCount);
+  },
 };

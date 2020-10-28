@@ -24,6 +24,46 @@ export const topologyObj = {
     labelsList: '[data-test="label-list"]',
     editAnnotations: '[data-test-id="edit-annotations"]',
   },
+  addStorage: {
+    pvc: {
+      useExistingClaim: 'input[value="existing"]',
+      createNewClaim: {
+        newClaim: 'input[value="new]',
+        storageClass: "#storageclass-dropdown",
+        pvcName: "#pvc-name",
+        accessMode: {
+          singleUser: 'input[value="ReadWriteOnce"]',
+          sharedAccess: 'inputp[value="ReadWriteMany"]',
+          readOnly: 'input[value="ReadOnlyMany"]',
+          size: "#request-size-input",
+          showLabelSelector: 'input[name="showLabelSelector"]',
+        },
+        volumeMode: {
+          fileSystem: 'input[value="Filesystem"]',
+          block: 'input[value="Block"]',
+          devicePath: "#device-path",
+        },
+      },
+    },
+    mountPath: "#mount-path",
+    subPath: "#subpath",
+    mountAsReadOnly: 'input[name="mountAsReadOnly"]',
+    save: "#save-changes",
+  },
+  revisionDetails: {
+    detailsTab: '[data-test-id="horizontal-link-Details"]',
+    yamlTab: '[data-test-id="horizontal-link-YAML"]',
+    details: {
+      resourceSummaryTitle: '[data-test-section-heading="Revision Details"]',
+      resourceSummary: '[data-test-id="resource-summary"]',
+      conditionsTitle: '[data-test-section-heading="Conditions"]',
+    },
+    yaml: {
+      save: '[data-test="save-changes"]',
+      reload: '[data-test="reload-object"]',
+      cancel: '[data-test="cancel"]',
+    },
+  },
 };
 
 export const topologyActions = {
@@ -227,8 +267,13 @@ export const topologyPage = {
       .find("g.odc-resource-icon")
       .trigger("contextmenu", { force: true });
   },
+  clickOnKnativeRevision: () => {
+    cy.byLegacyTestID("base-node-handler")
+      .find("g.odc-resource-icon")
+      .click({ force: true });
+  },
   waitForKnativeRevision: () => {
-    cy.get('[data-test-id="base-node-handler"]', { timeout: 150000 }).should(
+    cy.get('[data-test-id="base-node-handler"]', { timeout: 300000 }).should(
       "be.visible"
     );
   },
@@ -236,6 +281,57 @@ export const topologyPage = {
     cy.byLegacyTestID("base-node-handler")
       .find("circle")
       .trigger("contextmenu", { force: true });
+  },
+  addStorage: {
+    pvc: {
+      clickUseExistingClaim: () => {
+        cy.get(topologyObj.addStorage.pvc.useExistingClaim).check();
+      },
+      createNewClaim: {
+        clickCreateNewClaim: () => {
+          cy.get(topologyObj.addStorage.pvc.createNewClaim.newClaim).check();
+        },
+        selectStorageClass: (storageClass: string = "standard") => {
+          cy.selectValueFromAutoCompleteDropDown(
+            topologyObj.addStorage.pvc.createNewClaim.storageClass,
+            storageClass
+          );
+        },
+        enterPVCName: (name: string) => {
+          cy.get(topologyObj.addStorage.pvc.createNewClaim.pvcName).type(name);
+        },
+        enterSize: (size: string) => {
+          cy.get(
+            topologyObj.addStorage.pvc.createNewClaim.accessMode.size
+          ).type(size);
+        },
+      },
+    },
+    enterMountPath: (mountPath: string) => {
+      cy.get(topologyObj.addStorage.mountPath).type(mountPath);
+    },
+    clickSave: () => {
+      cy.get(topologyObj.addStorage.save).click();
+    },
+  },
+  revisionDetails: {
+    clickOnDetailsTab: () =>
+      cy.get(topologyObj.revisionDetails.detailsTab).click(),
+    clickOnYAMLTab: () => cy.get(topologyObj.revisionDetails.yamlTab).click(),
+    details: {
+      verifyRevisionSummary: () =>
+        cy
+          .get(topologyObj.revisionDetails.details.resourceSummary)
+          .should("be.visible"),
+      verifyConditionsSection: () =>
+        cy
+          .get(topologyObj.revisionDetails.details.conditionsTitle)
+          .should("be.visible"),
+      
+    },
+    yaml: {
+      clickOnSave: () => cy.get(topologyObj.revisionDetails.yaml.save).click(),
+    },
   },
 };
 
@@ -297,6 +393,7 @@ export const topologySidePane = {
       .scrollIntoView()
       .should("be.visible");
     // cy.byTestID("label-list").find("a").contains(labelName).should("be.visible");
+    modal.clickCancel();
   },
   verifyAnnotaiton: (annotationName: string) => {
     cy.byLegacyTestID("edit-annotations").click();
@@ -411,3 +508,5 @@ export const addHealthChecksPage = {
       .should("be.visible");
   },
 };
+
+export const addStorage = {};

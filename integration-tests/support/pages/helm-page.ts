@@ -8,6 +8,7 @@ export const helmPageObj = {
   noHelmReleasesMessage: "h3",
   search: '[data-test-id="item-filter"]',
   table: '[role="grid"]',
+  helmReleaseName: "tr td:nth-child(1)",
   resourcesTab: '[data-test-id="horizontal-link-Resources"]',
   revisionHistoryTab: '[data-test-id="horizontal-link-Revision History"]',
   releaseNotesTab: '[data-test-id="horizontal-link-Release Notes"]',
@@ -89,6 +90,10 @@ export const helmPage = {
         cy.get("tbody tr").eq(index).find("td:nth-child(4) button").click();
       }
     });
+  },
+  selectKebabMenu: () => {
+    cy.get(helmPageObj.table).should("exist");
+    cy.byLegacyTestID("kebab-button").click();
   },
 };
 

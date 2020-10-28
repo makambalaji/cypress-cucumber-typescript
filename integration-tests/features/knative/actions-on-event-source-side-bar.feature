@@ -2,21 +2,21 @@ Feature: Event Sources actions
    As a user, I want to perform actions on event sources from side bar
 
    Background:
-      Given user has installed Openshift Serverless operator
+      Given user has installed OpenShift Serverless Operator
       And user is at developer perspective
       And user has selected namespace "aut-knative-event"
       And user has created knative service "nodejs-ex-git"
       And user has created "sink-binding" event source
 
 
-   @regression, @smoke
+   @regression
    Scenario: Side bar for event source: Kn-12-TC01
       Given knative service, event source and sink connector are present in topology page
       When user clicks on event source "Sink Binding" to open side bar
       Then user can see side bar with header name "sink-binding"
 
 
-   @regression, @smoke
+   @smoke
    Scenario: Move the sink via Action menu to link knative Service : Kn-12-TC02
       Given knative service, event source and sink connector are present in topology page
       When user clicks on event source "Sink Binding" to open side bar

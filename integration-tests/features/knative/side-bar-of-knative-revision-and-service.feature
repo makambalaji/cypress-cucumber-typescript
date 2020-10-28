@@ -7,19 +7,19 @@ Feature: side bar details
         And user has selected namespace "aut-knative-side-pane-details"
 
 
-    @regression, @smoke
+    @regression
     Scenario: side bar display for knative service : Kn-06-TC01
         Given user has created knative service "nodejs-ex-git"
-        When user clicks on the knative service "nodejs-ex-git-1"
-        Then side bar is displayed with heading name same as knative service name "nodejs-ex-git-1"
+        When user clicks on the knative service "nodejs-ex-git"
+        Then side bar is displayed with heading name same as knative service name "nodejs-ex-git"
 
 
-    @regression, @smoke
+    @smoke
     Scenario: side bar details of knative Service : Kn-06-TC02
         Given user has created knative service "nodejs-ex-git"
-        When user clicks on the knative service "nodejs-ex-git-1"
-        Then side bar is displayed with heading name as "nodejs-ex-git-1"
-        And Name, Namespace, Labels, Annotations, Created on, Owner fields displayed  in topology details
+        When user clicks on the knative service "nodejs-ex-git"
+        Then side bar is displayed with heading name as "nodejs-ex-git"
+        And Name, Namespace, Labels, Annotations, Created at, Owner fields displayed  in topology details
     # And Name display as "nodejs-ex-git-1" in topology details
     # And Namespace display as "aut-knative-side-pane-details" in topology details
     # And Labels section contain n number of Labels in topology details
@@ -28,12 +28,12 @@ Feature: side bar details
     # And owner field displayed in topology details
 
 
-    @regression, @smoke
+    @smoke
     Scenario: side bar details of for knative Revision : Kn-05-TC01, Kn-05-TC02
         Given user has created knative service "nodejs-ex-git"
-        When user clicks on the revision of knative service "nodejs-ex-git-1"
-        Then side bar is displayed with heading name as "nodejs-ex-git-1"
-        And Name, Namespace, Labels, Annotations, Created on, Owner fields displayed  in topology details
+        When user clicks on the revision of knative service "nodejs-ex-git"
+        Then side bar is displayed with heading name as "nodejs-ex-git"
+        And Name, Namespace, Labels, Annotations, Created at, Owner fields displayed  in topology details
 
 
     Scenario: Resoruce details of knative revision in side bar : Kn-05-TC03
@@ -43,31 +43,31 @@ Feature: side bar details
 
     Scenario: links in side bar : Kn-05-TC04
         Given user has created knative service "nodejs-ex-git"
-        When user clicks on the revision of knative service "nodejs-ex-git-1"
+        When user clicks on the revision of knative service "nodejs-ex-git"
 
 
-    @regression
+    @regression, @debug
     Scenario: Actions menu of knative revision in side bar: Kn-05-TC05
         Given user has created knative service "nodejs-ex-git"
-        When user clicks on the revision of knative service "nodejs-ex-git-1"
+        When user clicks on the revision of knative service "nodejs-ex-git"
         And user clicks on Actions dropdown in top right corner of side bar
         Then user able to see the options Edit Labels, Edit Annotations, Edit Revision, Delete Revision
 
 
     Scenario: Resoruce details of knative service in side bar : Kn-06-TC03
         Given user has created knative service "nodejs-ex-git"
-        When user clicks on the knative service "nodejs-ex-git-1"
+        When user clicks on the knative service "nodejs-ex-git"
         And user clicks on Resoruces section
 
 
     Scenario: links in side bar : Kn-06-TC04
         Given user has created knative service "nodejs-ex-git"
-        When user clicks on the revision of knative service "nodejs-ex-git-1"
+        When user clicks on the revision of knative service "nodejs-ex-git"
 
 
-    @regression
+    @regression, @debug
     Scenario: Actions menu of knative service in side bar: Kn-06-TC05
         Given user has created knative service "nodejs-ex-git"
-        When user clicks on the knative service "nodejs-ex-git-1"
+        When user clicks on the knative service "nodejs-ex-git"
         And user clicks on Actions dropdown in top right corner of side bar
         Then user able to see the options like Edit Application Grouping, Set Traffic Distribution, Edit NameOfWorkLoad, Edit Health Checks, Edit Labels, Edit Annotations, Edit Service, Delete Service

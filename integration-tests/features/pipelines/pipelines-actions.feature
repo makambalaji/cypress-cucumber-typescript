@@ -7,7 +7,7 @@ Feature: Perform the actions on Pipelines page
       And user is at pipelines page
 
 
-   @regression, @smoke
+   @regression
    Scenario Outline: Pipelines Details page : P-03-TC01
       Given pipeline "<pipeline_name>" is present on Pipelines page
       When user clicks pipeline name "<pipeline_name>" on Pipelines page
@@ -21,7 +21,7 @@ Feature: Perform the actions on Pipelines page
          | pipelines-bbb |
 
 
-   @regression, @smoke
+   @regression
    Scenario Outline: Pipelines page display on newly created pipeline : P-03-TC12
       Given pipeline "<pipeline_name>" is present on Pipelines page
       When user searches pipeline "<pipeline_name>" in pipelines page
@@ -58,7 +58,7 @@ Feature: Perform the actions on Pipelines page
       Then Actions menu display with options "Start", "Add Trigger", "Edit Pipeline", "Delete Pipeline"
 
 
-   @regression, @smoke
+   @smoke
    Scenario Outline: Edit the Pipeline from pipelines Details page : P-08-TC01
       Given pipeline "<pipeline_name>" is present on Pipelines page
       When user searches pipeline "<pipeline_name>" in pipelines page
@@ -73,20 +73,20 @@ Feature: Perform the actions on Pipelines page
          | pipelines-ccc |
 
 
-   @manual
+   @regression
    Scenario Outline: Add the task by editing the pipeline : P-08-TC02
-      Given pipeline with task "<pipeline_name>" is present on Pipelines page
+      Given pipeline "<pipeline_name>" is present on Pipelines page
       When user selects "Edit Pipeline" option from kebab menu of "<pipeline_name>"
-      And user adds another task "kn" in parallel
+      And user adds another task "openshift-client" in parallel
       And user clicks on save
-      Then user will be redirected to Pipelines page
+      Then user will be redirected to pipeline details page with header "<pipeline_name>"
 
       Examples:
          | pipeline_name |
          | pipelines-ccc |
 
 
-   @regression, @smoke
+   @smoke
    Scenario Outline: Delete the Pipeline from pipelines Details page: P-03-TC13
       Given pipeline "<pipeline_name>" is present on Pipelines page
       When user searches pipeline "<pipeline_name>" in pipelines page
@@ -118,7 +118,7 @@ Feature: Perform the actions on Pipelines page
       And Add Parameters, Add Resources, Task should be displayed
 
 
-   @regression, @smoke
+   @smoke
    Scenario Outline: Start the basic pipeline from pipelines page: P-04-TC01
       Given pipeline "<pipeline_name>" is present on Pipelines page
       When user selects "Start" from the kebab menu for "<pipeline_name>"

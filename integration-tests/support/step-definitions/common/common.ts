@@ -30,12 +30,6 @@ Given("user is at developer perspective", () => {
   perspective.verifyPerspective("Developer");
 });
 
-Given("user has installed Openshift Serverless operator", () => {
-  perspective.switchTo(switchPerspective.Administrator);
-  operatorsPage.navigateToInstalloperatorsPage();
-  operatorsPage.verifyInstalledOperator("Serverless");
-});
-
 Given("user has installed knative apache camel operator", () => {
   perspective.switchTo(switchPerspective.Administrator);
   operatorsPage.navigateToInstalloperatorsPage();

@@ -18,10 +18,16 @@ Given("pipeline run is available for {string}", (pipelineName: string) => {});
 Given(
   "pipeline with task {string} is present on Pipelines page",
   (pipelineName: string) => {
-    // To Do
-    cy.log(pipelineName);
+    pipelinesPage.clickOncreatePipeline();
+    pipelineBuilderPage.createPipelineWithGitresources(pipelineName);
+    naviagteTo(devNavigationMenu.Pipelines);
   }
 );
+
+When("user selects {string} option from kebab menu of {string}", (kebabMenuOption: string, pipelineName: string) => {
+  pipelinesPage.selectKebabMenu(pipelineName);
+  cy.byTestActionID(kebabMenuOption).click();
+});
 
 When(
   "user searches pipeline {string} in pipelines page",
@@ -84,6 +90,10 @@ When(
     pipelinesPage.selectPipeline(pipelineName);
   }
 );
+
+Then("user will be redirected to pipeline details page with header {string}", (pipelineName: string) => {
+  pipelineDetailsPage.verifyTitle(pipelineName);
+});
 
 When("user clicks Actions menu in pipeline Details page", () => {
   pipelineDetailsPage.clickActionMenu();

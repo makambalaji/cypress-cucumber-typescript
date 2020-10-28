@@ -6,7 +6,7 @@ Feature: Create the pipeline from builder page
         And user has selected namespace "aut-pipelines-builder"
 
 
-    @regression, @smoke
+    @regression
     Scenario: Pipeline Builder page : P-03-TC02
         Given user is at pipelines page
         When user clicks Create Pipeline button on Pipelines page
@@ -31,7 +31,7 @@ Feature: Create the pipeline from builder page
             | p-one         | kn        | openshift-client |
 
 
-    @regression, @smoke
+    @regression
     Scenario Outline: Create a pipeline with parallel tasks : P-07-TC02
         Given user is at Pipeline Builder page
         When user enters pipeline name as "<pipeline_name>"
@@ -45,7 +45,7 @@ Feature: Create the pipeline from builder page
             | p-one         | kn        | openshift-client |
 
 
-    @regression, @smoke
+    @smoke
     Scenario Outline: Create a basic pipeline from pipeline builder page : P-03-TC08
         Given user is at Pipeline Builder page
         When user enters pipeline name as "<pipeline_name>"
@@ -73,7 +73,8 @@ Feature: Create the pipeline from builder page
             | p-storage     | task-storage     | Storage       | storage repo  | P-03-TC06 |
             | p-cluster     | task-cluster     | Cluster       | cluster repo  | P-03-TC07 |
 
-
+    
+    @regression, @manual
     Scenario: Add Paramters to the pipeline in pipeline builder page : P-03-TC04
         Given user is at Pipeline Builder page
         When user enters pipeline name as "pipeline-params"

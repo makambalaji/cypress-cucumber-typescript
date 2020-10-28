@@ -22,7 +22,7 @@ Feature: Create Pipeline from Add Options
       And Add pipeline section is displayed
 
 
-   @regression, @smoke
+   @smoke
    Scenario Outline: Create a pipeline from git workload with resource type "<resource>" : P-02-TC01, P-02-TC06
       Given user is at Import from git form
       When user enters Git Repo url as "<git_url>"
@@ -39,7 +39,7 @@ Feature: Create Pipeline from Add Options
          | https://github.com/sclorg/nodejs-ex.git | nodejs-ex-git | Deployment Config |
 
 
-   @regression, @smoke
+   @smoke
    Scenario Outline: Pipeline in topology page : P-02-TC02
       Given workload "<name>" is created from add page with pipeline
       And user is at the Topology page
@@ -53,7 +53,7 @@ Feature: Create Pipeline from Add Options
          | nodejs-ex-git |
 
 
-   @regression, @smoke
+   @smoke
    Scenario Outline: Search the created pipeline from Add options in pipelines page : P-02-TC03
       Given workload "<name>" is created from add page with pipeline
       And user is at pipelines page
@@ -127,8 +127,7 @@ Feature: Create Pipeline from Add Options
          | node_name     |
          | nodejs-ex-git |
 
-
-   @regression
+   
    Scenario Outline: Add Pipeline display in git workload for builder image : P-02-TC08
       Given user is at Import from git form
       When user enters Git Repo url as "<git_url>"

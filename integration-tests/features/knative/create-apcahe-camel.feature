@@ -7,7 +7,7 @@ Feature: Apache Camel eventing
       And user has selected namespace "aut-knative-camel-event-source"
 
 
-   @regression, @smoke
+   @smoke
    Scenario: CamelSource display in event sources add page - Kn-07-TC03
       Given user is at Add page
       When user clicks on "Event Source" card

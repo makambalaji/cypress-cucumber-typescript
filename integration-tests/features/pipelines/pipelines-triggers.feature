@@ -7,7 +7,7 @@ Feature: Triggers
         And user is at pipelines page
 
 
-    @regression, @smoke
+    @regression
     Scenario Outline: Add Trigger modal details : P-09-TC01
         Given pipeline "<pipeline_name>" is available with git resource
         When user selects "Add Trigger" from the kebab menu for "<pipeline_name>"
@@ -25,13 +25,13 @@ Feature: Triggers
         Given pipeline "git-trigger-one" is available with git resource
         And user is at Add Trigger modal
         When user selects the "github-pullreq" from Git Provider Type field
-        And  user clicks on "show variables" link
+        And  user clicks on "Show Variables" link
         Then user should be able to see "Hide Variables" link with varaibles section
         And variables section displayed with message "The following variables can be used in the Parameters or when created new Resources."
         And Add button is enabled
 
 
-    @regression, @smoke
+    @smoke
     Scenario Outline: Add the trigger to the pipeline from pipelines page : P-09-TC03
         Given "<pipeline_name>" is displayed on pipelines page
         When user selects "Add Trigger" from the kebab menu for "<pipeline_name>"
@@ -45,7 +45,7 @@ Feature: Triggers
             | git-one       |
 
 
-    @regression, @smoke
+    @regression
     Scenario Outline: Pipeline Trigger template display in pipeline details page: P-09-TC04
         Given pipeline "<pipeline_name>" with trigger in pipelines page
         When user clicks pipeline "<pipeline_name>"
@@ -57,7 +57,7 @@ Feature: Triggers
             | pipelines-one |
 
 
-    @regression, @smoke
+    @regression
     Scenario: Trigger template details page : P-09-TC05
         Given Trigger is added to the pipeline "git-pipeline" present in pipeline details page
         And user is at pipeline Details page
@@ -68,7 +68,7 @@ Feature: Triggers
         And Actions dropdown display on the top right corner of the page
 
 
-    @regression, @smoke
+    @regression
     Scenario: Event Listener Details page : P-09-TC06, P-09-TC07
         Given Trigger is added to the pipeline "git-pipeline-events" present in pipeline details page
         And user is at Trigger Template Details page
@@ -79,7 +79,7 @@ Feature: Triggers
         And Actions dropdown display on the top right corner of the page
 
 
-    @regression, @smoke
+    @regression
     Scenario: Cluster Trigger Binding Details page : P-09-TC08, P-09-TC09
         Given Trigger is added to the pipeline "git-pipeline-triggerbinding" present in pipeline details page
         And user is at Event Listener Details page
@@ -90,7 +90,7 @@ Feature: Triggers
         And Actions dropdown display on Cluster Trigger Binding page
 
 
-    @regression, @smoke
+    @regression
     Scenario Outline: Remove Trigger modal details : P-09-TC10
         Given Trigger is added to the pipeline "<pipeline_name>" present in pipeline details page
         And user is at pipelines page
@@ -104,7 +104,7 @@ Feature: Triggers
             | git-pipeline-removetrigger |
 
 
-    @regression, @smoke
+    @smoke
     Scenario Outline: Remove the trigger from pipelines page : P-09-TC11
         Given Trigger is added to the pipeline "<pipeline_name>" present in pipeline details page
         And user is at pipelines page

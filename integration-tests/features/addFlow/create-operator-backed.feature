@@ -5,10 +5,10 @@ Feature: Create workload from Operator Backed file
         Given user has installed OpenShift Serverless Operator
         And user is at developer perspective
         And user is at Add page
-        And user is at namespace "knative-serving"
+        And user has selected namespace "knative-serving"
 
 
-    @regression, @smoke
+    @regression-1
     Scenario: Create the workload from Operator Backed : A-08-TC01
         Given user is at Developer Catalog page with OperatorBacked type selection
         When user selects knative Serving card
@@ -19,7 +19,7 @@ Feature: Create workload from Operator Backed file
         And user is able to see workload "knative-serving-1" in topology page
 
 
-    @regression, @smoke
+    @regression-1
     Scenario: Perform cancel operation : A-08-TC02
         Given user is at Developer Catalog page with OperatorBacked type selection
         When user selects knative Serving card

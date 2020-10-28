@@ -7,6 +7,7 @@ Feature: Create Application from Catalog file
         And user is at Add page
 
 
+    @debug
     Scenario: Developer Catalog page details: A-12-TC04
         When user selects From Catalog card from add page
         Then user will be redirected to Developer Catalog page
@@ -15,6 +16,7 @@ Feature: Create Application from Catalog file
         And GroupBy filter is selected with default option None
 
 
+    @debug
     Scenario Outline: Filter the cards with type
         Given user is at Developer Catlog page
         When user selects "<type>" option from Type section
@@ -22,13 +24,12 @@ Feature: Create Application from Catalog file
 
         Examples:
             | type            |
-            | Operator Backed |
             | Helm Charts     |
             | Builder Images  |
             | Template        |
-            | Service Class   |
 
 
+    @debug
     Scenario: Filter the catalog using GroupBy option
         Given user is at Developer Catlog page
         When user searches "node" card from catalog page

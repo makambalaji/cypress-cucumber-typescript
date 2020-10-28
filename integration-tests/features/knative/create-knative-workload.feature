@@ -2,12 +2,12 @@ Feature: Create a workload of 'knative Service' type resource
    As a user, I want to create workload from Add Flow page
 
    Background:
-      Given user has installed Openshift Serverless operator
+      Given user has installed OpenShift Serverless Operator
       And user is at developer perspective
       And user has selected namespace "aut-create-knative-workload"
 
 
-   @regression, @smoke
+   @regression
    Scenario: knative resource type in git import add flow : Kn-01-TC03
       Given user is at Add page
       When user clicks on From git card
@@ -40,7 +40,7 @@ Feature: Create a workload of 'knative Service' type resource
       And Knative Service option is displayed under Resources section
 
 
-   @regression, @smoke
+   @smoke
    Scenario Outline: Create knative work load from From Git card on Add page : Kn-02-TC01
       Given user is on "<form_name>" form
       When user enters Git Repo url as "<git_url>"

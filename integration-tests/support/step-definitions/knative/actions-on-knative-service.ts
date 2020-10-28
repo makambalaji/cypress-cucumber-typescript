@@ -8,6 +8,7 @@ import {
   deleteRevision,
   modal,
   setTrafficDistribution,
+  editApplicationrouping,
 } from "../../pages/modal";
 import { naviagteTo, app } from "../../pages/app";
 import { devNavigationMenu } from "../../constants/global";
@@ -151,6 +152,8 @@ When("user clicks Add button on the Edit Annotations modal", () => {
 Given(
   "user created another revision {string} for knative Service {string}",
   (revisionName: string, serviceName: string) => {
+    topologyPage.waitForKnativeRevision();
+    naviagteTo(devNavigationMenu.Add);
     addPage.createGitWorkload(
       "https://github.com/sclorg/nodejs-ex.git",
       revisionName,
@@ -221,7 +224,7 @@ Then(
     topologyPage.clickOnNode(serviceName);
     topologySidePane.verify();
     topologySidePane.selectTab("Details");
-    topologySidePane.verifySection("Labels");
+    cy.get('[data-test-selector="details-item-label__Labels"]').should('be.visible');
     cy.get('[data-test="label-list"] a')
       .contains(label)
       .should("not.be.visible");
@@ -241,6 +244,16 @@ Given(
 
 Then(
   "number of Annotations increased to {string} in {string} service side bar details",
+  (numOfAnnotations: string, serviceName: string) => {
+    topologyPage.clickOnNode(serviceName);
+    topologySidePane.verify();
+    topologySidePane.selectTab("Details");
+    topologySidePane.verifyNumberOfAnnotations(numOfAnnotations);
+  }
+);
+
+Then(
+  "number of Annotations display as {string} in {string} service side bar details",
   (numOfAnnotations: string, serviceName: string) => {
     topologyPage.clickOnNode(serviceName);
     topologySidePane.verify();
@@ -304,19 +317,26 @@ When("user clicks cancel button on {string} page", (pageName: string) => {
   cy.byLegacyTestID("reset-button").click();
 });
 
-When("user selects the {string} option from Application drop down", () => {});
+When("user selects the {string} option from Application drop down", () => {
+  // TODO: implement step
+});
 
-When("user modifies the Yaml file of the Service details page", () => {});
+When("user modifies the Yaml file of the Service details page", () => {
+  // TODO: implement step
+});
 
 When(
   "user enters {string} into the Application Name text box",
-  (appName: string) => {}
+  (appName: string) => {
+    // TODO: implement step
+  }
 );
 
 Given(
   "number of annotations are {string} present in side bar - details tab- annotation section",
   (a: string) => {
     cy.log(a);
+    // TODO: implement step
   }
 );
 
@@ -324,13 +344,15 @@ Given(
   "number of annotations are {string} present in side bar - details tab",
   (a: string) => {
     cy.log(a);
+    // TODO: implement step
   }
 );
 
 When(
   "user removes the label {string} from exisitng labels list in {string} modal",
-  (a: string, b: string) => {
-    cy.log(a, b);
+  (labelName: string, modalHeader: string) => {
+    cy.alertTitleShouldContain(modalHeader);
+    editLabels.removeLabel(labelName);
   }
 );
 
@@ -338,6 +360,7 @@ When(
   "user clicks on {string} icon for the annotation with key {string} present in {string} modal",
   (a: string, b: string, c: string) => {
     cy.log(a, b, c);
+    // TODO: implement step
   }
 );
 
@@ -345,6 +368,7 @@ When(
   "user clicks {string} button on the {string} modal",
   (a: string, b: string) => {
     cy.log(a, b);
+    // TODO: implement step
   }
 );
 
@@ -360,6 +384,15 @@ When(
   "user selects the {string} from {string} drop down present in {string} modal",
   (a: string, b: string, c: string) => {
     cy.log(a, b, c);
+    // TODO: implement step
+  }
+);
+
+When(
+  "user selects the {string} option from application drop down present in {string} modal",
+  (option: string, modalHeader: string) => {
+    cy.alertTitleShouldContain(modalHeader);
+    editApplicationrouping.selectApplication(option);
   }
 );
 
@@ -367,19 +400,9 @@ When(
   "user selects the {string} option from {string} drop down present in {string} modal",
   (a: string, b: string, c: string) => {
     cy.log(a, b, c);
+    // TODO: implement step
   }
 );
-
-When(
-  "user selects the {string} option from {string} drop down present in {string} modal",
-  (a: string, b: string, c: string) => {
-    cy.log(a, b, c);
-  }
-);
-
-Then("number of Annotations remains same in side bar details", () => {
-  // TODO: implement step
-});
 
 Then(
   "number of Annotations decreased to {string} in side bar details",
@@ -400,7 +423,7 @@ Then("another message should display as {string}", (message: string) => {
 });
 
 Then("updated service is present in side bar", () => {
-  // TODO: implement step
+  topologySidePane.verifyActions
 });
 
 Then("updated service should not display in side bar", () => {

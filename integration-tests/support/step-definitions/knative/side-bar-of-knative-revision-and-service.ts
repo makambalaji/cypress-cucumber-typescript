@@ -113,7 +113,7 @@ When(
 // });
 
 Then(
-  "Name, Namespace, Labels, Annotations, Created on, Owner fields displayed  in topology details",
+  "Name, Namespace, Labels, Annotations, Created at, Owner fields displayed  in topology details",
   () => {
     topologySidePane.verify();
     topologySidePane.selectTab("Details");
@@ -121,7 +121,7 @@ Then(
     topologySidePane.verifyFieldinDetailsTab("Namespace");
     topologySidePane.verifyFieldinDetailsTab("Labels");
     topologySidePane.verifyFieldinDetailsTab("Annotations");
-    topologySidePane.verifyFieldinDetailsTab("Created on");
+    topologySidePane.verifyFieldinDetailsTab("Created at");
     topologySidePane.verifyFieldinDetailsTab("Owner");
     topologySidePane.close();
   }

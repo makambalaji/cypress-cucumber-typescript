@@ -7,7 +7,7 @@ Feature: Secrets
       And user is at pipelines page
 
 
-   @regression, @smoke
+   @regression
    Scenario: Add Secrets : P-11-TC01
       Given user has created pipeline "pipe-task-with-resource" with git resources
       When user selects "Start" option from kebab menu for pipeline "pipe-task-with-resource"
@@ -17,7 +17,7 @@ Feature: Secrets
       And user is able to see Secret Name, Access to, Server UrL fields and authernication type fields
 
 
-   @regression, @smoke
+   @smoke
    Scenario Outline: Add secret to pipeline with authentication type as Basic Authentication : P-11-TC02
       Given user has created pipeline "pipe-task-with-resource-1" with git resources
       And user is at Start Pipeline modal

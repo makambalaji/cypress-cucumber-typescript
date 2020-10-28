@@ -6,34 +6,26 @@ import {
   editAnnotations,
 } from "../../pages/modal";
 import { topologyPage, topologySidePane } from "../../pages/topology-page";
+import { addPage } from "../../pages/add-flow/add-page";
 
 Given(
   "number of annotations are {string} present in revision side bar details of service {string}",
   (numOfAnnotations: string, serviceName: string) => {
-    cy.byLegacyTestID("base-node-handler")
-      .find("g.odc-resource-icon")
-      .click({ force: true });
+    cy.log(`click on knative Revision of knative service ${serviceName}`);
+    topologyPage.waitForKnativeRevision();
+    topologyPage.clickOnKnativeRevision();
     topologySidePane.verify();
     topologySidePane.selectTab("Details");
     topologySidePane.verifyNumberOfAnnotations(numOfAnnotations);
   }
 );
 
-Given(
-  "number of annotations are {string} present in side bar - details tab- annotation section",
-  (a: string) => {
-    cy.log(a);
-  }
-);
-
-Given(
-  "number of annotations are {string} present in side bar - details tab",
-  (a: string) => {
-    cy.log(a);
-  }
-);
-
 Given("service should contain multiple revisions", () => {
+  addPage.createGitWorkload(
+    "https://github.com/sclorg/nodejs-ex.git",
+    "nodejs-ex-git-1",
+    "Knative"
+  );
   // TODO: implement step
 });
 
@@ -43,6 +35,20 @@ When(
     cy.log(`Right click on the knative revision of service ${serviceName}`);
     topologyPage.waitForKnativeRevision();
     topologyPage.rightClickOnKnativeRevision();
+  }
+);
+
+Given(
+  "user added label {string} to the revision of knative service {string}",
+  (labelName: string, serviceName: string) => {
+    cy.log(
+      `Add the label ${labelName} to knative revision of service ${serviceName}`
+    );
+    topologyPage.waitForKnativeRevision();
+    topologyPage.rightClickOnKnativeRevision();
+    cy.byTestActionID("Edit Labels").click();
+    editLabels.enterLabel(labelName);
+    modal.clicKSave();
   }
 );
 
@@ -69,19 +75,17 @@ When(
 
 When(
   "removes the label {string} from existing labels list in {string} modal",
-  (a: string, b: string) => {
-    cy.log(a, b);
+  (labelName: string, modalHeader: string) => {
+    cy.alertTitleShouldContain(modalHeader);
+    editLabels.removeLabel(labelName);
   }
 );
 
-When("types {string} into the {string} text box", (a: string, b: string) => {
-  cy.log(a, b);
-});
-
 When(
-  "user clicks on {string} icon for the annotation with key {string} present in {string} modal",
-  (a: string, b: string, c: string) => {
-    cy.log(a, b, c);
+  "user clicks on remove icon for the annotation with key {string} present in {string} modal",
+  (annotationKey: string, modalHeader: string) => {
+    cy.alertTitleShouldContain(modalHeader);
+    editAnnotations.removeAnnotation(annotationKey);
   }
 );
 
@@ -94,13 +98,13 @@ When(
 );
 
 When("user clicks on Details tab", () => {
-  // TODO: implement step
+  topologyPage.revisionDetails.clickOnDetailsTab();
 });
 
 When("user modifies the Yaml file of the Revision details page", () => {});
 
-When("user clicks {string} button on Revision Yaml page", (a: string) => {
-  cy.log(a);
+When("user clicks save button on Revision Yaml page", () => {
+  topologyPage.revisionDetails.yaml.clickOnSave();
 });
 
 Then(
@@ -113,8 +117,8 @@ Then(
   }
 );
 
-Then("save button is disabled", () => {
-  modal.verifySaveButtonIsDisabled();
+Then("save button is displayed", () => {
+  modal.verifySaveButtonIsDisplayed();
   modal.clickCancel();
 });
 
@@ -138,8 +142,8 @@ Then(
 );
 
 Then("key, value columns are displayed with respecitve text fields", () => {
-  cy.get('input[placeholder="key"]').should("be.greaterThan", 1);
-  cy.get('input[placeholder="value"]').should("be.greaterThan", 1);
+  cy.get('input[placeholder="key"]').its("length").should("be.gte", 1);
+  cy.get('input[placeholder="value"]').its("length").should("be.gte", 1);
 });
 
 Then("Add more link is enabled", () => {
@@ -174,23 +178,43 @@ Then(
 Then(
   "details tab displayed with Revision Details and Conditions sections",
   () => {
-    // TODO: implement step
+    topologyPage.revisionDetails.details.verifyRevisionSummary();
+    topologyPage.revisionDetails.details.verifyConditionsSection();
   }
 );
 
 Then(
   "Revision details contains fields like Name, Namespace, Labels, Annotations, Created At, Owner",
   () => {
-    // TODO: implement step
+    cy.get('[data-test-selector="details-item-label__Name"]').should(
+      "be.visible"
+    );
+    cy.get('[data-test-selector="details-item-label__Namespace"]').should(
+      "be.visible"
+    );
+    cy.get('[data-test-selector="details-item-label__Labels"]').should(
+      "be.visible"
+    );
+    cy.get('[data-test-selector="details-item-label__Annotations"]').should(
+      "be.visible"
+    );
+    cy.get('[data-test-selector="details-item-label__Created at"]').should(
+      "be.visible"
+    );
+    cy.get('[data-test-selector="details-item-label__Owner"]').should(
+      "be.visible"
+    );
   }
 );
 
-Then("the message display as {string}", (a: string) => {
-  cy.log(a);
+Then("the message display as {string}", (message: string) => {
+  cy.log(message);
+  // TODO: implement step
 });
 
-Then("another message display as {string}", (a: string) => {
-  cy.log(a);
+Then("another message display as {string}", (message: string) => {
+  cy.log(message);
+  // TODO: implement step
 });
 
 Then("modal contains message as {string}", (message: string) => {

@@ -310,7 +310,7 @@ Then(
   "Last Run status of the {string} displays as {string} in topology page",
   (name: string, status: string) => {
     topologyPage.search(name);
-    cy.byNodeName(name).click();
+    topologyPage.clickOnNode(name);
     topologySidePane.verify();
     topologyPage.verifyPipelineRunStatus(status);
   }

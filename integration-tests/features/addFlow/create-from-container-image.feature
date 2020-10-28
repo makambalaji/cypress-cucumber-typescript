@@ -17,7 +17,7 @@ Feature: Create Application from Container image file
       And advanced option Create a route to the application is selected
 
 
-   @regression, @smoke
+   @smoke
    Scenario: Create the container image with extrenal registry : A-05-TC02
       Given user is at Deploy Image page
       When user enters Image name from external registry as "openshift/hello-openshift"

@@ -18,6 +18,13 @@ When(
   }
 );
 
+Given("pipeline {string} is present on Pipeline Details page", (pipelineName: string) => {
+  pipelinesPage.clickOncreatePipeline();
+  pipelineBuilderPage.createPipelineFromBuilderPage(pipelineName);
+  naviagteTo(devNavigationMenu.Pipelines);
+  pipelinesPage.selectPipeline(pipelineName);
+});
+
 Then("user is at the Pipeline Builder page", () => {
   pipelineBuilderPage.verifyTitle();
 });

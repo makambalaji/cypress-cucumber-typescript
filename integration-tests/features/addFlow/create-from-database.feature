@@ -6,7 +6,7 @@ Feature: Create Application from Database
         And user has selected namespace "aut-addflow-database"
 
 
-    @regression, @smoke
+    @smoke
     Scenario: Create the Database from Add page : A-10-TC01
         Given user is at Add page
         When user clicks Database card

@@ -8,7 +8,7 @@ Feature: Event Sources actions
       And user has selected namespace "aut-create-knative-event-source"
 
 
-   @regression, @smoke
+   @regression
    Scenario: Event source context menu options : Kn-11-TC01
       Given user has created knative service "nodejs-ex-git"
       And user has created "sink-binding" event source
@@ -17,7 +17,7 @@ Feature: Event Sources actions
       And user can see options Edit Application Groupings, Move Sink, Edit Labels, Edit Annotations, Edit SinkBinding, Delete SinkBinding
 
 
-   @regression, @smoke
+   @smoke
    Scenario: Move sink to different knative service using context menu: Kn-11-TC02
       Given user has created knative services "nodejs-ex-git" and "nodejs-ex-git-1"
       And user has created "sink-binding" event source
@@ -29,7 +29,7 @@ Feature: Event Sources actions
       Then user will see that event source "sink-binding" is sinked with knative Service "nodejs-ex-git-1"
 
 
-   @regression, @smoke, @debug
+   @smoke
    Scenario: Delete event source : Kn-11-TC06
       Given user has created knative services "nodejs-ex-git" and "nodejs-ex-git-1"
       And user has created "sink-binding" event source

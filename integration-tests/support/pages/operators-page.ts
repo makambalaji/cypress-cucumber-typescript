@@ -6,7 +6,7 @@ export const operatorsObj = {
     installOperators:
       'a[href$="/operators.coreos.com~v1alpha1~ClusterServiceVersion"]',
     link: "li.pf-c-nav__item.pf-m-expandable",
-    menuItems: ".pf-c-nav__link",
+    menuItems: "#page-sidebar ul li",
   },
   operatorHub: {
     search: 'input[placeholder="Filter by keyword..."]',
@@ -156,7 +156,7 @@ export const operatorsPage = {
   },
 
   verifyOperatorInNavigationMenu: (menuItem: string) => {
-    cy.get(operatorsObj.nav.menuItems).should("have.length.greaterThan", "62");
+    cy.get(operatorsObj.nav.menuItems).should("have.length.greaterThan", 62);
     cy.get(operatorsObj.nav.menuItems).contains(menuItem).should("be.visible");
   },
 

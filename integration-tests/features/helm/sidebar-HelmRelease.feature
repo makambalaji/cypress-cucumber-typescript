@@ -60,10 +60,3 @@ Feature: Actions on Helm release in topology page
         When user switches to the Resources tab
         And user clicks on the link for the routes of helm release
         Then user is redirected to the Route Details page for the helm release
-
-
-    @regression, @smoke
-    Scenario: Actions drop down on the side bar: HR-10-TC08
-        Given user is on the topology sidebar of the helm release "nodejs-ex-k"
-        When user clicks on the Actions drop down menu
-        Then user is able to see the actions dropdown menu with actions Upgrade, Rollback and Uninstall Helm Release
