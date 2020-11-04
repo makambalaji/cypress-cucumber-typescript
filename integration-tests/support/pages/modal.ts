@@ -49,11 +49,13 @@ export const editAnnotations = {
   enterValue: (value: string) =>
     cy.get('input[placeholder="value"]').last().type(value),
   removeAnnotation: (annotationKey: string) => {
-    cy.get(`input[value="${annotationKey}"]`)
-      .parent()
-      // .nextUntil("div.pairs-list__action")
-      .nextUntil('div.pairs-list__action button[data-test-id="pairs-list__delete-btn"]')
-      .click();
+    cy.get(`div.row input[placeholder="key"]`).each(($el, index) => {
+      if ($el.prop("value").includes(annotationKey)) {
+        cy.get('button[data-test-id="pairs-list__delete-btn"]')
+          .eq(index)
+          .click();
+      }
+    });
   },
 };
 
@@ -67,7 +69,7 @@ export const setTrafficDistribution = {
   },
 };
 
-export const editApplicationrouping = {
+export const editApplicationGrouping = {
   selectApplication: (appName: string) => {
     cy.get("#form-dropdown-application-name-field").click();
     cy.get(`[id="${appName}-link"]`).click();
@@ -114,7 +116,7 @@ export const moveSink = {
 };
 
 export const editPodCount = {
-  enterPodCount:(podCount: string) => {
+  enterPodCount: (podCount: string) => {
     cy.get('input[type="number"]').clear().type(podCount);
   },
 };

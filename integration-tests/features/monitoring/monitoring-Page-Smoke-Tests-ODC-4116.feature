@@ -3,7 +3,7 @@ Feature: Monitoring Page
 
 
     Background:
-        Given user is at Developer perspective
+        Given user is at developer perspective
         And user is on "aut-monitoring" project
         And user has a workload with name "national-parks-test"
 
@@ -17,7 +17,7 @@ Feature: Monitoring Page
 
     @smoke, @regression
     Scenario: Dashboard tab on the Monitoring page for all workloads: MH-01-TC03
-        Given user is on Monitoring page
+        Given user is at Monitoring page
         When user clicks on Dashboard tab
         Then user will see All Workloads
         And user will see the CPU Usage

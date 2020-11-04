@@ -9,14 +9,14 @@ Feature: Actions on Helm release in topology page
 
     @regression, @smoke
     Scenario: Open Context Menu and check the actions available for Helm Release: HR-08-TC01
-        Given user is at the Topology page
+        Given user is at Topology page
         When user right clicks on the Helm Release "nodejs-ex-k" to open the context menu
         Then user will see the actions on context menu
 
 
     @regression, @smoke
     Scenario: Open Side Bar for the Helm release: HR-10-TC01, HR-10-TC02
-        Given user is at the Topology page
+        Given user is at Topology page
         When user clicks on the helm release "nodejs-ex-k"
         Then user will see the sidebar for the helm release
         And user will see the Details, Resources, Release Notes tabs

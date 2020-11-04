@@ -111,7 +111,7 @@ Then(
 );
 
 Then("user is able to see knative Eventing card", () => {
-  addPage.verifyCard("knative Eventing");
+  addPage.verifyCard("Knative Eventing");
 });
 
 Then("user is able to see notifier header {string}", (message: string) => {

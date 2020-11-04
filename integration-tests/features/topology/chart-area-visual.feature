@@ -35,7 +35,7 @@ Feature: Topology chart area
 
    @regression, @smoke, @manual
    Scenario: Visual for deployment-config : T-02-TC01
-      Given user is at the Topology page
+      Given user is at Topology page
       And deployment-config workload is present in topology
       When user checks nodes and the decorators associated with them
       Then nodes are circular shaped with builder image in them
@@ -48,7 +48,7 @@ Feature: Topology chart area
 
    @regression, @smoke, @manual
    Scenario: Visual for knative service with no revision : T-02-TC03
-      Given user is at the Topology page
+      Given user is at Topology page
       And knative workload without revision is present in topology
       When user checks nodes and the decorators associated with them
       Then user can view knative service are rectangular shaped with round corners
@@ -60,7 +60,7 @@ Feature: Topology chart area
 
    @regression, @smoke, @manual
    Scenario: Visual for knative service with revisions : T-02-TC03
-      Given user is at the Topology page
+      Given user is at Topology page
       And knative workload with revison is present in topology
       When user checks nodes and the decorators associated with them
       Then user can view knative service are rectangular shaped with round corners

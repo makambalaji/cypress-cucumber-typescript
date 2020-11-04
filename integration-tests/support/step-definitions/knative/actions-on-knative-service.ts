@@ -8,9 +8,9 @@ import {
   deleteRevision,
   modal,
   setTrafficDistribution,
-  editApplicationrouping,
+  editApplicationGrouping,
 } from "../../pages/modal";
-import { naviagteTo, app } from "../../pages/app";
+import { naviagteTo } from "../../pages/app";
 import { devNavigationMenu } from "../../constants/global";
 import { eventSourcesPage } from "../../pages/add-flow/eventSource-page";
 
@@ -381,34 +381,17 @@ When("user clicks save button on the Edit Service Page", () => {
 });
 
 When(
-  "user selects the {string} from {string} drop down present in {string} modal",
-  (a: string, b: string, c: string) => {
-    cy.log(a, b, c);
-    // TODO: implement step
-  }
-);
-
-When(
   "user selects the {string} option from application drop down present in {string} modal",
   (option: string, modalHeader: string) => {
     cy.alertTitleShouldContain(modalHeader);
-    editApplicationrouping.selectApplication(option);
-  }
-);
-
-When(
-  "user selects the {string} option from {string} drop down present in {string} modal",
-  (a: string, b: string, c: string) => {
-    cy.log(a, b, c);
-    // TODO: implement step
+    editApplicationGrouping.selectApplication(option);
   }
 );
 
 Then(
   "number of Annotations decreased to {string} in side bar details",
-  (message: string) => {
-    cy.log(message);
-    // TODO: implement step
+  (num: string) => {
+    topologySidePane.verifyNumberOfAnnotations(num);
   }
 );
 
@@ -422,10 +405,11 @@ Then("another message should display as {string}", (message: string) => {
   // TODO: implement step
 });
 
-Then("updated service is present in side bar", () => {
-  topologySidePane.verifyActions
+Then("updated service {string} is present in side bar of application {string}", (serviceName: string, applicationName: string) => {
+  topologySidePane.verifyResourcesForApplication(applicationName, serviceName);
 });
 
-Then("updated service should not display in side bar", () => {
-  // TODO: implement step
+Then("updated service {string} should not display in side bar of application {string}", (serviceName: string, applicationName: string) => {
+  topologyPage.clickOnApplicationNode(applicationName);
+  cy.byLegacyTestID(serviceName).should('not.be.visible');
 });

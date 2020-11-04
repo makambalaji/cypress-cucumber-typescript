@@ -3,12 +3,19 @@ import { addPage } from "../../pages/add-flow/add-page";
 import { topologyPage, topologySidePane } from "../../pages/topology-page";
 import { naviagteTo } from "../../pages/app";
 import { devNavigationMenu } from "../../constants/global";
+import { resourceTypes } from "../../constants/add";
 
 let gitUrl = "https://github.com/sclorg/nodejs-ex.git";
 
 Given("user has created a workload named {string}", (componentName: string) => {
   naviagteTo(devNavigationMenu.Add);
   addPage.createGitWorkload(gitUrl, componentName);
+  topologyPage.verifyTopologyPage();
+});
+
+Given("user has created a workload with application name {string}", (appName: string) => {
+  naviagteTo(devNavigationMenu.Add);
+  addPage.createGitWorkload(gitUrl, "nodejs-ex-git", resourceTypes.Deployment, appName);
   topologyPage.verifyTopologyPage();
 });
 

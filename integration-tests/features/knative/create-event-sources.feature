@@ -25,7 +25,7 @@ Feature: Create event sources
       And user is able to see "Camel Source" event source type
 
 
-   @regression, @debug
+   @regression
    Scenario: knative eventing in operator backed : Kn-07-TC04
       Given user is at Add page
       When user clicks on "Operator Backed" card
@@ -158,7 +158,7 @@ Feature: Create event sources
       And PingSource event source "ping-source" is created and linked to selected knative service "nodejs-ex-git"
 
 
-   @regression, @debug
+   @regression
    Scenario: Create SinkBinding event source : Kn-10-TC12
       Given user has created knative service "nodejs-ex-git"
       And user is at Event Sources page

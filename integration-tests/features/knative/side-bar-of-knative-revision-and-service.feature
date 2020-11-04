@@ -46,7 +46,7 @@ Feature: side bar details
         When user clicks on the revision of knative service "nodejs-ex-git"
 
 
-    @regression, @debug
+    @regression
     Scenario: Actions menu of knative revision in side bar: Kn-05-TC05
         Given user has created knative service "nodejs-ex-git"
         When user clicks on the revision of knative service "nodejs-ex-git"
@@ -65,7 +65,7 @@ Feature: side bar details
         When user clicks on the revision of knative service "nodejs-ex-git"
 
 
-    @regression, @debug
+    @regression
     Scenario: Actions menu of knative service in side bar: Kn-06-TC05
         Given user has created knative service "nodejs-ex-git"
         When user clicks on the knative service "nodejs-ex-git"

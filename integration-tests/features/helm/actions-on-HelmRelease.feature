@@ -9,7 +9,7 @@ Feature: Perform Actions on Helm Releases
 
     @regression, @smoke
     Scenario: Context menu options of helm release: HR-07-TC01
-        Given user is at the Topology page
+        Given user is at Topology page
         When user right clicks on the Helm Release "nodejs-ex-k" to open the context menu
         Then user is able to see the context menu with actions Upgrade, Rollback and Uninstall Helm Release
 
@@ -30,7 +30,7 @@ Feature: Perform Actions on Helm Releases
 
     @regression, @smoke
     Scenario: Perform Upgrade action on Helm Release through Context Menu: HR-08-TC02
-        Given user is at the Topology page
+        Given user is at Topology page
         When user right clicks on the Helm Release "nodejs-ex-k" to open the context menu
         And user clicks on the "Upgrade" action
         And user upgrades the chart Version
@@ -40,7 +40,7 @@ Feature: Perform Actions on Helm Releases
 
     @regression, @smoke
     Scenario: Perform Rollback action on Helm Release through Context Menu: HR-08-TC03
-        Given user is at the Topology page
+        Given user is at Topology page
         When user right clicks on the Helm Release "nodejs-ex-k" to open the context menu
         And user clicks on the "Rollback" action
         And user selects the version to Rollback
@@ -50,7 +50,7 @@ Feature: Perform Actions on Helm Releases
 
     @regression, @smoke
     Scenario: Uninstall Helm Release through Context Menu: HR-08-TC04
-        Given user is at the Topology page
+        Given user is at Topology page
         When user right clicks on the Helm Release "nodejs-ex-k" to open the context menu
         And user clicks on the "Uninstall Helm Release" action
         And user enters the release name
@@ -60,14 +60,14 @@ Feature: Perform Actions on Helm Releases
 
     @regression, @smoke
     Scenario: Context menu options of the helm release workload: HR-05-TC01
-        Given user is at the Topology page
+        Given user is at Topology page
         When user right clicks on the workload of Helm Release "nodejs-ex-k" to open the context menu
         Then user is able to see the context menu with actions Start Rollout, Pause Rollouts, Edit Pod Count, Add Storage, Edit Health Checks, Edit Labels, Edit Annotations, Edit Deployment Config and Delete Deployment Config
 
 
     @regression
     Scenario: Start Rollout for the helm relase workload: HR-05-TC02
-        Given user is at the Topology page
+        Given user is at Topology page
         When user right clicks on the workload of Helm Release "nodejs-ex-k" to open the context menu
         And user clicks on the "Start Rollout" action
         Then pod status updated as "Scaling to 0"
@@ -77,7 +77,7 @@ Feature: Perform Actions on Helm Releases
 
     @regression
     Scenario: Pause Rollout for the helm relase workload: HR-05-TC03
-        Given user is at the Topology page
+        Given user is at Topology page
         When user right clicks on the workload of Helm Release "nodejs-ex-k" to open the context menu
         And user clicks on the "Pause Rollouts" action
         And user right clicks on the workload of Helm Release "nodejs-ex-k" to open the context menu
@@ -86,7 +86,7 @@ Feature: Perform Actions on Helm Releases
 
     @regression
     Scenario: Edit Pod Count for the helm relase workload: HR-05-TC04
-        Given user is at the Topology page
+        Given user is at Topology page
         When user right clicks on the workload of Helm Release "nodejs-ex-k" to open the context menu
         And user clicks on the "Edit Pod Count" action
         And user updates the pod count as "2" in Edit Pod count modal
@@ -96,7 +96,7 @@ Feature: Perform Actions on Helm Releases
 
     @regression
     Scenario: Add Storage to the helm relase workload: HR-05-TC05
-        Given user is at the Topology page
+        Given user is at Topology page
         When user right clicks on the workload of Helm Release "nodejs-ex-k" to open the context menu
         And user clicks on the "Add Storage" action
         And user creates the new claim "my-storage-claim" with default storage class
@@ -108,7 +108,7 @@ Feature: Perform Actions on Helm Releases
 
     @regression
     Scenario: Edit Health Checks for the helm relase workload: HR-05-TC06
-        Given user is at the Topology page
+        Given user is at Topology page
         When user right clicks on the workload of Helm Release "nodejs-ex-k" to open the context menu
         And user clicks on the "Edit Health Checks" action
         Then user redirects to Edit Health Checks page
@@ -116,7 +116,7 @@ Feature: Perform Actions on Helm Releases
 
     @regression
     Scenario: Edit Labels of the helm relase workload: HR-05-TC07
-        Given user is at the Topology page
+        Given user is at Topology page
         When user right clicks on the workload of Helm Release "nodejs-ex-k" to open the context menu
         And user clicks on the "Edit Labels" action
         And user adds the label "app=label" to exisitng labels list in Edit Labels modal
@@ -126,7 +126,7 @@ Feature: Perform Actions on Helm Releases
 
     @regression
     Scenario: Edit Annotations of the helm relase workload: HR-05-TC08
-        Given user is at the Topology page
+        Given user is at Topology page
         When user right clicks on the workload of Helm Release "nodejs-ex-k" to open the context menu
         And user clicks on the "Edit Annotations" action
         And user adds the annotations
@@ -136,7 +136,7 @@ Feature: Perform Actions on Helm Releases
 
     @regression, @manual
     Scenario: Edit Deployment config of the helm relase workload: HR-05-TC09
-        Given user is at the Topology page
+        Given user is at Topology page
         When user right clicks on the workload of Helm Release "nodejs-ex-k" to open the context menu
         And user clicks on the "Edit Deployment Config" action
         And user updates the yaml file
@@ -146,7 +146,7 @@ Feature: Perform Actions on Helm Releases
 
     @regression, @manual
     Scenario: Delete Deployment config of the helm relase workload: HR-05-TC10
-        Given user is at the Topology page
+        Given user is at Topology page
         When user right clicks on the workload of Helm Release "nodejs-ex-k" to open the context menu
         And user clicks on the "Delete Deployment Config" action
         And user clicks Delete button on Delete Deployment Config modal

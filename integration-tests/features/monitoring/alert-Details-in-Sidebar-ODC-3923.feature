@@ -3,7 +3,7 @@ Feature: Alert Icon on Topology for Workloads in sidebar and Alerts tab on Monit
 
 
     Background:
-        Given user is at the developer perspective
+        Given user is at developer perspective
 
 
     @regression, @manual
@@ -32,7 +32,7 @@ Feature: Alert Icon on Topology for Workloads in sidebar and Alerts tab on Monit
 
     @regression
     Scenario: Redirect to Alert Details page on click of alert
-        Given user is at the Topology page
+        Given user is at Topology page
         And user has a node with firing alerts
         When user clicks on node to open the sidebar
         And user clicks on an alert in the Alert section under Monitoring Tab
@@ -41,7 +41,7 @@ Feature: Alert Icon on Topology for Workloads in sidebar and Alerts tab on Monit
 
     @regression
     Scenario: Associated Metrics on selection of Alerts in Alerts tab
-        Given user is on the Monitoring page
+        Given user is at Monitoring page
         When user opens the Alerts tab
         And user clicks on the alert under alert rules
         And user clicks on the View Metrics button on the alert details page
@@ -51,7 +51,7 @@ Feature: Alert Icon on Topology for Workloads in sidebar and Alerts tab on Monit
 
     @regression
     Scenario: Notification Column on the Alerts table
-        Given user is on the Monitoring page
+        Given user is at Monitoring page
         When user opens the Alerts tab
         Then user will see the Notification column
 

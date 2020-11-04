@@ -256,6 +256,11 @@ export const topologyPage = {
       .contains(releaseName)
       .click({ force: true });
   },
+  clickOnApplicationNode: (applicationNode: string) => {
+    cy.get(
+      `[data-id="group:${applicationNode}"] g.odc-resource-icon-application`
+    ).click({ force: true });
+  },
   clickOnSinkBinding: () => {
     cy.get("g.odc-base-node__label")
       .should("be.visible")
@@ -327,7 +332,6 @@ export const topologyPage = {
         cy
           .get(topologyObj.revisionDetails.details.conditionsTitle)
           .should("be.visible"),
-      
     },
     yaml: {
       clickOnSave: () => cy.get(topologyObj.revisionDetails.yaml.save).click(),
@@ -422,6 +426,10 @@ export const topologySidePane = {
   },
   verifyPipelineRuns: () => {
     cy.get("li.odc-pipeline-run-item").should("be.visible");
+  },
+  verifyResourcesForApplication: (applicationName: string, serviceName: string) => {
+    topologyPage.clickOnApplicationNode(applicationName);
+    cy.byLegacyTestID(serviceName).should('be.visible');
   },
 };
 

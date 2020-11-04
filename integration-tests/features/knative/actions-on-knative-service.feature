@@ -10,14 +10,14 @@ Feature: Perform actions on knative service
 
    @regression-1
    Scenario: knative service menu options: Kn-04-TC01
-      Given user is at the Topology page
+      Given user is at Topology page
       When user right clicks on the knative service "nodejs-ex-git"
       Then user is able to see the options like Edit Application Grouping, Set Traffic Distribution, Edit Health Checks, Edit Labels, Edit Annotations, Edit Service, Delete Service, "nodejs-ex-git"
 
 
    @regression-1
    Scenario: Edit labels modal details : Kn-04-TC02
-      Given user is at the Topology page
+      Given user is at Topology page
       When user selects "Edit Labels" context menu option of knative service "nodejs-ex-git"
       Then modal with "Edit labels" appears
       And save, cancel buttons are displayed
@@ -25,7 +25,7 @@ Feature: Perform actions on knative service
 
    @regression-1
    Scenario: Add label to the exisitng labels list : Kn-04-TC03
-      Given user is at the Topology page
+      Given user is at Topology page
       When user selects "Edit Labels" context menu option of knative service "nodejs-ex-git"
       And user adds the label "app=label" to exisitng labels list in Edit Labels modal
       And user clicks the save button on the "Edit labels" modal
@@ -34,7 +34,7 @@ Feature: Perform actions on knative service
 
    @regression-1
    Scenario: Remove label from exisitng labels list : Kn-04-TC04
-      Given user is at the Topology page
+      Given user is at Topology page
       And label "app=label" is added to the knative service "nodejs-ex-git"
       When user selects "Edit Labels" context menu option of knative service "nodejs-ex-git"
       And user removes the label "app=label" from exisitng labels list in "Edit labels" modal
@@ -45,7 +45,7 @@ Feature: Perform actions on knative service
    @regression-1
    Scenario: Add labels to exisitng labels list and cancel it : Kn-04-TC05
       Given user has created another knative service "nodejs-ex-git-1"
-      And user is at the Topology page
+      And user is at Topology page
       When user selects "Edit Labels" context menu option of knative service "nodejs-ex-git"
       And user adds the label "app=label" to exisitng labels list in Edit Labels modal
       And user clicks cancel button on the "Edit labels" modal
@@ -54,7 +54,7 @@ Feature: Perform actions on knative service
 
    @regression-1
    Scenario: Edit Annotation modal details : Kn-04-TC11
-      Given user is at the Topology page
+      Given user is at Topology page
       When user selects "Edit Annotations" context menu option of knative service "nodejs-ex-git"
       Then modal with "Edit annotations" appears
       And key, value columns are displayed with respecitve text fields
@@ -64,7 +64,7 @@ Feature: Perform actions on knative service
 
    @regression-1
    Scenario: Add annotation to the exisitng annotations list : Kn-04-TC12
-      Given user is at the Topology page
+      Given user is at Topology page
       And number of annotations are "5" present in "nodejs-ex-git" service side bar details tab
       When user selects "Edit Annotations" context menu option of knative service "nodejs-ex-git"
       And user clicks Add button on the Edit Annotations modal
@@ -73,9 +73,9 @@ Feature: Perform actions on knative service
       And user clicks the save button on the "Edit annotations" modal
       Then number of Annotations increased to "6" in "nodejs-ex-git" service side bar details
 
-   @debug
+
    Scenario: perform cancel action after Edit Annotations : Kn-04-TC14
-      Given user is at the Topology page
+      Given user is at Topology page
       And number of annotations are "5" present in "nodejs-ex-git" service side bar details tab
       When user selects "Edit Annotations" context menu option of knative service "nodejs-ex-git"
       And user clicks on remove icon for the annotation with key "serving.knative.dev/creator" present in Edit Annotations modal
@@ -83,64 +83,65 @@ Feature: Perform actions on knative service
       Then number of Annotations display as "5" in "nodejs-ex-git" service side bar details
 
 
-   @regression, @debug
+   @regression
    Scenario: Remove annotation from exisitng annotations list : Kn-04-TC13
-      Given user is at the Topology page
+      Given user is at Topology page
       And number of annotations are "6" present in side bar - details tab
       When user selects "Edit Annotations" context menu option of knative service "nodejs-ex-git"
-      And user clicks on remove icon for the annotation with key "serving.knative.dev/creator" present in Edit Annotations modal
+      And user clicks on remove icon for the annotation with key "serving.knative.dev/lastModifier" present in Edit Annotations modal
       And user clicks the save button on the "Edit annotations" modal
       Then number of Annotations decreased to "5" in side bar details
 
 
    @regression
    Scenario: Edit the service from yaml editor: Kn-04-TC15
-      Given user is at the Topology page
+      Given user is at Topology page
       When user selects "Edit Service" context menu option of knative service "nodejs-ex-git"
       And user modifies the Yaml file of the Service details page
       And user clicks save button on yaml page
-      Then message should display as "{service name} has been updated to version {nnnnnn}"
+      Then message should display as "nodejs-ex-git has been updated to version {nnnnnn}"
       And another message should display as "This object has been updated."
 
 
    @regression
    Scenario: Update the service to different application group existing in same project : Kn-04-TC07
-      Given user has created a workload named "openshift-app"
-      And user is at the Topology page
+      Given user has created a workload with application name "openshift-app"
+      And user is at Topology page
       When user selects "Edit Application Grouping" context menu option of knative service "nodejs-ex-git"
-      And user selects the "openshift-app" option from "application" drop down present in "Edit Application Grouping" modal
+      And user selects the "openshift-app" option from application drop down present in "Edit Application Grouping" modal
       And user clicks the save button on the "Edit Application Grouping" modal
       And user searches for application name "openshift-app"
       And user clicks on "openshift-app" on topology page
-      Then updated service is present in side bar
+      Then updated service "nodejs-ex-git" is present in side bar of application "openshift-app"
 
-   @debug
+
    Scenario: Perform cancel operation while editing application group : Kn-04-TC08
-      Given user is at the Topology page
+      Given user has created a workload with application name "openshift-app"
+      And user is at Topology page
       When user selects "Edit Application Grouping" context menu option of knative service "nodejs-ex-git"
-      And user selects the "openshift-app" option from "application" drop down present in "Edit Application Grouping" modal
+      And user selects the "openshift-app" option from application drop down present in "Edit Application Grouping" modal
       And user clicks cancel button on the "Edit Application Grouping" modal
       And user searches for application name "openshift-app"
       And user clicks on "openshift-app" on topology page
-      Then updated service should not display in side bar
+      Then updated service "nodejs-ex-git" should not display in side bar of application "openshift-app"
 
 
    @regression
-   Scenario: Update the service to new application group : Kn-04-TC06 
-      Given user is at the Topology page
+   Scenario: Update the service to new application group : Kn-04-TC06
+      Given user is at Topology page
       When user selects "Edit Application Grouping" context menu option of knative service "nodejs-ex-git"
-      And user selects the "Create Application" option from "application" drop down present in "Edit Application Grouping" modal
+      And user selects the "Create Application" option from application drop down present in "Edit Application Grouping" modal
       And user enters "openshift-app" into the Application Name text box
       And user clicks the save button on the "Edit Application Grouping" modal
       And user searches for application name "openshift-app"
       And user clicks on "openshift-app" on topology page
-      Then updated service is present in side bar
+      Then updated service "nodejs-ex-git" is present in side bar of application "openshift-app"
 
 
-   @regression, @debug
+   @regression
    Scenario: Set traffic distribution greater than 100% for the Revisions of the knative Service : Kn-04-TC17
       Given user created another revision "nodejs-ex-git-1" for knative Service "nodejs-ex-git"
-      And user is at the Topology page
+      And user is at Topology page
       When user selects "Set Traffic Distribution" context menu option of knative service "nodejs-ex-git"
       And user clicks on Add Revision button present in Set Traffic Distribution modal
       And user enters "50" into the Split text box of new revision
@@ -149,10 +150,10 @@ Feature: Perform actions on knative service
       Then error message displays as "validation failed: Traffic targets sum to 150, want 100: spec.traffic"
 
 
-   @regression, @debug
+   @regression
    Scenario: Set traffic distribution less than 100% for the Revisions of the knative Service : Kn-04-TC18
       Given user created another revision "nodejs-ex-git-1" for knative Service "nodejs-ex-git"
-      And user is at the Topology page
+      And user is at Topology page
       When user selects "Set Traffic Distribution" context menu option of knative service "nodejs-ex-git"
       And user enters "25" into the Split text box of new revision
       And user clicks on Add Revision button present in Set Traffic Distribution modal
@@ -165,7 +166,7 @@ Feature: Perform actions on knative service
    @smoke
    Scenario: Set traffic distribution equal to 100% for the Revisions of the knative Service : Kn-04-TC19
       Given user created another revision "nodejs-ex-git-1" for knative Service "nodejs-ex-git"
-      And user is at the Topology page
+      And user is at Topology page
       When user selects "Set Traffic Distribution" context menu option of knative service "nodejs-ex-git"
       And user enters "50" into the Split text box of new revision
       And user clicks on Add Revision button present in Set Traffic Distribution modal
@@ -174,9 +175,9 @@ Feature: Perform actions on knative service
       And user clicks the save button on the "Set Traffic Distribution" modal
       Then number of routes should get increased in side bar - resources tab - routes section
 
-   @debug
+
    Scenario: Perform cancel opeartion on Edit Health Checks for a service : Kn-04-TC10
-      Given user is at the Topology page
+      Given user is at Topology page
       When user selects "Edit Health Checks" context menu option of knative service "nodejs-ex-git"
       And user clicks cancel button on "Edit Health Checks" page
       Then user will be redirected to Topology page
@@ -184,20 +185,20 @@ Feature: Perform actions on knative service
 
    @regression
    Scenario: Edit Health Checks for a service: Kn-04-TC09
-      Given user is at the Topology page
+      Given user is at Topology page
       When user selects "Edit Health Checks" context menu option of knative service "nodejs-ex-git"
 
-   @debug
+
    Scenario: Perform cancel opeartion on Edit NameOfWorkload for a service : Kn-04-TC21
-      Given user is at the Topology page
+      Given user is at Topology page
       When user selects "Edit nodejs-ex-git" context menu option of knative service "nodejs-ex-git"
-      And user clicks cancel button on "Edit Service" page
+      And user clicks cancel button on "Import from Git" page
       Then user will be redirected to Topology page
 
 
    @regression
    Scenario: Edit NameOfWorkload for a service [TBD] : Kn-04-TC20
-      Given user is at the Topology page
+      Given user is at Topology page
       When user selects "Edit nodejs-ex-git" context menu option of knative service "nodejs-ex-git"
       And user selects the "Application -1" option from Application drop down
       And user clicks save button on the Edit Service Page
@@ -205,7 +206,7 @@ Feature: Perform actions on knative service
 
    @smoke
    Scenario: Delete service : Kn-04-TC16
-      Given user is at the Topology page
+      Given user is at Topology page
       When user selects "Delete Service" context menu option of knative service "nodejs-ex-git"
       Then modal with "Delete Service?" appears
       And modal get closed on clicking Delete button
